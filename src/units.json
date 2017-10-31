@@ -1,0 +1,44 @@
+{
+  "e_web_engineer": {
+    "name": "E-Web Engineer",
+    "commands": [],
+    "elite": false,
+    "threat": 8,
+    "reinforcement_cost": -1,
+    "max_in_group": 1
+  },
+  "imperial_officer": {
+    "name": "Imperial Officer",
+    "commands": [
+      {
+        "condition": "If adjacent to any target",
+        "command": "Attack a target, then Withdraw 3 spaces."
+      }
+    ],
+    "elite": false,
+    "threat": 2,
+    "reinforcement_cost": -1,
+    "max_in_group": 1
+  },
+  "probe_droid": {
+    "name": "Probe Droid",
+    "commands": [],
+    "elite": false,
+    "threat": 3,
+    "reinforcement_cost": -1,
+    "max_in_group": 1
+  },
+  "stormtrooper": {
+    "name": "Stormtrooper",
+    "commands": [
+      {
+        "condition": "If adjacent to any target",
+        "command": "Attack a target, then Withdraw 3 spaces."
+      }
+    ],
+    "elite": false,
+    "threat": 6,
+    "reinforcement_cost": 2,
+    "max_in_group": 3
+  }
+}

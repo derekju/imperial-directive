@@ -1,0 +1,31 @@
+.AiCard {
+  border: 1px solid black;
+  width: 267px;
+  height: 400px;
+}
+
+.AiCard-header {
+  background-color: black;
+  color: white;
+  padding: 5px;
+}
+
+.AiCardElite {
+  border: 1px solid #951817;
+  width: 267px;
+  height: 400px;
+}
+
+.AiCardElite-header {
+  background-color: #951817;
+  color: white;
+  padding: 5px;
+}
+
+.AiCard-command-container {
+  padding: 5px;
+}
+
+.AiCard-condition {
+  font-weight: bold;
+}
