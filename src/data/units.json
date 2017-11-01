@@ -1,13 +1,13 @@
 {
-  "e_web_engineer": {
+  "eWebEngineer": {
     "name": "E-Web Engineer",
     "commands": [],
     "elite": false,
     "threat": 8,
-    "reinforcement_cost": -1,
-    "max_in_group": 1
+    "reinforcementCost": -1,
+    "maxInGroup": 1
   },
-  "imperial_officer": {
+  "imperialOfficer": {
     "name": "Imperial Officer",
     "commands": [
       {
@@ -17,16 +17,16 @@
     ],
     "elite": false,
     "threat": 2,
-    "reinforcement_cost": -1,
-    "max_in_group": 1
+    "reinforcementCost": -1,
+    "maxInGroup": 1
   },
-  "probe_droid": {
+  "probeDroid": {
     "name": "Probe Droid",
     "commands": [],
     "elite": false,
     "threat": 3,
-    "reinforcement_cost": -1,
-    "max_in_group": 1
+    "reinforcementCost": -1,
+    "maxInGroup": 1
   },
   "stormtrooper": {
     "name": "Stormtrooper",
@@ -38,7 +38,7 @@
     ],
     "elite": false,
     "threat": 6,
-    "reinforcement_cost": 2,
-    "max_in_group": 3
+    "reinforcementCost": 2,
+    "maxInGroup": 3
   }
 }

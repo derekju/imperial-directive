@@ -1,0 +1,16 @@
+{
+  "aftermath": {
+    "initialGroups": [
+      "stormtrooper", "imperialOfficer", "probeDroid"
+    ],
+    "mapStates": [
+
+    ],
+    "maxRounds": 6,
+    "name": "Aftermath",
+    "openGroups": 0,
+    "reservedGroups": [
+      "stormtrooper", "eWebEngineer"
+    ]
+  }
+}

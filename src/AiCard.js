@@ -18,7 +18,9 @@ class AiCard extends React.Component {
       <div className={baseClass}>
         <div className={`${baseClass}-header`}>{this.props.name}</div>
         <div className="AiCard-command-container">
-          {this.props.commands.map((command, index) => this.renderCommand(`${this.props.name}-${index}`, command.condition, command.command))}
+          {this.props.commands.map((command, index) =>
+            this.renderCommand(`${this.props.name}-${index}`, command.condition, command.command)
+          )}
         </div>
       </div>
     );
