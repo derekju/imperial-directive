@@ -15,14 +15,17 @@ const styles = {
 };
 
 type ButtonPropsType = {
+  onClick: Function,
   text: string,
 };
 
-class Button extends React.Component {
-  props: ButtonPropsType;
-
+class Button extends React.Component<ButtonPropsType> {
   render() {
-    return <button style={styles.button}>{this.props.text}</button>;
+    return (
+      <button style={styles.button} onClick={this.props.onClick}>
+        {this.props.text}
+      </button>
+    );
   }
 }
 

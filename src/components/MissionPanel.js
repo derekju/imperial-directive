@@ -1,9 +1,10 @@
+// @flow
+
 import React from 'react';
 
 const styles = {
   base: {
     border: '2px solid black',
-    height: '200px',
     width: '200px',
   },
   contents: {
@@ -16,7 +17,7 @@ const styles = {
   },
 };
 
-class MissionPanel extends React.Component {
+class MissionPanel extends React.Component<{}> {
   render() {
     return (
       <div style={styles.base}>

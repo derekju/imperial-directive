@@ -1,7 +1,7 @@
 // @flow
 
 import Button from './Button';
-import {positionAbsolute} from './styles/mixins';
+import {positionAbsolute} from '../styles/mixins';
 import React from 'react';
 
 const styles = {
@@ -33,9 +33,7 @@ type ModalPropsType = {
   title: string,
 };
 
-class Modal extends React.Component {
-  props: ModalPropsType;
-
+class Modal extends React.Component<ModalPropsType> {
   render() {
     return (
       <div style={styles.base}>

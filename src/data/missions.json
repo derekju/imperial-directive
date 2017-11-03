@@ -10,7 +10,7 @@
     "name": "Aftermath",
     "openGroups": 0,
     "reservedGroups": [
-      "stormtrooper", "eWebEngineer"
+      "eWebEngineer", "imperialOfficer", "stormtrooper"
     ]
   }
 }

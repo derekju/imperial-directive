@@ -1,34 +1,26 @@
 // @flow
 
-import AiPanel from '../AiPanel';
+import EventsPanel from './EventsPanel';
+import HeroPanelContainer from '../containers/HeroPanelContainer';
+import ImperialDashboardContainer from '../containers/ImperialDashboardContainer';
 import {LIGHT_GRAY_TRANSPARENT} from '../styles/colors';
-import MissionControls from '../MissionControls';
-import MilestonesPanel from '../MilestonesPanel';
-import MissionPanel from '../MissionPanel';
-import Modal from '../Modal';
+import MissionControls from './MissionControls';
+import MilestonesPanel from './MilestonesPanel';
+import MissionPanel from './MissionPanel';
+import Modal from './Modal';
 import {positionAbsolute} from '../styles/mixins';
 import React from 'react';
-import UnitPanel from '../UnitPanel';
+import RoundThreatTracker from './RoundThreatTracker';
 
 const styles = {
   contents: {
-    position: 'absolute',
-    top: '20px',
-    bottom: '20px',
-    left: '20px',
-    right: '250px',
-    display: 'flex',
-    flexDirection: 'row',
+    ...positionAbsolute(20, 245, 20, 165),
+  },
+  leftPanelContainer: {
+    ...positionAbsolute(20, null, 20, 20),
   },
   missionControlContainer: {
-    position: 'absolute',
-    right: '20px',
-    bottom: '20px',
-  },
-  missionPanelContainer: {
-    position: 'absolute',
-    top: '20px',
-    right: '20px',
+    ...positionAbsolute(null, 20, 20, null),
   },
   modalContainer: {
     ...positionAbsolute(0, 0, 0, 0),
@@ -37,34 +29,45 @@ const styles = {
     display: 'flex',
     justifyContent: 'center',
   },
-  unitPanelContainer: {
-    alignSelf: 'center',
-    marginRight: '20px',
+  panelItem: {
+    marginBottom: '20px',
+  },
+  rightPanelContainer: {
+    ...positionAbsolute(20, 20, 80, null),
   },
 };
 
 type MissionPropsType = {
+  currentRound: number,
+  currentThreat: number,
   missionStep: number,
 };
 
-class Mission extends React.Component {
-  props: MissionPropsType;
-
+class Mission extends React.Component<MissionPropsType> {
   render() {
-    console.log(this.props.missionStep);
     return (
       <div>
-        <div style={styles.missionPanelContainer}>
-          <MissionPanel />
+        <div style={styles.leftPanelContainer}>
+          <div style={styles.panelItem}>
+            <RoundThreatTracker round={this.props.currentRound} threat={this.props.currentThreat} />
+          </div>
+          <div style={styles.panelItem}>
+            <HeroPanelContainer />
+          </div>
+        </div>
+        <div style={styles.rightPanelContainer}>
+          <div style={styles.panelItem}>
+            <MissionPanel />
+          </div>
+          <div style={styles.panelItem}>
+            <MilestonesPanel />
+          </div>
+          <div style={styles.panelItem}>
+            <EventsPanel />
+          </div>
         </div>
         <div style={styles.contents}>
-          <div style={styles.unitPanelContainer}>
-            <UnitPanel />
-          </div>
-          <MilestonesPanel />
-        </div>
-        <div style={styles.missionControlContainer}>
-          <MissionControls />
+          <ImperialDashboardContainer />
         </div>
       </div>
     );

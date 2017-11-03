@@ -1,11 +1,15 @@
 // @flow
 
-import appState from './appState';
-import missionGameState from './missionGameState';
+import app from './app';
+import imperials from './imperials';
+import mission from './mission';
 import modal from './modal';
+import rebels from './rebels';
 
 export default {
-  appState,
-  missionGameState,
+  app,
+  imperials,
+  mission,
   modal,
+  rebels,
 };

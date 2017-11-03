@@ -4,7 +4,11 @@ import {connect} from 'react-redux';
 import Mission from '../components/Mission';
 
 const mapStateToProps = state => ({
-  missionStep: state.missionGameState.step,
+  currentRound: state.mission.currentRound,
+  currentThreat: state.mission.currentThreat,
+  missionStep: state.mission.step,
 });
 
-export default connect(mapStateToProps)(Mission);
+const mapDispatchToProps = {};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Mission);

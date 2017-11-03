@@ -1,5 +1,6 @@
 {
   "chewbacca": {
+    "id": "chewbacca",
     "firstName": "Chewbacca",
     "lastName": "",
     "elite": true,
@@ -8,6 +9,7 @@
     "maxInGroup": 1
   },
   "diala": {
+    "id": "diala",
     "firstName": "Diala",
     "lastName": "Passil",
     "elite": false,
@@ -16,6 +18,7 @@
     "maxInGroup": 1
   },
   "fenn": {
+    "id": "fenn",
     "firstName": "Fenn",
     "lastName": "Signis",
     "elite": false,
@@ -24,6 +27,7 @@
     "maxInGroup": 1
   },
   "gaarkhan": {
+    "id": "gaarkhan",
     "firstName": "Gaarkhan",
     "lastName": "",
     "elite": false,
@@ -32,6 +36,7 @@
     "maxInGroup": 1
   },
   "gideon": {
+    "id": "gideon",
     "firstName": "Gideon",
     "lastName": "Argus",
     "elite": false,
@@ -40,6 +45,7 @@
     "maxInGroup": 1
   },
   "han": {
+    "id": "han",
     "firstName": "Han",
     "lastName": "Solo",
     "elite": true,
@@ -48,6 +54,7 @@
     "maxInGroup": 1
   },
   "jyn": {
+    "id": "jyn",
     "firstName": "Jyn",
     "lastName": "Odan",
     "elite": false,
@@ -56,6 +63,7 @@
     "maxInGroup": 1
   },
   "mak": {
+    "id": "mak",
     "firstName": "Mak",
     "lastName": "Eshka'rey",
     "elite": false,
@@ -64,6 +72,7 @@
     "maxInGroup": 1
   },
   "rebelSaboteur": {
+    "id": "rebelSaboteur",
     "firstName": "Rebel",
     "lastName": "Saboteur",
     "elite": false,
@@ -72,6 +81,7 @@
     "maxInGroup": 2
   },
   "rebelTrooper": {
+    "id": "rebelTrooper",
     "firstName": "Rebel",
     "lastName": "Trooper",
     "elite": false,

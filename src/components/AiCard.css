@@ -1,7 +1,7 @@
 .AiCard {
   border: 1px solid black;
   width: 267px;
-  height: 400px;
+  height: 300px;
 }
 
 .AiCard-header {
@@ -13,7 +13,7 @@
 .AiCardElite {
   border: 1px solid #951817;
   width: 267px;
-  height: 400px;
+  height: 300px;
 }
 
 .AiCardElite-header {
