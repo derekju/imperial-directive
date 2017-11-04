@@ -1,9 +1,9 @@
 // @flow
 
+import HeroAvatar from './HeroAvatar';
 import noop from 'lodash/noop';
 import React from 'react';
 import rebels from '../data/rebels.json';
-import UnitAvatar from './UnitAvatar';
 
 const styles = {
   avatarContainer: {
@@ -24,6 +24,7 @@ const styles = {
     backgroundColor: 'black',
     color: 'white',
     padding: '5px',
+    textAlign: 'center',
   },
 };
 
@@ -41,7 +42,7 @@ class HeroPanel extends React.Component<HeroPanelPropsType> {
         <div style={styles.header}>Heroes</div>
         <div style={styles.avatarContainer}>
           {this.props.roster.map((id: string) => (
-            <UnitAvatar
+            <HeroAvatar
               activated={this.props.activatedRebels.includes(id)}
               displayFullName={false}
               elite={rebels[id].elite}
@@ -49,7 +50,9 @@ class HeroPanel extends React.Component<HeroPanelPropsType> {
               id={id}
               key={id}
               lastName={rebels[id].lastName}
-              setRebelHeroActivated={this.props.isRebelPlayerTurn ? this.props.setRebelHeroActivated : noop}
+              setRebelHeroActivated={
+                this.props.isRebelPlayerTurn ? this.props.setRebelHeroActivated : noop
+              }
             />
           ))}
         </div>

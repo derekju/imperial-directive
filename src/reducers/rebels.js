@@ -1,5 +1,6 @@
 // @flow
 
+import {STATUS_PHASE_READY_GROUPS} from './mission';
 import uniq from 'lodash/uniq';
 
 // Types
@@ -29,6 +30,11 @@ export default (state: Object = initialState, action: Object) => {
         ...state,
         activatedRebels: uniq(state.activatedRebels.concat([id])),
       };
+    case STATUS_PHASE_READY_GROUPS:
+      return {
+        ...state,
+        activatedRebels: [],
+      };
     default:
       return state;
   }
@@ -44,3 +50,7 @@ export const setRebelHeroActivated = (id: string) => ({
   payload: {id},
   type: 'SET_REBEL_HERO_ACTIVATED',
 });
+
+// Selectors
+
+export const getIsThereReadyRebelFigures = (state: Object) => state.rebels.activatedRebels.length !== state.rebels.roster.length;

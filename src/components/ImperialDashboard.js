@@ -3,13 +3,9 @@
 import AiCard from './AiCard';
 import type {ImperialUnitType} from '../reducers/imperials';
 import React from 'react';
-import UnitAvatar from './UnitAvatar';
-import Units from '../data/units.json';
+import ImperialAvatar from './ImperialAvatar';
 
 const styles = {
-  avatar: {
-    marginRight: '20px',
-  },
   headerText: {
     backgroundColor: 'black',
     color: 'white',
@@ -32,7 +28,10 @@ const styles = {
 };
 
 type ImperialDashboardPropsType = {
+  activatedGroups: ImperialUnitType[],
+  exhaustedGroups: ImperialUnitType[],
   readyGroups: ImperialUnitType[],
+  setImperialGroupActivated: Function,
 };
 
 class ImperialDashboard extends React.Component<ImperialDashboardPropsType> {
@@ -45,14 +44,9 @@ class ImperialDashboard extends React.Component<ImperialDashboardPropsType> {
           </div>
           <div style={styles.sectionContents}>
             {this.props.readyGroups.map((imperialUnit: ImperialUnitType) => (
-              <UnitAvatar
-                displayFullName={true}
-                elite={imperialUnit.elite}
-                firstName={imperialUnit.firstName}
-                id={imperialUnit.id}
-                key={imperialUnit.id}
-                lastName={imperialUnit.lastName}
-                style={styles.avatar}
+              <ImperialAvatar
+                imperialUnit={imperialUnit}
+                key={`${imperialUnit.id}-${imperialUnit.groupNumber}`}
               />
             ))}
           </div>
@@ -61,11 +55,30 @@ class ImperialDashboard extends React.Component<ImperialDashboardPropsType> {
           <div style={styles.sectionHeader}>
             <span style={styles.headerText}>Activated</span>
           </div>
-          <div style={styles.sectionContents} />
+          <div style={styles.sectionContents}>
+            {this.props.activatedGroups.map((imperialUnit: ImperialUnitType) => (
+              <div key={`${imperialUnit.id}-${imperialUnit.groupNumber}`} style={{display: 'flex', flexDirection: 'row'}}>
+                <ImperialAvatar
+                  imperialUnit={imperialUnit}
+                  key={imperialUnit.id}
+                  setImperialGroupActivated={this.props.setImperialGroupActivated}
+                />
+                <AiCard {...imperialUnit} />
+              </div>
+            ))}
+          </div>
         </div>
         <div style={styles.section}>
           <div style={styles.sectionHeader}>
             <span style={styles.headerText}>Exhausted</span>
+          </div>
+          <div style={styles.sectionContents}>
+            {this.props.exhaustedGroups.map((imperialUnit: ImperialUnitType) => (
+              <ImperialAvatar
+                imperialUnit={imperialUnit}
+                key={`${imperialUnit.id}-${imperialUnit.groupNumber}`}
+              />
+            ))}
           </div>
         </div>
       </div>

@@ -5214,6 +5214,12 @@ react-scripts@1.0.16:
   optionalDependencies:
     fsevents "1.1.2"
 
+react-svg-arrow@^0.4.2:
+  version "0.4.2"
+  resolved "https://unpm.uberinternal.com/react-svg-arrow/-/react-svg-arrow-0.4.2.tgz#7f5ba9176d3c7aa0745dcf0c00c78cc6bd88c26f"
+  dependencies:
+    prop-types "^15.5.10"
+
 react@^16.0.0:
   version "16.0.0"
   resolved "https://unpm.uberinternal.com/react/-/react-16.0.0.tgz#ce7df8f1941b036f02b2cca9dbd0cb1f0e855e2d"

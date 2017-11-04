@@ -1,8 +1,7 @@
 {
   "eWebEngineer": {
     "id": "eWebEngineer",
-    "firstName": "E-Web",
-    "lastName": "Engineer",
+    "name": "E-Web Engineer",
     "commands": [],
     "elite": false,
     "threat": 8,
@@ -11,8 +10,7 @@
   },
   "imperialOfficer": {
     "id": "imperialOfficer",
-    "firstName": "Imperial",
-    "lastName": "Officer",
+    "name": "Imperial Officer",
     "commands": [
       {
         "condition": "If adjacent to any target",
@@ -26,8 +24,7 @@
   },
   "probeDroid": {
     "id": "probeDroid",
-    "firstName": "Probe",
-    "lastName": "Droid",
+    "name": "Probe Droid",
     "commands": [],
     "elite": false,
     "threat": 3,
@@ -36,8 +33,7 @@
   },
   "stormtrooper": {
     "id": "stormtrooper",
-    "firstName": "Stormtrooper",
-    "lastName": "",
+    "name": "Stormtrooper",
     "commands": [
       {
         "condition": "If adjacent to any target",
