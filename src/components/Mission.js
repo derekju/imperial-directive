@@ -12,13 +12,13 @@ import RoundThreatTracker from './RoundThreatTracker';
 
 const styles = {
   contents: {
-    ...positionAbsolute(20, 245, 20, 165),
+    ...positionAbsolute(10, 225, 10, 145),
   },
   leftPanelContainer: {
-    ...positionAbsolute(20, null, 20, 20),
+    ...positionAbsolute(10, null, 10, 10),
   },
   missionControlContainer: {
-    ...positionAbsolute(null, 20, 20, null),
+    ...positionAbsolute(null, 10, 10, null),
   },
   modalContainer: {
     ...positionAbsolute(0, 0, 0, 0),
@@ -28,10 +28,10 @@ const styles = {
     justifyContent: 'center',
   },
   panelItem: {
-    marginBottom: '20px',
+    marginBottom: '10px',
   },
   rightPanelContainer: {
-    ...positionAbsolute(20, 20, 80, null),
+    ...positionAbsolute(10, 10, 10, null),
   },
 };
 

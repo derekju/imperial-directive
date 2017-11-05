@@ -37,7 +37,19 @@
     "commands": [
       {
         "condition": "If adjacent to any target",
-        "command": "Attack a target, then Withdraw 3 spaces."
+        "command": "[ACTION] Attack a target, then [ACTION] Withdraw 3 spaces."
+      },
+      {
+        "condition": "If within 4 spaces of any target",
+        "command": "[ACTION] Attack a target, then [ACTION] Engage a target."
+      },
+      {
+        "condition": "If no target within 4 spaces",
+        "command": "[ACTION] Engage a target."
+      },
+      {
+        "condition": "Reaction: If adjacent to another friendly Trooper while attacking",
+        "command": "If within attack range, use Squad Training ability to reroll a [SURGE]."
       }
     ],
     "elite": false,

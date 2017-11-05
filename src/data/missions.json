@@ -1,7 +1,7 @@
 {
   "aftermath": {
     "initialGroups": [
-      "stormtrooper", "imperialOfficer", "probeDroid"
+      "stormtrooper", "stormtrooper"
     ],
     "mapStates": [
 

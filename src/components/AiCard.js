@@ -2,16 +2,24 @@
 
 import {IMPERIAL_BLUE} from '../styles/colors';
 import React from 'react';
+import replace from 'lodash/replace';
+import Stormtrooper from './commands/Stormtrooper';
 
 const styles = {
   base: {
     border: '2px solid black',
-    width: '267px',
-    height: '300px',
+    width: '500px',
+    // height: '300px',
   },
   commandContainer: {
-    fontSize: '13px',
+    fontSize: '14px',
     padding: '5px',
+  },
+  commandEntry: {
+    marginBottom: '10px',
+  },
+  condition: {
+    fontWeight: 'bold',
   },
   header: {
     backgroundColor: IMPERIAL_BLUE,
@@ -20,15 +28,30 @@ const styles = {
   },
 };
 
-class AiCard extends React.Component<{}> {
-  renderCommand(key, condition, command) {
-    return (
-      <div key={key}>
-        <div className="AiCard-condition">{`${condition}:`}</div>
-        <div className="AiCard-command">{command}</div>
-      </div>
-    );
-  }
+type AiCardCommandType = {
+  condition: string,
+  command: string,
+};
+
+type AiCardPropsType = {
+  commands: AiCardCommandType[],
+  name: string,
+};
+
+class AiCard extends React.Component<AiCardPropsType> {
+
+  // printAndSubtituteCommand(command: string) {
+  //   let replacedCommand = replace(command, '[ACTION]', '<img src=
+  // }
+
+  // renderCommand(key: string, condition: string, command: string) {
+  //   return (
+  //     <div style={styles.commandEntry} key={key}>
+  //       <div style={styles.condition}>{`${condition}:`}</div>
+  //       <div>{this.printAndSubtituteCommand(command)}</div>
+  //     </div>
+  //   );
+  // }
 
   render() {
     const baseClass = this.props.elite ? 'AiCardElite' : 'AiCard';
@@ -37,13 +60,20 @@ class AiCard extends React.Component<{}> {
       <div style={styles.base}>
         <div style={styles.header}>{this.props.name}</div>
         <div style={styles.commandContainer}>
-          {this.props.commands.map((command, index) =>
-            this.renderCommand(`${this.props.name}-${index}`, command.condition, command.command)
-          )}
+          <Stormtrooper priorityTarget="the nearest terminal" />
         </div>
       </div>
     );
   }
 }
+
+/*
+          {this.props.commands.map((command, index) =>
+            this.renderCommand(`${this.props.name}-${index}`, command.condition, command.command)
+          )}
+*/
+
+
+
 
 export default AiCard;
