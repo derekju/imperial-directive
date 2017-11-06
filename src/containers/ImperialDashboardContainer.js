@@ -1,16 +1,19 @@
 // @flow
 
+import {defeatImperialFigure, setImperialGroupActivated} from '../reducers/imperials';
 import {connect} from 'react-redux';
 import ImperialDashboard from '../components/ImperialDashboard';
-import {setImperialGroupActivated} from '../reducers/imperials';
+import {isImperialPlayerTurn} from '../reducers/mission';
 
 const mapStateToProps = state => ({
-  activatedGroups: state.imperials.activatedGroups,
+  activatedGroup: state.imperials.activatedGroup,
   exhaustedGroups: state.imperials.exhaustedGroups,
+  isImperialPlayerTurn: isImperialPlayerTurn(state),
   readyGroups: state.imperials.readyGroups,
 });
 
 const mapDispatchToProps = {
+  defeatImperialFigure,
   setImperialGroupActivated,
 };
 

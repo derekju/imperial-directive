@@ -53,4 +53,5 @@ export const setRebelHeroActivated = (id: string) => ({
 
 // Selectors
 
-export const getIsThereReadyRebelFigures = (state: Object) => state.rebels.activatedRebels.length !== state.rebels.roster.length;
+export const getIsThereReadyRebelFigures = (state: Object) =>
+  state.rebels.activatedRebels.length !== state.rebels.roster.length;

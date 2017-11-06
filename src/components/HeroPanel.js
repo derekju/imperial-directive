@@ -17,7 +17,7 @@ const styles = {
     border: '2px solid black',
     display: 'flex',
     flexDirection: 'column',
-    height: '675px',
+    height: '690px',
     width: '120px',
   },
   header: {
@@ -48,6 +48,7 @@ class HeroPanel extends React.Component<HeroPanelPropsType> {
               elite={rebels[id].elite}
               firstName={rebels[id].firstName}
               id={id}
+              isRebelPlayerTurn={this.props.isRebelPlayerTurn}
               key={id}
               lastName={rebels[id].lastName}
               setRebelHeroActivated={

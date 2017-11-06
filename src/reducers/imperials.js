@@ -3,6 +3,7 @@
 import {all, put, select, takeEvery} from 'redux-saga/effects';
 import {LOAD_MISSION, STATUS_PHASE_READY_GROUPS} from './mission';
 import random from 'lodash/random';
+import reduce from 'lodash/reduce';
 import {SET_REBEL_HERO_ACTIVATED} from './rebels';
 import units from '../data/units';
 
@@ -15,6 +16,7 @@ export type ImperialUnitCommandType = {
 
 export type ImperialUnitType = {
   commands: ImperialUnitCommandType[],
+  currentNumFiguresInGroup: number,
   elite: boolean,
   groupNumber: number,
   id: string,
@@ -24,10 +26,36 @@ export type ImperialUnitType = {
   threat: number,
 };
 
+// Utils
+
+const decrementFigureFromGroup = (
+  groupToDecrement: ImperialUnitType,
+  groups: ImperialUnitType[]
+) => {
+  return reduce(
+    groups,
+    (accumulator: ImperialUnitType[], group: ImperialUnitType) => {
+      if (group.id === groupToDecrement.id && group.groupNumber === groupToDecrement.groupNumber) {
+        // Don't bother pushing if it's the last one. This wipes it out.
+        if (group.currentNumFiguresInGroup > 1) {
+          accumulator.push({
+            ...group,
+            currentNumFiguresInGroup: group.currentNumFiguresInGroup - 1,
+          });
+        }
+      } else {
+        accumulator.push(group);
+      }
+      return accumulator;
+    },
+    []
+  );
+};
+
 // State
 
 const initialState = {
-  activatedGroups: [],
+  activatedGroup: null,
   exhaustedGroups: [],
   openGroups: 0,
   readyGroups: [],
@@ -45,6 +73,7 @@ export default (state: Object = initialState, action: Object) => {
         openGroups: 0,
         readyGroups: config.initialGroups.map((id: string) => ({
           ...units[id],
+          currentNumFiguresInGroup: units[id].maxInGroup,
           groupNumber: globalGroupCounter++,
         })),
         reservedGroups: config.reservedGroups.map((id: string) => units[id]),
@@ -53,22 +82,32 @@ export default (state: Object = initialState, action: Object) => {
       const {group} = action.payload;
       return {
         ...state,
-        activatedGroups: state.activatedGroups.concat([group]),
-        readyGroups: state.readyGroups.filter((readyGroup: ImperialUnitType) => readyGroup.groupNumber !== group.groupNumber),
+        activatedGroup: group,
+        readyGroups: state.readyGroups.filter(
+          (readyGroup: ImperialUnitType) => readyGroup.groupNumber !== group.groupNumber
+        ),
       };
     }
     case SET_IMPERIAL_GROUP_ACTIVATED: {
       const {group} = action.payload;
       return {
         ...state,
-        activatedGroups: [],
+        activatedGroup: null,
         exhaustedGroups: state.exhaustedGroups.concat([group]),
+      };
+    }
+    case DEFEAT_IMPERIAL_FIGURE: {
+      const {group} = action.payload;
+      return {
+        ...state,
+        exhaustedGroups: decrementFigureFromGroup(group, state.exhaustedGroups),
+        readyGroups: decrementFigureFromGroup(group, state.readyGroups),
       };
     }
     case STATUS_PHASE_READY_GROUPS:
       return {
         ...state,
-        activatedGroups: [],
+        activatedGroup: null,
         exhaustedGroups: [],
         readyGroups: state.exhaustedGroups.slice(),
       };
@@ -81,6 +120,7 @@ export default (state: Object = initialState, action: Object) => {
 
 export const SET_IMPERIAL_GROUP_ACTIVATED = 'SET_IMPERIAL_GROUP_ACTIVATED';
 export const ACTIVATE_IMPERIAL_GROUP = 'ACTIVATE_IMPERIAL_GROUP';
+export const DEFEAT_IMPERIAL_FIGURE = 'DEFEAT_IMPERIAL_FIGURE';
 
 // Action creators
 
@@ -91,6 +131,10 @@ export const setImperialGroupActivated = (group: ImperialUnitType) => ({
 export const activateImperialGroup = (group: ImperialUnitType) => ({
   payload: {group},
   type: ACTIVATE_IMPERIAL_GROUP,
+});
+export const defeatImperialFigure = (group: ImperialUnitType) => ({
+  payload: {group},
+  type: DEFEAT_IMPERIAL_FIGURE,
 });
 
 // Selectors

@@ -25,10 +25,10 @@ const styles = {
     textAlign: 'center',
   },
   icon: {
+    height: '36px',
     marginRight: '5px',
     marginTop: '4px',
     width: '30px',
-    height: '36px',
   },
   marginRight: {
     marginRight: '10px',
@@ -49,7 +49,7 @@ class RoundThreatTracker extends React.Component<RoundThreatTrackerPropsType> {
       <div style={styles.base}>
         <div style={styles.prefix}>R</div>
         <div style={{...styles.contents, ...styles.marginRight}}>{this.props.round}</div>
-        <img style={styles.icon} src={threatPng} />
+        <img alt='Threat' style={styles.icon} src={threatPng} />
         <div style={styles.contents}>{this.props.threat}</div>
       </div>
     );

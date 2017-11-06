@@ -114,6 +114,8 @@ export const statusPhaseAdvanceRound = () => ({type: STATUS_PHASE_ADVANCE_ROUND}
 
 export const isRebelPlayerTurn = (state: Object) =>
   state.mission.currentActivePlayer === PLAYER_REBELS;
+export const isImperialPlayerTurn = (state: Object) =>
+  state.mission.currentActivePlayer === PLAYER_IMPERIALS;
 
 // Sagas
 
@@ -155,8 +157,5 @@ function* handleEndOfRebelOrImperialTurn(action: Object): Generator<*, *, *> {
 }
 
 export function* missionSaga(): Generator<*, *, *> {
-  yield all([
-    takeEvery(LOAD_MISSION, handleLoadMission),
-    fork(handleEndOfRebelOrImperialTurn),
-  ]);
+  yield all([takeEvery(LOAD_MISSION, handleLoadMission), fork(handleEndOfRebelOrImperialTurn)]);
 }

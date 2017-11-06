@@ -13,8 +13,24 @@
     "name": "Imperial Officer",
     "commands": [
       {
-        "condition": "If adjacent to any target",
-        "command": "Attack a target, then Withdraw 3 spaces."
+        "condition": "If adjacent to any hostile figure",
+        "command": "{ACTION} Attack the most damaged hostile figure, then {ACTION} Move towards the nearest friendly figure."
+      },
+      {
+        "condition": "If within 2 spaces of friendly target that is not within attack range of a target (adjacent for melee, 2 spaces for reach, 4 spaces for range)",
+        "command": "{ACTION} Use Order ability on that friendly figure to have it move within attack range of the nearest hostile figure."
+      },
+      {
+        "condition": "If within 4 spaces of any hostile figure",
+        "command": "{ACTION} Attack the most damaged hostile figure, then {ACTION} Move towards {PRIORITY_TARGET}."
+      },
+      {
+        "condition": "If no hostile figures within 4 spaces",
+        "command": "{ACTION} Move towards the nearest friendly figure."
+      },
+      {
+        "condition": "Reaction - If defending while adjacent to a friendly figure",
+        "command": "Use Cower ability if a rolled dice does not cancel anything."
       }
     ],
     "elite": false,
@@ -25,7 +41,24 @@
   "probeDroid": {
     "id": "probeDroid",
     "name": "Probe Droid",
-    "commands": [],
+    "commands": [
+      {
+        "condition": "If within 4 spaces of any hostile figure",
+        "command": "{ACTION} Attack the most damaged hostile figure, then {ACTION} Move towards {PRIORITY_TARGET}."
+      },
+      {
+        "condition": "If within 5 spaces of any hostile figure",
+        "command": "{ACTION} Move within 4 spaces of the nearest hostile figure, then {ACTION} Attack that figure, then move towards {PRIORITY_TARGET}."
+      },
+      {
+        "condition": "If no hostile figures within 5 spaces",
+        "command": "{ACTION} Move towards {PRIORITY_TARGET}."
+      },
+      {
+        "condition": "Reaction - At the end of the round, if adjacent to a Rebel figure with 2 or less Health left, and not adjacent to any friendly figures",
+        "command": "Use Self-Destruct ability."
+      }
+    ],
     "elite": false,
     "threat": 3,
     "reinforcementCost": -1,
@@ -36,20 +69,20 @@
     "name": "Stormtrooper",
     "commands": [
       {
-        "condition": "If adjacent to any target",
-        "command": "[ACTION] Attack a target, then [ACTION] Withdraw 3 spaces."
+        "condition": "If within 4 spaces of any hostile figure",
+        "command": "{ACTION} Attack the most damaged hostile figure, then {ACTION} Move towards {PRIORITY_TARGET}."
       },
       {
-        "condition": "If within 4 spaces of any target",
-        "command": "[ACTION] Attack a target, then [ACTION] Engage a target."
+        "condition": "If within 6 spaces of any hostile figure",
+        "command": "{ACTION} Move within 4 spaces of the nearest hostile figure, then {ACTION} Attack that figure, then move towards {PRIORITY_TARGET}."
       },
       {
-        "condition": "If no target within 4 spaces",
-        "command": "[ACTION] Engage a target."
+        "condition": "If no hostile figures within 6 spaces",
+        "command": "{ACTION} Move towards {PRIORITY_TARGET}."
       },
       {
-        "condition": "Reaction: If adjacent to another friendly Trooper while attacking",
-        "command": "If within attack range, use Squad Training ability to reroll a [SURGE]."
+        "condition": "Reaction - If adjacent to another friendly Trooper while attacking",
+        "command": "If accuracy check is successful, use Squad Training ability to reroll a {SURGE}."
       }
     ],
     "elite": false,

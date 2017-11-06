@@ -2,10 +2,19 @@
 
 import AiCard from './AiCard';
 import type {ImperialUnitType} from '../reducers/imperials';
+import {positionAbsolute} from '../styles/mixins';
 import React from 'react';
 import ImperialAvatar from './ImperialAvatar';
 
 const styles = {
+  activatedGroupContainer: {
+    ...positionAbsolute(100, 50, 100, 50),
+    backgroundColor: 'white',
+  },
+  base: {
+    height: '100%',
+    position: 'relative',
+  },
   headerText: {
     backgroundColor: 'black',
     color: 'white',
@@ -28,8 +37,10 @@ const styles = {
 };
 
 type ImperialDashboardPropsType = {
-  activatedGroups: ImperialUnitType[],
+  activatedGroup: ?ImperialUnitType,
+  defeatImperialFigure: Function,
   exhaustedGroups: ImperialUnitType[],
+  isImperialPlayerTurn: boolean,
   readyGroups: ImperialUnitType[],
   setImperialGroupActivated: Function,
 };
@@ -37,7 +48,7 @@ type ImperialDashboardPropsType = {
 class ImperialDashboard extends React.Component<ImperialDashboardPropsType> {
   render() {
     return (
-      <div>
+      <div style={styles.base}>
         <div style={styles.section}>
           <div style={styles.sectionHeader}>
             <span style={styles.headerText}>Ready</span>
@@ -45,7 +56,9 @@ class ImperialDashboard extends React.Component<ImperialDashboardPropsType> {
           <div style={styles.sectionContents}>
             {this.props.readyGroups.map((imperialUnit: ImperialUnitType) => (
               <ImperialAvatar
+                defeatImperialFigure={this.props.defeatImperialFigure}
                 imperialUnit={imperialUnit}
+                isImperialPlayerTurn={this.props.isImperialPlayerTurn}
                 key={`${imperialUnit.id}-${imperialUnit.groupNumber}`}
               />
             ))}
@@ -56,16 +69,17 @@ class ImperialDashboard extends React.Component<ImperialDashboardPropsType> {
             <span style={styles.headerText}>Activated</span>
           </div>
           <div style={styles.sectionContents}>
-            {this.props.activatedGroups.map((imperialUnit: ImperialUnitType) => (
-              <div key={`${imperialUnit.id}-${imperialUnit.groupNumber}`} style={{display: 'flex', flexDirection: 'row'}}>
+            {this.props.activatedGroup ? (
+              <div style={{display: 'flex', flexDirection: 'row'}}>
                 <ImperialAvatar
-                  imperialUnit={imperialUnit}
-                  key={imperialUnit.id}
+                  defeatImperialFigure={this.props.defeatImperialFigure}
+                  imperialUnit={this.props.activatedGroup}
+                  isImperialPlayerTurn={this.props.isImperialPlayerTurn}
+                  key={this.props.activatedGroup.id}
                   setImperialGroupActivated={this.props.setImperialGroupActivated}
                 />
-                <AiCard {...imperialUnit} />
               </div>
-            ))}
+            ) : null}
           </div>
         </div>
         <div style={styles.section}>
@@ -75,22 +89,22 @@ class ImperialDashboard extends React.Component<ImperialDashboardPropsType> {
           <div style={styles.sectionContents}>
             {this.props.exhaustedGroups.map((imperialUnit: ImperialUnitType) => (
               <ImperialAvatar
+                defeatImperialFigure={this.props.defeatImperialFigure}
                 imperialUnit={imperialUnit}
+                isImperialPlayerTurn={this.props.isImperialPlayerTurn}
                 key={`${imperialUnit.id}-${imperialUnit.groupNumber}`}
               />
             ))}
           </div>
         </div>
+        {this.props.activatedGroup ? (
+          <div style={styles.activatedGroupContainer}>
+            <AiCard group={this.props.activatedGroup} setImperialGroupActivated={this.props.setImperialGroupActivated} />
+          </div>
+        ) : null}
       </div>
     );
   }
 }
-
-/*
-        <AiCard {...Units.stormtrooper} />
-        <AiCard {...Units.stormtrooper} elite={true} />
-        <AiCard {...Units.imperialOfficer} />
-        <AiCard {...Units.imperialOfficer} elite={true} />
-*/
 
 export default ImperialDashboard;

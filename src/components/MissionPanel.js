@@ -8,6 +8,7 @@ const styles = {
     width: '200px',
   },
   contents: {
+    fontSize: '14px',
     padding: '5px',
   },
   header: {

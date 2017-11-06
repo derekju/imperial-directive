@@ -3,35 +3,45 @@
 import EventsPanel from './EventsPanel';
 import HeroPanelContainer from '../containers/HeroPanelContainer';
 import ImperialDashboardContainer from '../containers/ImperialDashboardContainer';
-import {LIGHT_GRAY_TRANSPARENT} from '../styles/colors';
 import MilestonesPanel from './MilestonesPanel';
 import MissionPanel from './MissionPanel';
+import ModalManagerContainer from '../containers/ModalManagerContainer';
 import {positionAbsolute} from '../styles/mixins';
 import React from 'react';
 import RoundThreatTracker from './RoundThreatTracker';
 
 const styles = {
+  base: {
+    backgroundColor: 'white',
+    display: 'flex',
+    flexDirection: 'row',
+    height: '768px',
+    width: '1024px',
+  },
   contents: {
-    ...positionAbsolute(10, 225, 10, 145),
+    margin: '10px 0 10px 10px',
+    width: '654px',
   },
   leftPanelContainer: {
-    ...positionAbsolute(10, null, 10, 10),
+    margin: '10px 0 0 10px',
+    width: '124px',
   },
   missionControlContainer: {
     ...positionAbsolute(null, 10, 10, null),
   },
-  modalContainer: {
-    ...positionAbsolute(0, 0, 0, 0),
-    alignItems: 'center',
-    backgroundColor: LIGHT_GRAY_TRANSPARENT,
-    display: 'flex',
-    justifyContent: 'center',
-  },
+  // modalContainer: {
+  //   ...positionAbsolute(0, 0, 0, 0),
+  //   alignItems: 'center',
+  //   backgroundColor: LIGHT_GRAY_TRANSPARENT,
+  //   display: 'flex',
+  //   justifyContent: 'center',
+  // },
   panelItem: {
     marginBottom: '10px',
   },
   rightPanelContainer: {
-    ...positionAbsolute(10, 10, 10, null),
+    margin: '10px 0 0 10px',
+    width: '204px',
   },
 };
 
@@ -44,7 +54,7 @@ type MissionPropsType = {
 class Mission extends React.Component<MissionPropsType> {
   render() {
     return (
-      <div>
+      <div style={styles.base}>
         <div style={styles.leftPanelContainer}>
           <div style={styles.panelItem}>
             <RoundThreatTracker round={this.props.currentRound} threat={this.props.currentThreat} />
@@ -52,6 +62,9 @@ class Mission extends React.Component<MissionPropsType> {
           <div style={styles.panelItem}>
             <HeroPanelContainer />
           </div>
+        </div>
+        <div style={styles.contents}>
+          <ImperialDashboardContainer />
         </div>
         <div style={styles.rightPanelContainer}>
           <div style={styles.panelItem}>
@@ -64,21 +77,12 @@ class Mission extends React.Component<MissionPropsType> {
             <EventsPanel />
           </div>
         </div>
-        <div style={styles.contents}>
-          <ImperialDashboardContainer />
+        <div style={styles.modalContainer}>
+          <ModalManagerContainer />
         </div>
       </div>
     );
   }
 }
-
-/*
-<AiPanel />
-*/
-/*
-        <div style={styles.modalContainer}>
-          <Modal buttonText="Next" title="Setup Mission" text="Setup mission according to campaign guide" />
-        </div>
-*/
 
 export default Mission;

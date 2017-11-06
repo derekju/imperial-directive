@@ -1,8 +1,8 @@
 // @flow
 
+import {LIGHT_WHITE, ELITE_RED, REBEL_RED} from '../styles/colors';
 import Arrow from 'react-svg-arrow';
 import Button from './Button';
-import {ELITE_RED, REBEL_RED} from '../styles/colors';
 import {positionAbsolute} from '../styles/mixins';
 import React from 'react';
 import rebelPng from '../assets/icons/rebel.png';
@@ -29,20 +29,28 @@ const styles = {
   eliteAvatar: {
     border: `3px solid ${ELITE_RED}`,
   },
+  image: {
+    height: '60%',
+    width: '60%',
+  },
   name: {
     fontSize: '13px',
     fontWeight: 'bold',
     textAlign: 'center',
   },
+  outer: {
+    cursor: 'pointer',
+    position: 'relative',
+  },
   popup: {
-    ...positionAbsolute(-22, null, null, 115),
+    ...positionAbsolute(-22, null, null, 100),
     alignItems: 'center',
-    backgroundColor: 'white',
+    backgroundColor: LIGHT_WHITE,
     border: '2px solid black',
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'space-between',
     height: '125px',
+    justifyContent: 'space-between',
     width: '175px',
     zIndex: 1,
   },
@@ -54,10 +62,6 @@ const styles = {
   popupArrow: {
     ...positionAbsolute(52, null, null, -11),
   },
-  outer: {
-    cursor: 'pointer',
-    position: 'relative',
-  },
 };
 
 type HeroAvatarPropsType = {
@@ -65,6 +69,7 @@ type HeroAvatarPropsType = {
   elite: boolean,
   firstName: string,
   id: string,
+  isRebelPlayerTurn: boolean,
   setRebelHeroActivated: Function,
 };
 
@@ -73,7 +78,6 @@ type HeroAvatarStateType = {
 };
 
 class HeroAvatar extends React.Component<HeroAvatarPropsType, HeroAvatarStateType> {
-
   state = {
     displayPopup: false,
   };
@@ -95,11 +99,19 @@ class HeroAvatar extends React.Component<HeroAvatarPropsType, HeroAvatarStateTyp
     return (
       <div style={styles.popup}>
         <div style={styles.popupArrow}>
-          <Arrow size={8} color='white' direction='left' borderWidth={2} borderColor='black' />
+          <Arrow
+            size={8}
+            color={LIGHT_WHITE}
+            direction="left"
+            borderWidth={2}
+            borderColor="black"
+          />
         </div>
         <div style={styles.popupAccent} />
-        {!this.props.activated ? <Button text='End activation' onClick={this.handleEndActivation} /> : null}
-        <Button text='Set wounded' />
+        {!this.props.activated && this.props.isRebelPlayerTurn ? (
+          <Button text="End activation" onClick={this.handleEndActivation} />
+        ) : null}
+        <Button text="Set wounded" />
         <div style={styles.popupAccent} />
       </div>
     );
@@ -117,7 +129,7 @@ class HeroAvatar extends React.Component<HeroAvatarPropsType, HeroAvatarStateTyp
       <div style={styles.outer}>
         <div style={styles.base} onClick={this.handleClick}>
           <div style={avatarStyles}>
-            <img src={rebelPng} style={{width: '60%', height: '60%'}} />
+            <img alt={this.props.firstName} src={rebelPng} style={styles.image} />
           </div>
           <div style={styles.name}>{this.props.firstName}</div>
         </div>
