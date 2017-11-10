@@ -1,10 +1,21 @@
 // @flow
 
 import {all, put, select, takeEvery} from 'redux-saga/effects';
-import {LOAD_MISSION, STATUS_PHASE_READY_GROUPS} from './mission';
+import {
+  getCurrentThreat,
+  LOAD_MISSION,
+  STATUS_PHASE_DEPLOY_REINFORCE,
+  STATUS_PHASE_READY_GROUPS,
+} from './mission';
+import decrementFigureFromGroup from './utils/decrementFigureFromGroup';
+import {displayModal} from './modal';
+import filter from 'lodash/filter';
+import find from 'lodash/find';
+import populateOpenGroups from './utils/populateOpenGroups';
 import random from 'lodash/random';
-import reduce from 'lodash/reduce';
 import {SET_REBEL_HERO_ACTIVATED} from './rebels';
+import sortBy from 'lodash/sortBy';
+import type {StateType} from './types';
 import units from '../data/units';
 
 // Types
@@ -16,8 +27,9 @@ export type ImperialUnitCommandType = {
 
 export type ImperialUnitType = {
   commands: ImperialUnitCommandType[],
-  currentNumFiguresInGroup: number,
+  currentNumFigures: number,
   elite: boolean,
+  exhausted: boolean,
   groupNumber: number,
   id: string,
   maxInGroup: number,
@@ -26,56 +38,41 @@ export type ImperialUnitType = {
   threat: number,
 };
 
+export type ImperialsStateType = {
+  activatedGroup: ?ImperialUnitType,
+  deployedGroups: ImperialUnitType[],
+  openGroups: ImperialUnitType[],
+  reservedGroups: ImperialUnitType[],
+};
+
 // Utils
 
-const decrementFigureFromGroup = (
-  groupToDecrement: ImperialUnitType,
-  groups: ImperialUnitType[]
-) => {
-  return reduce(
-    groups,
-    (accumulator: ImperialUnitType[], group: ImperialUnitType) => {
-      if (group.id === groupToDecrement.id && group.groupNumber === groupToDecrement.groupNumber) {
-        // Don't bother pushing if it's the last one. This wipes it out.
-        if (group.currentNumFiguresInGroup > 1) {
-          accumulator.push({
-            ...group,
-            currentNumFiguresInGroup: group.currentNumFiguresInGroup - 1,
-          });
-        }
-      } else {
-        accumulator.push(group);
-      }
-      return accumulator;
-    },
-    []
-  );
-};
+const createNewGroup = (id: string): ImperialUnitType => ({
+  ...units[id],
+  currentNumFigures: units[id].maxInGroup,
+  exhausted: false,
+  groupNumber: globalGroupCounter++,
+});
 
 // State
 
 const initialState = {
   activatedGroup: null,
-  exhaustedGroups: [],
-  openGroups: 0,
-  readyGroups: [],
+  deployedGroups: [],
+  openGroups: [],
   reservedGroups: [],
 };
 
 let globalGroupCounter = 0;
 
-export default (state: Object = initialState, action: Object) => {
+export default (state: ImperialsStateType = initialState, action: Object) => {
   switch (action.type) {
     case LOAD_MISSION:
       const {config} = action.payload;
       return {
         ...state,
-        openGroups: 0,
-        readyGroups: config.initialGroups.map((id: string) => ({
-          ...units[id],
-          currentNumFiguresInGroup: units[id].maxInGroup,
-          groupNumber: globalGroupCounter++,
-        })),
+        deployedGroups: config.initialGroups.map(createNewGroup),
+        openGroups: populateOpenGroups(config.openGroups),
         reservedGroups: config.reservedGroups.map((id: string) => units[id]),
       };
     case ACTIVATE_IMPERIAL_GROUP: {
@@ -83,9 +80,6 @@ export default (state: Object = initialState, action: Object) => {
       return {
         ...state,
         activatedGroup: group,
-        readyGroups: state.readyGroups.filter(
-          (readyGroup: ImperialUnitType) => readyGroup.groupNumber !== group.groupNumber
-        ),
       };
     }
     case SET_IMPERIAL_GROUP_ACTIVATED: {
@@ -93,23 +87,50 @@ export default (state: Object = initialState, action: Object) => {
       return {
         ...state,
         activatedGroup: null,
-        exhaustedGroups: state.exhaustedGroups.concat([group]),
+        deployedGroups: state.deployedGroups.map((deployedGroup: ImperialUnitType) => {
+          if (deployedGroup.id === group.id && deployedGroup.groupNumber === group.groupNumber) {
+            deployedGroup.exhausted = true;
+          }
+          return deployedGroup;
+        }),
       };
     }
-    case DEFEAT_IMPERIAL_FIGURE: {
-      const {group} = action.payload;
+    case SET_IMPERIAL_FIGURES_AFTER_DEFEAT: {
+      const {deployedGroups, openGroups} = action.payload;
       return {
         ...state,
-        exhaustedGroups: decrementFigureFromGroup(group, state.exhaustedGroups),
-        readyGroups: decrementFigureFromGroup(group, state.readyGroups),
+        deployedGroups,
+        openGroups: state.openGroups.concat(openGroups),
+      };
+    }
+    case SET_IMPERIAL_FIGURES_AFTER_DEPLOY_REINFORCE: {
+      const {groupsToDeploy, groupsToReinforce, newOpenGroups} = action.payload;
+      return {
+        ...state,
+        deployedGroups: state.deployedGroups
+          .map((deployedGroup: ImperialUnitType) => {
+            if (
+              find(groupsToReinforce, {
+                groupNumber: deployedGroup.groupNumber,
+                id: deployedGroup.id,
+              })
+            ) {
+              deployedGroup.currentNumFigures++;
+            }
+            return deployedGroup;
+          })
+          .concat(groupsToDeploy.map(createNewGroup)),
+        openGroups: newOpenGroups,
       };
     }
     case STATUS_PHASE_READY_GROUPS:
       return {
         ...state,
         activatedGroup: null,
-        exhaustedGroups: [],
-        readyGroups: state.exhaustedGroups.slice(),
+        deployedGroups: state.deployedGroups.map((deployedGroup: ImperialUnitType) => {
+          deployedGroup.exhausted = false;
+          return deployedGroup;
+        }),
       };
     default:
       return state;
@@ -121,6 +142,9 @@ export default (state: Object = initialState, action: Object) => {
 export const SET_IMPERIAL_GROUP_ACTIVATED = 'SET_IMPERIAL_GROUP_ACTIVATED';
 export const ACTIVATE_IMPERIAL_GROUP = 'ACTIVATE_IMPERIAL_GROUP';
 export const DEFEAT_IMPERIAL_FIGURE = 'DEFEAT_IMPERIAL_FIGURE';
+export const SET_IMPERIAL_FIGURES_AFTER_DEFEAT = 'SET_IMPERIAL_FIGURES_AFTER_DEFEAT';
+export const SET_IMPERIAL_FIGURES_AFTER_DEPLOY_REINFORCE =
+  'SET_IMPERIAL_FIGURES_AFTER_DEPLOY_REINFORCE';
 
 // Action creators
 
@@ -136,12 +160,105 @@ export const defeatImperialFigure = (group: ImperialUnitType) => ({
   payload: {group},
   type: DEFEAT_IMPERIAL_FIGURE,
 });
+export const setImperialFiguresAfterDefeat = (
+  deployedGroups: ImperialUnitType[],
+  openGroups: ImperialUnitType[]
+) => ({
+  payload: {deployedGroups, openGroups},
+  type: SET_IMPERIAL_FIGURES_AFTER_DEFEAT,
+});
+export const setImperialFiguresAfterDeployReinforce = (
+  groupsToDeploy: Array<{id: string}>,
+  groupsToReinforce: Array<{groupNumber: number, id: string}>,
+  newOpenGroups: ImperialUnitType[]
+) => ({
+  payload: {groupsToDeploy, groupsToReinforce, newOpenGroups},
+  type: SET_IMPERIAL_FIGURES_AFTER_DEPLOY_REINFORCE,
+});
 
 // Selectors
 
-export const getReadyImperialGroups = (state: Object) => state.imperials.readyGroups;
+export const getReadyImperialGroups = (state: StateType) =>
+  filter(state.imperials.deployedGroups, {exhausted: false});
+export const getExhaustedImperialGroups = (state: StateType) =>
+  filter(state.imperials.deployedGroups, {exhausted: true});
+export const getCurrentGroups = (state: StateType) => ({
+  deployedGroups: state.imperials.deployedGroups,
+  openGroups: state.imperials.openGroups,
+});
 
 // Sagas
+
+function* handleDeployAndReinforcement(): Generator<*, *, *> {
+  let currentThreat = yield select(getCurrentThreat);
+  const {deployedGroups, openGroups} = yield select(getCurrentGroups);
+
+  const newOpenGroups = [];
+  const groupsToDeploy = [];
+  const groupsToReinforce = [];
+
+  // Ok, we have all the information we need so figure out how we are going to do this
+  // We should spend our threat on the highest cost deployments and use the rest of the threat
+  // to reinforce
+  if (openGroups.length) {
+    // Sort the open groups array by highest to lowest threat
+    // Iterate and pull groups off until we cannot do so anymore
+    const sortedOpenGroups = sortBy(openGroups, (unit: ImperialUnitType) => unit.threat);
+
+    for (let i = 0; i < sortedOpenGroups.length; i++) {
+      if (currentThreat >= sortedOpenGroups[i].threat) {
+        // Just push the ID, we don't need all the other metadata
+        groupsToDeploy.push(sortedOpenGroups[i].id);
+        currentThreat -= sortedOpenGroups[i].threat;
+      } else {
+        // If the threat cost of the group is higher than the current threat,
+        // add it onto newOpenGroups so we can update our openGroups state
+        newOpenGroups.push(sortedOpenGroups[i]);
+      }
+    }
+  }
+
+  // If we have leftover threat, reinforce
+  // Not worth it to implement a strategy here so just do it in readyGroup order until
+  // we use up all of the threat
+  if (currentThreat > 0) {
+    for (let i = 0; i < deployedGroups.length; i++) {
+      let unitsMissing = deployedGroups[i].maxInGroup - deployedGroups[i].currentNumFigures;
+      const threatNeededToReinforce = deployedGroups[i].reinforcementCost;
+      while (unitsMissing > 0 && currentThreat >= threatNeededToReinforce) {
+        groupsToReinforce.push({
+          groupNumber: deployedGroups[i].groupNumber,
+          id: deployedGroups[i].id,
+        });
+        currentThreat -= threatNeededToReinforce;
+        unitsMissing--;
+      }
+    }
+  }
+
+  yield put(
+    setImperialFiguresAfterDeployReinforce(groupsToDeploy, groupsToReinforce, newOpenGroups)
+  );
+
+  yield put(
+    displayModal('STATUS_REINFORCEMENT', {currentThreat, groupsToDeploy, groupsToReinforce})
+  );
+}
+
+function* handleImperialFigureDefeat(action: Object): Generator<*, *, *> {
+  const {group: groupToDecrement} = action.payload;
+  const {deployedGroups} = yield select(getCurrentGroups);
+
+  const groupsToAddToOpen = [];
+
+  const newDeployedGroups = decrementFigureFromGroup(
+    groupToDecrement,
+    deployedGroups,
+    groupsToAddToOpen
+  );
+
+  yield put(setImperialFiguresAfterDefeat(newDeployedGroups, groupsToAddToOpen));
+}
 
 function* handleImperialActivation(): Generator<*, *, *> {
   // Figure out which group we are activating
@@ -157,5 +274,9 @@ function* handleImperialActivation(): Generator<*, *, *> {
 }
 
 export function* imperialsSaga(): Generator<*, *, *> {
-  yield all([takeEvery(SET_REBEL_HERO_ACTIVATED, handleImperialActivation)]);
+  yield all([
+    takeEvery(SET_REBEL_HERO_ACTIVATED, handleImperialActivation),
+    takeEvery(DEFEAT_IMPERIAL_FIGURE, handleImperialFigureDefeat),
+    takeEvery(STATUS_PHASE_DEPLOY_REINFORCE, handleDeployAndReinforcement),
+  ]);
 }

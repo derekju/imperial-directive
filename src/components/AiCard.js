@@ -52,27 +52,18 @@ type AiCardPropsType = {
 };
 
 class AiCard extends React.Component<AiCardPropsType> {
-
   expandCommand = (command: string, index: number) => {
     switch (command) {
       case '{ACTION}':
-        return (
-          <img key={`${command}-${index}`} alt="Action" src={actionPng} style={styles.icon} />
-        );
+        return <img key={`${command}-${index}`} alt="Action" src={actionPng} style={styles.icon} />;
       case '{SURGE}':
-        return (
-          <img key={`${command}-${index}`} alt="Action" src={surgePng} style={styles.icon} />
-        );
+        return <img key={`${command}-${index}`} alt="Action" src={surgePng} style={styles.icon} />;
       case '{PRIORITY_TARGET}':
-        return (
-          <span key={`${command}-${index}`}>the door</span>
-        );
+        return <span key={`${command}-${index}`}>the door</span>;
       default:
-        return (
-          <span key={`${command}-${index}`}>{command}</span>
-        );
+        return <span key={`${command}-${index}`}>{command}</span>;
     }
-  }
+  };
 
   printAndSubtituteCommand(command: string) {
     let commandToProcess = command;
@@ -116,7 +107,11 @@ class AiCard extends React.Component<AiCardPropsType> {
         <div style={styles.header}>{this.props.group.name}</div>
         <div style={styles.commandContainer}>
           {this.props.group.commands.map((command, index) =>
-            this.renderCommand(`${this.props.group.name}-${index}`, command.condition, command.command)
+            this.renderCommand(
+              `${this.props.group.name}-${index}`,
+              command.condition,
+              command.command
+            )
           )}
         </div>
         <div style={styles.buttonContainer}>

@@ -9,9 +9,6 @@ import {positionAbsolute} from '../styles/mixins';
 import React from 'react';
 
 const styles = {
-  activated: {
-    border: '3px solid green',
-  },
   avatar: {
     alignItems: 'center',
     border: '3px solid black',
@@ -30,6 +27,10 @@ const styles = {
   },
   eliteAvatar: {
     border: `3px solid ${ELITE_RED}`,
+  },
+  exhausted: {
+    border: '3px solid green',
+    opacity: 0.4,
   },
   image: {
     height: '70%',
@@ -79,6 +80,7 @@ const styles = {
 
 type ImperialAvatarPropsType = {
   defeatImperialFigure: Function,
+  exhausted: boolean,
   imperialUnit: ImperialUnitType,
   isImperialPlayerTurn: boolean,
   setImperialGroupActivated: Function,
@@ -143,7 +145,7 @@ class ImperialAvatar extends React.Component<ImperialAvatarPropsType, ImperialAv
       {},
       styles.avatar,
       this.props.elite ? styles.eliteAvatar : {},
-      this.props.activated ? styles.activated : {}
+      this.props.exhausted ? styles.exhausted : {}
     );
 
     return (
@@ -153,7 +155,7 @@ class ImperialAvatar extends React.Component<ImperialAvatarPropsType, ImperialAv
             <img alt={this.props.imperialUnit.name} src={imperialPng} style={styles.image} />
           </div>
           <div style={styles.name}>{this.props.imperialUnit.name}</div>
-          <div style={styles.numInGroup}>{this.props.imperialUnit.currentNumFiguresInGroup}</div>
+          <div style={styles.numInGroup}>{this.props.imperialUnit.currentNumFigures}</div>
         </div>
         {this.state.displayPopup ? this.renderPopup() : null}
       </div>

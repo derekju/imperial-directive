@@ -1,16 +1,14 @@
 {
   "eWebEngineer": {
-    "id": "eWebEngineer",
-    "name": "E-Web Engineer",
     "commands": [],
     "elite": false,
-    "threat": 8,
+    "id": "eWebEngineer",
+    "maxInGroup": 1,
+    "name": "E-Web Engineer",
     "reinforcementCost": -1,
-    "maxInGroup": 1
+    "threat": 8
   },
   "imperialOfficer": {
-    "id": "imperialOfficer",
-    "name": "Imperial Officer",
     "commands": [
       {
         "condition": "If adjacent to any hostile figure",
@@ -34,13 +32,13 @@
       }
     ],
     "elite": false,
-    "threat": 2,
+    "id": "imperialOfficer",
+    "maxInGroup": 1,
+    "name": "Imperial Officer",
     "reinforcementCost": -1,
-    "maxInGroup": 1
+    "threat": 2
   },
   "probeDroid": {
-    "id": "probeDroid",
-    "name": "Probe Droid",
     "commands": [
       {
         "condition": "If within 4 spaces of any hostile figure",
@@ -60,13 +58,13 @@
       }
     ],
     "elite": false,
-    "threat": 3,
+    "id": "probeDroid",
+    "maxInGroup": 1,
+    "name": "Probe Droid",
     "reinforcementCost": -1,
-    "maxInGroup": 1
+    "threat": 3
   },
   "stormtrooper": {
-    "id": "stormtrooper",
-    "name": "Stormtrooper",
     "commands": [
       {
         "condition": "If within 4 spaces of any hostile figure",
@@ -86,8 +84,10 @@
       }
     ],
     "elite": false,
-    "threat": 6,
+    "id": "stormtrooper",
+    "maxInGroup": 3,
+    "name": "Stormtrooper",
     "reinforcementCost": 2,
-    "maxInGroup": 3
+    "threat": 6
   }
 }

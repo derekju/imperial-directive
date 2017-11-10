@@ -3,6 +3,7 @@
 import EventsPanel from './EventsPanel';
 import HeroPanelContainer from '../containers/HeroPanelContainer';
 import ImperialDashboardContainer from '../containers/ImperialDashboardContainer';
+import {LIGHT_GRAY_TRANSPARENT} from '../styles/colors';
 import MilestonesPanel from './MilestonesPanel';
 import MissionPanel from './MissionPanel';
 import ModalManagerContainer from '../containers/ModalManagerContainer';
@@ -29,13 +30,13 @@ const styles = {
   missionControlContainer: {
     ...positionAbsolute(null, 10, 10, null),
   },
-  // modalContainer: {
-  //   ...positionAbsolute(0, 0, 0, 0),
-  //   alignItems: 'center',
-  //   backgroundColor: LIGHT_GRAY_TRANSPARENT,
-  //   display: 'flex',
-  //   justifyContent: 'center',
-  // },
+  modalContainer: {
+    ...positionAbsolute(0, 0, 0, 0),
+    alignItems: 'center',
+    backgroundColor: LIGHT_GRAY_TRANSPARENT,
+    display: 'flex',
+    justifyContent: 'center',
+  },
   panelItem: {
     marginBottom: '10px',
   },
@@ -46,9 +47,10 @@ const styles = {
 };
 
 type MissionPropsType = {
+  currentMission: string,
   currentRound: number,
   currentThreat: number,
-  missionStep: number,
+  displayModal: boolean,
 };
 
 class Mission extends React.Component<MissionPropsType> {
@@ -68,7 +70,7 @@ class Mission extends React.Component<MissionPropsType> {
         </div>
         <div style={styles.rightPanelContainer}>
           <div style={styles.panelItem}>
-            <MissionPanel />
+            <MissionPanel currentMission={this.props.currentMission} />
           </div>
           <div style={styles.panelItem}>
             <MilestonesPanel />
@@ -77,9 +79,11 @@ class Mission extends React.Component<MissionPropsType> {
             <EventsPanel />
           </div>
         </div>
-        <div style={styles.modalContainer}>
-          <ModalManagerContainer />
-        </div>
+        {this.props.displayModal ? (
+          <div style={styles.modalContainer}>
+            <ModalManagerContainer />
+          </div>
+        ) : null}
       </div>
     );
   }

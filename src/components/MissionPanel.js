@@ -18,12 +18,16 @@ const styles = {
   },
 };
 
-class MissionPanel extends React.Component<{}> {
+type MissionPanelPropsType = {
+  currentMission: string,
+};
+
+class MissionPanel extends React.Component<MissionPanelPropsType> {
   render() {
     return (
       <div style={styles.base}>
-        <div style={styles.header}>Mission</div>
-        <div style={styles.contents}>Mission: Aftermath</div>
+        <div style={styles.header}>{`Mission: ${this.props.currentMission}`}</div>
+        <div style={styles.contents} />
       </div>
     );
   }

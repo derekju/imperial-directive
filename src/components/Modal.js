@@ -1,12 +1,13 @@
 // @flow
 
 import Button from './Button';
+import {LIGHT_WHITE} from '../styles/colors';
 import {positionAbsolute} from '../styles/mixins';
 import React from 'react';
 
 const styles = {
   base: {
-    backgroundColor: 'white',
+    backgroundColor: LIGHT_WHITE,
     border: '2px solid black',
     paddingBottom: '80px',
     position: 'relative',
@@ -29,7 +30,8 @@ const styles = {
 
 type ModalPropsType = {
   buttonText: string,
-  text: string,
+  children?: any,
+  handleButtonClick: Function,
   title: string,
 };
 
@@ -38,9 +40,9 @@ class Modal extends React.Component<ModalPropsType> {
     return (
       <div style={styles.base}>
         <div style={styles.header}>{this.props.title}</div>
-        <div style={styles.contents}>{this.props.text}</div>
+        <div style={styles.contents}>{this.props.children}</div>
         <div style={styles.buttonContainer}>
-          <Button text={this.props.buttonText} />
+          <Button onClick={this.props.handleButtonClick} text={this.props.buttonText} />
         </div>
       </div>
     );

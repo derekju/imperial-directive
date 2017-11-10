@@ -3,8 +3,18 @@
 import {all, call, fork, put, select, take, takeEvery} from 'redux-saga/effects';
 import {getIsThereReadyRebelFigures, SET_REBEL_HERO_ACTIVATED} from './rebels';
 import {getReadyImperialGroups, SET_IMPERIAL_GROUP_ACTIVATED} from './imperials';
+import type {StateType} from './types';
 
 // Types
+
+export type MissionStateType = {
+  currentActivePlayer: number,
+  currentPhase: number,
+  currentRound: number,
+  currentThreat: number,
+  maxRounds: number,
+  threatIncreasePerRound: number,
+};
 
 export type MissionConfigType = {
   initialGroups: string[],
@@ -36,7 +46,7 @@ const initialState = {
   threatIncreasePerRound: 0,
 };
 
-export default (state: Object = initialState, action: Object) => {
+export default (state: MissionStateType = initialState, action: Object) => {
   switch (action.type) {
     case LOAD_MISSION:
       const {config, threatIncreasePerRound} = action.payload;
@@ -65,6 +75,11 @@ export default (state: Object = initialState, action: Object) => {
         ...state,
         currentThreat: state.currentThreat + state.threatIncreasePerRound,
       };
+    case STATUS_PHASE_DEPLOY_REINFORCE_DONE:
+      return {
+        ...state,
+        currentThreat: action.payload.newThreat,
+      };
     case STATUS_PHASE_ADVANCE_ROUND:
       return {
         ...state,
@@ -92,7 +107,9 @@ export const STATUS_PHASE_BEGIN = 'STATUS_PHASE_BEGIN';
 export const STATUS_PHASE_INCREASE_THREAT = 'STATUS_PHASE_INCREASE_THREAT';
 export const STATUS_PHASE_READY_GROUPS = 'STATUS_PHASE_READY_GROUPS';
 export const STATUS_PHASE_DEPLOY_REINFORCE = 'STATUS_PHASE_DEPLOY_REINFORCE';
+export const STATUS_PHASE_DEPLOY_REINFORCE_DONE = 'STATUS_PHASE_DEPLOY_REINFORCE_DONE';
 export const STATUS_PHASE_END_ROUND_EFFECTS = 'STATUS_PHASE_END_ROUND_EFFECTS';
+export const STATUS_PHASE_END_ROUND_EFFECTS_DONE = 'STATUS_PHASE_END_ROUND_EFFECTS_DONE';
 export const STATUS_PHASE_ADVANCE_ROUND = 'STATUS_PHASE_ADVANCE_ROUND';
 
 // Action creators
@@ -107,15 +124,21 @@ export const statusPhaseBegin = () => ({type: STATUS_PHASE_BEGIN});
 export const statusPhaseIncreaseThreat = () => ({type: STATUS_PHASE_INCREASE_THREAT});
 export const statusPhaseReadyGroups = () => ({type: STATUS_PHASE_READY_GROUPS});
 export const statusPhaseDeployReinforce = () => ({type: STATUS_PHASE_DEPLOY_REINFORCE});
+export const statusPhaseDeployReinforceDone = (newThreat: number) => ({
+  payload: {newThreat},
+  type: STATUS_PHASE_DEPLOY_REINFORCE_DONE,
+});
 export const statusPhaseEndRoundEffects = () => ({type: STATUS_PHASE_END_ROUND_EFFECTS});
 export const statusPhaseAdvanceRound = () => ({type: STATUS_PHASE_ADVANCE_ROUND});
 
 // Selectors
 
-export const isRebelPlayerTurn = (state: Object) =>
+export const isRebelPlayerTurn = (state: StateType) =>
   state.mission.currentActivePlayer === PLAYER_REBELS;
-export const isImperialPlayerTurn = (state: Object) =>
+export const isImperialPlayerTurn = (state: StateType) =>
   state.mission.currentActivePlayer === PLAYER_IMPERIALS;
+export const getCurrentThreat = (state: StateType) => state.mission.currentThreat;
+export const getCurrentRound = (state: StateType) => state.mission.currentRound;
 
 // Sagas
 
@@ -129,8 +152,13 @@ function* missionEndOfTurn(): Generator<*, *, *> {
   yield put(statusPhaseIncreaseThreat());
   yield put(statusPhaseReadyGroups());
   yield put(statusPhaseDeployReinforce());
+  yield take(STATUS_PHASE_DEPLOY_REINFORCE_DONE);
+  // TODO: This is going to be dependent on what mission the user is on so gonna
+  // need that forked mission saga probably
   yield put(statusPhaseEndRoundEffects());
+  // yield take(STATUS_PHASE_END_ROUND_EFFECTS_DONE);
   yield put(statusPhaseAdvanceRound()); // TODO: Check hit max round
+  // yield take(STATUS_PHASE_ADVANCE_ROUND_DONE);
 }
 
 function* handleEndOfRebelOrImperialTurn(action: Object): Generator<*, *, *> {

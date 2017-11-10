@@ -39,9 +39,8 @@ const styles = {
 type ImperialDashboardPropsType = {
   activatedGroup: ?ImperialUnitType,
   defeatImperialFigure: Function,
-  exhaustedGroups: ImperialUnitType[],
+  deployedGroups: ImperialUnitType[],
   isImperialPlayerTurn: boolean,
-  readyGroups: ImperialUnitType[],
   setImperialGroupActivated: Function,
 };
 
@@ -54,9 +53,10 @@ class ImperialDashboard extends React.Component<ImperialDashboardPropsType> {
             <span style={styles.headerText}>Ready</span>
           </div>
           <div style={styles.sectionContents}>
-            {this.props.readyGroups.map((imperialUnit: ImperialUnitType) => (
+            {this.props.deployedGroups.map((imperialUnit: ImperialUnitType) => (
               <ImperialAvatar
                 defeatImperialFigure={this.props.defeatImperialFigure}
+                exhausted={imperialUnit.exhausted}
                 imperialUnit={imperialUnit}
                 isImperialPlayerTurn={this.props.isImperialPlayerTurn}
                 key={`${imperialUnit.id}-${imperialUnit.groupNumber}`}
@@ -66,40 +66,16 @@ class ImperialDashboard extends React.Component<ImperialDashboardPropsType> {
         </div>
         <div style={styles.section}>
           <div style={styles.sectionHeader}>
-            <span style={styles.headerText}>Activated</span>
+            <span style={styles.headerText}>Map</span>
           </div>
-          <div style={styles.sectionContents}>
-            {this.props.activatedGroup ? (
-              <div style={{display: 'flex', flexDirection: 'row'}}>
-                <ImperialAvatar
-                  defeatImperialFigure={this.props.defeatImperialFigure}
-                  imperialUnit={this.props.activatedGroup}
-                  isImperialPlayerTurn={this.props.isImperialPlayerTurn}
-                  key={this.props.activatedGroup.id}
-                  setImperialGroupActivated={this.props.setImperialGroupActivated}
-                />
-              </div>
-            ) : null}
-          </div>
-        </div>
-        <div style={styles.section}>
-          <div style={styles.sectionHeader}>
-            <span style={styles.headerText}>Exhausted</span>
-          </div>
-          <div style={styles.sectionContents}>
-            {this.props.exhaustedGroups.map((imperialUnit: ImperialUnitType) => (
-              <ImperialAvatar
-                defeatImperialFigure={this.props.defeatImperialFigure}
-                imperialUnit={imperialUnit}
-                isImperialPlayerTurn={this.props.isImperialPlayerTurn}
-                key={`${imperialUnit.id}-${imperialUnit.groupNumber}`}
-              />
-            ))}
-          </div>
+          <div style={styles.sectionContents} />
         </div>
         {this.props.activatedGroup ? (
           <div style={styles.activatedGroupContainer}>
-            <AiCard group={this.props.activatedGroup} setImperialGroupActivated={this.props.setImperialGroupActivated} />
+            <AiCard
+              group={this.props.activatedGroup}
+              setImperialGroupActivated={this.props.setImperialGroupActivated}
+            />
           </div>
         ) : null}
       </div>

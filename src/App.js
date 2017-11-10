@@ -8,8 +8,8 @@ const styles = {
     alignItems: 'center',
     backgroundColor: '#333',
     display: 'flex',
-    justifyContent: 'center',
     height: '100%',
+    justifyContent: 'center',
   },
 };
 

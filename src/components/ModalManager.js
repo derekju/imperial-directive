@@ -1,22 +1,24 @@
 // @flow
 
-// import Button from './Button';
-// import Modal from './Modal';
-// import {positionAbsolute} from '../styles/mixins';
 import React from 'react';
+import StatusReinforcementContainer from '../containers/StatusReinforcementContainer';
 
 const styles = {
   base: {},
 };
 
-type ModalManagerPropsType = {};
+type ModalManagerPropsType = {
+  type: string,
+};
 
 class ModalManager extends React.Component<ModalManagerPropsType> {
   render() {
-    return <div style={styles.base} />;
+    return (
+      <div style={styles.base}>
+        <StatusReinforcementContainer />
+      </div>
+    );
   }
 }
-
-// <Modal buttonText="Next" title="Setup Mission" text="Setup mission according to campaign guide" />
 
 export default ModalManager;

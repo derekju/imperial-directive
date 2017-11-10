@@ -2,9 +2,10 @@
 
 import {connect} from 'react-redux';
 import ModalManager from '../components/ModalManager';
+import type {StateType} from '../reducers/types';
 
-const mapStateToProps = state => ({});
+const mapStateToProps = (state: StateType) => ({
+  type: state.modal.type,
+});
 
-const mapDispatchToProps = {};
-
-export default connect(mapStateToProps, mapDispatchToProps)(ModalManager);
+export default connect(mapStateToProps)(ModalManager);

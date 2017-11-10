@@ -1,9 +1,15 @@
 // @flow
 
+import type {StateType} from './types';
 import {STATUS_PHASE_READY_GROUPS} from './mission';
 import uniq from 'lodash/uniq';
 
 // Types
+
+export type RebelsStateType = {
+  activatedRebels: string[],
+  roster: string[],
+};
 
 export type RebelUnitType = {
   elite: boolean,
@@ -19,10 +25,10 @@ export type RebelUnitType = {
 
 const initialState = {
   activatedRebels: [],
-  roster: ['diala', 'fenn', 'gaarkhan', 'gideon', 'han'],
+  roster: ['diala', 'fenn', 'gaarkhan'],
 };
 
-export default (state: Object = initialState, action: Object) => {
+export default (state: RebelsStateType = initialState, action: Object) => {
   switch (action.type) {
     case SET_REBEL_HERO_ACTIVATED:
       const {id} = action.payload;
@@ -53,5 +59,5 @@ export const setRebelHeroActivated = (id: string) => ({
 
 // Selectors
 
-export const getIsThereReadyRebelFigures = (state: Object) =>
+export const getIsThereReadyRebelFigures = (state: StateType) =>
   state.rebels.activatedRebels.length !== state.rebels.roster.length;
