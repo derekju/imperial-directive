@@ -3,8 +3,66 @@
     "initialGroups": [
       "stormtrooper", "probeDroid", "imperialOfficer"
     ],
+    "instructions": {
+      "imperialVictory": "At the end of Round 6 or when all heroes are wounded",
+      "rebelVictory": "When all terminals are destroyed"
+    },
+    "mapImage": [
+      [1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0],
+      [1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0],
+      [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0],
+      [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0],
+      [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0],
+      [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+      [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+      [0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0]
+    ],
     "mapStates": [
-
+      {
+        "coordinates": {
+          "x": 2,
+          "y": 6
+        },
+        "id": "1",
+        "triggered": false,
+        "type": "terminal"
+      },
+      {
+        "coordinates": {
+          "x": 10,
+          "y": 7
+        },
+        "id": "2",
+        "triggered": false,
+        "type": "terminal"
+      },
+      {
+        "coordinates": {
+          "x": 6,
+          "y": 1
+        },
+        "id": "3",
+        "triggered": false,
+        "type": "terminal"
+      },
+      {
+        "coordinates": {
+          "x": 5,
+          "y": 3
+        },
+        "id": "4",
+        "triggered": false,
+        "type": "terminal"
+      },
+      {
+        "coordinates": {
+          "x": 5,
+          "y": 5
+        },
+        "id": "1",
+        "triggered": false,
+        "type": "door"
+      }
     ],
     "maxRounds": 6,
     "name": "Aftermath",

@@ -3,6 +3,8 @@
 import {all, fork, select, take} from 'redux-saga/effects';
 import {getCurrentRound, STATUS_PHASE_END_ROUND_EFFECTS} from '../mission';
 
+// Sagas
+
 function* handleLockDownEvent(): Generator<*, *, *> {
   while (true) {
     yield take(STATUS_PHASE_END_ROUND_EFFECTS);

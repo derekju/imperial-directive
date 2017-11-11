@@ -1,9 +1,12 @@
 // @flow
 
+import AiCard from './AiCard';
 import EventsPanel from './EventsPanel';
 import HeroPanelContainer from '../containers/HeroPanelContainer';
 import ImperialDashboardContainer from '../containers/ImperialDashboardContainer';
+import type {ImperialUnitType} from '../reducers/imperials';
 import {LIGHT_GRAY_TRANSPARENT} from '../styles/colors';
+import MapContainer from '../containers/MapContainer';
 import MilestonesPanel from './MilestonesPanel';
 import MissionPanel from './MissionPanel';
 import ModalManagerContainer from '../containers/ModalManagerContainer';
@@ -12,14 +15,22 @@ import React from 'react';
 import RoundThreatTracker from './RoundThreatTracker';
 
 const styles = {
+  activatedGroupContainer: {
+    ...positionAbsolute(125, 250, 125, 250),
+    backgroundColor: 'white',
+  },
   base: {
     backgroundColor: 'white',
     display: 'flex',
     flexDirection: 'row',
     height: '768px',
+    position: 'relative',
     width: '1024px',
   },
   contents: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
     margin: '10px 0 10px 10px',
     width: '654px',
   },
@@ -47,10 +58,13 @@ const styles = {
 };
 
 type MissionPropsType = {
+  activatedGroup: ?ImperialUnitType,
   currentMission: string,
   currentRound: number,
   currentThreat: number,
   displayModal: boolean,
+  instructions: {imperialVictory: string, rebelVictory: string},
+  setImperialGroupActivated: Function,
 };
 
 class Mission extends React.Component<MissionPropsType> {
@@ -67,18 +81,24 @@ class Mission extends React.Component<MissionPropsType> {
         </div>
         <div style={styles.contents}>
           <ImperialDashboardContainer />
+          <MapContainer />
         </div>
         <div style={styles.rightPanelContainer}>
           <div style={styles.panelItem}>
-            <MissionPanel currentMission={this.props.currentMission} />
-          </div>
-          <div style={styles.panelItem}>
-            <MilestonesPanel />
+            <MissionPanel currentMission={this.props.currentMission} instructions={this.props.instructions} />
           </div>
           <div style={styles.panelItem}>
             <EventsPanel />
           </div>
         </div>
+        {this.props.activatedGroup ? (
+          <div style={styles.activatedGroupContainer}>
+            <AiCard
+              group={this.props.activatedGroup}
+              setImperialGroupActivated={this.props.setImperialGroupActivated}
+            />
+          </div>
+        ) : null}
         {this.props.displayModal ? (
           <div style={styles.modalContainer}>
             <ModalManagerContainer />

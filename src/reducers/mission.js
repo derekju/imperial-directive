@@ -7,18 +7,29 @@ import type {StateType} from './types';
 
 // Types
 
+export type MapStateType = {
+  coordinates: {x: number, y: number},
+  id: string,
+  type: string,
+};
+
 export type MissionStateType = {
   currentActivePlayer: number,
   currentPhase: number,
   currentRound: number,
   currentThreat: number,
+  instructions: {imperialVictory: string, rebelVictory: string},
   maxRounds: number,
+  mapImage: Array<Array<number>>,
+  mapStates: MapStateType[],
   threatIncreasePerRound: number,
 };
 
 export type MissionConfigType = {
   initialGroups: string[],
-  mapStates: string[],
+  instructions: {imperialVictory: string, rebelVictory: string},
+  mapImage: Array<Array<number>>,
+  mapStates: MapStateType[],
   maxRounds: number,
   name: string,
   openGroups: number,
@@ -42,6 +53,12 @@ const initialState = {
   currentPhase: PHASE_EVENT,
   currentRound: 1,
   currentThreat: 0,
+  instructions: {
+    imperialVictory: '',
+    rebelVictory: '',
+  },
+  mapImage: [[]],
+  mapStates: [],
   maxRounds: 0,
   threatIncreasePerRound: 0,
 };
@@ -52,6 +69,9 @@ export default (state: MissionStateType = initialState, action: Object) => {
       const {config, threatIncreasePerRound} = action.payload;
       return {
         ...state,
+        instructions: config.instructions,
+        mapImage: config.mapImage,
+        mapStates: config.mapStates,
         maxRounds: config.maxRounds,
         threatIncreasePerRound,
       };
