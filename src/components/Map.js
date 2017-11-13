@@ -76,12 +76,12 @@ class Map extends React.Component<MapPropsType> {
     return (
       <div>
         {this.props.mapImage.map((row: number[], rowIndex: number) => (
-          <div style={styles.row}>
+          <div key={`row-${rowIndex}`} style={styles.row}>
             {row.map((cell: number, cellIndex: number) => {
               if (cell === 1) {
-                return <div style={styles.block}>{this.renderMapState(rowIndex, cellIndex)}</div>;
+                return <div key={`${rowIndex}-${cellIndex}`} style={styles.block}>{this.renderMapState(rowIndex, cellIndex)}</div>;
               } else {
-                return <div style={styles.emptyBlock} />;
+                return <div key={`${rowIndex}-${cellIndex}`} style={styles.emptyBlock} />;
               }
             })}
           </div>

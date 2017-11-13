@@ -1,7 +1,9 @@
 // @flow
 
+import {BrowserRouter as Router, Route} from 'react-router-dom';
 import MissionContainer from './containers/MissionContainer';
 import React from 'react';
+import TitleScreen from './components/TitleScreen';
 
 const styles = {
   base: {
@@ -11,14 +13,23 @@ const styles = {
     height: '100%',
     justifyContent: 'center',
   },
+  canvas: {
+    height: '768px',
+    width: '1024px',
+  },
 };
 
 class App extends React.Component<{}> {
   render() {
     return (
-      <div style={styles.base}>
-        <MissionContainer />
-      </div>
+      <Router>
+        <div style={styles.base}>
+          <div style={styles.canvas}>
+            <Route exact path="/" component={TitleScreen} />
+            <Route path="/mission" component={MissionContainer} />
+          </div>
+        </div>
+      </Router>
     );
   }
 }

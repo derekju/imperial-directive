@@ -7,7 +7,6 @@ import ImperialDashboardContainer from '../containers/ImperialDashboardContainer
 import type {ImperialUnitType} from '../reducers/imperials';
 import {LIGHT_GRAY_TRANSPARENT} from '../styles/colors';
 import MapContainer from '../containers/MapContainer';
-import MilestonesPanel from './MilestonesPanel';
 import MissionPanel from './MissionPanel';
 import ModalManagerContainer from '../containers/ModalManagerContainer';
 import {positionAbsolute} from '../styles/mixins';
@@ -23,9 +22,7 @@ const styles = {
     backgroundColor: 'white',
     display: 'flex',
     flexDirection: 'row',
-    height: '768px',
     position: 'relative',
-    width: '1024px',
   },
   contents: {
     display: 'flex',
