@@ -41,7 +41,7 @@ export const CLOSE_MODALS = 'CLOSE_MODALS';
 
 // Action creators
 
-export const displayModal = (type: string, data: Object) => ({
+export const displayModal = (type: string, data?: Object = {}) => ({
   payload: {data, type},
   type: DISPLAY_MODAL,
 });

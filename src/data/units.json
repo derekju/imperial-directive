@@ -1,6 +1,15 @@
 {
   "eWebEngineer": {
-    "commands": [],
+    "commands": [
+      {
+        "condition": "If within 7 spaces of any hostile figure",
+        "command": "{ACTION} Attack the most damaged hostile figure, then {ACTION} Attack the most damaged hostile figure."
+      },
+      {
+        "condition": "If no hostile figure within 7 spaces",
+        "command": "{ACTION} Move within 5 spaces of a hostile figure, then {ACTION} Move within 5 spaces of a hostile figure."
+      }
+    ],
     "elite": false,
     "id": "eWebEngineer",
     "maxInGroup": 1,

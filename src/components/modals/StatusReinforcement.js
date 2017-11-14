@@ -1,7 +1,5 @@
 // @flow
 
-// import Button from '../Button';
-// import {positionAbsolute} from '../styles/mixins';
 import Modal from '../Modal';
 import React from 'react';
 // TODO: Kind of dirty to reference units from here but it's not in the payload to this modal
@@ -22,7 +20,7 @@ const styles = {
   },
 };
 
-type ModalPropsType = {
+type StatusReinforcementPropsType = {
   closeModals: Function,
   currentThreat: number,
   groupsToDeploy: string[],
@@ -30,7 +28,7 @@ type ModalPropsType = {
   statusPhaseDeployReinforceDone: Function,
 };
 
-class StatusReinforcement extends React.Component<ModalPropsType> {
+class StatusReinforcement extends React.Component<StatusReinforcementPropsType> {
   handleButtonClick = () => {
     this.props.statusPhaseDeployReinforceDone(this.props.currentThreat);
     this.props.closeModals();

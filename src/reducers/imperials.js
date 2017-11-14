@@ -42,7 +42,6 @@ export type ImperialsStateType = {
   activatedGroup: ?ImperialUnitType,
   deployedGroups: ImperialUnitType[],
   openGroups: ImperialUnitType[],
-  reservedGroups: ImperialUnitType[],
 };
 
 // Utils
@@ -60,7 +59,6 @@ const initialState = {
   activatedGroup: null,
   deployedGroups: [],
   openGroups: [],
-  reservedGroups: [],
 };
 
 let globalGroupCounter = 0;
@@ -73,7 +71,6 @@ export default (state: ImperialsStateType = initialState, action: Object) => {
         ...state,
         deployedGroups: config.initialGroups.map(createNewGroup),
         openGroups: populateOpenGroups(config.openGroups),
-        reservedGroups: config.reservedGroups.map((id: string) => units[id]),
       };
     case ACTIVATE_IMPERIAL_GROUP: {
       const {group} = action.payload;
@@ -132,6 +129,12 @@ export default (state: ImperialsStateType = initialState, action: Object) => {
           return deployedGroup;
         }),
       };
+    case DEPLOY_NEW_GROUPS:
+      const {groupIds} = action.payload;
+      return {
+        ...state,
+        deployedGroups: state.deployedGroups.concat(groupIds.map(createNewGroup)),
+      };
     default:
       return state;
   }
@@ -145,6 +148,7 @@ export const DEFEAT_IMPERIAL_FIGURE = 'DEFEAT_IMPERIAL_FIGURE';
 export const SET_IMPERIAL_FIGURES_AFTER_DEFEAT = 'SET_IMPERIAL_FIGURES_AFTER_DEFEAT';
 export const SET_IMPERIAL_FIGURES_AFTER_DEPLOY_REINFORCE =
   'SET_IMPERIAL_FIGURES_AFTER_DEPLOY_REINFORCE';
+export const DEPLOY_NEW_GROUPS = 'DEPLOY_NEW_GROUPS';
 
 // Action creators
 
@@ -174,6 +178,10 @@ export const setImperialFiguresAfterDeployReinforce = (
 ) => ({
   payload: {groupsToDeploy, groupsToReinforce, newOpenGroups},
   type: SET_IMPERIAL_FIGURES_AFTER_DEPLOY_REINFORCE,
+});
+export const deployNewGroups = (groupIds: string[]) => ({
+  payload: {groupIds},
+  type: DEPLOY_NEW_GROUPS,
 });
 
 // Selectors

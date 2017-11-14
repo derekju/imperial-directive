@@ -82,7 +82,10 @@ class Mission extends React.Component<MissionPropsType> {
         </div>
         <div style={styles.rightPanelContainer}>
           <div style={styles.panelItem}>
-            <MissionPanel currentMission={this.props.currentMission} instructions={this.props.instructions} />
+            <MissionPanel
+              currentMission={this.props.currentMission}
+              instructions={this.props.instructions}
+            />
           </div>
           <div style={styles.panelItem}>
             <EventsPanel />

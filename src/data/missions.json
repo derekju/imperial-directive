@@ -17,58 +17,59 @@
       [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
       [0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0]
     ],
-    "mapStates": [
-      {
+    "mapStates": {
+      "terminal-1": {
+        "activated": false,
         "coordinates": {
           "x": 2,
           "y": 6
         },
-        "id": "1",
-        "triggered": false,
+        "description": "The first terminal broadcasting the signal.",
+        "id": 1,
         "type": "terminal"
       },
-      {
+      "terminal-2": {
+        "activated": false,
         "coordinates": {
           "x": 10,
           "y": 7
         },
-        "id": "2",
-        "triggered": false,
+        "description": "The second terminal broadcasting the signal.",
+        "id": 2,
         "type": "terminal"
       },
-      {
+      "terminal-3": {
+        "activated": false,
         "coordinates": {
           "x": 6,
           "y": 1
         },
-        "id": "3",
-        "triggered": false,
+        "description": "The third terminal broadcasting the signal.",
+        "id": 3,
         "type": "terminal"
       },
-      {
+      "terminal-4": {
+        "activated": false,
         "coordinates": {
           "x": 5,
           "y": 3
         },
-        "id": "4",
-        "triggered": false,
+        "description": "The fourth terminal broadcasting the signal.",
+        "id": 4,
         "type": "terminal"
       },
-      {
+      "door-1": {
+        "activated": false,
         "coordinates": {
           "x": 5,
           "y": 5
         },
-        "id": "1",
-        "triggered": false,
+        "description": "The door to the atrium.",
+        "id": 1,
         "type": "door"
       }
-    ],
-    "maxRounds": 6,
+    },
     "name": "Aftermath",
-    "openGroups": 0,
-    "reservedGroups": [
-      "eWebEngineer", "imperialOfficer", "stormtrooper"
-    ]
+    "openGroups": 0
   }
 }

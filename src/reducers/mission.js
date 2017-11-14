@@ -8,8 +8,10 @@ import type {StateType} from './types';
 // Types
 
 export type MapStateType = {
+  activated: boolean,
   coordinates: {x: number, y: number},
-  id: string,
+  description: string,
+  id: number,
   type: string,
 };
 
@@ -19,9 +21,8 @@ export type MissionStateType = {
   currentRound: number,
   currentThreat: number,
   instructions: {imperialVictory: string, rebelVictory: string},
-  maxRounds: number,
   mapImage: Array<Array<number>>,
-  mapStates: MapStateType[],
+  mapStates: {[key: string]: MapStateType},
   threatIncreasePerRound: number,
 };
 
@@ -29,11 +30,9 @@ export type MissionConfigType = {
   initialGroups: string[],
   instructions: {imperialVictory: string, rebelVictory: string},
   mapImage: Array<Array<number>>,
-  mapStates: MapStateType[],
-  maxRounds: number,
+  mapStates: {[key: string]: MapStateType},
   name: string,
   openGroups: number,
-  reservedGroups: string[],
 };
 
 // Constants
@@ -58,8 +57,7 @@ const initialState = {
     rebelVictory: '',
   },
   mapImage: [[]],
-  mapStates: [],
-  maxRounds: 0,
+  mapStates: {},
   threatIncreasePerRound: 0,
 };
 
@@ -72,13 +70,25 @@ export default (state: MissionStateType = initialState, action: Object) => {
         instructions: config.instructions,
         mapImage: config.mapImage,
         mapStates: config.mapStates,
-        maxRounds: config.maxRounds,
         threatIncreasePerRound,
       };
     case CHANGE_PLAYER_TURN:
       return {
         ...state,
         currentActivePlayer: action.payload.player,
+      };
+    case SET_MAP_STATE_ACTIVATED:
+      const {id, type, value} = action.payload;
+      const key = `${type}-${id}`;
+      return {
+        ...state,
+        mapStates: {
+          ...state.mapStates,
+          [key]: {
+            ...state.mapStates[key],
+            activated: value,
+          },
+        },
       };
     case ACTIVATION_PHASE_BEGIN:
       return {
@@ -123,6 +133,7 @@ export default (state: MissionStateType = initialState, action: Object) => {
 export const LOAD_MISSION = 'LOAD_MISSION';
 export const CHANGE_PLAYER_TURN = 'CHANGE_PLAYER_TURN';
 export const ACTIVATION_PHASE_BEGIN = 'ACTIVATION_PHASE_BEGIN';
+export const SET_MAP_STATE_ACTIVATED = 'SET_MAP_STATE_ACTIVATED';
 export const STATUS_PHASE_BEGIN = 'STATUS_PHASE_BEGIN';
 export const STATUS_PHASE_INCREASE_THREAT = 'STATUS_PHASE_INCREASE_THREAT';
 export const STATUS_PHASE_READY_GROUPS = 'STATUS_PHASE_READY_GROUPS';
@@ -139,6 +150,10 @@ export const loadMission = (config: MissionConfigType, threatIncreasePerRound: n
   type: LOAD_MISSION,
 });
 export const changePlayerTurn = (player: number) => ({payload: {player}, type: CHANGE_PLAYER_TURN});
+export const setMapStateActivated = (id: number, type: string, value: boolean) => ({
+  payload: {id, type, value},
+  type: SET_MAP_STATE_ACTIVATED,
+});
 export const activationPhaseBegin = () => ({type: ACTIVATION_PHASE_BEGIN});
 export const statusPhaseBegin = () => ({type: STATUS_PHASE_BEGIN});
 export const statusPhaseIncreaseThreat = () => ({type: STATUS_PHASE_INCREASE_THREAT});
@@ -159,6 +174,7 @@ export const isImperialPlayerTurn = (state: StateType) =>
   state.mission.currentActivePlayer === PLAYER_IMPERIALS;
 export const getCurrentThreat = (state: StateType) => state.mission.currentThreat;
 export const getCurrentRound = (state: StateType) => state.mission.currentRound;
+export const getMapStates = (state: StateType) => state.mission.mapStates;
 
 // Sagas
 

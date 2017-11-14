@@ -49,12 +49,12 @@ const styles = {
 };
 
 type MapPropsType = {
+  displayModal: Function,
   mapImage: Array<Array<number>>,
-  mapStates: MapStateType[],
+  mapStates: {[key: string]: MapStateType},
 };
 
 class Map extends React.Component<MapPropsType> {
-
   renderMapState = (row: number, column: number) => {
     const mapState = find(
       this.props.mapStates,
@@ -63,9 +63,23 @@ class Map extends React.Component<MapPropsType> {
 
     if (mapState) {
       if (mapState.type === 'terminal') {
-        return <Terminal id={mapState.id} />;
+        return (
+          <Terminal
+            activated={mapState.activated}
+            id={mapState.id}
+            displayModal={this.props.displayModal}
+            type={mapState.type}
+          />
+        );
       } else if (mapState.type === 'door') {
-        return <Door id={mapState.id} />;
+        return (
+          <Door
+            activated={mapState.activated}
+            id={mapState.id}
+            displayModal={this.props.displayModal}
+            type={mapState.type}
+          />
+        );
       }
     }
 
@@ -79,7 +93,11 @@ class Map extends React.Component<MapPropsType> {
           <div key={`row-${rowIndex}`} style={styles.row}>
             {row.map((cell: number, cellIndex: number) => {
               if (cell === 1) {
-                return <div key={`${rowIndex}-${cellIndex}`} style={styles.block}>{this.renderMapState(rowIndex, cellIndex)}</div>;
+                return (
+                  <div key={`${rowIndex}-${cellIndex}`} style={styles.block}>
+                    {this.renderMapState(rowIndex, cellIndex)}
+                  </div>
+                );
               } else {
                 return <div key={`${rowIndex}-${cellIndex}`} style={styles.emptyBlock} />;
               }
@@ -101,5 +119,5 @@ class Map extends React.Component<MapPropsType> {
     );
   }
 }
-// {this.props.mapStates.map(this.renderMapState)}
+
 export default Map;
