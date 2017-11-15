@@ -1,6 +1,6 @@
 // @flow
 
-import {all, put, select, takeEvery} from 'redux-saga/effects';
+import {all, call, put, select, takeEvery} from 'redux-saga/effects';
 import {
   getCurrentThreat,
   LOAD_MISSION,
@@ -17,6 +17,7 @@ import {SET_REBEL_HERO_ACTIVATED} from './rebels';
 import sortBy from 'lodash/sortBy';
 import type {StateType} from './types';
 import units from '../data/units';
+import waitForModal from '../sagas/waitForModal';
 
 // Types
 
@@ -144,6 +145,7 @@ export default (state: ImperialsStateType = initialState, action: Object) => {
 
 export const SET_IMPERIAL_GROUP_ACTIVATED = 'SET_IMPERIAL_GROUP_ACTIVATED';
 export const ACTIVATE_IMPERIAL_GROUP = 'ACTIVATE_IMPERIAL_GROUP';
+export const TRIGGER_IMPERIAL_ACTIVATION = 'TRIGGER_IMPERIAL_ACTIVATION';
 export const DEFEAT_IMPERIAL_FIGURE = 'DEFEAT_IMPERIAL_FIGURE';
 export const SET_IMPERIAL_FIGURES_AFTER_DEFEAT = 'SET_IMPERIAL_FIGURES_AFTER_DEFEAT';
 export const SET_IMPERIAL_FIGURES_AFTER_DEPLOY_REINFORCE =
@@ -160,6 +162,7 @@ export const activateImperialGroup = (group: ImperialUnitType) => ({
   payload: {group},
   type: ACTIVATE_IMPERIAL_GROUP,
 });
+export const triggerImperialActivation = () => ({type: TRIGGER_IMPERIAL_ACTIVATION});
 export const defeatImperialFigure = (group: ImperialUnitType) => ({
   payload: {group},
   type: DEFEAT_IMPERIAL_FIGURE,
@@ -251,6 +254,7 @@ function* handleDeployAndReinforcement(): Generator<*, *, *> {
   yield put(
     displayModal('STATUS_REINFORCEMENT', {currentThreat, groupsToDeploy, groupsToReinforce})
   );
+  yield call(waitForModal('STATUS_REINFORCEMENT'));
 }
 
 function* handleImperialFigureDefeat(action: Object): Generator<*, *, *> {
@@ -283,7 +287,7 @@ function* handleImperialActivation(): Generator<*, *, *> {
 
 export function* imperialsSaga(): Generator<*, *, *> {
   yield all([
-    takeEvery(SET_REBEL_HERO_ACTIVATED, handleImperialActivation),
+    takeEvery([SET_REBEL_HERO_ACTIVATED, TRIGGER_IMPERIAL_ACTIVATION], handleImperialActivation),
     takeEvery(DEFEAT_IMPERIAL_FIGURE, handleImperialFigureDefeat),
     takeEvery(STATUS_PHASE_DEPLOY_REINFORCE, handleDeployAndReinforcement),
   ]);

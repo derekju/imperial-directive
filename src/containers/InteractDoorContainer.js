@@ -9,6 +9,7 @@ import type {StateType} from '../reducers/types';
 const mapStateToProps = (state: StateType) => ({
   id: state.modal.data.id,
   mapState: state.mission.mapStates[`${state.modal.data.type}-${state.modal.data.id}`],
+  type: state.modal.data.type,
 });
 
 const mapDispatchToProps = {

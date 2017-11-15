@@ -45,7 +45,7 @@ export const displayModal = (type: string, data?: Object = {}) => ({
   payload: {data, type},
   type: DISPLAY_MODAL,
 });
-export const closeModals = () => ({type: CLOSE_MODALS});
+export const closeModals = (type: string) => ({payload: {type}, type: CLOSE_MODALS});
 
 // Selectors
 

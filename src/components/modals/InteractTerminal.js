@@ -16,11 +16,12 @@ type InteractTerminalPropsType = {
   closeModals: Function,
   mapState: MapStateType,
   setMapStateActivated: Function,
+  type: string,
 };
 
 class InteractTerminal extends React.Component<InteractTerminalPropsType> {
   handleButtonClick = () => {
-    this.props.closeModals();
+    this.props.closeModals(this.props.type);
     this.props.setMapStateActivated(
       this.props.mapState.id,
       this.props.mapState.type,
@@ -29,7 +30,7 @@ class InteractTerminal extends React.Component<InteractTerminalPropsType> {
   };
 
   handleCancelClick = () => {
-    this.props.closeModals();
+    this.props.closeModals(this.props.type);
   };
 
   render() {

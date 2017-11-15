@@ -26,12 +26,13 @@ type StatusReinforcementPropsType = {
   groupsToDeploy: string[],
   groupsToReinforce: Array<{groupNumber: number, id: string}>,
   statusPhaseDeployReinforceDone: Function,
+  type: string,
 };
 
 class StatusReinforcement extends React.Component<StatusReinforcementPropsType> {
   handleButtonClick = () => {
+    this.props.closeModals(this.props.type);
     this.props.statusPhaseDeployReinforceDone(this.props.currentThreat);
-    this.props.closeModals();
   };
 
   render() {

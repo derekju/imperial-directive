@@ -20,12 +20,13 @@ const styles = {
 
 type VictoryModalPropsType = {
   closeModals: Function,
+  type: string,
   winner: 'rebels' | 'imperials',
 };
 
 class VictoryModal extends React.Component<VictoryModalPropsType> {
   handleButtonClick = () => {
-    this.props.closeModals();
+    this.props.closeModals(this.props.type);
   };
 
   render() {

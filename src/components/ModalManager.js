@@ -1,15 +1,13 @@
 // @flow
 
+import AftermathLockdownModal from './modals/AftermathLockdownModal';
+import BeginRoundModal from './modals/BeginRoundModal';
 import InteractDoorContainer from '../containers/InteractDoorContainer';
 import InteractTerminalContainer from '../containers/InteractTerminalContainer';
 import React from 'react';
 import ResolveEventModal from './modals/ResolveEventModal';
 import StatusReinforcementContainer from '../containers/StatusReinforcementContainer';
 import VictoryModal from './modals/VictoryModal';
-
-const styles = {
-  base: {},
-};
 
 type ModalManagerPropsType = {
   closeModals: Function,
@@ -20,8 +18,12 @@ type ModalManagerPropsType = {
 class ModalManager extends React.Component<ModalManagerPropsType> {
   renderModalType() {
     switch (this.props.type) {
-      case 'STATUS_REINFORCEMENT':
-        return <StatusReinforcementContainer />;
+      case 'AFTERMATH_LOCKDOWN':
+        return <AftermathLockdownModal closeModals={this.props.closeModals} type={this.props.type} />;
+      case 'BEGIN_ROUND':
+        return <BeginRoundModal closeModals={this.props.closeModals} currentRound={this.props.data.currentRound} type={this.props.type} />;
+      case 'IMPERIAL_VICTORY':
+        return <VictoryModal closeModals={this.props.closeModals} type={this.props.type} winner={'imperials'} />;
       case 'INTERACT_DOOR':
         return <InteractDoorContainer />;
       case 'INTERACT_TERMINAL':
@@ -31,19 +33,20 @@ class ModalManager extends React.Component<ModalManagerPropsType> {
           <ResolveEventModal
             closeModals={this.props.closeModals}
             eventName={this.props.data.eventName}
+            type={this.props.type}
           />
         );
       case 'REBEL_VICTORY':
-        return <VictoryModal closeModals={this.props.closeModals} winner={'rebels'} />;
-      case 'IMPERIAL_VICTORY':
-        return <VictoryModal closeModals={this.props.closeModals} winner={'imperials'} />;
+        return <VictoryModal closeModals={this.props.closeModals} type={this.props.type} winner={'rebels'} />;
+      case 'STATUS_REINFORCEMENT':
+        return <StatusReinforcementContainer />;
       default:
         return null;
     }
   }
 
   render() {
-    return <div style={styles.base}>{this.renderModalType()}</div>;
+    return <div>{this.renderModalType()}</div>;
   }
 }
 

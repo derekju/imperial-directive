@@ -2,8 +2,10 @@
 
 import {all, call, fork, put, select, take, takeEvery} from 'redux-saga/effects';
 import {getIsThereReadyRebelFigures, SET_REBEL_HERO_ACTIVATED} from './rebels';
-import {getReadyImperialGroups, SET_IMPERIAL_GROUP_ACTIVATED} from './imperials';
+import {getReadyImperialGroups, SET_IMPERIAL_GROUP_ACTIVATED, triggerImperialActivation} from './imperials';
+import {displayModal} from './modal';
 import type {StateType} from './types';
+import waitForModal from '../sagas/waitForModal';
 
 // Types
 
@@ -164,6 +166,7 @@ export const statusPhaseDeployReinforceDone = (newThreat: number) => ({
   type: STATUS_PHASE_DEPLOY_REINFORCE_DONE,
 });
 export const statusPhaseEndRoundEffects = () => ({type: STATUS_PHASE_END_ROUND_EFFECTS});
+export const statusPhaseEndRoundEffectsDone = () => ({type: STATUS_PHASE_END_ROUND_EFFECTS_DONE});
 export const statusPhaseAdvanceRound = () => ({type: STATUS_PHASE_ADVANCE_ROUND});
 
 // Selectors
@@ -178,8 +181,7 @@ export const getMapStates = (state: StateType) => state.mission.mapStates;
 
 // Sagas
 
-function* handleLoadMission(action: Object): Generator<*, *, *> {
-  // const {config} = action.payload;
+function* handleLoadMission(): Generator<*, *, *> {
   yield put(activationPhaseBegin());
 }
 
@@ -189,12 +191,15 @@ function* missionEndOfTurn(): Generator<*, *, *> {
   yield put(statusPhaseReadyGroups());
   yield put(statusPhaseDeployReinforce());
   yield take(STATUS_PHASE_DEPLOY_REINFORCE_DONE);
-  // TODO: This is going to be dependent on what mission the user is on so gonna
-  // need that forked mission saga probably
   yield put(statusPhaseEndRoundEffects());
-  // yield take(STATUS_PHASE_END_ROUND_EFFECTS_DONE);
-  yield put(statusPhaseAdvanceRound()); // TODO: Check hit max round
-  // yield take(STATUS_PHASE_ADVANCE_ROUND_DONE);
+  // The individual mission sagas MUST put this effect, otherwise the game will stall!!!
+  // TODO: Is this a good idea?
+  yield take(STATUS_PHASE_END_ROUND_EFFECTS_DONE);
+  yield put(statusPhaseAdvanceRound());
+  const currentRound = yield select(getCurrentRound);
+  yield put(displayModal('BEGIN_ROUND', {currentRound}));
+  yield call(waitForModal('BEGIN_ROUND'));
+  yield put(activationPhaseBegin());
 }
 
 function* handleEndOfRebelOrImperialTurn(action: Object): Generator<*, *, *> {
@@ -215,6 +220,9 @@ function* handleEndOfRebelOrImperialTurn(action: Object): Generator<*, *, *> {
     } else {
       if (rebelFiguresCanMove) {
         yield put(changePlayerTurn(PLAYER_REBELS));
+      } else {
+        // Rebels can't do anything anymore so just activate the next imperial troop
+        yield put(triggerImperialActivation());
       }
     }
   }

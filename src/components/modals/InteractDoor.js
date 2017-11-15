@@ -16,11 +16,12 @@ type InteractDoorPropsType = {
   closeModals: Function,
   mapState: MapStateType,
   setMapStateActivated: Function,
+  type: string,
 };
 
 class InteractDoor extends React.Component<InteractDoorPropsType> {
   handleButtonClick = () => {
-    this.props.closeModals();
+    this.props.closeModals(this.props.type);
     this.props.setMapStateActivated(
       this.props.mapState.id,
       this.props.mapState.type,
@@ -29,7 +30,7 @@ class InteractDoor extends React.Component<InteractDoorPropsType> {
   };
 
   handleCancelClick = () => {
-    this.props.closeModals();
+    this.props.closeModals(this.props.type);
   };
 
   render() {

@@ -10,6 +10,7 @@ const mapStateToProps = (state: StateType) => ({
   currentThreat: state.modal.data.currentThreat,
   groupsToDeploy: state.modal.data.groupsToDeploy,
   groupsToReinforce: state.modal.data.groupsToReinforce,
+  type: state.modal.data.type,
 });
 
 const mapDispatchToProps = {

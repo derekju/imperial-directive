@@ -13,11 +13,12 @@ const styles = {
 type ResolveEventModalPropsType = {
   closeModals: Function,
   eventName: string,
+  type: string,
 };
 
 class ResolveEventModal extends React.Component<ResolveEventModalPropsType> {
   handleButtonClick = () => {
-    this.props.closeModals();
+    this.props.closeModals(this.props.type);
   };
 
   render() {
