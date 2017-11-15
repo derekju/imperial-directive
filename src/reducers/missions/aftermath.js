@@ -1,8 +1,7 @@
 // @flow
 
 import {all, call, fork, put, select, take} from 'redux-saga/effects';
-import {CLOSE_MODALS, displayModal} from '../modal';
-import {deployNewGroups} from '../imperials';
+import {getAreAllHeroesWounded, WOUND_REBEL_HERO} from '../rebels';
 import {
   getCurrentRound,
   getMapStates,
@@ -10,6 +9,8 @@ import {
   statusPhaseEndRoundEffectsDone,
   STATUS_PHASE_END_ROUND_EFFECTS,
 } from '../mission';
+import {displayModal} from '../modal';
+import {deployNewGroups} from '../imperials';
 import waitForModal from '../../sagas/waitForModal';
 
 // Local state
@@ -71,6 +72,18 @@ function* handleTerminalsDestroyed(): Generator<*, *, *> {
   }
 }
 
+function* handleHeroesWounded(): Generator<*, *, *> {
+  while (true) {
+    yield take(WOUND_REBEL_HERO);
+    const allWounded = yield select(getAreAllHeroesWounded);
+    if (allWounded) {
+      // End game with imperial victory
+      yield put(displayModal('IMPERIAL_VICTORY'));
+      break;
+    }
+  }
+}
+
 function* handleRoundEnd(): Generator<*, *, *> {
   while (true) {
     yield take(STATUS_PHASE_END_ROUND_EFFECTS);
@@ -94,6 +107,7 @@ export function* aftermath(): Generator<*, *, *> {
     fork(handleLockDownEvent),
     fork(handleFortifiedEvent),
     fork(handleTerminalsDestroyed),
+    fork(handleHeroesWounded),
     fork(handleRoundEnd),
   ]);
 }

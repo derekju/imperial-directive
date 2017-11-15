@@ -2,7 +2,11 @@
 
 import {all, call, fork, put, select, take, takeEvery} from 'redux-saga/effects';
 import {getIsThereReadyRebelFigures, SET_REBEL_HERO_ACTIVATED} from './rebels';
-import {getReadyImperialGroups, SET_IMPERIAL_GROUP_ACTIVATED, triggerImperialActivation} from './imperials';
+import {
+  getReadyImperialGroups,
+  SET_IMPERIAL_GROUP_ACTIVATED,
+  triggerImperialActivation,
+} from './imperials';
 import {displayModal} from './modal';
 import type {StateType} from './types';
 import waitForModal from '../sagas/waitForModal';

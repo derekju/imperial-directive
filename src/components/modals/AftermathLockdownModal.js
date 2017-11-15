@@ -26,7 +26,7 @@ class AftermathLockdown extends React.Component<AftermathLockdownModalPropsType>
 
   render() {
     return (
-      <Modal buttonText={'Close'} handleButtonClick={this.handleButtonClick} title='Lockdown'>
+      <Modal buttonText={'Close'} handleButtonClick={this.handleButtonClick} title="Lockdown">
         <div style={styles.base}>
           <div>If there is a rebel figure west of the door, choose option 1.</div>
           <div style={styles.topMargin}>Otherwise, choose option 2.</div>

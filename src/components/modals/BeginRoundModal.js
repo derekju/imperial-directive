@@ -24,7 +24,7 @@ class BeginRound extends React.Component<BeginRoundModalPropsType> {
 
   render() {
     return (
-      <Modal buttonText={'Start'} handleButtonClick={this.handleButtonClick} title='New Round'>
+      <Modal buttonText={'Start'} handleButtonClick={this.handleButtonClick} title="New Round">
         <div style={styles.base}>
           <span>Round {this.props.currentRound}</span>
         </div>

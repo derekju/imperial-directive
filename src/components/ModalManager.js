@@ -19,11 +19,25 @@ class ModalManager extends React.Component<ModalManagerPropsType> {
   renderModalType() {
     switch (this.props.type) {
       case 'AFTERMATH_LOCKDOWN':
-        return <AftermathLockdownModal closeModals={this.props.closeModals} type={this.props.type} />;
+        return (
+          <AftermathLockdownModal closeModals={this.props.closeModals} type={this.props.type} />
+        );
       case 'BEGIN_ROUND':
-        return <BeginRoundModal closeModals={this.props.closeModals} currentRound={this.props.data.currentRound} type={this.props.type} />;
+        return (
+          <BeginRoundModal
+            closeModals={this.props.closeModals}
+            currentRound={this.props.data.currentRound}
+            type={this.props.type}
+          />
+        );
       case 'IMPERIAL_VICTORY':
-        return <VictoryModal closeModals={this.props.closeModals} type={this.props.type} winner={'imperials'} />;
+        return (
+          <VictoryModal
+            closeModals={this.props.closeModals}
+            type={this.props.type}
+            winner={'imperials'}
+          />
+        );
       case 'INTERACT_DOOR':
         return <InteractDoorContainer />;
       case 'INTERACT_TERMINAL':
@@ -37,7 +51,13 @@ class ModalManager extends React.Component<ModalManagerPropsType> {
           />
         );
       case 'REBEL_VICTORY':
-        return <VictoryModal closeModals={this.props.closeModals} type={this.props.type} winner={'rebels'} />;
+        return (
+          <VictoryModal
+            closeModals={this.props.closeModals}
+            type={this.props.type}
+            winner={'rebels'}
+          />
+        );
       case 'STATUS_REINFORCEMENT':
         return <StatusReinforcementContainer />;
       default:

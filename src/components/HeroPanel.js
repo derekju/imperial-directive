@@ -31,8 +31,11 @@ const styles = {
 type HeroPanelPropsType = {
   activatedRebels: string[],
   isRebelPlayerTurn: boolean,
-  setRebelHeroActivated: Function,
   roster: string[],
+  setRebelHeroActivated: Function,
+  withdrawnHeroes: string[],
+  woundedHeroes: string[],
+  woundRebelHero: Function,
 };
 
 class HeroPanel extends React.Component<HeroPanelPropsType> {
@@ -54,6 +57,9 @@ class HeroPanel extends React.Component<HeroPanelPropsType> {
               setRebelHeroActivated={
                 this.props.isRebelPlayerTurn ? this.props.setRebelHeroActivated : noop
               }
+              withdrawn={this.props.withdrawnHeroes.includes(id)}
+              wounded={this.props.woundedHeroes.includes(id)}
+              woundRebelHero={this.props.woundRebelHero}
             />
           ))}
         </div>

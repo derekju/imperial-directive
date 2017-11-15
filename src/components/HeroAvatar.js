@@ -62,6 +62,13 @@ const styles = {
   popupArrow: {
     ...positionAbsolute(52, null, null, -11),
   },
+  withdrawn: {
+    backgroundColor: 'black',
+    opacity: 0.25,
+  },
+  wounded: {
+    backgroundColor: '#F4CCCD',
+  },
 };
 
 type HeroAvatarPropsType = {
@@ -71,6 +78,9 @@ type HeroAvatarPropsType = {
   id: string,
   isRebelPlayerTurn: boolean,
   setRebelHeroActivated: Function,
+  withdrawn: boolean,
+  wounded: boolean,
+  woundRebelHero: Function,
 };
 
 type HeroAvatarStateType = {
@@ -87,11 +97,19 @@ class HeroAvatar extends React.Component<HeroAvatarPropsType, HeroAvatarStateTyp
   }
 
   handleClick = () => {
+    if (this.props.withdrawn) {
+      return;
+    }
     this.togglePopup();
   };
 
   handleEndActivation = () => {
     this.props.setRebelHeroActivated(this.props.id);
+    this.togglePopup();
+  };
+
+  handleSetWounded = () => {
+    this.props.woundRebelHero(this.props.id);
     this.togglePopup();
   };
 
@@ -111,7 +129,10 @@ class HeroAvatar extends React.Component<HeroAvatarPropsType, HeroAvatarStateTyp
         {!this.props.activated && this.props.isRebelPlayerTurn ? (
           <Button text="End activation" onClick={this.handleEndActivation} />
         ) : null}
-        <Button text="Set wounded" />
+        <Button
+          text={this.props.wounded ? 'Set withdrawn' : 'Set wounded'}
+          onClick={this.handleSetWounded}
+        />
         <div style={styles.popupAccent} />
       </div>
     );
@@ -122,7 +143,9 @@ class HeroAvatar extends React.Component<HeroAvatarPropsType, HeroAvatarStateTyp
       {},
       styles.avatar,
       this.props.elite ? styles.eliteAvatar : {},
-      this.props.activated ? styles.activated : {}
+      this.props.activated ? styles.activated : {},
+      this.props.wounded ? styles.wounded : {},
+      this.props.withdrawn ? styles.withdrawn : {}
     );
 
     return (
