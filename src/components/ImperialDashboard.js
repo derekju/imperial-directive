@@ -38,7 +38,7 @@ class ImperialDashboard extends React.Component<ImperialDashboardPropsType> {
     return (
       <div style={styles.base}>
         <div style={styles.sectionHeader}>
-          <span style={styles.headerText}>Ready</span>
+          <span style={styles.headerText}>Imperials</span>
         </div>
         <div style={styles.sectionContents}>
           {this.props.deployedGroups.map((imperialUnit: ImperialUnitType) => (

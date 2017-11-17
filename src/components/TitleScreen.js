@@ -1,20 +1,21 @@
 // @flow
 
-import {BrowserRouter as Router, Route} from 'react-router-dom';
+import {BrowserRouter as Router} from 'react-router-dom';
 import Button from './Button';
 import React from 'react';
 
 const styles = {
+  about: {
+    fontSize: '10px',
+    textAlign: 'center',
+  },
   base: {
     alignItems: 'center',
-    backgroundColor: 'white',
+    backgroundColor: '#eee',
     display: 'flex',
     flexDirection: 'column',
     height: '100%',
     justifyContent: 'space-around',
-  },
-  menuContainer: {
-    //marginTop: '50px',
   },
 };
 
@@ -71,6 +72,10 @@ class TitleScreen extends React.Component<TitleScreenPropsType> {
           </pre>
           <div style={styles.menuContainer}>
             <Button text="New Campaign" onClick={this.startCampaign} />
+          </div>
+          <div style={styles.about}>
+            <div>Imperial Assault is trademarked and copyrighted by Fantasy Flight Games and I make no claims of ownership. FFG does not endorse, support, or is involved with this site in any way.</div>
+            <div>Special thanks to Redjak for his automated variants that served as inspiration for this variant.</div>
           </div>
         </div>
       </Router>

@@ -41,7 +41,7 @@ class MissionPanel extends React.Component<MissionPanelPropsType> {
   render() {
     return (
       <div style={styles.base}>
-        <div style={styles.header}>{`Mission: ${upperFirst(this.props.currentMission)}`}</div>
+        <div style={styles.header}>{upperFirst(this.props.currentMission)}</div>
         <div style={styles.contents}>
           <div style={styles.rebelInstructionType}>Rebel Victory</div>
           <div style={styles.instructions}>{this.props.instructions.rebelVictory}</div>
