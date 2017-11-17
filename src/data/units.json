@@ -19,7 +19,7 @@
     "threat": 8
   },
   "imperialOfficer": {
-    "buffs": ["combatVeterans", "heavyPressure"],
+    "buffs": ["combatVeteran", "heavyPressure"],
     "commands": [
       {
         "condition": "If adjacent to any hostile figure",
@@ -50,7 +50,7 @@
     "threat": 2
   },
   "probeDroid": {
-    "buffs": ["combatVeterans", "heavyPressure", "savageWeaponry"],
+    "buffs": ["combatVeteran", "fleetFooted", "heavyPressure"],
     "commands": [
       {
         "condition": "If within 4 spaces of any hostile figure",
@@ -77,7 +77,7 @@
     "threat": 3
   },
   "stormtrooper": {
-    "buffs": ["combatVeterans", "experimentalArms", "jetpacks", "shockTroopers"],
+    "buffs": ["combatVeteran", "experimentalArms", "jetpacks", "recovery", "shockTroopers"],
     "commands": [
       {
         "condition": "If within 4 spaces of any hostile figure",

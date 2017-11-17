@@ -9,8 +9,8 @@
       "Apply this surge effect before all others."
     ]
   },
-  "combatVeterans": {
-    "name": "Combat Veterans",
+  "combatVeteran": {
+    "name": "Combat Veteran",
     "text": [
       "While attacking, apply +2 Accuracy and +1 {DMG} to the results."
     ]

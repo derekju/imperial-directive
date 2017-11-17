@@ -22,7 +22,7 @@ const styles = {
     backgroundColor: 'white',
     border: `2px solid ${ELITE_RED}`,
     fontSize: '14px',
-    margin: '10px auto 0',
+    margin: '10px auto 5px',
     padding: '10px',
     textAlign: 'center',
     width: '300px',
@@ -42,7 +42,7 @@ const styles = {
   },
   commandEntry: {
     marginBottom: '20px',
-    textAlign: 'center',
+    textAlign: 'left',
   },
   condition: {
     fontWeight: 'bold',
@@ -51,7 +51,8 @@ const styles = {
   header: {
     backgroundColor: IMPERIAL_BLUE,
     color: 'white',
-    padding: '5px',
+    padding: '10px',
+    textAlign: 'center',
   },
   icon: {
     height: '18px',
@@ -73,47 +74,12 @@ type AiCardPropsType = {
 };
 
 class AiCard extends React.Component<AiCardPropsType> {
-  expandCommand = (command: string, index: number) => {
-    switch (command) {
-      case '{ACTION}':
-        return <img key={`${command}-${index}`} alt="Action" src={actionPng} style={styles.icon} />;
-      case '{SURGE}':
-        return <img key={`${command}-${index}`} alt="Action" src={surgePng} style={styles.icon} />;
-      case '{PRIORITY_TARGET}':
-        return <span key={`${command}-${index}`}>{this.props.priorityTarget}</span>;
-      default:
-        return <span key={`${command}-${index}`}>{command}</span>;
-    }
-  };
-
-  printAndSubtituteCommand(command: string) {
-    let commandToProcess = command;
-    // Break command up into components
-    const commandArray = [];
-    while (commandToProcess.search(/\{.*\}/) !== -1) {
-      const index = commandToProcess.search(/\{.*\}/);
-      if (index !== 0) {
-        commandArray.push(commandToProcess.slice(0, index));
-        commandToProcess = commandToProcess.slice(index);
-      }
-      // Now find the } so we store that too
-      const bracketIndex = commandToProcess.search('}');
-      commandArray.push(commandToProcess.slice(0, bracketIndex + 1));
-      commandToProcess = commandToProcess.slice(bracketIndex + 1);
-    }
-
-    // Push the rest
-    commandArray.push(commandToProcess);
-
-    return commandArray;
-  }
-
   renderCommand(key: string, condition: string, command: string) {
-    const commandArray = this.printAndSubtituteCommand(command);
+    const commandArray = generateTextArray(command);
     return (
       <div style={styles.commandEntry} key={key}>
         <div style={styles.condition}>{`${condition}:`}</div>
-        <div>{commandArray.map(this.expandCommand)}</div>
+        <div>{commandArray.map((text: string, index: number) => expandText(text, index, styles.icon))}</div>
       </div>
     );
   }
