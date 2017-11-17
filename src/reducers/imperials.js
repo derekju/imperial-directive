@@ -10,9 +10,9 @@ import {
 import decrementFigureFromGroup from './utils/decrementFigureFromGroup';
 import {displayModal} from './modal';
 import filter from 'lodash/filter';
-import find from 'lodash/find';
 import populateOpenGroups from './utils/populateOpenGroups';
 import random from 'lodash/random';
+import reverse from 'lodash/reverse';
 import {SET_REBEL_HERO_ACTIVATED} from './rebels';
 import sortBy from 'lodash/sortBy';
 import type {StateType} from './types';
@@ -108,13 +108,12 @@ export default (state: ImperialsStateType = initialState, action: Object) => {
         ...state,
         deployedGroups: state.deployedGroups
           .map((deployedGroup: ImperialUnitType) => {
-            if (
-              find(groupsToReinforce, {
-                groupNumber: deployedGroup.groupNumber,
-                id: deployedGroup.id,
-              })
-            ) {
-              deployedGroup.currentNumFigures++;
+            const matchingGroups = groupsToReinforce.filter((groupToReinforce: {groupNumber: number, id: string}) => (
+              groupToReinforce.groupNumber === deployedGroup.groupNumber && groupToReinforce.id === deployedGroup.id
+            ));
+
+            if (matchingGroups.length) {
+              deployedGroup.currentNumFigures += matchingGroups.length;
             }
             return deployedGroup;
           })
@@ -215,7 +214,7 @@ function* handleDeployAndReinforcement(): Generator<*, *, *> {
   if (openGroups.length) {
     // Sort the open groups array by highest to lowest threat
     // Iterate and pull groups off until we cannot do so anymore
-    const sortedOpenGroups = sortBy(openGroups, (unit: ImperialUnitType) => unit.threat);
+    const sortedOpenGroups = reverse(sortBy(openGroups, (unit: ImperialUnitType) => unit.threat));
 
     for (let i = 0; i < sortedOpenGroups.length; i++) {
       if (currentThreat >= sortedOpenGroups[i].threat) {
