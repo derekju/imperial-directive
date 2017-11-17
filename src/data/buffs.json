@@ -1,0 +1,95 @@
+{
+  "arcBlasters": {
+    "name": "Arc Blasters",
+    "text": [
+      "After a figure resolves a {RANGED} attack, each figure that suffered 1 or more {DMG} tests {STR}. Each figure that fails is Stunned.{BREAK}",
+      "{BREAK}",
+      "Each figure in this group gains:{BREAK}",
+      "{SURGE}: +1 {DMG}, Blast 1 {DMG}{BREAK}",
+      "Apply this surge effect before all others."
+    ]
+  },
+  "combatVeterans": {
+    "name": "Combat Veterans",
+    "text": [
+      "While attacking, apply +2 Accuracy and +1 {DMG} to the results."
+    ]
+  },
+  "experimentalArms": {
+    "name": "Experimental Arms",
+    "text": [
+      "Each figure gains +1 {SURGE} while attacking.{BREAK}",
+      "After the attack is resolved, that figure suffers +1 {DMG}."
+    ]
+  },
+  "heavyPressure": {
+    "name": "Heavy Pressure",
+    "text": [
+      "Attacks deal {STRAIN} instead of {DMG}."
+    ]
+  },
+  "imperialIndustry": {
+    "name": "Imperial Industry",
+    "text": [
+      "Each figure in this group gains:{BREAK}",
+      "{SURGE}: Stun{BREAK}",
+      "{SURGE}: +1 {DMG}{BREAK}",
+      "Apply these surge effects before all others."
+    ]
+  },
+  "imperialIndustryElite": {
+    "name": "Imperial Industry",
+    "text": [
+      "Each figure in this group gains:{BREAK}",
+      "{SURGE}: Stun{BREAK}",
+      "{SURGE}: +2 {DMG}{BREAK}",
+      "{SURGE}: Recover 2 {DMG}{BREAK}",
+      "Apply these surge effects before all others."
+    ]
+  },
+  "jetpacks": {
+    "name": "Jetpacks",
+    "text": [
+      "All figures gain Mobile."
+    ]
+  },
+  "noQuarter": {
+    "name": "No Quarter",
+    "text": [
+      "If attacking a hero who has suffered 2 or more {STRAIN}, apply +1 {SURGE} to the results."
+    ]
+  },
+  "savageWeaponry": {
+    "name": "Savage Weaponry",
+    "text": [
+      "Each figure gains:{BREAK}",
+      "Pierce 1{BREAK}",
+      "{SURGE}: Bleed{BREAK}",
+      "Apply surge effect before all others."
+    ]
+  },
+  "shockTroopers": {
+    "name": "Shock Troopers",
+    "text": [
+      "While attacking a figure within 2 spaces, apply +1 {SURGE} to the results."
+    ]
+  },
+  "showOfForce": {
+    "name": "Show of Force",
+    "text": [
+      "While declaring an attack, become focused."
+    ]
+  },
+  "surgicalStrike": {
+    "name": "Surgical Strike",
+    "text": [
+      "After attacking a target, the target suffers 1 {STRAIN} and 1 {DMG}."
+    ]
+  },
+  "sustainedFire": {
+    "name": "Sustained Fire",
+    "text": [
+      "After resolving an attack, perform an additional attack. Then, become stunned and suffer 2 {DMG}."
+    ]
+  }
+}

@@ -1,9 +1,11 @@
 // @flow
 
 import {fork, put, select} from 'redux-saga/effects';
-import type {StateType} from './types';
+import events from '../data/events';
+import {loadEvents} from './events';
 import {loadMission} from './mission';
 import missions from '../data/missions';
+import type {StateType} from './types';
 
 import {aftermath} from './missions/aftermath';
 
@@ -44,6 +46,8 @@ export function* appSaga(): Generator<*, *, *> {
 
   // Fork a copy of the saga for the current mission so we get mission specific logic
   yield fork(forkMission, currentMission);
+  // Load the events
+  yield put(loadEvents(events.common));
   // Load our mission in which will kick things off
   yield put(loadMission(missionConfiguration, threatIncreasePerRound));
 }

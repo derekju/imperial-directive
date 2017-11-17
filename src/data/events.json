@@ -1,0 +1,101 @@
+{
+  "common": [
+    {
+      "name": "Heavy Pressure",
+      "type": "Global",
+      "text": [
+        "All figures in the first activated deployment group gain:",
+        "When a hero would suffer {DMG} from an attack by this figure, that hero suffers an equal amount of {STRAIN} instead."
+      ]
+    },
+    {
+      "name": "Hidden Detonators",
+      "type": "Instant",
+      "text": [
+        "Choose an Imperial figure adjacent to two or more Rebel figures.",
+        "Each figure and object adjacent to that Imperial figure suffers 3 {DMG}. Then, the Imperial figure is defeated.",
+        "If no Imperial figure is adjacent to two or more Rebel figures, ignore this effect."
+      ]
+    },
+    {
+      "name": "Jetpacks",
+      "type": "Global",
+      "text": [
+        "All Troopers gain Mobile."
+      ]
+    },
+    {
+      "name": "No Quarter",
+      "type": "Global",
+      "text": [
+        "When an Imperial figure declares an attack targeting a hero who has suffered 2 or more {STRAIN}, apply +1 {SURGE} to the attack results."
+      ]
+    },
+    {
+      "name": "Oppression",
+      "type": "Global",
+      "text": [
+        "When a hero who has suffered 2 or more {STRAIN} declares an attack, apply +1 {EVADE} to the defense results."
+      ]
+    },
+    {
+      "name": "Prey Upon Doubt",
+      "type": "Global",
+      "text": [
+        "When a Rebel figure declares an attack, that Rebel chooses to either suffer 1 {STRAIN}, or apply +1 {EVADE} to the defense results."
+      ]
+    },
+    {
+      "name": "Riot Grenades",
+      "type": "Instant",
+      "text": [
+        "Each hero tests {INSIGHT}.",
+        "Each hero that fails suffers 1 {STRAIN}."
+      ]
+    },
+    {
+      "name": "Savage Weaponry",
+      "type": "Global",
+      "text": [
+        "All enemy {MELEE} figures gain:",
+        "Pierce 1",
+        "{SURGE}: Bleed"
+      ]
+    },
+    {
+      "name": "Shock Troopers",
+      "type": "Global",
+      "text": [
+        "When a Trooper attacks a figure within 2 spaces, apply +1 {SURGE} to the attack results."
+      ]
+    },
+    {
+      "name": "Show of Force",
+      "type": "Global",
+      "text": [
+        "When an Imperial figure deals 1 or more {DMG} to a target when attacking, that Imperial figure becomes Focused."
+      ]
+    },
+    {
+      "name": "Superior Mobility",
+      "type": "Global",
+      "text": [
+        "All Imperial figures gain +1 Speed."
+      ]
+    },
+    {
+      "name": "Superior Power",
+      "type": "Global",
+      "text": [
+        "All Imperial figures gain +1 {DMG} to their attack results."
+      ]
+    },
+    {
+      "name": "Surgical Strike",
+      "type": "Instant",
+      "text": [
+        "Each hero tests {STR}. Each hero that fails suffers 1 {STRAIN} and 1 {DMG}."
+      ]
+    }
+  ]
+}

@@ -138,6 +138,8 @@ export default (state: MissionStateType = initialState, action: Object) => {
 
 export const LOAD_MISSION = 'LOAD_MISSION';
 export const CHANGE_PLAYER_TURN = 'CHANGE_PLAYER_TURN';
+export const EVENT_PHASE_BEGIN = 'EVENT_PHASE_BEGIN';
+export const EVENT_PHASE_END = 'EVENT_PHASE_END';
 export const ACTIVATION_PHASE_BEGIN = 'ACTIVATION_PHASE_BEGIN';
 export const SET_MAP_STATE_ACTIVATED = 'SET_MAP_STATE_ACTIVATED';
 export const STATUS_PHASE_BEGIN = 'STATUS_PHASE_BEGIN';
@@ -160,6 +162,8 @@ export const setMapStateActivated = (id: number, type: string, value: boolean) =
   payload: {id, type, value},
   type: SET_MAP_STATE_ACTIVATED,
 });
+export const eventPhaseBegin = () => ({type: EVENT_PHASE_BEGIN});
+export const eventPhaseEnd = () => ({type: EVENT_PHASE_END});
 export const activationPhaseBegin = () => ({type: ACTIVATION_PHASE_BEGIN});
 export const statusPhaseBegin = () => ({type: STATUS_PHASE_BEGIN});
 export const statusPhaseIncreaseThreat = () => ({type: STATUS_PHASE_INCREASE_THREAT});
@@ -186,6 +190,8 @@ export const getMapStates = (state: StateType) => state.mission.mapStates;
 // Sagas
 
 function* handleLoadMission(): Generator<*, *, *> {
+  // yield put(eventPhaseBegin());
+  // yield take(EVENT_PHASE_END);
   yield put(activationPhaseBegin());
 }
 
@@ -203,7 +209,7 @@ function* missionEndOfTurn(): Generator<*, *, *> {
   const currentRound = yield select(getCurrentRound);
   yield put(displayModal('BEGIN_ROUND', {currentRound}));
   yield call(waitForModal('BEGIN_ROUND'));
-  yield put(activationPhaseBegin());
+  yield call(handleLoadMission);
 }
 
 function* handleEndOfRebelOrImperialTurn(action: Object): Generator<*, *, *> {

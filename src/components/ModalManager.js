@@ -4,6 +4,7 @@ import AftermathLockdownModal from './modals/AftermathLockdownModal';
 import BeginRoundModal from './modals/BeginRoundModal';
 import InteractDoorContainer from '../containers/InteractDoorContainer';
 import InteractTerminalContainer from '../containers/InteractTerminalContainer';
+import NewEventModal from './modals/NewEventModal';
 import React from 'react';
 import ResolveEventModal from './modals/ResolveEventModal';
 import StatusReinforcementContainer from '../containers/StatusReinforcementContainer';
@@ -42,6 +43,14 @@ class ModalManager extends React.Component<ModalManagerPropsType> {
         return <InteractDoorContainer />;
       case 'INTERACT_TERMINAL':
         return <InteractTerminalContainer />;
+      case 'NEW_EVENT_MODAL':
+        return (
+          <NewEventModal
+            closeModals={this.props.closeModals}
+            event={this.props.data.event}
+            type={this.props.type}
+          />
+        );
       case 'RESOLVE_EVENT':
         return (
           <ResolveEventModal

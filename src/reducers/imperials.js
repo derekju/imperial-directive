@@ -27,6 +27,7 @@ export type ImperialUnitCommandType = {
 };
 
 export type ImperialUnitType = {
+  buffs: string[],
   commands: ImperialUnitCommandType[],
   currentNumFigures: number,
   elite: boolean,

@@ -1,7 +1,6 @@
 // @flow
 
 import AiCard from './AiCard';
-import EventsPanel from './EventsPanel';
 import HeroPanelContainer from '../containers/HeroPanelContainer';
 import ImperialDashboardContainer from '../containers/ImperialDashboardContainer';
 import type {ImperialUnitType} from '../reducers/imperials';
@@ -15,8 +14,11 @@ import RoundThreatTracker from './RoundThreatTracker';
 
 const styles = {
   activatedGroupContainer: {
-    ...positionAbsolute(125, 250, 125, 250),
-    backgroundColor: 'white',
+    ...positionAbsolute(100, 200, 100, 200),
+    backgroundColor: 'transparent',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
   },
   base: {
     backgroundColor: 'white',
@@ -86,9 +88,6 @@ class Mission extends React.Component<MissionPropsType> {
               currentMission={this.props.currentMission}
               instructions={this.props.instructions}
             />
-          </div>
-          <div style={styles.panelItem}>
-            <EventsPanel />
           </div>
         </div>
         {this.props.activatedGroup ? (
