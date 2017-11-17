@@ -15,11 +15,23 @@
       "While attacking, apply +2 Accuracy and +1 {DMG} to the results."
     ]
   },
+  "deadeye": {
+    "name": "Deadeye",
+    "text": [
+      "While attacking, apply +2 Accuracy to the results."
+    ]
+  },
   "experimentalArms": {
     "name": "Experimental Arms",
     "text": [
       "Each figure gains +1 {SURGE} while attacking.{BREAK}",
       "After the attack is resolved, that figure suffers +1 {DMG}."
+    ]
+  },
+  "fleetFooted": {
+    "name": "Fleet Footed",
+    "text": [
+      "All figures gain 1 extra movement point."
     ]
   },
   "heavyPressure": {
@@ -53,10 +65,22 @@
       "All figures gain Mobile."
     ]
   },
+  "marksman": {
+    "name": "Marksman",
+    "text": [
+      "Figures do not block line of sight for attacks."
+    ]
+  },
   "noQuarter": {
     "name": "No Quarter",
     "text": [
       "If attacking a hero who has suffered 2 or more {STRAIN}, apply +1 {SURGE} to the results."
+    ]
+  },
+  "recovery": {
+    "name": "Recovery",
+    "text": [
+      "All figures recover 2 {DMG}."
     ]
   },
   "savageWeaponry": {

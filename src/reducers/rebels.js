@@ -89,3 +89,4 @@ export const getIsThereReadyRebelFigures = (state: StateType) =>
 export const getAreAllHeroesWounded = (state: StateType) =>
   state.rebels.woundedHeroes.length + state.rebels.withdrawnHeroes.length ===
   state.rebels.roster.length;
+export const getIsOneHeroLeft = (state: StateType) => state.rebels.roster.length - state.rebels.woundedHeroes.length - state.rebels.withdrawnHeroes.length === 1;

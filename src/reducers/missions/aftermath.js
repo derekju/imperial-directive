@@ -1,7 +1,7 @@
 // @flow
 
 import {all, call, fork, put, select, take} from 'redux-saga/effects';
-import {getAreAllHeroesWounded, WOUND_REBEL_HERO} from '../rebels';
+import {getAreAllHeroesWounded, getIsOneHeroLeft, WOUND_REBEL_HERO} from '../rebels';
 import {
   getCurrentRound,
   getMapStates,
@@ -17,10 +17,14 @@ import waitForModal from '../../sagas/waitForModal';
 // Constants
 
 const PRIORITY_TARGET_DOOR = 'the door';
+const PRIORITY_TARGET_TERMINAL_2 = 'terminal 2';
+const PRIORITY_TARGET_NEAREST_TERMINAL = 'the nearest active terminal';
+const PRIORITY_TARGET_MOST_WOUNDED = 'the most wounded hero';
 
 // Local state
 
 let requireEndRoundEffects = false;
+let priorityTargetKillHero = false;
 
 // Sagas
 
@@ -53,6 +57,25 @@ function* handleFortifiedEvent(): Generator<*, *, *> {
       yield call(waitForModal('RESOLVE_EVENT'));
       // Do the deployment from reserved groups
       yield put(deployNewGroups(['eWebEngineer', 'stormtrooper', 'imperialOfficer']));
+      // PRIORITY TARGET SWITCH #2
+      if (!priorityTargetKillHero) {
+        yield put(setPriorityTarget(PRIORITY_TARGET_TERMINAL_2));
+      }
+      // We're done
+      break;
+    }
+  }
+}
+
+function* handleSingleTerminalDestroyed(): Generator<*, *, *> {
+  while (true) {
+    const action = yield take(SET_MAP_STATE_ACTIVATED);
+    const {id, type, value} = action.payload;
+    if (id === 2 && type === 'terminal' && value === true) {
+      // PRIORITY TARGET SWITCH #3
+      if (!priorityTargetKillHero) {
+        yield put(setPriorityTarget(PRIORITY_TARGET_NEAREST_TERMINAL));
+      }
       // We're done
       break;
     }
@@ -86,6 +109,12 @@ function* handleHeroesWounded(): Generator<*, *, *> {
       yield put(displayModal('IMPERIAL_VICTORY'));
       break;
     }
+    const isOneHeroLeft = yield select(getIsOneHeroLeft);
+    if (isOneHeroLeft) {
+      // PRIORITY TARGET SWITCH #4
+      priorityTargetKillHero = true;
+      yield put(setPriorityTarget(PRIORITY_TARGET_MOST_WOUNDED));
+    }
   }
 }
 
@@ -107,12 +136,22 @@ function* handleRoundEnd(): Generator<*, *, *> {
   }
 }
 
+/*
+Priority target definitions:
+1) Initial is door
+2) Once door opens, target is terminal 2
+3) If terminal 2 is down, target is nearest terminal
+4) At any point if heroes - 1 are wounded, target is the last remaining hero
+*/
+
 export function* aftermath(): Generator<*, *, *> {
+  // Initially set to door
   yield put(setPriorityTarget(PRIORITY_TARGET_DOOR));
 
   yield all([
     fork(handleLockDownEvent),
     fork(handleFortifiedEvent),
+    fork(handleSingleTerminalDestroyed),
     fork(handleTerminalsDestroyed),
     fork(handleHeroesWounded),
     fork(handleRoundEnd),
