@@ -63,6 +63,7 @@ type MissionPropsType = {
   currentThreat: number,
   displayModal: boolean,
   instructions: {imperialVictory: string, rebelVictory: string},
+  priorityTarget: string,
   setImperialGroupActivated: Function,
 };
 
@@ -94,6 +95,7 @@ class Mission extends React.Component<MissionPropsType> {
           <div style={styles.activatedGroupContainer}>
             <AiCard
               group={this.props.activatedGroup}
+              priorityTarget={this.props.priorityTarget}
               setImperialGroupActivated={this.props.setImperialGroupActivated}
             />
           </div>

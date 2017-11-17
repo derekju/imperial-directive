@@ -11,31 +11,31 @@ import strengthPng from '../assets/icons/strength.png';
 import surgePng from '../assets/icons/surge.png';
 
 export const expandText = (text: string, index: number, styles: ?Object = {}) => {
-    switch (text) {
-      case '{ACTION}':
-        return <img key={`${text}-${index}`} alt="Action" src={actionPng} style={styles} />;
-      case '{BREAK}':
-        return <br />;
-      case '{DMG}':
-        return <img key={`${text}-${index}`} alt="Damage" src={damagePng} style={styles} />;
-      case '{EVADE}':
-        return <img key={`${text}-${index}`} alt="Evade" src={evadePng} style={styles} />;
-      case '{INSIGHT}':
-        return <img key={`${text}-${index}`} alt="Insight" src={insightPng} style={styles} />;
-      case '{MELEE}':
-        return <img key={`${text}-${index}`} alt="Melee" src={meleePng} style={styles} />;
-      case '{STRAIN}':
-        return <img key={`${text}-${index}`} alt="Strain" src={strainPng} style={styles} />;
-      case '{STR}':
-        return <img key={`${text}-${index}`} alt="Strength" src={strengthPng} style={styles} />;
-      case '{SURGE}':
-        return <img key={`${text}-${index}`} alt="Surge" src={surgePng} style={styles} />;
-      case '{PRIORITY_TARGET}':
-        return <span key={`${text}-${index}`}>the door</span>;
-      default:
-        return <span key={`${text}-${index}`}>{text}</span>;
-    }
-  };
+  switch (text) {
+    case '{ACTION}':
+      return <img key={`${text}-${index}`} alt="Action" src={actionPng} style={styles} />;
+    case '{BREAK}':
+      return <br />;
+    case '{DMG}':
+      return <img key={`${text}-${index}`} alt="Damage" src={damagePng} style={styles} />;
+    case '{EVADE}':
+      return <img key={`${text}-${index}`} alt="Evade" src={evadePng} style={styles} />;
+    case '{INSIGHT}':
+      return <img key={`${text}-${index}`} alt="Insight" src={insightPng} style={styles} />;
+    case '{MELEE}':
+      return <img key={`${text}-${index}`} alt="Melee" src={meleePng} style={styles} />;
+    case '{STRAIN}':
+      return <img key={`${text}-${index}`} alt="Strain" src={strainPng} style={styles} />;
+    case '{STR}':
+      return <img key={`${text}-${index}`} alt="Strength" src={strengthPng} style={styles} />;
+    case '{SURGE}':
+      return <img key={`${text}-${index}`} alt="Surge" src={surgePng} style={styles} />;
+    case '{PRIORITY_TARGET}':
+      return <span key={`${text}-${index}`}>the door</span>;
+    default:
+      return <span key={`${text}-${index}`}>{text}</span>;
+  }
+};
 
 export const generateTextArray = (text: string) => {
   let textToProcess = text;
@@ -57,4 +57,4 @@ export const generateTextArray = (text: string) => {
   textArray.push(textToProcess);
 
   return textArray;
-}
+};

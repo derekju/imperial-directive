@@ -84,7 +84,8 @@ export const woundRebelHero = (id: string) => ({
 // Selectors
 
 export const getIsThereReadyRebelFigures = (state: StateType) =>
-  state.rebels.activatedRebels.length !== state.rebels.roster.length - state.rebels.withdrawnHeroes.length;
+  state.rebels.activatedRebels.length !==
+  state.rebels.roster.length - state.rebels.withdrawnHeroes.length;
 export const getAreAllHeroesWounded = (state: StateType) =>
   state.rebels.woundedHeroes.length + state.rebels.withdrawnHeroes.length ===
   state.rebels.roster.length;

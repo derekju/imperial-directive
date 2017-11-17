@@ -6,12 +6,17 @@ import {
   getCurrentRound,
   getMapStates,
   SET_MAP_STATE_ACTIVATED,
+  setPriorityTarget,
   statusPhaseEndRoundEffectsDone,
   STATUS_PHASE_END_ROUND_EFFECTS,
 } from '../mission';
 import {displayModal} from '../modal';
 import {deployNewGroups} from '../imperials';
 import waitForModal from '../../sagas/waitForModal';
+
+// Constants
+
+const PRIORITY_TARGET_DOOR = 'the door';
 
 // Local state
 
@@ -103,6 +108,8 @@ function* handleRoundEnd(): Generator<*, *, *> {
 }
 
 export function* aftermath(): Generator<*, *, *> {
+  yield put(setPriorityTarget(PRIORITY_TARGET_DOOR));
+
   yield all([
     fork(handleLockDownEvent),
     fork(handleFortifiedEvent),

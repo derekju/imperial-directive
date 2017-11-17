@@ -12,6 +12,7 @@ const mapStateToProps = (state: StateType) => ({
   currentThreat: state.mission.currentThreat,
   displayModal: Boolean(state.modal.type),
   instructions: state.mission.instructions,
+  priorityTarget: state.mission.priorityTarget,
 });
 
 const mapDispatchToProps = {

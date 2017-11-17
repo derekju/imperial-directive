@@ -29,6 +29,7 @@ export type MissionStateType = {
   instructions: {imperialVictory: string, rebelVictory: string},
   mapImage: Array<Array<number>>,
   mapStates: {[key: string]: MapStateType},
+  priorityTarget: string,
   threatIncreasePerRound: number,
 };
 
@@ -64,6 +65,7 @@ const initialState = {
   },
   mapImage: [[]],
   mapStates: {},
+  priorityTarget: 'the most damaged hostile figure',
   threatIncreasePerRound: 0,
 };
 
@@ -121,14 +123,11 @@ export default (state: MissionStateType = initialState, action: Object) => {
         ...state,
         currentRound: state.currentRound + 1,
       };
-    // case MISSION_TURN_END:
-    //   return {
-    //     ...state,
-    //     currentActivePlayer:
-    //       state.currentActivePlayer === PLAYER_HERO ? PLAYER_IMPERIAL : PLAYER_HERO,
-    //     currentRound: state.currentRound + 1,
-    //     currentThreat: state.currentThreat + state.threatIncreasePerRound,
-    //   };
+    case SET_PRIORITY_TARGET:
+      return {
+        ...state,
+        priorityTarget: action.payload.priorityTarget,
+      };
     default:
       return state;
   }
@@ -150,6 +149,7 @@ export const STATUS_PHASE_DEPLOY_REINFORCE_DONE = 'STATUS_PHASE_DEPLOY_REINFORCE
 export const STATUS_PHASE_END_ROUND_EFFECTS = 'STATUS_PHASE_END_ROUND_EFFECTS';
 export const STATUS_PHASE_END_ROUND_EFFECTS_DONE = 'STATUS_PHASE_END_ROUND_EFFECTS_DONE';
 export const STATUS_PHASE_ADVANCE_ROUND = 'STATUS_PHASE_ADVANCE_ROUND';
+export const SET_PRIORITY_TARGET = 'SET_PRIORITY_TARGET';
 
 // Action creators
 
@@ -176,6 +176,10 @@ export const statusPhaseDeployReinforceDone = (newThreat: number) => ({
 export const statusPhaseEndRoundEffects = () => ({type: STATUS_PHASE_END_ROUND_EFFECTS});
 export const statusPhaseEndRoundEffectsDone = () => ({type: STATUS_PHASE_END_ROUND_EFFECTS_DONE});
 export const statusPhaseAdvanceRound = () => ({type: STATUS_PHASE_ADVANCE_ROUND});
+export const setPriorityTarget = (priorityTarget: string) => ({
+  payload: {priorityTarget},
+  type: SET_PRIORITY_TARGET,
+});
 
 // Selectors
 

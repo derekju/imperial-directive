@@ -68,6 +68,7 @@ const styles = {
 
 type AiCardPropsType = {
   group: ImperialUnitType,
+  priorityTarget: string,
   setImperialGroupActivated: Function,
 };
 
@@ -79,7 +80,7 @@ class AiCard extends React.Component<AiCardPropsType> {
       case '{SURGE}':
         return <img key={`${command}-${index}`} alt="Action" src={surgePng} style={styles.icon} />;
       case '{PRIORITY_TARGET}':
-        return <span key={`${command}-${index}`}>the door</span>;
+        return <span key={`${command}-${index}`}>{this.props.priorityTarget}</span>;
       default:
         return <span key={`${command}-${index}`}>{command}</span>;
     }
@@ -135,7 +136,9 @@ class AiCard extends React.Component<AiCardPropsType> {
         <br />
         {buff.text.map((buffText: string) => {
           const textArray = generateTextArray(buffText);
-          return textArray.map((text: string, index: number) => expandText(text, index, styles.iconStyle));
+          return textArray.map((text: string, index: number) =>
+            expandText(text, index, styles.iconStyle)
+          );
         })}
       </div>
     );
@@ -145,9 +148,7 @@ class AiCard extends React.Component<AiCardPropsType> {
     return (
       <div style={styles.base}>
         <div style={styles.header}>{this.props.group.name}</div>
-        <div style={styles.buffContainer}>
-          {this.renderBuff()}
-        </div>
+        <div style={styles.buffContainer}>{this.renderBuff()}</div>
         <div style={styles.commandContainer}>
           {this.props.group.commands.map((command, index) =>
             this.renderCommand(

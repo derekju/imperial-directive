@@ -38,7 +38,6 @@ type EventPanelPropsType = {
 };
 
 class EventPanel extends React.Component<EventPanelPropsType> {
-
   renderEvent() {
     if (!this.props.activeEvent) {
       return null;
@@ -54,7 +53,9 @@ class EventPanel extends React.Component<EventPanelPropsType> {
           return (
             <div>
               <br />
-              {textArray.map((text: string, index: number) => expandText(text, index, styles.iconStyle))}
+              {textArray.map((text: string, index: number) =>
+                expandText(text, index, styles.iconStyle)
+              )}
             </div>
           );
         })}
