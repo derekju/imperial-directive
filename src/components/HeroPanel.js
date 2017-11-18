@@ -17,7 +17,7 @@ const styles = {
     border: '2px solid black',
     display: 'flex',
     flexDirection: 'column',
-    height: '690px',
+    height: '622px',
     width: '120px',
   },
   header: {

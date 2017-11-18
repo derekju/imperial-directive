@@ -24,7 +24,7 @@ type TitleScreenPropsType = {
 };
 
 class TitleScreen extends React.Component<TitleScreenPropsType> {
-  startCampaign = () => {
+  startMission = () => {
     this.props.history.push('/mission');
   };
 
@@ -71,11 +71,12 @@ class TitleScreen extends React.Component<TitleScreenPropsType> {
             }
           </pre>
           <div>
-            <Button text="New Campaign" onClick={this.startCampaign} />
+            <Button text="New Mission" onClick={this.startMission} />
           </div>
           <div style={styles.about}>
             <div>Imperial Assault is trademarked and copyrighted by Fantasy Flight Games and I make no claims of ownership. FFG does not endorse, support, or is involved with this site in any way.</div>
             <div>Special thanks to Redjak for his automated variants that served as inspiration for this variant.</div>
+            <div>Created by Derek Ju.</div>
           </div>
         </div>
       </Router>

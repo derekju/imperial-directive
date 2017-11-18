@@ -14,7 +14,7 @@ const styles = {
     justifyContent: 'center',
   },
   canvas: {
-    height: '768px',
+    height: '700px',
     width: '1024px',
   },
 };
