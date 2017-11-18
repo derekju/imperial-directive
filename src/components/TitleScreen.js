@@ -70,7 +70,7 @@ class TitleScreen extends React.Component<TitleScreenPropsType> {
               '██████████████████████████████████████████████████████████████████████████████████████\n'
             }
           </pre>
-          <div style={styles.menuContainer}>
+          <div>
             <Button text="New Campaign" onClick={this.startCampaign} />
           </div>
           <div style={styles.about}>

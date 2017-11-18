@@ -1,10 +1,10 @@
 // @flow
 
+import './Button.css';
 import React from 'react';
 
 const styles = {
   button: {
-    backgroundColor: 'white',
     border: '2px solid black',
     cursor: 'pointer',
     fontSize: '12px',
@@ -34,7 +34,7 @@ class Button extends React.Component<ButtonPropsType> {
     };
 
     return (
-      <button style={buttonStyles} onClick={this.props.onClick}>
+      <button className='Button' style={buttonStyles} onClick={this.props.onClick}>
         {this.props.text}
       </button>
     );

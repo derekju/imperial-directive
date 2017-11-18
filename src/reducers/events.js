@@ -1,6 +1,6 @@
 // @flow
 
-import {all, call, put, select, takeEvery} from 'redux-saga/effects';
+import {put, select, takeEvery} from 'redux-saga/effects';
 import {eventPhaseEnd, EVENT_PHASE_BEGIN} from './mission';
 import {displayModal} from './modal';
 import random from 'lodash/random';

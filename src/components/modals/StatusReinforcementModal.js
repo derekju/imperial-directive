@@ -20,19 +20,16 @@ const styles = {
   },
 };
 
-type StatusReinforcementPropsType = {
+type StatusReinforcementModalPropsType = {
   closeModals: Function,
-  currentThreat: number,
   groupsToDeploy: string[],
   groupsToReinforce: Array<{groupNumber: number, id: string}>,
-  statusPhaseDeployReinforceDone: Function,
   type: string,
 };
 
-class StatusReinforcement extends React.Component<StatusReinforcementPropsType> {
+class StatusReinforcementModal extends React.Component<StatusReinforcementModalPropsType> {
   handleButtonClick = () => {
     this.props.closeModals(this.props.type);
-    this.props.statusPhaseDeployReinforceDone(this.props.currentThreat);
   };
 
   render() {
@@ -65,4 +62,4 @@ class StatusReinforcement extends React.Component<StatusReinforcementPropsType> 
   }
 }
 
-export default StatusReinforcement;
+export default StatusReinforcementModal;

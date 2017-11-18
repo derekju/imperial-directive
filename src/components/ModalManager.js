@@ -7,7 +7,7 @@ import InteractTerminalContainer from '../containers/InteractTerminalContainer';
 import NewEventModal from './modals/NewEventModal';
 import React from 'react';
 import ResolveEventModal from './modals/ResolveEventModal';
-import StatusReinforcementContainer from '../containers/StatusReinforcementContainer';
+import StatusReinforcementModal from './modals/StatusReinforcementModal';
 import VictoryModal from './modals/VictoryModal';
 
 type ModalManagerPropsType = {
@@ -68,7 +68,14 @@ class ModalManager extends React.Component<ModalManagerPropsType> {
           />
         );
       case 'STATUS_REINFORCEMENT':
-        return <StatusReinforcementContainer />;
+        return (
+          <StatusReinforcementModal
+            closeModals={this.props.closeModals}
+            groupsToDeploy={this.props.data.groupsToDeploy}
+            groupsToReinforce={this.props.data.groupsToReinforce}
+            type={this.props.type}
+          />
+        );
       default:
         return null;
     }

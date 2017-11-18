@@ -1,0 +1,12 @@
+.Button {
+  background-color: white;
+}
+
+.Button:active {
+  background-color: black;
+  color: white;
+}
+
+.Button:focus {
+  outline: 0;
+}

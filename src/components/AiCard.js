@@ -2,14 +2,12 @@
 
 import {expandText, generateTextArray} from '../lib/iconSubber';
 import {ELITE_RED, IMPERIAL_BLUE, LIGHT_WHITE} from '../styles/colors';
-import actionPng from '../assets/icons/action.png';
 import buffs from '../data/buffs.json';
 import Button from './Button';
 import type {ImperialUnitType} from '../reducers/imperials';
 import {positionAbsolute} from '../styles/mixins';
 import random from 'lodash/random';
 import React from 'react';
-import surgePng from '../assets/icons/surge.png';
 
 const styles = {
   base: {
@@ -113,7 +111,7 @@ class AiCard extends React.Component<AiCardPropsType> {
   render() {
     return (
       <div style={styles.base}>
-        <div style={styles.header}>{this.props.group.name}</div>
+        <div style={styles.header}>{`${this.props.group.name} G${this.props.group.groupNumber}`}</div>
         <div style={styles.buffContainer}>{this.renderBuff()}</div>
         <div style={styles.commandContainer}>
           {this.props.group.commands.map((command, index) =>

@@ -4,6 +4,7 @@ import {all, call, put, select, takeEvery} from 'redux-saga/effects';
 import {
   getCurrentThreat,
   LOAD_MISSION,
+  statusPhaseDeployReinforceDone,
   STATUS_PHASE_DEPLOY_REINFORCE,
   STATUS_PHASE_READY_GROUPS,
 } from './mission';
@@ -63,7 +64,7 @@ const initialState = {
   openGroups: [],
 };
 
-let globalGroupCounter = 0;
+let globalGroupCounter = 1;
 
 export default (state: ImperialsStateType = initialState, action: Object) => {
   switch (action.type) {
@@ -248,13 +249,15 @@ function* handleDeployAndReinforcement(): Generator<*, *, *> {
   }
 
   yield put(
+    displayModal('STATUS_REINFORCEMENT', {groupsToDeploy, groupsToReinforce})
+  );
+  yield call(waitForModal('STATUS_REINFORCEMENT'));
+
+  yield put(
     setImperialFiguresAfterDeployReinforce(groupsToDeploy, groupsToReinforce, newOpenGroups)
   );
 
-  yield put(
-    displayModal('STATUS_REINFORCEMENT', {currentThreat, groupsToDeploy, groupsToReinforce})
-  );
-  yield call(waitForModal('STATUS_REINFORCEMENT'));
+  yield put(statusPhaseDeployReinforceDone(currentThreat));
 }
 
 function* handleImperialFigureDefeat(action: Object): Generator<*, *, *> {

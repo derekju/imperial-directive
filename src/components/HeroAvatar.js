@@ -24,7 +24,7 @@ const styles = {
     width: '80px',
   },
   base: {
-    width: '84px',
+    width: '86px',
   },
   eliteAvatar: {
     border: `3px solid ${ELITE_RED}`,

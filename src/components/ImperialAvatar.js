@@ -23,7 +23,7 @@ const styles = {
   base: {
     marginRight: '20px',
     position: 'relative',
-    width: '84px',
+    width: '86px',
   },
   eliteAvatar: {
     border: `3px solid ${ELITE_RED}`,
@@ -154,7 +154,7 @@ class ImperialAvatar extends React.Component<ImperialAvatarPropsType, ImperialAv
           <div style={avatarStyles}>
             <img alt={this.props.imperialUnit.name} src={imperialPng} style={styles.image} />
           </div>
-          <div style={styles.name}>{this.props.imperialUnit.name}</div>
+          <div style={styles.name}>{`${this.props.imperialUnit.name} G${this.props.imperialUnit.groupNumber}`}</div>
           <div style={styles.numInGroup}>{this.props.imperialUnit.currentNumFigures}</div>
         </div>
         {this.state.displayPopup ? this.renderPopup() : null}
