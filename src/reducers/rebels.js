@@ -27,7 +27,7 @@ export type RebelUnitType = {
 
 const initialState = {
   activatedRebels: [],
-  roster: ['diala', 'fenn', 'gaarkhan'],
+  roster: ['diala', 'fenn', 'gaarkhan', 'gideon'],
   withdrawnHeroes: [],
   woundedHeroes: [],
 };
