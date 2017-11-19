@@ -34,7 +34,7 @@ class Button extends React.Component<ButtonPropsType> {
     };
 
     return (
-      <button className='Button' style={buttonStyles} onClick={this.props.onClick}>
+      <button className="Button" style={buttonStyles} onClick={this.props.onClick}>
         {this.props.text}
       </button>
     );

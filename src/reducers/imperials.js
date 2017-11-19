@@ -20,6 +20,10 @@ import type {StateType} from './types';
 import units from '../data/units';
 import waitForModal from '../sagas/waitForModal';
 
+// Local state
+
+let designationMap = {};
+
 // Types
 
 export type ImperialUnitCommandType = {
@@ -49,12 +53,42 @@ export type ImperialsStateType = {
 
 // Utils
 
-const createNewGroup = (id: string): ImperialUnitType => ({
-  ...units[id],
-  currentNumFigures: units[id].maxInGroup,
-  exhausted: false,
-  groupNumber: globalGroupCounter++,
-});
+const createNewGroup = (id: string): ImperialUnitType => {
+  // Default to 1
+  let groupNumber = 1;
+  // Look in our designation map to see if this unit exists, if so, we need to change the number
+  if (id in designationMap) {
+    // It exists, find the lowest free number e.g. if we have [1, 3, 4, 6], we need to set this
+    // group to 2
+    let gapExists = false;
+    const sortedGroups = designationMap[id].sort((a: number, b: number) => a - b);
+    for (let i = 0; i < sortedGroups.length; i++) {
+      if (i + 1 === sortedGroups[i]) {
+        continue;
+      } else {
+        gapExists = true;
+        groupNumber = i + 1;
+        designationMap[id].push(groupNumber);
+        break;
+      }
+    }
+    // If we didn't find a gap, just use the highest number
+    if (gapExists === false) {
+      groupNumber = sortedGroups.length + 1;
+      designationMap[id].push(groupNumber);
+    }
+    // If not, add it
+  } else {
+    designationMap[id] = [1];
+  }
+
+  return {
+    ...units[id],
+    currentNumFigures: units[id].maxInGroup,
+    exhausted: false,
+    groupNumber,
+  };
+};
 
 // State
 
@@ -63,8 +97,6 @@ const initialState = {
   deployedGroups: [],
   openGroups: [],
 };
-
-let globalGroupCounter = 1;
 
 export default (state: ImperialsStateType = initialState, action: Object) => {
   switch (action.type) {
@@ -109,9 +141,11 @@ export default (state: ImperialsStateType = initialState, action: Object) => {
         ...state,
         deployedGroups: state.deployedGroups
           .map((deployedGroup: ImperialUnitType) => {
-            const matchingGroups = groupsToReinforce.filter((groupToReinforce: {groupNumber: number, id: string}) => (
-              groupToReinforce.groupNumber === deployedGroup.groupNumber && groupToReinforce.id === deployedGroup.id
-            ));
+            const matchingGroups = groupsToReinforce.filter(
+              (groupToReinforce: {groupNumber: number, id: string}) =>
+                groupToReinforce.groupNumber === deployedGroup.groupNumber &&
+                groupToReinforce.id === deployedGroup.id
+            );
 
             if (matchingGroups.length) {
               deployedGroup.currentNumFigures += matchingGroups.length;
@@ -248,9 +282,7 @@ function* handleDeployAndReinforcement(): Generator<*, *, *> {
     }
   }
 
-  yield put(
-    displayModal('STATUS_REINFORCEMENT', {groupsToDeploy, groupsToReinforce})
-  );
+  yield put(displayModal('STATUS_REINFORCEMENT', {groupsToDeploy, groupsToReinforce}));
   yield call(waitForModal('STATUS_REINFORCEMENT'));
 
   yield put(
@@ -271,6 +303,13 @@ function* handleImperialFigureDefeat(action: Object): Generator<*, *, *> {
     deployedGroups,
     groupsToAddToOpen
   );
+
+  if (groupToDecrement.currentNumFigures === 1) {
+    // Mutate designationMap here
+    designationMap[groupToDecrement.id] = designationMap[groupToDecrement.id].filter(
+      (num: number) => num !== groupToDecrement.groupNumber
+    );
+  }
 
   yield put(setImperialFiguresAfterDefeat(newDeployedGroups, groupsToAddToOpen));
 }

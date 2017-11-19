@@ -77,7 +77,9 @@ class AiCard extends React.Component<AiCardPropsType> {
     return (
       <div style={styles.commandEntry} key={key}>
         <div style={styles.condition}>{`${condition}:`}</div>
-        <div>{commandArray.map((text: string, index: number) => expandText(text, index, styles.icon))}</div>
+        <div>
+          {commandArray.map((text: string, index: number) => expandText(text, index, styles.icon))}
+        </div>
       </div>
     );
   }
@@ -111,7 +113,9 @@ class AiCard extends React.Component<AiCardPropsType> {
   render() {
     return (
       <div style={styles.base}>
-        <div style={styles.header}>{`${this.props.group.name} G${this.props.group.groupNumber}`}</div>
+        <div style={styles.header}>{`${this.props.group.name} G${
+          this.props.group.groupNumber
+        }`}</div>
         <div style={styles.buffContainer}>{this.renderBuff()}</div>
         <div style={styles.commandContainer}>
           {this.props.group.commands.map((command, index) =>

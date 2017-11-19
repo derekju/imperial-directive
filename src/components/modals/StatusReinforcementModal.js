@@ -43,17 +43,21 @@ class StatusReinforcementModal extends React.Component<StatusReinforcementModalP
           <div style={styles.header}>Units to deploy:</div>
           <div style={styles.units}>
             {this.props.groupsToDeploy.length
-              ? this.props.groupsToDeploy.map((id: string) => units[id].name).join(', ')
+              ? this.props.groupsToDeploy.map((id: string, index: number) => (
+                  <div key={`${id}-${index}`}>{units[id].name}</div>
+                ))
               : 'None'}
           </div>
           <div style={styles.header}>Units to reinforce:</div>
           <div style={styles.units}>
             {this.props.groupsToReinforce.length
-              ? this.props.groupsToReinforce
-                  .map((reinforcement: Object) => {
-                    return `${units[reinforcement.id].name} - Group ${reinforcement.groupNumber}`;
-                  })
-                  .join(', ')
+              ? this.props.groupsToReinforce.map(
+                  (reinforcement: {groupNumber: number, id: string}, index: number) => (
+                    <div key={`${reinforcement.id}-${index}`}>{`${
+                      units[reinforcement.id].name
+                    } - Group ${reinforcement.groupNumber}`}</div>
+                  )
+                )
               : 'None'}
           </div>
         </div>

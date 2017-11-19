@@ -154,7 +154,9 @@ class ImperialAvatar extends React.Component<ImperialAvatarPropsType, ImperialAv
           <div style={avatarStyles}>
             <img alt={this.props.imperialUnit.name} src={imperialPng} style={styles.image} />
           </div>
-          <div style={styles.name}>{`${this.props.imperialUnit.name} G${this.props.imperialUnit.groupNumber}`}</div>
+          <div style={styles.name}>{`${this.props.imperialUnit.name} G${
+            this.props.imperialUnit.groupNumber
+          }`}</div>
           <div style={styles.numInGroup}>{this.props.imperialUnit.currentNumFigures}</div>
         </div>
         {this.state.displayPopup ? this.renderPopup() : null}
