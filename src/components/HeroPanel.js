@@ -1,6 +1,6 @@
 // @flow
 
-import HeroAvatar from './HeroAvatar';
+import HeroPanelAvatar from './HeroPanelAvatar';
 import noop from 'lodash/noop';
 import React from 'react';
 import rebels from '../data/rebels.json';
@@ -45,7 +45,7 @@ class HeroPanel extends React.Component<HeroPanelPropsType> {
         <div style={styles.header}>Heroes</div>
         <div style={styles.avatarContainer}>
           {this.props.roster.map((id: string) => (
-            <HeroAvatar
+            <HeroPanelAvatar
               activated={this.props.activatedRebels.includes(id)}
               displayFullName={false}
               elite={rebels[id].elite}

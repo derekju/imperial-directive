@@ -18,6 +18,7 @@ const styles = {
 
 type ButtonPropsType = {
   onClick: Function,
+  style?: Object,
   text: string,
   width?: number,
 };
@@ -31,6 +32,7 @@ class Button extends React.Component<ButtonPropsType> {
     const buttonStyles = {
       ...styles.button,
       ...(this.props.width ? {width: `${this.props.width}px`} : {}),
+      ...(this.props.style || {}),
     };
 
     return (

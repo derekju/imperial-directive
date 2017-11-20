@@ -27,13 +27,19 @@ export type RebelUnitType = {
 
 const initialState = {
   activatedRebels: [],
-  roster: ['diala', 'fenn', 'gaarkhan', 'gideon'],
+  roster: [],
   withdrawnHeroes: [],
   woundedHeroes: [],
 };
 
 export default (state: RebelsStateType = initialState, action: Object) => {
   switch (action.type) {
+    case SET_ROSTER:
+      const {roster} = action.payload;
+      return {
+        ...state,
+        roster: roster.sort(),
+      };
     case SET_REBEL_HERO_ACTIVATED:
       const {id} = action.payload;
       return {
@@ -67,18 +73,23 @@ export default (state: RebelsStateType = initialState, action: Object) => {
 
 // Action types
 
+export const SET_ROSTER = 'SET_ROSTER';
 export const SET_REBEL_HERO_ACTIVATED = 'SET_REBEL_HERO_ACTIVATED';
 export const WOUND_REBEL_HERO = 'WOUND_REBEL_HERO';
 
 // Action creators
 
+export const setRoster = (roster: string[]) => ({
+  payload: {roster},
+  type: SET_ROSTER,
+});
 export const setRebelHeroActivated = (id: string) => ({
   payload: {id},
-  type: 'SET_REBEL_HERO_ACTIVATED',
+  type: SET_REBEL_HERO_ACTIVATED,
 });
 export const woundRebelHero = (id: string) => ({
   payload: {id},
-  type: 'WOUND_REBEL_HERO',
+  type: WOUND_REBEL_HERO,
 });
 
 // Selectors

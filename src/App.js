@@ -1,6 +1,7 @@
 // @flow
 
 import {BrowserRouter as Router, Route} from 'react-router-dom';
+import CharacterSelectionContainer from './containers/CharacterSelectionContainer';
 import MissionContainer from './containers/MissionContainer';
 import React from 'react';
 import TitleScreen from './components/TitleScreen';
@@ -27,6 +28,7 @@ class App extends React.Component<{}> {
           <div style={styles.canvas}>
             <Route exact path="/" component={TitleScreen} />
             <Route path="/mission" component={MissionContainer} />
+            <Route path="/character_selection" component={CharacterSelectionContainer} />
           </div>
         </div>
       </Router>

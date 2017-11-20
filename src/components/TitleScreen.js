@@ -25,7 +25,7 @@ type TitleScreenPropsType = {
 
 class TitleScreen extends React.Component<TitleScreenPropsType> {
   startMission = () => {
-    this.props.history.push('/mission');
+    this.props.history.push('/character_selection');
   };
 
   render() {
