@@ -9,6 +9,9 @@ const styles = {
     marginTop: '15px',
     textAlign: 'center',
   },
+  emphasis: {
+    fontWeight: 'bold',
+  },
 };
 
 type MissionInstructionsModalPropsType = {
@@ -25,11 +28,11 @@ class BeginRound extends React.Component<MissionInstructionsModalPropsType> {
     return (
       <Modal buttonText={'OK'} handleButtonClick={this.handleButtonClick} title="Mission Setup">
         <div style={styles.base}>
-          <div>Setup the mission map according to the campaign guide.</div>
+          <div>Set up the mission map according to the campaign guide.</div>
           <br />
           <div>Read the deployment and setup section and add the figures to the map as specified.</div>
           <br />
-          <div>Read the Mission Briefing and nothing else!</div>
+          <div style={styles.emphasis}>Read only the Mission Briefing and nothing else!</div>
         </div>
       </Modal>
     );

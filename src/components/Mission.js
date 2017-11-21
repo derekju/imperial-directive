@@ -2,6 +2,7 @@
 
 import AiCard from './AiCard';
 import Button from './Button';
+import {CURRENT_MISSION_KEY} from '../constants';
 import HeroPanelContainer from '../containers/HeroPanelContainer';
 import ImperialDashboardContainer from '../containers/ImperialDashboardContainer';
 import type {ImperialUnitType} from '../reducers/imperials';
@@ -56,6 +57,9 @@ const styles = {
   panelItem: {
     marginBottom: '10px',
   },
+  quitButton: {
+    marginRight: '10px',
+  },
   rightPanelContainer: {
     margin: '10px 0 0 10px',
     width: '204px',
@@ -77,6 +81,11 @@ type MissionPropsType = {
 class Mission extends React.Component<MissionPropsType> {
   handleQuit = () => {
     this.props.history.push('/');
+  };
+
+  handleReset = () => {
+    window.localStorage.setItem(CURRENT_MISSION_KEY, '');
+    window.location.href = '/';
   };
 
   render() {
@@ -103,7 +112,8 @@ class Mission extends React.Component<MissionPropsType> {
           </div>
         </div>
         <div style={styles.menuContainer}>
-          <Button onClick={this.handleQuit} text="Quit" width={80} />
+          <Button style={styles.quitButton} onClick={this.handleQuit} text="Quit" width={80} />
+          <Button onClick={this.handleReset} text="Reset" width={80} />
         </div>
         {this.props.activatedGroup ? (
           <div style={styles.activatedGroupContainer}>
