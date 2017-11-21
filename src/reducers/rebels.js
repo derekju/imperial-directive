@@ -37,7 +37,7 @@ export default (state: RebelsStateType = initialState, action: Object) => {
     case SET_ROSTER:
       const {roster} = action.payload;
       return {
-        ...state,
+        ...initialState,
         roster: roster.sort(),
       };
     case SET_REBEL_HERO_ACTIVATED:

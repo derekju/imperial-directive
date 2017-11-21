@@ -4,7 +4,7 @@ import {BrowserRouter as Router, Route} from 'react-router-dom';
 import CharacterSelectionContainer from './containers/CharacterSelectionContainer';
 import MissionContainer from './containers/MissionContainer';
 import React from 'react';
-import TitleScreen from './components/TitleScreen';
+import TitleScreenContainer from './containers/TitleScreenContainer';
 
 const styles = {
   base: {
@@ -26,7 +26,7 @@ class App extends React.Component<{}> {
       <Router>
         <div style={styles.base}>
           <div style={styles.canvas}>
-            <Route exact path="/" component={TitleScreen} />
+            <Route exact path="/" component={TitleScreenContainer} />
             <Route path="/mission" component={MissionContainer} />
             <Route path="/character_selection" component={CharacterSelectionContainer} />
           </div>

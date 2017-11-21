@@ -30,7 +30,7 @@ export type MissionStateType = {
   mapImage: Array<Array<number>>,
   mapStates: {[key: string]: MapStateType},
   priorityTarget: string,
-  threatIncreasePerRound: number,
+  missionThreat: number,
 };
 
 export type MissionConfigType = {
@@ -65,20 +65,20 @@ const initialState = {
   },
   mapImage: [[]],
   mapStates: {},
+  missionThreat: 0,
   priorityTarget: 'the most damaged hostile figure',
-  threatIncreasePerRound: 0,
 };
 
 export default (state: MissionStateType = initialState, action: Object) => {
   switch (action.type) {
     case LOAD_MISSION:
-      const {config, threatIncreasePerRound} = action.payload;
+      const {config, missionThreat} = action.payload;
       return {
-        ...state,
+        ...initialState,
         instructions: config.instructions,
         mapImage: config.mapImage,
         mapStates: config.mapStates,
-        threatIncreasePerRound,
+        missionThreat,
       };
     case CHANGE_PLAYER_TURN:
       return {
@@ -111,7 +111,7 @@ export default (state: MissionStateType = initialState, action: Object) => {
     case STATUS_PHASE_INCREASE_THREAT:
       return {
         ...state,
-        currentThreat: state.currentThreat + state.threatIncreasePerRound,
+        currentThreat: state.currentThreat + state.missionThreat,
       };
     case STATUS_PHASE_DEPLOY_REINFORCE_DONE:
       return {
@@ -153,8 +153,8 @@ export const SET_PRIORITY_TARGET = 'SET_PRIORITY_TARGET';
 
 // Action creators
 
-export const loadMission = (config: MissionConfigType, threatIncreasePerRound: number) => ({
-  payload: {config, threatIncreasePerRound},
+export const loadMission = (config: MissionConfigType, missionThreat: number) => ({
+  payload: {config, missionThreat},
   type: LOAD_MISSION,
 });
 export const changePlayerTurn = (player: number) => ({payload: {player}, type: CHANGE_PLAYER_TURN});

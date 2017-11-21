@@ -41,13 +41,13 @@ class ImperialDashboard extends React.Component<ImperialDashboardPropsType> {
           <span style={styles.headerText}>Imperials</span>
         </div>
         <div style={styles.sectionContents}>
-          {this.props.deployedGroups.map((imperialUnit: ImperialUnitType) => (
+          {this.props.deployedGroups.map((imperialUnit: ImperialUnitType, index: number) => (
             <ImperialAvatar
               defeatImperialFigure={this.props.defeatImperialFigure}
               exhausted={imperialUnit.exhausted}
               imperialUnit={imperialUnit}
               isImperialPlayerTurn={this.props.isImperialPlayerTurn}
-              key={`${imperialUnit.id}-${imperialUnit.groupNumber}`}
+              key={`${imperialUnit.id}-${imperialUnit.groupNumber}-${index}`}
             />
           ))}
         </div>

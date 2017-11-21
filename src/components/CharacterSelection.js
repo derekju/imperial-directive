@@ -1,8 +1,10 @@
 // @flow
 
+import {LIGHT_WHITE, SUCCESS_GREEN} from '../styles/colors';
 import {BrowserRouter as Router} from 'react-router-dom';
 import Button from './Button';
 import HeroAvatar from './HeroAvatar';
+import missions from '../data/missions.json';
 import React from 'react';
 import rebels from '../data/rebels.json';
 
@@ -13,7 +15,7 @@ const styles = {
   },
   base: {
     alignItems: 'center',
-    backgroundColor: '#eee',
+    backgroundColor: LIGHT_WHITE,
     display: 'flex',
     flexDirection: 'column',
     height: '100%',
@@ -29,6 +31,9 @@ const styles = {
     padding: '5px 5px 2px 5px',
     width: '150px',
   },
+  section: {
+    width: '800px',
+  },
   sectionContents: {
     border: '2px solid black',
     borderTop: 'none',
@@ -40,14 +45,21 @@ const styles = {
   sectionHeader: {
     borderBottom: '2px solid black',
   },
+  selectInput: {
+    fontSize: '14px',
+    height: '40px',
+    width: '300px',
+  },
   selected: {
-    border: '3px solid green',
+    border: `3px solid ${SUCCESS_GREEN}`,
   },
 };
 
 type CharacterSelectionPropsType = {
   availableHeroes: string[],
+  availableMissions: string[],
   history: Object,
+  setMission: Function,
   setRoster: Function,
 };
 
@@ -59,6 +71,8 @@ class CharacterSelection extends React.Component<
   CharacterSelectionPropsType,
   CharacterSelectionStateType
 > {
+  select: ?HTMLSelectElement;
+
   state = {
     selectedRoster: [],
   };
@@ -69,6 +83,10 @@ class CharacterSelection extends React.Component<
 
   submit = () => {
     this.props.setRoster(this.state.selectedRoster);
+    if (this.select) {
+      const selectedMission = this.select.options[this.select.selectedIndex].value;
+      this.props.setMission(selectedMission);
+    }
     this.props.history.push('/mission');
   };
 
@@ -92,11 +110,29 @@ class CharacterSelection extends React.Component<
     }
   };
 
+  saveSelect = (ref: ?HTMLSelectElement) => {
+    this.select = ref;
+  };
+
   render() {
     return (
       <Router>
         <div style={styles.base}>
-          <div>
+          <div style={styles.section}>
+            <div style={styles.sectionHeader}>
+              <span style={styles.headerText}>Select Mission</span>
+            </div>
+            <div style={styles.sectionContents}>
+              <select ref={this.saveSelect} style={styles.selectInput}>
+                {this.props.availableMissions.map((missionId: string) => (
+                  <option key={missionId} value={missionId}>
+                    {missions[missionId].name}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div>
+          <div style={styles.section}>
             <div style={styles.sectionHeader}>
               <span style={styles.headerText}>Select Heroes</span>
             </div>

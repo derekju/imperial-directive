@@ -103,7 +103,7 @@ export default (state: ImperialsStateType = initialState, action: Object) => {
     case LOAD_MISSION:
       const {config} = action.payload;
       return {
-        ...state,
+        ...initialState,
         deployedGroups: config.initialGroups.map(createNewGroup),
         openGroups: populateOpenGroups(config.openGroups),
       };

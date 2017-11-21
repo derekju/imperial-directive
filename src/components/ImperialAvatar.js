@@ -1,6 +1,6 @@
 // @flow
 
-import {ELITE_RED, LIGHT_WHITE, IMPERIAL_BLUE} from '../styles/colors';
+import {ELITE_RED, LIGHT_WHITE, IMPERIAL_BLUE, SUCCESS_GREEN} from '../styles/colors';
 import Arrow from 'react-svg-arrow';
 import Button from './Button';
 import imperialPng from '../assets/icons/imperial.png';
@@ -29,7 +29,7 @@ const styles = {
     border: `3px solid ${ELITE_RED}`,
   },
   exhausted: {
-    border: '3px solid green',
+    border: `3px solid ${SUCCESS_GREEN}`,
     opacity: 0.4,
   },
   image: {

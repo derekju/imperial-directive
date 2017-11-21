@@ -2,6 +2,7 @@
 
 import {BrowserRouter as Router} from 'react-router-dom';
 import Button from './Button';
+import {LIGHT_WHITE} from '../styles/colors';
 import React from 'react';
 
 const styles = {
@@ -11,21 +12,33 @@ const styles = {
   },
   base: {
     alignItems: 'center',
-    backgroundColor: '#eee',
+    backgroundColor: LIGHT_WHITE,
     display: 'flex',
     flexDirection: 'column',
     height: '100%',
     justifyContent: 'space-around',
   },
+  button: {
+    marginBottom: '10px',
+  },
+  buttonContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+  },
 };
 
 type TitleScreenPropsType = {
   history: Object,
+  resumeMissionAvailable: boolean,
 };
 
 class TitleScreen extends React.Component<TitleScreenPropsType> {
   startMission = () => {
     this.props.history.push('/character_selection');
+  };
+
+  resumeMission = () => {
+    this.props.history.push('/mission');
   };
 
   render() {
@@ -70,8 +83,11 @@ class TitleScreen extends React.Component<TitleScreenPropsType> {
               '██████████████████████████████████████████████████████████████████████████████████████\n'
             }
           </pre>
-          <div>
-            <Button text="New Mission" onClick={this.startMission} />
+          <div style={styles.buttonContainer}>
+            <Button style={styles.button} text="New Mission" onClick={this.startMission} />
+            {this.props.resumeMissionAvailable ? (
+              <Button style={styles.button} text="Resume Mission" onClick={this.resumeMission} />
+            ) : null}
           </div>
           <div style={styles.about}>
             <div>

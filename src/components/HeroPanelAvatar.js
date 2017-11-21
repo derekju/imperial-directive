@@ -1,6 +1,6 @@
 // @flow
 
-import {LIGHT_WHITE, ELITE_RED, REBEL_RED} from '../styles/colors';
+import {LIGHT_WHITE, ELITE_RED, REBEL_RED, SUCCESS_GREEN} from '../styles/colors';
 import Arrow from 'react-svg-arrow';
 import Button from './Button';
 import HeroAvatar from './HeroAvatar';
@@ -9,7 +9,7 @@ import React from 'react';
 
 const styles = {
   activated: {
-    border: '3px solid green',
+    border: `3px solid ${SUCCESS_GREEN}`,
     opacity: 0.4,
   },
   avatar: {
