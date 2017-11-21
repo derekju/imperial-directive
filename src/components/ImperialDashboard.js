@@ -27,6 +27,7 @@ const styles = {
 };
 
 type ImperialDashboardPropsType = {
+  activateImperialGroup: Function,
   defeatImperialFigure: Function,
   deployedGroups: ImperialUnitType[],
   isImperialPlayerTurn: boolean,
@@ -43,6 +44,7 @@ class ImperialDashboard extends React.Component<ImperialDashboardPropsType> {
         <div style={styles.sectionContents}>
           {this.props.deployedGroups.map((imperialUnit: ImperialUnitType, index: number) => (
             <ImperialAvatar
+              activateImperialGroup={this.props.activateImperialGroup}
               defeatImperialFigure={this.props.defeatImperialFigure}
               exhausted={imperialUnit.exhausted}
               imperialUnit={imperialUnit}

@@ -1,7 +1,7 @@
 // @flow
 
+import {activateImperialGroup, defeatImperialFigure} from '../reducers/imperials';
 import {connect} from 'react-redux';
-import {defeatImperialFigure} from '../reducers/imperials';
 import ImperialDashboard from '../components/ImperialDashboard';
 import {isImperialPlayerTurn} from '../reducers/mission';
 import type {StateType} from '../reducers/types';
@@ -12,6 +12,7 @@ const mapStateToProps = (state: StateType) => ({
 });
 
 const mapDispatchToProps = {
+  activateImperialGroup,
   defeatImperialFigure,
 };
 

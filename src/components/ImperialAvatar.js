@@ -79,6 +79,7 @@ const styles = {
 };
 
 type ImperialAvatarPropsType = {
+  activateImperialGroup: Function,
   defeatImperialFigure: Function,
   exhausted: boolean,
   imperialUnit: ImperialUnitType,
@@ -119,6 +120,11 @@ class ImperialAvatar extends React.Component<ImperialAvatarPropsType, ImperialAv
     this.togglePopup();
   };
 
+  handleForceActivate = () => {
+    this.props.activateImperialGroup(this.props.imperialUnit);
+    this.togglePopup();
+  };
+
   renderPopup() {
     return (
       <div style={styles.popup}>
@@ -133,7 +139,7 @@ class ImperialAvatar extends React.Component<ImperialAvatarPropsType, ImperialAv
         </div>
         <div style={styles.popupAccent} />
         <Button text="Defeat figure" onClick={this.handleDefeatImperialFigure} />
-        <Button text="Force activate" />
+        <Button text="Force activate" onClick={this.handleForceActivate} />
         <Button text="Info" />
         <div style={styles.popupAccent} />
       </div>
