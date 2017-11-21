@@ -215,7 +215,7 @@ function* missionEndOfTurn(): Generator<*, *, *> {
   const currentRound = yield select(getCurrentRound);
   yield put(displayModal('BEGIN_ROUND', {currentRound}));
   yield call(waitForModal('BEGIN_ROUND'));
-  yield call(handleLoadMission);
+  yield put(activationPhaseBegin());
 }
 
 function* handleEndOfRebelOrImperialTurn(action: Object): Generator<*, *, *> {

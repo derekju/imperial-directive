@@ -20,11 +20,9 @@ import type {StateType} from './types';
 import units from '../data/units';
 import waitForModal from '../sagas/waitForModal';
 
-// Local state
-
-let designationMap = {};
-
 // Types
+
+export type DeisignationMapType = {[id: string]: number[]};
 
 export type ImperialUnitCommandType = {
   condition: string,
@@ -48,12 +46,13 @@ export type ImperialUnitType = {
 export type ImperialsStateType = {
   activatedGroup: ?ImperialUnitType,
   deployedGroups: ImperialUnitType[],
+  designationMap: DeisignationMapType,
   openGroups: ImperialUnitType[],
 };
 
 // Utils
 
-const createNewGroup = (id: string): ImperialUnitType => {
+const createNewGroup = (id: string, designationMap: DeisignationMapType): ImperialUnitType => {
   // Default to 1
   let groupNumber = 1;
   // Look in our designation map to see if this unit exists, if so, we need to change the number
@@ -95,6 +94,7 @@ const createNewGroup = (id: string): ImperialUnitType => {
 const initialState = {
   activatedGroup: null,
   deployedGroups: [],
+  designationMap: {},
   openGroups: [],
 };
 
@@ -102,9 +102,11 @@ export default (state: ImperialsStateType = initialState, action: Object) => {
   switch (action.type) {
     case LOAD_MISSION:
       const {config} = action.payload;
+      const designationMap = {};
       return {
         ...initialState,
-        deployedGroups: config.initialGroups.map(createNewGroup),
+        deployedGroups: config.initialGroups.map((id: string) => createNewGroup(id, designationMap)),
+        designationMap,
         openGroups: populateOpenGroups(config.openGroups),
       };
     case ACTIVATE_IMPERIAL_GROUP: {
@@ -128,15 +130,24 @@ export default (state: ImperialsStateType = initialState, action: Object) => {
       };
     }
     case SET_IMPERIAL_FIGURES_AFTER_DEFEAT: {
-      const {deployedGroups, openGroups} = action.payload;
+      const {deployedGroups, groupToDecrement, openGroups} = action.payload;
+
       return {
         ...state,
         deployedGroups,
+        designationMap: {
+          ...state.designationMap,
+          [groupToDecrement.id]: groupToDecrement.currentNumFigures === 1 ? state.designationMap[groupToDecrement.id].filter(
+          (num: number) => num !== groupToDecrement.groupNumber
+        ) : state.designationMap[groupToDecrement.id]
+        },
         openGroups: state.openGroups.concat(openGroups),
       };
     }
     case SET_IMPERIAL_FIGURES_AFTER_DEPLOY_REINFORCE: {
       const {groupsToDeploy, groupsToReinforce, newOpenGroups} = action.payload;
+
+      // We're mutating state.designationMap here!
       return {
         ...state,
         deployedGroups: state.deployedGroups
@@ -152,7 +163,7 @@ export default (state: ImperialsStateType = initialState, action: Object) => {
             }
             return deployedGroup;
           })
-          .concat(groupsToDeploy.map(createNewGroup)),
+          .concat(groupsToDeploy.map((id: string) => createNewGroup(id, state.designationMap))),
         openGroups: newOpenGroups,
       };
     }
@@ -167,9 +178,10 @@ export default (state: ImperialsStateType = initialState, action: Object) => {
       };
     case DEPLOY_NEW_GROUPS:
       const {groupIds} = action.payload;
+      // We're mutating state.designationMap here!
       return {
         ...state,
-        deployedGroups: state.deployedGroups.concat(groupIds.map(createNewGroup)),
+        deployedGroups: state.deployedGroups.concat(groupIds.map((id: string) => createNewGroup(id, state.designationMap))),
       };
     default:
       return state;
@@ -204,13 +216,14 @@ export const defeatImperialFigure = (group: ImperialUnitType) => ({
 });
 export const setImperialFiguresAfterDefeat = (
   deployedGroups: ImperialUnitType[],
-  openGroups: ImperialUnitType[]
+  openGroups: ImperialUnitType[],
+  groupToDecrement: ImperialUnitType
 ) => ({
-  payload: {deployedGroups, openGroups},
+  payload: {deployedGroups, groupToDecrement, openGroups},
   type: SET_IMPERIAL_FIGURES_AFTER_DEFEAT,
 });
 export const setImperialFiguresAfterDeployReinforce = (
-  groupsToDeploy: Array<{id: string}>,
+  groupsToDeploy: string[],
   groupsToReinforce: Array<{groupNumber: number, id: string}>,
   newOpenGroups: ImperialUnitType[]
 ) => ({
@@ -304,14 +317,14 @@ function* handleImperialFigureDefeat(action: Object): Generator<*, *, *> {
     groupsToAddToOpen
   );
 
-  if (groupToDecrement.currentNumFigures === 1) {
-    // Mutate designationMap here
-    designationMap[groupToDecrement.id] = designationMap[groupToDecrement.id].filter(
-      (num: number) => num !== groupToDecrement.groupNumber
-    );
-  }
+  // if (groupToDecrement.currentNumFigures === 1) {
+  //   // Mutate designationMap here
+  //   designationMap[groupToDecrement.id] = designationMap[groupToDecrement.id].filter(
+  //     (num: number) => num !== groupToDecrement.groupNumber
+  //   );
+  // }
 
-  yield put(setImperialFiguresAfterDefeat(newDeployedGroups, groupsToAddToOpen));
+  yield put(setImperialFiguresAfterDefeat(newDeployedGroups, groupsToAddToOpen, groupToDecrement));
 }
 
 function* handleImperialActivation(): Generator<*, *, *> {
