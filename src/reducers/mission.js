@@ -196,6 +196,8 @@ export const getMapStates = (state: StateType) => state.mission.mapStates;
 function* handleLoadMission(): Generator<*, *, *> {
   // yield put(eventPhaseBegin());
   // yield take(EVENT_PHASE_END);
+  yield put(displayModal('MISSION_INSTRUCTIONS'));
+  yield call(waitForModal('MISSION_INSTRUCTIONS'));
   yield put(activationPhaseBegin());
 }
 
