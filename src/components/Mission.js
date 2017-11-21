@@ -1,6 +1,7 @@
 // @flow
 
 import AiCard from './AiCard';
+import Button from './Button';
 import HeroPanelContainer from '../containers/HeroPanelContainer';
 import ImperialDashboardContainer from '../containers/ImperialDashboardContainer';
 import type {ImperialUnitType} from '../reducers/imperials';
@@ -37,8 +38,13 @@ const styles = {
     margin: '10px 0 0 10px',
     width: '124px',
   },
-  missionControlContainer: {
+
+  menuContainer: {
     ...positionAbsolute(null, 10, 10, null),
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    width: '204px',
   },
   modalContainer: {
     ...positionAbsolute(0, 0, 0, 0),
@@ -62,12 +68,17 @@ type MissionPropsType = {
   currentRound: number,
   currentThreat: number,
   displayModal: boolean,
+  history: Object,
   instructions: {imperialVictory: string, rebelVictory: string},
   priorityTarget: string,
   setImperialGroupActivated: Function,
 };
 
 class Mission extends React.Component<MissionPropsType> {
+  handleQuit = () => {
+    this.props.history.push('/');
+  };
+
   render() {
     return (
       <div style={styles.base}>
@@ -90,6 +101,9 @@ class Mission extends React.Component<MissionPropsType> {
               instructions={this.props.instructions}
             />
           </div>
+        </div>
+        <div style={styles.menuContainer}>
+          <Button onClick={this.handleQuit} text="Quit" width={80} />
         </div>
         {this.props.activatedGroup ? (
           <div style={styles.activatedGroupContainer}>
