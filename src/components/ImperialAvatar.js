@@ -63,7 +63,7 @@ const styles = {
     border: '2px solid black',
     display: 'flex',
     flexDirection: 'column',
-    height: '175px',
+    height: '125px',
     justifyContent: 'space-between',
     width: '175px',
     zIndex: 1,
@@ -140,7 +140,6 @@ class ImperialAvatar extends React.Component<ImperialAvatarPropsType, ImperialAv
         <div style={styles.popupAccent} />
         <Button text="Defeat figure" onClick={this.handleDefeatImperialFigure} />
         <Button text="Force activate" onClick={this.handleForceActivate} />
-        <Button text="Info" />
         <div style={styles.popupAccent} />
       </div>
     );
