@@ -76,6 +76,12 @@ const styles = {
   popupArrow: {
     ...positionAbsolute(76, null, null, -11),
   },
+  popupMask: {
+    ...positionAbsolute(79, null, null, -1),
+    backgroundColor: LIGHT_WHITE,
+    height: '16px',
+    width: '2px',
+  },
 };
 
 type ImperialAvatarPropsType = {
@@ -141,6 +147,7 @@ class ImperialAvatar extends React.Component<ImperialAvatarPropsType, ImperialAv
         <Button text="Defeat figure" onClick={this.handleDefeatImperialFigure} />
         <Button text="Force activate" onClick={this.handleForceActivate} />
         <div style={styles.popupAccent} />
+        <div style={styles.popupMask} />
       </div>
     );
   }

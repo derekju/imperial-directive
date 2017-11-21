@@ -62,6 +62,12 @@ const styles = {
   popupArrow: {
     ...positionAbsolute(52, null, null, -11),
   },
+  popupMask: {
+    ...positionAbsolute(55, null, null, -1),
+    backgroundColor: LIGHT_WHITE,
+    height: '16px',
+    width: '2px',
+  },
   withdrawn: {
     backgroundColor: 'black',
     opacity: 0.25,
@@ -134,6 +140,7 @@ class HeroPanelAvatar extends React.Component<HeroPanelAvatarPropsType, HeroPane
           onClick={this.handleSetWounded}
         />
         <div style={styles.popupAccent} />
+        <div style={styles.popupMask} />
       </div>
     );
   }
