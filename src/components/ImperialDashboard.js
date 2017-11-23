@@ -62,7 +62,10 @@ class ImperialDashboard extends React.Component<
         </div>
         <div style={styles.sectionContents} ref={this.saveSectionContents}>
           {this.props.deployedGroups.map((imperialUnit: ImperialUnitType, index: number) => (
-            <div key={`${imperialUnit.id}-${imperialUnit.groupNumber}-${index}`} style={styles.avatarWrapper}>
+            <div
+              key={`${imperialUnit.id}-${imperialUnit.groupNumber}-${index}`}
+              style={styles.avatarWrapper}
+            >
               <ImperialAvatar
                 activateImperialGroup={this.props.activateImperialGroup}
                 defeatImperialFigure={this.props.defeatImperialFigure}

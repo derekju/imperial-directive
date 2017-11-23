@@ -78,7 +78,9 @@ class AiCard extends React.Component<AiCardPropsType> {
       <div style={styles.commandEntry} key={key}>
         <div style={styles.condition}>{`${condition}:`}</div>
         <div>
-          {commandArray.map((text: string, index: number) => expandText(text, index, this.props.priorityTarget, styles.icon))}
+          {commandArray.map((text: string, index: number) =>
+            expandText(text, index, this.props.priorityTarget, styles.icon)
+          )}
         </div>
       </div>
     );

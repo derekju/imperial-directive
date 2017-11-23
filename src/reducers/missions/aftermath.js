@@ -6,6 +6,7 @@ import {
   getCurrentRound,
   getMapStates,
   SET_MAP_STATE_ACTIVATED,
+  setDeploymentPoint,
   setPriorityTarget,
   statusPhaseEndRoundEffectsDone,
   STATUS_PHASE_END_ROUND_EFFECTS,
@@ -20,6 +21,9 @@ const PRIORITY_TARGET_DOOR = 'the door';
 const PRIORITY_TARGET_TERMINAL_2 = 'terminal 2';
 const PRIORITY_TARGET_NEAREST_TERMINAL = 'the nearest active terminal';
 const PRIORITY_TARGET_MOST_WOUNDED = 'the most damaged hero';
+
+const DEPLOYMENT_POINT_GREEN = 'The green deployment point';
+const DEPLOYMENT_POINT_RED = 'If Lockdown option 2 was chosen: the red deployment point. Otherwise, the green deployment point';
 
 // Local state
 
@@ -39,6 +43,7 @@ function* handleLockDownEvent(): Generator<*, *, *> {
       // Pick which one we'll do and then do it
       yield put(displayModal('AFTERMATH_LOCKDOWN'));
       yield call(waitForModal('AFTERMATH_LOCKDOWN'));
+      yield put(setDeploymentPoint(DEPLOYMENT_POINT_RED));
       // We're done
       requireEndRoundEffects = false;
       yield put(statusPhaseEndRoundEffectsDone());
@@ -53,7 +58,13 @@ function* handleFortifiedEvent(): Generator<*, *, *> {
     const {id, type, value} = action.payload;
     if (id === 1 && type === 'door' && value === true) {
       // Display a modal saying we're going to reinforce
-      yield put(displayModal('RESOLVE_EVENT', {eventName: 'Fortified'}));
+      yield put(
+        displayModal('RESOLVE_EVENT', {
+          eventName: 'Fortified',
+          text:
+            'The E-Web Engineer should be deployed to the Yellow deployment point in the Atrium',
+        })
+      );
       yield call(waitForModal('RESOLVE_EVENT'));
       // Do the deployment from reserved groups
       yield put(deployNewGroups(['eWebEngineer', 'stormtrooper', 'imperialOfficer']));
@@ -147,6 +158,8 @@ Priority target definitions:
 export function* aftermath(): Generator<*, *, *> {
   // Initially set to door
   yield put(setPriorityTarget(PRIORITY_TARGET_DOOR));
+  // Initially set to green
+  yield put(setDeploymentPoint(DEPLOYMENT_POINT_GREEN));
 
   yield all([
     fork(handleLockDownEvent),

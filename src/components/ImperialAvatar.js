@@ -109,7 +109,8 @@ class ImperialAvatar extends React.Component<ImperialAvatarPropsType, ImperialAv
   handlePopupPositioning: Function = (htmlDivPopup: ?HTMLDivElement) => {
     if (htmlDivPopup && this.props.parentDiv) {
       htmlDivPopup.style.left = `${(this.props.index + 1) * 106 -
-        this.props.parentDiv.scrollLeft + 10}px`;
+        this.props.parentDiv.scrollLeft +
+        10}px`;
     }
   };
 

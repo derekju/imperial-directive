@@ -26,6 +26,7 @@ export type MissionStateType = {
   currentPhase: number,
   currentRound: number,
   currentThreat: number,
+  deploymentPoint: string,
   instructions: {imperialVictory: string, rebelVictory: string},
   mapImage: Array<Array<string>>,
   mapStates: {[key: string]: MapStateType},
@@ -59,6 +60,7 @@ const initialState = {
   currentPhase: PHASE_EVENT,
   currentRound: 1,
   currentThreat: 0,
+  deploymentPoint: 'The green deployment point closest to the most hostile figures',
   instructions: {
     imperialVictory: '',
     rebelVictory: '',
@@ -128,6 +130,11 @@ export default (state: MissionStateType = initialState, action: Object) => {
         ...state,
         priorityTarget: action.payload.priorityTarget,
       };
+    case SET_DEPLOYMENT_POINT:
+      return {
+        ...state,
+        deploymentPoint: action.payload.deploymentPoint,
+      };
     default:
       return state;
   }
@@ -150,6 +157,7 @@ export const STATUS_PHASE_END_ROUND_EFFECTS = 'STATUS_PHASE_END_ROUND_EFFECTS';
 export const STATUS_PHASE_END_ROUND_EFFECTS_DONE = 'STATUS_PHASE_END_ROUND_EFFECTS_DONE';
 export const STATUS_PHASE_ADVANCE_ROUND = 'STATUS_PHASE_ADVANCE_ROUND';
 export const SET_PRIORITY_TARGET = 'SET_PRIORITY_TARGET';
+export const SET_DEPLOYMENT_POINT = 'SET_DEPLOYMENT_POINT';
 
 // Action creators
 
@@ -179,6 +187,10 @@ export const statusPhaseAdvanceRound = () => ({type: STATUS_PHASE_ADVANCE_ROUND}
 export const setPriorityTarget = (priorityTarget: string) => ({
   payload: {priorityTarget},
   type: SET_PRIORITY_TARGET,
+});
+export const setDeploymentPoint = (deploymentPoint: string) => ({
+  payload: {deploymentPoint},
+  type: SET_DEPLOYMENT_POINT,
 });
 
 // Selectors

@@ -14,7 +14,12 @@ import strengthPng from '../assets/icons/strength.png';
 import surgePng from '../assets/icons/surge.png';
 import techPng from '../assets/icons/tech.png';
 
-export const expandText = (text: string, index: number, priorityTarget: string, styles: ?Object = {}) => {
+export const expandText = (
+  text: string,
+  index: number,
+  priorityTarget: string,
+  styles: ?Object = {}
+) => {
   switch (text) {
     case '{ACTION}':
       return <img key={`${text}-${index}`} alt="Action" src={actionPng} style={styles} />;

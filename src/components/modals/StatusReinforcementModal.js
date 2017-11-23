@@ -22,6 +22,7 @@ const styles = {
 
 type StatusReinforcementModalPropsType = {
   closeModals: Function,
+  deploymentPoint: string,
   groupsToDeploy: string[],
   groupsToReinforce: Array<{groupNumber: number, id: string}>,
   type: string,
@@ -40,6 +41,12 @@ class StatusReinforcementModal extends React.Component<StatusReinforcementModalP
         title="Deployment and Reinforcement"
       >
         <div style={styles.base}>
+          {this.props.groupsToDeploy.length ? (
+            <div>
+              <div style={styles.header}>Location to deploy:</div>
+              <div style={styles.units}>{this.props.deploymentPoint}</div>
+            </div>
+          ) : null}
           <div style={styles.header}>Units to deploy:</div>
           <div style={styles.units}>
             {this.props.groupsToDeploy.length
