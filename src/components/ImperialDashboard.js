@@ -5,8 +5,12 @@ import React from 'react';
 import ImperialAvatar from './ImperialAvatar';
 
 const styles = {
+  avatarWrapper: {
+    paddingRight: '20px',
+  },
   base: {
-    marginBottom: '20px',
+    marginBottom: '10px',
+    position: 'relative',
   },
   headerText: {
     backgroundColor: 'black',
@@ -16,13 +20,14 @@ const styles = {
     width: '100px',
   },
   sectionContents: {
+    WebkitOverflowScrolling: 'touch',
+    border: '2px solid black',
     display: 'flex',
     flexDirection: 'row',
-    flexWrap: 'wrap',
-  },
-  sectionHeader: {
-    borderBottom: '2px solid black',
-    marginBottom: '15px',
+    height: '135px',
+    overflowX: 'scroll',
+    overflowY: 'hidden',
+    padding: '10px 10px 0',
   },
 };
 
@@ -34,23 +39,42 @@ type ImperialDashboardPropsType = {
   setImperialGroupActivated: Function,
 };
 
-class ImperialDashboard extends React.Component<ImperialDashboardPropsType> {
+type ImperialDashboardStateType = {
+  htmlDivSectionContents: ?HTMLDivElement,
+};
+
+class ImperialDashboard extends React.Component<
+  ImperialDashboardPropsType,
+  ImperialDashboardStateType
+> {
+  state = {
+    htmlDivSectionContents: null,
+  };
+
+  saveSectionContents = (htmlDivSectionContents: ?HTMLDivElement) => {
+    this.setState({htmlDivSectionContents: htmlDivSectionContents});
+  };
+
   render() {
     return (
       <div style={styles.base}>
-        <div style={styles.sectionHeader}>
+        <div>
           <span style={styles.headerText}>Imperials</span>
         </div>
-        <div style={styles.sectionContents}>
+        <div style={styles.sectionContents} ref={this.saveSectionContents}>
           {this.props.deployedGroups.map((imperialUnit: ImperialUnitType, index: number) => (
-            <ImperialAvatar
-              activateImperialGroup={this.props.activateImperialGroup}
-              defeatImperialFigure={this.props.defeatImperialFigure}
-              exhausted={imperialUnit.exhausted}
-              imperialUnit={imperialUnit}
-              isImperialPlayerTurn={this.props.isImperialPlayerTurn}
-              key={`${imperialUnit.id}-${imperialUnit.groupNumber}-${index}`}
-            />
+            <div style={styles.avatarWrapper}>
+              <ImperialAvatar
+                activateImperialGroup={this.props.activateImperialGroup}
+                defeatImperialFigure={this.props.defeatImperialFigure}
+                exhausted={imperialUnit.exhausted}
+                imperialUnit={imperialUnit}
+                index={index}
+                isImperialPlayerTurn={this.props.isImperialPlayerTurn}
+                key={`${imperialUnit.id}-${imperialUnit.groupNumber}-${index}`}
+                parentDiv={this.state.htmlDivSectionContents}
+              />
+            </div>
           ))}
         </div>
       </div>

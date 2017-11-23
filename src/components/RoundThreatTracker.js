@@ -11,7 +11,7 @@ const styles = {
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'center',
-    width: '120px',
+    width: '110px',
   },
   contents: {
     color: 'black',
@@ -25,10 +25,10 @@ const styles = {
     textAlign: 'center',
   },
   icon: {
-    height: '36px',
+    height: '29px',
     marginRight: '5px',
     marginTop: '4px',
-    width: '30px',
+    width: '24px',
   },
   marginRight: {
     marginRight: '10px',

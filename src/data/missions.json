@@ -71,5 +71,143 @@
     },
     "name": "Aftermath",
     "openGroups": 0
+  },
+  "captured": {
+    "initialGroups": [
+      "imperialOfficer", "stormtrooper"
+    ],
+    "instructions": {
+      "imperialVictory": "Heroes flip their items faceup",
+      "rebelVictory": "All heroes are wounded"
+    },
+    "mapImage": [
+      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0],
+      [0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+      [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 0],
+      [0, 1, 1, 1, 1, 0, 0, 0, 1, 1, 0, 1, 1, 1, 1, 0],
+      [0, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0],
+      [1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0],
+      [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+      [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+      [1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0],
+      [0, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0],
+      [0, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0],
+      [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+      [0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+      [0, 0, 0, 0, 1, 1, 1, 2, 2, 1, 1, 1, 1, 1, 1, 0],
+      [0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0]
+    ],
+    "mapStates": {
+      "neutral-1": {
+        "activated": false,
+        "coordinates": {
+          "x": 3,
+          "y": 1
+        },
+        "description": "Hidden Rebel",
+        "id": 1,
+        "type": "neutral"
+      },
+      "neutral-2": {
+        "activated": false,
+        "coordinates": {
+          "x": 6,
+          "y": 6
+        },
+        "description": "Hidden Rebel",
+        "id": 2,
+        "type": "neutral"
+      },
+      "neutral-3": {
+        "activated": false,
+        "coordinates": {
+          "x": 9,
+          "y": 11
+        },
+        "description": "Hidden Rebel",
+        "id": 3,
+        "type": "neutral"
+      },
+      "neutral-4": {
+        "activated": false,
+        "coordinates": {
+          "x": 0,
+          "y": 12
+        },
+        "description": "Hidden Rebel",
+        "id": 4,
+        "type": "neutral"
+      }
+    },
+    "name": "Captured",
+    "openGroups": 3
+  },
+  "friendsOfOld": {
+    "initialGroups": [
+      "imperialOfficer", "stormtrooper"
+    ],
+    "instructions": {
+      "imperialVictory": "2 Rebel Troopers are defeated or when all heroes are wounded",
+      "rebelVictory": "2 Rebel Troopers escape"
+    },
+    "mapImage": [
+      [0, 0, 0, 0, 0, 0, 0, 0, 1, 1],
+      [0, 0, 1, 1, 1, 1, 1, 1, 1, 1],
+      [0, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+      [0, 1, 1, 1, 1, 0, 0, 0, 1, 1],
+      [0, 1, 1, 1, 0, 0, 0, 0, 1, 1],
+      [1, 1, 1, 0, 0, 0, 0, 0, 1, 1],
+      [1, 1, 2, 1, 1, 1, 1, 1, 1, 1],
+      [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+      [1, 1, 1, 1, 1, 1, 2, 1, 1, 1],
+      [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+      [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+      [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+      [1, 1, 1, 1, 0, 0, 0, 0, 0, 0]
+    ],
+    "mapStates": {
+      "neutral-1": {
+        "activated": false,
+        "coordinates": {
+          "x": 3,
+          "y": 1
+        },
+        "description": "Hidden Rebel",
+        "id": 1,
+        "type": "neutral"
+      },
+      "neutral-2": {
+        "activated": false,
+        "coordinates": {
+          "x": 6,
+          "y": 6
+        },
+        "description": "Hidden Rebel",
+        "id": 2,
+        "type": "neutral"
+      },
+      "neutral-3": {
+        "activated": false,
+        "coordinates": {
+          "x": 9,
+          "y": 11
+        },
+        "description": "Hidden Rebel",
+        "id": 3,
+        "type": "neutral"
+      },
+      "neutral-4": {
+        "activated": false,
+        "coordinates": {
+          "x": 0,
+          "y": 12
+        },
+        "description": "Hidden Rebel",
+        "id": 4,
+        "type": "neutral"
+      }
+    },
+    "name": "Friends of Old",
+    "openGroups": 3
   }
 }

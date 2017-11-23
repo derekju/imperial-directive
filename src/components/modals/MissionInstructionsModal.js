@@ -30,7 +30,9 @@ class BeginRound extends React.Component<MissionInstructionsModalPropsType> {
         <div style={styles.base}>
           <div>Set up the mission map according to the campaign guide.</div>
           <br />
-          <div>Read the deployment and setup section and add the figures to the map as specified.</div>
+          <div>
+            Read the deployment and setup section and add the figures to the map as specified.
+          </div>
           <br />
           <div style={styles.emphasis}>Read only the Mission Briefing and nothing else!</div>
         </div>

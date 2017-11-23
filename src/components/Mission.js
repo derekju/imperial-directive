@@ -33,13 +33,12 @@ const styles = {
     flexDirection: 'column',
     justifyContent: 'flex-start',
     margin: '10px 0 10px 10px',
-    width: '654px',
+    width: '665px',
   },
   leftPanelContainer: {
     margin: '10px 0 0 10px',
-    width: '124px',
+    width: '114px',
   },
-
   menuContainer: {
     ...positionAbsolute(null, 10, 10, null),
     display: 'flex',
@@ -62,13 +61,14 @@ const styles = {
   },
   rightPanelContainer: {
     margin: '10px 0 0 10px',
-    width: '204px',
+    width: '185px',
   },
 };
 
 type MissionPropsType = {
   activatedGroup: ?ImperialUnitType,
   currentMission: string,
+  currentMissionName: string,
   currentRound: number,
   currentThreat: number,
   displayModal: boolean,
@@ -80,10 +80,6 @@ type MissionPropsType = {
 
 class Mission extends React.Component<MissionPropsType> {
   handleQuit = () => {
-    this.props.history.push('/');
-  };
-
-  handleReset = () => {
     window.localStorage.setItem(CURRENT_MISSION_KEY, '');
     window.location.href = '/';
   };
@@ -106,14 +102,13 @@ class Mission extends React.Component<MissionPropsType> {
         <div style={styles.rightPanelContainer}>
           <div style={styles.panelItem}>
             <MissionPanel
-              currentMission={this.props.currentMission}
+              currentMission={this.props.currentMissionName}
               instructions={this.props.instructions}
             />
           </div>
         </div>
         <div style={styles.menuContainer}>
           <Button style={styles.quitButton} onClick={this.handleQuit} text="Quit" width={80} />
-          <Button onClick={this.handleReset} text="Reset" width={80} />
         </div>
         {this.props.activatedGroup ? (
           <div style={styles.activatedGroupContainer}>

@@ -105,7 +105,9 @@ export default (state: ImperialsStateType = initialState, action: Object) => {
       const designationMap = {};
       return {
         ...initialState,
-        deployedGroups: config.initialGroups.map((id: string) => createNewGroup(id, designationMap)),
+        deployedGroups: config.initialGroups.map((id: string) =>
+          createNewGroup(id, designationMap)
+        ),
         designationMap,
         openGroups: populateOpenGroups(config.openGroups),
       };
@@ -137,9 +139,12 @@ export default (state: ImperialsStateType = initialState, action: Object) => {
         deployedGroups,
         designationMap: {
           ...state.designationMap,
-          [groupToDecrement.id]: groupToDecrement.currentNumFigures === 1 ? state.designationMap[groupToDecrement.id].filter(
-          (num: number) => num !== groupToDecrement.groupNumber
-        ) : state.designationMap[groupToDecrement.id]
+          [groupToDecrement.id]:
+            groupToDecrement.currentNumFigures === 1
+              ? state.designationMap[groupToDecrement.id].filter(
+                  (num: number) => num !== groupToDecrement.groupNumber
+                )
+              : state.designationMap[groupToDecrement.id],
         },
         openGroups: state.openGroups.concat(openGroups),
       };
@@ -181,7 +186,9 @@ export default (state: ImperialsStateType = initialState, action: Object) => {
       // We're mutating state.designationMap here!
       return {
         ...state,
-        deployedGroups: state.deployedGroups.concat(groupIds.map((id: string) => createNewGroup(id, state.designationMap))),
+        deployedGroups: state.deployedGroups.concat(
+          groupIds.map((id: string) => createNewGroup(id, state.designationMap))
+        ),
       };
     default:
       return state;

@@ -18,7 +18,7 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
     height: '622px',
-    width: '120px',
+    width: '110px',
   },
   header: {
     backgroundColor: 'black',

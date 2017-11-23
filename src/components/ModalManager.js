@@ -46,10 +46,7 @@ class ModalManager extends React.Component<ModalManagerPropsType> {
         return <InteractTerminalContainer />;
       case 'MISSION_INSTRUCTIONS':
         return (
-          <MissionInstructionsModal
-            closeModals={this.props.closeModals}
-            type={this.props.type}
-          />
+          <MissionInstructionsModal closeModals={this.props.closeModals} type={this.props.type} />
         );
       case 'NEW_EVENT_MODAL':
         return (

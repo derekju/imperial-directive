@@ -6,6 +6,7 @@ import React from 'react';
 const styles = {
   button: {
     border: '2px solid black',
+    borderRadius: '0px',
     cursor: 'pointer',
     fontSize: '12px',
     fontWeight: 'bold',

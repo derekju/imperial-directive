@@ -21,7 +21,7 @@ const styles = {
     width: '80px',
   },
   base: {
-    marginRight: '20px',
+    marginBottom: '10px',
     position: 'relative',
     width: '86px',
   },
@@ -54,10 +54,9 @@ const styles = {
   },
   outer: {
     cursor: 'pointer',
-    position: 'relative',
   },
   popup: {
-    ...positionAbsolute(-48, null, null, 100),
+    ...positionAbsolute(10, null, null, 0),
     alignItems: 'center',
     backgroundColor: LIGHT_WHITE,
     border: '2px solid black',
@@ -74,10 +73,10 @@ const styles = {
     width: '100%',
   },
   popupArrow: {
-    ...positionAbsolute(76, null, null, -11),
+    ...positionAbsolute(56, null, null, -11),
   },
   popupMask: {
-    ...positionAbsolute(79, null, null, -1),
+    ...positionAbsolute(59, null, null, -1),
     backgroundColor: LIGHT_WHITE,
     height: '16px',
     width: '2px',
@@ -89,7 +88,9 @@ type ImperialAvatarPropsType = {
   defeatImperialFigure: Function,
   exhausted: boolean,
   imperialUnit: ImperialUnitType,
+  index: number,
   isImperialPlayerTurn: boolean,
+  parentDiv: HTMLDivElement,
   setImperialGroupActivated: Function,
 };
 
@@ -109,6 +110,13 @@ class ImperialAvatar extends React.Component<ImperialAvatarPropsType, ImperialAv
   togglePopup() {
     this.setState((state: ImperialAvatarStateType) => ({displayPopup: !state.displayPopup}));
   }
+
+  handlePopupPositioning: Function = (htmlDivPopup: ?HTMLDivElement) => {
+    if (htmlDivPopup) {
+      htmlDivPopup.style.left = `${(this.props.index + 1) * 106 -
+        this.props.parentDiv.scrollLeft + 10}px`;
+    }
+  };
 
   handleClick = () => {
     if (!this.props.isImperialPlayerTurn) {
@@ -133,7 +141,7 @@ class ImperialAvatar extends React.Component<ImperialAvatarPropsType, ImperialAv
 
   renderPopup() {
     return (
-      <div style={styles.popup}>
+      <div style={styles.popup} ref={this.handlePopupPositioning}>
         <div style={styles.popupArrow}>
           <Arrow
             size={8}
