@@ -42,7 +42,7 @@ const styles = {
   mapContents: {
     ...positionAbsolute(25, 0, 0, 0),
     WebkitOverflowScrolling: 'touch',
-    backgroundColor: '#CCC',
+    backgroundColor: '#DDD',
     border: '2px solid black',
     display: 'flex',
     overflow: 'scroll',
@@ -58,7 +58,7 @@ const styles = {
 
 type MapPropsType = {
   displayModal: Function,
-  mapImage: Array<Array<number>>,
+  mapImage: Array<Array<string>>,
   mapStates: {[key: string]: MapStateType},
 };
 
@@ -106,13 +106,16 @@ class Map extends React.Component<MapPropsType> {
   renderMap() {
     return (
       <div style={styles.mapInner}>
-        {this.props.mapImage.map((row: number[], rowIndex: number) => (
+        {this.props.mapImage.map((row: string[], rowIndex: number) => (
           <div key={`row-${rowIndex}`} style={styles.row}>
-            {row.map((cell: number, cellIndex: number) => {
-              if (cell > 0) {
+            {row.map((cell: string, cellIndex: number) => {
+              const cellNumber = parseInt(cell, 10);
+              if (cellNumber > 0) {
+                const bgColor = Math.floor(255 - cellNumber * 3);
                 const combinedStyles = {
                   ...styles.block,
-                  ...(cell === 2 ? styles.impassableBlock : {}),
+                  backgroundColor: `rgb(255, ${bgColor}, ${bgColor})`,
+                  // ...(cell === 2 ? styles.impassableBlock : {}),
                 };
                 return (
                   <div key={`${rowIndex}-${cellIndex}`} style={combinedStyles}>

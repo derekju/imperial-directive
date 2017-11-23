@@ -43,7 +43,7 @@ const styles = {
     position: 'relative',
   },
   popup: {
-    ...positionAbsolute(-22, null, null, 100),
+    ...positionAbsolute(-22, null, null, 102),
     alignItems: 'center',
     backgroundColor: LIGHT_WHITE,
     border: '2px solid black',

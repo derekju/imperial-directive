@@ -27,7 +27,7 @@ export type MissionStateType = {
   currentRound: number,
   currentThreat: number,
   instructions: {imperialVictory: string, rebelVictory: string},
-  mapImage: Array<Array<number>>,
+  mapImage: Array<Array<string>>,
   mapStates: {[key: string]: MapStateType},
   priorityTarget: string,
   missionThreat: number,
@@ -36,7 +36,7 @@ export type MissionStateType = {
 export type MissionConfigType = {
   initialGroups: string[],
   instructions: {imperialVictory: string, rebelVictory: string},
-  mapImage: Array<Array<number>>,
+  mapImage: Array<Array<string>>,
   mapStates: {[key: string]: MapStateType},
   name: string,
   openGroups: number,

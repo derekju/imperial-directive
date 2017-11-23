@@ -10,7 +10,7 @@ const styles = {
   base: {
     alignItems: 'center',
     backgroundColor: ELITE_RED,
-    border: '2px solid black',
+    border: '2px solid white',
     color: 'white',
     cursor: 'pointer',
     display: 'flex',

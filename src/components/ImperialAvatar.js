@@ -90,8 +90,7 @@ type ImperialAvatarPropsType = {
   imperialUnit: ImperialUnitType,
   index: number,
   isImperialPlayerTurn: boolean,
-  parentDiv: HTMLDivElement,
-  setImperialGroupActivated: Function,
+  parentDiv: ?HTMLDivElement,
 };
 
 type ImperialAvatarStateType = {
@@ -99,10 +98,6 @@ type ImperialAvatarStateType = {
 };
 
 class ImperialAvatar extends React.Component<ImperialAvatarPropsType, ImperialAvatarStateType> {
-  static defaultProps = {
-    setImperialGroupActivated: () => {},
-  };
-
   state = {
     displayPopup: false,
   };
@@ -112,7 +107,7 @@ class ImperialAvatar extends React.Component<ImperialAvatarPropsType, ImperialAv
   }
 
   handlePopupPositioning: Function = (htmlDivPopup: ?HTMLDivElement) => {
-    if (htmlDivPopup) {
+    if (htmlDivPopup && this.props.parentDiv) {
       htmlDivPopup.style.left = `${(this.props.index + 1) * 106 -
         this.props.parentDiv.scrollLeft + 10}px`;
     }
@@ -122,11 +117,6 @@ class ImperialAvatar extends React.Component<ImperialAvatarPropsType, ImperialAv
     if (!this.props.isImperialPlayerTurn) {
       this.togglePopup();
     }
-  };
-
-  handleEndActivation = () => {
-    this.props.setImperialGroupActivated(this.props.imperialUnit);
-    this.togglePopup();
   };
 
   handleDefeatImperialFigure = () => {

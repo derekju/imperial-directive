@@ -36,7 +36,6 @@ type ImperialDashboardPropsType = {
   defeatImperialFigure: Function,
   deployedGroups: ImperialUnitType[],
   isImperialPlayerTurn: boolean,
-  setImperialGroupActivated: Function,
 };
 
 type ImperialDashboardStateType = {
@@ -63,7 +62,7 @@ class ImperialDashboard extends React.Component<
         </div>
         <div style={styles.sectionContents} ref={this.saveSectionContents}>
           {this.props.deployedGroups.map((imperialUnit: ImperialUnitType, index: number) => (
-            <div style={styles.avatarWrapper}>
+            <div key={`${imperialUnit.id}-${imperialUnit.groupNumber}-${index}`} style={styles.avatarWrapper}>
               <ImperialAvatar
                 activateImperialGroup={this.props.activateImperialGroup}
                 defeatImperialFigure={this.props.defeatImperialFigure}
@@ -71,7 +70,6 @@ class ImperialDashboard extends React.Component<
                 imperialUnit={imperialUnit}
                 index={index}
                 isImperialPlayerTurn={this.props.isImperialPlayerTurn}
-                key={`${imperialUnit.id}-${imperialUnit.groupNumber}-${index}`}
                 parentDiv={this.state.htmlDivSectionContents}
               />
             </div>
