@@ -54,7 +54,7 @@ class EventPanel extends React.Component<EventPanelPropsType> {
             <div>
               <br />
               {textArray.map((text: string, index: number) =>
-                expandText(text, index, styles.iconStyle)
+                expandText(text, index, '', styles.iconStyle)
               )}
             </div>
           );

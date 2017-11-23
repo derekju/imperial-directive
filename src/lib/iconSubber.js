@@ -14,7 +14,7 @@ import strengthPng from '../assets/icons/strength.png';
 import surgePng from '../assets/icons/surge.png';
 import techPng from '../assets/icons/tech.png';
 
-export const expandText = (text: string, index: number, styles: ?Object = {}) => {
+export const expandText = (text: string, index: number, priorityTarget: string, styles: ?Object = {}) => {
   switch (text) {
     case '{ACTION}':
       return <img key={`${text}-${index}`} alt="Action" src={actionPng} style={styles} />;
@@ -33,7 +33,7 @@ export const expandText = (text: string, index: number, styles: ?Object = {}) =>
     case '{MELEE}':
       return <img key={`${text}-${index}`} alt="Melee" src={meleePng} style={styles} />;
     case '{PRIORITY_TARGET}':
-      return <span key={`${text}-${index}`}>the door</span>;
+      return <span key={`${text}-${index}`}>{priorityTarget}</span>;
     case '{RANGED}':
       return <img key={`${text}-${index}`} alt="Ranged" src={rangedPng} style={styles} />;
     case '{STRAIN}':

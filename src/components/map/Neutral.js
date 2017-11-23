@@ -9,7 +9,7 @@ const styles = {
   base: {
     alignItems: 'center',
     backgroundColor: '#DDD',
-    border: '2px solid white',
+    border: '2px solid black',
     color: 'black',
     cursor: 'pointer',
     display: 'flex',

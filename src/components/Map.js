@@ -28,6 +28,9 @@ const styles = {
     margin: '1px',
     width: '47px',
   },
+  extraPadding: {
+    height: '10px',
+  },
   headerText: {
     backgroundColor: 'black',
     color: 'white',
@@ -42,12 +45,13 @@ const styles = {
   mapContents: {
     ...positionAbsolute(25, 0, 0, 0),
     WebkitOverflowScrolling: 'touch',
-    backgroundColor: '#DDD',
+    backgroundColor: '#EEE',
     border: '2px solid black',
     display: 'flex',
     overflow: 'scroll',
   },
   mapInner: {
+    margin: '0 auto',
     padding: '10px 10px 0 10px',
   },
   row: {
@@ -111,11 +115,10 @@ class Map extends React.Component<MapPropsType> {
             {row.map((cell: string, cellIndex: number) => {
               const cellNumber = parseInt(cell, 10);
               if (cellNumber > 0) {
-                const bgColor = Math.floor(255 - cellNumber * 3);
+                const bgColor = Math.floor(255 - cellNumber * 4);
                 const combinedStyles = {
                   ...styles.block,
                   backgroundColor: `rgb(255, ${bgColor}, ${bgColor})`,
-                  // ...(cell === 2 ? styles.impassableBlock : {}),
                 };
                 return (
                   <div key={`${rowIndex}-${cellIndex}`} style={combinedStyles}>
@@ -128,6 +131,7 @@ class Map extends React.Component<MapPropsType> {
             })}
           </div>
         ))}
+        <div style={styles.extraPadding} />
       </div>
     );
   }
