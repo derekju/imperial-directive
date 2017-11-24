@@ -6,6 +6,7 @@ import rebelPng from '../assets/icons/rebel.png';
 const styles = {
   avatar: {
     alignItems: 'center',
+    backgroundColor: 'white',
     border: '3px solid black',
     borderRadius: '42px',
     display: 'flex',

@@ -35,6 +35,7 @@ const styles = {
     width: '800px',
   },
   sectionContents: {
+    alignItems: 'center',
     border: '2px solid black',
     borderTop: 'none',
     display: 'flex',
@@ -55,6 +56,7 @@ const styles = {
   },
   threatButton: {
     alignItems: 'center',
+    backgroundColor: 'white',
     border: '2px solid black',
     borderRadius: '50px',
     cursor: 'pointer',
@@ -76,7 +78,6 @@ const styles = {
     marginRight: '10px',
   },
   threatTitle: {
-    fontWeight: 'bold',
     marginRight: '10px',
   },
 };
