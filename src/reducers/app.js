@@ -30,6 +30,11 @@ export default (state: AppStateType = initialState, action: Function) => {
         ...state,
         currentMission: action.payload.mission,
       };
+    case SET_MISSION_THREAT:
+      return {
+        ...state,
+        missionThreat: action.payload.missionThreat,
+      };
     default:
       return state;
   }
@@ -38,10 +43,15 @@ export default (state: AppStateType = initialState, action: Function) => {
 // Action types
 
 export const SET_MISSION = 'SET_MISSION';
+export const SET_MISSION_THREAT = 'SET_MISSION_THREAT';
 
 // Action creators
 
 export const setMission = (mission: string) => ({payload: {mission}, type: SET_MISSION});
+export const setMissionThreat = (missionThreat: number) => ({
+  payload: {missionThreat},
+  type: SET_MISSION_THREAT,
+});
 
 // Selectors
 

@@ -53,6 +53,32 @@ const styles = {
   selected: {
     border: `3px solid ${SUCCESS_GREEN}`,
   },
+  threatButton: {
+    alignItems: 'center',
+    border: '2px solid black',
+    borderRadius: '50px',
+    cursor: 'pointer',
+    display: 'flex',
+    fontSize: '24px',
+    height: '50px',
+    justifyContent: 'center',
+    marginRight: '10px',
+    width: '50px',
+  },
+  threatInputSection: {
+    alignItems: 'center',
+    display: 'flex',
+    flexDirection: 'row',
+    marginLeft: '30px',
+  },
+  threatNumber: {
+    fontSize: '24px',
+    marginRight: '10px',
+  },
+  threatTitle: {
+    fontWeight: 'bold',
+    marginRight: '10px',
+  },
 };
 
 type CharacterSelectionPropsType = {
@@ -60,10 +86,12 @@ type CharacterSelectionPropsType = {
   availableMissions: string[],
   history: Object,
   setMission: Function,
+  setMissionThreat: Function,
   setRoster: Function,
 };
 
 type CharacterSelectionStateType = {
+  missionThreat: number,
   selectedRoster: string[],
 };
 
@@ -74,6 +102,7 @@ class CharacterSelection extends React.Component<
   select: ?HTMLSelectElement;
 
   state = {
+    missionThreat: 2,
     selectedRoster: [],
   };
 
@@ -83,6 +112,7 @@ class CharacterSelection extends React.Component<
 
   submit = () => {
     this.props.setRoster(this.state.selectedRoster);
+    this.props.setMissionThreat(this.state.missionThreat);
     if (this.select) {
       const selectedMission = this.select.options[this.select.selectedIndex].value;
       this.props.setMission(selectedMission);
@@ -114,6 +144,18 @@ class CharacterSelection extends React.Component<
     this.select = ref;
   };
 
+  decrementThreat = () => {
+    this.setState((prevState: CharacterSelectionStateType) => ({
+      missionThreat: Math.max(2, prevState.missionThreat - 1),
+    }));
+  };
+
+  incrementThreat = () => {
+    this.setState((prevState: CharacterSelectionStateType) => ({
+      missionThreat: Math.min(6, prevState.missionThreat + 1),
+    }));
+  };
+
   render() {
     return (
       <Router>
@@ -130,6 +172,16 @@ class CharacterSelection extends React.Component<
                   </option>
                 ))}
               </select>
+              <div style={styles.threatInputSection}>
+                <div style={styles.threatTitle}>Mission Threat:</div>
+                <div style={styles.threatButton} onClick={this.decrementThreat}>
+                  -
+                </div>
+                <div style={styles.threatNumber}>{this.state.missionThreat}</div>
+                <div style={styles.threatButton} onClick={this.incrementThreat}>
+                  +
+                </div>
+              </div>
             </div>
           </div>
           <div style={styles.section}>
