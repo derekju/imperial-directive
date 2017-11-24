@@ -9,7 +9,9 @@ import type {StateType} from '../reducers/types';
 const mapStateToProps = (state: StateType) => ({
   activatedGroup: state.imperials.activatedGroup,
   currentMission: state.app.currentMission,
-  currentMissionName: missions[state.app.currentMission].name || '',
+  currentMissionName: missions[state.app.currentMission]
+    ? missions[state.app.currentMission].name
+    : '',
   currentRound: state.mission.currentRound,
   currentThreat: state.mission.currentThreat,
   displayModal: Boolean(state.modal.type),

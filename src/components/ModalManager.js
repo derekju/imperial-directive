@@ -2,6 +2,7 @@
 
 import AftermathLockdownModal from './modals/AftermathLockdownModal';
 import BeginRoundModal from './modals/BeginRoundModal';
+import HeroicHeroModalContainer from '../containers/HeroicHeroModalContainer';
 import InteractDoorContainer from '../containers/InteractDoorContainer';
 import InteractTerminalContainer from '../containers/InteractTerminalContainer';
 import MissionInstructionsModal from './modals/MissionInstructionsModal';
@@ -32,6 +33,8 @@ class ModalManager extends React.Component<ModalManagerPropsType> {
             type={this.props.type}
           />
         );
+      case 'HEROIC_HERO_MODAL':
+        return <HeroicHeroModalContainer />;
       case 'IMPERIAL_VICTORY':
         return (
           <VictoryModal

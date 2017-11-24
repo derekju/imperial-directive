@@ -23,7 +23,8 @@ const PRIORITY_TARGET_NEAREST_TERMINAL = 'the nearest active terminal';
 const PRIORITY_TARGET_MOST_WOUNDED = 'the most damaged hero';
 
 const DEPLOYMENT_POINT_GREEN = 'The green deployment point';
-const DEPLOYMENT_POINT_RED = 'If Lockdown option 2 was chosen: the red deployment point. Otherwise, the green deployment point';
+const DEPLOYMENT_POINT_RED =
+  'If Lockdown option 2 was chosen: the red deployment point. Otherwise, the green deployment point';
 
 // Local state
 

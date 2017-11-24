@@ -1,7 +1,7 @@
 // @flow
 
 import {all, call, fork, put, select, take, takeEvery} from 'redux-saga/effects';
-import {getIsThereReadyRebelFigures, SET_REBEL_HERO_ACTIVATED} from './rebels';
+import {getIsThereReadyRebelFigures, getRoster, SET_REBEL_HERO_ACTIVATED} from './rebels';
 import {
   getReadyImperialGroups,
   SET_IMPERIAL_GROUP_ACTIVATED,
@@ -205,11 +205,22 @@ export const getMapStates = (state: StateType) => state.mission.mapStates;
 
 // Sagas
 
+function* handleCheckForThreeHeroes(): Generator<*, *, *> {
+  const roster = yield select(getRoster);
+  const numHeroes = roster ? roster.length : 1;
+  // Need to ask which hero we want to set for double activation
+  if (numHeroes === 3) {
+    yield put(displayModal('HEROIC_HERO_MODAL'));
+    yield call(waitForModal('HEROIC_HERO_MODAL'));
+  }
+}
+
 function* handleLoadMission(): Generator<*, *, *> {
   // yield put(eventPhaseBegin());
   // yield take(EVENT_PHASE_END);
   yield put(displayModal('MISSION_INSTRUCTIONS'));
   yield call(waitForModal('MISSION_INSTRUCTIONS'));
+  yield call(handleCheckForThreeHeroes);
   yield put(activationPhaseBegin());
 }
 
@@ -227,6 +238,7 @@ function* missionEndOfTurn(): Generator<*, *, *> {
   const currentRound = yield select(getCurrentRound);
   yield put(displayModal('BEGIN_ROUND', {currentRound}));
   yield call(waitForModal('BEGIN_ROUND'));
+  yield call(handleCheckForThreeHeroes);
   yield put(activationPhaseBegin());
 }
 

@@ -30,6 +30,7 @@ const styles = {
 
 type HeroPanelPropsType = {
   activatedRebels: string[],
+  canActivateTwice: string[],
   isRebelPlayerTurn: boolean,
   roster: string[],
   setRebelHeroActivated: Function,
@@ -44,24 +45,38 @@ class HeroPanel extends React.Component<HeroPanelPropsType> {
       <div style={styles.base}>
         <div style={styles.header}>Heroes</div>
         <div style={styles.avatarContainer}>
-          {this.props.roster.map((id: string) => (
-            <HeroPanelAvatar
-              activated={this.props.activatedRebels.includes(id)}
-              displayFullName={false}
-              elite={rebels[id].elite}
-              firstName={rebels[id].firstName}
-              id={id}
-              isRebelPlayerTurn={this.props.isRebelPlayerTurn}
-              key={id}
-              lastName={rebels[id].lastName}
-              setRebelHeroActivated={
-                this.props.isRebelPlayerTurn ? this.props.setRebelHeroActivated : noop
-              }
-              withdrawn={this.props.withdrawnHeroes.includes(id)}
-              wounded={this.props.woundedHeroes.includes(id)}
-              woundRebelHero={this.props.woundRebelHero}
-            />
-          ))}
+          {this.props.roster.map((id: string) => {
+            const canHeroActivateTwice = this.props.canActivateTwice.includes(id);
+            const numTimesHeroHasActivated = this.props.activatedRebels.filter(
+              (rebelId: string) => rebelId === id
+            ).length;
+            let nameToDisplay = rebels[id].firstName;
+            if (canHeroActivateTwice) {
+              const timesLeft = 2 - numTimesHeroHasActivated;
+              nameToDisplay = `${nameToDisplay} x${timesLeft}`;
+            }
+
+            return (
+              <HeroPanelAvatar
+                activated={
+                  canHeroActivateTwice
+                    ? numTimesHeroHasActivated === 2
+                    : this.props.activatedRebels.includes(id)
+                }
+                elite={rebels[id].elite}
+                firstName={nameToDisplay}
+                id={id}
+                isRebelPlayerTurn={this.props.isRebelPlayerTurn}
+                key={id}
+                setRebelHeroActivated={
+                  this.props.isRebelPlayerTurn ? this.props.setRebelHeroActivated : noop
+                }
+                withdrawn={this.props.withdrawnHeroes.includes(id)}
+                wounded={this.props.woundedHeroes.includes(id)}
+                woundRebelHero={this.props.woundRebelHero}
+              />
+            );
+          })}
         </div>
       </div>
     );
