@@ -2,7 +2,7 @@
 
 import {closeModals} from '../reducers/modal';
 import {connect} from 'react-redux';
-import InteractTerminal from '../components/modals/InteractTerminal';
+import InteractObject from '../components/modals/InteractObject';
 import {setMapStateActivated} from '../reducers/mission';
 import type {StateType} from '../reducers/types';
 
@@ -17,4 +17,4 @@ const mapDispatchToProps = {
   setMapStateActivated,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(InteractTerminal);
+export default connect(mapStateToProps, mapDispatchToProps)(InteractObject);

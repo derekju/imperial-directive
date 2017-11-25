@@ -3,8 +3,7 @@
 import AftermathLockdownModal from './modals/AftermathLockdownModal';
 import BeginRoundModal from './modals/BeginRoundModal';
 import HeroicHeroModalContainer from '../containers/HeroicHeroModalContainer';
-import InteractDoorContainer from '../containers/InteractDoorContainer';
-import InteractTerminalContainer from '../containers/InteractTerminalContainer';
+import InteractObjectContainer from '../containers/InteractObjectContainer';
 import MissionInstructionsModal from './modals/MissionInstructionsModal';
 import NewEventModal from './modals/NewEventModal';
 import React from 'react';
@@ -43,10 +42,8 @@ class ModalManager extends React.Component<ModalManagerPropsType> {
             winner={'imperials'}
           />
         );
-      case 'INTERACT_DOOR':
-        return <InteractDoorContainer />;
-      case 'INTERACT_TERMINAL':
-        return <InteractTerminalContainer />;
+      case 'INTERACT_OBJECT':
+        return <InteractObjectContainer />;
       case 'MISSION_INSTRUCTIONS':
         return (
           <MissionInstructionsModal closeModals={this.props.closeModals} type={this.props.type} />

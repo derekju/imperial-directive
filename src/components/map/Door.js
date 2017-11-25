@@ -29,7 +29,7 @@ type DoorPropsType = {
 
 class Door extends React.Component<DoorPropsType> {
   handleClick = () => {
-    this.props.displayModal('INTERACT_DOOR', {id: this.props.id, type: this.props.type});
+    this.props.displayModal('INTERACT_OBJECT', {id: this.props.id, type: this.props.type});
   };
 
   render() {

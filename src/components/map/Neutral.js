@@ -29,7 +29,7 @@ type NeutralPropsType = {
 
 class Neutral extends React.Component<NeutralPropsType> {
   handleClick = () => {
-    this.props.displayModal('INTERACT_NEUTRAL', {id: this.props.id, type: this.props.type});
+    this.props.displayModal('INTERACT_OBJECT', {id: this.props.id, type: this.props.type});
   };
 
   render() {

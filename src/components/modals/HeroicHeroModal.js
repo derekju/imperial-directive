@@ -48,7 +48,7 @@ class HeroicHeroModal extends React.Component<HeroicHeroModalPropsType> {
           <div style={styles.header}>Choose hero to receive an extra activation:</div>
           <div style={styles.units}>
             {difference(this.props.roster, this.props.canActivateTwice).map((heroId: string) => (
-              <div onClick={() => this.handleAvatarClick(heroId)} style={styles.avatarStyle}>
+              <div key={heroId} onClick={() => this.handleAvatarClick(heroId)} style={styles.avatarStyle}>
                 <HeroAvatar firstName={rebels[heroId].firstName} />
               </div>
             ))}

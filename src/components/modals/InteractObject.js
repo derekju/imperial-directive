@@ -12,14 +12,14 @@ const styles = {
   },
 };
 
-type InteractTerminalPropsType = {
+type InteractObjectPropsType = {
   closeModals: Function,
   mapState: MapStateType,
   setMapStateActivated: Function,
   type: string,
 };
 
-class InteractTerminal extends React.Component<InteractTerminalPropsType> {
+class InteractObject extends React.Component<InteractObjectPropsType> {
   handleButtonClick = () => {
     this.props.closeModals(this.props.type);
     this.props.setMapStateActivated(
@@ -34,7 +34,9 @@ class InteractTerminal extends React.Component<InteractTerminalPropsType> {
   };
 
   render() {
-    const buttonText = this.props.mapState.activated ? 'Restore terminal' : 'Destroy terminal';
+    const unactivateText = this.props.type === 'door' ? 'Close door' : 'Unactivate';
+    const activateText = this.props.type === 'door' ? 'Open door' : 'Activate';
+    const buttonText = this.props.mapState.activated ? unactivateText : activateText;
     return (
       <Modal
         buttonText={buttonText}
@@ -49,4 +51,4 @@ class InteractTerminal extends React.Component<InteractTerminalPropsType> {
   }
 }
 
-export default InteractTerminal;
+export default InteractObject;

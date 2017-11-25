@@ -30,7 +30,7 @@ type TerminalPropsType = {
 
 class Terminal extends React.Component<TerminalPropsType> {
   handleClick = () => {
-    this.props.displayModal('INTERACT_TERMINAL', {id: this.props.id, type: this.props.type});
+    this.props.displayModal('INTERACT_OBJECT', {id: this.props.id, type: this.props.type});
   };
 
   render() {
