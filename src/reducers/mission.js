@@ -82,6 +82,7 @@ export default (state: MissionStateType = initialState, action: Object) => {
         mapImage: config.mapImage,
         mapStates: config.mapStates,
         missionThreat,
+        priorityTarget: state.priorityTarget,
       };
     case CHANGE_PLAYER_TURN:
       return {
