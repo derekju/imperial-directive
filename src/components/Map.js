@@ -1,9 +1,11 @@
 // @flow
 
 import Door from './map/Door';
+import Entrance from './map/Entrance';
 import find from 'lodash/find';
 import type {MapStateType} from '../reducers/mission';
 import Neutral from './map/Neutral';
+import noop from 'lodash/noop';
 import {positionAbsolute} from '../styles/mixins';
 import React from 'react';
 import Terminal from './map/Terminal';
@@ -79,7 +81,7 @@ class Map extends React.Component<MapPropsType> {
           <Terminal
             activated={mapState.activated}
             id={mapState.id}
-            displayModal={this.props.displayModal}
+            displayModal={mapState.interactable ? this.props.displayModal : noop}
             type={mapState.type}
           />
         );
@@ -88,7 +90,7 @@ class Map extends React.Component<MapPropsType> {
           <Door
             activated={mapState.activated}
             id={mapState.id}
-            displayModal={this.props.displayModal}
+            displayModal={mapState.interactable ? this.props.displayModal : noop}
             type={mapState.type}
           />
         );
@@ -97,9 +99,13 @@ class Map extends React.Component<MapPropsType> {
           <Neutral
             activated={mapState.activated}
             id={mapState.id}
-            displayModal={this.props.displayModal}
+            displayModal={mapState.interactable ? this.props.displayModal : noop}
             type={mapState.type}
           />
+        );
+      } else if (mapState.type === 'entrance') {
+        return (
+          <Entrance />
         );
       }
     }

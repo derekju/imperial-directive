@@ -18,6 +18,17 @@
       ["00", "00", "00", "00", "00", "00", "00", "25", "25", "25", "25", "00"]
     ],
     "mapStates": {
+      "entrance-1": {
+        "activated": false,
+        "coordinates": {
+          "x": 2,
+          "y": 0
+        },
+        "description": "The entrance.",
+        "id": 1,
+        "interactable": false,
+        "type": "entrance"
+      },
       "terminal-1": {
         "activated": false,
         "coordinates": {
@@ -26,6 +37,7 @@
         },
         "description": "The first terminal broadcasting the signal.",
         "id": 1,
+        "interactable": true,
         "type": "terminal"
       },
       "terminal-2": {
@@ -36,6 +48,7 @@
         },
         "description": "The second terminal broadcasting the signal.",
         "id": 2,
+        "interactable": true,
         "type": "terminal"
       },
       "terminal-3": {
@@ -46,6 +59,7 @@
         },
         "description": "The third terminal broadcasting the signal.",
         "id": 3,
+        "interactable": true,
         "type": "terminal"
       },
       "terminal-4": {
@@ -56,6 +70,7 @@
         },
         "description": "The fourth terminal broadcasting the signal.",
         "id": 4,
+        "interactable": true,
         "type": "terminal"
       },
       "door-1": {
@@ -66,10 +81,117 @@
         },
         "description": "The door to the atrium.",
         "id": 1,
+        "interactable": true,
         "type": "door"
       }
     },
     "name": "Aftermath",
     "openGroups": 0
+  },
+  "aSimpleTask": {
+    "initialGroups": [
+      "stormtrooper", "trandoshanHunterElite"
+    ],
+    "instructions": {
+      "imperialVictory": "When all heroes are wounded",
+      "rebelVictory": "When a hero carrying the formula escapes"
+    },
+    "mapImage": [
+      ["00", "19", "19", "19", "19", "19", "19", "00", "00", "00", "00", "00", "00", "00", "00"],
+      ["00", "19", "19", "19", "19", "19", "19", "00", "00", "00", "00", "00", "00", "00", "00"],
+      ["36", "19", "19", "19", "19", "19", "19", "36", "00", "00", "00", "00", "00", "00", "00"],
+      ["36", "19", "19", "19", "19", "19", "19", "36", "32", "32", "28", "28", "28", "00", "00"],
+      ["00", "19", "19", "19", "19", "19", "19", "00", "32", "32", "28", "28", "28", "00", "00"],
+      ["00", "19", "19", "19", "19", "19", "19", "24", "24", "24", "28", "28", "28", "00", "00"],
+      ["00", "00", "23", "23", "23", "23", "24", "24", "24", "24", "00", "38", "38", "00", "00"],
+      ["00", "00", "23", "23", "23", "23", "24", "24", "24", "24", "00", "38", "38", "00", "00"],
+      ["00", "00", "23", "23", "23", "23", "24", "24", "24", "00", "00", "17", "17", "00", "00"],
+      ["00", "00", "23", "23", "23", "23", "07", "07", "07", "02", "02", "02", "02", "02", "02"],
+      ["00", "00", "00", "00", "00", "07", "07", "07", "07", "02", "02", "02", "02", "02", "02"],
+      ["00", "00", "00", "00", "00", "07", "07", "07", "07", "02", "02", "02", "02", "02", "02"],
+      ["00", "00", "00", "00", "00", "07", "07", "07", "00", "02", "02", "02", "02", "02", "02"],
+      ["00", "00", "00", "00", "00", "18", "18", "00", "00", "00", "00", "00", "00", "00", "00"]
+    ],
+    "mapStates": {
+      "entrance-1": {
+        "activated": false,
+        "coordinates": {
+          "x": 5,
+          "y": 13
+        },
+        "description": "The entrance.",
+        "id": 1,
+        "interactable": false,
+        "type": "entrance"
+      },
+      "door-1": {
+        "activated": false,
+        "coordinates": {
+          "x": 10,
+          "y": 3
+        },
+        "description": "The door to the facility.",
+        "id": 1,
+        "interactable": false,
+        "type": "door"
+      },
+      "door-2": {
+        "activated": false,
+        "coordinates": {
+          "x": 4,
+          "y": 6
+        },
+        "description": "The door to the Hanger.",
+        "id": 2,
+        "interactable": false,
+        "type": "door"
+      },
+      "terminal-1": {
+        "activated": false,
+        "coordinates": {
+          "x": 11,
+          "y": 4
+        },
+        "description": "The terminal that controls the facility door.",
+        "id": 1,
+        "interactable": true,
+        "type": "terminal"
+      },
+      "terminal-2": {
+        "activated": false,
+        "coordinates": {
+          "x": 7,
+          "y": 7
+        },
+        "description": "The terminal that controls the Hanger door.",
+        "id": 2,
+        "interactable": true,
+        "type": "terminal"
+      },
+      "terminal-3": {
+        "activated": false,
+        "coordinates": {
+          "x": 2,
+          "y": 3
+        },
+        "description": "The terminal that controls the Hanger door.",
+        "id": 3,
+        "interactable": true,
+        "type": "terminal"
+      },
+      "neutral-1": {
+        "activated": false,
+        "coordinates": {
+          "x": 4,
+          "y": 2
+        },
+        "description": "The formula.",
+        "id": 1,
+        "interactable": true,
+        "type": "neutral"
+      }
+    },
+    "name": "A Simple Task",
+    "openGroups": 3
   }
 }

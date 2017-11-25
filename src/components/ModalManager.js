@@ -60,7 +60,6 @@ class ModalManager extends React.Component<ModalManagerPropsType> {
         return (
           <ResolveEventModal
             closeModals={this.props.closeModals}
-            eventName={this.props.data.eventName}
             text={this.props.data.text}
             type={this.props.type}
           />

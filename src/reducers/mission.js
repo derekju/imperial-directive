@@ -18,6 +18,7 @@ export type MapStateType = {
   coordinates: {x: number, y: number},
   description: string,
   id: number,
+  interactable: boolean,
   type: string,
 };
 
@@ -56,7 +57,7 @@ export const PHASE_STATUS = 2;
 // State
 
 const initialState = {
-  currentActivePlayer: PLAYER_REBELS,
+  currentActivePlayer: PLAYER_NONE,
   currentPhase: PHASE_EVENT,
   currentRound: 1,
   currentThreat: 0,
@@ -135,6 +136,11 @@ export default (state: MissionStateType = initialState, action: Object) => {
         ...state,
         deploymentPoint: action.payload.deploymentPoint,
       };
+    case INCREASE_THREAT:
+      return {
+        ...state,
+        currentThreat: state.currentThreat + action.payload.threat,
+      };
     default:
       return state;
   }
@@ -158,6 +164,9 @@ export const STATUS_PHASE_END_ROUND_EFFECTS_DONE = 'STATUS_PHASE_END_ROUND_EFFEC
 export const STATUS_PHASE_ADVANCE_ROUND = 'STATUS_PHASE_ADVANCE_ROUND';
 export const SET_PRIORITY_TARGET = 'SET_PRIORITY_TARGET';
 export const SET_DEPLOYMENT_POINT = 'SET_DEPLOYMENT_POINT';
+export const MISSION_SPECIAL_SETUP = 'MISSION_SPECIAL_SETUP';
+export const MISSION_SPECIAL_SETUP_DONE = 'MISSION_SPECIAL_SETUP_DONE';
+export const INCREASE_THREAT = 'INCREASE_THREAT';
 
 // Action creators
 
@@ -192,6 +201,9 @@ export const setDeploymentPoint = (deploymentPoint: string) => ({
   payload: {deploymentPoint},
   type: SET_DEPLOYMENT_POINT,
 });
+export const missionSpecialSetupDone = () => ({type: MISSION_SPECIAL_SETUP_DONE});
+export const missionSpecialSetup = () => ({type: MISSION_SPECIAL_SETUP});
+export const increaseThreat = (threat: number) => ({payload: {threat}, type: INCREASE_THREAT});
 
 // Selectors
 
@@ -220,6 +232,9 @@ function* handleLoadMission(): Generator<*, *, *> {
   // yield take(EVENT_PHASE_END);
   yield put(displayModal('MISSION_INSTRUCTIONS'));
   yield call(waitForModal('MISSION_INSTRUCTIONS'));
+  // Blocking call to let mission figure out any special setup needed
+  yield put(missionSpecialSetup());
+  yield take(MISSION_SPECIAL_SETUP_DONE);
   yield call(handleCheckForThreeHeroes);
   yield put(activationPhaseBegin());
 }
@@ -232,7 +247,6 @@ function* missionEndOfTurn(): Generator<*, *, *> {
   yield take(STATUS_PHASE_DEPLOY_REINFORCE_DONE);
   yield put(statusPhaseEndRoundEffects());
   // The individual mission sagas MUST put this effect, otherwise the game will stall!!!
-  // TODO: Is this a good idea?
   yield take(STATUS_PHASE_END_ROUND_EFFECTS_DONE);
   yield put(statusPhaseAdvanceRound());
   const currentRound = yield select(getCurrentRound);

@@ -8,6 +8,8 @@ import missions from '../data/missions';
 import type {StateType} from './types';
 
 import {aftermath} from './missions/aftermath';
+import {aSimpleTask} from './missions/aSimpleTask';
+import {friendsOfOld} from './missions/friendsOfOld';
 
 // Types
 
@@ -65,6 +67,12 @@ function* forkMission(currentMission: string): Generator<*, *, *> {
     case 'aftermath':
       yield fork(aftermath);
       break;
+    case 'aSimpleTask':
+      yield fork(aSimpleTask);
+      break;
+    case 'friendsOfOld':
+      yield fork(friendsOfOld);
+      break;
     default:
       return;
   }
@@ -83,19 +91,13 @@ function* loadMissionSaga(): Generator<*, *, *> {
     const missionConfiguration = missions[mission];
     // Load the events
     // yield put(loadEvents(events.common));
-    // Load our mission in which will kick things off
-    yield put(loadMission(missionConfiguration, missionThreat));
     // Load the mission saga
     task = yield fork(forkMission, mission);
+    // Load our mission in which will kick things off
+    yield put(loadMission(missionConfiguration, missionThreat));
   }
 }
 
 export function* appSaga(): Generator<*, *, *> {
   yield fork(loadMissionSaga);
-  const currentMission = yield select(getCurrentMission);
-  if (Boolean(currentMission)) {
-    const task = yield fork(forkMission, currentMission);
-    yield take(SET_MISSION);
-    yield cancel(task);
-  }
 }

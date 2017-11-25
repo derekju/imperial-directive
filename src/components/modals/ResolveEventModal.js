@@ -13,8 +13,7 @@ const styles = {
 
 type ResolveEventModalPropsType = {
   closeModals: Function,
-  eventName: string,
-  text: string,
+  text: string[],
   type: string,
 };
 
@@ -27,8 +26,9 @@ class ResolveEventModal extends React.Component<ResolveEventModalPropsType> {
     const buttonText = 'Done';
     return (
       <Modal buttonText={buttonText} handleButtonClick={this.handleButtonClick} title="Event">
-        <div style={styles.base}>{`Resolve the ${this.props.eventName} event.`}</div>
-        <div style={styles.base}>{this.props.text}</div>
+        {this.props.text.map((text: string, index: number) => (
+          <div key={`text-${index}`} style={styles.base}>{text}</div>
+        ))}
       </Modal>
     );
   }

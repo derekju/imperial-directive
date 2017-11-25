@@ -5,6 +5,8 @@ import {getAreAllHeroesWounded, getIsOneHeroLeft, WOUND_REBEL_HERO} from '../reb
 import {
   getCurrentRound,
   getMapStates,
+  MISSION_SPECIAL_SETUP,
+  missionSpecialSetupDone,
   SET_MAP_STATE_ACTIVATED,
   setDeploymentPoint,
   setPriorityTarget,
@@ -61,9 +63,10 @@ function* handleFortifiedEvent(): Generator<*, *, *> {
       // Display a modal saying we're going to reinforce
       yield put(
         displayModal('RESOLVE_EVENT', {
-          eventName: 'Fortified',
-          text:
+          text: [
+            'Resolve the Fortified event.',
             'The E-Web Engineer should be deployed to the Yellow deployment point in the Atrium',
+          ]
         })
       );
       yield call(waitForModal('RESOLVE_EVENT'));
@@ -130,6 +133,7 @@ function* handleHeroesWounded(): Generator<*, *, *> {
   }
 }
 
+// REQUIRED SAGA
 function* handleRoundEnd(): Generator<*, *, *> {
   while (true) {
     yield take(STATUS_PHASE_END_ROUND_EFFECTS);
@@ -148,6 +152,11 @@ function* handleRoundEnd(): Generator<*, *, *> {
   }
 }
 
+// REQUIRED SAGA
+function* handleSpecialSetup(): Generator<*, *, *> {
+  yield take(MISSION_SPECIAL_SETUP);
+  yield put(missionSpecialSetupDone());
+}
 /*
 Priority target definitions:
 1) Initial is door
@@ -157,12 +166,13 @@ Priority target definitions:
 */
 
 export function* aftermath(): Generator<*, *, *> {
-  // Initially set to door
+  // SET PRIORITY TARGET
   yield put(setPriorityTarget(PRIORITY_TARGET_DOOR));
-  // Initially set to green
+  // SET INITIAL DEPLOYMENT POINT
   yield put(setDeploymentPoint(DEPLOYMENT_POINT_GREEN));
 
   yield all([
+    fork(handleSpecialSetup),
     fork(handleLockDownEvent),
     fork(handleFortifiedEvent),
     fork(handleSingleTerminalDestroyed),

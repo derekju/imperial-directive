@@ -47,6 +47,7 @@ export type ImperialsStateType = {
   activatedGroup: ?ImperialUnitType,
   deployedGroups: ImperialUnitType[],
   designationMap: DeisignationMapType,
+  interruptedGroup: ?ImperialUnitType,
   openGroups: ImperialUnitType[],
 };
 
@@ -95,6 +96,7 @@ const initialState = {
   activatedGroup: null,
   deployedGroups: [],
   designationMap: {},
+  interruptedGroup: null,
   openGroups: [],
 };
 
@@ -190,6 +192,11 @@ export default (state: ImperialsStateType = initialState, action: Object) => {
           groupIds.map((id: string) => createNewGroup(id, state.designationMap))
         ),
       };
+    case SET_INTERRUPTED_GROUP:
+      return {
+        ...state,
+        interruptedGroup: action.payload.group,
+      };
     default:
       return state;
   }
@@ -205,6 +212,7 @@ export const SET_IMPERIAL_FIGURES_AFTER_DEFEAT = 'SET_IMPERIAL_FIGURES_AFTER_DEF
 export const SET_IMPERIAL_FIGURES_AFTER_DEPLOY_REINFORCE =
   'SET_IMPERIAL_FIGURES_AFTER_DEPLOY_REINFORCE';
 export const DEPLOY_NEW_GROUPS = 'DEPLOY_NEW_GROUPS';
+export const SET_INTERRUPTED_GROUP = 'SET_INTERRUPTED_GROUP';
 
 // Action creators
 
@@ -240,6 +248,14 @@ export const setImperialFiguresAfterDeployReinforce = (
 export const deployNewGroups = (groupIds: string[]) => ({
   payload: {groupIds},
   type: DEPLOY_NEW_GROUPS,
+});
+export const setInterruptedGroup = (group: ImperialUnitType) => ({
+  payload: {group},
+  type: SET_INTERRUPTED_GROUP,
+});
+export const setInterruptedGroupActivated = () => ({
+  payload: {group: null},
+  type: SET_INTERRUPTED_GROUP,
 });
 
 // Selectors
@@ -323,13 +339,6 @@ function* handleImperialFigureDefeat(action: Object): Generator<*, *, *> {
     deployedGroups,
     groupsToAddToOpen
   );
-
-  // if (groupToDecrement.currentNumFigures === 1) {
-  //   // Mutate designationMap here
-  //   designationMap[groupToDecrement.id] = designationMap[groupToDecrement.id].filter(
-  //     (num: number) => num !== groupToDecrement.groupNumber
-  //   );
-  // }
 
   yield put(setImperialFiguresAfterDefeat(newDeployedGroups, groupsToAddToOpen, groupToDecrement));
 }

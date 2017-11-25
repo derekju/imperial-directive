@@ -22,16 +22,12 @@
     "buffs": ["fleetFooted", "fleetFooted", "heavyPressure"],
     "commands": [
       {
-        "condition": "If adjacent to any hostile figure",
-        "command": "{ACTION} Attack the most damaged hostile figure, then {ACTION} Move towards the nearest friendly figure."
-      },
-      {
         "condition": "If within 2 spaces of friendly target that is not within attack range of a target (adjacent for melee, 2 spaces for reach, 4 spaces for range)",
         "command": "{ACTION} Use Order ability on that friendly figure to have it move within attack range of the nearest hostile figure."
       },
       {
         "condition": "If within 4 spaces of any hostile figure",
-        "command": "{ACTION} Attack the most damaged hostile figure, then {ACTION} Move towards {PRIORITY_TARGET}."
+        "command": "{ACTION} Attack the most damaged hostile figure, then {ACTION} Move towards the nearest friendly figure."
       },
       {
         "condition": "If no hostile figures within 4 spaces",
@@ -48,6 +44,37 @@
     "name": "Imperial Officer",
     "reinforcementCost": -1,
     "threat": 2
+  },
+  "imperialOfficerElite": {
+    "buffs": ["fleetFooted", "fleetFooted", "heavyPressure"],
+    "commands": [
+      {
+        "condition": "If within 2 spaces of friendly target that is within attack range of a target (adjacent for melee, 2 spaces for reach, 4 spaces for range)",
+        "command": "{ACTION} Use Executive Order ability on that friendly figure to have it attack the nearest hostile figure."
+      },
+      {
+        "condition": "If within 2 spaces of friendly target that is not within attack range of a target (adjacent for melee, 2 spaces for reach, 4 spaces for range)",
+        "command": "{ACTION} Use Executive Order ability on that friendly figure to have it move within attack range of the nearest hostile figure."
+      },
+      {
+        "condition": "If within 4 spaces of any hostile figure",
+        "command": "{ACTION} Attack the most damaged hostile figure, then {ACTION} Move towards the nearest friendly figure."
+      },
+      {
+        "condition": "If no hostile figures within 4 spaces",
+        "command": "{ACTION} Move towards the nearest friendly figure."
+      },
+      {
+        "condition": "Reaction - If defending while adjacent to a friendly figure",
+        "command": "Use Cower ability if a rolled dice does not cancel anything."
+      }
+    ],
+    "elite": true,
+    "id": "imperialOfficer",
+    "maxInGroup": 1,
+    "name": "Elite Imperial Officer",
+    "reinforcementCost": -1,
+    "threat": 5
   },
   "probeDroid": {
     "buffs": ["combatVeteran", "combatVeteran", "fleetFooted", "heavyPressure"],
@@ -102,5 +129,20 @@
     "name": "Stormtrooper",
     "reinforcementCost": 2,
     "threat": 6
+  },
+  "trandoshanHunterElite": {
+    "buffs": ["combatVeteran"],
+    "commands": [
+      {
+        "condition": "TBD",
+        "command": "{ACTION} TBD"
+      }
+    ],
+    "elite": true,
+    "id": "trandoshanHunterElite",
+    "maxInGroup": 2,
+    "name": "Elite Trandoshan Hunter",
+    "reinforcementCost": 5,
+    "threat": 10
   }
 }
