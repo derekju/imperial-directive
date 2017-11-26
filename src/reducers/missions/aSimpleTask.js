@@ -11,9 +11,10 @@ import {
   MISSION_SPECIAL_SETUP,
   missionSpecialSetupDone,
   SET_MAP_STATE_ACTIVATED,
-  setMapStateActivated,
+  setAttackTarget,
   setDeploymentPoint,
-  setPriorityTarget,
+  setMapStateActivated,
+  setMoveTarget,
   statusPhaseEndRoundEffectsDone,
   STATUS_PHASE_END_ROUND_EFFECTS,
 } from '../mission';
@@ -24,13 +25,13 @@ import waitForModal from '../../sagas/waitForModal';
 
 // Constants
 
-const PRIORITY_TARGET_TERMINAL_1 = 'terminal 1';
-const PRIORITY_TARGET_TERMINAL_2 = 'terminal 2';
-const PRIORITY_TARGET_NEUTRAL = 'the formula';
-const PRIORITY_TARGET_HERO_FORMULA =
-  'the hero carrying the formula (if no hero then the formula itself)';
-const PRIORITY_TARGET_REMAINING = 'the remaining hero';
-const PRIORITY_TARGET_ENTRANCE = 'the entrance';
+const TARGET_TERMINAL_1 = 'terminal 1';
+const TARGET_TERMINAL_2 = 'terminal 2';
+const TARGET_NEUTRAL = 'the formula';
+const TARGET_HERO_FORMULA =
+  'the hero carrying the formula (or any hero)';
+const TARGET_REMAINING = 'the remaining hero';
+const TARGET_ENTRANCE = 'the entrance';
 
 const DEPLOYMENT_POINT_GREEN_TERMINAL_1 = 'The green deployment point next to terminal 1';
 const DEPLOYMENT_POINT_GREEN_TERMINAL_2 = 'The green deployment point next to the entrance';
@@ -58,7 +59,7 @@ function* handleTerminalInteraction(): Generator<*, *, *> {
         yield put(setMapStateActivated(1, 'terminal', value));
         // Change the targets and the deployment
         if (!priorityTargetKillHero) {
-          yield put(setPriorityTarget(PRIORITY_TARGET_ENTRANCE));
+          yield put(setMoveTarget(TARGET_ENTRANCE));
         }
         yield put(setDeploymentPoint(DEPLOYMENT_POINT_GREEN_TERMINAL_2));
       }
@@ -90,7 +91,7 @@ function* handleLightlyGuardedEvent(): Generator<*, *, *> {
       yield put(deployNewGroups(['stormtrooper', 'imperialOfficer']));
       // Change target
       if (!priorityTargetKillHero) {
-        yield put(setPriorityTarget(PRIORITY_TARGET_TERMINAL_2));
+        yield put(setMoveTarget(TARGET_TERMINAL_2));
       }
       // We're done
       break;
@@ -112,7 +113,7 @@ function* handleTooQuietEvent(): Generator<*, *, *> {
       yield call(waitForModal('RESOLVE_EVENT'));
       // Change target
       if (!priorityTargetKillHero) {
-        yield put(setPriorityTarget(PRIORITY_TARGET_NEUTRAL));
+        yield put(setMoveTarget(TARGET_NEUTRAL));
       }
       // We're done
       break;
@@ -146,7 +147,8 @@ function* handleSoundTheAlarmsEvent(): Generator<*, *, *> {
       yield call(helperIncreaseThreat, 2);
       // Change target
       if (!priorityTargetKillHero) {
-        yield put(setPriorityTarget(PRIORITY_TARGET_HERO_FORMULA));
+        yield put(setAttackTarget(TARGET_HERO_FORMULA));
+        yield put(setMoveTarget(TARGET_HERO_FORMULA));
       }
       yield put(setDeploymentPoint(DEPLOYMENT_POINT_RED));
       // We're done
@@ -175,7 +177,8 @@ function* handleHeroesWounded(): Generator<*, *, *> {
     if (isOneHeroLeft) {
       // PRIORITY TARGET SWITCH
       priorityTargetKillHero = true;
-      yield put(setPriorityTarget(PRIORITY_TARGET_REMAINING));
+      yield put(setAttackTarget(TARGET_REMAINING));
+      yield put(setMoveTarget(TARGET_REMAINING));
     }
   }
 }
@@ -197,9 +200,18 @@ function* handleSpecialSetup(): Generator<*, *, *> {
   yield put(missionSpecialSetupDone());
 }
 
+/*
+Priority target definitions:
+1) Initial attack is default, move is terminal 1
+2) Once door 1 opens, move is terminal 2
+3) Once door 2 opens, move is neutral
+4) Once formula is taken, attack and move are the hero carrying the formula
+5) If door 1 reopens, move target is the entrance to defend it
+6) At any point if heroes - 1 are wounded, attack and move are the last remaining hero
+*/
 export function* aSimpleTask(): Generator<*, *, *> {
-  // SET PRIORITY TARGET
-  yield put(setPriorityTarget(PRIORITY_TARGET_TERMINAL_1));
+  // SET TARGET
+  yield put(setMoveTarget(TARGET_TERMINAL_1));
   // SET INITIAL DEPLOYMENT POINT
   yield put(setDeploymentPoint(DEPLOYMENT_POINT_GREEN_TERMINAL_1));
 

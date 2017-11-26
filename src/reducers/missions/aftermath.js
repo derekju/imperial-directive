@@ -8,8 +8,9 @@ import {
   MISSION_SPECIAL_SETUP,
   missionSpecialSetupDone,
   SET_MAP_STATE_ACTIVATED,
+  setAttackTarget,
   setDeploymentPoint,
-  setPriorityTarget,
+  setMoveTarget,
   statusPhaseEndRoundEffectsDone,
   STATUS_PHASE_END_ROUND_EFFECTS,
 } from '../mission';
@@ -19,10 +20,10 @@ import waitForModal from '../../sagas/waitForModal';
 
 // Constants
 
-const PRIORITY_TARGET_DOOR = 'the door';
-const PRIORITY_TARGET_TERMINAL_2 = 'terminal 2';
-const PRIORITY_TARGET_NEAREST_TERMINAL = 'the nearest active terminal';
-const PRIORITY_TARGET_REMAINING = 'the remaining hero';
+const TARGET_DOOR = 'the door';
+const TARGET_TERMINAL_2 = 'terminal 2';
+const TARGET_NEAREST_TERMINAL = 'the nearest active terminal';
+const TARGET_REMAINING = 'the remaining hero';
 
 const DEPLOYMENT_POINT_GREEN = 'The green deployment point';
 const DEPLOYMENT_POINT_RED =
@@ -65,7 +66,7 @@ function* handleFortifiedEvent(): Generator<*, *, *> {
         displayModal('RESOLVE_EVENT', {
           text: [
             'Resolve the Fortified event.',
-            'The E-Web Engineer should be deployed to the Yellow deployment point in the Atrium',
+            'The E-Web Engineer should be deployed to the Yellow deployment point in the Atrium.',
           ],
         })
       );
@@ -74,7 +75,7 @@ function* handleFortifiedEvent(): Generator<*, *, *> {
       yield put(deployNewGroups(['eWebEngineer', 'stormtrooper', 'imperialOfficer']));
       // PRIORITY TARGET SWITCH #2
       if (!priorityTargetKillHero) {
-        yield put(setPriorityTarget(PRIORITY_TARGET_TERMINAL_2));
+        yield put(setMoveTarget(TARGET_TERMINAL_2));
       }
       // We're done
       break;
@@ -89,7 +90,7 @@ function* handleSingleTerminalDestroyed(): Generator<*, *, *> {
     if (id === 2 && type === 'terminal' && value === true) {
       // PRIORITY TARGET SWITCH #3
       if (!priorityTargetKillHero) {
-        yield put(setPriorityTarget(PRIORITY_TARGET_NEAREST_TERMINAL));
+        yield put(setMoveTarget(TARGET_NEAREST_TERMINAL));
       }
       // We're done
       break;
@@ -128,7 +129,8 @@ function* handleHeroesWounded(): Generator<*, *, *> {
     if (isOneHeroLeft) {
       // PRIORITY TARGET SWITCH #4
       priorityTargetKillHero = true;
-      yield put(setPriorityTarget(PRIORITY_TARGET_REMAINING));
+      yield put(setAttackTarget(TARGET_REMAINING));
+      yield put(setMoveTarget(TARGET_REMAINING));
     }
   }
 }
@@ -157,17 +159,17 @@ function* handleSpecialSetup(): Generator<*, *, *> {
   yield take(MISSION_SPECIAL_SETUP);
   yield put(missionSpecialSetupDone());
 }
+
 /*
 Priority target definitions:
-1) Initial is door
-2) Once door opens, target is terminal 2
-3) If terminal 2 is down, target is nearest terminal
-4) At any point if heroes - 1 are wounded, target is the last remaining hero
+1) Initial attack is default, move is door
+2) Once door opens, move is terminal 2
+3) If terminal 2 is down, move is nearest terminal
+4) At any point if heroes - 1 are wounded, attack and move are the last remaining hero
 */
-
 export function* aftermath(): Generator<*, *, *> {
-  // SET PRIORITY TARGET
-  yield put(setPriorityTarget(PRIORITY_TARGET_DOOR));
+  // SET TARGETS
+  yield put(setMoveTarget(TARGET_DOOR));
   // SET INITIAL DEPLOYMENT POINT
   yield put(setDeploymentPoint(DEPLOYMENT_POINT_GREEN));
 

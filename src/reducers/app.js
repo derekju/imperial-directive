@@ -9,7 +9,7 @@ import type {StateType} from './types';
 
 import {aftermath} from './missions/aftermath';
 import {aSimpleTask} from './missions/aSimpleTask';
-import {friendsOfOld} from './missions/friendsOfOld';
+// import {friendsOfOld} from './missions/friendsOfOld';
 
 // Types
 
@@ -70,9 +70,9 @@ function* forkMission(currentMission: string): Generator<*, *, *> {
     case 'aSimpleTask':
       yield fork(aSimpleTask);
       break;
-    case 'friendsOfOld':
-      yield fork(friendsOfOld);
-      break;
+    // case 'friendsOfOld':
+    //   yield fork(friendsOfOld);
+    //   break;
     default:
       return;
   }

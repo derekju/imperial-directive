@@ -67,6 +67,7 @@ const styles = {
 
 type MissionPropsType = {
   activatedGroup: ?ImperialUnitType,
+  attackTarget: string,
   currentMission: string,
   currentMissionName: string,
   currentRound: number,
@@ -75,7 +76,7 @@ type MissionPropsType = {
   history: Object,
   instructions: {imperialVictory: string, rebelVictory: string},
   interruptedGroup: ?ImperialUnitType,
-  priorityTarget: string,
+  moveTarget: string,
   setImperialGroupActivated: Function,
   setInterruptedGroupActivated: Function,
 };
@@ -115,8 +116,9 @@ class Mission extends React.Component<MissionPropsType> {
         {this.props.activatedGroup ? (
           <div style={styles.activatedGroupContainer}>
             <AiCard
+              attackTarget={this.props.attackTarget}
               group={this.props.activatedGroup}
-              priorityTarget={this.props.priorityTarget}
+              moveTarget={this.props.moveTarget}
               setImperialGroupActivated={this.props.setImperialGroupActivated}
             />
           </div>
@@ -124,8 +126,9 @@ class Mission extends React.Component<MissionPropsType> {
         {this.props.interruptedGroup ? (
           <div style={styles.activatedGroupContainer}>
             <AiCard
+              attackTarget={this.props.attackTarget}
               group={this.props.interruptedGroup}
-              priorityTarget={this.props.priorityTarget}
+              moveTarget={this.props.moveTarget}
               setImperialGroupActivated={this.props.setInterruptedGroupActivated}
             />
           </div>

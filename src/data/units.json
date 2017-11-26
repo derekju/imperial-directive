@@ -41,7 +41,7 @@
     "buffs": ["fleetFooted", "fleetFooted", "heavyPressure"],
     "commands": [
       {
-        "condition": "If within 2 spaces of friendly target that is not within attack range of {ATTACK_TARGET} (adjacent for melee, 2 spaces for reach, 4 spaces for range)",
+        "condition": "If within 2 spaces of a friendly target that is not within attack range of {ATTACK_TARGET}",
         "command": "{ACTION} Use Order ability on that friendly figure to have it move within attack range of {ATTACK_TARGET}."
       },
       {
@@ -68,7 +68,7 @@
     "buffs": ["fleetFooted", "fleetFooted", "heavyPressure"],
     "commands": [
       {
-        "condition": "If within 2 spaces of a friendly target that is within attack range of {ATTACK_TARGET} (adjacent for melee, 2 spaces for reach, 4 spaces for range)",
+        "condition": "If within 2 spaces of a friendly target that is within attack range of {ATTACK_TARGET}",
         "command": "{ACTION} Use Executive Order ability on that friendly figure to have it attack {ATTACK_TARGET}."
       },
       {
@@ -335,8 +335,8 @@
         "command": "{ACTION} Move adjacent to {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}, then move towards {MOVE_TARGET}."
       },
       {
-        "condition": "If within 7 spaces of any target",
-        "command": "{ACTION} Move within 3 spaces of the most damaged target, then {ACTION} Attack that target, then move towards {MOVE_TARGET}."
+        "condition": "If within 7 spaces of {ATTACK_TARGET}",
+        "command": "{ACTION} Move within 3 spaces of {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}, then move towards {MOVE_TARGET}."
       },
       {
         "condition": "If no target within 7 spaces",

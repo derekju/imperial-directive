@@ -1,6 +1,6 @@
 // @flow
 
-import {expandText, generateTextArray} from '../lib/iconSubber';
+import {expandText, generateTextArray, replaceAttackMoveText} from '../lib/iconSubber';
 import {ELITE_RED, IMPERIAL_BLUE, LIGHT_WHITE} from '../styles/colors';
 import buffs from '../data/buffs.json';
 import Button from './Button';
@@ -67,7 +67,8 @@ const styles = {
 
 type AiCardPropsType = {
   group: ImperialUnitType,
-  priorityTarget: string,
+  attackTarget: string,
+  moveTarget: string,
   setImperialGroupActivated: Function,
 };
 
@@ -76,10 +77,10 @@ class AiCard extends React.Component<AiCardPropsType> {
     const commandArray = generateTextArray(command);
     return (
       <div style={styles.commandEntry} key={key}>
-        <div style={styles.condition}>{`${condition}:`}</div>
+        <div style={styles.condition}>{`${replaceAttackMoveText(condition, this.props.attackTarget, this.props.moveTarget)}:`}</div>
         <div>
           {commandArray.map((text: string, index: number) =>
-            expandText(text, index, this.props.priorityTarget, styles.icon)
+            expandText(text, index, this.props.attackTarget, this.props.moveTarget, styles.icon)
           )}
         </div>
       </div>
@@ -105,7 +106,7 @@ class AiCard extends React.Component<AiCardPropsType> {
         {buff.text.map((buffText: string) => {
           const textArray = generateTextArray(buffText);
           return textArray.map((text: string, index: number) =>
-            expandText(text, index, this.props.priorityTarget, styles.iconStyle)
+            expandText(text, index, this.props.attackTarget, this.props.moveTarget, styles.iconStyle)
           );
         })}
       </div>

@@ -14,10 +14,21 @@ import strengthPng from '../assets/icons/strength.png';
 import surgePng from '../assets/icons/surge.png';
 import techPng from '../assets/icons/tech.png';
 
+export const replaceAttackMoveText = (
+  text: string,
+  attackTarget: string,
+  moveTarget: string
+) => {
+  let replacedText = text.replace(/{ATTACK_TARGET}/, attackTarget);
+  replacedText = replacedText.replace(/{MOVE_TARGET}/, moveTarget);
+  return replacedText;
+}
+
 export const expandText = (
   text: string,
   index: number,
-  priorityTarget: string,
+  attackTarget: string,
+  moveTarget: string,
   styles: ?Object = {}
 ) => {
   switch (text) {
@@ -37,8 +48,10 @@ export const expandText = (
       return <img key={`${text}-${index}`} alt="Insight" src={insightPng} style={styles} />;
     case '{MELEE}':
       return <img key={`${text}-${index}`} alt="Melee" src={meleePng} style={styles} />;
-    case '{PRIORITY_TARGET}':
-      return <span key={`${text}-${index}`}>{priorityTarget}</span>;
+    case '{ATTACK_TARGET}':
+      return <span key={`${text}-${index}`}>{attackTarget}</span>;
+    case '{MOVE_TARGET}':
+      return <span key={`${text}-${index}`}>{moveTarget}</span>;
     case '{RANGED}':
       return <img key={`${text}-${index}`} alt="Ranged" src={rangedPng} style={styles} />;
     case '{STRAIN}':

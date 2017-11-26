@@ -28,6 +28,7 @@ export type MapStateType = {
 };
 
 export type MissionStateType = {
+  attackTarget: string,
   currentActivePlayer: number,
   currentPhase: number,
   currentRound: number,
@@ -36,7 +37,7 @@ export type MissionStateType = {
   instructions: {imperialVictory: string, rebelVictory: string},
   mapImage: Array<Array<string>>,
   mapStates: {[key: string]: MapStateType},
-  priorityTarget: string,
+  moveTarget: string,
   missionThreat: number,
 };
 
@@ -62,6 +63,7 @@ export const PHASE_STATUS = 2;
 // State
 
 const initialState = {
+  attackTarget: 'the most damaged hostile figure',
   currentActivePlayer: PLAYER_NONE,
   currentPhase: PHASE_EVENT,
   currentRound: 1,
@@ -74,7 +76,7 @@ const initialState = {
   mapImage: [[]],
   mapStates: {},
   missionThreat: 0,
-  priorityTarget: 'the most damaged hostile figure',
+  moveTarget: 'the most damaged hostile figure',
 };
 
 export default (state: MissionStateType = initialState, action: Object) => {
@@ -83,11 +85,12 @@ export default (state: MissionStateType = initialState, action: Object) => {
       const {config, missionThreat} = action.payload;
       return {
         ...initialState,
+        attackTarget: state.attackTarget,
         instructions: config.instructions,
         mapImage: config.mapImage,
         mapStates: config.mapStates,
         missionThreat,
-        priorityTarget: state.priorityTarget,
+        moveTarget: state.moveTarget,
       };
     case CHANGE_PLAYER_TURN:
       return {
@@ -132,10 +135,15 @@ export default (state: MissionStateType = initialState, action: Object) => {
         ...state,
         currentRound: state.currentRound + 1,
       };
-    case SET_PRIORITY_TARGET:
+    case SET_ATTACK_TARGET:
       return {
         ...state,
-        priorityTarget: action.payload.priorityTarget,
+        attackTarget: action.payload.attackTarget,
+      };
+    case SET_MOVE_TARGET:
+      return {
+        ...state,
+        moveTarget: action.payload.moveTarget,
       };
     case SET_DEPLOYMENT_POINT:
       return {
@@ -168,7 +176,8 @@ export const STATUS_PHASE_DEPLOY_REINFORCE_DONE = 'STATUS_PHASE_DEPLOY_REINFORCE
 export const STATUS_PHASE_END_ROUND_EFFECTS = 'STATUS_PHASE_END_ROUND_EFFECTS';
 export const STATUS_PHASE_END_ROUND_EFFECTS_DONE = 'STATUS_PHASE_END_ROUND_EFFECTS_DONE';
 export const STATUS_PHASE_ADVANCE_ROUND = 'STATUS_PHASE_ADVANCE_ROUND';
-export const SET_PRIORITY_TARGET = 'SET_PRIORITY_TARGET';
+export const SET_ATTACK_TARGET = 'SET_ATTACK_TARGET';
+export const SET_MOVE_TARGET = 'SET_MOVE_TARGET';
 export const SET_DEPLOYMENT_POINT = 'SET_DEPLOYMENT_POINT';
 export const MISSION_SPECIAL_SETUP = 'MISSION_SPECIAL_SETUP';
 export const MISSION_SPECIAL_SETUP_DONE = 'MISSION_SPECIAL_SETUP_DONE';
@@ -199,9 +208,13 @@ export const statusPhaseDeployReinforceDone = (newThreat: number) => ({
 export const statusPhaseEndRoundEffects = () => ({type: STATUS_PHASE_END_ROUND_EFFECTS});
 export const statusPhaseEndRoundEffectsDone = () => ({type: STATUS_PHASE_END_ROUND_EFFECTS_DONE});
 export const statusPhaseAdvanceRound = () => ({type: STATUS_PHASE_ADVANCE_ROUND});
-export const setPriorityTarget = (priorityTarget: string) => ({
-  payload: {priorityTarget},
-  type: SET_PRIORITY_TARGET,
+export const setAttackTarget = (attackTarget: string) => ({
+  payload: {attackTarget},
+  type: SET_ATTACK_TARGET,
+});
+export const setMoveTarget = (moveTarget: string) => ({
+  payload: {moveTarget},
+  type: SET_MOVE_TARGET,
 });
 export const setDeploymentPoint = (deploymentPoint: string) => ({
   payload: {deploymentPoint},

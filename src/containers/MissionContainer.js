@@ -8,6 +8,7 @@ import type {StateType} from '../reducers/types';
 
 const mapStateToProps = (state: StateType) => ({
   activatedGroup: state.imperials.activatedGroup,
+  attackTarget: state.mission.attackTarget,
   currentMission: state.app.currentMission,
   currentMissionName: missions[state.app.currentMission]
     ? missions[state.app.currentMission].name
@@ -17,7 +18,7 @@ const mapStateToProps = (state: StateType) => ({
   displayModal: Boolean(state.modal.type),
   instructions: state.mission.instructions,
   interruptedGroup: state.imperials.interruptedGroup,
-  priorityTarget: state.mission.priorityTarget,
+  moveTarget: state.mission.moveTarget,
 });
 
 const mapDispatchToProps = {
