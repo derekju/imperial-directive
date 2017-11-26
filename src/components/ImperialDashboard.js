@@ -69,6 +69,7 @@ class ImperialDashboard extends React.Component<
               <ImperialAvatar
                 activateImperialGroup={this.props.activateImperialGroup}
                 defeatImperialFigure={this.props.defeatImperialFigure}
+                elite={imperialUnit.elite}
                 exhausted={imperialUnit.exhausted}
                 imperialUnit={imperialUnit}
                 index={index}

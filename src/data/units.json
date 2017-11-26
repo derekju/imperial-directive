@@ -3,12 +3,12 @@
     "buffs": ["noQuarter", "noQuarter", "noQuarter", "showOfForce", "surgicalStrike"],
     "commands": [
       {
-        "condition": "If within 7 spaces of any hostile figure",
-        "command": "{ACTION} Attack the most damaged hostile figure, then {ACTION} Attack the most damaged hostile figure."
+        "condition": "If within 7 spaces of {ATTACK_TARGET}",
+        "command": "{ACTION} Attack {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}."
       },
       {
         "condition": "If no hostile figure within 7 spaces",
-        "command": "{ACTION} Move within 5 spaces of a hostile figure, then {ACTION} Move within 5 spaces of a hostile figure."
+        "command": "{ACTION} Move within 5 spaces of {ATTACK_TARGET}, then {ACTION} Move within 5 spaces of {ATTACK_TARGET}."
       }
     ],
     "elite": false,
@@ -16,18 +16,37 @@
     "maxInGroup": 1,
     "name": "E-Web Engineer",
     "reinforcementCost": -1,
+    "threat": 6
+  },
+  "eWebEngineerElite": {
+    "buffs": ["noQuarter", "noQuarter", "noQuarter", "showOfForce", "surgicalStrike"],
+    "commands": [
+      {
+        "condition": "If within 7 spaces of {ATTACK_TARGET}",
+        "command": "{ACTION} Attack {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}."
+      },
+      {
+        "condition": "If no hostile figure within 7 spaces",
+        "command": "{ACTION} Move within 5 spaces of {ATTACK_TARGET}, then {ACTION} Move within 5 spaces of {ATTACK_TARGET}."
+      }
+    ],
+    "elite": true,
+    "id": "eWebEngineerElite",
+    "maxInGroup": 1,
+    "name": "E E-Web Engineer",
+    "reinforcementCost": -1,
     "threat": 8
   },
   "imperialOfficer": {
     "buffs": ["fleetFooted", "fleetFooted", "heavyPressure"],
     "commands": [
       {
-        "condition": "If within 2 spaces of friendly target that is not within attack range of a target (adjacent for melee, 2 spaces for reach, 4 spaces for range)",
-        "command": "{ACTION} Use Order ability on that friendly figure to have it move within attack range of the nearest hostile figure."
+        "condition": "If within 2 spaces of friendly target that is not within attack range of {ATTACK_TARGET} (adjacent for melee, 2 spaces for reach, 4 spaces for range)",
+        "command": "{ACTION} Use Order ability on that friendly figure to have it move within attack range of {ATTACK_TARGET}."
       },
       {
-        "condition": "If within 4 spaces of any hostile figure",
-        "command": "{ACTION} Attack the most damaged hostile figure, then {ACTION} Move towards the nearest friendly figure."
+        "condition": "If within 4 spaces of {ATTACK_TARGET}",
+        "command": "{ACTION} Attack {ATTACK_TARGET}, then {ACTION} Move towards the nearest friendly figure."
       },
       {
         "condition": "If no hostile figures within 4 spaces",
@@ -49,16 +68,16 @@
     "buffs": ["fleetFooted", "fleetFooted", "heavyPressure"],
     "commands": [
       {
-        "condition": "If within 2 spaces of friendly target that is within attack range of a target (adjacent for melee, 2 spaces for reach, 4 spaces for range)",
-        "command": "{ACTION} Use Executive Order ability on that friendly figure to have it attack the nearest hostile figure."
+        "condition": "If within 2 spaces of a friendly target that is within attack range of {ATTACK_TARGET} (adjacent for melee, 2 spaces for reach, 4 spaces for range)",
+        "command": "{ACTION} Use Executive Order ability on that friendly figure to have it attack {ATTACK_TARGET}."
       },
       {
-        "condition": "If within 2 spaces of friendly target that is not within attack range of a target (adjacent for melee, 2 spaces for reach, 4 spaces for range)",
-        "command": "{ACTION} Use Executive Order ability on that friendly figure to have it move within attack range of the nearest hostile figure."
+        "condition": "If within 2 spaces of a friendly target that is not within attack range of {ATTACK_TARGET} (adjacent for melee, 2 spaces for reach, 4 spaces for range)",
+        "command": "{ACTION} Use Executive Order ability on that friendly figure to have it move within attack range {ATTACK_TARGET}."
       },
       {
-        "condition": "If within 4 spaces of any hostile figure",
-        "command": "{ACTION} Attack the most damaged hostile figure, then {ACTION} Move towards the nearest friendly figure."
+        "condition": "If within 4 spaces of {ATTACK_TARGET}",
+        "command": "{ACTION} Attack {ATTACK_TARGET}, then {ACTION} Move towards the nearest friendly figure."
       },
       {
         "condition": "If no hostile figures within 4 spaces",
@@ -72,24 +91,78 @@
     "elite": true,
     "id": "imperialOfficer",
     "maxInGroup": 1,
-    "name": "Elite Imperial Officer",
+    "name": "E Imperial Officer",
     "reinforcementCost": -1,
     "threat": 5
+  },
+  "nexu": {
+    "buffs": ["combatVeteran"],
+    "commands": [
+      {
+        "condition": "If within 4 spaces of {TARGET_ATTACK}",
+        "command": "{ACTION} Use Pounce ability to attack {TARGET_ATTACK}."
+      },
+      {
+        "condition": "If within 6 spaces of any target",
+        "command": "{ACTION} Move towards most damaged target, then {ACTION} Attack that target, then move towards {TARGET_ATTACK}."
+      },
+      {
+        "condition": "If no target within 6 spaces",
+        "command": "{ACTION} Move towards {TARGET_ATTACK}."
+      },
+      {
+        "condition": "Reaction - If defending",
+        "command": "Use Cunning ability"
+      }
+    ],
+    "elite": false,
+    "id": "nexu",
+    "maxInGroup": 1,
+    "name": "Nexu",
+    "reinforcementCost": -1,
+    "threat": 4
+  },
+  "nexuElite": {
+    "buffs": ["combatVeteran"],
+    "commands": [
+      {
+        "condition": "If within 4 spaces of {ATTACK_TARGET}",
+        "command": "{ACTION} Use Pounce ability to attack {ATTACK_TARGET}."
+      },
+      {
+        "condition": "If within 6 spaces of any target",
+        "command": "{ACTION} Move towards most damaged target, then {ACTION} Attack that target, then move towards {MOVE_TARGET}."
+      },
+      {
+        "condition": "If no target within 6 spaces",
+        "command": "{ACTION} Move towards {TARGET_ATTACK}."
+      },
+      {
+        "condition": "Reaction - If defending",
+        "command": "Use Cunning ability"
+      }
+    ],
+    "elite": true,
+    "id": "nexu",
+    "maxInGroup": 1,
+    "name": "E Nexu",
+    "reinforcementCost": -1,
+    "threat": 6
   },
   "probeDroid": {
     "buffs": ["combatVeteran", "combatVeteran", "fleetFooted", "heavyPressure"],
     "commands": [
       {
-        "condition": "If within 4 spaces of any hostile figure",
-        "command": "{ACTION} Attack the most damaged hostile figure, then {ACTION} Move towards {PRIORITY_TARGET}."
+        "condition": "If within 4 spaces of {ATTACK_TARGET}",
+        "command": "{ACTION} Attack {ATTACK_TARGET}, then {ACTION} Move towards {MOVE_TARGET}."
       },
       {
-        "condition": "If within 5 spaces of any hostile figure",
-        "command": "{ACTION} Move within 4 spaces of the nearest hostile figure, then {ACTION} Attack that figure, then move towards {PRIORITY_TARGET}."
+        "condition": "If within 5 spaces of {ATTACK_TARGET}",
+        "command": "{ACTION} Move within 4 spaces of {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}, then move towards {MOVE_TARGET}."
       },
       {
         "condition": "If no hostile figures within 5 spaces",
-        "command": "{ACTION} Move towards {PRIORITY_TARGET}."
+        "command": "{ACTION} Move towards {MOVE_TARGET}."
       },
       {
         "condition": "Reaction - At the end of the round, if adjacent to a Rebel figure with 2 or less Health left, and not adjacent to any friendly figures",
@@ -103,20 +176,113 @@
     "reinforcementCost": -1,
     "threat": 3
   },
+  "probeDroidElite": {
+    "buffs": ["combatVeteran", "combatVeteran", "fleetFooted", "heavyPressure"],
+    "commands": [
+      {
+        "condition": "If within 4 spaces of {ATTACK_TARGET}",
+        "command": "{ACTION} Attack {ATTACK_TARGET}, then {ACTION} Move towards {MOVE_TARGET}."
+      },
+      {
+        "condition": "If within 6 spaces of {ATTACK_TARGET}",
+        "command": "{ACTION} Move within 4 spaces of {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}, then move towards {MOVE_TARGET}."
+      },
+      {
+        "condition": "If no hostile figures within 5 spaces",
+        "command": "{ACTION} Move towards {MOVE_TARGET}."
+      },
+      {
+        "condition": "Reaction - If an attack die is rolled that has no effect (no damage, no surge can be used to any effect)",
+        "command": "Use Targeting Computer to reroll the die."
+      },
+      {
+        "condition": "Reaction - At the end of the round, if adjacent to a Rebel figure with 2 or less Health left, and not adjacent to any friendly figures",
+        "command": "Use Self-Destruct ability."
+      }
+    ],
+    "elite": true,
+    "id": "probeDroidElite",
+    "maxInGroup": 1,
+    "name": "E Probe Droid",
+    "reinforcementCost": -1,
+    "threat": 5
+  },
+  "royalGuard": {
+    "buffs": ["combatVeteran"],
+    "commands": [
+      {
+        "condition": "If within 2 spaces of {ATTACK_TARGET}",
+        "command": "{ACTION} Attack {ATTACK_TARGET}, then {ACTION} Move adjacent to a friendly non-Guardian figure."
+      },
+      {
+        "condition": "If within 6 spaces of {ATTACK_TARGET}",
+        "command": "{ACTION} Move within 2 spaces of {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}, then move adjacent to a friendly non-Guardian figure."
+      },
+      {
+        "condition": "If no hostile figures within 6 spaces",
+        "command": "{ACTION} Move adjacent to a friendly non-Guardian figure."
+      },
+      {
+        "condition": "Reaction - While adjacent to a friendly non-Guardian figure that is defending",
+        "command": "Use Sentinel ability."
+      },
+      {
+        "condition": "Reaction - While adjacent to a friendly non-Guardian figure that is defeated",
+        "command": "Use Vengeance ability."
+      }
+    ],
+    "elite": false,
+    "id": "royalGuard",
+    "maxInGroup": 2,
+    "name": "Royal Guard",
+    "reinforcementCost": 4,
+    "threat": 8
+  },
+  "royalGuardElite": {
+    "buffs": ["combatVeteran"],
+    "commands": [
+      {
+        "condition": "If within 2 spaces of {ATTACK_TARGET}",
+        "command": "{ACTION} Attack {ATTACK_TARGET}, then {ACTION} Move adjacent to a friendly non-Guardian figure."
+      },
+      {
+        "condition": "If within 6 spaces of {ATTACK_TARGET}",
+        "command": "{ACTION} Move within 2 spaces of {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}, then move adjacent to a friendly non-Guardian figure."
+      },
+      {
+        "condition": "If no hostile figures within 6 spaces",
+        "command": "{ACTION} Move adjacent to a friendly non-Guardian figure."
+      },
+      {
+        "condition": "Reaction - While adjacent to a friendly non-Guardian figure that is defending",
+        "command": "Use Sentinel ability."
+      },
+      {
+        "condition": "Reaction - While adjacent to a friendly non-Guardian figure that is defeated",
+        "command": "Use Vengeance ability and move towards {ATTACK_TARGET}."
+      }
+    ],
+    "elite": true,
+    "id": "royalGuardElite",
+    "maxInGroup": 2,
+    "name": "E Royal Guard",
+    "reinforcementCost": 6,
+    "threat": 12
+  },
   "stormtrooper": {
     "buffs": ["combatVeteran", "combatVeteran", "shockTroopers", "shockTroopers", "showOfForce"],
     "commands": [
       {
-        "condition": "If within 4 spaces of any hostile figure",
-        "command": "{ACTION} Attack the most damaged hostile figure, then {ACTION} Move towards {PRIORITY_TARGET}."
+        "condition": "If within 4 spaces of {ATTACK_TARGET}",
+        "command": "{ACTION} Attack {ATTACK_TARGET}, then {ACTION} Move towards {MOVE_TARGET}."
       },
       {
-        "condition": "If within 6 spaces of any hostile figure",
-        "command": "{ACTION} Move within 4 spaces of the nearest hostile figure, then {ACTION} Attack that figure, then move towards {PRIORITY_TARGET}."
+        "condition": "If within 6 spaces of {ATTACK_TARGET}",
+        "command": "{ACTION} Move within 4 spaces of {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}, then move towards {MOVE_TARGET}."
       },
       {
         "condition": "If no hostile figures within 6 spaces",
-        "command": "{ACTION} Move towards {PRIORITY_TARGET}."
+        "command": "{ACTION} Move towards {MOVE_TARGET}."
       },
       {
         "condition": "Reaction - If adjacent to another friendly Trooper while attacking",
@@ -130,18 +296,96 @@
     "reinforcementCost": 2,
     "threat": 6
   },
+  "stormtrooperElite": {
+    "buffs": ["combatVeteran", "combatVeteran", "shockTroopers", "shockTroopers", "showOfForce"],
+    "commands": [
+      {
+        "condition": "If within 4 spaces of {ATTACK_TARGET}",
+        "command": "{ACTION} Attack {ATTACK_TARGET}, then {ACTION} Move towards {MOVE_TARGET}."
+      },
+      {
+        "condition": "If within 6 spaces of {ATTACK_TARGET}",
+        "command": "{ACTION} Move within 4 spaces of {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}, then move towards {MOVE_TARGET}."
+      },
+      {
+        "condition": "If no hostile figures within 6 spaces",
+        "command": "{ACTION} Move towards {MOVE_TARGET}."
+      },
+      {
+        "condition": "Reaction - If adjacent to another friendly Trooper while attacking",
+        "command": "If accuracy check is successful, use Squad Training ability to reroll a {SURGE}."
+      },
+      {
+        "condition": "Reaction - When defeated",
+        "command": "Use Last Stand ability on the closest figure in this figure's group."
+      }
+    ],
+    "elite": true,
+    "id": "stormtrooperElite",
+    "maxInGroup": 3,
+    "name": "E Stormtrooper",
+    "reinforcementCost": 3,
+    "threat": 9
+  },
+  "trandoshanHunter": {
+    "buffs": ["combatVeteran"],
+    "commands": [
+      {
+        "condition": "If within 4 spaces of {ATTACK_TARGET}",
+        "command": "{ACTION} Move adjacent to {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}, then move towards {MOVE_TARGET}."
+      },
+      {
+        "condition": "If within 7 spaces of any target",
+        "command": "{ACTION} Move within 3 spaces of the most damaged target, then {ACTION} Attack that target, then move towards {MOVE_TARGET}."
+      },
+      {
+        "condition": "If no target within 7 spaces",
+        "command": "{ACTION} Move towards {ATTACK_TARGET}."
+      },
+      {
+        "condition": "Reaction - If attacking a target within 3 spaces",
+        "command": "Use Relentless ability"
+      },
+      {
+        "condition": "Reaction - If attacking an adjacent target",
+        "command": "Use Scattergun ability ability"
+      }
+    ],
+    "elite": false,
+    "id": "trandoshanHunter",
+    "maxInGroup": 2,
+    "name": "Trandoshan Hunter",
+    "reinforcementCost": 3,
+    "threat": 7
+  },
   "trandoshanHunterElite": {
     "buffs": ["combatVeteran"],
     "commands": [
       {
-        "condition": "TBD",
-        "command": "{ACTION} TBD"
+        "condition": "If within 4 spaces of {ATTACK_TARGET}",
+        "command": "{ACTION} Move adjacent to {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}, then move towards {MOVE_TARGET}."
+      },
+      {
+        "condition": "If within 7 spaces of any target",
+        "command": "{ACTION} Move within 3 spaces of the most damaged target, then {ACTION} Attack that target, then move towards {MOVE_TARGET}."
+      },
+      {
+        "condition": "If no target within 7 spaces",
+        "command": "{ACTION} Move towards {ATTACK_TARGET}."
+      },
+      {
+        "condition": "Reaction - If attacking a target within 3 spaces",
+        "command": "Use Relentless ability"
+      },
+      {
+        "condition": "Reaction - If attacking an adjacent target",
+        "command": "Use ACP Scattergun ability ability"
       }
     ],
     "elite": true,
     "id": "trandoshanHunterElite",
     "maxInGroup": 2,
-    "name": "Elite Trandoshan Hunter",
+    "name": "E Trandoshan Hunter",
     "reinforcementCost": 5,
     "threat": 10
   }

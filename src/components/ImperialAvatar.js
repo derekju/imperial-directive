@@ -86,6 +86,7 @@ const styles = {
 type ImperialAvatarPropsType = {
   activateImperialGroup: Function,
   defeatImperialFigure: Function,
+  elite: boolean,
   exhausted: boolean,
   imperialUnit: ImperialUnitType,
   index: number,
