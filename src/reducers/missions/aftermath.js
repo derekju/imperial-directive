@@ -66,7 +66,7 @@ function* handleFortifiedEvent(): Generator<*, *, *> {
           text: [
             'Resolve the Fortified event.',
             'The E-Web Engineer should be deployed to the Yellow deployment point in the Atrium',
-          ]
+          ],
         })
       );
       yield call(waitForModal('RESOLVE_EVENT'));

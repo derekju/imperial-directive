@@ -43,13 +43,13 @@ const styles = {
     position: 'relative',
   },
   popup: {
-    ...positionAbsolute(-22, null, null, 102),
+    ...positionAbsolute(-47, null, null, 102),
     alignItems: 'center',
     backgroundColor: LIGHT_WHITE,
     border: '2px solid black',
     display: 'flex',
     flexDirection: 'column',
-    height: '125px',
+    height: '175px',
     justifyContent: 'space-between',
     width: '175px',
     zIndex: 1,
@@ -60,10 +60,10 @@ const styles = {
     width: '100%',
   },
   popupArrow: {
-    ...positionAbsolute(52, null, null, -11),
+    ...positionAbsolute(72, null, null, -11),
   },
   popupMask: {
-    ...positionAbsolute(55, null, null, -1),
+    ...positionAbsolute(75, null, null, -1),
     backgroundColor: LIGHT_WHITE,
     height: '16px',
     width: '2px',
@@ -83,6 +83,7 @@ type HeroPanelAvatarPropsType = {
   firstName: string,
   id: string,
   isRebelPlayerTurn: boolean,
+  setRebelEscaped: Function,
   setRebelHeroActivated: Function,
   withdrawn: boolean,
   wounded: boolean,
@@ -119,6 +120,11 @@ class HeroPanelAvatar extends React.Component<HeroPanelAvatarPropsType, HeroPane
     this.togglePopup();
   };
 
+  handleEscape = () => {
+    this.props.setRebelEscaped(this.props.id);
+    this.togglePopup();
+  };
+
   renderPopup() {
     return (
       <div style={styles.popup}>
@@ -139,6 +145,9 @@ class HeroPanelAvatar extends React.Component<HeroPanelAvatarPropsType, HeroPane
           text={this.props.wounded ? 'Set withdrawn' : 'Set wounded'}
           onClick={this.handleSetWounded}
         />
+        {!this.props.activated && this.props.isRebelPlayerTurn ? (
+          <Button text="Escape" onClick={this.handleEscape} />
+        ) : null}
         <div style={styles.popupAccent} />
         <div style={styles.popupMask} />
       </div>

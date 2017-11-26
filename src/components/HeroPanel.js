@@ -33,6 +33,7 @@ type HeroPanelPropsType = {
   canActivateTwice: string[],
   isRebelPlayerTurn: boolean,
   roster: string[],
+  setRebelEscaped: Function,
   setRebelHeroActivated: Function,
   withdrawnHeroes: string[],
   woundedHeroes: string[],
@@ -68,6 +69,7 @@ class HeroPanel extends React.Component<HeroPanelPropsType> {
                 id={id}
                 isRebelPlayerTurn={this.props.isRebelPlayerTurn}
                 key={id}
+                setRebelEscaped={this.props.isRebelPlayerTurn ? this.props.setRebelEscaped : noop}
                 setRebelHeroActivated={
                   this.props.isRebelPlayerTurn ? this.props.setRebelHeroActivated : noop
                 }

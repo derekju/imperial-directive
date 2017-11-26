@@ -104,9 +104,7 @@ class Map extends React.Component<MapPropsType> {
           />
         );
       } else if (mapState.type === 'entrance') {
-        return (
-          <Entrance />
-        );
+        return <Entrance />;
       }
     }
 

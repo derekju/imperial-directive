@@ -1,7 +1,12 @@
 // @flow
 
 import {all, call, fork, put, select, take, takeEvery} from 'redux-saga/effects';
-import {getIsThereReadyRebelFigures, getRoster, SET_REBEL_HERO_ACTIVATED} from './rebels';
+import {
+  getIsThereReadyRebelFigures,
+  getRoster,
+  SET_REBEL_ESCAPED,
+  SET_REBEL_HERO_ACTIVATED,
+} from './rebels';
 import {
   getReadyImperialGroups,
   SET_IMPERIAL_GROUP_ACTIVATED,
@@ -259,7 +264,11 @@ function* missionEndOfTurn(): Generator<*, *, *> {
 
 function* handleEndOfRebelOrImperialTurn(action: Object): Generator<*, *, *> {
   while (true) {
-    const action = yield take([SET_REBEL_HERO_ACTIVATED, SET_IMPERIAL_GROUP_ACTIVATED]);
+    const action = yield take([
+      SET_REBEL_HERO_ACTIVATED,
+      SET_REBEL_ESCAPED,
+      SET_IMPERIAL_GROUP_ACTIVATED,
+    ]);
 
     // Can no one take anymore actions?
     const imperialGroups = yield select(getReadyImperialGroups);
@@ -268,7 +277,7 @@ function* handleEndOfRebelOrImperialTurn(action: Object): Generator<*, *, *> {
 
     if (!imperialGroupsCanMove && !rebelFiguresCanMove) {
       yield call(missionEndOfTurn);
-    } else if (action.type === SET_REBEL_HERO_ACTIVATED) {
+    } else if ([SET_REBEL_HERO_ACTIVATED, SET_REBEL_ESCAPED].includes(action.type)) {
       if (imperialGroupsCanMove) {
         yield put(changePlayerTurn(PLAYER_IMPERIALS));
       }

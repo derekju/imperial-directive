@@ -1,6 +1,6 @@
 // @flow
 
-import {setRebelHeroActivated, woundRebelHero} from '../reducers/rebels';
+import {setRebelEscaped, setRebelHeroActivated, woundRebelHero} from '../reducers/rebels';
 import {connect} from 'react-redux';
 import HeroPanel from '../components/HeroPanel';
 import {isRebelPlayerTurn} from '../reducers/mission';
@@ -16,6 +16,7 @@ const mapStateToProps = (state: StateType) => ({
 });
 
 const mapDispatchToProps = {
+  setRebelEscaped,
   setRebelHeroActivated,
   woundRebelHero,
 };

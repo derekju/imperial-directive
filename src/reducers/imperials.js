@@ -8,13 +8,13 @@ import {
   STATUS_PHASE_DEPLOY_REINFORCE,
   STATUS_PHASE_READY_GROUPS,
 } from './mission';
+import {SET_REBEL_ESCAPED, SET_REBEL_HERO_ACTIVATED} from './rebels';
 import decrementFigureFromGroup from './utils/decrementFigureFromGroup';
 import {displayModal} from './modal';
 import filter from 'lodash/filter';
 import populateOpenGroups from './utils/populateOpenGroups';
 import random from 'lodash/random';
 import reverse from 'lodash/reverse';
-import {SET_REBEL_HERO_ACTIVATED} from './rebels';
 import sortBy from 'lodash/sortBy';
 import type {StateType} from './types';
 import units from '../data/units';
@@ -358,7 +358,10 @@ function* handleImperialActivation(): Generator<*, *, *> {
 
 export function* imperialsSaga(): Generator<*, *, *> {
   yield all([
-    takeEvery([SET_REBEL_HERO_ACTIVATED, TRIGGER_IMPERIAL_ACTIVATION], handleImperialActivation),
+    takeEvery(
+      [SET_REBEL_HERO_ACTIVATED, SET_REBEL_ESCAPED, TRIGGER_IMPERIAL_ACTIVATION],
+      handleImperialActivation
+    ),
     takeEvery(DEFEAT_IMPERIAL_FIGURE, handleImperialFigureDefeat),
     takeEvery(STATUS_PHASE_DEPLOY_REINFORCE, handleDeployAndReinforcement),
   ]);

@@ -2,12 +2,14 @@
 
 import type {StateType} from './types';
 import {STATUS_PHASE_READY_GROUPS} from './mission';
+import without from 'lodash/without';
 
 // Types
 
 export type RebelsStateType = {
   activatedRebels: string[],
   canActivateTwice: string[],
+  escapedRebels: string[],
   roster: string[],
   withdrawnHeroes: string[],
   woundedHeroes: string[],
@@ -18,6 +20,7 @@ export type RebelsStateType = {
 const initialState = {
   activatedRebels: [],
   canActivateTwice: [],
+  escapedRebels: [],
   roster: [],
   withdrawnHeroes: [],
   woundedHeroes: [],
@@ -67,6 +70,17 @@ export default (state: RebelsStateType = initialState, action: Object) => {
         };
       }
     }
+    case SET_REBEL_ESCAPED: {
+      const {id} = action.payload;
+      return {
+        ...state,
+        activatedRebels: without(state.canActivateTwice, id),
+        canActivateTwice: without(state.canActivateTwice, id),
+        escapedRebels: state.escapedRebels.concat([id]),
+        roster: without(state.roster, id),
+        woundedHeroes: without(state.woundedHeroes, id),
+      };
+    }
     default:
       return state;
   }
@@ -78,6 +92,7 @@ export const SET_ROSTER = 'SET_ROSTER';
 export const SET_REBEL_HERO_ACTIVATED = 'SET_REBEL_HERO_ACTIVATED';
 export const SET_HERO_ACTIVATE_TWICE = 'SET_HERO_ACTIVATE_TWICE';
 export const WOUND_REBEL_HERO = 'WOUND_REBEL_HERO';
+export const SET_REBEL_ESCAPED = 'SET_REBEL_ESCAPED';
 
 // Action creators
 
@@ -96,6 +111,10 @@ export const setHeroActivateTwice = (id: string) => ({
 export const woundRebelHero = (id: string) => ({
   payload: {id},
   type: WOUND_REBEL_HERO,
+});
+export const setRebelEscaped = (id: string) => ({
+  payload: {id},
+  type: SET_REBEL_ESCAPED,
 });
 
 // Selectors

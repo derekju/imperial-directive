@@ -1,7 +1,12 @@
 // @flow
 
 import {all, call, fork, put, select, take} from 'redux-saga/effects';
-import {getAreAllHeroesWounded, getIsOneHeroLeft, WOUND_REBEL_HERO} from '../rebels';
+import {
+  getAreAllHeroesWounded,
+  getIsOneHeroLeft,
+  SET_REBEL_ESCAPED,
+  WOUND_REBEL_HERO,
+} from '../rebels';
 import {
   MISSION_SPECIAL_SETUP,
   missionSpecialSetupDone,
@@ -22,14 +27,14 @@ import waitForModal from '../../sagas/waitForModal';
 const PRIORITY_TARGET_TERMINAL_1 = 'terminal 1';
 const PRIORITY_TARGET_TERMINAL_2 = 'terminal 2';
 const PRIORITY_TARGET_NEUTRAL = 'the formula';
-const PRIORITY_TARGET_HERO_FORMULA = 'the hero carrying the formula (if no hero then the formula itself)';
+const PRIORITY_TARGET_HERO_FORMULA =
+  'the hero carrying the formula (if no hero then the formula itself)';
 const PRIORITY_TARGET_REMAINING = 'the remaining hero';
 const PRIORITY_TARGET_ENTRANCE = 'the entrance';
 
 const DEPLOYMENT_POINT_GREEN_TERMINAL_1 = 'The green deployment point next to terminal 1';
 const DEPLOYMENT_POINT_GREEN_TERMINAL_2 = 'The green deployment point next to the entrance';
-const DEPLOYMENT_POINT_RED =
-  'If red deployment point next to the hero carrying the formula';
+const DEPLOYMENT_POINT_RED = 'If red deployment point next to the hero carrying the formula';
 
 // Local state
 
@@ -77,7 +82,7 @@ function* handleLightlyGuardedEvent(): Generator<*, *, *> {
           text: [
             'Resolve the Lightly Guarded event.',
             'The units should be deployed next to door 2.',
-          ]
+          ],
         })
       );
       yield call(waitForModal('RESOLVE_EVENT'));
@@ -101,9 +106,7 @@ function* handleTooQuietEvent(): Generator<*, *, *> {
       // Display a modal saying we're going to reinforce
       yield put(
         displayModal('RESOLVE_EVENT', {
-          text: [
-            'Resolve the Too Quiet event.'
-          ]
+          text: ['Resolve the Too Quiet event.'],
         })
       );
       yield call(waitForModal('RESOLVE_EVENT'));
@@ -129,7 +132,7 @@ function* handleSoundTheAlarmsEvent(): Generator<*, *, *> {
           text: [
             'Resolve the Sound the Alarams event.',
             'All doors are now closed and the threat has been raised.',
-          ]
+          ],
         })
       );
       yield call(waitForModal('RESOLVE_EVENT'));
@@ -150,6 +153,13 @@ function* handleSoundTheAlarmsEvent(): Generator<*, *, *> {
       break;
     }
   }
+}
+
+function* handleHeroEscapes(): Generator<*, *, *> {
+  yield take(SET_REBEL_ESCAPED);
+  // Just assume if someone escapes the rebels won
+  // It's up to the player not to abuse the escape button
+  yield put(displayModal('REBEL_VICTORY'));
 }
 
 function* handleHeroesWounded(): Generator<*, *, *> {
@@ -199,6 +209,7 @@ export function* aSimpleTask(): Generator<*, *, *> {
     fork(handleLightlyGuardedEvent),
     fork(handleTooQuietEvent),
     fork(handleSoundTheAlarmsEvent),
+    fork(handleHeroEscapes),
     fork(handleHeroesWounded),
     fork(handleRoundEnd),
   ]);

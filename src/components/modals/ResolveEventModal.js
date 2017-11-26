@@ -27,7 +27,9 @@ class ResolveEventModal extends React.Component<ResolveEventModalPropsType> {
     return (
       <Modal buttonText={buttonText} handleButtonClick={this.handleButtonClick} title="Event">
         {this.props.text.map((text: string, index: number) => (
-          <div key={`text-${index}`} style={styles.base}>{text}</div>
+          <div key={`text-${index}`} style={styles.base}>
+            {text}
+          </div>
         ))}
       </Modal>
     );
