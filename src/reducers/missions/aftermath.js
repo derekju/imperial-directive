@@ -22,7 +22,7 @@ import waitForModal from '../../sagas/waitForModal';
 const PRIORITY_TARGET_DOOR = 'the door';
 const PRIORITY_TARGET_TERMINAL_2 = 'terminal 2';
 const PRIORITY_TARGET_NEAREST_TERMINAL = 'the nearest active terminal';
-const PRIORITY_TARGET_MOST_WOUNDED = 'the most damaged hero';
+const PRIORITY_TARGET_REMAINING = 'the remaining hero';
 
 const DEPLOYMENT_POINT_GREEN = 'The green deployment point';
 const DEPLOYMENT_POINT_RED =
@@ -128,7 +128,7 @@ function* handleHeroesWounded(): Generator<*, *, *> {
     if (isOneHeroLeft) {
       // PRIORITY TARGET SWITCH #4
       priorityTargetKillHero = true;
-      yield put(setPriorityTarget(PRIORITY_TARGET_MOST_WOUNDED));
+      yield put(setPriorityTarget(PRIORITY_TARGET_REMAINING));
     }
   }
 }

@@ -19,6 +19,7 @@ import sortBy from 'lodash/sortBy';
 import type {StateType} from './types';
 import units from '../data/units';
 import waitForModal from '../sagas/waitForModal';
+import without from 'lodash/without';
 
 // Types
 
@@ -143,9 +144,7 @@ export default (state: ImperialsStateType = initialState, action: Object) => {
           ...state.designationMap,
           [groupToDecrement.id]:
             groupToDecrement.currentNumFigures === 1
-              ? state.designationMap[groupToDecrement.id].filter(
-                  (num: number) => num !== groupToDecrement.groupNumber
-                )
+              ? without(state.designationMap[groupToDecrement.id], groupToDecrement.groupNumber)
               : state.designationMap[groupToDecrement.id],
         },
         openGroups: state.openGroups.concat(openGroups),

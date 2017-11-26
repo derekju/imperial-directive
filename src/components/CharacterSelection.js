@@ -7,6 +7,7 @@ import HeroAvatar from './HeroAvatar';
 import missions from '../data/missions.json';
 import React from 'react';
 import rebels from '../data/rebels.json';
+import without from 'lodash/without';
 
 const styles = {
   avatarContainer: {
@@ -124,7 +125,7 @@ class CharacterSelection extends React.Component<
   handleAvatarClick = (heroId: string) => {
     if (this.state.selectedRoster.includes(heroId)) {
       this.setState((prevState: CharacterSelectionStateType) => ({
-        selectedRoster: prevState.selectedRoster.filter((id: string) => id !== heroId),
+        selectedRoster: without(prevState.selectedRoster, heroId),
       }));
     } else {
       this.setState((prevState: CharacterSelectionStateType) => {

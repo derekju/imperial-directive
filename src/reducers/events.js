@@ -6,6 +6,7 @@ import {displayModal} from './modal';
 import random from 'lodash/random';
 import type {StateType} from './types';
 import waitForModal from '../sagas/waitForModal';
+import without from 'lodash/without';
 
 // Types
 
@@ -42,7 +43,7 @@ export default (state: EventsStateType = initialState, action: Object) => {
         ...state,
         activeEvent: event,
         discardedEvents: state.discardedEvents.concat(state.activeEvent ? [state.activeEvent] : []),
-        eventPool: state.eventPool.filter((e: EventType) => e.name !== event.name),
+        eventPool: without(state.eventPool, event.name),
       };
     default:
       return state;

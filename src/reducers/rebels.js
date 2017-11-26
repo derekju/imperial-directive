@@ -59,9 +59,9 @@ export default (state: RebelsStateType = initialState, action: Object) => {
       if (state.woundedHeroes.includes(id)) {
         return {
           ...state,
-          canActivateTwice: state.canActivateTwice.filter((heroId: string) => heroId !== id),
+          canActivateTwice: without(state.canActivateTwice, id),
           withdrawnHeroes: state.withdrawnHeroes.concat([id]),
-          woundedHeroes: state.woundedHeroes.filter((heroId: string) => heroId !== id),
+          woundedHeroes: without(state.woundedHeroes, id),
         };
       } else {
         return {
