@@ -8,7 +8,10 @@ import reducers from './reducers';
 import rootSaga from './sagas/rootSaga';
 
 export default () => {
-  const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+  let composeEnhancers = compose;
+  if (process.env.NODE_ENV === 'development') {
+    composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+  }
 
   /*
   const previousMissionState = window.localStorage.getItem(CURRENT_MISSION_KEY);
