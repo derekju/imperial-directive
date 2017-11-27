@@ -25,7 +25,7 @@
     "name": "Experimental Arms",
     "text": [
       "Each figure gains +1 {SURGE} while attacking.{BREAK}",
-      "After the attack is resolved, that figure suffers +1 {DMG}."
+      "After the attack is resolved, the attacking figure suffers +1 {DMG}."
     ]
   },
   "exploitWeakness": {

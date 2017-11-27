@@ -21,7 +21,7 @@
   },
   "eWebEngineerElite": {
     "affiliation": "imperial",
-    "buffs": ["noQuarter", "noQuarter", "noQuarter", "showOfForce", "surgicalStrike"],
+    "buffs": ["noQuarter", "showOfForce", "showOfForce", "surgicalStrike", "surgicalStrike"],
     "commands": [
       {
         "condition": "If within 7 spaces of {ATTACK_TARGET}",
@@ -41,7 +41,7 @@
   },
   "imperialOfficer": {
     "affiliation": "imperial",
-    "buffs": ["fleetFooted", "fleetFooted", "heavyPressure"],
+    "buffs": ["fleetFooted", "heavyPressure"],
     "commands": [
       {
         "condition": "If within 2 spaces of a friendly target that is not within attack range of {ATTACK_TARGET}",
@@ -69,7 +69,7 @@
   },
   "imperialOfficerElite": {
     "affiliation": "imperial",
-    "buffs": ["fleetFooted", "fleetFooted", "heavyPressure"],
+    "buffs": ["heavyPressure", "riotGrenades"],
     "commands": [
       {
         "condition": "If within 2 spaces of a friendly target that is within attack range of {ATTACK_TARGET}",
@@ -101,7 +101,7 @@
   },
   "nexu": {
     "affiliation": "mercenary",
-    "buffs": ["combatVeteran"],
+    "buffs": ["recovery", "savageWeaponry", "savageWeaponry", "surgicalStrike"],
     "commands": [
       {
         "condition": "If within 4 spaces of {ATTACK_TARGET}",
@@ -129,7 +129,7 @@
   },
   "nexuElite": {
     "affiliation": "mercenary",
-    "buffs": ["combatVeteran"],
+    "buffs": ["recovery", "showOfForce", "sustainedFire", "sustainedFire"],
     "commands": [
       {
         "condition": "If within 4 spaces of {ATTACK_TARGET}",
@@ -185,7 +185,7 @@
   },
   "probeDroidElite": {
     "affiliation": "imperial",
-    "buffs": ["combatVeteran", "combatVeteran", "fleetFooted", "heavyPressure"],
+    "buffs": ["combatVeteran", "exploitWeakness", "exploitWeakness", "fleetFooted"],
     "commands": [
       {
         "condition": "If within 4 spaces of {ATTACK_TARGET}",
@@ -217,7 +217,7 @@
   },
   "royalGuard": {
     "affiliation": "imperial",
-    "buffs": ["combatVeteran"],
+    "buffs": ["exploitWeakness", "exploitWeakness", "noQuarter", "surgicalStrike"],
     "commands": [
       {
         "condition": "If within 2 spaces of {ATTACK_TARGET}",
@@ -249,7 +249,7 @@
   },
   "royalGuardElite": {
     "affiliation": "imperial",
-    "buffs": ["combatVeteran"],
+    "buffs": ["exploitWeakness", "imperialIndustry", "noQuarter", "surgicalStrike"],
     "commands": [
       {
         "condition": "If within 2 spaces of {ATTACK_TARGET}",
@@ -281,7 +281,7 @@
   },
   "stormtrooper": {
     "affiliation": "imperial",
-    "buffs": ["combatVeteran", "combatVeteran", "shockTroopers", "shockTroopers", "showOfForce"],
+    "buffs": ["combatVeteran", "combatVeteran", "riotGrenades", "shockTroopers"],
     "commands": [
       {
         "condition": "If within 4 spaces of {ATTACK_TARGET}",
@@ -309,7 +309,7 @@
   },
   "stormtrooperElite": {
     "affiliation": "imperial",
-    "buffs": ["combatVeteran", "combatVeteran", "shockTroopers", "shockTroopers", "showOfForce"],
+    "buffs": ["arcBlasters", "combatVeteran", "showOfForce"],
     "commands": [
       {
         "condition": "If within 4 spaces of {ATTACK_TARGET}",
@@ -341,7 +341,7 @@
   },
   "trandoshanHunter": {
     "affiliation": "mercenary",
-    "buffs": ["combatVeteran"],
+    "buffs": ["combatVeteran", "experimentalArms", "exploitWeakness", "recovery"],
     "commands": [
       {
         "condition": "If within 4 spaces of {ATTACK_TARGET}",
@@ -373,7 +373,7 @@
   },
   "trandoshanHunterElite": {
     "affiliation": "mercenary",
-    "buffs": ["combatVeteran"],
+    "buffs": ["arcBlasters", "exploitWeakness", "imperialIndustry", "recovery"],
     "commands": [
       {
         "condition": "If within 4 spaces of {ATTACK_TARGET}",
