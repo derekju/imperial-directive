@@ -9,6 +9,7 @@ import {
 } from './rebels';
 import {
   getReadyImperialGroups,
+  OPTIONAL_DEPLOYMENT_DONE,
   SET_IMPERIAL_GROUP_ACTIVATED,
   triggerImperialActivation,
 } from './imperials';
@@ -126,6 +127,7 @@ export default (state: MissionStateType = initialState, action: Object) => {
         currentThreat: state.currentThreat + state.missionThreat,
       };
     case STATUS_PHASE_DEPLOY_REINFORCE_DONE:
+    case OPTIONAL_DEPLOYMENT_DONE:
       return {
         ...state,
         currentThreat: action.payload.newThreat,

@@ -104,7 +104,7 @@ const initialState = {
 export default (state: ImperialsStateType = initialState, action: Object) => {
   switch (action.type) {
     case LOAD_MISSION:
-      const {config} = action.payload;
+      const {config, missionThreat} = action.payload;
       const designationMap = {};
       return {
         ...initialState,
@@ -112,7 +112,7 @@ export default (state: ImperialsStateType = initialState, action: Object) => {
           createNewGroup(id, designationMap)
         ),
         designationMap,
-        openGroups: populateOpenGroups(config.openGroups),
+        openGroups: populateOpenGroups(config.openGroups, missionThreat),
       };
     case ACTIVATE_IMPERIAL_GROUP: {
       const {group} = action.payload;
@@ -212,6 +212,8 @@ export const SET_IMPERIAL_FIGURES_AFTER_DEPLOY_REINFORCE =
   'SET_IMPERIAL_FIGURES_AFTER_DEPLOY_REINFORCE';
 export const DEPLOY_NEW_GROUPS = 'DEPLOY_NEW_GROUPS';
 export const SET_INTERRUPTED_GROUP = 'SET_INTERRUPTED_GROUP';
+export const OPTIONAL_DEPLOYMENT = 'OPTIONAL_DEPLOYMENT';
+export const OPTIONAL_DEPLOYMENT_DONE = 'OPTIONAL_DEPLOYMENT_DONE';
 
 // Action creators
 
@@ -256,6 +258,8 @@ export const setInterruptedGroupActivated = () => ({
   payload: {group: null},
   type: SET_INTERRUPTED_GROUP,
 });
+export const optionalDeployment = () => ({type: OPTIONAL_DEPLOYMENT});
+export const optionalDeploymentDone = (newThreat: number) => ({payload: {newThreat}, type: OPTIONAL_DEPLOYMENT_DONE});
 
 // Selectors
 
@@ -269,6 +273,48 @@ export const getCurrentGroups = (state: StateType) => ({
 });
 
 // Sagas
+
+function* handleOptionalDeployment(): Generator<*, *, *> {
+  let currentThreat = yield select(getCurrentThreat);
+  const {openGroups} = yield select(getCurrentGroups);
+
+  let newOpenGroups = [];
+  const groupsToDeploy = [];
+
+  // Ok, we have all the information we need so figure out how we are going to do this
+  // We should spend our threat on the highest cost deployments and use the rest of the threat
+  // to reinforce
+
+  // Sort the open groups array by highest to lowest threat
+  // Iterate and pull groups off until we cannot do so anymore
+  const sortedOpenGroups = reverse(sortBy(openGroups, (unit: ImperialUnitType) => unit.threat));
+
+  let i = 0;
+  for (i; i < sortedOpenGroups.length; i++) {
+    if (currentThreat >= sortedOpenGroups[i].threat) {
+      // Just push the ID, we don't need all the other metadata
+      groupsToDeploy.push(sortedOpenGroups[i].id);
+      currentThreat -= sortedOpenGroups[i].threat;
+      break;
+    } else {
+      // If the threat cost of the group is higher than the current threat,
+      // add it onto newOpenGroups so we can update our openGroups state
+      newOpenGroups.push(sortedOpenGroups[i]);
+    }
+  }
+
+
+  newOpenGroups = newOpenGroups.concat(sortedOpenGroups.slice(i + 1));
+
+  yield put(displayModal('STATUS_REINFORCEMENT', {groupsToDeploy, groupsToReinforce: []}));
+  yield call(waitForModal('STATUS_REINFORCEMENT'));
+
+  yield put(
+    setImperialFiguresAfterDeployReinforce(groupsToDeploy, [], newOpenGroups)
+  );
+
+  yield put(optionalDeploymentDone(currentThreat));
+}
 
 function* handleDeployAndReinforcement(): Generator<*, *, *> {
   let currentThreat = yield select(getCurrentThreat);
@@ -363,5 +409,6 @@ export function* imperialsSaga(): Generator<*, *, *> {
     ),
     takeEvery(DEFEAT_IMPERIAL_FIGURE, handleImperialFigureDefeat),
     takeEvery(STATUS_PHASE_DEPLOY_REINFORCE, handleDeployAndReinforcement),
+    takeEvery(OPTIONAL_DEPLOYMENT, handleOptionalDeployment),
   ]);
 }

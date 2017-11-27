@@ -19,7 +19,7 @@ import {
   STATUS_PHASE_END_ROUND_EFFECTS,
 } from '../mission';
 import {displayModal} from '../modal';
-import {deployNewGroups} from '../imperials';
+import {deployNewGroups, OPTIONAL_DEPLOYMENT_DONE, optionalDeployment} from '../imperials';
 import helperIncreaseThreat from './helpers/helperIncreaseThreat';
 import waitForModal from '../../sagas/waitForModal';
 
@@ -196,7 +196,9 @@ function* handleSpecialSetup(): Generator<*, *, *> {
   yield take(MISSION_SPECIAL_SETUP);
   // Double current threat
   yield call(helperIncreaseThreat, 2);
-  // Do optional deployment from open groups which doesn't work right now...
+  // Do optional deployment
+  yield put(optionalDeployment());
+  yield take(OPTIONAL_DEPLOYMENT_DONE);
   yield put(missionSpecialSetupDone());
 }
 
