@@ -119,7 +119,7 @@ class Map extends React.Component<MapPropsType> {
             {row.map((cell: string, cellIndex: number) => {
               const cellNumber = parseInt(cell, 10);
               if (cellNumber > 0) {
-                const bgColor = Math.floor(255 - cellNumber * 4);
+                const bgColor = Math.floor(255 - cellNumber * 5);
                 const combinedStyles = {
                   ...styles.block,
                   backgroundColor: `rgb(255, ${bgColor}, ${bgColor})`,

@@ -31,6 +31,7 @@ export type ImperialUnitCommandType = {
 };
 
 export type ImperialUnitType = {
+  affiliation: string,
   buffs: string[],
   commands: ImperialUnitCommandType[],
   currentNumFigures: number,
@@ -112,7 +113,7 @@ export default (state: ImperialsStateType = initialState, action: Object) => {
           createNewGroup(id, designationMap)
         ),
         designationMap,
-        openGroups: populateOpenGroups(config.openGroups, missionThreat),
+        openGroups: populateOpenGroups(config.openGroups, config.noMercenaryAllowed, missionThreat),
       };
     case ACTIVATE_IMPERIAL_GROUP: {
       const {group} = action.payload;

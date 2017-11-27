@@ -86,6 +86,7 @@
       }
     },
     "name": "Aftermath",
+    "noMercenaryAllowed": false,
     "openGroups": 0
   },
   "aSimpleTask": {
@@ -192,6 +193,148 @@
       }
     },
     "name": "A Simple Task",
+    "noMercenaryAllowed": false,
     "openGroups": 4
+  },
+  "luxuryCruise": {
+    "initialGroups": [
+      "imperialOfficer", "probeDroid", "stormtrooper", "stormtrooperElite"
+    ],
+    "instructions": {
+      "imperialVictory": "When all heroes are wounded",
+      "rebelVictory": "When all terminals are secured"
+    },
+    "mapImage": [
+      ["00", "00", "00", "23", "23", "23", "23", "00", "00", "00", "00"],
+      ["28", "28", "28", "23", "23", "23", "23", "00", "00", "00", "00"],
+      ["28", "28", "28", "23", "23", "23", "23", "00", "00", "00", "00"],
+      ["28", "28", "28", "23", "23", "23", "23", "20", "20", "20", "20"],
+      ["35", "35", "21", "21", "21", "21", "21", "20", "20", "20", "20"],
+      ["29", "29", "21", "21", "21", "21", "21", "20", "20", "20", "20"],
+      ["29", "29", "21", "21", "21", "21", "21", "20", "20", "20", "20"],
+      ["29", "29", "21", "21", "21", "21", "21", "20", "20", "20", "20"],
+      ["29", "29", "00", "25", "25", "25", "25", "20", "20", "20", "20"],
+      ["31", "31", "35", "25", "25", "25", "25", "32", "32", "00", "00"],
+      ["31", "31", "35", "25", "25", "25", "25", "32", "32", "00", "00"],
+      ["24", "24", "24", "00", "25", "25", "00", "00", "00", "00", "00"],
+      ["24", "24", "24", "24", "35", "35", "00", "00", "00", "00", "00"],
+      ["24", "24", "24", "24", "32", "32", "00", "00", "00", "00", "00"],
+      ["00", "24", "24", "24", "32", "32", "00", "00", "00", "00", "00"]
+    ],
+    "mapStates": {
+      "entrance-1": {
+        "activated": false,
+        "coordinates": {
+          "x": 5,
+          "y": 8
+        },
+        "description": "The entrance.",
+        "id": 1,
+        "interactable": false,
+        "type": "entrance"
+      },
+      "door-1": {
+        "activated": false,
+        "coordinates": {
+          "x": 0,
+          "y": 4
+        },
+        "description": "The door to the north terminal.",
+        "id": 1,
+        "interactable": true,
+        "type": "door"
+      },
+      "door-2": {
+        "activated": false,
+        "coordinates": {
+          "x": 4,
+          "y": 4
+        },
+        "description": "The door to the north terminal.",
+        "id": 2,
+        "interactable": true,
+        "type": "door"
+      },
+      "door-3": {
+        "activated": false,
+        "coordinates": {
+          "x": 6,
+          "y": 5
+        },
+        "description": "The door to the east terminal.",
+        "id": 3,
+        "interactable": true,
+        "type": "door"
+      },
+      "door-4": {
+        "activated": false,
+        "coordinates": {
+          "x": 6,
+          "y": 9
+        },
+        "description": "The door to the east terminal.",
+        "id": 4,
+        "interactable": true,
+        "type": "door"
+      },
+      "terminal-1": {
+        "activated": false,
+        "coordinates": {
+          "x": 0,
+          "y": 2
+        },
+        "description": "A terminal that controls the ship.",
+        "id": 1,
+        "interactable": true,
+        "type": "terminal"
+      },
+      "terminal-2": {
+        "activated": false,
+        "coordinates": {
+          "x": 4,
+          "y": 0
+        },
+        "description": "A terminal that controls the ship.",
+        "id": 2,
+        "interactable": true,
+        "type": "terminal"
+      },
+      "terminal-3": {
+        "activated": false,
+        "coordinates": {
+          "x": 5,
+          "y": 5
+        },
+        "description": "A terminal that controls the ship.",
+        "id": 3,
+        "interactable": true,
+        "type": "terminal"
+      },
+      "terminal-4": {
+        "activated": false,
+        "coordinates": {
+          "x": 8,
+          "y": 6
+        },
+        "description": "A terminal that controls the ship.",
+        "id": 4,
+        "interactable": true,
+        "type": "terminal"
+      },
+      "terminal-5": {
+        "activated": false,
+        "coordinates": {
+          "x": 1,
+          "y": 13
+        },
+        "description": "A terminal that controls the ship.",
+        "id": 5,
+        "interactable": true,
+        "type": "terminal"
+      }
+    },
+    "name": "Luxury Cruise",
+    "noMercenaryAllowed": true,
+    "openGroups": 3
   }
 }

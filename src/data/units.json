@@ -1,5 +1,6 @@
 {
   "eWebEngineer": {
+    "affiliation": "imperial",
     "buffs": ["noQuarter", "noQuarter", "noQuarter", "showOfForce", "surgicalStrike"],
     "commands": [
       {
@@ -19,6 +20,7 @@
     "threat": 6
   },
   "eWebEngineerElite": {
+    "affiliation": "imperial",
     "buffs": ["noQuarter", "noQuarter", "noQuarter", "showOfForce", "surgicalStrike"],
     "commands": [
       {
@@ -38,6 +40,7 @@
     "threat": 8
   },
   "imperialOfficer": {
+    "affiliation": "imperial",
     "buffs": ["fleetFooted", "fleetFooted", "heavyPressure"],
     "commands": [
       {
@@ -65,6 +68,7 @@
     "threat": 2
   },
   "imperialOfficerElite": {
+    "affiliation": "imperial",
     "buffs": ["fleetFooted", "fleetFooted", "heavyPressure"],
     "commands": [
       {
@@ -96,19 +100,20 @@
     "threat": 5
   },
   "nexu": {
+    "affiliation": "mercenary",
     "buffs": ["combatVeteran"],
     "commands": [
       {
-        "condition": "If within 4 spaces of {TARGET_ATTACK}",
-        "command": "{ACTION} Use Pounce ability to attack {TARGET_ATTACK}."
+        "condition": "If within 4 spaces of {ATTACK_TARGET}",
+        "command": "{ACTION} Use Pounce ability to attack {ATTACK_TARGET}."
       },
       {
         "condition": "If within 6 spaces of any target",
-        "command": "{ACTION} Move towards most damaged target, then {ACTION} Attack that target, then move towards {TARGET_ATTACK}."
+        "command": "{ACTION} Move towards most damaged target, then {ACTION} Attack that target, then move towards {ATTACK_TARGET}."
       },
       {
         "condition": "If no target within 6 spaces",
-        "command": "{ACTION} Move towards {TARGET_ATTACK}."
+        "command": "{ACTION} Move towards {ATTACK_TARGET}."
       },
       {
         "condition": "Reaction - If defending",
@@ -123,6 +128,7 @@
     "threat": 4
   },
   "nexuElite": {
+    "affiliation": "mercenary",
     "buffs": ["combatVeteran"],
     "commands": [
       {
@@ -135,7 +141,7 @@
       },
       {
         "condition": "If no target within 6 spaces",
-        "command": "{ACTION} Move towards {TARGET_ATTACK}."
+        "command": "{ACTION} Move towards {ATTACK_TARGET}."
       },
       {
         "condition": "Reaction - If defending",
@@ -150,6 +156,7 @@
     "threat": 6
   },
   "probeDroid": {
+    "affiliation": "imperial",
     "buffs": ["combatVeteran", "combatVeteran", "fleetFooted", "heavyPressure"],
     "commands": [
       {
@@ -177,6 +184,7 @@
     "threat": 3
   },
   "probeDroidElite": {
+    "affiliation": "imperial",
     "buffs": ["combatVeteran", "combatVeteran", "fleetFooted", "heavyPressure"],
     "commands": [
       {
@@ -208,6 +216,7 @@
     "threat": 5
   },
   "royalGuard": {
+    "affiliation": "imperial",
     "buffs": ["combatVeteran"],
     "commands": [
       {
@@ -239,6 +248,7 @@
     "threat": 8
   },
   "royalGuardElite": {
+    "affiliation": "imperial",
     "buffs": ["combatVeteran"],
     "commands": [
       {
@@ -270,6 +280,7 @@
     "threat": 12
   },
   "stormtrooper": {
+    "affiliation": "imperial",
     "buffs": ["combatVeteran", "combatVeteran", "shockTroopers", "shockTroopers", "showOfForce"],
     "commands": [
       {
@@ -297,6 +308,7 @@
     "threat": 6
   },
   "stormtrooperElite": {
+    "affiliation": "imperial",
     "buffs": ["combatVeteran", "combatVeteran", "shockTroopers", "shockTroopers", "showOfForce"],
     "commands": [
       {
@@ -328,6 +340,7 @@
     "threat": 9
   },
   "trandoshanHunter": {
+    "affiliation": "mercenary",
     "buffs": ["combatVeteran"],
     "commands": [
       {
@@ -359,6 +372,7 @@
     "threat": 7
   },
   "trandoshanHunterElite": {
+    "affiliation": "mercenary",
     "buffs": ["combatVeteran"],
     "commands": [
       {
