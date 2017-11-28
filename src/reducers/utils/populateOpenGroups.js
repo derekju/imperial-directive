@@ -22,8 +22,6 @@ const THREAT_COST_FOR_MISSION_THREAT = {
   '6': 99,
 };
 
-
-
 export default (numOpenGroups: number, noMercenaryAllowed: boolean, missionThreat: number) => {
   const groupsToPull = numOpenGroups + EXTRA_GROUPS_TO_PULL[String(missionThreat)];
   const threatCost = THREAT_COST_FOR_MISSION_THREAT[String(missionThreat)];

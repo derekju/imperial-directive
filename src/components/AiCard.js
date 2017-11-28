@@ -77,7 +77,11 @@ class AiCard extends React.Component<AiCardPropsType> {
     const commandArray = generateTextArray(command);
     return (
       <div style={styles.commandEntry} key={key}>
-        <div style={styles.condition}>{`${replaceAttackMoveText(condition, this.props.attackTarget, this.props.moveTarget)}:`}</div>
+        <div style={styles.condition}>{`${replaceAttackMoveText(
+          condition,
+          this.props.attackTarget,
+          this.props.moveTarget
+        )}:`}</div>
         <div>
           {commandArray.map((text: string, index: number) =>
             expandText(text, index, this.props.attackTarget, this.props.moveTarget, styles.icon)
@@ -106,7 +110,13 @@ class AiCard extends React.Component<AiCardPropsType> {
         {buff.text.map((buffText: string) => {
           const textArray = generateTextArray(buffText);
           return textArray.map((text: string, index: number) =>
-            expandText(text, index, this.props.attackTarget, this.props.moveTarget, styles.iconStyle)
+            expandText(
+              text,
+              index,
+              this.props.attackTarget,
+              this.props.moveTarget,
+              styles.iconStyle
+            )
           );
         })}
       </div>

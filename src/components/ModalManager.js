@@ -1,6 +1,5 @@
 // @flow
 
-import AftermathLockdownModal from './modals/AftermathLockdownModal';
 import BeginRoundModal from './modals/BeginRoundModal';
 import HeroicHeroModalContainer from '../containers/HeroicHeroModalContainer';
 import InteractObjectContainer from '../containers/InteractObjectContainer';
@@ -20,10 +19,6 @@ type ModalManagerPropsType = {
 class ModalManager extends React.Component<ModalManagerPropsType> {
   renderModalType() {
     switch (this.props.type) {
-      case 'AFTERMATH_LOCKDOWN':
-        return (
-          <AftermathLockdownModal closeModals={this.props.closeModals} type={this.props.type} />
-        );
       case 'BEGIN_ROUND':
         return (
           <BeginRoundModal
@@ -60,7 +55,9 @@ class ModalManager extends React.Component<ModalManagerPropsType> {
         return (
           <ResolveEventModal
             closeModals={this.props.closeModals}
+            story={this.props.data.story || ''}
             text={this.props.data.text}
+            title={this.props.data.title}
             type={this.props.type}
           />
         );

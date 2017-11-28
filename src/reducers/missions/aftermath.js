@@ -15,7 +15,8 @@ import {
   STATUS_PHASE_END_ROUND_EFFECTS,
 } from '../mission';
 import {displayModal} from '../modal';
-import {deployNewGroups} from '../imperials';
+import helperDeploy from './helpers/helperDeploy';
+import {TARGET_REMAINING} from './constants';
 import waitForModal from '../../sagas/waitForModal';
 
 // Constants
@@ -23,7 +24,6 @@ import waitForModal from '../../sagas/waitForModal';
 const TARGET_DOOR = 'the door';
 const TARGET_TERMINAL_2 = 'terminal 2';
 const TARGET_NEAREST_TERMINAL = 'the nearest active terminal';
-const TARGET_REMAINING = 'the remaining hero';
 
 const DEPLOYMENT_POINT_GREEN = 'The green deployment point';
 const DEPLOYMENT_POINT_RED =
@@ -45,8 +45,17 @@ function* handleLockDownEvent(): Generator<*, *, *> {
       // Ok, this is the round the rebels opened the door so wait until end of round to trigger
       yield take(STATUS_PHASE_END_ROUND_EFFECTS);
       // Pick which one we'll do and then do it
-      yield put(displayModal('AFTERMATH_LOCKDOWN'));
-      yield call(waitForModal('AFTERMATH_LOCKDOWN'));
+      yield put(
+        displayModal('RESOLVE_EVENT', {
+          story: 'Sirens blare as the outpost goes into lockdown mode.',
+          text: [
+            'If there is a rebel figure west of the door, close the door to the Atrium. A Rebel figure can attack the door (Health: 8, Defense: 1 black die) to open it.',
+            'Otherwise, each terminal has 7 Health now instead of 4.',
+          ],
+          title: 'Lockdown',
+        })
+      );
+      yield call(waitForModal('RESOLVE_EVENT'));
       yield put(setDeploymentPoint(DEPLOYMENT_POINT_RED));
       // We're done
       requireEndRoundEffects = false;
@@ -61,18 +70,16 @@ function* handleFortifiedEvent(): Generator<*, *, *> {
     const action = yield take(SET_MAP_STATE_ACTIVATED);
     const {id, type, value} = action.payload;
     if (id === 1 && type === 'door' && value === true) {
-      // Display a modal saying we're going to reinforce
-      yield put(
-        displayModal('RESOLVE_EVENT', {
-          text: [
-            'Resolve the Fortified event.',
-            'The E-Web Engineer should be deployed to the Yellow deployment point in the Atrium.',
-          ],
-        })
+      yield call(
+        helperDeploy,
+        '(refer to Campaign Guide for story text)',
+        [
+          'Deploy an E-Web Engineer to the Yellow deployment point in the Atrium. That figure becomes focused.',
+          'Deploy a Stormtrooper group and an Imperial Officer to the right side of the Storage room.',
+        ],
+        'Fortified',
+        ['eWebEngineer', 'stormtrooper', 'imperialOfficer']
       );
-      yield call(waitForModal('RESOLVE_EVENT'));
-      // Do the deployment from reserved groups
-      yield put(deployNewGroups(['eWebEngineer', 'stormtrooper', 'imperialOfficer']));
       // PRIORITY TARGET SWITCH #2
       if (!priorityTargetKillHero) {
         yield put(setMoveTarget(TARGET_TERMINAL_2));

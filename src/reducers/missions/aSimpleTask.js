@@ -19,8 +19,10 @@ import {
   STATUS_PHASE_END_ROUND_EFFECTS,
 } from '../mission';
 import {displayModal} from '../modal';
-import {deployNewGroups, OPTIONAL_DEPLOYMENT_DONE, optionalDeployment} from '../imperials';
+import {OPTIONAL_DEPLOYMENT_DONE, optionalDeployment} from '../imperials';
+import helperDeploy from './helpers/helperDeploy';
 import helperIncreaseThreat from './helpers/helperIncreaseThreat';
+import {TARGET_REMAINING} from './constants';
 import waitForModal from '../../sagas/waitForModal';
 
 // Constants
@@ -28,9 +30,7 @@ import waitForModal from '../../sagas/waitForModal';
 const TARGET_TERMINAL_1 = 'terminal 1';
 const TARGET_TERMINAL_2 = 'terminal 2';
 const TARGET_NEUTRAL = 'the formula';
-const TARGET_HERO_FORMULA =
-  'the hero carrying the formula (or any hero)';
-const TARGET_REMAINING = 'the remaining hero';
+const TARGET_HERO_FORMULA = 'the hero carrying the formula (or closest hero)';
 const TARGET_ENTRANCE = 'the entrance';
 
 const DEPLOYMENT_POINT_GREEN_TERMINAL_1 = 'The green deployment point next to terminal 1';
@@ -77,18 +77,13 @@ function* handleLightlyGuardedEvent(): Generator<*, *, *> {
     const action = yield take(SET_MAP_STATE_ACTIVATED);
     const {id, type, value} = action.payload;
     if (id === 1 && type === 'door' && value === true) {
-      // Display a modal saying we're going to reinforce
-      yield put(
-        displayModal('RESOLVE_EVENT', {
-          text: [
-            'Resolve the Lightly Guarded event.',
-            'The units should be deployed next to door 2.',
-          ],
-        })
+      yield call(
+        helperDeploy,
+        '(refer to Campaign Guide for story text)',
+        ['Deploy an Imperial Officer and Stormtrooper group to the Command Room.', 'The units should be deployed next to door 2.'],
+        'Lightly Guarded',
+        ['stormtrooper', 'imperialOfficer']
       );
-      yield call(waitForModal('RESOLVE_EVENT'));
-      // Do the deployment from reserved groups
-      yield put(deployNewGroups(['stormtrooper', 'imperialOfficer']));
       // Change target
       if (!priorityTargetKillHero) {
         yield put(setMoveTarget(TARGET_TERMINAL_2));
@@ -107,7 +102,9 @@ function* handleTooQuietEvent(): Generator<*, *, *> {
       // Display a modal saying we're going to reinforce
       yield put(
         displayModal('RESOLVE_EVENT', {
-          text: ['Resolve the Too Quiet event.'],
+          story: '(refer to Campaign Guide for story text)',
+          text: [''],
+          title: 'Too Quiet',
         })
       );
       yield call(waitForModal('RESOLVE_EVENT'));
@@ -130,10 +127,11 @@ function* handleSoundTheAlarmsEvent(): Generator<*, *, *> {
       // Display a modal saying we're going to reinforce
       yield put(
         displayModal('RESOLVE_EVENT', {
+          story: '(refer to Campaign Guide for story text)',
           text: [
-            'Resolve the Sound the Alarams event.',
             'All doors are now closed and the threat has been raised.',
           ],
+          title: 'Sound the Alarms',
         })
       );
       yield call(waitForModal('RESOLVE_EVENT'));

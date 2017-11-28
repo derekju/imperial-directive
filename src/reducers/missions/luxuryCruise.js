@@ -1,11 +1,7 @@
 // @flow
 
 import {all, call, fork, put, select, take} from 'redux-saga/effects';
-import {
-  getAreAllHeroesWounded,
-  getIsOneHeroLeft,
-  WOUND_REBEL_HERO,
-} from '../rebels';
+import {getAreAllHeroesWounded, getIsOneHeroLeft, WOUND_REBEL_HERO} from '../rebels';
 import {
   getCurrentRound,
   MISSION_SPECIAL_SETUP,
@@ -17,16 +13,17 @@ import {
   statusPhaseEndRoundEffectsDone,
   STATUS_PHASE_END_ROUND_EFFECTS,
 } from '../mission';
+import {OPTIONAL_DEPLOYMENT_DONE, optionalDeployment} from '../imperials';
 import {displayModal} from '../modal';
-import {deployNewGroups, OPTIONAL_DEPLOYMENT_DONE, optionalDeployment} from '../imperials';
+import helperDeploy from './helpers/helperDeploy';
 import helperIncreaseThreat from './helpers/helperIncreaseThreat';
+import {TARGET_REMAINING} from './constants';
 import waitForModal from '../../sagas/waitForModal';
 
 // Constants
 
 const TARGET_HERO_CLOSE_TERMINAL = 'the closest hero adjacent to a terminal';
 const TARGET_NEAREST_TERMINAL = 'the nearest active terminal';
-const TARGET_REMAINING = 'the remaining hero';
 
 const DEPLOYMENT_POINT_GREEN_TERMINAL = 'The green deployment point';
 
@@ -51,10 +48,9 @@ function* handleTerminalInteraction(): Generator<*, *, *> {
       } else {
         yield put(
           displayModal('RESOLVE_EVENT', {
-            text: [
-              'Resolve the Desperation event.',
-              'Threat has been increased.',
-            ],
+            story: 'The imperial troops are gathering their forces...',
+            text: ['The current threat has been increased.'],
+            title: 'Desperation',
           })
         );
         yield call(waitForModal('RESOLVE_EVENT'));
@@ -91,10 +87,12 @@ function* handleRoundEnd(): Generator<*, *, *> {
     // Display a modal to remind player to check terminal status
     yield put(
       displayModal('RESOLVE_EVENT', {
+        story: 'The terminals were the first step in taking over the ship.',
         text: [
           'If 1 or more Rebel figures are the only figures adjacent to a terminal, it is secured.',
-          'Manually activate the terminal when the next round begins.',
+          'Manually secure the terminal when the next round begins.',
         ],
+        title: 'Securing Terminals',
       })
     );
     yield call(waitForModal('RESOLVE_EVENT'));
@@ -102,28 +100,21 @@ function* handleRoundEnd(): Generator<*, *, *> {
     // Sound the Alarm event
     yield put(
       displayModal('RESOLVE_EVENT', {
+        story: 'The imperial troops are aware of your presence!',
         text: [
-          'Resolve the Sound the Alarm event.',
-          'If there are rebel figures behind any open doors with Imperial figures in the same room, choose option 1 to close a door to that room.',
-          'Otherwise, choose option 2. If not possible, choose option 1 and close any door.'
+          'If there are rebel figures behind any open doors with Imperial figures in the same room, close the door to that room.',
+          'Otherwise, perform an attack against an unwounded hero.',
         ],
+        title: 'Sound the Alarm',
       })
     );
     yield call(waitForModal('RESOLVE_EVENT'));
 
     // Secure the Ship event
     if (currentRound === 2) {
-      // Display a modal saying we're going to deploy
-      yield put(
-        displayModal('RESOLVE_EVENT', {
-          text: [
-            'Resolve the Secure the Ship event.'
-          ],
-        })
-      );
-      yield call(waitForModal('RESOLVE_EVENT'));
-      // Do the deployment from reserved groups
-      yield put(deployNewGroups(['royalGuard']));
+      yield call(helperDeploy, '(refer to Campaign Guide for story text)', ['Resolve the Secure the Ship event.'], 'Secure the Ship', [
+        'royalGuard',
+      ]);
     }
 
     yield put(statusPhaseEndRoundEffectsDone());
@@ -156,10 +147,6 @@ export function* luxuryCruise(): Generator<*, *, *> {
   yield all([
     fork(handleSpecialSetup),
     fork(handleTerminalInteraction),
-    // fork(handleSoundTheAlarmEvent),
-    // fork(handleDesperationEvent),
-    // fork(handleSoundTheAlarmsEvent),
-    // fork(handleHeroEscapes),
     fork(handleHeroesWounded),
     fork(handleRoundEnd),
   ]);

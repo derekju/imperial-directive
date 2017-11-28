@@ -14,15 +14,11 @@ import strengthPng from '../assets/icons/strength.png';
 import surgePng from '../assets/icons/surge.png';
 import techPng from '../assets/icons/tech.png';
 
-export const replaceAttackMoveText = (
-  text: string,
-  attackTarget: string,
-  moveTarget: string
-) => {
+export const replaceAttackMoveText = (text: string, attackTarget: string, moveTarget: string) => {
   let replacedText = text.replace(/{ATTACK_TARGET}/, attackTarget);
   replacedText = replacedText.replace(/{MOVE_TARGET}/, moveTarget);
   return replacedText;
-}
+};
 
 export const expandText = (
   text: string,

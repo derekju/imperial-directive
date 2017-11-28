@@ -39,6 +39,34 @@
     "reinforcementCost": -1,
     "threat": 8
   },
+  "generalWeiss": {
+    "affiliation": "imperial",
+    "buffs": ["surgicalStrike"],
+    "commands": [
+      {
+        "condition": "If 2 other friendly figures are not at {MOVE_TARGET}",
+        "command": "{ACTION} Use General's Orders ability to move those figures towards {MOVE_TARGET}."
+      },
+      {
+        "condition": "If within 6 spaces of {ATTACK_TARGET}",
+        "command": "{ACTION} Attack {ATTACK_TARGET}, then {ACTION} Move towards {MOVE_TARGET}."
+      },
+      {
+        "condition": "If no target within 6 spaces",
+        "command": "{ACTION} Move towards {MOVE_TARGET}."
+      },
+      {
+        "condition": "Reaction - Epic Arsenal",
+        "command": "If within 2 spaces of {ATTACK_TARGET}, use two red and one green dice. Otherwise, use one red, one blue, and one green dice."
+      }
+    ],
+    "elite": true,
+    "id": "generalWeiss",
+    "maxInGroup": 1,
+    "name": "General Weiss",
+    "reinforcementCost": -1,
+    "threat": 16
+  },
   "imperialOfficer": {
     "affiliation": "imperial",
     "buffs": ["fleetFooted", "heavyPressure"],

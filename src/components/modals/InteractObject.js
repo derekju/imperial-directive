@@ -34,8 +34,8 @@ class InteractObject extends React.Component<InteractObjectPropsType> {
   };
 
   render() {
-    const unactivateText = this.props.type === 'door' ? 'Close door' : 'Unactivate';
-    const activateText = this.props.type === 'door' ? 'Open door' : 'Activate';
+    const unactivateText = this.props.mapState.unactivateText;
+    const activateText = this.props.mapState.activateText;
     const buttonText = this.props.mapState.activated ? unactivateText : activateText;
     return (
       <Modal

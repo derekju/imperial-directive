@@ -260,7 +260,10 @@ export const setInterruptedGroupActivated = () => ({
   type: SET_INTERRUPTED_GROUP,
 });
 export const optionalDeployment = () => ({type: OPTIONAL_DEPLOYMENT});
-export const optionalDeploymentDone = (newThreat: number) => ({payload: {newThreat}, type: OPTIONAL_DEPLOYMENT_DONE});
+export const optionalDeploymentDone = (newThreat: number) => ({
+  payload: {newThreat},
+  type: OPTIONAL_DEPLOYMENT_DONE,
+});
 
 // Selectors
 
@@ -304,15 +307,12 @@ function* handleOptionalDeployment(): Generator<*, *, *> {
     }
   }
 
-
   newOpenGroups = newOpenGroups.concat(sortedOpenGroups.slice(i + 1));
 
   yield put(displayModal('STATUS_REINFORCEMENT', {groupsToDeploy, groupsToReinforce: []}));
   yield call(waitForModal('STATUS_REINFORCEMENT'));
 
-  yield put(
-    setImperialFiguresAfterDeployReinforce(groupsToDeploy, [], newOpenGroups)
-  );
+  yield put(setImperialFiguresAfterDeployReinforce(groupsToDeploy, [], newOpenGroups));
 
   yield put(optionalDeploymentDone(currentThreat));
 }

@@ -21,11 +21,13 @@ import waitForModal from '../sagas/waitForModal';
 
 export type MapStateType = {
   activated: boolean,
+  activateText: string,
   coordinates: {x: number, y: number},
   description: string,
   id: number,
   interactable: boolean,
   type: string,
+  unactivateText: string,
 };
 
 export type MissionStateType = {
@@ -64,7 +66,7 @@ export const PHASE_STATUS = 2;
 // State
 
 const initialState = {
-  attackTarget: 'the most damaged hostile figure',
+  attackTarget: 'the closest hostile figure',
   currentActivePlayer: PLAYER_NONE,
   currentPhase: PHASE_EVENT,
   currentRound: 1,
@@ -77,7 +79,7 @@ const initialState = {
   mapImage: [[]],
   mapStates: {},
   missionThreat: 0,
-  moveTarget: 'the most damaged hostile figure',
+  moveTarget: 'the closest hostile figure',
 };
 
 export default (state: MissionStateType = initialState, action: Object) => {

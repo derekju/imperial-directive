@@ -20,6 +20,7 @@
     "mapStates": {
       "entrance-1": {
         "activated": false,
+        "activateText": "",
         "coordinates": {
           "x": 2,
           "y": 0
@@ -27,10 +28,12 @@
         "description": "The entrance.",
         "id": 1,
         "interactable": false,
-        "type": "entrance"
+        "type": "entrance",
+        "unactivateText": ""
       },
       "terminal-1": {
         "activated": false,
+        "activateText": "Destroy",
         "coordinates": {
           "x": 2,
           "y": 6
@@ -38,10 +41,12 @@
         "description": "The first terminal broadcasting the signal.",
         "id": 1,
         "interactable": true,
-        "type": "terminal"
+        "type": "terminal",
+        "unactivateText": "Restore"
       },
       "terminal-2": {
         "activated": false,
+        "activateText": "Destroy",
         "coordinates": {
           "x": 10,
           "y": 7
@@ -49,10 +54,12 @@
         "description": "The second terminal broadcasting the signal.",
         "id": 2,
         "interactable": true,
-        "type": "terminal"
+        "type": "terminal",
+        "unactivateText": "Restore"
       },
       "terminal-3": {
         "activated": false,
+        "activateText": "Destroy",
         "coordinates": {
           "x": 6,
           "y": 1
@@ -60,10 +67,12 @@
         "description": "The third terminal broadcasting the signal.",
         "id": 3,
         "interactable": true,
-        "type": "terminal"
+        "type": "terminal",
+        "unactivateText": "Restore"
       },
       "terminal-4": {
         "activated": false,
+        "activateText": "Destroy",
         "coordinates": {
           "x": 5,
           "y": 3
@@ -71,10 +80,12 @@
         "description": "The fourth terminal broadcasting the signal.",
         "id": 4,
         "interactable": true,
-        "type": "terminal"
+        "type": "terminal",
+        "unactivateText": "Restore"
       },
       "door-1": {
         "activated": false,
+        "activateText": "Open",
         "coordinates": {
           "x": 5,
           "y": 5
@@ -82,7 +93,8 @@
         "description": "The door to the atrium.",
         "id": 1,
         "interactable": true,
-        "type": "door"
+        "type": "door",
+        "unactivateText": "Close"
       }
     },
     "name": "Aftermath",
@@ -116,6 +128,7 @@
     "mapStates": {
       "entrance-1": {
         "activated": false,
+        "activateText": "",
         "coordinates": {
           "x": 5,
           "y": 13
@@ -123,10 +136,12 @@
         "description": "The entrance.",
         "id": 1,
         "interactable": false,
-        "type": "entrance"
+        "type": "entrance",
+        "unactivateText": ""
       },
       "door-1": {
         "activated": false,
+        "activateText": "Open",
         "coordinates": {
           "x": 10,
           "y": 3
@@ -134,10 +149,12 @@
         "description": "The door to the facility.",
         "id": 1,
         "interactable": false,
-        "type": "door"
+        "type": "door",
+        "unactivateText": "Close"
       },
       "door-2": {
         "activated": false,
+        "activateText": "Open",
         "coordinates": {
           "x": 4,
           "y": 6
@@ -145,10 +162,12 @@
         "description": "The door to the Hanger.",
         "id": 2,
         "interactable": false,
-        "type": "door"
+        "type": "door",
+        "unactivateText": "Close"
       },
       "terminal-1": {
         "activated": false,
+        "activateText": "Interact",
         "coordinates": {
           "x": 11,
           "y": 4
@@ -156,10 +175,12 @@
         "description": "The terminal that controls the facility door.",
         "id": 1,
         "interactable": true,
-        "type": "terminal"
+        "type": "terminal",
+        "unactivateText": "Interact"
       },
       "terminal-2": {
         "activated": false,
+        "activateText": "Interact",
         "coordinates": {
           "x": 7,
           "y": 7
@@ -167,10 +188,12 @@
         "description": "The terminal that controls the Hanger door.",
         "id": 2,
         "interactable": true,
-        "type": "terminal"
+        "type": "terminal",
+        "unactivateText": "Interact"
       },
       "terminal-3": {
         "activated": false,
+        "activateText": "Interact",
         "coordinates": {
           "x": 2,
           "y": 3
@@ -178,10 +201,12 @@
         "description": "The terminal that controls the Hanger door.",
         "id": 3,
         "interactable": true,
-        "type": "terminal"
+        "type": "terminal",
+        "unactivateText": "Interact"
       },
       "neutral-1": {
         "activated": false,
+        "activateText": "Retrieve",
         "coordinates": {
           "x": 4,
           "y": 2
@@ -189,7 +214,8 @@
         "description": "The formula.",
         "id": 1,
         "interactable": true,
-        "type": "neutral"
+        "type": "neutral",
+        "unactivateText": "Drop"
       }
     },
     "name": "A Simple Task",
@@ -224,6 +250,7 @@
     "mapStates": {
       "entrance-1": {
         "activated": false,
+        "activateText": "",
         "coordinates": {
           "x": 5,
           "y": 8
@@ -231,10 +258,12 @@
         "description": "The entrance.",
         "id": 1,
         "interactable": false,
-        "type": "entrance"
+        "type": "entrance",
+        "unactivateText": ""
       },
       "door-1": {
         "activated": false,
+        "activateText": "Open",
         "coordinates": {
           "x": 0,
           "y": 4
@@ -242,10 +271,12 @@
         "description": "The door to the north terminal.",
         "id": 1,
         "interactable": true,
-        "type": "door"
+        "type": "door",
+        "unactivateText": "Close"
       },
       "door-2": {
         "activated": false,
+        "activateText": "Open",
         "coordinates": {
           "x": 4,
           "y": 4
@@ -253,10 +284,12 @@
         "description": "The door to the north terminal.",
         "id": 2,
         "interactable": true,
-        "type": "door"
+        "type": "door",
+        "unactivateText": "Close"
       },
       "door-3": {
         "activated": false,
+        "activateText": "Open",
         "coordinates": {
           "x": 6,
           "y": 5
@@ -264,10 +297,12 @@
         "description": "The door to the east terminal.",
         "id": 3,
         "interactable": true,
-        "type": "door"
+        "type": "door",
+        "unactivateText": "Close"
       },
       "door-4": {
         "activated": false,
+        "activateText": "Open",
         "coordinates": {
           "x": 6,
           "y": 9
@@ -275,10 +310,12 @@
         "description": "The door to the east terminal.",
         "id": 4,
         "interactable": true,
-        "type": "door"
+        "type": "door",
+        "unactivateText": "Close"
       },
       "terminal-1": {
         "activated": false,
+        "activateText": "Secure",
         "coordinates": {
           "x": 0,
           "y": 2
@@ -286,10 +323,12 @@
         "description": "A terminal that controls the ship.",
         "id": 1,
         "interactable": true,
-        "type": "terminal"
+        "type": "terminal",
+        "unactivateText": "Unsecure"
       },
       "terminal-2": {
         "activated": false,
+        "activateText": "Secure",
         "coordinates": {
           "x": 4,
           "y": 0
@@ -297,10 +336,12 @@
         "description": "A terminal that controls the ship.",
         "id": 2,
         "interactable": true,
-        "type": "terminal"
+        "type": "terminal",
+        "unactivateText": "Unsecure"
       },
       "terminal-3": {
         "activated": false,
+        "activateText": "Secure",
         "coordinates": {
           "x": 5,
           "y": 5
@@ -308,10 +349,12 @@
         "description": "A terminal that controls the ship.",
         "id": 3,
         "interactable": true,
-        "type": "terminal"
+        "type": "terminal",
+        "unactivateText": "Unsecure"
       },
       "terminal-4": {
         "activated": false,
+        "activateText": "Secure",
         "coordinates": {
           "x": 8,
           "y": 6
@@ -319,10 +362,12 @@
         "description": "A terminal that controls the ship.",
         "id": 4,
         "interactable": true,
-        "type": "terminal"
+        "type": "terminal",
+        "unactivateText": "Unsecure"
       },
       "terminal-5": {
         "activated": false,
+        "activateText": "Secure",
         "coordinates": {
           "x": 1,
           "y": 13
@@ -330,7 +375,8 @@
         "description": "A terminal that controls the ship.",
         "id": 5,
         "interactable": true,
-        "type": "terminal"
+        "type": "terminal",
+        "unactivateText": "Unsecure"
       }
     },
     "name": "Luxury Cruise",
