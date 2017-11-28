@@ -23,6 +23,9 @@ import {OPTIONAL_DEPLOYMENT_DONE, optionalDeployment} from '../imperials';
 import {REFER_CAMPAIGN_GUIDE, TARGET_HERO_CLOSEST_UNWOUNDED, TARGET_REMAINING} from './constants';
 import helperDeploy from './helpers/helperDeploy';
 import helperIncreaseThreat from './helpers/helperIncreaseThreat';
+import helperInitialSetup from './helpers/helperInitialSetup';
+import helperMissionBriefing from './helpers/helperMissionBriefing';
+import {missionSagaLoadDone} from '../app';
 import waitForModal from '../../sagas/waitForModal';
 
 // Constants
@@ -193,11 +196,17 @@ function* handleRoundEnd(): Generator<*, *, *> {
 // REQUIRED SAGA
 function* handleSpecialSetup(): Generator<*, *, *> {
   yield take(MISSION_SPECIAL_SETUP);
+  yield call(helperInitialSetup, 'Stormtrooper, {ELITE}Elite Trandoshan Hunter{END}');
   // Double current threat
   yield call(helperIncreaseThreat, 2);
   // Do optional deployment
   yield put(optionalDeployment());
   yield take(OPTIONAL_DEPLOYMENT_DONE);
+  yield call(helperMissionBriefing, [
+    'Doors are locked. A Rebel figure can interact with a terminal ({STRENGTH} or {TECH}) to open the nearest door.',
+    'A hero can investigate the neutral token to collect the formula.',
+    'A hero carrying the formula can escape through the entrance.',
+  ]);
   yield put(missionSpecialSetupDone());
 }
 
@@ -227,4 +236,6 @@ export function* aSimpleTask(): Generator<*, *, *> {
     fork(handleHeroesWounded),
     fork(handleRoundEnd),
   ]);
+
+  yield put(missionSagaLoadDone());
 }

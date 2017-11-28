@@ -18,6 +18,9 @@ import {REFER_CAMPAIGN_GUIDE, TARGET_REMAINING} from './constants';
 import {displayModal} from '../modal';
 import helperDeploy from './helpers/helperDeploy';
 import helperIncreaseThreat from './helpers/helperIncreaseThreat';
+import helperInitialSetup from './helpers/helperInitialSetup';
+import helperMissionBriefing from './helpers/helperMissionBriefing';
+import {missionSagaLoadDone} from '../app';
 import waitForModal from '../../sagas/waitForModal';
 
 // Constants
@@ -128,11 +131,19 @@ function* handleRoundEnd(): Generator<*, *, *> {
 // REQUIRED SAGA
 function* handleSpecialSetup(): Generator<*, *, *> {
   yield take(MISSION_SPECIAL_SETUP);
+  yield call(
+    helperInitialSetup,
+    'Imperial Officer, Probe Droid, Stormtrooper, {ELITE}Elite Stormtrooper{END}'
+  );
   // Double current threat
   yield call(helperIncreaseThreat, 2);
   // Do optional deployment
   yield put(optionalDeployment());
   yield take(OPTIONAL_DEPLOYMENT_DONE);
+  yield call(helperMissionBriefing, [
+    'Doors are locked to heroes. A hero can interact with a door ({STRENGTH} or {TECH}) to open it.',
+    'A terminal is secured if only Rebel figures are adjacent to it at the end of a round.',
+  ]);
   yield put(missionSpecialSetupDone());
 }
 
@@ -154,4 +165,6 @@ export function* luxuryCruise(): Generator<*, *, *> {
     fork(handleHeroesWounded),
     fork(handleRoundEnd),
   ]);
+
+  yield put(missionSagaLoadDone());
 }

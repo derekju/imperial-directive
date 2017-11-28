@@ -1,11 +1,7 @@
 // @flow
 
 import {all, call, fork, put, select, take} from 'redux-saga/effects';
-import {
-  getAreAllHeroesWounded,
-  getIsOneHeroLeft,
-  WOUND_REBEL_HERO,
-} from '../rebels';
+import {getAreAllHeroesWounded, getIsOneHeroLeft, WOUND_REBEL_HERO} from '../rebels';
 import {
   getCurrentRound,
   increaseThreat,
@@ -21,7 +17,11 @@ import {
 import {REFER_CAMPAIGN_GUIDE, TARGET_HERO_CLOSEST_UNWOUNDED, TARGET_REMAINING} from './constants';
 import {displayModal} from '../modal';
 import {deployNewGroups} from '../imperials';
+import {ELITE_RED} from '../../styles/colors';
 import helperDeploy from './helpers/helperDeploy';
+import helperInitialSetup from './helpers/helperInitialSetup';
+import helperMissionBriefing from './helpers/helperMissionBriefing';
+import {missionSagaLoadDone} from '../app';
 import shuffle from 'lodash/shuffle';
 import waitForModal from '../../sagas/waitForModal';
 
@@ -134,7 +134,8 @@ function* handleDefenseProtocolsEvent(): Generator<*, *, *> {
         case 'testInsight':
           yield put(
             displayModal('RESOLVE_EVENT', {
-              story: 'Unknowingly to you, the door was trapped! Electric bolts erupt from the walls surrounding the door.',
+              story:
+                'Unknowingly to you, the door was trapped! Electric bolts erupt from the walls surrounding the door.',
               text: ['Each hero makes an insight test. Each hero who fails is Stunned.'],
               title: 'Defense Protocols',
             })
@@ -144,7 +145,8 @@ function* handleDefenseProtocolsEvent(): Generator<*, *, *> {
         case 'increaseThreat':
           yield put(
             displayModal('RESOLVE_EVENT', {
-              story: 'The door was wired into the facility security system. Your presence has alerted the Imperial troops!',
+              story:
+                'The door was wired into the facility security system. Your presence has alerted the Imperial troops!',
               text: ['The current threat level has been raised by 6.'],
               title: 'Defense Protocols',
             })
@@ -155,8 +157,11 @@ function* handleDefenseProtocolsEvent(): Generator<*, *, *> {
         case 'probeDroidAttack':
           yield put(
             displayModal('RESOLVE_EVENT', {
-              story: 'The security system has alerted the Probe Droid\'s that are stationed around the facility.',
-              text: ['Each Probe Droid may perform 1 move and 1 attack. Target the closest Rebel figure to each door.'],
+              story:
+                "The security system has alerted the Probe Droid's that are stationed around the facility.",
+              text: [
+                'Each Probe Droid may perform 1 move and 1 attack. Target the closest Rebel figure to each door.',
+              ],
               title: 'Defense Protocols',
             })
           );
@@ -166,7 +171,9 @@ function* handleDefenseProtocolsEvent(): Generator<*, *, *> {
           yield put(
             displayModal('RESOLVE_EVENT', {
               story: 'The Imperial army has released their secret weapon - the fearsome Nexu.',
-              text: ['Deploy a Nexu on an interior space within 3 spaces of the door that was just opened.'],
+              text: [
+                'Deploy a Nexu on an interior space within 3 spaces of the door that was just opened.',
+              ],
               title: 'Defense Protocols',
             })
           );
@@ -227,6 +234,17 @@ function* handleRoundEnd(): Generator<*, *, *> {
 // REQUIRED SAGA
 function* handleSpecialSetup(): Generator<*, *, *> {
   yield take(MISSION_SPECIAL_SETUP);
+  yield call(
+    helperInitialSetup,
+    '{ELITE}Elite Nexu{END}, Probe Droid (2), {ELITE}Elite Probe Droid{END}'
+  );
+  yield call(helperMissionBriefing, [
+    'Doors are locked to Rebel figures. A Rebel figure can attack can attack a Door to open it (Health: 5, Defense: 1 {BLOCK}).',
+    'A hero can activate a terminal to reveal the color. Based on the color, perform an attribute test to successfully investigate:',
+    'Red: 2 {STRENGTH}',
+    'Blue: 2 {INSIGHT}',
+    'Green: 2 {TECH}',
+  ]);
   yield put(missionSpecialSetupDone());
 }
 
@@ -251,4 +269,6 @@ export function* aNewThreat(): Generator<*, *, *> {
     fork(handleHeroesWounded),
     fork(handleRoundEnd),
   ]);
+
+  yield put(missionSagaLoadDone());
 }

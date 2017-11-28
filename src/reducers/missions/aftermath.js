@@ -17,6 +17,9 @@ import {
 import {REFER_CAMPAIGN_GUIDE, TARGET_HERO_CLOSEST_UNWOUNDED, TARGET_REMAINING} from './constants';
 import {displayModal} from '../modal';
 import helperDeploy from './helpers/helperDeploy';
+import helperInitialSetup from './helpers/helperInitialSetup';
+import helperMissionBriefing from './helpers/helperMissionBriefing';
+import {missionSagaLoadDone} from '../app';
 import waitForModal from '../../sagas/waitForModal';
 
 // Constants
@@ -164,6 +167,11 @@ function* handleRoundEnd(): Generator<*, *, *> {
 // REQUIRED SAGA
 function* handleSpecialSetup(): Generator<*, *, *> {
   yield take(MISSION_SPECIAL_SETUP);
+  yield call(helperInitialSetup, 'Imperial Officer, Probe Droid, Stormtrooper');
+  yield call(helperMissionBriefing, [
+    'A Rebel figure can attack a Terminal to destroy it (Health: 4, Defense: 1 {BLOCK}). Apply +1 {BLOCK} if the terminal is adjacent to any Imperial figures.',
+    'Imperial figures cannot open doors.',
+  ]);
   yield put(missionSpecialSetupDone());
 }
 
@@ -190,4 +198,6 @@ export function* aftermath(): Generator<*, *, *> {
     fork(handleHeroesWounded),
     fork(handleRoundEnd),
   ]);
+
+  yield put(missionSagaLoadDone());
 }

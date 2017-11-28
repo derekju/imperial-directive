@@ -48,6 +48,7 @@ export default (state: AppStateType = initialState, action: Function) => {
 
 export const SET_MISSION = 'SET_MISSION';
 export const SET_MISSION_THREAT = 'SET_MISSION_THREAT';
+export const MISSION_SAGA_LOAD_DONE = 'MISSION_SAGA_LOAD_DONE';
 
 // Action creators
 
@@ -56,6 +57,7 @@ export const setMissionThreat = (missionThreat: number) => ({
   payload: {missionThreat},
   type: SET_MISSION_THREAT,
 });
+export const missionSagaLoadDone = () => ({type: MISSION_SAGA_LOAD_DONE});
 
 // Selectors
 
@@ -101,6 +103,7 @@ function* loadMissionSaga(): Generator<*, *, *> {
     // yield put(loadEvents(events.common));
     // Load the mission saga
     task = yield fork(forkMission, mission);
+    yield take(MISSION_SAGA_LOAD_DONE);
     // Load our mission in which will kick things off
     yield put(loadMission(missionConfiguration, missionThreat));
   }

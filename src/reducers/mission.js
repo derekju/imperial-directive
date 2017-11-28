@@ -253,8 +253,6 @@ function* handleCheckForThreeHeroes(): Generator<*, *, *> {
 function* handleLoadMission(): Generator<*, *, *> {
   // yield put(eventPhaseBegin());
   // yield take(EVENT_PHASE_END);
-  yield put(displayModal('MISSION_INSTRUCTIONS'));
-  yield call(waitForModal('MISSION_INSTRUCTIONS'));
   // Blocking call to let mission figure out any special setup needed
   yield put(missionSpecialSetup());
   yield take(MISSION_SPECIAL_SETUP_DONE);

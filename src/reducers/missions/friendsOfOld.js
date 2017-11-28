@@ -18,7 +18,10 @@ import {
 import {displayModal} from '../modal';
 import {deployNewGroups, getCurrentGroups, setInterruptedGroup} from '../imperials';
 import {getMissionThreat} from '../app';
+import helperInitialSetup from './helpers/helperInitialSetup';
+import helperMissionBriefing from './helpers/helperMissionBriefing';
 import last from 'lodash/last';
+import {missionSagaLoadDone} from '../app';
 import {shuffle} from 'lodash';
 import waitForModal from '../../sagas/waitForModal';
 
@@ -244,4 +247,6 @@ export function* friendsOfOld(): Generator<*, *, *> {
     fork(handleHeroesWounded),
     fork(handleRoundEnd),
   ]);
+
+  yield put(missionSagaLoadDone());
 }

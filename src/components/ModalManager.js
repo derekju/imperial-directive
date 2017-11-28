@@ -3,7 +3,6 @@
 import BeginRoundModal from './modals/BeginRoundModal';
 import HeroicHeroModalContainer from '../containers/HeroicHeroModalContainer';
 import InteractObjectContainer from '../containers/InteractObjectContainer';
-import MissionInstructionsModal from './modals/MissionInstructionsModal';
 import NewEventModal from './modals/NewEventModal';
 import React from 'react';
 import ResolveEventModal from './modals/ResolveEventModal';
@@ -39,10 +38,6 @@ class ModalManager extends React.Component<ModalManagerPropsType> {
         );
       case 'INTERACT_OBJECT':
         return <InteractObjectContainer />;
-      case 'MISSION_INSTRUCTIONS':
-        return (
-          <MissionInstructionsModal closeModals={this.props.closeModals} type={this.props.type} />
-        );
       case 'NEW_EVENT_MODAL':
         return (
           <NewEventModal
