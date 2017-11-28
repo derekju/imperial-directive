@@ -14,7 +14,7 @@ import {
   statusPhaseEndRoundEffectsDone,
   STATUS_PHASE_END_ROUND_EFFECTS,
 } from '../mission';
-import {REFER_CAMPAIGN_GUIDE, TARGET_REMAINING} from './constants';
+import {REFER_CAMPAIGN_GUIDE, TARGET_HERO_CLOSEST_UNWOUNDED, TARGET_REMAINING} from './constants';
 import {displayModal} from '../modal';
 import helperDeploy from './helpers/helperDeploy';
 import waitForModal from '../../sagas/waitForModal';
@@ -176,6 +176,7 @@ Priority target definitions:
 */
 export function* aftermath(): Generator<*, *, *> {
   // SET TARGETS
+  yield put(setAttackTarget(TARGET_HERO_CLOSEST_UNWOUNDED));
   yield put(setMoveTarget(TARGET_DOOR));
   // SET INITIAL DEPLOYMENT POINT
   yield put(setDeploymentPoint(DEPLOYMENT_POINT_GREEN));

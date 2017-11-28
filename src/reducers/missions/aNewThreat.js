@@ -18,7 +18,7 @@ import {
   statusPhaseEndRoundEffectsDone,
   STATUS_PHASE_END_ROUND_EFFECTS,
 } from '../mission';
-import {REFER_CAMPAIGN_GUIDE, TARGET_REMAINING} from './constants';
+import {REFER_CAMPAIGN_GUIDE, TARGET_HERO_CLOSEST_UNWOUNDED, TARGET_REMAINING} from './constants';
 import {displayModal} from '../modal';
 import {deployNewGroups} from '../imperials';
 import helperDeploy from './helpers/helperDeploy';
@@ -27,7 +27,6 @@ import waitForModal from '../../sagas/waitForModal';
 
 // Constants
 
-const TARGET_HERO_CLOSEST_UNWOUNDED = 'the closest unwounded hero';
 const TARGET_TERMINAL = 'the closest active terminal';
 const TARGET_LAST_TERMINAL = 'the last remaining active terminal';
 

@@ -66,7 +66,7 @@ export const PHASE_STATUS = 2;
 // State
 
 const initialState = {
-  attackTarget: 'the closest hostile figure',
+  attackTarget: 'the closest unwounded hero',
   currentActivePlayer: PLAYER_NONE,
   currentPhase: PHASE_EVENT,
   currentRound: 1,
@@ -79,7 +79,7 @@ const initialState = {
   mapImage: [[]],
   mapStates: {},
   missionThreat: 0,
-  moveTarget: 'the closest hostile figure',
+  moveTarget: 'the closest unwounded hero',
 };
 
 export default (state: MissionStateType = initialState, action: Object) => {
