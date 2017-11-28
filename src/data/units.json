@@ -1,7 +1,7 @@
 {
   "eWebEngineer": {
     "affiliation": "imperial",
-    "buffs": ["noQuarter", "noQuarter", "noQuarter", "showOfForce", "surgicalStrike"],
+    "buffs": ["noQuarter", "noQuarter", "marksman", "showOfForce", "surgicalStrike"],
     "commands": [
       {
         "condition": "If within 7 spaces of {ATTACK_TARGET}",
