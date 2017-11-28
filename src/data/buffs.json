@@ -92,7 +92,7 @@
   "riotGrenades": {
     "name": "Riot Grenades",
     "text": [
-      "All rebel heroes within 2 spaces of a figure in this group tests {INSIGHT}.{BREAK}",
+      "All rebel heroes within 3 spaces of a figure in this group tests {INSIGHT}.{BREAK}",
       "Each figure who fails suffers 1 {STRAIN}.{BREAK}",
       "Limit 1 test per hero."
     ]
