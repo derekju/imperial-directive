@@ -34,5 +34,5 @@ export default (numOpenGroups: number, noMercenaryAllowed: boolean, missionThrea
     }
   });
   const shuffledGroups = shuffle(groupsToPullFrom);
-  return shuffledGroups.slice(0, groupsToPull - 1);
+  return shuffledGroups.slice(0, groupsToPull);
 };
