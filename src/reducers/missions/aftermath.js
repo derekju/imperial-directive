@@ -14,9 +14,9 @@ import {
   statusPhaseEndRoundEffectsDone,
   STATUS_PHASE_END_ROUND_EFFECTS,
 } from '../mission';
+import {REFER_CAMPAIGN_GUIDE, TARGET_REMAINING} from './constants';
 import {displayModal} from '../modal';
 import helperDeploy from './helpers/helperDeploy';
-import {TARGET_REMAINING} from './constants';
 import waitForModal from '../../sagas/waitForModal';
 
 // Constants
@@ -72,7 +72,7 @@ function* handleFortifiedEvent(): Generator<*, *, *> {
     if (id === 1 && type === 'door' && value === true) {
       yield call(
         helperDeploy,
-        '(refer to Campaign Guide for story text)',
+        REFER_CAMPAIGN_GUIDE,
         [
           'Deploy an E-Web Engineer to the Yellow deployment point in the Atrium. That figure becomes focused.',
           'Deploy a Stormtrooper group and an Imperial Officer to the right side of the Storage room.',

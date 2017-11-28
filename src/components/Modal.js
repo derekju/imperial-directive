@@ -20,12 +20,12 @@ const styles = {
     justifyContent: 'space-around',
   },
   contents: {
-    padding: '5px',
+    padding: '10px',
   },
   header: {
     backgroundColor: 'black',
     color: 'white',
-    padding: '5px',
+    padding: '10px',
   },
 };
 

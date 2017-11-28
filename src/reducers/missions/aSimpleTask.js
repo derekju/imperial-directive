@@ -20,9 +20,9 @@ import {
 } from '../mission';
 import {displayModal} from '../modal';
 import {OPTIONAL_DEPLOYMENT_DONE, optionalDeployment} from '../imperials';
+import {REFER_CAMPAIGN_GUIDE, TARGET_REMAINING} from './constants';
 import helperDeploy from './helpers/helperDeploy';
 import helperIncreaseThreat from './helpers/helperIncreaseThreat';
-import {TARGET_REMAINING} from './constants';
 import waitForModal from '../../sagas/waitForModal';
 
 // Constants
@@ -79,8 +79,11 @@ function* handleLightlyGuardedEvent(): Generator<*, *, *> {
     if (id === 1 && type === 'door' && value === true) {
       yield call(
         helperDeploy,
-        '(refer to Campaign Guide for story text)',
-        ['Deploy an Imperial Officer and Stormtrooper group to the Command Room.', 'The units should be deployed next to door 2.'],
+        REFER_CAMPAIGN_GUIDE,
+        [
+          'Deploy an Imperial Officer and Stormtrooper group to the Command Room.',
+          'The units should be deployed next to door 2.',
+        ],
         'Lightly Guarded',
         ['stormtrooper', 'imperialOfficer']
       );
@@ -102,7 +105,7 @@ function* handleTooQuietEvent(): Generator<*, *, *> {
       // Display a modal saying we're going to reinforce
       yield put(
         displayModal('RESOLVE_EVENT', {
-          story: '(refer to Campaign Guide for story text)',
+          story: REFER_CAMPAIGN_GUIDE,
           text: [''],
           title: 'Too Quiet',
         })
@@ -127,10 +130,8 @@ function* handleSoundTheAlarmsEvent(): Generator<*, *, *> {
       // Display a modal saying we're going to reinforce
       yield put(
         displayModal('RESOLVE_EVENT', {
-          story: '(refer to Campaign Guide for story text)',
-          text: [
-            'All doors are now closed and the threat has been raised.',
-          ],
+          story: REFER_CAMPAIGN_GUIDE,
+          text: ['All doors are now closed and the threat has been raised.'],
           title: 'Sound the Alarms',
         })
       );

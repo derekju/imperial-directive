@@ -14,10 +14,10 @@ import {
   STATUS_PHASE_END_ROUND_EFFECTS,
 } from '../mission';
 import {OPTIONAL_DEPLOYMENT_DONE, optionalDeployment} from '../imperials';
+import {REFER_CAMPAIGN_GUIDE, TARGET_REMAINING} from './constants';
 import {displayModal} from '../modal';
 import helperDeploy from './helpers/helperDeploy';
 import helperIncreaseThreat from './helpers/helperIncreaseThreat';
-import {TARGET_REMAINING} from './constants';
 import waitForModal from '../../sagas/waitForModal';
 
 // Constants
@@ -112,9 +112,13 @@ function* handleRoundEnd(): Generator<*, *, *> {
 
     // Secure the Ship event
     if (currentRound === 2) {
-      yield call(helperDeploy, '(refer to Campaign Guide for story text)', ['Resolve the Secure the Ship event.'], 'Secure the Ship', [
-        'royalGuard',
-      ]);
+      yield call(
+        helperDeploy,
+        REFER_CAMPAIGN_GUIDE,
+        ['Resolve the Secure the Ship event.'],
+        'Secure the Ship',
+        ['royalGuard']
+      );
     }
 
     yield put(statusPhaseEndRoundEffectsDone());
