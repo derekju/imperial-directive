@@ -30,17 +30,19 @@ const styles = {
 };
 
 type ModalPropsType = {
-  buttonText?: string,
+  buttonText: string,
+  cancelButtonText: string,
   children?: any,
-  displayCancel?: boolean,
-  handleButtonClick?: Function,
-  handleCancelClick?: Function,
+  displayCancel: boolean,
+  handleButtonClick: Function,
+  handleCancelClick: Function,
   title: string,
 };
 
 class Modal extends React.Component<ModalPropsType> {
   static defaultProps = {
     buttonText: '',
+    cancelButtonText: 'Cancel',
     displayCancel: false,
     handleButtonClick: () => {},
     handleCancelClick: () => {},
@@ -54,7 +56,7 @@ class Modal extends React.Component<ModalPropsType> {
         {this.props.buttonText ? (
           <div style={styles.buttonContainer}>
             {this.props.displayCancel ? (
-              <Button onClick={this.props.handleCancelClick} text="Cancel" />
+              <Button onClick={this.props.handleCancelClick} text={this.props.cancelButtonText} />
             ) : null}
             <Button onClick={this.props.handleButtonClick} text={this.props.buttonText} />
           </div>

@@ -1,10 +1,20 @@
 // @flow
 
+import {getAftermathGoalText} from '../reducers/missions/aftermath';
 import {setImperialGroupActivated, setInterruptedGroupActivated} from '../reducers/imperials';
 import {connect} from 'react-redux';
 import Mission from '../components/Mission';
 import missions from '../data/missions';
 import type {StateType} from '../reducers/types';
+
+const getGoalText = (state: StateType) => {
+  switch (state.app.currentMission) {
+    case 'aftermath':
+      return getAftermathGoalText(state);
+    default:
+      return [];
+  }
+};
 
 const mapStateToProps = (state: StateType) => ({
   activatedGroup: state.imperials.activatedGroup,
@@ -16,6 +26,7 @@ const mapStateToProps = (state: StateType) => ({
   currentRound: state.mission.currentRound,
   currentThreat: state.mission.currentThreat,
   displayModal: Boolean(state.modal.type),
+  goalText: getGoalText(state),
   instructions: state.mission.instructions,
   interruptedGroup: state.imperials.interruptedGroup,
   moveTarget: state.mission.moveTarget,

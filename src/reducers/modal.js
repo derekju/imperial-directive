@@ -1,5 +1,7 @@
 // @flow
 
+import createAction from './createAction';
+
 // Constants
 
 // Types
@@ -38,14 +40,14 @@ export default (state: ModalStateType = initialState, action: Object) => {
 
 export const DISPLAY_MODAL = 'DISPLAY_MODAL';
 export const CLOSE_MODALS = 'CLOSE_MODALS';
+export const CHOICE_MODAL_ANSWER = 'CHOICE_MODAL_ANSWER';
 
 // Action creators
 
-export const displayModal = (type: string, data?: Object = {}) => ({
-  payload: {data, type},
-  type: DISPLAY_MODAL,
-});
-export const closeModals = (type: string) => ({payload: {type}, type: CLOSE_MODALS});
+export const displayModal = (type: string, data?: Object = {}) =>
+  createAction(DISPLAY_MODAL, {data, type});
+export const closeModals = (type: string) => createAction(CLOSE_MODALS, {type});
+export const choiceModalAnswer = (answer: string) => createAction(CHOICE_MODAL_ANSWER, {answer});
 
 // Selectors
 

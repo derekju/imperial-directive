@@ -10,16 +10,19 @@ import {
   SET_MAP_STATE_ACTIVATED,
   setAttackTarget,
   setDeploymentPoint,
+  setMapStateActivated,
   setMoveTarget,
   statusPhaseEndRoundEffectsDone,
   STATUS_PHASE_END_ROUND_EFFECTS,
 } from '../mission';
 import {REFER_CAMPAIGN_GUIDE, TARGET_HERO_CLOSEST_UNWOUNDED, TARGET_REMAINING} from './constants';
+import createAction from '../createAction';
 import {displayModal} from '../modal';
 import helperDeploy from './helpers/helperDeploy';
 import helperInitialSetup from './helpers/helperInitialSetup';
 import helperMissionBriefing from './helpers/helperMissionBriefing';
 import {missionSagaLoadDone} from '../app';
+import type {StateType} from '../types';
 import waitForModal from '../../sagas/waitForModal';
 
 // Constants
@@ -32,10 +35,69 @@ const DEPLOYMENT_POINT_GREEN = 'The green deployment point';
 const DEPLOYMENT_POINT_RED =
   'If Lockdown option 2 was chosen: the red deployment point. Otherwise, the green deployment point';
 
-// Local state
+// Types
 
-let requireEndRoundEffects = false;
-let priorityTargetKillHero = false;
+export type AftermathStateType = {
+  priorityTargetKillHero: boolean,
+  requireEndRoundEffects: boolean,
+  terminalHealth: number,
+  wasDoorForceClosed: boolean,
+};
+
+// State
+
+const initialState = {
+  priorityTargetKillHero: false,
+  requireEndRoundEffects: false,
+  terminalHealth: 4,
+  wasDoorForceClosed: false,
+};
+
+export default (state: AftermathStateType = initialState, action: Object) => {
+  switch (action.type) {
+    case 'AFTERMATH_END_ROUND_EFFECTS':
+      return {
+        ...state,
+        requireEndRoundEffects: action.payload,
+      };
+    case 'AFTERMATH_DOOR_FORCE_CLOSED':
+      return {
+        ...state,
+        wasDoorForceClosed: action.payload,
+      };
+    case 'AFTERMATH_SET_TERMINAL_HEALTH':
+      return {
+        ...state,
+        terminalHealth: action.payload,
+      };
+    case 'AFTERMATH_PRIORITY_TARGET_KILL_HERO':
+      return {
+        ...state,
+        priorityTargetKillHero: action.payload,
+      };
+    default:
+      return state;
+  }
+};
+
+// Selectors
+
+const getState = (state: StateType) => state.aftermath;
+export const getAftermathGoalText = (state: StateType): string[] => {
+  const goals = [
+    '{BOLD}Terminal:{END}',
+    `Health ${state.aftermath.terminalHealth}, Defense: 1 {BLOCK}`,
+    '(Apply +1 {BLOCK} if the terminal is adjacent to any Imperial figures)',
+  ];
+
+  if (state.aftermath.wasDoorForceClosed) {
+    goals.push('{BREAK}');
+    goals.push('{BOLD}Door:{END}');
+    goals.push('Health: 8, Defense: 1 black die');
+  }
+
+  return goals;
+};
 
 // Sagas
 
@@ -44,24 +106,47 @@ function* handleLockDownEvent(): Generator<*, *, *> {
     const action = yield take(SET_MAP_STATE_ACTIVATED);
     const {id, type, value} = action.payload;
     if (id === 1 && type === 'door' && value === true) {
-      requireEndRoundEffects = true;
+      yield put(createAction('AFTERMATH_END_ROUND_EFFECTS', true));
       // Ok, this is the round the rebels opened the door so wait until end of round to trigger
       yield take(STATUS_PHASE_END_ROUND_EFFECTS);
       // Pick which one we'll do and then do it
       yield put(
-        displayModal('RESOLVE_EVENT', {
-          story: 'Sirens blare as the outpost goes into lockdown mode.',
-          text: [
-            'If there is a rebel figure west of the door, close the door to the Atrium. A Rebel figure can attack the door (Health: 8, Defense: 1 black die) to open it.',
-            'Otherwise, each terminal has 7 Health now instead of 4.',
-          ],
+        displayModal('CHOICE_MODAL', {
+          question: 'Is there a rebel figure west of the door?',
           title: 'Lockdown',
         })
       );
-      yield call(waitForModal('RESOLVE_EVENT'));
-      yield put(setDeploymentPoint(DEPLOYMENT_POINT_RED));
+      yield call(waitForModal('CHOICE_MODAL'));
+      const response = yield take('CHOICE_MODAL_ANSWER');
+      const {answer} = response.payload;
+      if (answer === 'yes') {
+        yield put(
+          displayModal('RESOLVE_EVENT', {
+            story: 'Sirens blare as the outpost goes into lockdown mode.',
+            text: [
+              'The door to the Atrium has been closed. A Rebel figure can attack the door (Health: 8, Defense: 1 black die) to open it.',
+            ],
+            title: 'Lockdown',
+          })
+        );
+        yield call(waitForModal('RESOLVE_EVENT'));
+        yield put(createAction('AFTERMATH_DOOR_FORCE_CLOSED', true));
+        yield put(setMapStateActivated(1, 'door', false));
+        yield put(setDeploymentPoint(DEPLOYMENT_POINT_RED));
+      } else {
+        yield put(
+          displayModal('RESOLVE_EVENT', {
+            story: 'Sirens blare as the outpost goes into lockdown mode.',
+            text: ['Each terminal has 7 Health now instead of 4.'],
+            title: 'Lockdown',
+          })
+        );
+        yield call(waitForModal('RESOLVE_EVENT'));
+        yield put(createAction('AFTERMATH_SET_TERMINAL_HEALTH', 7));
+      }
+
       // We're done
-      requireEndRoundEffects = false;
+      yield put(createAction('AFTERMATH_END_ROUND_EFFECTS', false));
       yield put(statusPhaseEndRoundEffectsDone());
       break;
     }
@@ -84,6 +169,7 @@ function* handleFortifiedEvent(): Generator<*, *, *> {
         ['eWebEngineer', 'stormtrooper', 'imperialOfficer']
       );
       // PRIORITY TARGET SWITCH #2
+      const {priorityTargetKillHero} = yield select(getState);
       if (!priorityTargetKillHero) {
         yield put(setMoveTarget(TARGET_TERMINAL_2));
       }
@@ -99,6 +185,7 @@ function* handleSingleTerminalDestroyed(): Generator<*, *, *> {
     const {id, type, value} = action.payload;
     if (id === 2 && type === 'terminal' && value === true) {
       // PRIORITY TARGET SWITCH #3
+      const {priorityTargetKillHero} = yield select(getState);
       if (!priorityTargetKillHero) {
         yield put(setMoveTarget(TARGET_NEAREST_TERMINAL));
       }
@@ -138,7 +225,7 @@ function* handleHeroesWounded(): Generator<*, *, *> {
     const isOneHeroLeft = yield select(getIsOneHeroLeft);
     if (isOneHeroLeft) {
       // PRIORITY TARGET SWITCH #4
-      priorityTargetKillHero = true;
+      yield put(createAction('AFTERMATH_PRIORITY_TARGET_KILL_HERO', true));
       yield put(setAttackTarget(TARGET_REMAINING));
       yield put(setMoveTarget(TARGET_REMAINING));
     }
@@ -158,6 +245,7 @@ function* handleRoundEnd(): Generator<*, *, *> {
       break;
     }
 
+    const {requireEndRoundEffects} = yield select(getState);
     if (!requireEndRoundEffects) {
       yield put(statusPhaseEndRoundEffectsDone());
     }

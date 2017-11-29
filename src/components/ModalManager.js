@@ -1,6 +1,7 @@
 // @flow
 
 import BeginRoundModal from './modals/BeginRoundModal';
+import ChoiceModal from './modals/ChoiceModal';
 import HeroicHeroModalContainer from '../containers/HeroicHeroModalContainer';
 import InteractObjectContainer from '../containers/InteractObjectContainer';
 import NewEventModal from './modals/NewEventModal';
@@ -10,6 +11,7 @@ import StatusReinforcementModalContainer from '../containers/StatusReinforcement
 import VictoryModal from './modals/VictoryModal';
 
 type ModalManagerPropsType = {
+  choiceModalAnswer: Function,
   closeModals: Function,
   data: Object,
   type: string,
@@ -24,6 +26,18 @@ class ModalManager extends React.Component<ModalManagerPropsType> {
             closeModals={this.props.closeModals}
             currentRound={this.props.data.currentRound}
             type={this.props.type}
+          />
+        );
+      case 'CHOICE_MODAL':
+        return (
+          <ChoiceModal
+            choiceModalAnswer={this.props.choiceModalAnswer}
+            closeModals={this.props.closeModals}
+            noText={this.props.data.noText}
+            question={this.props.data.question}
+            title={this.props.data.title}
+            type={this.props.type}
+            yesText={this.props.data.yesText}
           />
         );
       case 'HEROIC_HERO_MODAL':

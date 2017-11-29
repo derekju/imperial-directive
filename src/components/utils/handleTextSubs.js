@@ -1,0 +1,44 @@
+// @flow
+
+import blockPng from '../../assets/icons/block.png';
+import {ELITE_RED} from '../../styles/colors';
+import insightPng from '../../assets/icons/insight.png';
+import strengthPng from '../../assets/icons/strength.png';
+import techPng from '../../assets/icons/tech.png';
+
+export default (text: string) => {
+  let replaced = text;
+
+  replaced = replaced.replace(/{BREAK}/g, '<br />');
+  replaced = replaced.replace(
+    /{BOLD}(.*?){END}/g,
+    `<span style='font-weight: bold'>$1</span>`
+  );
+  replaced = replaced.replace(
+    /{ELITE}(.*?){END}/g,
+    `<span style='color: ${ELITE_RED}; font-weight: bold'>$1</span>`
+  );
+  replaced = replaced.replace(
+    /{BLOCK}/g,
+    `<img alt="Block" src='${
+      blockPng
+    }' style='height: 20px; width: 18px; vertical-align: middle' />`
+  );
+  replaced = replaced.replace(
+    /{STRENGTH}/g,
+    `<img alt="Strength" src='${
+      strengthPng
+    }' style='height: 24px; width: 18px; vertical-align: middle' />`
+  );
+  replaced = replaced.replace(
+    /{INSIGHT}/g,
+    `<img alt="Insight" src='${
+      insightPng
+    }' style='height: 24px; width: 20px; vertical-align: middle' />`
+  );
+  replaced = replaced.replace(
+    /{TECH}/g,
+    `<img alt="Tech" src='${techPng}' style='height: 24px; width: 18px; vertical-align: middle' />`
+  );
+  return replaced;
+};
