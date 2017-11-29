@@ -46,7 +46,7 @@ class GoalPanel extends React.Component<GoalPanelPropsType> {
   render() {
     return (
       <div style={styles.base}>
-        <div style={styles.header}>Current Goals</div>
+        <div style={styles.header}>Mission Goals</div>
         <div style={styles.contents}>{this.renderGoals()}</div>
       </div>
     );

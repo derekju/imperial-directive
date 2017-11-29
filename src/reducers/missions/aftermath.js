@@ -86,7 +86,7 @@ const getState = (state: StateType) => state.aftermath;
 export const getAftermathGoalText = (state: StateType): string[] => {
   const goals = [
     '{BOLD}Terminal:{END}',
-    `Health ${state.aftermath.terminalHealth}, Defense: 1 {BLOCK}`,
+    `Health: ${state.aftermath.terminalHealth}, Defense: 1 {BLOCK}`,
     '(Apply +1 {BLOCK} if the terminal is adjacent to any Imperial figures)',
   ];
 

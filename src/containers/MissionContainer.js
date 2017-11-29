@@ -1,6 +1,9 @@
 // @flow
 
 import {getAftermathGoalText} from '../reducers/missions/aftermath';
+import {getANewThreatGoalText} from '../reducers/missions/aNewThreat';
+import {getASimpleTaskGoalText} from '../reducers/missions/aSimpleTask';
+import {getLuxuryCruiseGoalText} from '../reducers/missions/luxuryCruise';
 import {setImperialGroupActivated, setInterruptedGroupActivated} from '../reducers/imperials';
 import {connect} from 'react-redux';
 import Mission from '../components/Mission';
@@ -11,6 +14,12 @@ const getGoalText = (state: StateType) => {
   switch (state.app.currentMission) {
     case 'aftermath':
       return getAftermathGoalText(state);
+    case 'aNewThreat':
+      return getANewThreatGoalText(state);
+    case 'aSimpleTask':
+      return getASimpleTaskGoalText(state);
+    case 'luxuryCruise':
+      return getLuxuryCruiseGoalText(state);
     default:
       return [];
   }

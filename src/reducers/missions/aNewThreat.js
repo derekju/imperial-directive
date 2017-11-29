@@ -17,11 +17,11 @@ import {
 import {REFER_CAMPAIGN_GUIDE, TARGET_HERO_CLOSEST_UNWOUNDED, TARGET_REMAINING} from './constants';
 import {displayModal} from '../modal';
 import {deployNewGroups} from '../imperials';
-import {ELITE_RED} from '../../styles/colors';
 import helperDeploy from './helpers/helperDeploy';
 import helperInitialSetup from './helpers/helperInitialSetup';
 import helperMissionBriefing from './helpers/helperMissionBriefing';
 import {missionSagaLoadDone} from '../app';
+import type {StateType} from '../types';
 import shuffle from 'lodash/shuffle';
 import waitForModal from '../../sagas/waitForModal';
 
@@ -41,6 +41,22 @@ let defenseProtocolOptions = ['testInsight', 'increaseThreat', 'probeDroidAttack
 const tokens = shuffle(['red', 'blue', 'green']);
 const activatedTokenIndexes = [];
 let priorityTargetKillHero = false;
+
+// Selectors
+
+export const getANewThreatGoalText = (state: StateType): string[] => {
+  const goals = [
+    '{BOLD}Doors:{END}',
+    `Health: 5, Defense: 1 {BLOCK}`,
+    '{BREAK}',
+    '{BOLD}Terminal Attribute Tests:{END}',
+    'Red: 2 {STRENGTH}',
+    'Blue: 2 {INSIGHT}',
+    'Green: 2 {TECH}',
+  ];
+
+  return goals;
+};
 
 // Sagas
 

@@ -21,6 +21,7 @@ import helperIncreaseThreat from './helpers/helperIncreaseThreat';
 import helperInitialSetup from './helpers/helperInitialSetup';
 import helperMissionBriefing from './helpers/helperMissionBriefing';
 import {missionSagaLoadDone} from '../app';
+import type {StateType} from '../types';
 import waitForModal from '../../sagas/waitForModal';
 
 // Constants
@@ -33,6 +34,20 @@ const DEPLOYMENT_POINT_GREEN_TERMINAL = 'The green deployment point';
 // Local state
 
 let securedTerminals = [];
+
+// Selectors
+
+export const getLuxuryCruiseGoalText = (state: StateType): string[] => {
+  const goals = [
+    '{BOLD}Doors:{END}',
+    `Test {STRENGTH} or {TECH} to open.`,
+    '{BREAK}',
+    '{BOLD}Securing Terminals:{END}',
+    'A terminal is secured if only Rebel figures are adjacent to it at the end of a round.',
+  ];
+
+  return goals;
+};
 
 // Sagas
 
@@ -105,8 +120,8 @@ function* handleRoundEnd(): Generator<*, *, *> {
       displayModal('RESOLVE_EVENT', {
         story: 'The imperial troops are aware of your presence!',
         text: [
-          'If there are rebel figures behind any open doors with Imperial figures in the same room, close the door to that room.',
-          'Otherwise, perform an attack against an unwounded hero.',
+          'If there are rebel figures behind any open doors with Imperial figures in the same room, manually close the door to that room.',
+          'Otherwise, perform a standard attack against an unwounded hero.',
         ],
         title: 'Sound the Alarm',
       })

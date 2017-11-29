@@ -26,6 +26,7 @@ import helperIncreaseThreat from './helpers/helperIncreaseThreat';
 import helperInitialSetup from './helpers/helperInitialSetup';
 import helperMissionBriefing from './helpers/helperMissionBriefing';
 import {missionSagaLoadDone} from '../app';
+import type {StateType} from '../types';
 import waitForModal from '../../sagas/waitForModal';
 
 // Constants
@@ -44,6 +45,23 @@ const DEPLOYMENT_POINT_RED = 'If red deployment point next to the hero carrying 
 
 let alarmsSounded = false;
 let priorityTargetKillHero = false;
+
+// Selectors
+
+export const getASimpleTaskGoalText = (state: StateType): string[] => {
+  const goals = [
+    '{BOLD}Doors:{END}',
+    `Test {STRENGTH} or {TECH} to open.`,
+    '{BREAK}',
+    '{BOLD}Forumula:{END}',
+    'A hero can investigate the neutral token to collect the formula.',
+    '{BREAK}',
+    '{BOLD}Escaping:{END}',
+    'A hero carrying the formula can escape through the entrance.',
+  ];
+
+  return goals;
+};
 
 // Sagas
 
