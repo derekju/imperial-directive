@@ -50,8 +50,8 @@ let priorityTargetKillHero = false;
 
 export const getASimpleTaskGoalText = (state: StateType): string[] => {
   const goals = [
-    '{BOLD}Doors:{END}',
-    `Test {STRENGTH} or {TECH} to open.`,
+    '{BOLD}Terminals:{END}',
+    `Test {STRENGTH} or {TECH} to open closest door.`,
     '{BREAK}',
     '{BOLD}Forumula:{END}',
     'A hero can investigate the neutral token to collect the formula.',

@@ -349,7 +349,7 @@
   },
   "stormtrooper": {
     "affiliation": "imperial",
-    "buffs": ["getPlus2AccuracyPlus1Dmg", "getPlus2AccuracyPlus1Dmg", "riotGrenades", "withinTwoSpaceGainSurge"],
+    "buffs": ["getPlus2AccuracyPlus1Dmg", "getPlus2AccuracyPlus1Dmg", "riotGrenades", "shockTroopers"],
     "commands": [
       {
         "condition": "If within 6 spaces of {ATTACK_TARGET}",
@@ -361,7 +361,7 @@
       },
       {
         "condition": "Reaction - If adjacent to another friendly Trooper while attacking",
-        "command": "If accuracy check is successful, use Squad Training ability to reroll a {SURGE}."
+        "command": "If multiple {SURGE} are rolled and accuracy check is successful, use Squad Training ability to reroll a {SURGE}."
       }
     ],
     "elite": false,
@@ -385,7 +385,7 @@
       },
       {
         "condition": "Reaction - If adjacent to another friendly Trooper while attacking",
-        "command": "If accuracy check is successful, use Squad Training ability to reroll a {SURGE}."
+        "command": "If multiple {SURGE} are rolled and accuracy check is successful, use Squad Training ability to reroll a {SURGE}."
       },
       {
         "condition": "Reaction - When defeated",

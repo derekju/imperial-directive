@@ -112,10 +112,10 @@
       "Apply surge effect before all others."
     ]
   },
-  "withinTwoSpaceGainSurge": {
+  "shockTroopers": {
     "name": "Shock Troopers",
     "text": [
-      "While attacking a figure within 2 spaces, apply +1 {SURGE} to the results."
+      "While attacking a figure within 4 spaces, apply +1 {SURGE} to the results."
     ]
   },
   "focusOnAttack": {
