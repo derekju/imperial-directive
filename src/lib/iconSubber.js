@@ -31,7 +31,14 @@ export const expandText = (
     case '{ACTION}':
       return <img key={`${text}-${index}`} alt="Action" src={actionPng} style={styles} />;
     case '{BLOCK}':
-      return <img key={`${text}-${index}`} alt="Block" src={blockPng} style={{...styles, height: '24px', width: '18px'}} />;
+      return (
+        <img
+          key={`${text}-${index}`}
+          alt="Block"
+          src={blockPng}
+          style={{...styles, height: '24px', width: '18px'}}
+        />
+      );
     case '{BREAK}':
       return <br />;
     case '{DMG}':
@@ -39,7 +46,14 @@ export const expandText = (
     case '{DODGE}':
       return <img key={`${text}-${index}`} alt="Dodge" src={dodgePng} style={styles} />;
     case '{EVADE}':
-      return <img key={`${text}-${index}`} alt="Evade" src={evadePng} style={{...styles, height: '24px', width: '18px'}} />;
+      return (
+        <img
+          key={`${text}-${index}`}
+          alt="Evade"
+          src={evadePng}
+          style={{...styles, height: '24px', width: '18px'}}
+        />
+      );
     case '{INSIGHT}':
       return <img key={`${text}-${index}`} alt="Insight" src={insightPng} style={styles} />;
     case '{MELEE}':
