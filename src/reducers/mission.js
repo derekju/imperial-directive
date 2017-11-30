@@ -89,7 +89,8 @@ export default (state: MissionStateType = initialState, action: Object) => {
       const {config, missionThreat} = action.payload;
       return {
         ...initialState,
-        attackTarget: state.attackTarget,
+        attackTarget: state.attackTarget, // Set by individual mission saga
+        deploymentPoint: state.deploymentPoint, // Set by individual mission saga
         instructions: config.instructions,
         mapImage: config.mapImage,
         mapStates: config.mapStates,
