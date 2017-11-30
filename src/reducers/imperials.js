@@ -285,9 +285,7 @@ function* handleOptionalDeployment(): Generator<*, *, *> {
   let newOpenGroups = [];
   const groupsToDeploy = [];
 
-  // Ok, we have all the information we need so figure out how we are going to do this
-  // We should spend our threat on the highest cost deployments and use the rest of the threat
-  // to reinforce
+  // We should spend our threat on the highest cost deployments
 
   // Sort the open groups array by highest to lowest threat
   // Iterate and pull groups off until we cannot do so anymore

@@ -133,3 +133,5 @@ export const getIsOneHeroLeft = (state: StateType) =>
     state.rebels.woundedHeroes.length -
     state.rebels.withdrawnHeroes.length ===
   1;
+export const getAreAllHeroesWithdrawn = (state: StateType) =>
+  state.rebels.withdrawnHeroes.length === state.rebels.roster.length;

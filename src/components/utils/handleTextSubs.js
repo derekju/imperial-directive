@@ -1,6 +1,7 @@
 // @flow
 
 import blockPng from '../../assets/icons/block.png';
+import damagePng from '../../assets/icons/damage.png';
 import {ELITE_RED} from '../../styles/colors';
 import insightPng from '../../assets/icons/insight.png';
 import strengthPng from '../../assets/icons/strength.png';
@@ -24,6 +25,13 @@ export default (text: string) => {
     `<img alt="Block" src='${
       blockPng
     }' style='height: 20px; width: 18px; vertical-align: middle' />`
+  );
+  // DAMAGE IMAGE
+  replaced = replaced.replace(
+    /{DAMAGE}/g,
+    `<img alt="Damage" src='${
+      damagePng
+    }' style='height: 24px; width: 20px; vertical-align: middle' />`
   );
   // STRENGTH IMAGE
   replaced = replaced.replace(

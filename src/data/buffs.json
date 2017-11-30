@@ -1,5 +1,5 @@
 {
-  "arcBlasters": {
+  "rangeAfterTestStunGainSurgeDmgBlast": {
     "name": "Arc Blasters",
     "text": [
       "After a figure resolves a {RANGED} attack, each figure that suffered 1 or more {DMG} tests {STR}. Each figure that fails is Stunned.{BREAK}",
@@ -9,10 +9,16 @@
       "Apply this surge effect before all others."
     ]
   },
-  "combatVeteran": {
+  "getPlus2AccuracyPlus1Dmg": {
     "name": "Combat Veteran",
     "text": [
       "While attacking, apply +2 Accuracy and +1 {DMG} to the results."
+    ]
+  },
+  "getPlus2Dmg": {
+    "name": "Critical Hit",
+    "text": [
+      "While attacking, apply +2 {DMG} to the results."
     ]
   },
   "deadeye": {
@@ -21,32 +27,32 @@
       "While attacking, apply +2 Accuracy to the results."
     ]
   },
-  "experimentalArms": {
+  "gainSurgeAfterSufferOneDmg": {
     "name": "Experimental Arms",
     "text": [
       "Each figure gains +1 {SURGE} while attacking.{BREAK}",
       "After the attack is resolved, the attacking figure suffers +1 {DMG}."
     ]
   },
-  "exploitWeakness": {
+  "targetMinus1Block": {
     "name": "Exploit Weakness",
     "text": [
       "All targets attacked by figures in this group apply -1 {BLOCK} to their defense results."
     ]
   },
-  "fleetFooted": {
+  "plusOneMovement": {
     "name": "Fleet Footed",
     "text": [
       "All figures gain 1 extra movement point."
     ]
   },
-  "heavyPressure": {
+  "attackStrainInsteadDmg": {
     "name": "Heavy Pressure",
     "text": [
       "Attacks deal {STRAIN} instead of {DMG}."
     ]
   },
-  "imperialIndustry": {
+  "gainSurgeStunSurgeDmg": {
     "name": "Imperial Industry",
     "text": [
       "Each figure in this group gains:{BREAK}",
@@ -71,13 +77,13 @@
       "All figures gain Mobile."
     ]
   },
-  "marksman": {
+  "figureNotBlockLOS": {
     "name": "Marksman",
     "text": [
       "Figures do not block line of sight for attacks."
     ]
   },
-  "noQuarter": {
+  "extraSurgeIfTargetTwoStrain": {
     "name": "No Quarter",
     "text": [
       "If attacking a hero who has suffered 2 or more {STRAIN}, apply +1 {SURGE} to the results."
@@ -97,7 +103,7 @@
       "Limit 1 test per hero."
     ]
   },
-  "savageWeaponry": {
+  "gainPierceSurgeBleed": {
     "name": "Savage Weaponry",
     "text": [
       "Each figure gains:{BREAK}",
@@ -106,25 +112,25 @@
       "Apply surge effect before all others."
     ]
   },
-  "shockTroopers": {
+  "withinTwoSpaceGainSurge": {
     "name": "Shock Troopers",
     "text": [
       "While attacking a figure within 2 spaces, apply +1 {SURGE} to the results."
     ]
   },
-  "showOfForce": {
+  "focusOnAttack": {
     "name": "Show of Force",
     "text": [
       "While declaring an attack, become focused."
     ]
   },
-  "surgicalStrike": {
+  "targetSuffersStrainDmg": {
     "name": "Surgical Strike",
     "text": [
       "After attacking a target, the target suffers an additional 1 {STRAIN} and 1 {DMG}."
     ]
   },
-  "sustainedFire": {
+  "extraAttackThenStunned": {
     "name": "Sustained Fire",
     "text": [
       "After resolving an attack, perform an additional attack. Then, become stunned and suffer 2 {DMG}."

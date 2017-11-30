@@ -8,6 +8,7 @@ import Neutral from './map/Neutral';
 import noop from 'lodash/noop';
 import {positionAbsolute} from '../styles/mixins';
 import React from 'react';
+import Rebel from './map/Rebel';
 import Terminal from './map/Terminal';
 
 const styles = {
@@ -23,6 +24,7 @@ const styles = {
     height: '45px',
     justifyContent: 'center',
     margin: '1px',
+    position: 'relative',
     width: '45px',
   },
   emptyBlock: {
@@ -100,6 +102,16 @@ class Map extends React.Component<MapPropsType> {
             activated={mapState.activated}
             id={mapState.id}
             displayModal={mapState.interactable ? this.props.displayModal : noop}
+            type={mapState.type}
+          />
+        );
+      } else if (mapState.type === 'rebel') {
+        return (
+          <Rebel
+            activated={mapState.activated}
+            id={mapState.id}
+            displayModal={mapState.interactable ? this.props.displayModal : noop}
+            offset={mapState.offset || false}
             type={mapState.type}
           />
         );

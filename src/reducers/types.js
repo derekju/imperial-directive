@@ -7,6 +7,7 @@ import type {ImperialsStateType} from './imperials';
 import type {MissionStateType} from './mission';
 import type {ModalStateType} from './modal';
 import type {RebelsStateType} from './rebels';
+import type {UnderSiegeStateType} from './missions/underSiege';
 
 export type StateType = {
   aftermath: AftermathStateType,
@@ -16,4 +17,5 @@ export type StateType = {
   mission: MissionStateType,
   modal: ModalStateType,
   rebels: RebelsStateType,
+  underSiege: UnderSiegeStateType,
 };

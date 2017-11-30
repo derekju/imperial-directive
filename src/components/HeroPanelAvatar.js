@@ -52,7 +52,7 @@ const styles = {
     height: '175px',
     justifyContent: 'space-between',
     width: '175px',
-    zIndex: 1,
+    zIndex: 100,
   },
   popupAccent: {
     backgroundColor: REBEL_RED,

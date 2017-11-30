@@ -1,7 +1,63 @@
 {
+  "atst": {
+    "affiliation": "imperial",
+    "buffs": ["focusOnAttack", "getPlus2AccuracyPlus1Dmg", "getPlus2AccuracyPlus1Dmg", "getPlus2AccuracyPlus1Dmg"],
+    "commands": [
+      {
+        "condition": "If within 7 spaces and have LOS of {ATTACK_TARGET}",
+        "command": "{ACTION} Only if adjacent, move at least 4 spaces away, then {ACTION} Attack {ATTACK_TARGET}."
+      },
+      {
+        "condition": "If no hostile figure within 7 spaces",
+        "command": "{ACTION} Move within 5 spaces and LOS of {ATTACK_TARGET}."
+      },
+      {
+        "condition": "Reaction - If a red die rolls a single damage",
+        "command": "Use Targeting Computer to reroll the red die."
+      }
+    ],
+    "elite": true,
+    "id": "atst",
+    "maxInGroup": 1,
+    "name": "AT-ST",
+    "reinforcementCost": -1,
+    "threat": 14
+  },
+  "darthVader": {
+    "affiliation": "imperial",
+    "buffs": ["getPlus2Dmg", "targetMinus1Block", "targetSuffersStrainDmg"],
+    "commands": [
+      {
+        "condition": "If possible to be adjacent to 2 hostile figures",
+        "command": "{ACTION} If necessary, move adjacent to those figures, then {ACTION} Use Brutality ability to attack those targets."
+      },
+      {
+        "condition": "If within 4 spaces and have LOS of {ATTACK_TARGET}",
+        "command": "{ACTION} Move adjacent to {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}."
+      },
+      {
+        "condition": "If not within 4 spaces of {ATTACK_TARGET} but have LOS",
+        "command": "{ACTION} Use Force Choke ability on {ATTACK_TARGET}, then {ACTION} Move towards {ATTACK_TARGET}."
+      },
+      {
+        "condition": "If not within 4 spaces of {ATTACK_TARGET} and no LOS to any hostile figures",
+        "command": "{ACTION} Move towards {ATTACK_TARGET}."
+      },
+      {
+        "condition": "Reaction - While defending",
+        "command": "If {EVADE} does nothing, reroll it. Otherwise, reroll a die with 1 {BLOCK}."
+      }
+    ],
+    "elite": true,
+    "id": "darthVader",
+    "maxInGroup": 1,
+    "name": "Darth Vader",
+    "reinforcementCost": -1,
+    "threat": 18
+  },
   "eWebEngineer": {
     "affiliation": "imperial",
-    "buffs": ["fleetFooted", "marksman", "showOfForce", "surgicalStrike"],
+    "buffs": ["plusOneMovement", "figureNotBlockLOS", "focusOnAttack", "targetSuffersStrainDmg"],
     "commands": [
       {
         "condition": "If within 7 spaces and have LOS of {ATTACK_TARGET}",
@@ -21,7 +77,7 @@
   },
   "eWebEngineerElite": {
     "affiliation": "imperial",
-    "buffs": ["fleetFooted", "showOfForce", "showOfForce", "surgicalStrike", "surgicalStrike"],
+    "buffs": ["plusOneMovement", "focusOnAttack", "focusOnAttack", "targetSuffersStrainDmg", "targetSuffersStrainDmg"],
     "commands": [
       {
         "condition": "If within 7 spaces and have LOS of {ATTACK_TARGET}",
@@ -41,7 +97,7 @@
   },
   "generalWeiss": {
     "affiliation": "imperial",
-    "buffs": ["surgicalStrike"],
+    "buffs": ["targetSuffersStrainDmg"],
     "commands": [
       {
         "condition": "If 2 other friendly figures are not within attack range or LOS of {ATTACK_TARGET}",
@@ -69,7 +125,7 @@
   },
   "imperialOfficer": {
     "affiliation": "imperial",
-    "buffs": ["fleetFooted", "heavyPressure"],
+    "buffs": ["plusOneMovement", "attackStrainInsteadDmg"],
     "commands": [
       {
         "condition": "If within 2 spaces of a friendly target that is not within attack range or LOS of {ATTACK_TARGET}",
@@ -97,7 +153,7 @@
   },
   "imperialOfficerElite": {
     "affiliation": "imperial",
-    "buffs": ["heavyPressure", "riotGrenades"],
+    "buffs": ["attackStrainInsteadDmg", "riotGrenades"],
     "commands": [
       {
         "condition": "If within 2 spaces of a friendly target that is within attack range and LOS of {ATTACK_TARGET}",
@@ -129,7 +185,7 @@
   },
   "nexu": {
     "affiliation": "mercenary",
-    "buffs": ["recovery", "savageWeaponry", "savageWeaponry", "surgicalStrike"],
+    "buffs": ["recovery", "gainPierceSurgeBleed", "gainPierceSurgeBleed", "targetSuffersStrainDmg"],
     "commands": [
       {
         "condition": "If within 4 spaces of {ATTACK_TARGET}",
@@ -157,7 +213,7 @@
   },
   "nexuElite": {
     "affiliation": "mercenary",
-    "buffs": ["recovery", "showOfForce", "sustainedFire", "sustainedFire"],
+    "buffs": ["recovery", "focusOnAttack", "extraAttackThenStunned", "extraAttackThenStunned"],
     "commands": [
       {
         "condition": "If within 4 spaces of {ATTACK_TARGET}",
@@ -185,7 +241,7 @@
   },
   "probeDroid": {
     "affiliation": "imperial",
-    "buffs": ["combatVeteran", "combatVeteran", "fleetFooted", "heavyPressure"],
+    "buffs": ["getPlus2AccuracyPlus1Dmg", "getPlus2AccuracyPlus1Dmg", "plusOneMovement", "attackStrainInsteadDmg"],
     "commands": [
       {
         "condition": "If within 5 spaces of {ATTACK_TARGET}",
@@ -209,7 +265,7 @@
   },
   "probeDroidElite": {
     "affiliation": "imperial",
-    "buffs": ["combatVeteran", "exploitWeakness", "exploitWeakness", "fleetFooted"],
+    "buffs": ["getPlus2AccuracyPlus1Dmg", "targetMinus1Block", "targetMinus1Block", "plusOneMovement"],
     "commands": [
       {
         "condition": "If within 6 spaces of {ATTACK_TARGET}",
@@ -237,7 +293,7 @@
   },
   "royalGuard": {
     "affiliation": "imperial",
-    "buffs": ["exploitWeakness", "exploitWeakness", "noQuarter", "surgicalStrike"],
+    "buffs": ["targetMinus1Block", "targetMinus1Block", "extraSurgeIfTargetTwoStrain", "targetSuffersStrainDmg"],
     "commands": [
       {
         "condition": "If within 6 spaces of {ATTACK_TARGET}",
@@ -265,7 +321,7 @@
   },
   "royalGuardElite": {
     "affiliation": "imperial",
-    "buffs": ["exploitWeakness", "imperialIndustry", "noQuarter", "surgicalStrike"],
+    "buffs": ["targetMinus1Block", "gainSurgeStunSurgeDmg", "extraSurgeIfTargetTwoStrain", "targetSuffersStrainDmg"],
     "commands": [
       {
         "condition": "If within 6 spaces of {ATTACK_TARGET}",
@@ -293,7 +349,7 @@
   },
   "stormtrooper": {
     "affiliation": "imperial",
-    "buffs": ["combatVeteran", "combatVeteran", "riotGrenades", "shockTroopers"],
+    "buffs": ["getPlus2AccuracyPlus1Dmg", "getPlus2AccuracyPlus1Dmg", "riotGrenades", "withinTwoSpaceGainSurge"],
     "commands": [
       {
         "condition": "If within 6 spaces of {ATTACK_TARGET}",
@@ -317,7 +373,7 @@
   },
   "stormtrooperElite": {
     "affiliation": "imperial",
-    "buffs": ["arcBlasters", "combatVeteran", "showOfForce"],
+    "buffs": ["rangeAfterTestStunGainSurgeDmgBlast", "getPlus2AccuracyPlus1Dmg", "focusOnAttack"],
     "commands": [
       {
         "condition": "If within 6 spaces of {ATTACK_TARGET}",
@@ -345,7 +401,7 @@
   },
   "trandoshanHunter": {
     "affiliation": "mercenary",
-    "buffs": ["combatVeteran", "experimentalArms", "exploitWeakness", "recovery"],
+    "buffs": ["getPlus2AccuracyPlus1Dmg", "gainSurgeAfterSufferOneDmg", "targetMinus1Block", "recovery"],
     "commands": [
       {
         "condition": "If within 4 spaces of {ATTACK_TARGET}",
@@ -377,7 +433,7 @@
   },
   "trandoshanHunterElite": {
     "affiliation": "mercenary",
-    "buffs": ["arcBlasters", "exploitWeakness", "imperialIndustry", "recovery"],
+    "buffs": ["rangeAfterTestStunGainSurgeDmgBlast", "targetMinus1Block", "gainSurgeStunSurgeDmg", "recovery"],
     "commands": [
       {
         "condition": "If within 4 spaces of {ATTACK_TARGET}",

@@ -19,6 +19,7 @@ import {REFER_CAMPAIGN_GUIDE, TARGET_HERO_CLOSEST_UNWOUNDED, TARGET_REMAINING} f
 import createAction from '../createAction';
 import {displayModal} from '../modal';
 import helperDeploy from './helpers/helperDeploy';
+import helperEventModal from './helpers/helperEventModal';
 import helperInitialSetup from './helpers/helperInitialSetup';
 import helperMissionBriefing from './helpers/helperMissionBriefing';
 import {missionSagaLoadDone} from '../app';
@@ -120,28 +121,22 @@ function* handleLockDownEvent(): Generator<*, *, *> {
       const response = yield take('CHOICE_MODAL_ANSWER');
       const {answer} = response.payload;
       if (answer === 'yes') {
-        yield put(
-          displayModal('RESOLVE_EVENT', {
-            story: 'Sirens blare as the outpost goes into lockdown mode.',
-            text: [
-              'The door to the Atrium has been closed. A Rebel figure can attack the door (Health: 8, Defense: 1 black die) to open it.',
-            ],
-            title: 'Lockdown',
-          })
-        );
-        yield call(waitForModal('RESOLVE_EVENT'));
+        yield call(helperEventModal, {
+          story: 'Sirens blare as the outpost goes into lockdown mode.',
+          text: [
+            'The door to the Atrium has been closed. A Rebel figure can attack the door (Health: 8, Defense: 1 black die) to open it.',
+          ],
+          title: 'Lockdown',
+        });
         yield put(createAction('AFTERMATH_DOOR_FORCE_CLOSED', true));
         yield put(setMapStateActivated(1, 'door', false));
         yield put(setDeploymentPoint(DEPLOYMENT_POINT_RED));
       } else {
-        yield put(
-          displayModal('RESOLVE_EVENT', {
-            story: 'Sirens blare as the outpost goes into lockdown mode.',
-            text: ['Each terminal has 7 Health now instead of 4.'],
-            title: 'Lockdown',
-          })
-        );
-        yield call(waitForModal('RESOLVE_EVENT'));
+        yield call(helperEventModal, {
+          story: 'Sirens blare as the outpost goes into lockdown mode.',
+          text: ['Each terminal has 7 Health now instead of 4.'],
+          title: 'Lockdown',
+        });
         yield put(createAction('AFTERMATH_SET_TERMINAL_HEALTH', 7));
       }
 

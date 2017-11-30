@@ -1,79 +1,27 @@
 {
   "2": {
-    "experimentalArms": {
-      "name": "Experimental Arms",
+    "plusOneMovement": {
+      "name": "Fleet Footed",
       "text": [
-        "Each figure gains +1 {SURGE} while attacking.{BREAK}",
-        "After the attack is resolved, that figure suffers +1 {DMG}."
-      ]
-    },
-    "preyUponDoubt": {
-      "name": "Prey Upon Doubt",
-      "text": [
-        "When a figure is attacked, the Rebel figure chooses to either suffer 1 {STRAIN} or apply +1 {EVADE} to the defense results."
-      ]
-    },
-    "riotGrenades": {
-      "name": "Riot Grenades",
-      "text": [
-        "All rebel heroes within 2 spaces of a figure in this group tests {INSIGHT}.{BREAK}",
-        "Each figure who fails suffers 1 {STRAIN}.{BREAK}",
-        "Limit 1 test per hero."
-      ]
-    },
-    "savageWeaponry": {
-      "name": "Savage Weaponry",
-      "text": [
-        "Each figure gains:{BREAK}",
-        "Pierce 1{BREAK}",
-        "{SURGE}: Bleed{BREAK}",
-        "Apply surge effect before all others."
-      ]
-    },
-    "showOfForce": {
-      "name": "Show of Force",
-      "text": [
-        "When each figure declares an attack, they become focused."
-      ]
-    },
-    "surgicalStrike": {
-      "name": "Surgical Strike",
-      "text": [
-        "After a figure attacks a target, the target suffers an additional 1 {STRAIN} and 1 {DMG}."
+        "All figures gain 1 extra movement point."
       ]
     },
   },
-  "equipment": {
-    "dh-17": {
-      "name": "DH-17 Blaster Pistol",
+  "3": {
+    "plusOneMovement": {
+      "name": "Fleet Footed",
       "text": [
-        "Each figure gains:{BREAK}",
-        "+1 {DMG}"
+        "All figures gain 1 extra movement point."
       ]
     },
-    "f-11d": {
-      "name": "F-11D Rifle",
-      "text": [
-        "Each figure gains:{BREAK}",
-        "+2 Accuracy",
-        "Pierce 1"
-      ]
-    },
-    "iqa-11": {
-      "name": "IQA-11 Blaster Rifle",
-      "text": [
-        "Each figure gains:{BREAK}",
-        "Pierce 3"
-      ]
-    }
   },
-  "global": {
-    "endlessRanks": {
-      "name": "Endless Ranks",
-      "text": [
-        "When deploying a Trooper, reduce its deployment cost by 1.",
-        "After the attack is resolved, that figure suffers +1 {DMG}."
-      ]
-    }
+  "4": {
+
+  },
+  "5": {
+
+  },
+  "6": {
+
   }
 }

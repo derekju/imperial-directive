@@ -22,6 +22,7 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
+    zIndex: 100,
   },
   base: {
     backgroundColor: 'white',
@@ -53,6 +54,7 @@ const styles = {
     backgroundColor: LIGHT_GRAY_TRANSPARENT,
     display: 'flex',
     justifyContent: 'center',
+    zIndex: 100,
   },
   panelItem: {
     marginBottom: '10px',

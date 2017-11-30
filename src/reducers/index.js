@@ -7,6 +7,7 @@ import imperials from './imperials';
 import mission from './mission';
 import modal from './modal';
 import rebels from './rebels';
+import underSiege from './missions/underSiege';
 
 export default {
   aftermath,
@@ -16,4 +17,5 @@ export default {
   mission,
   modal,
   rebels,
+  underSiege,
 };

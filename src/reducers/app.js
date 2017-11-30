@@ -11,6 +11,7 @@ import {aftermath} from './missions/aftermath';
 import {aNewThreat} from './missions/aNewThreat';
 import {aSimpleTask} from './missions/aSimpleTask';
 import {luxuryCruise} from './missions/luxuryCruise';
+import {underSiege} from './missions/underSiege';
 // import {friendsOfOld} from './missions/friendsOfOld';
 
 // Types
@@ -80,6 +81,8 @@ function* forkMission(currentMission: string): Generator<*, *, *> {
     case 'luxuryCruise':
       yield fork(luxuryCruise);
       break;
+    case 'underSiege':
+      yield fork(underSiege);
     // case 'friendsOfOld':
     //   yield fork(friendsOfOld);
     //   break;

@@ -26,6 +26,7 @@ export type MapStateType = {
   description: string,
   id: number,
   interactable: boolean,
+  offset?: boolean,
   type: string,
   unactivateText: string,
 };

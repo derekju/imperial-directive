@@ -4,6 +4,7 @@ import {getAftermathGoalText} from '../reducers/missions/aftermath';
 import {getANewThreatGoalText} from '../reducers/missions/aNewThreat';
 import {getASimpleTaskGoalText} from '../reducers/missions/aSimpleTask';
 import {getLuxuryCruiseGoalText} from '../reducers/missions/luxuryCruise';
+import {getUnderSiegeGoalText} from '../reducers/missions/underSiege';
 import {setImperialGroupActivated, setInterruptedGroupActivated} from '../reducers/imperials';
 import {connect} from 'react-redux';
 import Mission from '../components/Mission';
@@ -20,6 +21,8 @@ const getGoalText = (state: StateType) => {
       return getASimpleTaskGoalText(state);
     case 'luxuryCruise':
       return getLuxuryCruiseGoalText(state);
+    case 'underSiege':
+      return getUnderSiegeGoalText(state);
     default:
       return [];
   }
