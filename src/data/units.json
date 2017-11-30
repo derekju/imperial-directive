@@ -8,7 +8,7 @@
         "command": "{ACTION} Only if adjacent, move at least 4 spaces away, then {ACTION} Attack {ATTACK_TARGET}."
       },
       {
-        "condition": "If no hostile figure within 7 spaces",
+        "condition": "If not within 7 spaces of {ATTACK_TARGET}",
         "command": "{ACTION} Move within 5 spaces and LOS of {ATTACK_TARGET}."
       },
       {
@@ -64,7 +64,7 @@
         "command": "{ACTION} Attack {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}."
       },
       {
-        "condition": "If no hostile figure within 7 spaces",
+        "condition": "If not within 7 spaces of {ATTACK_TARGET}",
         "command": "{ACTION} Move within 5 spaces and LOS of {ATTACK_TARGET}, then {ACTION} Move within 5 spaces and LOS of {ATTACK_TARGET}."
       }
     ],
@@ -84,7 +84,7 @@
         "command": "{ACTION} Attack {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}."
       },
       {
-        "condition": "If no hostile figure within 7 spaces",
+        "condition": "If not within 7 spaces of {ATTACK_TARGET}",
         "command": "{ACTION} Move within 5 spaces of {ATTACK_TARGET}, then {ACTION} Move within 5 spaces of {ATTACK_TARGET}."
       }
     ],
@@ -108,7 +108,7 @@
         "command": "{ACTION} Move to be in LOS of {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}, then {ACTION} move adjacent to {MOVE_TARGET}."
       },
       {
-        "condition": "If no target within 6 spaces",
+        "condition": "If not within 6 spaces of {ATTACK_TARGET}",
         "command": "{ACTION} Move adjacent to {MOVE_TARGET}."
       },
       {
@@ -136,7 +136,7 @@
         "command": "{ACTION} Move to be in LOS of {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}, then {ACTION} Move adjacent to the most friendly figures."
       },
       {
-        "condition": "If no hostile figures within 4 spaces",
+        "condition": "If not within 4 spaces of {ATTACK_TARGET}",
         "command": "{ACTION} Move adjacent to the most friendly figures."
       },
       {
@@ -168,7 +168,7 @@
         "command": "{ACTION} Move to be in LOS of {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}, then {ACTION} Move adjacent to the most friendly figures."
       },
       {
-        "condition": "If no hostile figures within 4 spaces",
+        "condition": "If not within 4 spaces of {ATTACK_TARGET}",
         "command": "{ACTION} Move adjacent to the most friendly figures."
       },
       {
@@ -177,7 +177,7 @@
       }
     ],
     "elite": true,
-    "id": "imperialOfficer",
+    "id": "imperialOfficerElite",
     "maxInGroup": 1,
     "name": "E Imperial Officer",
     "reinforcementCost": -1,
@@ -248,7 +248,7 @@
         "command": "{ACTION} Move within 4 spaces and LOS of {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}, then move adjacent to {MOVE_TARGET}."
       },
       {
-        "condition": "If no hostile figures within 5 spaces",
+        "condition": "If not within 5 spaces of {ATTACK_TARGET}",
         "command": "{ACTION} Move adjacent to {MOVE_TARGET}."
       },
       {
@@ -272,7 +272,7 @@
         "command": "{ACTION} Move within 4 spaces and LOS of {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}, then move adjacent to {MOVE_TARGET}."
       },
       {
-        "condition": "If no hostile figures within 5 spaces",
+        "condition": "If not within 5 spaces of {ATTACK_TARGET}",
         "command": "{ACTION} Move adjacent to {MOVE_TARGET}."
       },
       {
@@ -300,7 +300,7 @@
         "command": "{ACTION} Move within 2 spaces and LOS of {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}, then move adjacent to a friendly non-Guardian figure."
       },
       {
-        "condition": "If no hostile figures within 6 spaces",
+        "condition": "If not within 6 spaces of {ATTACK_TARGET}",
         "command": "{ACTION} Move adjacent to a friendly non-Guardian figure."
       },
       {
@@ -328,7 +328,7 @@
         "command": "{ACTION} Move within 2 spaces and LOS of {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}, then move adjacent to a friendly non-Guardian figure."
       },
       {
-        "condition": "If no hostile figures within 6 spaces",
+        "condition": "If not within 6 spaces of {ATTACK_TARGET}",
         "command": "{ACTION} Move adjacent to a friendly non-Guardian figure."
       },
       {
@@ -356,7 +356,7 @@
         "command": "{ACTION} Move within 4 spaces and LOS of {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}, then move adjacent to {MOVE_TARGET}."
       },
       {
-        "condition": "If no hostile figures within 6 spaces",
+        "condition": "If not within 6 spaces of {ATTACK_TARGET}",
         "command": "{ACTION} Move adjacent to {MOVE_TARGET}."
       },
       {
@@ -380,7 +380,7 @@
         "command": "{ACTION} Move within 4 spaces and LOS of {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}, then move adjacent to {MOVE_TARGET}."
       },
       {
-        "condition": "If no hostile figures within 6 spaces",
+        "condition": "If not within 6 spaces of {ATTACK_TARGET}",
         "command": "{ACTION} Move adjacent to {MOVE_TARGET}."
       },
       {
@@ -412,7 +412,7 @@
         "command": "{ACTION} Move within 3 spaces and LOS of {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}, then move adjacent to {MOVE_TARGET}."
       },
       {
-        "condition": "If no target within 7 spaces",
+        "condition": "If not within 7 spaces of {ATTACK_TARGET}",
         "command": "{ACTION} Move adjacent to {ATTACK_TARGET}."
       },
       {
@@ -444,7 +444,7 @@
         "command": "{ACTION} Move within 3 spaces and LOS of {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}, then move adjacent to {MOVE_TARGET}."
       },
       {
-        "condition": "If no target within 7 spaces",
+        "condition": "If not within 7 spaces of {ATTACK_TARGET}",
         "command": "{ACTION} Move adjacent to {ATTACK_TARGET}."
       },
       {

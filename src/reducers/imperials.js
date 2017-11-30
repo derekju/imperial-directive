@@ -21,6 +21,10 @@ import units from '../data/units';
 import waitForModal from '../sagas/waitForModal';
 import without from 'lodash/without';
 
+// Constants
+
+const MINIMUM_THREAT_TO_DO_DEPLOYMENT = 4;
+
 // Types
 
 export type DeisignationMapType = {[id: string]: number[]};
@@ -319,14 +323,19 @@ function* handleDeployAndReinforcement(): Generator<*, *, *> {
   let currentThreat = yield select(getCurrentThreat);
   const {deployedGroups, openGroups} = yield select(getCurrentGroups);
 
-  const newOpenGroups = [];
+  let newOpenGroups = [];
   const groupsToDeploy = [];
   const groupsToReinforce = [];
 
   // Ok, we have all the information we need so figure out how we are going to do this
   // We should spend our threat on the highest cost deployments and use the rest of the threat
   // to reinforce
-  if (openGroups.length) {
+  // UPDATE: ONLY do deployment if our current threat is greater than MINIMUM_THREAT_TO_DO_DEPLOYMENT
+  // This is so we don't continually burn threat when we get new threat from status phase on low
+  // cost support units like the Imperial Officer or Probe Droid. Essentially, bank threat until
+  // we can bring out something better. This is a pretty lame way to do this but partially fixes
+  // the problem...
+  if (currentThreat >= MINIMUM_THREAT_TO_DO_DEPLOYMENT && openGroups.length) {
     // Sort the open groups array by highest to lowest threat
     // Iterate and pull groups off until we cannot do so anymore
     const sortedOpenGroups = reverse(sortBy(openGroups, (unit: ImperialUnitType) => unit.threat));
@@ -342,6 +351,8 @@ function* handleDeployAndReinforcement(): Generator<*, *, *> {
         newOpenGroups.push(sortedOpenGroups[i]);
       }
     }
+  } else {
+    newOpenGroups = newOpenGroups.concat(openGroups);
   }
 
   // If we have leftover threat, reinforce
