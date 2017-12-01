@@ -23,6 +23,7 @@ import {displayModal} from '../modal';
 import {OPTIONAL_DEPLOYMENT_DONE, optionalDeployment} from '../imperials';
 import {REFER_CAMPAIGN_GUIDE, TARGET_HERO_CLOSEST_UNWOUNDED, TARGET_REMAINING} from './constants';
 import helperDeploy from './helpers/helperDeploy';
+import helperEventModal from './helpers/helperEventModal';
 import helperIncreaseThreat from './helpers/helperIncreaseThreat';
 import helperInitialSetup from './helpers/helperInitialSetup';
 import helperMissionBriefing from './helpers/helperMissionBriefing';
@@ -217,6 +218,13 @@ function* handleRoundEnd(): Generator<*, *, *> {
 function* handleSpecialSetup(): Generator<*, *, *> {
   yield take(MISSION_SPECIAL_SETUP);
   yield call(helperInitialSetup, 'Stormtrooper, {ELITE}Elite Trandoshan Hunter{END}');
+  yield call(helperEventModal, {
+    text: [
+      'The threat has been increased.',
+      'An optional deployment will now be done.',
+    ],
+    title: 'Initial Setup',
+  });
   // Double current threat
   yield call(helperIncreaseThreat, 2);
   // Do optional deployment

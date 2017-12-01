@@ -18,6 +18,7 @@ import {OPTIONAL_DEPLOYMENT_DONE, optionalDeployment} from '../imperials';
 import {REFER_CAMPAIGN_GUIDE, TARGET_REMAINING} from './constants';
 import {displayModal} from '../modal';
 import helperDeploy from './helpers/helperDeploy';
+import helperEventModal from './helpers/helperEventModal';
 import helperIncreaseThreat from './helpers/helperIncreaseThreat';
 import helperInitialSetup from './helpers/helperInitialSetup';
 import helperMissionBriefing from './helpers/helperMissionBriefing';
@@ -152,6 +153,13 @@ function* handleSpecialSetup(): Generator<*, *, *> {
     helperInitialSetup,
     'Imperial Officer, Probe Droid, Stormtrooper, {ELITE}Elite Stormtrooper{END}'
   );
+  yield call(helperEventModal, {
+    text: [
+      'The threat has been increased.',
+      'An optional deployment will now be done.',
+    ],
+    title: 'Initial Setup',
+  });
   // Double current threat
   yield call(helperIncreaseThreat, 2);
   // Do optional deployment
