@@ -41,7 +41,7 @@ class StatusReinforcementModal extends React.Component<StatusReinforcementModalP
         title="Deployment and Reinforcement"
       >
         <div style={styles.base}>
-          {(this.props.groupsToDeploy.length || this.props.groupsToReinforce.length) ? (
+          {this.props.groupsToDeploy.length || this.props.groupsToReinforce.length ? (
             <div>
               <div style={styles.header}>Location to deploy:</div>
               <div style={styles.units}>{this.props.deploymentPoint}</div>

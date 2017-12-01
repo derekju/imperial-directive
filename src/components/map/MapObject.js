@@ -17,6 +17,11 @@ const styles = {
     justifyContent: 'center',
     width: '30px',
   },
+  blue: {
+    backgroundColor: 'rgb(84, 85, 111)',
+    border: '2px solid white',
+    color: 'white',
+  },
   door: {
     backgroundColor: 'black',
     border: '2px solid white',

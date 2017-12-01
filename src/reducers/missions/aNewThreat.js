@@ -186,11 +186,11 @@ function* handleDefenseProtocolsEvent(): Generator<*, *, *> {
           yield call(
             helperDeploy,
             'The Imperial army has released their secret weapon - the fearsome Nexu.',
-              [
-                'Deploy a Nexu on an interior space within 3 spaces of the door that was just opened.',
-              ],
-              'Defense Protocols',
-              ['nexu']
+            [
+              'Deploy a Nexu on an interior space within 3 spaces of the door that was just opened.',
+            ],
+            'Defense Protocols',
+            ['nexu']
           );
           break;
         default:

@@ -187,7 +187,11 @@ export default (state: ImperialsStateType = initialState, action: Object) => {
             }
             return deployedGroup;
           })
-          .concat(groupsToDeploy.map((id: string) => createNewGroup(id, state.designationMap, missionThreat))),
+          .concat(
+            groupsToDeploy.map((id: string) =>
+              createNewGroup(id, state.designationMap, missionThreat)
+            )
+          ),
         openGroups: newOpenGroups,
       };
     }
@@ -261,7 +265,7 @@ export const setImperialFiguresAfterDeployReinforce = (
   groupsToDeploy: string[],
   groupsToReinforce: Array<{groupNumber: number, id: string}>,
   newOpenGroups: ImperialUnitType[],
-  missionThreat: number,
+  missionThreat: number
 ) => ({
   payload: {groupsToDeploy, groupsToReinforce, missionThreat, newOpenGroups},
   type: SET_IMPERIAL_FIGURES_AFTER_DEPLOY_REINFORCE,
@@ -330,7 +334,9 @@ function* handleOptionalDeployment(): Generator<*, *, *> {
   yield call(waitForModal('STATUS_REINFORCEMENT'));
 
   const missionThreat = yield select(getMissionThreat);
-  yield put(setImperialFiguresAfterDeployReinforce(groupsToDeploy, [], newOpenGroups, missionThreat));
+  yield put(
+    setImperialFiguresAfterDeployReinforce(groupsToDeploy, [], newOpenGroups, missionThreat)
+  );
 
   yield put(optionalDeploymentDone(currentThreat));
 }
@@ -394,7 +400,12 @@ function* handleDeployAndReinforcement(): Generator<*, *, *> {
 
   const missionThreat = yield select(getMissionThreat);
   yield put(
-    setImperialFiguresAfterDeployReinforce(groupsToDeploy, groupsToReinforce, newOpenGroups, missionThreat)
+    setImperialFiguresAfterDeployReinforce(
+      groupsToDeploy,
+      groupsToReinforce,
+      newOpenGroups,
+      missionThreat
+    )
   );
 
   yield put(statusPhaseDeployReinforceDone(currentThreat));

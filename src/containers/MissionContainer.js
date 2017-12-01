@@ -3,6 +3,7 @@
 import {getAftermathGoalText} from '../reducers/missions/aftermath';
 import {getANewThreatGoalText} from '../reducers/missions/aNewThreat';
 import {getASimpleTaskGoalText} from '../reducers/missions/aSimpleTask';
+import {getBrushfireGoalText} from '../reducers/missions/brushfire';
 import {getCapturedGoalText} from '../reducers/missions/captured';
 import {getLuxuryCruiseGoalText} from '../reducers/missions/luxuryCruise';
 import {getUnderSiegeGoalText} from '../reducers/missions/underSiege';
@@ -20,6 +21,8 @@ const getGoalText = (state: StateType) => {
       return getANewThreatGoalText(state);
     case 'aSimpleTask':
       return getASimpleTaskGoalText(state);
+    case 'brushfire':
+      return getBrushfireGoalText(state);
     case 'captured':
       return getCapturedGoalText(state);
     case 'luxuryCruise':

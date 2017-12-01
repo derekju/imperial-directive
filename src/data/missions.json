@@ -368,6 +368,155 @@
     "noMercenaryAllowed": false,
     "openGroups": 4
   },
+
+  "brushfire": {
+    "initialGroups": [
+      "atst", "eWebEngineer", "imperialOfficer", "probeDroid"
+    ],
+    "instructions": {
+      "imperialVictory": "At the end of Round 5 or when all heroes are wounded",
+      "rebelVictory": "When all explosives have been disarmed"
+    },
+    "mapImage": [
+      ["00a", "02a", "02a", "02a", "02a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a"],
+      ["00a", "02a", "02a", "02a", "02a", "06a", "06a", "06a", "06a", "00a", "00a", "05a", "05a", "05a", "05a"],
+      ["00a", "02a", "02a", "02a", "02a", "06a", "06a", "06a", "06a", "13a", "13a", "05a", "05a", "05a", "05a"],
+      ["00a", "02a", "02a", "02a", "02a", "06a", "06a", "06a", "06a", "13a", "13a", "05a", "05a", "05a", "05a"],
+      ["00a", "02a", "02a", "02a", "02a", "06a", "06a", "06a", "07a", "07a", "07a", "05a", "05a", "05a", "05a"],
+      ["00a", "02a", "02a", "02a", "02a", "11a", "11a", "07a", "07a", "07a", "07a", "04a", "04a", "04a", "04a"],
+      ["00a", "00a", "10a", "10a", "10a", "11a", "11a", "07a", "07a", "07a", "07a", "04a", "04a", "04a", "04a"],
+      ["16a", "16a", "10a", "10a", "10a", "11a", "11a", "07a", "07a", "07a", "00a", "04a", "04a", "04a", "04a"],
+      ["16a", "16a", "10a", "10a", "10a", "11a", "11a", "00a", "00a", "00a", "00a", "04a", "04a", "04a", "04a"],
+      ["00a", "00a", "00a", "00a", "00a", "14a", "14a", "12a", "12a", "12a", "12a", "17a", "14a", "14a", "00a"],
+      ["00a", "00a", "00a", "00a", "00a", "14a", "14a", "12a", "12a", "12a", "12a", "17a", "14a", "14a", "00a"]
+    ],
+    "mapStates": {
+      "entrance-1": {
+        "activated": false,
+        "activateText": "",
+        "coordinates": {
+          "x": 0,
+          "y": 7
+        },
+        "description": "The entrance.",
+        "id": 1,
+        "interactable": false,
+        "type": "entrance",
+        "unactivateText": "",
+        "visible": true
+      },
+      "imperial-1": {
+        "activated": false,
+        "activateText": "Disarm",
+        "color": "yellow",
+        "coordinates": {
+          "x": 4,
+          "y": 0
+        },
+        "description": "An explosive.",
+        "id": 1,
+        "interactable": true,
+        "type": "imperial",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "imperial-2": {
+        "activated": false,
+        "activateText": "Disarm",
+        "color": "blue",
+        "coordinates": {
+          "x": 14,
+          "y": 1
+        },
+        "description": "Explosives. Boom.",
+        "id": 2,
+        "interactable": true,
+        "type": "imperial",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "imperial-3": {
+        "activated": false,
+        "activateText": "Disarm",
+        "color": "red",
+        "coordinates": {
+          "x": 8,
+          "y": 3
+        },
+        "description": "Explosives. Boom.",
+        "id": 3,
+        "interactable": true,
+        "type": "imperial",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "imperial-4": {
+        "activated": false,
+        "activateText": "Disarm",
+        "color": "yellow",
+        "coordinates": {
+          "x": 1,
+          "y": 5
+        },
+        "description": "Explosives. Boom.",
+        "id": 4,
+        "interactable": true,
+        "type": "imperial",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "imperial-5": {
+        "activated": false,
+        "activateText": "Disarm",
+        "color": "red",
+        "coordinates": {
+          "x": 10,
+          "y": 6
+        },
+        "description": "Explosives. Boom.",
+        "id": 5,
+        "interactable": true,
+        "type": "imperial",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "imperial-6": {
+        "activated": false,
+        "activateText": "Disarm",
+        "color": "blue",
+        "coordinates": {
+          "x": 8,
+          "y": 9
+        },
+        "description": "Explosives. Boom.",
+        "id": 6,
+        "interactable": true,
+        "type": "imperial",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "imperial-7": {
+        "activated": false,
+        "activateText": "Disarm",
+        "color": "yellow",
+        "coordinates": {
+          "x": 11,
+          "y": 2
+        },
+        "description": "Explosives. Boom.",
+        "id": 7,
+        "interactable": true,
+        "type": "imperial",
+        "unactivateText": "Restore",
+        "visible": false
+      }
+    },
+    "name": "Brushfire",
+    "noMercenaryAllowed": false,
+    "openGroups": 3
+  },
+
+
   "captured": {
     "initialGroups": [
       "imperialOfficer", "imperialOfficerElite", "stormtrooper", "stormtrooperElite"
