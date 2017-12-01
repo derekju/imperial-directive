@@ -16,7 +16,6 @@ import {
 } from '../mission';
 import {REFER_CAMPAIGN_GUIDE, TARGET_HERO_CLOSEST_UNWOUNDED, TARGET_REMAINING} from './constants';
 import {displayModal} from '../modal';
-import {deployNewGroups} from '../imperials';
 import helperDeploy from './helpers/helperDeploy';
 import helperInitialSetup from './helpers/helperInitialSetup';
 import helperMissionBriefing from './helpers/helperMissionBriefing';
@@ -184,17 +183,15 @@ function* handleDefenseProtocolsEvent(): Generator<*, *, *> {
           yield call(waitForModal('RESOLVE_EVENT'));
           break;
         case 'nexu':
-          yield put(
-            displayModal('RESOLVE_EVENT', {
-              story: 'The Imperial army has released their secret weapon - the fearsome Nexu.',
-              text: [
+          yield call(
+            helperDeploy,
+            'The Imperial army has released their secret weapon - the fearsome Nexu.',
+              [
                 'Deploy a Nexu on an interior space within 3 spaces of the door that was just opened.',
               ],
-              title: 'Defense Protocols',
-            })
+              'Defense Protocols',
+              ['nexu']
           );
-          yield call(waitForModal('RESOLVE_EVENT'));
-          yield put(deployNewGroups(['nexu']));
           break;
         default:
           break;

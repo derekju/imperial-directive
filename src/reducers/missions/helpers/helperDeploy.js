@@ -1,8 +1,9 @@
 // @flow
 
-import {call, put} from 'redux-saga/effects';
+import {call, put, select} from 'redux-saga/effects';
 import {deployNewGroups} from '../../imperials';
 import {displayModal} from '../../modal';
+import {getMissionThreat} from '../../app';
 import waitForModal from '../../../sagas/waitForModal';
 
 export default function* helperDeploy(
@@ -21,5 +22,6 @@ export default function* helperDeploy(
   );
   yield call(waitForModal('RESOLVE_EVENT'));
   // Do the deployment from reserved groups
-  yield put(deployNewGroups(groups));
+  const missionThreat = yield select(getMissionThreat);
+  yield put(deployNewGroups(groups, missionThreat));
 }

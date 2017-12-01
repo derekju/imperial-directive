@@ -200,8 +200,8 @@ export default (state: ImperialsStateType = initialState, action: Object) => {
           return deployedGroup;
         }),
       };
-    case DEPLOY_NEW_GROUPS:
-      const {groupIds} = action.payload;
+    case DEPLOY_NEW_GROUPS: {
+      const {groupIds, missionThreat} = action.payload;
       // We're mutating state.designationMap here!
       return {
         ...state,
@@ -209,6 +209,7 @@ export default (state: ImperialsStateType = initialState, action: Object) => {
           groupIds.map((id: string) => createNewGroup(id, state.designationMap, missionThreat))
         ),
       };
+    }
     case SET_INTERRUPTED_GROUP:
       return {
         ...state,
@@ -265,8 +266,8 @@ export const setImperialFiguresAfterDeployReinforce = (
   payload: {groupsToDeploy, groupsToReinforce, missionThreat, newOpenGroups},
   type: SET_IMPERIAL_FIGURES_AFTER_DEPLOY_REINFORCE,
 });
-export const deployNewGroups = (groupIds: string[]) => ({
-  payload: {groupIds},
+export const deployNewGroups = (groupIds: string[], missionThreat: number) => ({
+  payload: {groupIds, missionThreat},
   type: DEPLOY_NEW_GROUPS,
 });
 export const setInterruptedGroup = (group: ImperialUnitType) => ({
