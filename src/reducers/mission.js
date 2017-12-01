@@ -13,6 +13,7 @@ import {
   SET_IMPERIAL_GROUP_ACTIVATED,
   triggerImperialActivation,
 } from './imperials';
+import createAction from './createAction';
 import {displayModal} from './modal';
 import type {StateType} from './types';
 import waitForModal from '../sagas/waitForModal';
@@ -22,6 +23,7 @@ import waitForModal from '../sagas/waitForModal';
 export type MapStateType = {
   activated: boolean,
   activateText: string,
+  color?: string,
   coordinates: {x: number, y: number},
   description: string,
   id: number,
@@ -29,6 +31,7 @@ export type MapStateType = {
   offset?: boolean,
   type: string,
   unactivateText: string,
+  visible: boolean,
 };
 
 export type MissionStateType = {
@@ -102,7 +105,7 @@ export default (state: MissionStateType = initialState, action: Object) => {
         ...state,
         currentActivePlayer: action.payload.player,
       };
-    case SET_MAP_STATE_ACTIVATED:
+    case SET_MAP_STATE_ACTIVATED: {
       const {id, type, value} = action.payload;
       const key = `${type}-${id}`;
       return {
@@ -115,6 +118,35 @@ export default (state: MissionStateType = initialState, action: Object) => {
           },
         },
       };
+    }
+    case SET_MAP_STATE_INTERACTABLE: {
+      const {id, type, value} = action.payload;
+      const key = `${type}-${id}`;
+      return {
+        ...state,
+        mapStates: {
+          ...state.mapStates,
+          [key]: {
+            ...state.mapStates[key],
+            interactable: value,
+          },
+        },
+      };
+    }
+    case SET_MAP_STATE_VISIBLE: {
+      const {id, type, value} = action.payload;
+      const key = `${type}-${id}`;
+      return {
+        ...state,
+        mapStates: {
+          ...state.mapStates,
+          [key]: {
+            ...state.mapStates[key],
+            visible: value,
+          },
+        },
+      };
+    }
     case ACTIVATION_PHASE_BEGIN:
       return {
         ...state,
@@ -174,6 +206,8 @@ export const EVENT_PHASE_BEGIN = 'EVENT_PHASE_BEGIN';
 export const EVENT_PHASE_END = 'EVENT_PHASE_END';
 export const ACTIVATION_PHASE_BEGIN = 'ACTIVATION_PHASE_BEGIN';
 export const SET_MAP_STATE_ACTIVATED = 'SET_MAP_STATE_ACTIVATED';
+export const SET_MAP_STATE_INTERACTABLE = 'SET_MAP_STATE_INTERACTABLE';
+export const SET_MAP_STATE_VISIBLE = 'SET_MAP_STATE_VISIBLE';
 export const STATUS_PHASE_BEGIN = 'STATUS_PHASE_BEGIN';
 export const STATUS_PHASE_INCREASE_THREAT = 'STATUS_PHASE_INCREASE_THREAT';
 export const STATUS_PHASE_READY_GROUPS = 'STATUS_PHASE_READY_GROUPS';
@@ -191,44 +225,36 @@ export const INCREASE_THREAT = 'INCREASE_THREAT';
 
 // Action creators
 
-export const loadMission = (config: MissionConfigType, missionThreat: number) => ({
-  payload: {config, missionThreat},
-  type: LOAD_MISSION,
-});
-export const changePlayerTurn = (player: number) => ({payload: {player}, type: CHANGE_PLAYER_TURN});
-export const setMapStateActivated = (id: number, type: string, value: boolean) => ({
-  payload: {id, type, value},
-  type: SET_MAP_STATE_ACTIVATED,
-});
-export const eventPhaseBegin = () => ({type: EVENT_PHASE_BEGIN});
-export const eventPhaseEnd = () => ({type: EVENT_PHASE_END});
-export const activationPhaseBegin = () => ({type: ACTIVATION_PHASE_BEGIN});
-export const statusPhaseBegin = () => ({type: STATUS_PHASE_BEGIN});
-export const statusPhaseIncreaseThreat = () => ({type: STATUS_PHASE_INCREASE_THREAT});
-export const statusPhaseReadyGroups = () => ({type: STATUS_PHASE_READY_GROUPS});
-export const statusPhaseDeployReinforce = () => ({type: STATUS_PHASE_DEPLOY_REINFORCE});
-export const statusPhaseDeployReinforceDone = (newThreat: number) => ({
-  payload: {newThreat},
-  type: STATUS_PHASE_DEPLOY_REINFORCE_DONE,
-});
-export const statusPhaseEndRoundEffects = () => ({type: STATUS_PHASE_END_ROUND_EFFECTS});
-export const statusPhaseEndRoundEffectsDone = () => ({type: STATUS_PHASE_END_ROUND_EFFECTS_DONE});
-export const statusPhaseAdvanceRound = () => ({type: STATUS_PHASE_ADVANCE_ROUND});
-export const setAttackTarget = (attackTarget: string) => ({
-  payload: {attackTarget},
-  type: SET_ATTACK_TARGET,
-});
-export const setMoveTarget = (moveTarget: string) => ({
-  payload: {moveTarget},
-  type: SET_MOVE_TARGET,
-});
-export const setDeploymentPoint = (deploymentPoint: string) => ({
-  payload: {deploymentPoint},
-  type: SET_DEPLOYMENT_POINT,
-});
-export const missionSpecialSetupDone = () => ({type: MISSION_SPECIAL_SETUP_DONE});
-export const missionSpecialSetup = () => ({type: MISSION_SPECIAL_SETUP});
-export const increaseThreat = (threat: number) => ({payload: {threat}, type: INCREASE_THREAT});
+export const loadMission = (config: MissionConfigType, missionThreat: number) =>
+  createAction(LOAD_MISSION, {config, missionThreat});
+export const changePlayerTurn = (player: number) => createAction(CHANGE_PLAYER_TURN, {player});
+export const setMapStateActivated = (id: number, type: string, value: boolean) =>
+  createAction(SET_MAP_STATE_ACTIVATED, {id, type, value});
+export const setMapStateInteractable = (id: number, type: string, value: boolean) =>
+  createAction(SET_MAP_STATE_INTERACTABLE, {id, type, value});
+export const setMapStateVisible = (id: number, type: string, value: boolean) =>
+  createAction(SET_MAP_STATE_VISIBLE, {id, type, value});
+export const eventPhaseBegin = () => createAction(EVENT_PHASE_BEGIN);
+export const eventPhaseEnd = () => createAction(EVENT_PHASE_END);
+export const activationPhaseBegin = () => createAction(ACTIVATION_PHASE_BEGIN);
+export const statusPhaseBegin = () => createAction(STATUS_PHASE_BEGIN);
+export const statusPhaseIncreaseThreat = () => createAction(STATUS_PHASE_INCREASE_THREAT);
+export const statusPhaseReadyGroups = () => createAction(STATUS_PHASE_READY_GROUPS);
+export const statusPhaseDeployReinforce = () => createAction(STATUS_PHASE_DEPLOY_REINFORCE);
+export const statusPhaseDeployReinforceDone = (newThreat: number) =>
+  createAction(STATUS_PHASE_DEPLOY_REINFORCE_DONE, {newThreat});
+export const statusPhaseEndRoundEffects = () => createAction(STATUS_PHASE_END_ROUND_EFFECTS);
+export const statusPhaseEndRoundEffectsDone = () =>
+  createAction(STATUS_PHASE_END_ROUND_EFFECTS_DONE);
+export const statusPhaseAdvanceRound = () => createAction(STATUS_PHASE_ADVANCE_ROUND);
+export const setAttackTarget = (attackTarget: string) =>
+  createAction(SET_ATTACK_TARGET, {attackTarget});
+export const setMoveTarget = (moveTarget: string) => createAction(SET_MOVE_TARGET, {moveTarget});
+export const setDeploymentPoint = (deploymentPoint: string) =>
+  createAction(SET_DEPLOYMENT_POINT, {deploymentPoint});
+export const missionSpecialSetupDone = () => createAction(MISSION_SPECIAL_SETUP_DONE);
+export const missionSpecialSetup = () => createAction(MISSION_SPECIAL_SETUP);
+export const increaseThreat = (threat: number) => createAction(INCREASE_THREAT, {threat});
 
 // Selectors
 

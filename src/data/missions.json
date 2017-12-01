@@ -29,7 +29,8 @@
         "id": 1,
         "interactable": false,
         "type": "entrance",
-        "unactivateText": ""
+        "unactivateText": "",
+        "visible": true
       },
       "terminal-1": {
         "activated": false,
@@ -42,7 +43,8 @@
         "id": 1,
         "interactable": true,
         "type": "terminal",
-        "unactivateText": "Restore"
+        "unactivateText": "Restore",
+        "visible": true
       },
       "terminal-2": {
         "activated": false,
@@ -55,7 +57,8 @@
         "id": 2,
         "interactable": true,
         "type": "terminal",
-        "unactivateText": "Restore"
+        "unactivateText": "Restore",
+        "visible": true
       },
       "terminal-3": {
         "activated": false,
@@ -68,7 +71,8 @@
         "id": 3,
         "interactable": true,
         "type": "terminal",
-        "unactivateText": "Restore"
+        "unactivateText": "Restore",
+        "visible": true
       },
       "terminal-4": {
         "activated": false,
@@ -81,7 +85,8 @@
         "id": 4,
         "interactable": true,
         "type": "terminal",
-        "unactivateText": "Restore"
+        "unactivateText": "Restore",
+        "visible": true
       },
       "door-1": {
         "activated": false,
@@ -94,7 +99,8 @@
         "id": 1,
         "interactable": true,
         "type": "door",
-        "unactivateText": "Close"
+        "unactivateText": "Close",
+        "visible": true
       }
     },
     "name": "Aftermath",
@@ -142,7 +148,8 @@
         "id": 1,
         "interactable": false,
         "type": "entrance",
-        "unactivateText": ""
+        "unactivateText": "",
+        "visible": true
       },
       "door-1": {
         "activated": false,
@@ -155,7 +162,8 @@
         "id": 1,
         "interactable": true,
         "type": "door",
-        "unactivateText": "Close"
+        "unactivateText": "Close",
+        "visible": true
       },
       "door-2": {
         "activated": false,
@@ -168,7 +176,8 @@
         "id": 2,
         "interactable": true,
         "type": "door",
-        "unactivateText": "Close"
+        "unactivateText": "Close",
+        "visible": true
       },
       "door-3": {
         "activated": false,
@@ -181,7 +190,8 @@
         "id": 3,
         "interactable": true,
         "type": "door",
-        "unactivateText": "Close"
+        "unactivateText": "Close",
+        "visible": true
       },
       "terminal-1": {
         "activated": false,
@@ -194,7 +204,8 @@
         "id": 1,
         "interactable": true,
         "type": "terminal",
-        "unactivateText": "Restore"
+        "unactivateText": "Restore",
+        "visible": true
       },
       "terminal-2": {
         "activated": false,
@@ -207,7 +218,8 @@
         "id": 2,
         "interactable": true,
         "type": "terminal",
-        "unactivateText": "Restore"
+        "unactivateText": "Restore",
+        "visible": true
       },
       "terminal-3": {
         "activated": false,
@@ -220,7 +232,8 @@
         "id": 3,
         "interactable": true,
         "type": "terminal",
-        "unactivateText": "Restore"
+        "unactivateText": "Restore",
+        "visible": true
       }
     },
     "name": "A New Threat",
@@ -263,7 +276,8 @@
         "id": 1,
         "interactable": false,
         "type": "entrance",
-        "unactivateText": ""
+        "unactivateText": "",
+        "visible": true
       },
       "door-1": {
         "activated": false,
@@ -276,7 +290,8 @@
         "id": 1,
         "interactable": false,
         "type": "door",
-        "unactivateText": "Close"
+        "unactivateText": "Close",
+        "visible": true
       },
       "door-2": {
         "activated": false,
@@ -289,7 +304,8 @@
         "id": 2,
         "interactable": false,
         "type": "door",
-        "unactivateText": "Close"
+        "unactivateText": "Close",
+        "visible": true
       },
       "terminal-1": {
         "activated": false,
@@ -302,7 +318,8 @@
         "id": 1,
         "interactable": true,
         "type": "terminal",
-        "unactivateText": "Interact"
+        "unactivateText": "Interact",
+        "visible": true
       },
       "terminal-2": {
         "activated": false,
@@ -315,7 +332,8 @@
         "id": 2,
         "interactable": true,
         "type": "terminal",
-        "unactivateText": "Interact"
+        "unactivateText": "Interact",
+        "visible": true
       },
       "terminal-3": {
         "activated": false,
@@ -328,7 +346,8 @@
         "id": 3,
         "interactable": true,
         "type": "terminal",
-        "unactivateText": "Interact"
+        "unactivateText": "Interact",
+        "visible": true
       },
       "neutral-1": {
         "activated": false,
@@ -341,12 +360,293 @@
         "id": 1,
         "interactable": true,
         "type": "neutral",
-        "unactivateText": "Drop"
+        "unactivateText": "Drop",
+        "visible": true
       }
     },
     "name": "A Simple Task",
     "noMercenaryAllowed": false,
     "openGroups": 4
+  },
+  "captured": {
+    "initialGroups": [
+      "imperialOfficer", "imperialOfficerElite", "stormtrooper", "stormtrooperElite"
+    ],
+    "instructions": {
+      "imperialVictory": "When all heroes are wounded",
+      "rebelVictory": "When all heroes depart"
+    },
+    "mapImage": [
+      ["00", "00", "00", "00", "00", "00", "00", "00", "00", "00", "00", "23", "23", "23", "23", "00"],
+      ["00", "00", "24", "24", "24", "34", "34", "30", "30", "30", "30", "23", "23", "23", "23", "00"],
+      ["00", "24", "24", "24", "24", "34", "34", "30", "30", "30", "30", "23", "23", "23", "23", "00"],
+      ["00", "24", "24", "24", "24", "00", "00", "00", "36", "36", "00", "23", "23", "23", "23", "00"],
+      ["00", "24", "24", "24", "00", "00", "19", "19", "19", "19", "19", "19", "27", "27", "00", "00"],
+      ["25", "25", "25", "00", "00", "00", "19", "19", "19", "19", "19", "19", "27", "27", "00", "00"],
+      ["25", "25", "25", "25", "37", "37", "19", "19", "19", "19", "19", "19", "27", "27", "33", "33"],
+      ["25", "25", "25", "25", "37", "37", "19", "19", "19", "19", "19", "19", "27", "27", "33", "33"],
+      ["25", "25", "25", "00", "00", "00", "19", "19", "19", "19", "19", "19", "27", "27", "00", "00"],
+      ["00", "28", "28", "28", "00", "00", "19", "19", "19", "19", "19", "19", "27", "27", "00", "00"],
+      ["00", "28", "28", "28", "32", "32", "00", "00", "36", "36", "21", "21", "21", "21", "21", "00"],
+      ["00", "28", "28", "28", "32", "32", "22", "22", "22", "22", "21", "21", "21", "21", "21", "36"],
+      ["00", "00", "00", "00", "32", "32", "22", "22", "22", "22", "21", "21", "21", "21", "21", "36"],
+      ["00", "00", "00", "00", "32", "32", "22", "22", "22", "22", "21", "21", "21", "21", "21", "00"],
+      ["00", "00", "00", "00", "00", "00", "22", "22", "22", "22", "00", "00", "00", "00", "00", "00"]
+    ],
+    "mapStates": {
+      "entrance-1": {
+        "activated": false,
+        "activateText": "",
+        "coordinates": {
+          "x": 15,
+          "y": 7
+        },
+        "description": "The entrance.",
+        "id": 1,
+        "interactable": false,
+        "type": "entrance",
+        "unactivateText": "",
+        "visible": true
+      },
+      "neutral-1": {
+        "activated": false,
+        "activateText": "Retrieve",
+        "coordinates": {
+          "x": 8,
+          "y": 1
+        },
+        "description": "Your equipment.",
+        "id": 1,
+        "interactable": true,
+        "type": "neutral",
+        "unactivateText": "Unactivate",
+        "visible": true
+      },
+      "terminal-1": {
+        "activated": false,
+        "activateText": "Interact",
+        "color": "red",
+        "coordinates": {
+          "x": 12,
+          "y": 11
+        },
+        "description": "The red terminal.",
+        "id": 1,
+        "interactable": false,
+        "type": "terminal",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "terminal-2": {
+        "activated": false,
+        "activateText": "Interact",
+        "color": "yellow",
+        "coordinates": {
+          "x": 2,
+          "y": 2
+        },
+        "description": "A yellow terminal.",
+        "id": 2,
+        "interactable": true,
+        "type": "terminal",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "terminal-3": {
+        "activated": false,
+        "activateText": "Interact",
+        "color": "yellow",
+        "coordinates": {
+          "x": 2,
+          "y": 10
+        },
+        "description": "A yellow terminal.",
+        "id": 3,
+        "interactable": true,
+        "type": "terminal",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "imperial-1": {
+        "activated": false,
+        "activateText": "Interact",
+        "color": "red",
+        "coordinates": {
+          "x": 9,
+          "y": 2
+        },
+        "description": "Closed passage.",
+        "id": 1,
+        "interactable": false,
+        "type": "imperial",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "imperial-2": {
+        "activated": false,
+        "activateText": "Interact",
+        "color": "red",
+        "coordinates": {
+          "x": 9,
+          "y": 11
+        },
+        "description": "Closed passage.",
+        "id": 2,
+        "interactable": false,
+        "type": "imperial",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "imperial-3": {
+        "activated": false,
+        "activateText": "Interact",
+        "color": "yellow",
+        "coordinates": {
+          "x": 11,
+          "y": 6
+        },
+        "description": "Closed passage.",
+        "id": 3,
+        "interactable": false,
+        "type": "imperial",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "imperial-4": {
+        "activated": false,
+        "activateText": "Interact",
+        "color": "yellow",
+        "coordinates": {
+          "x": 11,
+          "y": 7
+        },
+        "description": "Closed passage.",
+        "id": 4,
+        "interactable": false,
+        "type": "imperial",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "rebel-1": {
+        "activated": false,
+        "activateText": "Crawl Through",
+        "color": "red",
+        "coordinates": {
+          "x": 9,
+          "y": 2
+        },
+        "description": "Open passage to the Trash Compactor.",
+        "id": 1,
+        "interactable": true,
+        "type": "rebel",
+        "unactivateText": "Restore",
+        "visible": false
+      },
+      "rebel-2": {
+        "activated": false,
+        "activateText": "Crawl Through",
+        "color": "red",
+        "coordinates": {
+          "x": 9,
+          "y": 11
+        },
+        "description": "Open passage to the Trash Compactor.",
+        "id": 2,
+        "interactable": true,
+        "type": "rebel",
+        "unactivateText": "Restore",
+        "visible": false
+      },
+      "rebel-3": {
+        "activated": false,
+        "activateText": "Depart",
+        "color": "yellow",
+        "coordinates": {
+          "x": 11,
+          "y": 6
+        },
+        "description": "Passageway to escape!",
+        "id": 3,
+        "interactable": true,
+        "type": "rebel",
+        "unactivateText": "Restore",
+        "visible": false
+      },
+      "rebel-4": {
+        "activated": false,
+        "activateText": "Depart",
+        "color": "yellow",
+        "coordinates": {
+          "x": 11,
+          "y": 7
+        },
+        "description": "Passageway to escape!",
+        "id": 4,
+        "interactable": true,
+        "type": "rebel",
+        "unactivateText": "Restore",
+        "visible": false
+      },
+      "door-1": {
+        "activated": false,
+        "activateText": "Open",
+        "coordinates": {
+          "x": 14,
+          "y": 6
+        },
+        "description": "The door to your cell.",
+        "id": 1,
+        "interactable": true,
+        "type": "door",
+        "unactivateText": "Close",
+        "visible": true
+      },
+      "door-2": {
+        "activated": false,
+        "activateText": "Open",
+        "coordinates": {
+          "x": 7,
+          "y": 1
+        },
+        "description": "The Hallway door.",
+        "id": 2,
+        "interactable": false,
+        "type": "door",
+        "unactivateText": "Close",
+        "visible": true
+      },
+      "door-3": {
+        "activated": false,
+        "activateText": "Open",
+        "coordinates": {
+          "x": 6,
+          "y": 12
+        },
+        "description": "The Storage Room door.",
+        "id": 3,
+        "interactable": false,
+        "type": "door",
+        "unactivateText": "Close",
+        "visible": true
+      },
+      "door-4": {
+        "activated": false,
+        "activateText": "Open",
+        "coordinates": {
+          "x": 6,
+          "y": 6
+        },
+        "description": "The door from the Trash Compactor.",
+        "id": 4,
+        "interactable": true,
+        "type": "door",
+        "unactivateText": "Close",
+        "visible": true
+      }
+    },
+    "name": "Captured",
+    "noMercenaryAllowed": false,
+    "openGroups": 3
   },
   "luxuryCruise": {
     "initialGroups": [
@@ -385,7 +685,8 @@
         "id": 1,
         "interactable": false,
         "type": "entrance",
-        "unactivateText": ""
+        "unactivateText": "",
+        "visible": true
       },
       "door-1": {
         "activated": false,
@@ -398,7 +699,8 @@
         "id": 1,
         "interactable": true,
         "type": "door",
-        "unactivateText": "Close"
+        "unactivateText": "Close",
+        "visible": true
       },
       "door-2": {
         "activated": false,
@@ -411,7 +713,8 @@
         "id": 2,
         "interactable": true,
         "type": "door",
-        "unactivateText": "Close"
+        "unactivateText": "Close",
+        "visible": true
       },
       "door-3": {
         "activated": false,
@@ -424,7 +727,8 @@
         "id": 3,
         "interactable": true,
         "type": "door",
-        "unactivateText": "Close"
+        "unactivateText": "Close",
+        "visible": true
       },
       "door-4": {
         "activated": false,
@@ -437,7 +741,8 @@
         "id": 4,
         "interactable": true,
         "type": "door",
-        "unactivateText": "Close"
+        "unactivateText": "Close",
+        "visible": true
       },
       "terminal-1": {
         "activated": false,
@@ -450,7 +755,8 @@
         "id": 1,
         "interactable": true,
         "type": "terminal",
-        "unactivateText": "Unsecure"
+        "unactivateText": "Unsecure",
+        "visible": true
       },
       "terminal-2": {
         "activated": false,
@@ -463,7 +769,8 @@
         "id": 2,
         "interactable": true,
         "type": "terminal",
-        "unactivateText": "Unsecure"
+        "unactivateText": "Unsecure",
+        "visible": true
       },
       "terminal-3": {
         "activated": false,
@@ -476,7 +783,8 @@
         "id": 3,
         "interactable": true,
         "type": "terminal",
-        "unactivateText": "Unsecure"
+        "unactivateText": "Unsecure",
+        "visible": true
       },
       "terminal-4": {
         "activated": false,
@@ -489,7 +797,8 @@
         "id": 4,
         "interactable": true,
         "type": "terminal",
-        "unactivateText": "Unsecure"
+        "unactivateText": "Unsecure",
+        "visible": true
       },
       "terminal-5": {
         "activated": false,
@@ -502,7 +811,8 @@
         "id": 5,
         "interactable": true,
         "type": "terminal",
-        "unactivateText": "Unsecure"
+        "unactivateText": "Unsecure",
+        "visible": true
       }
     },
     "name": "Luxury Cruise",
@@ -551,7 +861,8 @@
         "interactable": true,
         "offset": true,
         "type": "rebel",
-        "unactivateText": "Restore"
+        "unactivateText": "Restore",
+        "visible": true
       },
       "rebel-2": {
         "activated": false,
@@ -565,7 +876,8 @@
         "interactable": true,
         "offset": true,
         "type": "rebel",
-        "unactivateText": "Restore"
+        "unactivateText": "Restore",
+        "visible": true
       },
       "rebel-3": {
         "activated": false,
@@ -579,7 +891,8 @@
         "interactable": true,
         "offset": true,
         "type": "rebel",
-        "unactivateText": "Restore"
+        "unactivateText": "Restore",
+        "visible": true
       },
       "rebel-4": {
         "activated": false,
@@ -593,7 +906,8 @@
         "interactable": true,
         "offset": true,
         "type": "rebel",
-        "unactivateText": "Restore"
+        "unactivateText": "Restore",
+        "visible": true
       },
       "rebel-5": {
         "activated": false,
@@ -607,7 +921,8 @@
         "interactable": true,
         "offset": true,
         "type": "rebel",
-        "unactivateText": "Restore"
+        "unactivateText": "Restore",
+        "visible": true
       },
       "door-1": {
         "activated": false,
@@ -620,7 +935,8 @@
         "id": 1,
         "interactable": true,
         "type": "door",
-        "unactivateText": "Close"
+        "unactivateText": "Close",
+        "visible": true
       },
       "door-2": {
         "activated": false,
@@ -633,7 +949,8 @@
         "id": 2,
         "interactable": true,
         "type": "door",
-        "unactivateText": "Close"
+        "unactivateText": "Close",
+        "visible": true
       },
       "door-3": {
         "activated": false,
@@ -646,7 +963,8 @@
         "id": 3,
         "interactable": true,
         "type": "door",
-        "unactivateText": "Close"
+        "unactivateText": "Close",
+        "visible": true
       },
       "door-4": {
         "activated": false,
@@ -659,7 +977,8 @@
         "id": 4,
         "interactable": true,
         "type": "door",
-        "unactivateText": "Close"
+        "unactivateText": "Close",
+        "visible": true
       }
     },
     "name": "Under Siege",

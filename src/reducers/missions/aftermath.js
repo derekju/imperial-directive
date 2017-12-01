@@ -11,6 +11,7 @@ import {
   setAttackTarget,
   setDeploymentPoint,
   setMapStateActivated,
+  setMapStateVisible,
   setMoveTarget,
   statusPhaseEndRoundEffectsDone,
   STATUS_PHASE_END_ROUND_EFFECTS,
@@ -178,14 +179,16 @@ function* handleSingleTerminalDestroyed(): Generator<*, *, *> {
   while (true) {
     const action = yield take(SET_MAP_STATE_ACTIVATED);
     const {id, type, value} = action.payload;
-    if (id === 2 && type === 'terminal' && value === true) {
-      // PRIORITY TARGET SWITCH #3
-      const {priorityTargetKillHero} = yield select(getState);
-      if (!priorityTargetKillHero) {
-        yield put(setMoveTarget(TARGET_NEAREST_TERMINAL));
+    if (type === 'terminal' && value === true) {
+      yield put(setMapStateVisible(id, type, false));
+
+      if (id === 2) {
+        // PRIORITY TARGET SWITCH #3
+        const {priorityTargetKillHero} = yield select(getState);
+        if (!priorityTargetKillHero) {
+          yield put(setMoveTarget(TARGET_NEAREST_TERMINAL));
+        }
       }
-      // We're done
-      break;
     }
   }
 }

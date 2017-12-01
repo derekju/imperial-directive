@@ -1,15 +1,11 @@
 // @flow
 
-import Door from './map/Door';
-import Entrance from './map/Entrance';
-import find from 'lodash/find';
+import filter from 'lodash/filter';
+import MapObject from './map/MapObject';
 import type {MapStateType} from '../reducers/mission';
-import Neutral from './map/Neutral';
 import noop from 'lodash/noop';
 import {positionAbsolute} from '../styles/mixins';
 import React from 'react';
-import Rebel from './map/Rebel';
-import Terminal from './map/Terminal';
 
 const styles = {
   base: {
@@ -72,55 +68,26 @@ type MapPropsType = {
 
 class Map extends React.Component<MapPropsType> {
   renderMapState = (row: number, column: number) => {
-    const mapState = find(
-      this.props.mapStates,
-      (ms: MapStateType) => ms.coordinates.x === column && ms.coordinates.y === row
-    );
+    const mapStates = filter(this.props.mapStates, (ms: MapStateType) => ms.coordinates.x === column && ms.coordinates.y === row);
 
-    if (mapState) {
-      if (mapState.type === 'terminal') {
+    return mapStates.map((mapState: MapStateType) => {
+      if (mapState && mapState.visible) {
         return (
-          <Terminal
+          <MapObject
             activated={mapState.activated}
-            id={mapState.id}
+            code={mapState.type[0].toUpperCase()}
+            color={mapState.color || 'gray'}
             displayModal={mapState.interactable ? this.props.displayModal : noop}
-            type={mapState.type}
-          />
-        );
-      } else if (mapState.type === 'door') {
-        return (
-          <Door
-            activated={mapState.activated}
             id={mapState.id}
-            displayModal={mapState.interactable ? this.props.displayModal : noop}
-            type={mapState.type}
-          />
-        );
-      } else if (mapState.type === 'neutral') {
-        return (
-          <Neutral
-            activated={mapState.activated}
-            id={mapState.id}
-            displayModal={mapState.interactable ? this.props.displayModal : noop}
-            type={mapState.type}
-          />
-        );
-      } else if (mapState.type === 'rebel') {
-        return (
-          <Rebel
-            activated={mapState.activated}
-            id={mapState.id}
-            displayModal={mapState.interactable ? this.props.displayModal : noop}
+            key={`${mapState.type}-${mapState.id}`}
             offset={mapState.offset || false}
             type={mapState.type}
           />
         );
-      } else if (mapState.type === 'entrance') {
-        return <Entrance />;
+      } else {
+        return null;
       }
-    }
-
-    return null;
+    });
   };
 
   renderMap() {

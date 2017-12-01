@@ -9,6 +9,7 @@ import {
   SET_MAP_STATE_ACTIVATED,
   setAttackTarget,
   setDeploymentPoint,
+  setMapStateVisible,
   setMoveTarget,
   statusPhaseEndRoundEffectsDone,
   STATUS_PHASE_END_ROUND_EFFECTS,
@@ -56,6 +57,7 @@ function* handleTerminalInteraction(): Generator<*, *, *> {
     const action = yield take(SET_MAP_STATE_ACTIVATED);
     const {id, type, value} = action.payload;
     if (type === 'terminal' && value === true && !securedTerminals.includes(id)) {
+      yield put(setMapStateVisible(id, 'terminal', false));
       securedTerminals.push(id);
 
       // Check if rebels won

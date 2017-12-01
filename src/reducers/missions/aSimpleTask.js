@@ -14,6 +14,7 @@ import {
   setAttackTarget,
   setDeploymentPoint,
   setMapStateActivated,
+  setMapStateVisible,
   setMoveTarget,
   statusPhaseEndRoundEffectsDone,
   STATUS_PHASE_END_ROUND_EFFECTS,
@@ -147,6 +148,7 @@ function* handleSoundTheAlarmsEvent(): Generator<*, *, *> {
     const action = yield take(SET_MAP_STATE_ACTIVATED);
     const {id, type, value} = action.payload;
     if (id === 1 && type === 'neutral' && value === true) {
+      yield put(setMapStateVisible(1, 'neutral', false));
       alarmsSounded = true;
       // Display a modal saying we're going to reinforce
       yield put(

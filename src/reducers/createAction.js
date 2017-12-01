@@ -1,3 +1,3 @@
 // @flow
 
-export default (type: string, payload: any) => ({payload, type});
+export default (type: string, payload?: any = {}) => ({payload, type});

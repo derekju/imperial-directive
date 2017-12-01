@@ -5,6 +5,7 @@ import damagePng from '../../assets/icons/damage.png';
 import {ELITE_RED} from '../../styles/colors';
 import insightPng from '../../assets/icons/insight.png';
 import strengthPng from '../../assets/icons/strength.png';
+import surgePng from '../../assets/icons/surge.png';
 import techPng from '../../assets/icons/tech.png';
 
 export default (text: string) => {
@@ -18,6 +19,13 @@ export default (text: string) => {
   replaced = replaced.replace(
     /{ELITE}(.*?){END}/g,
     `<span style='color: ${ELITE_RED}; font-weight: bold'>$1</span>`
+  );
+  // SURGE IMAGE
+  replaced = replaced.replace(
+    /{SURGE}/g,
+    `<img alt="Surge" src='${
+      surgePng
+    }' style='height: 24px; width: 25px; vertical-align: middle' />`
   );
   // BLOCK IMAGE
   replaced = replaced.replace(

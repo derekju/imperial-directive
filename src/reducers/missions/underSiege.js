@@ -14,6 +14,7 @@ import {
   setAttackTarget,
   setDeploymentPoint,
   setMapStateActivated,
+  setMapStateVisible,
   setMoveTarget,
   statusPhaseEndRoundEffectsDone,
   STATUS_PHASE_END_ROUND_EFFECTS,
@@ -267,18 +268,23 @@ function* handleCapturedPoints(): Generator<*, *, *> {
     const mapStates = yield select(getMapStates);
     const results = [];
     if (mapStates['rebel-1'].activated) {
+      yield put(setMapStateVisible(1, 'rebel', false));
       results.push('rebel-1');
     }
     if (mapStates['rebel-2'].activated) {
+      yield put(setMapStateVisible(2, 'rebel', false));
       results.push('rebel-2');
     }
     if (mapStates['rebel-3'].activated) {
+      yield put(setMapStateVisible(3, 'rebel', false));
       results.push('rebel-3');
     }
     if (mapStates['rebel-4'].activated) {
+      yield put(setMapStateVisible(4, 'rebel', false));
       results.push('rebel-4');
     }
     if (mapStates['rebel-5'].activated) {
+      yield put(setMapStateVisible(5, 'rebel', false));
       results.push('rebel-5');
     }
 

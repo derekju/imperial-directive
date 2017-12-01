@@ -10,6 +10,7 @@ import type {StateType} from './types';
 import {aftermath} from './missions/aftermath';
 import {aNewThreat} from './missions/aNewThreat';
 import {aSimpleTask} from './missions/aSimpleTask';
+import {captured} from './missions/captured';
 import {luxuryCruise} from './missions/luxuryCruise';
 import {underSiege} from './missions/underSiege';
 // import {friendsOfOld} from './missions/friendsOfOld';
@@ -78,11 +79,15 @@ function* forkMission(currentMission: string): Generator<*, *, *> {
     case 'aSimpleTask':
       yield fork(aSimpleTask);
       break;
+    case 'captured':
+      yield fork(captured);
+      break;
     case 'luxuryCruise':
       yield fork(luxuryCruise);
       break;
     case 'underSiege':
       yield fork(underSiege);
+      break;
     // case 'friendsOfOld':
     //   yield fork(friendsOfOld);
     //   break;
