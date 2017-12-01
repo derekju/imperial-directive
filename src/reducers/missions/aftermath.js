@@ -1,4 +1,5 @@
 // @flow
+/* globals ga */
 
 import {all, call, fork, put, select, take} from 'redux-saga/effects';
 import {getAreAllHeroesWounded, getIsOneHeroLeft, WOUND_REBEL_HERO} from '../rebels';
@@ -108,6 +109,7 @@ function* handleLockDownEvent(): Generator<*, *, *> {
     const action = yield take(SET_MAP_STATE_ACTIVATED);
     const {id, type, value} = action.payload;
     if (id === 1 && type === 'door' && value === true) {
+      ga('send', 'event', 'aftermath', 'lockdown', 'triggered');
       yield put(createAction('AFTERMATH_END_ROUND_EFFECTS', true));
       // Ok, this is the round the rebels opened the door so wait until end of round to trigger
       yield take(STATUS_PHASE_END_ROUND_EFFECTS);
@@ -122,6 +124,7 @@ function* handleLockDownEvent(): Generator<*, *, *> {
       const response = yield take('CHOICE_MODAL_ANSWER');
       const {answer} = response.payload;
       if (answer === 'yes') {
+        ga('send', 'event', 'aftermath', 'lockdown', 'rebelWest');
         yield call(helperEventModal, {
           story: 'Sirens blare as the outpost goes into lockdown mode.',
           text: [
@@ -133,6 +136,7 @@ function* handleLockDownEvent(): Generator<*, *, *> {
         yield put(setMapStateActivated(1, 'door', false));
         yield put(setDeploymentPoint(DEPLOYMENT_POINT_RED));
       } else {
+        ga('send', 'event', 'aftermath', 'lockdown', 'terminalHealth');
         yield call(helperEventModal, {
           story: 'Sirens blare as the outpost goes into lockdown mode.',
           text: ['Each terminal has 7 Health now instead of 4.'],
@@ -154,6 +158,7 @@ function* handleFortifiedEvent(): Generator<*, *, *> {
     const action = yield take(SET_MAP_STATE_ACTIVATED);
     const {id, type, value} = action.payload;
     if (id === 1 && type === 'door' && value === true) {
+      ga('send', 'event', 'aftermath', 'fortified', 'triggered');
       yield call(
         helperDeploy,
         REFER_CAMPAIGN_GUIDE,
@@ -180,6 +185,7 @@ function* handleSingleTerminalDestroyed(): Generator<*, *, *> {
     const action = yield take(SET_MAP_STATE_ACTIVATED);
     const {id, type, value} = action.payload;
     if (type === 'terminal' && value === true) {
+      ga('send', 'event', 'aftermath', 'interaction', 'terminal', id);
       yield put(setMapStateVisible(id, type, false));
 
       if (id === 2) {
@@ -205,6 +211,7 @@ function* handleTerminalsDestroyed(): Generator<*, *, *> {
       mapStates['terminal-4'].activated
     ) {
       yield put(displayModal('REBEL_VICTORY'));
+      ga('send', 'event', 'aftermath', 'victory', 'terminals');
       // We're done
       break;
     }
@@ -218,6 +225,7 @@ function* handleHeroesWounded(): Generator<*, *, *> {
     if (allWounded) {
       // End game with imperial victory
       yield put(displayModal('IMPERIAL_VICTORY'));
+      ga('send', 'event', 'aftermath', 'defeat', 'wounded');
       break;
     }
     const isOneHeroLeft = yield select(getIsOneHeroLeft);
@@ -239,6 +247,7 @@ function* handleRoundEnd(): Generator<*, *, *> {
     if (currentRound === 6) {
       // End game with imperial victory
       yield put(displayModal('IMPERIAL_VICTORY'));
+      ga('send', 'event', 'aftermath', 'defeat', 'round');
       // We're done, don't send statusPhaseEndRoundEffects so we stall the game out on purpose
       break;
     }
@@ -285,5 +294,6 @@ export function* aftermath(): Generator<*, *, *> {
     fork(handleRoundEnd),
   ]);
 
+  ga('send', 'event', 'missionStart', 'aftermath');
   yield put(missionSagaLoadDone());
 }
