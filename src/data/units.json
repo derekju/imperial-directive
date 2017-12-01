@@ -16,7 +16,9 @@
         "command": "Use Targeting Computer to reroll the red die."
       }
     ],
+    "eligibleForHpBoost": false,
     "elite": true,
+    "hpBoosts": {},
     "id": "atst",
     "maxInGroup": 1,
     "name": "AT-ST",
@@ -48,7 +50,15 @@
         "command": "If {EVADE} does nothing, reroll it. Otherwise, reroll a die with 1 {BLOCK}."
       }
     ],
+    "eligibleForHpBoost": true,
     "elite": true,
+    "hpBoosts": {
+      "2": [0],
+      "3": [0, 0, 2, 2, 4],
+      "4": [0, 2, 2, 4, 4],
+      "5": [2, 2, 4, 4, 6],
+      "6": [2, 4, 4, 6, 6]
+    },
     "id": "darthVader",
     "maxInGroup": 1,
     "name": "Darth Vader",
@@ -68,7 +78,15 @@
         "command": "{ACTION} Move within 5 spaces and LOS of {ATTACK_TARGET}, then {ACTION} Move within 5 spaces and LOS of {ATTACK_TARGET}."
       }
     ],
+    "eligibleForHpBoost": true,
     "elite": false,
+    "hpBoosts": {
+      "2": [0],
+      "3": [0, 0, 1, 1, 2],
+      "4": [0, 1, 1, 2, 2],
+      "5": [1, 1, 2, 2, 3],
+      "6": [1, 2, 2, 3, 3]
+    },
     "id": "eWebEngineer",
     "maxInGroup": 1,
     "name": "E-Web Engineer",
@@ -88,7 +106,15 @@
         "command": "{ACTION} Move within 5 spaces of {ATTACK_TARGET}, then {ACTION} Move within 5 spaces of {ATTACK_TARGET}."
       }
     ],
+    "eligibleForHpBoost": true,
     "elite": true,
+    "hpBoosts": {
+      "2": [0],
+      "3": [0, 0, 1, 1, 2],
+      "4": [0, 1, 1, 2, 2],
+      "5": [1, 1, 2, 2, 3],
+      "6": [1, 2, 2, 3, 3]
+    },
     "id": "eWebEngineerElite",
     "maxInGroup": 1,
     "name": "E E-Web Engineer",
@@ -116,7 +142,9 @@
         "command": "If within 2 spaces of {ATTACK_TARGET}, use two red and one green dice. Otherwise, use one red, one blue, and one green dice."
       }
     ],
+    "eligibleForHpBoost": false,
     "elite": true,
+    "hpBoosts": {},
     "id": "generalWeiss",
     "maxInGroup": 1,
     "name": "General Weiss",
@@ -144,7 +172,15 @@
         "command": "Use Cower ability if a rolled dice does not cancel anything."
       }
     ],
+    "eligibleForHpBoost": true,
     "elite": false,
+    "hpBoosts": {
+      "2": [0],
+      "3": [0, 0, 1, 1, 2],
+      "4": [0, 1, 1, 2, 2],
+      "5": [1, 1, 2, 2, 3],
+      "6": [1, 2, 2, 3, 3]
+    },
     "id": "imperialOfficer",
     "maxInGroup": 1,
     "name": "Imperial Officer",
@@ -176,7 +212,15 @@
         "command": "Use Cower ability if a rolled dice does not cancel anything."
       }
     ],
+    "eligibleForHpBoost": true,
     "elite": true,
+    "hpBoosts": {
+      "2": [0],
+      "3": [0, 0, 1, 1, 2],
+      "4": [0, 1, 1, 2, 2],
+      "5": [1, 1, 2, 2, 3],
+      "6": [1, 2, 2, 3, 3]
+    },
     "id": "imperialOfficerElite",
     "maxInGroup": 1,
     "name": "E Imperial Officer",
@@ -204,7 +248,15 @@
         "command": "Use Cunning ability"
       }
     ],
+    "eligibleForHpBoost": true,
     "elite": false,
+    "hpBoosts": {
+      "2": [0],
+      "3": [0, 0, 1, 1, 2],
+      "4": [0, 1, 1, 2, 2],
+      "5": [1, 1, 2, 2, 3],
+      "6": [1, 2, 2, 3, 3]
+    },
     "id": "nexu",
     "maxInGroup": 1,
     "name": "Nexu",
@@ -232,7 +284,15 @@
         "command": "Use Cunning ability"
       }
     ],
+    "eligibleForHpBoost": true,
     "elite": true,
+    "hpBoosts": {
+      "2": [0],
+      "3": [0, 0, 1, 1, 2],
+      "4": [0, 1, 1, 2, 2],
+      "5": [1, 1, 2, 2, 3],
+      "6": [1, 2, 2, 3, 3]
+    },
     "id": "nexuElite",
     "maxInGroup": 1,
     "name": "E Nexu",
@@ -256,7 +316,15 @@
         "command": "Use Self-Destruct ability."
       }
     ],
+    "eligibleForHpBoost": true,
     "elite": false,
+    "hpBoosts": {
+      "2": [0],
+      "3": [0, 0, 0, 1, 1],
+      "4": [0, 0, 1, 1, 2],
+      "5": [0, 1, 1, 2, 2],
+      "6": [1, 1, 2, 2, 3]
+    },
     "id": "probeDroid",
     "maxInGroup": 1,
     "name": "Probe Droid",
@@ -284,7 +352,15 @@
         "command": "Use Self-Destruct ability."
       }
     ],
+    "eligibleForHpBoost": true,
     "elite": true,
+    "hpBoosts": {
+      "2": [0],
+      "3": [0, 0, 0, 1, 1],
+      "4": [0, 0, 1, 1, 2],
+      "5": [0, 1, 1, 2, 2],
+      "6": [1, 1, 2, 2, 3]
+    },
     "id": "probeDroidElite",
     "maxInGroup": 1,
     "name": "E Probe Droid",
@@ -312,7 +388,15 @@
         "command": "Use Vengeance ability."
       }
     ],
+    "eligibleForHpBoost": true,
     "elite": false,
+    "hpBoosts": {
+      "2": [0],
+      "3": [0, 1, 1, 2, 2],
+      "4": [1, 1, 2, 2, 3],
+      "5": [1, 2, 2, 3, 3],
+      "6": [2, 2, 3, 3, 4]
+    },
     "id": "royalGuard",
     "maxInGroup": 2,
     "name": "Royal Guard",
@@ -340,7 +424,15 @@
         "command": "Use Vengeance ability and move towards {ATTACK_TARGET}."
       }
     ],
+    "eligibleForHpBoost": true,
     "elite": true,
+    "hpBoosts": {
+      "2": [0],
+      "3": [0, 1, 1, 2, 2],
+      "4": [1, 1, 2, 2, 3],
+      "5": [1, 2, 2, 3, 3],
+      "6": [2, 2, 3, 3, 4]
+    },
     "id": "royalGuardElite",
     "maxInGroup": 2,
     "name": "E Royal Guard",
@@ -364,7 +456,15 @@
         "command": "If multiple {SURGE} are rolled and accuracy check is successful, use Squad Training ability to reroll a {SURGE}."
       }
     ],
+    "eligibleForHpBoost": true,
     "elite": false,
+    "hpBoosts": {
+      "2": [0],
+      "3": [0, 0, 1, 1, 2],
+      "4": [0, 1, 1, 2, 2],
+      "5": [1, 1, 2, 2, 3],
+      "6": [1, 2, 2, 3, 3]
+    },
     "id": "stormtrooper",
     "maxInGroup": 3,
     "name": "Stormtrooper",
@@ -392,7 +492,15 @@
         "command": "Use Last Stand ability on the closest figure in this figure's group."
       }
     ],
+    "eligibleForHpBoost": true,
     "elite": true,
+    "hpBoosts": {
+      "2": [0],
+      "3": [0, 1, 1, 2, 2],
+      "4": [1, 1, 2, 2, 3],
+      "5": [1, 2, 2, 3, 3],
+      "6": [2, 2, 3, 3, 4]
+    },
     "id": "stormtrooperElite",
     "maxInGroup": 3,
     "name": "E Stormtrooper",
@@ -424,7 +532,15 @@
         "command": "Use Scattergun ability ability"
       }
     ],
+    "eligibleForHpBoost": true,
     "elite": false,
+    "hpBoosts": {
+      "2": [0],
+      "3": [0, 0, 1, 1, 2],
+      "4": [0, 1, 1, 2, 2],
+      "5": [1, 1, 2, 2, 3],
+      "6": [1, 2, 2, 3, 3]
+    },
     "id": "trandoshanHunter",
     "maxInGroup": 2,
     "name": "Trandoshan Hunter",
@@ -456,7 +572,15 @@
         "command": "Use ACP Scattergun ability ability"
       }
     ],
+    "eligibleForHpBoost": true,
     "elite": true,
+    "hpBoosts": {
+      "2": [0],
+      "3": [0, 0, 1, 1, 2],
+      "4": [0, 1, 1, 2, 2],
+      "5": [1, 1, 2, 2, 3],
+      "6": [1, 2, 2, 3, 3]
+    },
     "id": "trandoshanHunterElite",
     "maxInGroup": 2,
     "name": "E Trandoshan Hunter",

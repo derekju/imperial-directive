@@ -32,6 +32,16 @@ const styles = {
     border: `3px solid ${SUCCESS_GREEN}`,
     opacity: 0.4,
   },
+  hpBoost: {
+    ...positionAbsolute(62, 0, null, null),
+    backgroundColor: 'black',
+    borderRadius: '14px',
+    color: 'white',
+    display: 'flex',
+    fontSize: '12px',
+    padding: '5px',
+    width: '14px',
+  },
   image: {
     height: '70%',
     width: '70%',
@@ -54,6 +64,9 @@ const styles = {
   },
   outer: {
     cursor: 'pointer',
+  },
+  plus: {
+    fontSize: '10px',
   },
   popup: {
     ...positionAbsolute(10, null, null, 0),
@@ -170,6 +183,12 @@ class ImperialAvatar extends React.Component<ImperialAvatarPropsType, ImperialAv
             this.props.imperialUnit.groupNumber
           }`}</div>
           <div style={styles.numInGroup}>{this.props.imperialUnit.currentNumFigures}</div>
+          {this.props.imperialUnit.hpBoost ? (
+            <div style={styles.hpBoost}>
+              <span style={styles.plus}>+</span>
+              {this.props.imperialUnit.hpBoost}
+            </div>
+          ) : null}
         </div>
         {this.state.displayPopup ? this.renderPopup() : null}
       </div>
