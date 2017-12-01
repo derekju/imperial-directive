@@ -22,6 +22,7 @@ import helperMissionBriefing from './helpers/helperMissionBriefing';
 import {missionSagaLoadDone} from '../app';
 import type {StateType} from '../types';
 import shuffle from 'lodash/shuffle';
+import track from '../../lib/track';
 import waitForModal from '../../sagas/waitForModal';
 
 // Constants
@@ -283,5 +284,6 @@ export function* aNewThreat(): Generator<*, *, *> {
     fork(handleRoundEnd),
   ]);
 
+  track('missionStart', 'aNewThreat');
   yield put(missionSagaLoadDone());
 }

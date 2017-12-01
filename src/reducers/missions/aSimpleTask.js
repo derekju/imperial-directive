@@ -29,6 +29,7 @@ import helperInitialSetup from './helpers/helperInitialSetup';
 import helperMissionBriefing from './helpers/helperMissionBriefing';
 import {missionSagaLoadDone} from '../app';
 import type {StateType} from '../types';
+import track from '../../lib/track';
 import waitForModal from '../../sagas/waitForModal';
 
 // Constants
@@ -265,5 +266,6 @@ export function* aSimpleTask(): Generator<*, *, *> {
     fork(handleRoundEnd),
   ]);
 
+  track('missionStart', 'aSimpleTask');
   yield put(missionSagaLoadDone());
 }

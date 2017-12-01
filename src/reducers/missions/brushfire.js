@@ -26,6 +26,7 @@ import helperInitialSetup from './helpers/helperInitialSetup';
 import helperMissionBriefing from './helpers/helperMissionBriefing';
 import {missionSagaLoadDone} from '../app';
 import type {StateType} from '../types';
+import track from '../../lib/track';
 import waitForModal from '../../sagas/waitForModal';
 
 // Constants
@@ -299,5 +300,6 @@ export function* brushfire(): Generator<*, *, *> {
     fork(handleRoundEnd),
   ]);
 
+  track('missionStart', 'brushfire');
   yield put(missionSagaLoadDone());
 }

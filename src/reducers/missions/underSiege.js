@@ -30,6 +30,7 @@ import {missionSagaLoadDone} from '../app';
 import random from 'lodash/random';
 import {REFER_CAMPAIGN_GUIDE} from './constants';
 import type {StateType} from '../types';
+import track from '../../lib/track';
 
 // Constants
 
@@ -387,5 +388,6 @@ export function* underSiege(): Generator<*, *, *> {
     fork(handleRoundEnd),
   ]);
 
+  track('missionStart', 'underSiege');
   yield put(missionSagaLoadDone());
 }

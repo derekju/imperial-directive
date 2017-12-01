@@ -23,6 +23,7 @@ import helperInitialSetup from './helpers/helperInitialSetup';
 import helperMissionBriefing from './helpers/helperMissionBriefing';
 import {missionSagaLoadDone} from '../app';
 import type {StateType} from '../types';
+import track from '../../lib/track';
 import waitForModal from '../../sagas/waitForModal';
 
 // Constants
@@ -324,5 +325,6 @@ export function* captured(): Generator<*, *, *> {
     fork(handleRoundEnd),
   ]);
 
+  track('missionStart', 'captured');
   yield put(missionSagaLoadDone());
 }
