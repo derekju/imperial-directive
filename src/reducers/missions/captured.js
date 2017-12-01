@@ -34,7 +34,8 @@ const TARGET_YELLOW_TERMINAL = 'the closest yellow terminal';
 const TARGET_YELLOW_TOKEN = 'the closest yellow Rebel mission token';
 
 const DEPLOYMENT_POINT_GREEN_E = 'The green deployment point in the east';
-const DEPLOYMENT_POINT_GREEN_MOST_HEROES = 'The western green deployment point closest to the most heroes';
+const DEPLOYMENT_POINT_GREEN_MOST_HEROES =
+  'The western green deployment point closest to the most heroes';
 
 // Types
 
@@ -162,9 +163,7 @@ function* handleRedTokensFlipped(): Generator<*, *, *> {
     if (id === 1 && type === 'terminal' && value === true) {
       yield call(helperEventModal, {
         story: 'With a groan the gate for the passageway to the Trash Compactor opens.',
-        text: [
-          'Replace the red Imperial mission tokens with red Rebel mission tokens.',
-        ],
+        text: ['Replace the red Imperial mission tokens with red Rebel mission tokens.'],
         title: 'Escape',
       });
 
@@ -193,9 +192,7 @@ function* handleYellowTokensFlipped(): Generator<*, *, *> {
     if ([2, 3].includes(id) && type === 'terminal' && value === true) {
       yield call(helperEventModal, {
         story: 'With a groan the escape hatch in the Trash Compactor opens.',
-        text: [
-          'Replace the yellow Imperial mission tokens with yellow Rebel mission tokens.',
-        ],
+        text: ['Replace the yellow Imperial mission tokens with yellow Rebel mission tokens.'],
         title: 'Escape',
       });
 
@@ -224,10 +221,9 @@ function* handleRedRebelTokenInteracted(): Generator<*, *, *> {
     const {id, type, value} = action.payload;
     if ([1, 2].includes(id) && type === 'rebel' && value === true) {
       yield call(helperEventModal, {
-        story: 'You stealthily move through the passageway and find yourself in the facility Trash Compactor.',
-        text: [
-          'Move the figure into an open space in the Trash Compactor.',
-        ],
+        story:
+          'You stealthily move through the passageway and find yourself in the facility Trash Compactor.',
+        text: ['Move the figure into an open space in the Trash Compactor.'],
         title: 'Escape',
       });
 

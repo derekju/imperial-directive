@@ -68,7 +68,10 @@ type MapPropsType = {
 
 class Map extends React.Component<MapPropsType> {
   renderMapState = (row: number, column: number) => {
-    const mapStates = filter(this.props.mapStates, (ms: MapStateType) => ms.coordinates.x === column && ms.coordinates.y === row);
+    const mapStates = filter(
+      this.props.mapStates,
+      (ms: MapStateType) => ms.coordinates.x === column && ms.coordinates.y === row
+    );
 
     return mapStates.map((mapState: MapStateType) => {
       if (mapState && mapState.visible) {
