@@ -34,6 +34,7 @@ const TARGET_DIALA = 'Diala';
 const TARGET_DOOR = 'the door';
 
 const DEPLOYMENT_POINT_DOOR = 'Next to the door to the Holocron Chamber';
+const DEPLOYMENT_POINT_DIALA = 'Adjacent to Diala';
 
 // Types
 
@@ -139,8 +140,10 @@ function* handleHatredEvent(): Generator<*, *, *> {
         ['darthVader']
       );
       yield put(createAction('TEMPTATION_DOOR_OPEN', true));
-      yield put(setMoveTarget(TARGET_DIALA));
       yield put(updateRebelVictory('Defeat Darth Vader'));
+      // SWITCH TARGET
+      yield put(setMoveTarget(TARGET_DIALA));
+      yield put(setDeploymentPoint(DEPLOYMENT_POINT_DIALA));
       // We're done
       break;
     }
