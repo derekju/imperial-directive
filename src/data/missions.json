@@ -968,6 +968,61 @@
     "noMercenaryAllowed": true,
     "openGroups": 3
   },
+  "temptation": {
+    "initialGroups": [
+      "nexuElite", "royalGuard", "stormtrooper"
+    ],
+    "instructions": {
+      "imperialVictory": "Diala withdraws or all mission tokens discarded",
+      "rebelVictory": "(to be revealed)"
+    },
+    "mapImage": [
+      ["00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "18a", "18a", "00a", "00a"],
+      ["00a", "00a", "00a", "32b", "32b", "38b", "38b", "09a", "09a", "09a", "09a", "00a", "00a"],
+      ["00a", "00a", "00a", "32b", "32b", "38b", "38b", "09a", "09a", "09a", "09a", "00a", "00a"],
+      ["00a", "00a", "00a", "27b", "27b", "02a", "02a", "02a", "02a", "09a", "09a", "00a", "00a"],
+      ["00a", "00a", "00a", "27b", "27b", "02a", "02a", "02a", "02a", "09a", "09a", "00a", "00a"],
+      ["28b", "28b", "28b", "27b", "27b", "02a", "02a", "02a", "02a", "13a", "13a", "00a", "00a"],
+      ["28b", "28b", "28b", "27b", "27b", "02a", "02a", "02a", "02a", "13a", "13a", "00a", "00a"],
+      ["28b", "28b", "28b", "27b", "27b", "02a", "02a", "02a", "02a", "10a", "10a", "10a", "00a"],
+      ["36b", "36b", "00a", "27b", "27b", "02a", "02a", "02a", "02a", "10a", "10a", "10a", "18a"],
+      ["00a", "00a", "00a", "32b", "32b", "38b", "38b", "14a", "14a", "10a", "10a", "10a", "18a"],
+      ["00a", "00a", "00a", "32b", "32b", "38b", "38b", "14a", "14a", "00a", "00a", "00a", "00a"]
+    ],
+    "mapStates": {
+      "entrance-1": {
+        "activated": false,
+        "activateText": "",
+        "coordinates": {
+          "x": 11,
+          "y": 9
+        },
+        "description": "The entrance.",
+        "id": 1,
+        "interactable": false,
+        "type": "entrance",
+        "unactivateText": "",
+        "visible": true
+      },
+      "door-1": {
+        "activated": false,
+        "activateText": "Open",
+        "coordinates": {
+          "x": 3,
+          "y": 5
+        },
+        "description": "The door to the Holocron Chamber.",
+        "id": 1,
+        "interactable": true,
+        "type": "door",
+        "unactivateText": "Close",
+        "visible": true
+      }
+    },
+    "name": "Temptation",
+    "noMercenaryAllowed": false,
+    "openGroups": 3
+  },
   "underSiege": {
     "initialGroups": [
       "eWebEngineer", "imperialOfficer", "stormtrooper"

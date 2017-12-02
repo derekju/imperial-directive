@@ -9,6 +9,7 @@ import imperials from './imperials';
 import mission from './mission';
 import modal from './modal';
 import rebels from './rebels';
+import temptation from './missions/temptation';
 import underSiege from './missions/underSiege';
 
 export default {
@@ -21,5 +22,6 @@ export default {
   mission,
   modal,
   rebels,
+  temptation,
   underSiege,
 };

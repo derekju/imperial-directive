@@ -35,6 +35,7 @@ class ModalManager extends React.Component<ModalManagerPropsType> {
             closeModals={this.props.closeModals}
             noText={this.props.data.noText}
             question={this.props.data.question}
+            story={this.props.data.story || ''}
             title={this.props.data.title}
             type={this.props.type}
             yesText={this.props.data.yesText}

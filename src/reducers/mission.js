@@ -193,6 +193,14 @@ export default (state: MissionStateType = initialState, action: Object) => {
         ...state,
         currentThreat: state.currentThreat + action.payload.threat,
       };
+    case UPDATE_REBEL_VICTORY:
+      return {
+        ...state,
+        instructions: {
+          ...state.instructions,
+          rebelVictory: action.payload.newText,
+        },
+      };
     default:
       return state;
   }
@@ -222,6 +230,7 @@ export const SET_DEPLOYMENT_POINT = 'SET_DEPLOYMENT_POINT';
 export const MISSION_SPECIAL_SETUP = 'MISSION_SPECIAL_SETUP';
 export const MISSION_SPECIAL_SETUP_DONE = 'MISSION_SPECIAL_SETUP_DONE';
 export const INCREASE_THREAT = 'INCREASE_THREAT';
+export const UPDATE_REBEL_VICTORY = 'UPDATE_REBEL_VICTORY';
 
 // Action creators
 
@@ -255,6 +264,7 @@ export const setDeploymentPoint = (deploymentPoint: string) =>
 export const missionSpecialSetupDone = () => createAction(MISSION_SPECIAL_SETUP_DONE);
 export const missionSpecialSetup = () => createAction(MISSION_SPECIAL_SETUP);
 export const increaseThreat = (threat: number) => createAction(INCREASE_THREAT, {threat});
+export const updateRebelVictory = (newText: string) => createAction(UPDATE_REBEL_VICTORY, {newText});
 
 // Selectors
 

@@ -135,3 +135,5 @@ export const getIsOneHeroLeft = (state: StateType) =>
   1;
 export const getAreAllHeroesWithdrawn = (state: StateType) =>
   state.rebels.withdrawnHeroes.length === state.rebels.roster.length;
+export const getIsHeroWithdrawn = (state: StateType, heroId: string) => state.rebels.withdrawnHeroes.includes(heroId);
+export const getCanHeroActivateTwice = (state: StateType, heroId: string) => state.rebels.canActivateTwice.includes(heroId);

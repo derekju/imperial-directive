@@ -4,6 +4,7 @@ import blockPng from '../../assets/icons/block.png';
 import damagePng from '../../assets/icons/damage.png';
 import {ELITE_RED} from '../../styles/colors';
 import insightPng from '../../assets/icons/insight.png';
+import strainPng from '../../assets/icons/strain.png';
 import strengthPng from '../../assets/icons/strength.png';
 import surgePng from '../../assets/icons/surge.png';
 import techPng from '../../assets/icons/tech.png';
@@ -26,6 +27,13 @@ export default (text: string) => {
     `<img alt="Surge" src='${
       surgePng
     }' style='height: 24px; width: 25px; vertical-align: middle' />`
+  );
+  // STRAIN IMAGE
+  replaced = replaced.replace(
+    /{STRAIN}/g,
+    `<img alt="Strain" src='${
+      strainPng
+    }' style='height: 24px; width: 18px; vertical-align: middle' />`
   );
   // BLOCK IMAGE
   replaced = replaced.replace(

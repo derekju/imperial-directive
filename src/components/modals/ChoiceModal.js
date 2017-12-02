@@ -1,5 +1,6 @@
 // @flow
 
+import handleTextSubs from '../utils/handleTextSubs';
 import Modal from '../Modal';
 import React from 'react';
 
@@ -9,13 +10,20 @@ const styles = {
     marginTop: '15px',
     textAlign: 'center',
   },
+  story: {
+    fontSize: '14px',
+    fontStyle: 'italic',
+    marginTop: '15px',
+    textAlign: 'center',
+  },
 };
 
 type ChoiceModalModalPropsType = {
   choiceModalAnswer: Function,
   closeModals: Function,
   noText: string,
-  question: string,
+  question: string | string[],
+  story?: string,
   title: string,
   type: string,
   yesText: string,
@@ -38,6 +46,8 @@ class ChoiceModal extends React.Component<ChoiceModalModalPropsType> {
   };
 
   render() {
+    const question = Array.isArray(this.props.question) ? this.props.question : [this.props.question];
+
     return (
       <Modal
         buttonText={this.props.yesText}
@@ -47,7 +57,14 @@ class ChoiceModal extends React.Component<ChoiceModalModalPropsType> {
         handleCancelClick={this.handleCancelClick}
         title={this.props.title}
       >
-        <div style={styles.base}>{this.props.question}</div>
+        {Boolean(this.props.story) ? <div style={styles.story}>{this.props.story}</div> : null}
+        {question.map((q: string, index: number) => (
+          <div
+            key={`q-${index}`}
+            style={styles.base}
+            dangerouslySetInnerHTML={{__html: handleTextSubs(q)}}
+          />
+        ))}
       </Modal>
     );
   }
