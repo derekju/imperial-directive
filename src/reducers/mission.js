@@ -264,7 +264,8 @@ export const setDeploymentPoint = (deploymentPoint: string) =>
 export const missionSpecialSetupDone = () => createAction(MISSION_SPECIAL_SETUP_DONE);
 export const missionSpecialSetup = () => createAction(MISSION_SPECIAL_SETUP);
 export const increaseThreat = (threat: number) => createAction(INCREASE_THREAT, {threat});
-export const updateRebelVictory = (newText: string) => createAction(UPDATE_REBEL_VICTORY, {newText});
+export const updateRebelVictory = (newText: string) =>
+  createAction(UPDATE_REBEL_VICTORY, {newText});
 
 // Selectors
 

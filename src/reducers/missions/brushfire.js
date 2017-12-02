@@ -257,10 +257,7 @@ function* handleSpecialSetup(): Generator<*, *, *> {
     '{ELITE}AT-ST{END}, E-Web Engineer, Imperial Officer, Probe Droid'
   );
   yield call(helperEventModal, {
-    text: [
-      'The threat has been increased.',
-      'An optional deployment will now be done.',
-    ],
+    text: ['The threat has been increased.', 'An optional deployment will now be done.'],
     title: 'Initial Setup',
   });
   // Double current threat

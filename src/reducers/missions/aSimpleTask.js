@@ -220,10 +220,7 @@ function* handleSpecialSetup(): Generator<*, *, *> {
   yield take(MISSION_SPECIAL_SETUP);
   yield call(helperInitialSetup, 'Stormtrooper, {ELITE}Elite Trandoshan Hunter{END}');
   yield call(helperEventModal, {
-    text: [
-      'The threat has been increased.',
-      'An optional deployment will now be done.',
-    ],
+    text: ['The threat has been increased.', 'An optional deployment will now be done.'],
     title: 'Initial Setup',
   });
   // Double current threat

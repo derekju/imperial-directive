@@ -33,7 +33,7 @@ import waitForModal from '../../sagas/waitForModal';
 const TARGET_DIALA = 'Diala';
 const TARGET_DOOR = 'the door';
 
-const DEPLOYMENT_POINT_DOOR= 'Next to the door to the Holocron Chamber';
+const DEPLOYMENT_POINT_DOOR = 'Next to the door to the Holocron Chamber';
 
 // Types
 
@@ -76,10 +76,7 @@ export const getTemptationGoalText = (state: StateType): string[] => {
       `Darth Vader has health equal to ${state.app.missionThreat * 2}.`,
     ];
   } else {
-    return [
-      '{BOLD}Current Goal:{END}',
-      'Open the door to the Holocron Chamber',
-    ];
+    return ['{BOLD}Current Goal:{END}', 'Open the door to the Holocron Chamber'];
   }
 };
 
@@ -117,11 +114,7 @@ function* handleAllureOfPower(): Generator<*, *, *> {
     yield put(createAction('TEMPTATION_DECREMENT_TOKEN', {amount: 1}));
     yield call(helperEventModal, {
       story: 'With a battle cry Diala springs to life!',
-      text: [
-        'Discard 1 token.',
-        'Move up to 2 spaces.',
-        'Perform up to 2 attacks.',
-      ],
+      text: ['Discard 1 token.', 'Move up to 2 spaces.', 'Perform up to 2 attacks.'],
       title: 'Allure of Power',
     });
   }
@@ -218,9 +211,7 @@ function* handleRoundEnd(): Generator<*, *, *> {
 
     // Do forced discard
     yield call(helperEventModal, {
-      text: [
-        'Discard 1 Rebel token from Diala.',
-      ],
+      text: ['Discard 1 Rebel token from Diala.'],
       title: 'Inner Strength',
     });
     yield put(createAction('TEMPTATION_DECREMENT_TOKEN', {amount: 1}));
@@ -236,9 +227,7 @@ function* handleRoundEnd(): Generator<*, *, *> {
     const {answer} = response.payload;
     if (answer === 'no') {
       yield call(helperEventModal, {
-        text: [
-          'Discard an additional Rebel token from Diala.',
-        ],
+        text: ['Discard an additional Rebel token from Diala.'],
         title: 'Inner Strength',
       });
       yield put(createAction('TEMPTATION_DECREMENT_TOKEN', {amount: 1}));
@@ -260,7 +249,7 @@ function* handleSpecialSetup(): Generator<*, *, *> {
   yield call(helperInitialSetup, '{ELITE}Nexu{END}, Royal Guard, Stormtrooper');
   yield call(helperEventModal, {
     text: [
-      'Place 8 Rebel mission tokens in Diala\'s play area.',
+      "Place 8 Rebel mission tokens in Diala's play area.",
       'The threat has been increased.',
       'An optional deployment will now be done.',
     ],

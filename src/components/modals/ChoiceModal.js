@@ -46,7 +46,9 @@ class ChoiceModal extends React.Component<ChoiceModalModalPropsType> {
   };
 
   render() {
-    const question = Array.isArray(this.props.question) ? this.props.question : [this.props.question];
+    const question = Array.isArray(this.props.question)
+      ? this.props.question
+      : [this.props.question];
 
     return (
       <Modal
