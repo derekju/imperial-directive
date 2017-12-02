@@ -2,6 +2,10 @@
 /* globals gtag */
 
 export default (category: string, action?: string = '', label?: string = '', value?: number) => {
+  if (process.env.NODE_ENV === 'development') {
+    return;
+  }
+
   const params = {};
 
   params.event_action = action;
