@@ -5,7 +5,7 @@
     "commands": [
       {
         "condition": "If within 7 spaces and have LOS of {ATTACK_TARGET}",
-        "command": "{ACTION} Only if adjacent, move at least 4 spaces away, then {ACTION} Attack {ATTACK_TARGET}."
+        "command": "{ACTION} Only if adjacent, move at least 4 spaces away, then {ACTION} Attack {ATTACK_TARGET}, then {ACTION} Move towards {MOVE_TARGET}."
       },
       {
         "condition": "If not within 7 spaces of {ATTACK_TARGET}",
@@ -156,8 +156,8 @@
     "buffs": ["plusOneMovement", "attackStrainInsteadDmg"],
     "commands": [
       {
-        "condition": "If within 2 spaces of a friendly target that is not within attack range or LOS of {ATTACK_TARGET}",
-        "command": "{ACTION} Use Order ability on that friendly figure to have it move within attack range and LOS of {ATTACK_TARGET}."
+        "condition": "If within 2 spaces of a friendly target that is not adjacent to {MOVE_TARGET}",
+        "command": "{ACTION} Use Order ability on that friendly figure to have it move adjacent to {MOVE_TARGET}."
       },
       {
         "condition": "If within 4 spaces of {ATTACK_TARGET}",
@@ -196,8 +196,8 @@
         "command": "{ACTION} Use Executive Order ability on that friendly figure to have it attack {ATTACK_TARGET}."
       },
       {
-        "condition": "If within 2 spaces of a friendly target that is not within attack range or LOS of {ATTACK_TARGET}",
-        "command": "{ACTION} Use Executive Order ability on that friendly figure to have it move within attack range and LOS {ATTACK_TARGET}."
+        "condition": "If within 2 spaces of a friendly target that is adjacent to {MOVE_TARGET}",
+        "command": "{ACTION} Use Executive Order ability on that friendly figure to have it move adjacent to {MOVE_TARGET}."
       },
       {
         "condition": "If within 4 spaces and in LOS of {ATTACK_TARGET}",
@@ -373,11 +373,11 @@
     "commands": [
       {
         "condition": "If within 6 spaces of {ATTACK_TARGET}",
-        "command": "{ACTION} Move within 2 spaces and LOS of {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}, then move adjacent to a friendly non-Guardian figure."
+        "command": "{ACTION} Move within 2 spaces and LOS of {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}, then move adjacent to {MOVE_TARGET}."
       },
       {
         "condition": "If not within 6 spaces of {ATTACK_TARGET}",
-        "command": "{ACTION} Move adjacent to a friendly non-Guardian figure."
+        "command": "{ACTION} Move adjacent to {MOVE_TARGET}."
       },
       {
         "condition": "Reaction - While adjacent to a friendly non-Guardian figure that is defending",
@@ -409,11 +409,11 @@
     "commands": [
       {
         "condition": "If within 6 spaces of {ATTACK_TARGET}",
-        "command": "{ACTION} Move within 2 spaces and LOS of {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}, then move adjacent to a friendly non-Guardian figure."
+        "command": "{ACTION} Move within 2 spaces and LOS of {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}, then move adjacent to {MOVE_TARGET}."
       },
       {
         "condition": "If not within 6 spaces of {ATTACK_TARGET}",
-        "command": "{ACTION} Move adjacent to a friendly non-Guardian figure."
+        "command": "{ACTION} Move adjacent to {MOVE_TARGET}."
       },
       {
         "condition": "Reaction - While adjacent to a friendly non-Guardian figure that is defending",
