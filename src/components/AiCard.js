@@ -134,11 +134,7 @@ class AiCard extends React.Component<AiCardPropsType> {
         <div style={styles.commandContainer}>
           {this.props.customAI
             ? this.props.customAI.map((customAI, index) =>
-                this.renderCommand(
-                  `custom-${index}`,
-                  customAI.condition,
-                  customAI.command
-                )
+                this.renderCommand(`custom-${index}`, customAI.condition, customAI.command)
               )
             : null}
           {this.props.group.commands.map((command, index) =>

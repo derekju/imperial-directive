@@ -3,6 +3,7 @@
 import {all, call, fork, put, select, take} from 'redux-saga/effects';
 import {getAreAllHeroesWithdrawn, getIsOneHeroLeft, WOUND_REBEL_HERO} from '../rebels';
 import {
+  getCurrentGroups,
   OPTIONAL_DEPLOYMENT_DONE,
   optionalDeployment,
   setCustomAI,
