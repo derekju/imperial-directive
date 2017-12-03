@@ -52,7 +52,7 @@ const styles = {
     height: '175px',
     justifyContent: 'space-between',
     width: '175px',
-    zIndex: 100,
+    zIndex: 101, // Needs to be higher than the AI card
   },
   popupAccent: {
     backgroundColor: REBEL_RED,

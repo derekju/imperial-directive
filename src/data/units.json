@@ -1,7 +1,7 @@
 {
   "atst": {
     "affiliation": "imperial",
-    "buffs": ["focusOnAttack", "getPlus2AccuracyPlus1Dmg", "getPlus2AccuracyPlus1Dmg", "getPlus2AccuracyPlus1Dmg"],
+    "buffs": ["showOfForce", "getPlus2AccuracyPlus1Dmg", "getPlus2AccuracyPlus1Dmg", "getPlus2AccuracyPlus1Dmg"],
     "commands": [
       {
         "condition": "If within 7 spaces and have LOS of {ATTACK_TARGET}",
@@ -67,11 +67,15 @@
   },
   "eWebEngineer": {
     "affiliation": "imperial",
-    "buffs": ["plusOneMovement", "figureNotBlockLOS", "focusOnAttack", "targetSuffersStrainDmg"],
+    "buffs": ["plusOneMovement", "figureNotBlockLOS", "showOfForce", "targetSuffersStrainDmg"],
     "commands": [
       {
         "condition": "If within 7 spaces and have LOS of {ATTACK_TARGET}",
         "command": "{ACTION} Attack {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}."
+      },
+      {
+        "condition": "If not within 7 spaces of {ATTACK_TARGET} but already attacked once",
+        "command": "{ACTION} Attack the closest hostile figure for the second attack."
       },
       {
         "condition": "If not within 7 spaces of {ATTACK_TARGET}",
@@ -95,11 +99,15 @@
   },
   "eWebEngineerElite": {
     "affiliation": "imperial",
-    "buffs": ["plusOneMovement", "focusOnAttack", "focusOnAttack", "targetSuffersStrainDmg", "targetSuffersStrainDmg"],
+    "buffs": ["plusOneMovement", "showOfForce", "showOfForce", "targetSuffersStrainDmg", "targetSuffersStrainDmg"],
     "commands": [
       {
         "condition": "If within 7 spaces and have LOS of {ATTACK_TARGET}",
         "command": "{ACTION} Attack {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}."
+      },
+      {
+        "condition": "If not within 7 spaces of {ATTACK_TARGET} but already attacked once",
+        "command": "{ACTION} Attack the closest hostile figure for the second attack."
       },
       {
         "condition": "If not within 7 spaces of {ATTACK_TARGET}",
@@ -196,7 +204,7 @@
         "command": "{ACTION} Use Executive Order ability on that friendly figure to have it attack {ATTACK_TARGET}."
       },
       {
-        "condition": "If within 2 spaces of a friendly target that is adjacent to {MOVE_TARGET}",
+        "condition": "If within 2 spaces of a friendly target that is not adjacent to {MOVE_TARGET}",
         "command": "{ACTION} Use Executive Order ability on that friendly figure to have it move adjacent to {MOVE_TARGET}."
       },
       {
@@ -265,7 +273,7 @@
   },
   "nexuElite": {
     "affiliation": "mercenary",
-    "buffs": ["recovery", "focusOnAttack", "extraAttackThenStunned", "extraAttackThenStunned"],
+    "buffs": ["recovery", "showOfForce", "extraAttackThenStunned", "extraAttackThenStunned"],
     "commands": [
       {
         "condition": "If within 4 spaces of {ATTACK_TARGET}",
@@ -473,7 +481,7 @@
   },
   "stormtrooperElite": {
     "affiliation": "imperial",
-    "buffs": ["rangeAfterTestStunGainSurgeDmgBlast", "getPlus2AccuracyPlus1Dmg", "focusOnAttack"],
+    "buffs": ["rangeAfterTestStunGainSurgeDmgBlast", "getPlus2AccuracyPlus1Dmg", "showOfForce"],
     "commands": [
       {
         "condition": "If within 6 spaces of {ATTACK_TARGET}",

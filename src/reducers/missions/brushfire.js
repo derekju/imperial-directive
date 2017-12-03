@@ -40,6 +40,7 @@ const DEPLOYMENT_POINT_GREEN_E = 'The eastern green deployment point';
 // Types
 
 export type BrushfireStateType = {
+  atstDead: boolean,
   explosiveAdded: boolean,
   priorityTargetKillHero: boolean,
 };
@@ -47,6 +48,7 @@ export type BrushfireStateType = {
 // State
 
 const initialState = {
+  atstDead: false,
   explosiveAdded: false,
   priorityTargetKillHero: false,
 };
@@ -57,6 +59,11 @@ export default (state: BrushfireStateType = initialState, action: Object) => {
       return {
         ...state,
         explosiveAdded: true,
+      };
+    case 'BRUSHFIRE_ATST_DEAD':
+      return {
+        ...state,
+        atstDead: true,
       };
     case 'BRUSHFIRE_PRIORITY_TARGET_KILL_HERO':
       return {
@@ -79,6 +86,8 @@ export const getBrushfireGoalText = (state: StateType): string[] => {
     'If the hero is Fenn or is within 3 spaces of Fenn, the figure disarms and retrieves it.',
     '{BREAK}',
     'A hero carrying the explosive can interact with the {ELITE}AT-ST{END} to place 1 explosive on it.',
+    '{BREAK}',
+    'If an explosive is dropped, it is still disarmed. Another hero can pick it up.',
     '{BREAK}',
     'At the end of each round, discard all explosives on the {ELITE}AT-ST{END} to deal 5 {DAMAGE} for each token.',
   ];
@@ -103,6 +112,7 @@ function* handleSmallVictoryEvent(): Generator<*, *, *> {
         'Small Victory',
         ['trandoshanHunter']
       );
+      yield put(createAction('BRUSHFIRE_ATST_DEAD', true));
       break;
     }
   }
@@ -246,6 +256,14 @@ function* handleRoundEnd(): Generator<*, *, *> {
       yield put(displayModal('IMPERIAL_VICTORY'));
       track('brushfire', 'defeat', 'rounds');
       break;
+    }
+
+    const {atstDead} = yield select(getState);
+    if (!atstDead) {
+      yield call(helperEventModal, {
+        text: ['If there are any explosives on the {ELITE}AT-ST{END}, discard them to do 5 {DAMAGE} to the {ELITE}AT-ST{END} for each token discarded.'],
+        title: 'Boom',
+      });
     }
 
     yield put(statusPhaseEndRoundEffectsDone());

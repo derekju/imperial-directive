@@ -118,10 +118,10 @@
       "While attacking a figure within 4 spaces, apply +1 {SURGE} to the results."
     ]
   },
-  "focusOnAttack": {
+  "showOfForce": {
     "name": "Show of Force",
     "text": [
-      "While declaring an attack, become focused."
+      "While declaring an attack, become focused (limit once per activation)."
     ]
   },
   "targetSuffersStrainDmg": {

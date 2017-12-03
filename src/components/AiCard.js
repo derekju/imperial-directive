@@ -73,7 +73,11 @@ type AiCardPropsType = {
   setImperialGroupActivated: Function,
 };
 
-class AiCard extends React.Component<AiCardPropsType> {
+class AiCard extends React.PureComponent<AiCardPropsType> {
+  // Store the random buff so we don't pick another one if this component re-renders
+  // PureComponent stops it on every render but if the attack target changes, it'll still re-render
+  chosenBuffIndex: ?number;
+
   renderCommand(key: string, condition: string, command: string) {
     const commandArray = generateTextArray(command);
     return (
@@ -97,11 +101,13 @@ class AiCard extends React.Component<AiCardPropsType> {
   };
 
   renderBuff() {
-    // Pick a random one from the buff list
+    // Pick a random one from the buff list if we don't have one already
     // Since we aren't doing anything more complicated than just picking a random one, just
     // put the business logic here. If we ever do anymore more, MOVE IT OUT!
-    const randomNumber = random(0, this.props.group.buffs.length - 1);
-    const randomBuff = this.props.group.buffs[randomNumber];
+    if (!this.chosenBuffIndex) {
+      this.chosenBuffIndex = random(0, this.props.group.buffs.length - 1);
+    }
+    const randomBuff = this.props.group.buffs[this.chosenBuffIndex];
     const buff = buffs[randomBuff];
 
     return (
