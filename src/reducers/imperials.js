@@ -70,7 +70,7 @@ const determineHpBoost = (
 ) => {
   const boostArray = hpBoosts[String(missionThreat)];
   const randomNumber = random(0, boostArray.length - 1);
-  return boostArray[randomNumber] + (difficulty === 'experienced' ? random(1, 2) : 0);
+  return boostArray[randomNumber] + (difficulty === 'experienced' ? random(0, 1) : 0);
 };
 
 const createNewGroup = (

@@ -37,7 +37,7 @@ import track from '../../lib/track';
 
 // Constants
 
-const TARGET_CELL_DOOR = 'the Cell door';
+const TARGET_CELL_DOOR = 'the Cell door or terminal (whichever closest)';
 const TARGET_CAPTIVE = 'the Captive';
 const TARGET_ENTRANCE = 'the Entrance';
 

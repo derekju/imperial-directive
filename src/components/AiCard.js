@@ -110,24 +110,31 @@ class AiCard extends React.PureComponent<AiCardPropsType> {
     const randomBuff = this.props.group.buffs[this.chosenBuffIndex];
     const buff = buffs[randomBuff];
 
-    return (
-      <div>
-        <div style={styles.buffName}>{buff.name}</div>
-        <br />
-        {buff.text.map((buffText: string) => {
-          const textArray = generateTextArray(buffText);
-          return textArray.map((text: string, index: number) =>
-            expandText(
-              text,
-              index,
-              this.props.attackTarget,
-              this.props.moveTarget,
-              styles.iconStyle
-            )
-          );
-        })}
-      </div>
-    );
+    // Not sure why buff isn't defined sometimes but error check so the app doesn't crash
+    if (buff) {
+      return (
+        <div>
+          <div style={styles.buffName}>{buff.name}</div>
+          <br />
+          {buff.text.map((buffText: string) => {
+            const textArray = generateTextArray(buffText);
+            return textArray.map((text: string, index: number) =>
+              expandText(
+                text,
+                index,
+                this.props.attackTarget,
+                this.props.moveTarget,
+                styles.iconStyle
+              )
+            );
+          })}
+        </div>
+      );
+    } else {
+      return (
+        <div>None</div>
+      );
+    }
   }
 
   render() {
