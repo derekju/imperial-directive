@@ -70,9 +70,9 @@ export const PHASE_STATUS = 2;
 export const DIFFICULTY_THREAT_INCREASE = {
   '2': 1,
   '3': 2,
-  '4': 3,
+  '4': 2,
   '5': 3,
-  '6': 4,
+  '6': 3,
 };
 
 // State
