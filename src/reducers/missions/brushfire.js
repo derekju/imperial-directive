@@ -261,7 +261,9 @@ function* handleRoundEnd(): Generator<*, *, *> {
     const {atstDead} = yield select(getState);
     if (!atstDead) {
       yield call(helperEventModal, {
-        text: ['If there are any explosives on the {ELITE}AT-ST{END}, discard them to do 5 {DAMAGE} to the {ELITE}AT-ST{END} for each token discarded.'],
+        text: [
+          'If there are any explosives on the {ELITE}AT-ST{END}, discard them to do 5 {DAMAGE} to the {ELITE}AT-ST{END} for each token discarded.',
+        ],
         title: 'Boom',
       });
     }

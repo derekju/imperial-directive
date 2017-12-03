@@ -84,7 +84,7 @@ type HeroPanelAvatarPropsType = {
   id: string,
   isRebelPlayerTurn: boolean,
   setRebelEscaped: Function,
-  setRebelHeroActivated: Function,
+  setRebelActivated: Function,
   withdrawn: boolean,
   wounded: boolean,
   woundRebelHero: Function,
@@ -111,7 +111,7 @@ class HeroPanelAvatar extends React.Component<HeroPanelAvatarPropsType, HeroPane
   };
 
   handleEndActivation = () => {
-    this.props.setRebelHeroActivated(this.props.id);
+    this.props.setRebelActivated(this.props.id);
     this.togglePopup();
   };
 

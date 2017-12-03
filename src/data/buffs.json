@@ -46,10 +46,10 @@
       "All figures gain 1 extra movement point."
     ]
   },
-  "attackStrainInsteadDmg": {
+  "heavyPressure": {
     "name": "Heavy Pressure",
     "text": [
-      "Attacks deal {STRAIN} instead of {DMG}."
+      "Attacks deal {STRAIN} in addition to {DMG}."
     ]
   },
   "gainSurgeStunSurgeDmg": {

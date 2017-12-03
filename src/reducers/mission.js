@@ -5,7 +5,7 @@ import {
   getIsThereReadyRebelFigures,
   getRoster,
   SET_REBEL_ESCAPED,
-  SET_REBEL_HERO_ACTIVATED,
+  SET_REBEL_ACTIVATED,
 } from './rebels';
 import {
   getReadyImperialGroups,
@@ -333,7 +333,7 @@ function* missionEndOfTurn(): Generator<*, *, *> {
 function* handleEndOfRebelOrImperialTurn(action: Object): Generator<*, *, *> {
   while (true) {
     const action = yield take([
-      SET_REBEL_HERO_ACTIVATED,
+      SET_REBEL_ACTIVATED,
       SET_REBEL_ESCAPED,
       SET_IMPERIAL_GROUP_ACTIVATED,
     ]);
@@ -345,7 +345,7 @@ function* handleEndOfRebelOrImperialTurn(action: Object): Generator<*, *, *> {
 
     if (!imperialGroupsCanMove && !rebelFiguresCanMove) {
       yield call(missionEndOfTurn);
-    } else if ([SET_REBEL_HERO_ACTIVATED, SET_REBEL_ESCAPED].includes(action.type)) {
+    } else if ([SET_REBEL_ACTIVATED, SET_REBEL_ESCAPED].includes(action.type)) {
       if (imperialGroupsCanMove) {
         yield put(changePlayerTurn(PLAYER_IMPERIALS));
       }

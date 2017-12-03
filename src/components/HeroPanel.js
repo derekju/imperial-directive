@@ -34,10 +34,11 @@ type HeroPanelPropsType = {
   isRebelPlayerTurn: boolean,
   roster: string[],
   setRebelEscaped: Function,
-  setRebelHeroActivated: Function,
+  setRebelActivated: Function,
   withdrawnHeroes: string[],
   woundedHeroes: string[],
   woundRebelHero: Function,
+  woundRebelOther: Function,
 };
 
 class HeroPanel extends React.Component<HeroPanelPropsType> {
@@ -70,12 +71,16 @@ class HeroPanel extends React.Component<HeroPanelPropsType> {
                 isRebelPlayerTurn={this.props.isRebelPlayerTurn}
                 key={id}
                 setRebelEscaped={this.props.isRebelPlayerTurn ? this.props.setRebelEscaped : noop}
-                setRebelHeroActivated={
-                  this.props.isRebelPlayerTurn ? this.props.setRebelHeroActivated : noop
+                setRebelActivated={
+                  this.props.isRebelPlayerTurn ? this.props.setRebelActivated : noop
                 }
                 withdrawn={this.props.withdrawnHeroes.includes(id)}
                 wounded={this.props.woundedHeroes.includes(id)}
-                woundRebelHero={this.props.woundRebelHero}
+                woundRebelHero={
+                  rebels[id].type === 'hero'
+                    ? this.props.woundRebelHero
+                    : this.props.woundRebelOther
+                }
               />
             );
           })}

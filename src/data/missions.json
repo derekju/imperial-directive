@@ -797,6 +797,121 @@
     "noMercenaryAllowed": false,
     "openGroups": 3
   },
+  "imperialHospitality": {
+    "initialGroups": [
+      "probeDroid", "probeDroid", "royalGuard"
+    ],
+    "instructions": {
+      "imperialVictory": "At the end of Round 6 or when all heroes are wounded",
+      "rebelVictory": "(to be revealed)"
+    },
+    "mapImage": [
+      ["00a", "23a", "23a", "23a", "23a", "21a", "21a", "21a", "21a", "21a", "28a", "28a", "28a", "00a", "00a"],
+      ["00a", "23a", "23a", "23a", "23a", "21a", "21a", "21a", "21a", "21a", "28a", "28a", "28a", "00a", "00a"],
+      ["00a", "23a", "23a", "23a", "23a", "21a", "21a", "21a", "21a", "21a", "28a", "28a", "28a", "00a", "00a"],
+      ["00a", "23a", "23a", "23a", "23a", "21a", "21a", "21a", "21a", "21a", "00a", "27a", "27a", "00a", "00a"],
+      ["00a", "00a", "24a", "24a", "24a", "00a", "35a", "35a", "00a", "00a", "00a", "27a", "27a", "00a", "00a"],
+      ["00a", "00a", "24a", "24a", "24a", "24a", "29a", "29a", "00a", "33a", "33a", "27a", "27a", "00a", "00a"],
+      ["00a", "00a", "24a", "24a", "24a", "24a", "29a", "29a", "00a", "33a", "33a", "27a", "27a", "00a", "00a"],
+      ["00a", "00a", "00a", "24a", "24a", "24a", "29a", "29a", "00a", "00a", "00a", "27a", "27a", "00a", "00a"],
+      ["00a", "00a", "00a", "00a", "00a", "00a", "29a", "29a", "00a", "00a", "00a", "27a", "27a", "00a", "00a"],
+      ["00a", "22a", "22a", "22a", "22a", "00a", "25a", "25a", "00a", "00a", "00a", "35a", "35a", "00a", "00a"],
+      ["36a", "22a", "22a", "22a", "22a", "25a", "25a", "25a", "25a", "20a", "20a", "20a", "20a", "20a", "20a"],
+      ["36a", "22a", "22a", "22a", "22a", "25a", "25a", "25a", "25a", "20a", "20a", "20a", "20a", "20a", "20a"],
+      ["00a", "22a", "22a", "22a", "22a", "25a", "25a", "25a", "25a", "20a", "20a", "20a", "20a", "20a", "20a"],
+      ["00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "20a", "20a", "20a", "20a", "20a", "20a"]
+    ],
+    "mapStates": {
+      "entrance-1": {
+        "activated": false,
+        "activateText": "",
+        "coordinates": {
+          "x": 0,
+          "y": 10
+        },
+        "description": "The entrance.",
+        "id": 1,
+        "interactable": false,
+        "type": "entrance",
+        "unactivateText": "",
+        "visible": true
+      },
+      "terminal-1": {
+        "activated": false,
+        "activateText": "Destroy",
+        "coordinates": {
+          "x": 1,
+          "y": 2
+        },
+        "description": "The transmission terminal.",
+        "id": 1,
+        "interactable": true,
+        "type": "terminal",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "door-1": {
+        "activated": false,
+        "activateText": "Open",
+        "coordinates": {
+          "x": 3,
+          "y": 4
+        },
+        "description": "A door to the transmission terminal.",
+        "id": 1,
+        "interactable": true,
+        "type": "door",
+        "unactivateText": "Close",
+        "visible": true
+      },
+      "door-2": {
+        "activated": false,
+        "activateText": "Open",
+        "coordinates": {
+          "x": 5,
+          "y": 1
+        },
+        "description": "A door to the transmission terminal.",
+        "id": 2,
+        "interactable": true,
+        "type": "door",
+        "unactivateText": "Close",
+        "visible": true
+      },
+      "door-3": {
+        "activated": false,
+        "activateText": "Open",
+        "coordinates": {
+          "x": 11,
+          "y": 5
+        },
+        "description": "The door to the Cell.",
+        "id": 3,
+        "interactable": true,
+        "type": "door",
+        "unactivateText": "Close",
+        "visible": true
+      },
+      "rebel-1": {
+        "activated": false,
+        "activateText": "Rescue",
+        "color": "blue",
+        "coordinates": {
+          "x": 9,
+          "y": 5
+        },
+        "description": "The captive.",
+        "id": 1,
+        "interactable": false,
+        "type": "rebel",
+        "unactivateText": "Restore",
+        "visible": true
+      }
+    },
+    "name": "Imperial Hospitality",
+    "noMercenaryAllowed": false,
+    "openGroups": 2
+  },
   "luxuryCruise": {
     "initialGroups": [
       "imperialOfficer", "probeDroid", "stormtrooper", "stormtrooperElite"

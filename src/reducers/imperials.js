@@ -9,7 +9,7 @@ import {
   STATUS_PHASE_READY_GROUPS,
 } from './mission';
 import {getDifficulty, getMissionThreat} from './app';
-import {SET_REBEL_ESCAPED, SET_REBEL_HERO_ACTIVATED} from './rebels';
+import {SET_REBEL_ESCAPED, SET_REBEL_ACTIVATED} from './rebels';
 import createAction from './createAction';
 import decrementFigureFromGroup from './utils/decrementFigureFromGroup';
 import {displayModal} from './modal';
@@ -466,7 +466,7 @@ function* handleImperialActivation(): Generator<*, *, *> {
 export function* imperialsSaga(): Generator<*, *, *> {
   yield all([
     takeEvery(
-      [SET_REBEL_HERO_ACTIVATED, SET_REBEL_ESCAPED, TRIGGER_IMPERIAL_ACTIVATION],
+      [SET_REBEL_ACTIVATED, SET_REBEL_ESCAPED, TRIGGER_IMPERIAL_ACTIVATION],
       handleImperialActivation
     ),
     takeEvery(DEFEAT_IMPERIAL_FIGURE, handleImperialFigureDefeat),

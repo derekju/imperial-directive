@@ -1,5 +1,7 @@
 // @flow
 
+import createAction from './createAction';
+import rebels from '../data/rebels.json';
 import type {StateType} from './types';
 import {STATUS_PHASE_READY_GROUPS} from './mission';
 import without from 'lodash/without';
@@ -13,6 +15,7 @@ export type RebelsStateType = {
   roster: string[],
   withdrawnHeroes: string[],
   woundedHeroes: string[],
+  woundedOther: string[],
 };
 
 // State
@@ -24,6 +27,7 @@ const initialState = {
   roster: [],
   withdrawnHeroes: [],
   woundedHeroes: [],
+  woundedOther: [],
 };
 
 export default (state: RebelsStateType = initialState, action: Object) => {
@@ -35,7 +39,7 @@ export default (state: RebelsStateType = initialState, action: Object) => {
         canActivateTwice: roster.length === 2 ? roster.slice() : state.canActivateTwice,
         roster: roster.sort(),
       };
-    case SET_REBEL_HERO_ACTIVATED: {
+    case SET_REBEL_ACTIVATED: {
       const {id} = action.payload;
       return {
         ...state,
@@ -81,6 +85,20 @@ export default (state: RebelsStateType = initialState, action: Object) => {
         woundedHeroes: without(state.woundedHeroes, id),
       };
     }
+    case ADD_TO_ROSTER: {
+      return {
+        ...state,
+        roster: state.roster.concat([action.payload.id]),
+      };
+    }
+    case WOUND_REBEL_OTHER: {
+      const {id} = action.payload;
+      return {
+        ...state,
+        roster: without(state.roster, id),
+        woundedOther: state.woundedOther.concat([id]),
+      };
+    }
     default:
       return state;
   }
@@ -89,33 +107,22 @@ export default (state: RebelsStateType = initialState, action: Object) => {
 // Action types
 
 export const SET_ROSTER = 'SET_ROSTER';
-export const SET_REBEL_HERO_ACTIVATED = 'SET_REBEL_HERO_ACTIVATED';
+export const SET_REBEL_ACTIVATED = 'SET_REBEL_ACTIVATED';
 export const SET_HERO_ACTIVATE_TWICE = 'SET_HERO_ACTIVATE_TWICE';
 export const WOUND_REBEL_HERO = 'WOUND_REBEL_HERO';
 export const SET_REBEL_ESCAPED = 'SET_REBEL_ESCAPED';
+export const ADD_TO_ROSTER = 'ADD_TO_ROSTER';
+export const WOUND_REBEL_OTHER = 'WOUND_REBEL_OTHER';
 
 // Action creators
 
-export const setRoster = (roster: string[]) => ({
-  payload: {roster},
-  type: SET_ROSTER,
-});
-export const setRebelHeroActivated = (id: string) => ({
-  payload: {id},
-  type: SET_REBEL_HERO_ACTIVATED,
-});
-export const setHeroActivateTwice = (id: string) => ({
-  payload: {id},
-  type: SET_HERO_ACTIVATE_TWICE,
-});
-export const woundRebelHero = (id: string) => ({
-  payload: {id},
-  type: WOUND_REBEL_HERO,
-});
-export const setRebelEscaped = (id: string) => ({
-  payload: {id},
-  type: SET_REBEL_ESCAPED,
-});
+export const setRoster = (roster: string[]) => createAction(SET_ROSTER, {roster});
+export const setRebelActivated = (id: string) => createAction(SET_REBEL_ACTIVATED, {id});
+export const setHeroActivateTwice = (id: string) => createAction(SET_HERO_ACTIVATE_TWICE, {id});
+export const woundRebelHero = (id: string) => createAction(WOUND_REBEL_HERO, {id});
+export const setRebelEscaped = (id: string) => createAction(SET_REBEL_ESCAPED, {id});
+export const addToRoster = (id: string) => createAction(ADD_TO_ROSTER, {id});
+export const woundRebelOther = (id: string) => createAction(WOUND_REBEL_OTHER, {id});
 
 // Selectors
 
@@ -125,16 +132,18 @@ export const getIsThereReadyRebelFigures = (state: StateType) =>
   state.rebels.roster.length +
     state.rebels.canActivateTwice.length -
     state.rebels.withdrawnHeroes.length;
+// Need to filter out non-heroes from the roster
 export const getAreAllHeroesWounded = (state: StateType) =>
   state.rebels.woundedHeroes.length + state.rebels.withdrawnHeroes.length ===
-  state.rebels.roster.length;
+  state.rebels.roster.filter((id: string) => rebels[id].type === 'hero').length;
 export const getIsOneHeroLeft = (state: StateType) =>
-  state.rebels.roster.length -
+  state.rebels.roster.filter((id: string) => rebels[id].type === 'hero').length -
     state.rebels.woundedHeroes.length -
     state.rebels.withdrawnHeroes.length ===
   1;
 export const getAreAllHeroesWithdrawn = (state: StateType) =>
-  state.rebels.withdrawnHeroes.length === state.rebels.roster.length;
+  state.rebels.withdrawnHeroes.length ===
+  state.rebels.roster.filter((id: string) => rebels[id].type === 'hero').length;
 export const getIsHeroWithdrawn = (state: StateType, heroId: string) =>
   state.rebels.withdrawnHeroes.includes(heroId);
 export const getCanHeroActivateTwice = (state: StateType, heroId: string) =>

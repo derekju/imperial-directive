@@ -11,6 +11,7 @@ import {aNewThreat} from './missions/aNewThreat';
 import {aSimpleTask} from './missions/aSimpleTask';
 import {brushfire} from './missions/brushfire';
 import {captured} from './missions/captured';
+import {imperialHospitality} from './missions/imperialHospitality';
 import {luxuryCruise} from './missions/luxuryCruise';
 import {temptation} from './missions/temptation';
 import {underSiege} from './missions/underSiege';
@@ -92,6 +93,9 @@ function* forkMission(currentMission: string): Generator<*, *, *> {
       break;
     case 'captured':
       yield fork(captured);
+      break;
+    case 'imperialHospitality':
+      yield fork(imperialHospitality);
       break;
     case 'luxuryCruise':
       yield fork(luxuryCruise);

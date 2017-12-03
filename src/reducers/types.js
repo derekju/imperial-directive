@@ -5,6 +5,7 @@ import type {AppStateType} from './app';
 import type {BrushfireStateType} from './missions/brushfire';
 import type {CapturedStateType} from './missions/captured';
 import type {EventsStateType} from './events';
+import type {ImperialHospitalityStateType} from './missions/imperialHospitality';
 import type {ImperialsStateType} from './imperials';
 import type {MissionStateType} from './mission';
 import type {ModalStateType} from './modal';
@@ -18,6 +19,7 @@ export type StateType = {
   brushfire: BrushfireStateType,
   captured: CapturedStateType,
   events: EventsStateType,
+  imperialHospitality: ImperialHospitalityStateType,
   imperials: ImperialsStateType,
   mission: MissionStateType,
   modal: ModalStateType,

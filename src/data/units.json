@@ -5,7 +5,7 @@
     "commands": [
       {
         "condition": "If within 7 spaces and have LOS of {ATTACK_TARGET}",
-        "command": "{ACTION} Only if adjacent, move at least 4 spaces away, then {ACTION} Attack {ATTACK_TARGET}, then {ACTION} Move towards {MOVE_TARGET}."
+        "command": "{ACTION} Only if adjacent, move at least 4 spaces away, then {ACTION} Attack {ATTACK_TARGET}, then {ACTION} Move to {MOVE_TARGET}."
       },
       {
         "condition": "If not within 7 spaces of {ATTACK_TARGET}",
@@ -161,11 +161,11 @@
   },
   "imperialOfficer": {
     "affiliation": "imperial",
-    "buffs": ["plusOneMovement", "attackStrainInsteadDmg"],
+    "buffs": ["plusOneMovement", "heavyPressure"],
     "commands": [
       {
         "condition": "If within 2 spaces of a friendly target that is not adjacent to {MOVE_TARGET}",
-        "command": "{ACTION} Use Order ability on that friendly figure to have it move adjacent to {MOVE_TARGET}."
+        "command": "{ACTION} Use Order ability on that friendly figure to have it move to {MOVE_TARGET}."
       },
       {
         "condition": "If within 4 spaces of {ATTACK_TARGET}",
@@ -197,7 +197,7 @@
   },
   "imperialOfficerElite": {
     "affiliation": "imperial",
-    "buffs": ["attackStrainInsteadDmg", "riotGrenades"],
+    "buffs": ["heavyPressure", "riotGrenades"],
     "commands": [
       {
         "condition": "If within 2 spaces of a friendly target that is within attack range and LOS of {ATTACK_TARGET}",
@@ -205,7 +205,7 @@
       },
       {
         "condition": "If within 2 spaces of a friendly target that is not adjacent to {MOVE_TARGET}",
-        "command": "{ACTION} Use Executive Order ability on that friendly figure to have it move adjacent to {MOVE_TARGET}."
+        "command": "{ACTION} Use Executive Order ability on that friendly figure to have it move to {MOVE_TARGET}."
       },
       {
         "condition": "If within 4 spaces and in LOS of {ATTACK_TARGET}",
@@ -309,15 +309,15 @@
   },
   "probeDroid": {
     "affiliation": "imperial",
-    "buffs": ["getPlus2AccuracyPlus1Dmg", "getPlus2AccuracyPlus1Dmg", "plusOneMovement", "attackStrainInsteadDmg"],
+    "buffs": ["getPlus2AccuracyPlus1Dmg", "getPlus2AccuracyPlus1Dmg", "plusOneMovement", "heavyPressure"],
     "commands": [
       {
         "condition": "If within 5 spaces of {ATTACK_TARGET}",
-        "command": "{ACTION} Move within 4 spaces and LOS of {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}, then move adjacent to {MOVE_TARGET}."
+        "command": "{ACTION} Move within 4 spaces and LOS of {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}, then move to {MOVE_TARGET}."
       },
       {
         "condition": "If not within 5 spaces of {ATTACK_TARGET}",
-        "command": "{ACTION} Move adjacent to {MOVE_TARGET}."
+        "command": "{ACTION} Move to {MOVE_TARGET}."
       },
       {
         "condition": "Reaction - At the end of the round, if adjacent to a Rebel figure with 2 or less Health left, and not adjacent to any friendly figures",
@@ -345,11 +345,11 @@
     "commands": [
       {
         "condition": "If within 6 spaces of {ATTACK_TARGET}",
-        "command": "{ACTION} Move within 4 spaces and LOS of {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}, then move adjacent to {MOVE_TARGET}."
+        "command": "{ACTION} Move within 4 spaces and LOS of {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}, then move to {MOVE_TARGET}."
       },
       {
         "condition": "If not within 5 spaces of {ATTACK_TARGET}",
-        "command": "{ACTION} Move adjacent to {MOVE_TARGET}."
+        "command": "{ACTION} Move to {MOVE_TARGET}."
       },
       {
         "condition": "Reaction - If an attack die is rolled that has no effect (no damage, no surge can be used to any effect)",
@@ -381,7 +381,7 @@
     "commands": [
       {
         "condition": "If within 6 spaces of {ATTACK_TARGET}",
-        "command": "{ACTION} Move within 2 spaces and LOS of {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}, then move adjacent to then move adjacent to a friendly non-Guardian figure."
+        "command": "{ACTION} Move within 2 spaces and LOS of {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}, then move adjacent to a friendly non-Guardian figure."
       },
       {
         "condition": "If not within 6 spaces of {ATTACK_TARGET}",
@@ -453,11 +453,11 @@
     "commands": [
       {
         "condition": "If within 6 spaces of {ATTACK_TARGET}",
-        "command": "{ACTION} Move within 4 spaces and LOS of {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}, then move adjacent to {MOVE_TARGET}."
+        "command": "{ACTION} Move within 4 spaces and LOS of {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}, then move to {MOVE_TARGET}."
       },
       {
         "condition": "If not within 6 spaces of {ATTACK_TARGET}",
-        "command": "{ACTION} Move adjacent to {MOVE_TARGET}."
+        "command": "{ACTION} Move to {MOVE_TARGET}."
       },
       {
         "condition": "Reaction - If adjacent to another friendly Trooper while attacking",
@@ -485,11 +485,11 @@
     "commands": [
       {
         "condition": "If within 6 spaces of {ATTACK_TARGET}",
-        "command": "{ACTION} Move within 4 spaces and LOS of {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}, then move adjacent to {MOVE_TARGET}."
+        "command": "{ACTION} Move within 4 spaces and LOS of {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}, then move to {MOVE_TARGET}."
       },
       {
         "condition": "If not within 6 spaces of {ATTACK_TARGET}",
-        "command": "{ACTION} Move adjacent to {MOVE_TARGET}."
+        "command": "{ACTION} Move to {MOVE_TARGET}."
       },
       {
         "condition": "Reaction - If adjacent to another friendly Trooper while attacking",
@@ -521,11 +521,11 @@
     "commands": [
       {
         "condition": "If within 4 spaces of {ATTACK_TARGET}",
-        "command": "{ACTION} Move adjacent to {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}, then move adjacent to {MOVE_TARGET}."
+        "command": "{ACTION} Move adjacent to {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}, then move to {MOVE_TARGET}."
       },
       {
         "condition": "If within 7 spaces of {ATTACK_TARGET}",
-        "command": "{ACTION} Move within 3 spaces and LOS of {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}, then move adjacent to {MOVE_TARGET}."
+        "command": "{ACTION} Move within 3 spaces and LOS of {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}, then move to {MOVE_TARGET}."
       },
       {
         "condition": "If not within 7 spaces of {ATTACK_TARGET}",
@@ -561,11 +561,11 @@
     "commands": [
       {
         "condition": "If within 4 spaces of {ATTACK_TARGET}",
-        "command": "{ACTION} Move adjacent to {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}, then move adjacent to {MOVE_TARGET}."
+        "command": "{ACTION} Move adjacent to {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}, then move to {MOVE_TARGET}."
       },
       {
         "condition": "If within 7 spaces of any target",
-        "command": "{ACTION} Move within 3 spaces and LOS of {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}, then move adjacent to {MOVE_TARGET}."
+        "command": "{ACTION} Move within 3 spaces and LOS of {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}, then move to {MOVE_TARGET}."
       },
       {
         "condition": "If not within 7 spaces of {ATTACK_TARGET}",

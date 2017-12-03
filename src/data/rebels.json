@@ -6,7 +6,8 @@
     "elite": true,
     "threat": 15,
     "reinforcementCost": -1,
-    "maxInGroup": 1
+    "maxInGroup": 1,
+    "type": "ally"
   },
   "diala": {
     "id": "diala",
@@ -15,7 +16,8 @@
     "elite": false,
     "threat": 0,
     "reinforcementCost": -1,
-    "maxInGroup": 1
+    "maxInGroup": 1,
+    "type": "hero"
   },
   "fenn": {
     "id": "fenn",
@@ -24,7 +26,8 @@
     "elite": false,
     "threat": 0,
     "reinforcementCost": -1,
-    "maxInGroup": 1
+    "maxInGroup": 1,
+    "type": "hero"
   },
   "gaarkhan": {
     "id": "gaarkhan",
@@ -33,7 +36,8 @@
     "elite": false,
     "threat": 0,
     "reinforcementCost": -1,
-    "maxInGroup": 1
+    "maxInGroup": 1,
+    "type": "hero"
   },
   "gideon": {
     "id": "gideon",
@@ -42,7 +46,8 @@
     "elite": false,
     "threat": 0,
     "reinforcementCost": -1,
-    "maxInGroup": 1
+    "maxInGroup": 1,
+    "type": "hero"
   },
   "han": {
     "id": "han",
@@ -51,7 +56,8 @@
     "elite": true,
     "threat": 12,
     "reinforcementCost": -1,
-    "maxInGroup": 1
+    "maxInGroup": 1,
+    "type": "ally"
   },
   "jyn": {
     "id": "jyn",
@@ -60,7 +66,8 @@
     "elite": false,
     "threat": 0,
     "reinforcementCost": -1,
-    "maxInGroup": 1
+    "maxInGroup": 1,
+    "type": "hero"
   },
   "mak": {
     "id": "mak",
@@ -69,7 +76,18 @@
     "elite": false,
     "threat": 0,
     "reinforcementCost": -1,
-    "maxInGroup": 1
+    "maxInGroup": 1,
+    "type": "hero"
+  },
+  "missionImperialHospitalityCaptive": {
+    "id": "missionImperialHospitalityCaptive",
+    "firstName": "Captive",
+    "lastName": "",
+    "elite": false,
+    "threat": 0,
+    "reinforcementCost": -1,
+    "maxInGroup": 1,
+    "type": "mission"
   },
   "rebelSaboteur": {
     "id": "rebelSaboteur",
@@ -78,7 +96,8 @@
     "elite": false,
     "threat": 5,
     "reinforcementCost": 3,
-    "maxInGroup": 2
+    "maxInGroup": 2,
+    "type": "ally"
   },
   "rebelTrooper": {
     "id": "rebelTrooper",
@@ -87,6 +106,7 @@
     "elite": false,
     "threat": 6,
     "reinforcementCost": 2,
-    "maxInGroup": 3
+    "maxInGroup": 3,
+    "type": "ally"
   }
 }
