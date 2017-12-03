@@ -248,6 +248,7 @@ function* handleYellowRebelTokenInteracted(): Generator<*, *, *> {
     const {id, type, value} = action.payload;
     if ([3, 4].includes(id) && type === 'rebel' && value === true) {
       yield put(displayModal('REBEL_VICTORY'));
+      track('captured', 'victory', 'escaped');
       // We're done
       break;
     }
@@ -261,6 +262,7 @@ function* handleHeroesWounded(): Generator<*, *, *> {
     if (allWounded) {
       // End game with imperial victory
       yield put(displayModal('IMPERIAL_VICTORY'));
+      track('captured', 'defeat', 'wounded');
       break;
     }
     const isOneHeroLeft = yield select(getIsOneHeroLeft);

@@ -65,6 +65,7 @@ function* handleTerminalInteraction(): Generator<*, *, *> {
       // Check if rebels won
       if (securedTerminals.length === 5) {
         yield put(displayModal('REBEL_VICTORY'));
+        track('luxuryCruise', 'victory', 'terminals');
         // We're done
         break;
       } else {
@@ -89,6 +90,7 @@ function* handleHeroesWounded(): Generator<*, *, *> {
     if (allWounded) {
       // End game with imperial victory
       yield put(displayModal('IMPERIAL_VICTORY'));
+      track('luxuryCruise', 'defeat', 'wounded');
       break;
     }
     const isOneHeroLeft = yield select(getIsOneHeroLeft);

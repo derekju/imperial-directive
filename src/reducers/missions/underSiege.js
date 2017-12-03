@@ -317,6 +317,7 @@ function* handleCapturedPoints(): Generator<*, *, *> {
     if (results.length === 4) {
       // End game with imperial victory
       yield put(displayModal('IMPERIAL_VICTORY'));
+      track('underSiege', 'defeat', 'secured');
       break;
     }
   }
@@ -329,6 +330,7 @@ function* handleHeroesWithdrawn(): Generator<*, *, *> {
     if (allWithdrawn) {
       // End game with imperial victory
       yield put(displayModal('IMPERIAL_VICTORY'));
+      track('underSiege', 'defeat', 'wounded');
       break;
     }
     const isOneHeroLeft = yield select(getIsOneHeroLeft);
@@ -360,6 +362,7 @@ function* handleRoundEnd(): Generator<*, *, *> {
     } else if (currentRound === 8) {
       // End game with rebel victory
       yield put(displayModal('REBEL_VICTORY'));
+      track('underSiege', 'victory', 'rounds');
       break;
     }
 

@@ -186,6 +186,7 @@ function* handleHeroEscapes(): Generator<*, *, *> {
   // Just assume if someone escapes the rebels won
   // It's up to the player not to abuse the escape button
   yield put(displayModal('REBEL_VICTORY'));
+  track('aSimpleTask', 'victory', 'escaped');
 }
 
 function* handleHeroesWounded(): Generator<*, *, *> {
@@ -195,6 +196,7 @@ function* handleHeroesWounded(): Generator<*, *, *> {
     if (allWounded) {
       // End game with imperial victory
       yield put(displayModal('IMPERIAL_VICTORY'));
+      track('aSimpleTask', 'defeat', 'wounded');
       break;
     }
     const isOneHeroLeft = yield select(getIsOneHeroLeft);

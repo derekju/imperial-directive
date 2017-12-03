@@ -164,6 +164,7 @@ function* handleExplosiveDisarmed(): Generator<*, *, *> {
       const totalNeededToWin = explosiveAdded ? 7 : 6;
       if (results.length === totalNeededToWin) {
         yield put(displayModal('REBEL_VICTORY'));
+        track('brushfire', 'victory', 'explosives');
         // We're done
         break;
       }
@@ -221,6 +222,7 @@ function* handleHeroesWounded(): Generator<*, *, *> {
     if (allWounded) {
       // End game with imperial victory
       yield put(displayModal('IMPERIAL_VICTORY'));
+      track('brushfire', 'defeat', 'wounded');
       break;
     }
     const isOneHeroLeft = yield select(getIsOneHeroLeft);
@@ -242,6 +244,7 @@ function* handleRoundEnd(): Generator<*, *, *> {
     if (currentRound === 5) {
       // End game with imperial victory
       yield put(displayModal('IMPERIAL_VICTORY'));
+      track('brushfire', 'defeat', 'rounds');
       break;
     }
 

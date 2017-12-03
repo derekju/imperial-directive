@@ -67,6 +67,14 @@ export const PHASE_EVENT = 0;
 export const PHASE_ACTIVATION = 1;
 export const PHASE_STATUS = 2;
 
+export const DIFFICULTY_THREAT_INCREASE = {
+  '2': 1,
+  '3': 2,
+  '4': 3,
+  '5': 3,
+  '6': 4,
+};
+
 // State
 
 const initialState = {
@@ -76,6 +84,7 @@ const initialState = {
   currentRound: 1,
   currentThreat: 0,
   deploymentPoint: 'The green deployment point closest to the most hostile figures',
+  difficulty: 'standard',
   instructions: {
     imperialVictory: '',
     rebelVictory: '',
@@ -89,11 +98,12 @@ const initialState = {
 export default (state: MissionStateType = initialState, action: Object) => {
   switch (action.type) {
     case LOAD_MISSION:
-      const {config, missionThreat} = action.payload;
+      const {config, difficulty, missionThreat} = action.payload;
       return {
         ...initialState,
         attackTarget: state.attackTarget, // Set by individual mission saga
         deploymentPoint: state.deploymentPoint, // Set by individual mission saga
+        difficulty,
         instructions: config.instructions,
         mapImage: config.mapImage,
         mapStates: config.mapStates,
@@ -158,9 +168,10 @@ export default (state: MissionStateType = initialState, action: Object) => {
         currentActivePlayer: PLAYER_NONE,
       };
     case STATUS_PHASE_INCREASE_THREAT:
+      const extraThreatToAdd = state.difficulty === 'experienced' ? DIFFICULTY_THREAT_INCREASE[String(state.missionThreat)] : 0;
       return {
         ...state,
-        currentThreat: state.currentThreat + state.missionThreat,
+        currentThreat: state.currentThreat + state.missionThreat + extraThreatToAdd,
       };
     case STATUS_PHASE_DEPLOY_REINFORCE_DONE:
     case OPTIONAL_DEPLOYMENT_DONE:
@@ -234,8 +245,8 @@ export const UPDATE_REBEL_VICTORY = 'UPDATE_REBEL_VICTORY';
 
 // Action creators
 
-export const loadMission = (config: MissionConfigType, missionThreat: number) =>
-  createAction(LOAD_MISSION, {config, missionThreat});
+export const loadMission = (config: MissionConfigType, missionThreat: number, difficulty: string) =>
+  createAction(LOAD_MISSION, {config, difficulty, missionThreat});
 export const changePlayerTurn = (player: number) => createAction(CHANGE_PLAYER_TURN, {player});
 export const setMapStateActivated = (id: number, type: string, value: boolean) =>
   createAction(SET_MAP_STATE_ACTIVATED, {id, type, value});

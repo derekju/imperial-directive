@@ -1,8 +1,7 @@
 // @flow
 
 import {cancel, fork, put, select, take} from 'redux-saga/effects';
-// import events from '../data/events';
-// import {loadEvents} from './events';
+import createAction from './createAction';
 import {loadMission} from './mission';
 import missions from '../data/missions';
 import type {StateType} from './types';
@@ -15,11 +14,11 @@ import {captured} from './missions/captured';
 import {luxuryCruise} from './missions/luxuryCruise';
 import {temptation} from './missions/temptation';
 import {underSiege} from './missions/underSiege';
-// import {friendsOfOld} from './missions/friendsOfOld';
 
 // Types
 
 export type AppStateType = {
+  currentDifficulty: string,
   currentMission: string,
   missionThreat: number,
 };
@@ -27,6 +26,7 @@ export type AppStateType = {
 // State
 
 const initialState = {
+  currentDifficulty: 'standard',
   currentMission: '',
   missionThreat: 2,
 };
@@ -43,6 +43,11 @@ export default (state: AppStateType = initialState, action: Function) => {
         ...state,
         missionThreat: action.payload.missionThreat,
       };
+    case SET_DIFFICULTY:
+      return {
+        ...state,
+        currentDifficulty: action.payload.difficulty,
+      };
     default:
       return state;
   }
@@ -52,21 +57,21 @@ export default (state: AppStateType = initialState, action: Function) => {
 
 export const SET_MISSION = 'SET_MISSION';
 export const SET_MISSION_THREAT = 'SET_MISSION_THREAT';
+export const SET_DIFFICULTY = 'SET_DIFFICULTY';
 export const MISSION_SAGA_LOAD_DONE = 'MISSION_SAGA_LOAD_DONE';
 
 // Action creators
 
-export const setMission = (mission: string) => ({payload: {mission}, type: SET_MISSION});
-export const setMissionThreat = (missionThreat: number) => ({
-  payload: {missionThreat},
-  type: SET_MISSION_THREAT,
-});
-export const missionSagaLoadDone = () => ({type: MISSION_SAGA_LOAD_DONE});
+export const setMission = (mission: string) => createAction(SET_MISSION, {mission});
+export const setMissionThreat = (missionThreat: number) => createAction(SET_MISSION_THREAT, {missionThreat});
+export const setDifficulty = (difficulty: string) => createAction(SET_DIFFICULTY, {difficulty});
+export const missionSagaLoadDone = () => createAction(MISSION_SAGA_LOAD_DONE);
 
 // Selectors
 
 export const getCurrentMission = (state: StateType) => state.app.currentMission;
 export const getMissionThreat = (state: StateType) => state.app.missionThreat;
+export const getDifficulty = (state: StateType) => state.app.currentDifficulty;
 
 // Sagas
 
@@ -96,9 +101,6 @@ function* forkMission(currentMission: string): Generator<*, *, *> {
     case 'underSiege':
       yield fork(underSiege);
       break;
-    // case 'friendsOfOld':
-    //   yield fork(friendsOfOld);
-    //   break;
     default:
       return;
   }
@@ -113,6 +115,7 @@ function* loadMissionSaga(): Generator<*, *, *> {
     }
     const {mission} = action.payload;
     const missionThreat = yield select(getMissionThreat);
+    const difficulty = yield select(getDifficulty);
     // Fork a copy of the saga for the current mission so we get mission specific logic
     const missionConfiguration = missions[mission];
     // Load the events
@@ -121,7 +124,7 @@ function* loadMissionSaga(): Generator<*, *, *> {
     task = yield fork(forkMission, mission);
     yield take(MISSION_SAGA_LOAD_DONE);
     // Load our mission in which will kick things off
-    yield put(loadMission(missionConfiguration, missionThreat));
+    yield put(loadMission(missionConfiguration, missionThreat, difficulty));
   }
 }
 

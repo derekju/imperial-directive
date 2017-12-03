@@ -131,6 +131,7 @@ function* handleTerminalInteraction(): Generator<*, *, *> {
       // Check victory
       if (activatedTokenIndexes.length === 3) {
         yield put(displayModal('REBEL_VICTORY'));
+        track('aNewThreat', 'victory', 'terminals');
         yield call(waitForModal('REBEL_VICTORY'));
       }
     }
@@ -208,6 +209,7 @@ function* handleHeroesWounded(): Generator<*, *, *> {
     if (allWounded) {
       // End game with imperial victory
       yield put(displayModal('IMPERIAL_VICTORY'));
+      track('aNewThreat', 'defeat', 'wounded');
       break;
     }
     const isOneHeroLeft = yield select(getIsOneHeroLeft);
@@ -238,6 +240,7 @@ function* handleRoundEnd(): Generator<*, *, *> {
     } else if (currentRound === 7) {
       // End game with imperial victory
       yield put(displayModal('IMPERIAL_VICTORY'));
+      track('aNewThreat', 'defeat', 'rounds');
       // We're done, don't send statusPhaseEndRoundEffects so we stall the game out on purpose
       break;
     }

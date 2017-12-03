@@ -8,12 +8,12 @@ import {
   STATUS_PHASE_DEPLOY_REINFORCE,
   STATUS_PHASE_READY_GROUPS,
 } from './mission';
+import {getDifficulty, getMissionThreat} from './app';
 import {SET_REBEL_ESCAPED, SET_REBEL_HERO_ACTIVATED} from './rebels';
 import createAction from './createAction';
 import decrementFigureFromGroup from './utils/decrementFigureFromGroup';
 import {displayModal} from './modal';
 import filter from 'lodash/filter';
-import {getMissionThreat} from './app';
 import populateOpenGroups from './utils/populateOpenGroups';
 import random from 'lodash/random';
 import reverse from 'lodash/reverse';
@@ -63,16 +63,17 @@ export type ImperialsStateType = {
 
 // Utils
 
-const determineHpBoost = (hpBoosts: {[threat: string]: number[]}, missionThreat: number) => {
+const determineHpBoost = (hpBoosts: {[threat: string]: number[]}, missionThreat: number, difficulty) => {
   const boostArray = hpBoosts[String(missionThreat)];
   const randomNumber = random(0, boostArray.length - 1);
-  return boostArray[randomNumber];
+  return boostArray[randomNumber] + (difficulty === 'experienced' ? 2 : 0);
 };
 
 const createNewGroup = (
   id: string,
   designationMap: DesignationMapType,
-  missionThreat: number
+  missionThreat: number,
+  difficulty: string,
 ): ImperialUnitType => {
   // Default to 1
   let groupNumber = 1;
@@ -107,7 +108,7 @@ const createNewGroup = (
     currentNumFigures: units[id].maxInGroup,
     exhausted: false,
     groupNumber,
-    hpBoost: units[id].eligibleForHpBoost ? determineHpBoost(units[id].hpBoosts, missionThreat) : 0,
+    hpBoost: units[id].eligibleForHpBoost ? determineHpBoost(units[id].hpBoosts, missionThreat, difficulty) : 0,
   };
 };
 
@@ -115,6 +116,7 @@ const createNewGroup = (
 
 const initialState = {
   activatedGroup: null,
+  customAI: null,
   deployedGroups: [],
   designationMap: {},
   interruptedGroup: null,
@@ -124,12 +126,12 @@ const initialState = {
 export default (state: ImperialsStateType = initialState, action: Object) => {
   switch (action.type) {
     case LOAD_MISSION:
-      const {config, missionThreat} = action.payload;
+      const {config, difficulty, missionThreat} = action.payload;
       const designationMap = {};
       return {
         ...initialState,
         deployedGroups: config.initialGroups.map((id: string) =>
-          createNewGroup(id, designationMap, missionThreat)
+          createNewGroup(id, designationMap, missionThreat, difficulty)
         ),
         designationMap,
         openGroups: populateOpenGroups(config.openGroups, config.noMercenaryAllowed, missionThreat),
@@ -171,7 +173,7 @@ export default (state: ImperialsStateType = initialState, action: Object) => {
       };
     }
     case SET_IMPERIAL_FIGURES_AFTER_DEPLOY_REINFORCE: {
-      const {groupsToDeploy, groupsToReinforce, missionThreat, newOpenGroups} = action.payload;
+      const {difficulty, groupsToDeploy, groupsToReinforce, missionThreat, newOpenGroups} = action.payload;
 
       // We're mutating state.designationMap here!
       return {
@@ -191,7 +193,7 @@ export default (state: ImperialsStateType = initialState, action: Object) => {
           })
           .concat(
             groupsToDeploy.map((id: string) =>
-              createNewGroup(id, state.designationMap, missionThreat)
+              createNewGroup(id, state.designationMap, missionThreat, difficulty)
             )
           ),
         openGroups: newOpenGroups,
@@ -207,12 +209,12 @@ export default (state: ImperialsStateType = initialState, action: Object) => {
         }),
       };
     case DEPLOY_NEW_GROUPS: {
-      const {groupIds, missionThreat} = action.payload;
+      const {difficulty, groupIds, missionThreat} = action.payload;
       // We're mutating state.designationMap here!
       return {
         ...state,
         deployedGroups: state.deployedGroups.concat(
-          groupIds.map((id: string) => createNewGroup(id, state.designationMap, missionThreat))
+          groupIds.map((id: string) => createNewGroup(id, state.designationMap, missionThreat, difficulty))
         ),
       };
     }
@@ -273,13 +275,14 @@ export const setImperialFiguresAfterDeployReinforce = (
   groupsToDeploy: string[],
   groupsToReinforce: Array<{groupNumber: number, id: string}>,
   newOpenGroups: ImperialUnitType[],
-  missionThreat: number
+  missionThreat: number,
+  difficulty: string,
 ) => ({
-  payload: {groupsToDeploy, groupsToReinforce, missionThreat, newOpenGroups},
+  payload: {difficulty, groupsToDeploy, groupsToReinforce, missionThreat, newOpenGroups},
   type: SET_IMPERIAL_FIGURES_AFTER_DEPLOY_REINFORCE,
 });
-export const deployNewGroups = (groupIds: string[], missionThreat: number) => ({
-  payload: {groupIds, missionThreat},
+export const deployNewGroups = (groupIds: string[], missionThreat: number, difficulty: string) => ({
+  payload: {difficulty, groupIds, missionThreat},
   type: DEPLOY_NEW_GROUPS,
 });
 export const setInterruptedGroup = (group: ImperialUnitType) => ({
@@ -404,12 +407,14 @@ function* handleDeployAndReinforcement(): Generator<*, *, *> {
   yield call(waitForModal('STATUS_REINFORCEMENT'));
 
   const missionThreat = yield select(getMissionThreat);
+  const difficulty = yield select(getDifficulty);
   yield put(
     setImperialFiguresAfterDeployReinforce(
       groupsToDeploy,
       groupsToReinforce,
       newOpenGroups,
-      missionThreat
+      missionThreat,
+      difficulty
     )
   );
 
