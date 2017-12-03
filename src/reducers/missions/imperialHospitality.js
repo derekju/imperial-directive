@@ -3,7 +3,6 @@
 import {
   addToRoster,
   getAreAllHeroesWounded,
-  getIsOneHeroLeft,
   SET_REBEL_ESCAPED,
   WOUND_REBEL_HERO,
   WOUND_REBEL_OTHER,
@@ -11,7 +10,6 @@ import {
 import {all, call, fork, put, select, take} from 'redux-saga/effects';
 import {
   getCurrentRound,
-  getMapStates,
   increaseThreat,
   MISSION_SPECIAL_SETUP,
   missionSpecialSetupDone,
@@ -23,9 +21,10 @@ import {
   setMoveTarget,
   statusPhaseEndRoundEffectsDone,
   STATUS_PHASE_END_ROUND_EFFECTS,
+  updateImperialVictory,
   updateRebelVictory,
 } from '../mission';
-import {REFER_CAMPAIGN_GUIDE, TARGET_HERO_CLOSEST_UNWOUNDED, TARGET_REMAINING} from './constants';
+import {REFER_CAMPAIGN_GUIDE} from './constants';
 import createAction from '../createAction';
 import {displayModal} from '../modal';
 import helperDeploy from './helpers/helperDeploy';
@@ -35,7 +34,6 @@ import helperMissionBriefing from './helpers/helperMissionBriefing';
 import {missionSagaLoadDone} from '../app';
 import type {StateType} from '../types';
 import track from '../../lib/track';
-import waitForModal from '../../sagas/waitForModal';
 
 // Constants
 
@@ -202,9 +200,17 @@ function* handlePrisonerEvent(): Generator<*, *, *> {
         ],
         title: 'The Prisoner',
       });
+      yield call(helperEventModal, {
+        text: [
+          'The Rebels win if the captive escapes!',
+          'The Rebels lose if the captive is wounded or all heroes are wounded.',
+        ],
+        title: 'The Prisoner',
+      });
       yield put(setMapStateVisible(1, 'rebel', false));
       yield put(addToRoster('missionImperialHospitalityCaptive'));
       yield put(updateRebelVictory('The captive escapes through the entrance'));
+      yield put(updateImperialVictory('When the captive is wounded or all heroes are wounded'));
       yield put(createAction('IMPERIAL_HOSPITALITY_PRISONER_RESOLVED', true));
       // SWITCH TARGETS
       yield put(setAttackTarget(TARGET_CAPTIVE));

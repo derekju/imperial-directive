@@ -802,7 +802,7 @@
       "probeDroid", "probeDroid", "royalGuard"
     ],
     "instructions": {
-      "imperialVictory": "At the end of Round 6 or when all heroes are wounded",
+      "imperialVictory": "When all heroes are wounded",
       "rebelVictory": "(to be revealed)"
     },
     "mapImage": [

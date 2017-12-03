@@ -215,6 +215,14 @@ export default (state: MissionStateType = initialState, action: Object) => {
           rebelVictory: action.payload.newText,
         },
       };
+    case UPDATE_IMPERIAL_VICTORY:
+      return {
+        ...state,
+        instructions: {
+          ...state.instructions,
+          imperialVictory: action.payload.newText,
+        },
+      };
     default:
       return state;
   }
@@ -245,6 +253,7 @@ export const MISSION_SPECIAL_SETUP = 'MISSION_SPECIAL_SETUP';
 export const MISSION_SPECIAL_SETUP_DONE = 'MISSION_SPECIAL_SETUP_DONE';
 export const INCREASE_THREAT = 'INCREASE_THREAT';
 export const UPDATE_REBEL_VICTORY = 'UPDATE_REBEL_VICTORY';
+export const UPDATE_IMPERIAL_VICTORY = 'UPDATE_IMPERIAL_VICTORY';
 
 // Action creators
 
@@ -280,6 +289,8 @@ export const missionSpecialSetup = () => createAction(MISSION_SPECIAL_SETUP);
 export const increaseThreat = (threat: number) => createAction(INCREASE_THREAT, {threat});
 export const updateRebelVictory = (newText: string) =>
   createAction(UPDATE_REBEL_VICTORY, {newText});
+export const updateImperialVictory = (newText: string) =>
+  createAction(UPDATE_IMPERIAL_VICTORY, {newText});
 
 // Selectors
 
