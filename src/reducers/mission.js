@@ -168,7 +168,10 @@ export default (state: MissionStateType = initialState, action: Object) => {
         currentActivePlayer: PLAYER_NONE,
       };
     case STATUS_PHASE_INCREASE_THREAT:
-      const extraThreatToAdd = state.difficulty === 'experienced' ? DIFFICULTY_THREAT_INCREASE[String(state.missionThreat)] : 0;
+      const extraThreatToAdd =
+        state.difficulty === 'experienced'
+          ? DIFFICULTY_THREAT_INCREASE[String(state.missionThreat)]
+          : 0;
       return {
         ...state,
         currentThreat: state.currentThreat + state.missionThreat + extraThreatToAdd,

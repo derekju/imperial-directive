@@ -63,7 +63,8 @@ export const MISSION_SAGA_LOAD_DONE = 'MISSION_SAGA_LOAD_DONE';
 // Action creators
 
 export const setMission = (mission: string) => createAction(SET_MISSION, {mission});
-export const setMissionThreat = (missionThreat: number) => createAction(SET_MISSION_THREAT, {missionThreat});
+export const setMissionThreat = (missionThreat: number) =>
+  createAction(SET_MISSION_THREAT, {missionThreat});
 export const setDifficulty = (difficulty: string) => createAction(SET_DIFFICULTY, {difficulty});
 export const missionSagaLoadDone = () => createAction(MISSION_SAGA_LOAD_DONE);
 

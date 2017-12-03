@@ -260,17 +260,23 @@ class CharacterSelection extends React.Component<
                   onClick={() => this.difficultyToggle('experienced')}
                   style={{
                     ...styles.toggle,
-                    ...(this.state.selectedDifficulty === 'experienced' ? styles.selectedToggle : {}),
+                    ...(this.state.selectedDifficulty === 'experienced'
+                      ? styles.selectedToggle
+                      : {}),
                   }}
                 >
                   Experienced
                 </div>
                 <div style={styles.difficultyDescription}>
                   <span>
-                    {this.state.selectedDifficulty === 'standard' ? 'Standard difficulty. Good for players new to Imperial Assault. Threat gained per round is standard campaign rules. HP buffs for units is standard.' : ''}
+                    {this.state.selectedDifficulty === 'standard'
+                      ? 'Standard difficulty. Good for players new to Imperial Assault. Threat gained per round is standard campaign rules. HP buffs for units is standard.'
+                      : ''}
                   </span>
                   <span>
-                    {this.state.selectedDifficulty === 'experienced' ? 'Experienced difficulty. Good for players experienced with Imperial Assault. Threat gained per round is increased. HP buffs for units is increased.' : ''}
+                    {this.state.selectedDifficulty === 'experienced'
+                      ? 'Experienced difficulty. Good for players experienced with Imperial Assault. Threat gained per round is increased. HP buffs for units is increased.'
+                      : ''}
                   </span>
                 </div>
               </div>

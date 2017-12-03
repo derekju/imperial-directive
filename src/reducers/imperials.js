@@ -63,7 +63,11 @@ export type ImperialsStateType = {
 
 // Utils
 
-const determineHpBoost = (hpBoosts: {[threat: string]: number[]}, missionThreat: number, difficulty) => {
+const determineHpBoost = (
+  hpBoosts: {[threat: string]: number[]},
+  missionThreat: number,
+  difficulty
+) => {
   const boostArray = hpBoosts[String(missionThreat)];
   const randomNumber = random(0, boostArray.length - 1);
   return boostArray[randomNumber] + (difficulty === 'experienced' ? random(1, 3) : 0);
@@ -73,7 +77,7 @@ const createNewGroup = (
   id: string,
   designationMap: DesignationMapType,
   missionThreat: number,
-  difficulty: string,
+  difficulty: string
 ): ImperialUnitType => {
   // Default to 1
   let groupNumber = 1;
@@ -108,7 +112,9 @@ const createNewGroup = (
     currentNumFigures: units[id].maxInGroup,
     exhausted: false,
     groupNumber,
-    hpBoost: units[id].eligibleForHpBoost ? determineHpBoost(units[id].hpBoosts, missionThreat, difficulty) : 0,
+    hpBoost: units[id].eligibleForHpBoost
+      ? determineHpBoost(units[id].hpBoosts, missionThreat, difficulty)
+      : 0,
   };
 };
 
@@ -173,7 +179,13 @@ export default (state: ImperialsStateType = initialState, action: Object) => {
       };
     }
     case SET_IMPERIAL_FIGURES_AFTER_DEPLOY_REINFORCE: {
-      const {difficulty, groupsToDeploy, groupsToReinforce, missionThreat, newOpenGroups} = action.payload;
+      const {
+        difficulty,
+        groupsToDeploy,
+        groupsToReinforce,
+        missionThreat,
+        newOpenGroups,
+      } = action.payload;
 
       // We're mutating state.designationMap here!
       return {
@@ -214,7 +226,9 @@ export default (state: ImperialsStateType = initialState, action: Object) => {
       return {
         ...state,
         deployedGroups: state.deployedGroups.concat(
-          groupIds.map((id: string) => createNewGroup(id, state.designationMap, missionThreat, difficulty))
+          groupIds.map((id: string) =>
+            createNewGroup(id, state.designationMap, missionThreat, difficulty)
+          )
         ),
       };
     }
@@ -276,7 +290,7 @@ export const setImperialFiguresAfterDeployReinforce = (
   groupsToReinforce: Array<{groupNumber: number, id: string}>,
   newOpenGroups: ImperialUnitType[],
   missionThreat: number,
-  difficulty: string,
+  difficulty: string
 ) => ({
   payload: {difficulty, groupsToDeploy, groupsToReinforce, missionThreat, newOpenGroups},
   type: SET_IMPERIAL_FIGURES_AFTER_DEPLOY_REINFORCE,
