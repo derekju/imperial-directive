@@ -2,7 +2,11 @@
 
 import {all, call, fork, put, select, take} from 'redux-saga/effects';
 import {getAreAllHeroesWithdrawn, getIsOneHeroLeft, WOUND_REBEL_HERO} from '../rebels';
-import {getCurrentGroups, OPTIONAL_DEPLOYMENT_DONE, optionalDeployment} from '../imperials';
+import {
+  OPTIONAL_DEPLOYMENT_DONE,
+  optionalDeployment,
+  setCustomAI,
+} from '../imperials';
 import {
   getCurrentRound,
   getCurrentThreat,
@@ -35,7 +39,7 @@ import track from '../../lib/track';
 // Constants
 
 // Randomize which door is focused on
-const randomDoorNumOutside = random(1, 2);
+const randomDoorNumOutside = 2;
 const randomDoorNumInside = random(3, 4);
 const TARGET_DOOR_OUTSIDE = `door ${randomDoorNumOutside}`;
 const TARGET_DOOR_INSIDE = `door ${randomDoorNumInside}`;
@@ -45,6 +49,19 @@ const TARGET_CAPTURE_POINT = 'the closest capture point';
 
 const DEPLOYMENT_POINT_GREEN = 'The green deployment point';
 const DEPLOYMENT_POINT_RED = 'The red deployment point';
+
+const CUSTOM_AI = [
+  {
+    command:
+      '{ACTION} Move until standing on closest capture point with free space, then {ACTION} Move until standing on closest capture point with free space.',
+    condition: 'If not standing on a capture point',
+  },
+  {
+    command:
+      '{ACTION} Attack closest Hero within attack range (priority is any hero occupying the same capture point).',
+    condition: 'If standing on a capture point',
+  },
+];
 
 // Types
 
@@ -213,6 +230,8 @@ function* handleDoorOpenOutside(): Generator<*, *, *> {
     const action = yield take(SET_MAP_STATE_ACTIVATED);
     const {id, type, value} = action.payload;
     if (id === randomDoorNumOutside && type === 'door' && value === true) {
+      yield put(setCustomAI(CUSTOM_AI));
+
       // PRIORITY TARGET SWITCH
       const {priorityTargetKillHero} = yield select(getState);
       if (!priorityTargetKillHero) {
@@ -231,14 +250,17 @@ function* handleInteriorPointsSecured(): Generator<*, *, *> {
     const mapStates = yield select(getMapStates);
     if (mapStates['rebel-1'].activated && mapStates['rebel-2'].activated) {
       // If interior door isn't down, then change target to it
-      // Otherwise if it was blasted down already, don't do anything
+      // Otherwise if it was blasted down already, change custom AI
       if (!mapStates[`door-${randomDoorNumInside}`].activated) {
         // PRIORITY TARGET SWITCH
         const {priorityTargetKillHero} = yield select(getState);
         if (!priorityTargetKillHero) {
           yield put(setAttackTarget(TARGET_DOOR_INSIDE));
           yield put(setMoveTarget(TARGET_DOOR_INSIDE));
+          yield put(setCustomAI(null));
         }
+      } else {
+        yield put(setCustomAI(CUSTOM_AI));
       }
       // We're done
       break;
@@ -251,6 +273,8 @@ function* handleDoorOpenInside(): Generator<*, *, *> {
     const action = yield take(SET_MAP_STATE_ACTIVATED);
     const {id, type, value} = action.payload;
     if (id === randomDoorNumInside && type === 'door' && value === true) {
+      yield put(setCustomAI(CUSTOM_AI));
+
       // PRIORITY TARGET SWITCH
       const {priorityTargetKillHero} = yield select(getState);
       if (!priorityTargetKillHero) {

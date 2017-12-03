@@ -229,7 +229,7 @@
   },
   "nexu": {
     "affiliation": "mercenary",
-    "buffs": ["recovery", "gainPierceSurgeBleed", "gainPierceSurgeBleed", "targetSuffersStrainDmg"],
+    "buffs": ["recovery", "targetSuffersStrainDmg"],
     "commands": [
       {
         "condition": "If within 4 spaces of {ATTACK_TARGET}",
@@ -373,11 +373,11 @@
     "commands": [
       {
         "condition": "If within 6 spaces of {ATTACK_TARGET}",
-        "command": "{ACTION} Move within 2 spaces and LOS of {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}, then move adjacent to {MOVE_TARGET}."
+        "command": "{ACTION} Move within 2 spaces and LOS of {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}, then move adjacent to then move adjacent to a friendly non-Guardian figure."
       },
       {
         "condition": "If not within 6 spaces of {ATTACK_TARGET}",
-        "command": "{ACTION} Move adjacent to {MOVE_TARGET}."
+        "command": "{ACTION} Move adjacent to a friendly non-Guardian figure."
       },
       {
         "condition": "Reaction - While adjacent to a friendly non-Guardian figure that is defending",
@@ -409,11 +409,11 @@
     "commands": [
       {
         "condition": "If within 6 spaces of {ATTACK_TARGET}",
-        "command": "{ACTION} Move within 2 spaces and LOS of {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}, then move adjacent to {MOVE_TARGET}."
+        "command": "{ACTION} Move within 2 spaces and LOS of {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}, then move adjacent to a friendly non-Guardian figure."
       },
       {
         "condition": "If not within 6 spaces of {ATTACK_TARGET}",
-        "command": "{ACTION} Move adjacent to {MOVE_TARGET}."
+        "command": "{ACTION} Move adjacent to a friendly non-Guardian figure."
       },
       {
         "condition": "Reaction - While adjacent to a friendly non-Guardian figure that is defending",

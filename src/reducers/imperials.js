@@ -9,6 +9,7 @@ import {
   STATUS_PHASE_READY_GROUPS,
 } from './mission';
 import {SET_REBEL_ESCAPED, SET_REBEL_HERO_ACTIVATED} from './rebels';
+import createAction from './createAction';
 import decrementFigureFromGroup from './utils/decrementFigureFromGroup';
 import {displayModal} from './modal';
 import filter from 'lodash/filter';
@@ -53,6 +54,7 @@ export type ImperialUnitType = {
 
 export type ImperialsStateType = {
   activatedGroup: ?ImperialUnitType,
+  customAI: ?(Object[]),
   deployedGroups: ImperialUnitType[],
   designationMap: DesignationMapType,
   interruptedGroup: ?ImperialUnitType,
@@ -219,6 +221,11 @@ export default (state: ImperialsStateType = initialState, action: Object) => {
         ...state,
         interruptedGroup: action.payload.group,
       };
+    case SET_CUSTOM_AI:
+      return {
+        ...state,
+        customAI: action.payload.customAI,
+      };
     default:
       return state;
   }
@@ -237,6 +244,7 @@ export const DEPLOY_NEW_GROUPS = 'DEPLOY_NEW_GROUPS';
 export const SET_INTERRUPTED_GROUP = 'SET_INTERRUPTED_GROUP';
 export const OPTIONAL_DEPLOYMENT = 'OPTIONAL_DEPLOYMENT';
 export const OPTIONAL_DEPLOYMENT_DONE = 'OPTIONAL_DEPLOYMENT_DONE';
+export const SET_CUSTOM_AI = 'SET_CUSTOM_AI';
 
 // Action creators
 
@@ -278,15 +286,12 @@ export const setInterruptedGroup = (group: ImperialUnitType) => ({
   payload: {group},
   type: SET_INTERRUPTED_GROUP,
 });
-export const setInterruptedGroupActivated = () => ({
-  payload: {group: null},
-  type: SET_INTERRUPTED_GROUP,
-});
-export const optionalDeployment = () => ({type: OPTIONAL_DEPLOYMENT});
-export const optionalDeploymentDone = (newThreat: number) => ({
-  payload: {newThreat},
-  type: OPTIONAL_DEPLOYMENT_DONE,
-});
+export const setInterruptedGroupActivated = () =>
+  createAction(SET_INTERRUPTED_GROUP, {group: null});
+export const optionalDeployment = () => createAction(OPTIONAL_DEPLOYMENT);
+export const optionalDeploymentDone = (newThreat: number) =>
+  createAction(OPTIONAL_DEPLOYMENT_DONE, {newThreat});
+export const setCustomAI = (customAI: ?(Object[])) => createAction(SET_CUSTOM_AI, {customAI});
 
 // Selectors
 

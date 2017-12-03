@@ -66,8 +66,9 @@ const styles = {
 };
 
 type AiCardPropsType = {
-  group: ImperialUnitType,
   attackTarget: string,
+  customAI: ?(Object[]),
+  group: ImperialUnitType,
   moveTarget: string,
   setImperialGroupActivated: Function,
 };
@@ -131,6 +132,15 @@ class AiCard extends React.Component<AiCardPropsType> {
         }`}</div>
         <div style={styles.buffContainer}>{this.renderBuff()}</div>
         <div style={styles.commandContainer}>
+          {this.props.customAI
+            ? this.props.customAI.map((customAI, index) =>
+                this.renderCommand(
+                  `custom-${index}`,
+                  customAI.condition,
+                  customAI.command
+                )
+              )
+            : null}
           {this.props.group.commands.map((command, index) =>
             this.renderCommand(
               `${this.props.group.name}-${index}`,

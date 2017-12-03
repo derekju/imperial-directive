@@ -46,6 +46,7 @@ const mapStateToProps = (state: StateType) => ({
     : '',
   currentRound: state.mission.currentRound,
   currentThreat: state.mission.currentThreat,
+  customAI: state.imperials.customAI,
   displayModal: Boolean(state.modal.type),
   goalText: getGoalText(state),
   instructions: state.mission.instructions,
