@@ -1,6 +1,13 @@
 // @flow
 
-import {addToRoster, getAreAllHeroesWounded, getIsOneHeroLeft, SET_REBEL_ESCAPED, WOUND_REBEL_HERO, WOUND_REBEL_OTHER} from '../rebels';
+import {
+  addToRoster,
+  getAreAllHeroesWounded,
+  getIsOneHeroLeft,
+  SET_REBEL_ESCAPED,
+  WOUND_REBEL_HERO,
+  WOUND_REBEL_OTHER,
+} from '../rebels';
 import {all, call, fork, put, select, take} from 'redux-saga/effects';
 import {
   getCurrentRound,
@@ -83,11 +90,7 @@ export const getImperialHospitalityGoalText = (state: StateType): string[] => {
   let goals = [];
 
   if (!state.imperialHospitality.thePrisonerResolved) {
-    goals = goals.concat([
-      '{BOLD}Current Goal:{END}',
-      'Open the door to the Cell.',
-      '{BREAK}',
-    ]);
+    goals = goals.concat(['{BOLD}Current Goal:{END}', 'Open the door to the Cell.', '{BREAK}']);
   }
 
   goals = goals.concat([
@@ -103,7 +106,9 @@ export const getImperialHospitalityGoalText = (state: StateType): string[] => {
     goals.push('{BREAK}');
     goals.push('{BOLD}Captive:{END}');
     goals.push('Health: 8, Speed: 2, Defense: 1 white die');
-    goals.push('An adjacent hero can suffer 1 {STRAIN} to take an attack targeted towards the Captive.');
+    goals.push(
+      'An adjacent hero can suffer 1 {STRAIN} to take an attack targeted towards the Captive.'
+    );
   }
 
   return goals;
