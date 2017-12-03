@@ -66,7 +66,7 @@ export type ImperialsStateType = {
 const determineHpBoost = (hpBoosts: {[threat: string]: number[]}, missionThreat: number, difficulty) => {
   const boostArray = hpBoosts[String(missionThreat)];
   const randomNumber = random(0, boostArray.length - 1);
-  return boostArray[randomNumber] + (difficulty === 'experienced' ? 2 : 0);
+  return boostArray[randomNumber] + (difficulty === 'experienced' ? random(1, 3) : 0);
 };
 
 const createNewGroup = (
