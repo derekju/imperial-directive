@@ -15,5 +15,6 @@ export default (category: string, action?: string = '', label?: string = '', val
     params.value = value;
   }
 
+  // $FlowFixMe - Don't worry about this
   gtag('event', 'custom', params);
 };
