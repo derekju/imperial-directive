@@ -78,6 +78,13 @@ class AiCard extends React.PureComponent<AiCardPropsType> {
   // PureComponent stops it on every render but if the attack target changes, it'll still re-render
   chosenBuffIndex: ?number;
 
+  componentWillUpdate(nextProps: AiCardPropsType) {
+    // Clear the index if we are updating the group in place
+    if (nextProps.group.id !== this.props.group.id) {
+      this.chosenBuffIndex = null;
+    }
+  }
+
   renderCommand(key: string, condition: string, command: string) {
     const commandArray = generateTextArray(command);
     return (
