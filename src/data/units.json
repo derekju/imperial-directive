@@ -381,11 +381,11 @@
     "commands": [
       {
         "condition": "If within 7 spaces of {ATTACK_TARGET}",
-        "command": "{ACTION} Move within 2 spaces and LOS of {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}, then move adjacent to a friendly non-Guardian figure."
+        "command": "{ACTION} Move within 2 spaces and LOS of {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}, then move adjacent to the nearest friendly non-Guardian figure."
       },
       {
         "condition": "If not within 7 spaces of {ATTACK_TARGET}",
-        "command": "{ACTION} Move adjacent to a friendly non-Guardian figure."
+        "command": "{ACTION} Move adjacent to the nearest friendly non-Guardian figure."
       },
       {
         "condition": "Reaction - While adjacent to a friendly non-Guardian figure that is defending",
@@ -417,11 +417,11 @@
     "commands": [
       {
         "condition": "If within 7 spaces of {ATTACK_TARGET}",
-        "command": "{ACTION} Move within 2 spaces and LOS of {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}, then move adjacent to a friendly non-Guardian figure."
+        "command": "{ACTION} Move within 2 spaces and LOS of {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}, then move adjacent to the nearest friendly non-Guardian figure."
       },
       {
         "condition": "If not within 7 spaces of {ATTACK_TARGET}",
-        "command": "{ACTION} Move adjacent to a friendly non-Guardian figure."
+        "command": "{ACTION} Move adjacent to the nearest friendly non-Guardian figure."
       },
       {
         "condition": "Reaction - While adjacent to a friendly non-Guardian figure that is defending",
