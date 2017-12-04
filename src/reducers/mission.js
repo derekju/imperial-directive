@@ -4,6 +4,7 @@ import {all, call, fork, put, select, take, takeEvery} from 'redux-saga/effects'
 import {
   getIsThereReadyRebelFigures,
   getRoster,
+  getRosterOnlyHeroes,
   SET_REBEL_ESCAPED,
   SET_REBEL_ACTIVATED,
 } from './rebels';
@@ -305,7 +306,7 @@ export const getMapStates = (state: StateType) => state.mission.mapStates;
 // Sagas
 
 function* handleCheckForThreeHeroes(): Generator<*, *, *> {
-  const roster = yield select(getRoster);
+  const roster = yield select(getRosterOnlyHeroes);
   const numHeroes = roster ? roster.length : 1;
   // Need to ask which hero we want to set for double activation
   if (numHeroes === 3) {
