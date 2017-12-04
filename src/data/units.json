@@ -53,11 +53,11 @@
     "eligibleForHpBoost": true,
     "elite": true,
     "hpBoosts": {
-      "2": [0],
-      "3": [0, 0, 2, 2, 4],
-      "4": [0, 2, 2, 4, 4],
-      "5": [2, 2, 4, 4, 6],
-      "6": [2, 4, 4, 6, 6]
+      "2": [0, 0, 0, 1, 1],
+      "3": [0, 1, 1, 1, 1],
+      "4": [1, 1, 1, 2, 2],
+      "5": [1, 2, 2, 2, 2],
+      "6": [1, 2, 2, 3, 3]
     },
     "id": "darthVader",
     "maxInGroup": 1,
@@ -86,10 +86,10 @@
     "elite": false,
     "hpBoosts": {
       "2": [0],
-      "3": [0, 0, 1, 1, 2],
-      "4": [0, 1, 1, 2, 2],
-      "5": [1, 1, 2, 2, 3],
-      "6": [1, 2, 2, 3, 3]
+      "3": [0, 0, 1, 1, 1],
+      "4": [0, 1, 1, 1, 2],
+      "5": [1, 1, 1, 2, 2],
+      "6": [1, 2, 2, 2, 3]
     },
     "id": "eWebEngineer",
     "maxInGroup": 1,
@@ -118,10 +118,10 @@
     "elite": true,
     "hpBoosts": {
       "2": [0],
-      "3": [0, 0, 1, 1, 2],
-      "4": [0, 1, 1, 2, 2],
-      "5": [1, 1, 2, 2, 3],
-      "6": [1, 2, 2, 3, 3]
+      "3": [0, 0, 1, 1, 1],
+      "4": [0, 1, 1, 1, 2],
+      "5": [1, 1, 1, 2, 2],
+      "6": [1, 2, 2, 2, 3]
     },
     "id": "eWebEngineerElite",
     "maxInGroup": 1,
@@ -184,9 +184,9 @@
     "elite": false,
     "hpBoosts": {
       "2": [0],
-      "3": [0, 0, 1, 1, 2],
-      "4": [0, 1, 1, 2, 2],
-      "5": [1, 1, 2, 2, 2],
+      "3": [0, 0, 1, 1, 1],
+      "4": [0, 1, 1, 1, 2],
+      "5": [1, 1, 1, 2, 2],
       "6": [1, 2, 2, 2, 3]
     },
     "id": "imperialOfficer",
@@ -224,9 +224,9 @@
     "elite": true,
     "hpBoosts": {
       "2": [0],
-      "3": [0, 0, 1, 1, 2],
-      "4": [0, 1, 1, 2, 2],
-      "5": [1, 1, 2, 2, 2],
+      "3": [0, 0, 1, 1, 1],
+      "4": [0, 1, 1, 1, 2],
+      "5": [1, 1, 1, 2, 2],
       "6": [1, 2, 2, 2, 3]
     },
     "id": "imperialOfficerElite",
@@ -260,9 +260,9 @@
     "elite": false,
     "hpBoosts": {
       "2": [0],
-      "3": [0, 0, 1, 1, 2],
-      "4": [0, 1, 1, 2, 2],
-      "5": [1, 1, 2, 2, 2],
+      "3": [0, 0, 1, 1, 1],
+      "4": [0, 1, 1, 1, 2],
+      "5": [1, 1, 1, 2, 2],
       "6": [1, 2, 2, 2, 3]
     },
     "id": "nexu",
@@ -296,9 +296,9 @@
     "elite": true,
     "hpBoosts": {
       "2": [0],
-      "3": [0, 0, 1, 1, 2],
-      "4": [0, 1, 1, 2, 2],
-      "5": [1, 1, 2, 2, 2],
+      "3": [0, 0, 1, 1, 1],
+      "4": [0, 1, 1, 1, 2],
+      "5": [1, 1, 1, 2, 2],
       "6": [1, 2, 2, 2, 3]
     },
     "id": "nexuElite",
@@ -312,11 +312,11 @@
     "buffs": ["getPlus2AccuracyPlus1Dmg", "getPlus2AccuracyPlus1Dmg", "plusOneMovement", "heavyPressure"],
     "commands": [
       {
-        "condition": "If within 5 spaces of {ATTACK_TARGET}",
+        "condition": "If within 6 spaces of {ATTACK_TARGET}",
         "command": "{ACTION} Move within 4 spaces and LOS of {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}, then move to {MOVE_TARGET}."
       },
       {
-        "condition": "If not within 5 spaces of {ATTACK_TARGET}",
+        "condition": "If not within 6 spaces of {ATTACK_TARGET}",
         "command": "{ACTION} Move to {MOVE_TARGET}."
       },
       {
@@ -328,10 +328,10 @@
     "elite": false,
     "hpBoosts": {
       "2": [0],
-      "3": [0, 0, 0, 1, 1],
-      "4": [0, 0, 1, 1, 2],
-      "5": [0, 1, 1, 2, 2],
-      "6": [1, 1, 2, 2, 3]
+      "3": [0, 0, 1, 1, 1],
+      "4": [0, 1, 1, 1, 2],
+      "5": [1, 1, 1, 2, 2],
+      "6": [1, 2, 2, 2, 3]
     },
     "id": "probeDroid",
     "maxInGroup": 1,
@@ -344,11 +344,11 @@
     "buffs": ["getPlus2AccuracyPlus1Dmg", "targetMinus1Block", "targetMinus1Block", "plusOneMovement"],
     "commands": [
       {
-        "condition": "If within 6 spaces of {ATTACK_TARGET}",
+        "condition": "If within 7 spaces of {ATTACK_TARGET}",
         "command": "{ACTION} Move within 4 spaces and LOS of {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}, then move to {MOVE_TARGET}."
       },
       {
-        "condition": "If not within 5 spaces of {ATTACK_TARGET}",
+        "condition": "If not within 7 spaces of {ATTACK_TARGET}",
         "command": "{ACTION} Move to {MOVE_TARGET}."
       },
       {
@@ -364,10 +364,10 @@
     "elite": true,
     "hpBoosts": {
       "2": [0],
-      "3": [0, 0, 0, 1, 1],
-      "4": [0, 0, 1, 1, 2],
-      "5": [0, 1, 1, 2, 2],
-      "6": [1, 1, 2, 2, 3]
+      "3": [0, 0, 1, 1, 1],
+      "4": [0, 1, 1, 1, 2],
+      "5": [1, 1, 1, 2, 2],
+      "6": [1, 2, 2, 2, 3]
     },
     "id": "probeDroidElite",
     "maxInGroup": 1,
@@ -400,9 +400,9 @@
     "elite": false,
     "hpBoosts": {
       "2": [0],
-      "3": [0, 1, 1, 1, 2],
-      "4": [1, 1, 1, 2, 2],
-      "5": [1, 1, 2, 2, 2],
+      "3": [0, 0, 1, 1, 1],
+      "4": [0, 1, 1, 1, 2],
+      "5": [1, 1, 1, 2, 2],
       "6": [1, 2, 2, 2, 3]
     },
     "id": "royalGuard",
@@ -436,9 +436,9 @@
     "elite": true,
     "hpBoosts": {
       "2": [0],
-      "3": [0, 1, 1, 1, 2],
-      "4": [1, 1, 1, 2, 2],
-      "5": [1, 1, 2, 2, 2],
+      "3": [0, 0, 1, 1, 1],
+      "4": [0, 1, 1, 1, 2],
+      "5": [1, 1, 1, 2, 2],
       "6": [1, 2, 2, 2, 3]
     },
     "id": "royalGuardElite",
@@ -469,8 +469,8 @@
     "hpBoosts": {
       "2": [0],
       "3": [0, 0, 1, 1, 1],
-      "4": [0, 1, 1, 2, 2],
-      "5": [1, 1, 2, 2, 2],
+      "4": [0, 1, 1, 1, 2],
+      "5": [1, 1, 1, 2, 2],
       "6": [1, 2, 2, 2, 3]
     },
     "id": "stormtrooper",
@@ -505,8 +505,8 @@
     "hpBoosts": {
       "2": [0],
       "3": [0, 0, 1, 1, 1],
-      "4": [0, 1, 1, 2, 2],
-      "5": [1, 1, 2, 2, 2],
+      "4": [0, 1, 1, 1, 2],
+      "5": [1, 1, 1, 2, 2],
       "6": [1, 2, 2, 2, 3]
     },
     "id": "stormtrooperElite",
@@ -545,8 +545,8 @@
     "hpBoosts": {
       "2": [0],
       "3": [0, 0, 1, 1, 1],
-      "4": [0, 1, 1, 2, 2],
-      "5": [1, 1, 2, 2, 2],
+      "4": [0, 1, 1, 1, 2],
+      "5": [1, 1, 1, 2, 2],
       "6": [1, 2, 2, 2, 3]
     },
     "id": "trandoshanHunter",
@@ -585,8 +585,8 @@
     "hpBoosts": {
       "2": [0],
       "3": [0, 0, 1, 1, 1],
-      "4": [0, 1, 1, 2, 2],
-      "5": [1, 1, 2, 2, 2],
+      "4": [0, 1, 1, 1, 2],
+      "5": [1, 1, 1, 2, 2],
       "6": [1, 2, 2, 2, 3]
     },
     "id": "trandoshanHunterElite",

@@ -49,7 +49,7 @@
   "heavyPressure": {
     "name": "Heavy Pressure",
     "text": [
-      "Attacks deal {STRAIN} in addition to {DMG}."
+      "After attacking a target, the target suffers an additional 1 {STRAIN}."
     ]
   },
   "gainSurgeStunSurgeDmg": {

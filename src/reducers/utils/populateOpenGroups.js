@@ -7,11 +7,11 @@ import units from '../../data/units';
 
 // Pull more groups than defined to increase strength of imperial player
 const EXTRA_GROUPS_TO_PULL = {
-  '2': 1,
-  '3': 1,
-  '4': 2,
-  '5': 2,
-  '6': 3,
+  '2': 0,
+  '3': 0,
+  '4': 1,
+  '5': 1,
+  '6': 2,
 };
 
 const THREAT_COST_FOR_MISSION_THREAT = {
