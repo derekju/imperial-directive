@@ -3,6 +3,7 @@
 import {
   addToRoster,
   getAreAllHeroesWounded,
+  getIsOneHeroLeft,
   SET_REBEL_ESCAPED,
   WOUND_REBEL_HERO,
   WOUND_REBEL_OTHER,
@@ -24,7 +25,7 @@ import {
   updateImperialVictory,
   updateRebelVictory,
 } from '../mission';
-import {REFER_CAMPAIGN_GUIDE} from './constants';
+import {REFER_CAMPAIGN_GUIDE, TARGET_REMAINING} from './constants';
 import createAction from '../createAction';
 import {displayModal} from '../modal';
 import helperDeploy from './helpers/helperDeploy';
@@ -37,7 +38,7 @@ import track from '../../lib/track';
 
 // Constants
 
-const TARGET_CELL_DOOR = 'the Cell door or terminal (whichever closest)';
+const TARGET_CELL_DOOR_TERMINAL = 'the Cell door or terminal (whichever closest)';
 const TARGET_CAPTIVE = 'the Captive';
 const TARGET_ENTRANCE = 'the Entrance';
 
@@ -46,6 +47,7 @@ const DEPLOYMENT_POINT_GREEN_SE = 'The south east green deployment point';
 // Types
 
 export type ImperialHospitalityStateType = {
+  priorityTargetKillHero: boolean,
   terminalDestroyed: boolean,
   thePrisonerResolved: boolean,
   wellGuardedResolved: boolean,
@@ -54,6 +56,7 @@ export type ImperialHospitalityStateType = {
 // State
 
 const initialState = {
+  priorityTargetKillHero: false,
   terminalDestroyed: false,
   thePrisonerResolved: false,
   wellGuardedResolved: false,
@@ -75,6 +78,11 @@ export default (state: ImperialHospitalityStateType = initialState, action: Obje
       return {
         ...state,
         terminalDestroyed: true,
+      };
+    case 'IMPERIAL_HOSPITALITY_PRIORITY_TARGET_KILL_HERO':
+      return {
+        ...state,
+        priorityTargetKillHero: action.payload,
       };
     default:
       return state;
@@ -213,8 +221,11 @@ function* handlePrisonerEvent(): Generator<*, *, *> {
       yield put(updateImperialVictory('When the captive is wounded or all heroes are wounded'));
       yield put(createAction('IMPERIAL_HOSPITALITY_PRISONER_RESOLVED', true));
       // SWITCH TARGETS
-      yield put(setAttackTarget(TARGET_CAPTIVE));
-      yield put(setMoveTarget(TARGET_ENTRANCE));
+      const {priorityTargetKillHero} = yield select(getState);
+      if (!priorityTargetKillHero) {
+        yield put(setAttackTarget(TARGET_CAPTIVE));
+        yield put(setMoveTarget(TARGET_ENTRANCE));
+      }
       // We're done
       break;
     }
@@ -258,6 +269,13 @@ function* handleHeroesWounded(): Generator<*, *, *> {
       track('imperialHospitality', 'defeat', 'wounded');
       break;
     }
+    const isOneHeroLeft = yield select(getIsOneHeroLeft);
+    if (isOneHeroLeft) {
+      // SWITCH TARGET
+      yield put(createAction('IMPERIAL_HOSPITALITY_PRIORITY_TARGET_KILL_HERO', true));
+      yield put(setAttackTarget(TARGET_REMAINING));
+      yield put(setMoveTarget(TARGET_REMAINING));
+    }
   }
 }
 
@@ -295,7 +313,7 @@ Priority target definitions:
 */
 export function* imperialHospitality(): Generator<*, *, *> {
   // SET TARGETS
-  yield put(setMoveTarget(TARGET_CELL_DOOR));
+  yield put(setMoveTarget(TARGET_CELL_DOOR_TERMINAL));
   // SET INITIAL DEPLOYMENT POINT
   yield put(setDeploymentPoint(DEPLOYMENT_POINT_GREEN_SE));
 
