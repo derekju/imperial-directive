@@ -7,6 +7,7 @@ import {getBrushfireGoalText} from '../reducers/missions/brushfire';
 import {getCapturedGoalText} from '../reducers/missions/captured';
 import {getImperialHospitalityGoalText} from '../reducers/missions/imperialHospitality';
 import {getLuxuryCruiseGoalText} from '../reducers/missions/luxuryCruise';
+import {getMeansOfProductionGoalText} from '../reducers/missions/meansOfProduction';
 import {getTemptationGoalText} from '../reducers/missions/temptation';
 import {getUnderSiegeGoalText} from '../reducers/missions/underSiege';
 import {setImperialGroupActivated, setInterruptedGroupActivated} from '../reducers/imperials';
@@ -31,6 +32,8 @@ const getGoalText = (state: StateType) => {
       return getImperialHospitalityGoalText(state);
     case 'luxuryCruise':
       return getLuxuryCruiseGoalText(state);
+    case 'meansOfProduction':
+      return getMeansOfProductionGoalText(state);
     case 'temptation':
       return getTemptationGoalText(state);
     case 'underSiege':

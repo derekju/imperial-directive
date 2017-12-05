@@ -3,7 +3,6 @@
 import {all, call, fork, put, select, take, takeEvery} from 'redux-saga/effects';
 import {
   getIsThereReadyRebelFigures,
-  getRoster,
   getRosterOnlyHeroes,
   SET_REBEL_ESCAPED,
   SET_REBEL_ACTIVATED,

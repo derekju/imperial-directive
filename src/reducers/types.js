@@ -7,6 +7,7 @@ import type {CapturedStateType} from './missions/captured';
 import type {EventsStateType} from './events';
 import type {ImperialHospitalityStateType} from './missions/imperialHospitality';
 import type {ImperialsStateType} from './imperials';
+import type {MeansOfProductionStateType} from './missions/meansOfProduction';
 import type {MissionStateType} from './mission';
 import type {ModalStateType} from './modal';
 import type {RebelsStateType} from './rebels';
@@ -21,6 +22,7 @@ export type StateType = {
   events: EventsStateType,
   imperialHospitality: ImperialHospitalityStateType,
   imperials: ImperialsStateType,
+  meansOfProduction: MeansOfProductionStateType,
   mission: MissionStateType,
   modal: ModalStateType,
   rebels: RebelsStateType,

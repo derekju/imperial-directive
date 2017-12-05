@@ -7,6 +7,7 @@ import captured from './missions/captured';
 import events from './events';
 import imperialHospitality from './missions/imperialHospitality';
 import imperials from './imperials';
+import meansOfProduction from './missions/meansOfProduction';
 import mission from './mission';
 import modal from './modal';
 import rebels from './rebels';
@@ -21,6 +22,7 @@ export default {
   events,
   imperialHospitality,
   imperials,
+  meansOfProduction,
   mission,
   modal,
   rebels,

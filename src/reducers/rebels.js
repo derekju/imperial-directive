@@ -127,7 +127,8 @@ export const woundRebelOther = (id: string) => createAction(WOUND_REBEL_OTHER, {
 // Selectors
 
 export const getRoster = (state: StateType) => state.rebels.roster;
-export const getRosterOnlyHeroes = (state: StateType) => state.rebels.roster.filter((id: string) => rebels[id].type === 'hero');
+export const getRosterOnlyHeroes = (state: StateType) =>
+  state.rebels.roster.filter((id: string) => rebels[id].type === 'hero');
 export const getIsThereReadyRebelFigures = (state: StateType) =>
   state.rebels.activatedRebels.length !==
   state.rebels.roster.length +
@@ -149,4 +150,3 @@ export const getIsHeroWithdrawn = (state: StateType, heroId: string) =>
   state.rebels.withdrawnHeroes.includes(heroId);
 export const getCanHeroActivateTwice = (state: StateType, heroId: string) =>
   state.rebels.canActivateTwice.includes(heroId);
-

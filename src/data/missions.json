@@ -368,7 +368,6 @@
     "noMercenaryAllowed": false,
     "openGroups": 4
   },
-
   "brushfire": {
     "initialGroups": [
       "atst", "eWebEngineer", "imperialOfficer", "probeDroid"
@@ -515,8 +514,6 @@
     "noMercenaryAllowed": false,
     "openGroups": 3
   },
-
-
   "captured": {
     "initialGroups": [
       "imperialOfficer", "imperialOfficerElite", "stormtrooper", "stormtrooperElite"
@@ -1081,6 +1078,109 @@
     },
     "name": "Luxury Cruise",
     "noMercenaryAllowed": true,
+    "openGroups": 3
+  },
+  "meansOfProduction": {
+    "initialGroups": [
+      "probeDroid", "stormtrooper"
+    ],
+    "instructions": {
+      "imperialVictory": "All heroes are wounded",
+      "rebelVictory": "Data core destroyed"
+    },
+    "mapImage": [
+      ["00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "33a", "33a", "00a"],
+      ["00a", "00a", "18a", "18a", "18a", "07a", "07a", "07a", "00a", "00a", "00a", "33a", "33a", "00a"],
+      ["00a", "00a", "18a", "18a", "18a", "07a", "07a", "07a", "07a", "00a", "22a", "22a", "22a", "22a"],
+      ["00a", "00a", "18a", "18a", "18a", "07a", "07a", "07a", "07a", "00a", "22a", "22a", "22a", "22a"],
+      ["00a", "05a", "05a", "05a", "05a", "00a", "07a", "07a", "07a", "00a", "22a", "22a", "22a", "22a"],
+      ["18a", "05a", "05a", "05a", "05a", "00a", "00a", "39a", "39a", "00a", "22a", "22a", "22a", "22a"],
+      ["18a", "05a", "05a", "05a", "05a", "19a", "19a", "19a", "19a", "19a", "19a", "27a", "27a", "00a"],
+      ["00a", "05a", "05a", "05a", "05a", "19a", "19a", "19a", "19a", "19a", "19a", "27a", "27a", "00a"],
+      ["00a", "00a", "00a", "00a", "00a", "19a", "19a", "19a", "19a", "19a", "19a", "27a", "27a", "00a"],
+      ["00a", "00a", "00a", "00a", "00a", "19a", "19a", "19a", "19a", "19a", "19a", "27a", "27a", "00a"],
+      ["00a", "00a", "00a", "00a", "00a", "19a", "19a", "19a", "19a", "19a", "19a", "27a", "27a", "00a"],
+      ["00a", "00a", "00a", "00a", "00a", "19a", "19a", "19a", "19a", "19a", "19a", "27a", "27a", "00a"],
+      ["00a", "00a", "00a", "00a", "00a", "00a", "23a", "23a", "23a", "23a", "28a", "28a", "28a", "00a"],
+      ["00a", "00a", "00a", "00a", "00a", "00a", "23a", "23a", "23a", "23a", "28a", "28a", "28a", "00a"],
+      ["00a", "00a", "00a", "00a", "00a", "00a", "23a", "23a", "23a", "23a", "28a", "28a", "28a", "00a"],
+      ["00a", "00a", "00a", "00a", "00a", "00a", "23a", "23a", "23a", "23a", "00a", "00a", "00a", "00a"]
+    ],
+    "mapStates": {
+      "entrance-1": {
+        "activated": false,
+        "activateText": "",
+        "coordinates": {
+          "x": 0,
+          "y": 5
+        },
+        "description": "The entrance.",
+        "id": 1,
+        "interactable": false,
+        "type": "entrance",
+        "unactivateText": "",
+        "visible": true
+      },
+      "door-1": {
+        "activated": false,
+        "activateText": "Open",
+        "coordinates": {
+          "x": 7,
+          "y": 5
+        },
+        "description": "The door to the Hanger.",
+        "id": 1,
+        "interactable": true,
+        "type": "door",
+        "unactivateText": "Close",
+        "visible": true
+      },
+      "door-2": {
+        "activated": false,
+        "activateText": "Open",
+        "coordinates": {
+          "x": 10,
+          "y": 8
+        },
+        "description": "The door to the inner hallway.",
+        "id": 2,
+        "interactable": true,
+        "type": "door",
+        "unactivateText": "Close",
+        "visible": true
+      },
+      "door-3": {
+        "activated": false,
+        "activateText": "Open",
+        "coordinates": {
+          "x": 11,
+          "y": 2
+        },
+        "description": "The door to the data core.",
+        "id": 3,
+        "interactable": true,
+        "type": "door",
+        "unactivateText": "Close",
+        "visible": true
+      },
+      "imperial-1": {
+        "activated": false,
+        "activateText": "Destroy",
+        "color": "red",
+        "coordinates": {
+          "x": 12,
+          "y": 0
+        },
+        "description": "The data core.",
+        "id": 1,
+        "interactable": true,
+        "type": "imperial",
+        "unactivateText": "Restore",
+        "visible": true
+      }
+    },
+    "name": "Means of Production",
+    "noMercenaryAllowed": false,
     "openGroups": 3
   },
   "temptation": {

@@ -358,7 +358,13 @@ function* handleOptionalDeployment(): Generator<*, *, *> {
   const missionThreat = yield select(getMissionThreat);
   const difficulty = yield select(getDifficulty);
   yield put(
-    setImperialFiguresAfterDeployReinforce(groupsToDeploy, [], newOpenGroups, missionThreat, difficulty)
+    setImperialFiguresAfterDeployReinforce(
+      groupsToDeploy,
+      [],
+      newOpenGroups,
+      missionThreat,
+      difficulty
+    )
   );
 
   yield put(optionalDeploymentDone(currentThreat));
