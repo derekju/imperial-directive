@@ -36,6 +36,10 @@ const styles = {
     backgroundColor: '#DDD',
     color: 'black',
   },
+  green: {
+    backgroundColor: 'rgb(142, 184, 97)',
+    color: 'white',
+  },
   offset: {
     ...positionAbsolute(32, null, null, 32),
     zIndex: 1,

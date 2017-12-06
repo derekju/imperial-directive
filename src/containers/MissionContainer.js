@@ -6,6 +6,7 @@ import {getASimpleTaskGoalText} from '../reducers/missions/aSimpleTask';
 import {getBrushfireGoalText} from '../reducers/missions/brushfire';
 import {getCapturedGoalText} from '../reducers/missions/captured';
 import {getImperialHospitalityGoalText} from '../reducers/missions/imperialHospitality';
+import {getImpoundedGoalText} from '../reducers/missions/impounded';
 import {getLuxuryCruiseGoalText} from '../reducers/missions/luxuryCruise';
 import {getMeansOfProductionGoalText} from '../reducers/missions/meansOfProduction';
 import {getTemptationGoalText} from '../reducers/missions/temptation';
@@ -30,6 +31,8 @@ const getGoalText = (state: StateType) => {
       return getCapturedGoalText(state);
     case 'imperialHospitality':
       return getImperialHospitalityGoalText(state);
+    case 'impounded':
+      return getImpoundedGoalText(state);
     case 'luxuryCruise':
       return getLuxuryCruiseGoalText(state);
     case 'meansOfProduction':
