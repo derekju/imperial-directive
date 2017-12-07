@@ -19,6 +19,7 @@ import {
 import {REFER_CAMPAIGN_GUIDE, TARGET_HERO_CLOSEST_UNWOUNDED, TARGET_REMAINING} from './constants';
 import createAction from '../createAction';
 import {displayModal} from '../modal';
+import helperChoiceModal from './helpers/helperChoiceModal';
 import helperDeploy from './helpers/helperDeploy';
 import helperEventModal from './helpers/helperEventModal';
 import helperInitialSetup from './helpers/helperInitialSetup';
@@ -26,7 +27,6 @@ import helperMissionBriefing from './helpers/helperMissionBriefing';
 import {missionSagaLoadDone} from '../app';
 import type {StateType} from '../types';
 import track from '../../lib/track';
-import waitForModal from '../../sagas/waitForModal';
 
 // Constants
 
@@ -114,15 +114,11 @@ function* handleLockDownEvent(): Generator<*, *, *> {
       // Ok, this is the round the rebels opened the door so wait until end of round to trigger
       yield take(STATUS_PHASE_END_ROUND_EFFECTS);
       // Pick which one we'll do and then do it
-      yield put(
-        displayModal('CHOICE_MODAL', {
-          question: 'Is there a rebel figure west of the door?',
-          title: 'Lockdown',
-        })
+      const answer = yield call(
+        helperChoiceModal,
+        'Is there a rebel figure west of the door?',
+        'Lockdown'
       );
-      yield call(waitForModal('CHOICE_MODAL'));
-      const response = yield take('CHOICE_MODAL_ANSWER');
-      const {answer} = response.payload;
       if (answer === 'yes') {
         track('aftermath', 'lockdown', 'rebelWest');
         yield call(helperEventModal, {

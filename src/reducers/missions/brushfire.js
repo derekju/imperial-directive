@@ -19,6 +19,7 @@ import {
 import {REFER_CAMPAIGN_GUIDE, TARGET_HERO_CLOSEST_UNWOUNDED, TARGET_REMAINING} from './constants';
 import createAction from '../createAction';
 import {displayModal} from '../modal';
+import helperChoiceModal from './helpers/helperChoiceModal';
 import helperDeploy from './helpers/helperDeploy';
 import helperEventModal from './helpers/helperEventModal';
 import helperIncreaseThreat from './helpers/helperIncreaseThreat';
@@ -27,7 +28,6 @@ import helperMissionBriefing from './helpers/helperMissionBriefing';
 import {missionSagaLoadDone} from '../app';
 import type {StateType} from '../types';
 import track from '../../lib/track';
-import waitForModal from '../../sagas/waitForModal';
 
 // Constants
 
@@ -195,15 +195,7 @@ function* handleLastStandEvent(): Generator<*, *, *> {
   yield put(optionalDeployment());
   yield take(OPTIONAL_DEPLOYMENT_DONE);
   // Is hero carrying explosive?
-  yield put(
-    displayModal('CHOICE_MODAL', {
-      question: 'Is a Hero carrying an explosive?',
-      title: 'Last Stand',
-    })
-  );
-  yield call(waitForModal('CHOICE_MODAL'));
-  const response = yield take('CHOICE_MODAL_ANSWER');
-  const {answer} = response.payload;
+  const answer = yield call(helperChoiceModal, 'Is a Hero carrying an explosive?', 'Last Stand');
   if (answer === 'yes') {
     yield call(helperEventModal, {
       story: 'With a bang an Imperial Officer triggers a remote detonation!',

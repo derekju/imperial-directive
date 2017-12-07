@@ -18,13 +18,13 @@ import {
 import {REFER_CAMPAIGN_GUIDE, TARGET_HERO_CLOSEST_UNWOUNDED, TARGET_REMAINING} from './constants';
 import createAction from '../createAction';
 import {displayModal} from '../modal';
+import helperChoiceModal from './helpers/helperChoiceModal';
 import helperEventModal from './helpers/helperEventModal';
 import helperInitialSetup from './helpers/helperInitialSetup';
 import helperMissionBriefing from './helpers/helperMissionBriefing';
 import {missionSagaLoadDone} from '../app';
 import type {StateType} from '../types';
 import track from '../../lib/track';
-import waitForModal from '../../sagas/waitForModal';
 
 // Constants
 
@@ -117,15 +117,11 @@ function* handleEquipmentRetrieval(): Generator<*, *, *> {
     const {id, type, value} = action.payload;
     if (id === 1 && type === 'neutral' && value === true) {
       // Need to ask if this is the last hero to get their equipment
-      yield put(
-        displayModal('CHOICE_MODAL', {
-          question: 'Is this the last Hero to retrieve their equipment?',
-          title: 'Equipment Retrieval',
-        })
+      const answer = yield call(
+        helperChoiceModal,
+        'Is this the last Hero to retrieve their equipment?',
+        'Equipment Retrieval'
       );
-      yield call(waitForModal('CHOICE_MODAL'));
-      const response = yield take('CHOICE_MODAL_ANSWER');
-      const {answer} = response.payload;
       if (answer === 'yes') {
         yield call(handleEquipmentRetrieved);
         break;
