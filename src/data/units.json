@@ -520,16 +520,12 @@
     "buffs": ["szark"],
     "commands": [
       {
-        "condition": "If within 4 spaces of {ATTACK_TARGET}",
-        "command": "{ACTION} Move adjacent to {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}, then move to {MOVE_TARGET}."
+        "condition": "If within 5 spaces and LOS of any Rebel figure",
+        "command": "{ACTION} Attempt to move away and out of LOS of any Rebel figures. If still in LOS, {ACTION} attempt to move away and out of LOS of any Rebel figures."
       },
       {
-        "condition": "If within 7 spaces of {ATTACK_TARGET}",
-        "command": "{ACTION} Move within 3 spaces and LOS of {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}, then move to {MOVE_TARGET}."
-      },
-      {
-        "condition": "If not within 7 spaces of {ATTACK_TARGET}",
-        "command": "{ACTION} Move adjacent to {ATTACK_TARGET}."
+        "condition": "If within 5 spaces and LOS of any Rebel figure",
+        "command": "{ACTION} Attack the closest unwounded hero, then move away and out of LOS of any Rebel figures."
       },
       {
         "condition": "Reaction - If attacking a target within 3 spaces",

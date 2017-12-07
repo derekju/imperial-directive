@@ -40,6 +40,7 @@ import track from '../../lib/track';
 
 // Constants
 
+const TARGET_SZARK = 'Szark';
 const DEPLOYMENT_POINT_GREEN = 'The green deployment point closest to the most heroes';
 
 // Types
@@ -151,6 +152,12 @@ function* handleGunFightEvent(): Generator<*, *, *> {
 
       yield put(createAction('HIGH_MOON_SET_CALL_OUT_SZARK', true));
       yield put(updateRebelVictory('Defeat Szark'));
+
+      const state = yield select(getState);
+      const {priorityTargetKillHero} = state;
+      if (!priorityTargetKillHero) {
+        yield put(setMoveTarget(TARGET_SZARK));
+      }
 
       // We're done
       break;
