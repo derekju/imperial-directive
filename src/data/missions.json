@@ -794,6 +794,79 @@
     "noMercenaryAllowed": false,
     "openGroups": 3
   },
+  "highMoon": {
+    "initialGroups": [
+      "eWebEngineer", "imperialOfficer", "nexuElite", "stormtrooper"
+    ],
+    "instructions": {
+      "imperialVictory": "When all heroes are wounded",
+      "rebelVictory": "(to be revealed)"
+    },
+    "mapImage": [
+      ["00a", "00a", "00a", "00a", "18b", "18b", "00a", "00a", "00a", "00a", "00a", "00a", "00a"],
+      ["00a", "00a", "00a", "05b", "05b", "05b", "05b", "00a", "00a", "00a", "00a", "00a", "00a"],
+      ["10b", "10b", "10b", "05b", "05b", "05b", "05b", "00a", "00a", "00a", "00a", "00a", "00a"],
+      ["10b", "10b", "10b", "05b", "05b", "05b", "05b", "00a", "00a", "00a", "00a", "21b", "21b"],
+      ["10b", "10b", "10b", "05b", "05b", "05b", "05b", "00a", "00a", "21b", "21b", "21b", "21b"],
+      ["11b", "11b", "00a", "03b", "03b", "03b", "03b", "00a", "00a", "21b", "21b", "21b", "21b"],
+      ["11b", "11b", "03b", "03b", "03b", "03b", "03b", "03b", "39b", "21b", "21b", "21b", "21b"],
+      ["11b", "11b", "03b", "03b", "03b", "03b", "03b", "03b", "39b", "21b", "21b", "21b", "21b"],
+      ["11b", "11b", "00a", "03b", "03b", "03b", "03b", "00a", "00a", "21b", "21b", "21b", "21b"],
+      ["07b", "07b", "07b", "00a", "03b", "03b", "00a", "00a", "00a", "00a", "36b", "36b", "00a"],
+      ["07b", "07b", "07b", "07b", "06b", "06b", "06b", "00a", "00a", "00a", "00a", "00a", "00a"],
+      ["07b", "07b", "07b", "07b", "06b", "06b", "06b", "06b", "18b", "00a", "00a", "00a", "00a"],
+      ["00a", "07b", "07b", "07b", "06b", "06b", "06b", "06b", "18b", "00a", "00a", "00a", "00a"],
+      ["00a", "00a", "00a", "00a", "06b", "06b", "06b", "06b", "00a", "00a", "00a", "00a", "00a"]
+    ],
+    "mapStates": {
+      "entrance-1": {
+        "activated": false,
+        "activateText": "",
+        "coordinates": {
+          "x": 0,
+          "y": 2
+        },
+        "description": "The entrance.",
+        "id": 1,
+        "interactable": false,
+        "type": "entrance",
+        "unactivateText": "",
+        "visible": true
+      },
+      "door-1": {
+        "activated": false,
+        "activateText": "Open",
+        "coordinates": {
+          "x": 8,
+          "y": 7
+        },
+        "description": "The door to the bar.",
+        "id": 1,
+        "interactable": false,
+        "type": "door",
+        "unactivateText": "Close",
+        "visible": true
+      },
+      "rebel-1": {
+        "activated": false,
+        "activateText": "Use",
+        "color": "red",
+        "coordinates": {
+          "x": 3,
+          "y": 6
+        },
+        "description": "The comlink to call out Szark.",
+        "id": 1,
+        "interactable": true,
+        "type": "rebel",
+        "unactivateText": "Restore",
+        "visible": true
+      }
+    },
+    "name": "High Moon",
+    "noMercenaryAllowed": false,
+    "openGroups": 3
+  },
   "imperialHospitality": {
     "initialGroups": [
       "probeDroid", "probeDroid", "royalGuard"

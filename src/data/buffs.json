@@ -135,5 +135,14 @@
     "text": [
       "After resolving an attack, perform an additional attack. Then, become stunned and suffer 2 {DMG}."
     ]
+  },
+  "szark": {
+    "name": "Szark",
+    "text": [
+      "Szark gains:{BREAK}",
+      "{BREAK}",
+      "Accuracy +2{BREAK}",
+      "{SURGE}: +2 {DMG}"
+    ]
   }
 }

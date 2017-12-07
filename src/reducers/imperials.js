@@ -242,6 +242,17 @@ export default (state: ImperialsStateType = initialState, action: Object) => {
         ...state,
         customAI: action.payload.customAI,
       };
+    case SET_IMPERIAL_UNIT_HP_BUFF:
+      const {groupId, hpBuff} = action.payload;
+      return {
+        ...state,
+        deployedGroups: state.deployedGroups.map((deployedGroup: ImperialUnitType) => {
+          if (deployedGroup.id === groupId) {
+            deployedGroup.hpBoost = hpBuff;
+          }
+          return deployedGroup;
+        }),
+      };
     default:
       return state;
   }
@@ -261,6 +272,7 @@ export const SET_INTERRUPTED_GROUP = 'SET_INTERRUPTED_GROUP';
 export const OPTIONAL_DEPLOYMENT = 'OPTIONAL_DEPLOYMENT';
 export const OPTIONAL_DEPLOYMENT_DONE = 'OPTIONAL_DEPLOYMENT_DONE';
 export const SET_CUSTOM_AI = 'SET_CUSTOM_AI';
+export const SET_IMPERIAL_UNIT_HP_BUFF = 'SET_IMPERIAL_UNIT_HP_BUFF';
 
 // Action creators
 
@@ -309,6 +321,8 @@ export const optionalDeployment = () => createAction(OPTIONAL_DEPLOYMENT);
 export const optionalDeploymentDone = (newThreat: number) =>
   createAction(OPTIONAL_DEPLOYMENT_DONE, {newThreat});
 export const setCustomAI = (customAI: ?(Object[])) => createAction(SET_CUSTOM_AI, {customAI});
+export const setImperialUnitHpBuff = (groupId: string, hpBuff: number) =>
+  createAction(SET_IMPERIAL_UNIT_HP_BUFF, {groupId, hpBuff});
 
 // Selectors
 

@@ -105,10 +105,7 @@ function* handlePrepForTakeoffEvent(): Generator<*, *, *> {
     yield take(SET_MAP_STATE_ACTIVATED);
     const mapStates = yield select(getMapStates);
     // Now check all 4 terminals, if they are activated, then game over for rebels
-    if (
-      mapStates['terminal-1'].activated &&
-      mapStates['rebel-1'].activated
-    ) {
+    if (mapStates['terminal-1'].activated && mapStates['rebel-1'].activated) {
       track('impounded', 'prepForTakeoff', 'triggered');
       yield call(helperEventModal, {
         story: REFER_CAMPAIGN_GUIDE,
@@ -123,7 +120,7 @@ function* handlePrepForTakeoffEvent(): Generator<*, *, *> {
       yield call(helperEventModal, {
         text: [
           'Place a green neutral token on the blue point as indicated on the mission map in the campaign guide.',
-          'That point represents the hatch. A hero carrying the pilot can interact with the hatch for the pilot to depart.'
+          'That point represents the hatch. A hero carrying the pilot can interact with the hatch for the pilot to depart.',
         ],
         title: 'Prep for Takeoff',
       });

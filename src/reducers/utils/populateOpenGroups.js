@@ -27,6 +27,11 @@ export default (numOpenGroups: number, noMercenaryAllowed: boolean, missionThrea
   const threatCost = THREAT_COST_FOR_MISSION_THREAT[String(missionThreat)];
 
   const groupsToPullFrom = pickBy(units, (unit: ImperialUnitType) => {
+    // Don't pick special units
+    if (unit.affiliation === 'mission') {
+      return false;
+    }
+
     if (noMercenaryAllowed) {
       return unit.threat <= threatCost && unit.affiliation !== 'mercenary';
     } else {

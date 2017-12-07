@@ -5,6 +5,7 @@ import app from './app';
 import brushfire from './missions/brushfire';
 import captured from './missions/captured';
 import events from './events';
+import highMoon from './missions/highMoon';
 import imperialHospitality from './missions/imperialHospitality';
 import imperials from './imperials';
 import impounded from './missions/impounded';
@@ -21,6 +22,7 @@ export default {
   brushfire,
   captured,
   events,
+  highMoon,
   imperialHospitality,
   imperials,
   impounded,
