@@ -9,6 +9,7 @@ import highMoon from './missions/highMoon';
 import imperialHospitality from './missions/imperialHospitality';
 import imperials from './imperials';
 import impounded from './missions/impounded';
+import indebted from './missions/indebted';
 import meansOfProduction from './missions/meansOfProduction';
 import mission from './mission';
 import modal from './modal';
@@ -26,6 +27,7 @@ export default {
   imperialHospitality,
   imperials,
   impounded,
+  indebted,
   meansOfProduction,
   mission,
   modal,

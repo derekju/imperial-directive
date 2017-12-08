@@ -1112,6 +1112,167 @@
     "noMercenaryAllowed": false,
     "openGroups": 3
   },
+  "indebted": {
+    "initialGroups": [
+      "nexu", "stormtrooperElite"
+    ],
+    "instructions": {
+      "imperialVictory": "At the end of Round 6 or when all heroes are wounded",
+      "rebelVictory": "When Shortatha is rescued"
+    },
+    "mapImage": [
+      ["00a", "00a", "00a", "00a", "00a", "00a", "01a", "01a", "01a", "01a", "01a", "01a", "00a", "00a", "00a", "00a"],
+      ["00a", "22a", "22a", "22a", "22a", "00a", "01a", "01a", "01a", "01a", "01a", "01a", "00a", "00a", "00a", "00a"],
+      ["36a", "22a", "22a", "22a", "22a", "39a", "01a", "01a", "01a", "01a", "01a", "01a", "39a", "28a", "28a", "28a"],
+      ["36a", "22a", "22a", "22a", "22a", "39a", "01a", "01a", "01a", "01a", "01a", "01a", "39a", "28a", "28a", "28a"],
+      ["00a", "22a", "22a", "22a", "22a", "00a", "01a", "01a", "01a", "01a", "01a", "01a", "00a", "28a", "28a", "28a"],
+      ["00a", "00a", "00a", "00a", "00a", "00a", "01a", "01a", "01a", "01a", "01a", "01a", "00a", "00a", "33a", "33a"],
+      ["00a", "00a", "00a", "00a", "00a", "00a", "00a", "06a", "06a", "06a", "00a", "00a", "00a", "00a", "33a", "33a"],
+      ["00a", "00a", "00a", "00a", "00a", "00a", "00a", "06a", "06a", "06a", "06a", "04a", "04a", "04a", "04a", "00a"],
+      ["00a", "00a", "00a", "00a", "00a", "00a", "00a", "06a", "06a", "06a", "06a", "04a", "04a", "04a", "04a", "18a"],
+      ["00a", "00a", "00a", "00a", "00a", "00a", "00a", "06a", "06a", "06a", "06a", "04a", "04a", "04a", "04a", "18a"],
+      ["00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "39a", "39a", "00a", "04a", "04a", "04a", "04a", "00a"],
+      ["00a", "00a", "00a", "00a", "00a", "00a", "00a", "23a", "23a", "23a", "23a", "00a", "00a", "00a", "00a", "00a"],
+      ["00a", "00a", "00a", "00a", "00a", "00a", "00a", "23a", "23a", "23a", "23a", "36a", "00a", "00a", "00a", "00a"],
+      ["00a", "00a", "00a", "00a", "00a", "00a", "00a", "23a", "23a", "23a", "23a", "36a", "00a", "00a", "00a", "00a"],
+      ["00a", "00a", "00a", "00a", "00a", "00a", "00a", "23a", "23a", "23a", "23a", "00a", "00a", "00a", "00a", "00a"]
+    ],
+    "mapStates": {
+      "entrance-1": {
+        "activated": false,
+        "activateText": "",
+        "coordinates": {
+          "x": 15,
+          "y": 9
+        },
+        "description": "The entrance.",
+        "id": 1,
+        "interactable": false,
+        "type": "entrance",
+        "unactivateText": "",
+        "visible": true
+      },
+      "terminal-1": {
+        "activated": false,
+        "activateText": "Interact",
+        "coordinates": {
+          "x": 15,
+          "y": 2
+        },
+        "description": "A terminal controlling the door.",
+        "id": 1,
+        "interactable": true,
+        "type": "terminal",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "terminal-2": {
+        "activated": false,
+        "activateText": "Interact",
+        "coordinates": {
+          "x": 9,
+          "y": 14
+        },
+        "description": "A terminal controlling the door.",
+        "id": 2,
+        "interactable": true,
+        "type": "terminal",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "terminal-3": {
+        "activated": false,
+        "activateText": "Interact",
+        "coordinates": {
+          "x": 2,
+          "y": 4
+        },
+        "description": "A terminal controlling the door.",
+        "id": 3,
+        "interactable": true,
+        "type": "terminal",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "door-1": {
+        "activated": false,
+        "activateText": "Open",
+        "coordinates": {
+          "x": 14,
+          "y": 4
+        },
+        "description": "The door to the Cell.",
+        "id": 1,
+        "interactable": false,
+        "type": "door",
+        "unactivateText": "Close",
+        "visible": true
+      },
+      "imperial-1": {
+        "activated": false,
+        "activateText": "Disable",
+        "color": "red",
+        "coordinates": {
+          "x": 13,
+          "y": 2
+        },
+        "description": "A pulse cannon.",
+        "id": 1,
+        "interactable": true,
+        "type": "imperial",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "imperial-2": {
+        "activated": false,
+        "activateText": "Disable",
+        "color": "green",
+        "coordinates": {
+          "x": 8,
+          "y": 12
+        },
+        "description": "A pulse cannon.",
+        "id": 2,
+        "interactable": true,
+        "type": "imperial",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "imperial-3": {
+        "activated": false,
+        "activateText": "Disable",
+        "color": "yellow",
+        "coordinates": {
+          "x": 4,
+          "y": 2
+        },
+        "description": "A pulse cannon.",
+        "id": 3,
+        "interactable": true,
+        "type": "imperial",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "rebel-1": {
+        "activated": false,
+        "activateText": "Rescue",
+        "color": "blue",
+        "coordinates": {
+          "x": 14,
+          "y": 6
+        },
+        "description": "Shortatha.",
+        "id": 1,
+        "interactable": true,
+        "type": "rebel",
+        "unactivateText": "Restore",
+        "visible": true
+      }
+    },
+    "name": "Indebted",
+    "noMercenaryAllowed": false,
+    "openGroups": 3
+  },
   "luxuryCruise": {
     "initialGroups": [
       "imperialOfficer", "probeDroid", "stormtrooper", "stormtrooperElite"

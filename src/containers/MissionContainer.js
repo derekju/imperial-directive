@@ -8,6 +8,7 @@ import {getCapturedGoalText} from '../reducers/missions/captured';
 import {getHighMoonGoalText} from '../reducers/missions/highMoon';
 import {getImperialHospitalityGoalText} from '../reducers/missions/imperialHospitality';
 import {getImpoundedGoalText} from '../reducers/missions/impounded';
+import {getIndebtedGoalText} from '../reducers/missions/indebted';
 import {getLuxuryCruiseGoalText} from '../reducers/missions/luxuryCruise';
 import {getMeansOfProductionGoalText} from '../reducers/missions/meansOfProduction';
 import {getTemptationGoalText} from '../reducers/missions/temptation';
@@ -36,6 +37,8 @@ const getGoalText = (state: StateType) => {
       return getImperialHospitalityGoalText(state);
     case 'impounded':
       return getImpoundedGoalText(state);
+    case 'indebted':
+      return getIndebtedGoalText(state);
     case 'luxuryCruise':
       return getLuxuryCruiseGoalText(state);
     case 'meansOfProduction':

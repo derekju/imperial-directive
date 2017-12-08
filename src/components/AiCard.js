@@ -120,7 +120,7 @@ class AiCard extends React.PureComponent<AiCardPropsType> {
     // Not sure why buff isn't defined sometimes but error check so the app doesn't crash
     if (buff) {
       return (
-        <div key={buff.name}>
+        <div key={`buff.name-${String(new Date())}`}>
           <div style={styles.buffName}>{buff.name}</div>
           <br />
           {buff.text.map((buffText: string) => {
