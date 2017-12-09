@@ -85,6 +85,7 @@ const initialState = {
   currentThreat: 0,
   deploymentPoint: 'The green deployment point closest to the most hostile figures',
   difficulty: 'standard',
+  disableThreatIncrease: false,
   instructions: {
     imperialVictory: '',
     rebelVictory: '',
@@ -168,6 +169,10 @@ export default (state: MissionStateType = initialState, action: Object) => {
         currentActivePlayer: PLAYER_NONE,
       };
     case STATUS_PHASE_INCREASE_THREAT:
+      if (state.disableThreatIncrease) {
+        return state;
+      }
+
       const extraThreatToAdd =
         state.difficulty === 'experienced'
           ? DIFFICULTY_THREAT_INCREASE[String(state.missionThreat)]
@@ -223,6 +228,11 @@ export default (state: MissionStateType = initialState, action: Object) => {
           imperialVictory: action.payload.newText,
         },
       };
+    case DISABLE_THREAT_INCREASE:
+      return {
+        ...state,
+        disableThreatIncrease: true,
+      };
     default:
       return state;
   }
@@ -254,6 +264,7 @@ export const MISSION_SPECIAL_SETUP_DONE = 'MISSION_SPECIAL_SETUP_DONE';
 export const INCREASE_THREAT = 'INCREASE_THREAT';
 export const UPDATE_REBEL_VICTORY = 'UPDATE_REBEL_VICTORY';
 export const UPDATE_IMPERIAL_VICTORY = 'UPDATE_IMPERIAL_VICTORY';
+export const DISABLE_THREAT_INCREASE = 'DISABLE_THREAT_INCREASE';
 
 // Action creators
 
@@ -291,6 +302,7 @@ export const updateRebelVictory = (newText: string) =>
   createAction(UPDATE_REBEL_VICTORY, {newText});
 export const updateImperialVictory = (newText: string) =>
   createAction(UPDATE_IMPERIAL_VICTORY, {newText});
+export const disableThreatIncrease = () => createAction(DISABLE_THREAT_INCREASE);
 
 // Selectors
 

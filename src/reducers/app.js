@@ -15,6 +15,7 @@ import {highMoon} from './missions/highMoon';
 import {imperialHospitality} from './missions/imperialHospitality';
 import {impounded} from './missions/impounded';
 import {indebted} from './missions/indebted';
+import {looseCannon} from './missions/looseCannon';
 import {luxuryCruise} from './missions/luxuryCruise';
 import {meansOfProduction} from './missions/meansOfProduction';
 import {temptation} from './missions/temptation';
@@ -109,6 +110,9 @@ function* forkMission(currentMission: string): Generator<*, *, *> {
       break;
     case 'indebted':
       yield fork(indebted);
+      break;
+    case 'looseCannon':
+      yield fork(looseCannon);
       break;
     case 'luxuryCruise':
       yield fork(luxuryCruise);

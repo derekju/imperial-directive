@@ -411,6 +411,42 @@
     "reinforcementCost": 4,
     "threat": 8
   },
+  "royalGuardChampion": {
+    "affiliation": "imperial",
+    "buffs": ["targetMinus1Block", "extraSurgeIfTargetTwoStrain", "showOfForce", "targetSuffersStrainDmg"],
+    "commands": [
+      {
+        "condition": "If possible to be adjacent to 2 hostile figures",
+        "command": "{ACTION} If necessary, move adjacent to those figures, then {ACTION} Use Brutality ability to attack those targets."
+      },
+      {
+        "condition": "If within 7 spaces of {ATTACK_TARGET}",
+        "command": "{ACTION} Move adjacent to {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}."
+      },
+      {
+        "condition": "If not within 7 spaces of {ATTACK_TARGET}",
+        "command": "{ACTION} Move adjacent to {MOVE_TARGET}."
+      },
+      {
+        "condition": "Reaction - When a friendly figure within 3 spaces is defeated",
+        "command": "Use Executor ability."
+      }
+    ],
+    "eligibleForHpBoost": true,
+    "elite": true,
+    "hpBoosts": {
+      "2": [0],
+      "3": [0, 0, 1, 1, 1],
+      "4": [0, 1, 1, 1, 2],
+      "5": [1, 1, 1, 2, 2],
+      "6": [1, 2, 2, 2, 3]
+    },
+    "id": "royalGuardChampion",
+    "maxInGroup": 1,
+    "name": "Royal Guard Champion",
+    "reinforcementCost": -1,
+    "threat": 15
+  },
   "royalGuardElite": {
     "affiliation": "imperial",
     "buffs": ["targetMinus1Block", "gainSurgeStunSurgeDmg", "extraSurgeIfTargetTwoStrain", "targetSuffersStrainDmg"],

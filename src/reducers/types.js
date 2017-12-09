@@ -10,6 +10,7 @@ import type {ImperialHospitalityStateType} from './missions/imperialHospitality'
 import type {ImperialsStateType} from './imperials';
 import type {ImpoundedStateType} from './missions/impounded';
 import type {IndebtedStateType} from './missions/indebted';
+import type {LooseCannonStateType} from './missions/looseCannon';
 import type {MeansOfProductionStateType} from './missions/meansOfProduction';
 import type {MissionStateType} from './mission';
 import type {ModalStateType} from './modal';
@@ -28,6 +29,7 @@ export type StateType = {
   imperials: ImperialsStateType,
   impounded: ImpoundedStateType,
   indebted: IndebtedStateType,
+  looseCannon: LooseCannonStateType,
   meansOfProduction: MeansOfProductionStateType,
   mission: MissionStateType,
   modal: ModalStateType,

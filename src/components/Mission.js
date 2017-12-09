@@ -3,7 +3,7 @@
 import AiCard from './AiCard';
 import Button from './Button';
 import {CURRENT_MISSION_KEY} from '../constants';
-import GoalPanel from './GoalPanel';
+import GoalPanelContainer from '../containers/GoalPanelContainer';
 import HeroPanelContainer from '../containers/HeroPanelContainer';
 import ImperialDashboardContainer from '../containers/ImperialDashboardContainer';
 import type {ImperialUnitType} from '../reducers/imperials';
@@ -77,7 +77,6 @@ type MissionPropsType = {
   currentThreat: number,
   customAI: ?(Object[]),
   displayModal: boolean,
-  goalText: string[],
   history: Object,
   instructions: {imperialVictory: string, rebelVictory: string},
   interruptedGroup: ?ImperialUnitType,
@@ -114,11 +113,9 @@ class Mission extends React.Component<MissionPropsType> {
               instructions={this.props.instructions}
             />
           </div>
-          {this.props.goalText.length ? (
-            <div style={styles.panelItem}>
-              <GoalPanel goalText={this.props.goalText} />
-            </div>
-          ) : null}
+          <div style={styles.panelItem}>
+            <GoalPanelContainer />
+          </div>
         </div>
         <div style={styles.menuContainer}>
           <Button style={styles.quitButton} onClick={this.handleQuit} text="Quit" width={80} />

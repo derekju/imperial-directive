@@ -1273,6 +1273,46 @@
     "noMercenaryAllowed": false,
     "openGroups": 3
   },
+  "looseCannon": {
+    "initialGroups": [
+      "royalGuardChampion", "imperialOfficerElite", "royalGuard", "stormtrooperElite"
+    ],
+    "instructions": {
+      "imperialVictory": "At the end of Round 7 or when all heroes are wounded",
+      "rebelVictory": "When all Imperial figures are defeated"
+    },
+    "mapImage": [
+      ["00a", "36a", "29a", "29a", "29a", "29a", "38a", "38a", "17b", "13b", "13b", "14b", "14b"],
+      ["00a", "36a", "29a", "29a", "29a", "29a", "38a", "38a", "17b", "13b", "13b", "14b", "14b"],
+      ["00a", "19a", "19a", "19a", "19a", "19a", "19a", "02a", "02a", "02a", "02a", "17b", "17b"],
+      ["00a", "19a", "19a", "19a", "19a", "19a", "19a", "02a", "02a", "02a", "02a", "11b", "11b"],
+      ["36a", "19a", "19a", "19a", "19a", "19a", "19a", "02a", "02a", "02a", "02a", "11b", "11b"],
+      ["36a", "19a", "19a", "19a", "19a", "19a", "19a", "02a", "02a", "02a", "02a", "11b", "11b"],
+      ["00a", "19a", "19a", "19a", "19a", "19a", "19a", "02a", "02a", "02a", "02a", "11b", "11b"],
+      ["00a", "19a", "19a", "19a", "19a", "19a", "19a", "02a", "02a", "02a", "02a", "17b", "17b"],
+      ["00a", "00a", "00a", "32a", "32a", "38a", "38a", "12b", "12b", "12b", "12b", "14b", "14b"],
+      ["00a", "00a", "00a", "32a", "32a", "38a", "38a", "12b", "12b", "12b", "12b", "14b", "14b"]
+    ],
+    "mapStates": {
+      "entrance-1": {
+        "activated": false,
+        "activateText": "",
+        "coordinates": {
+          "x": 0,
+          "y": 4
+        },
+        "description": "The entrance.",
+        "id": 1,
+        "interactable": false,
+        "type": "entrance",
+        "unactivateText": "",
+        "visible": true
+      }
+    },
+    "name": "Loose Cannon",
+    "noMercenaryAllowed": true,
+    "openGroups": 3
+  },
   "luxuryCruise": {
     "initialGroups": [
       "imperialOfficer", "probeDroid", "stormtrooper", "stormtrooperElite"
