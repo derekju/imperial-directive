@@ -40,10 +40,9 @@ const styles = {
   },
   outer: {
     cursor: 'pointer',
-    position: 'relative',
   },
   popup: {
-    ...positionAbsolute(-47, null, null, 102),
+    ...positionAbsolute(-47, null, null, 122),
     alignItems: 'center',
     backgroundColor: LIGHT_WHITE,
     border: '2px solid black',
@@ -81,8 +80,11 @@ type HeroPanelAvatarPropsType = {
   activated: boolean,
   elite: boolean,
   firstName: string,
+  hpBoost: number,
   id: string,
+  index: number,
   isRebelPlayerTurn: boolean,
+  parentDiv: ?HTMLDivElement,
   setRebelEscaped: Function,
   setRebelActivated: Function,
   withdrawn: boolean,
@@ -102,6 +104,12 @@ class HeroPanelAvatar extends React.Component<HeroPanelAvatarPropsType, HeroPane
   togglePopup() {
     this.setState((state: HeroPanelAvatarStateType) => ({displayPopup: !state.displayPopup}));
   }
+
+  handlePopupPositioning: Function = (htmlDivPopup: ?HTMLDivElement) => {
+    if (htmlDivPopup && this.props.parentDiv) {
+      htmlDivPopup.style.top = `${this.props.index * 131 - this.props.parentDiv.scrollTop + 52}px`;
+    }
+  };
 
   handleClick = () => {
     if (this.props.withdrawn) {
@@ -127,7 +135,7 @@ class HeroPanelAvatar extends React.Component<HeroPanelAvatarPropsType, HeroPane
 
   renderPopup() {
     return (
-      <div style={styles.popup}>
+      <div style={styles.popup} ref={this.handlePopupPositioning}>
         <div style={styles.popupArrow}>
           <Arrow
             size={8}
@@ -166,7 +174,11 @@ class HeroPanelAvatar extends React.Component<HeroPanelAvatarPropsType, HeroPane
     return (
       <div style={styles.outer}>
         <div onClick={this.handleClick}>
-          <HeroAvatar firstName={this.props.firstName} style={avatarStyles} />
+          <HeroAvatar
+            firstName={this.props.firstName}
+            hpBoost={this.props.hpBoost}
+            style={avatarStyles}
+          />
         </div>
         {this.state.displayPopup ? this.renderPopup() : null}
       </div>

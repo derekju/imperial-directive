@@ -12,6 +12,7 @@ export type RebelsStateType = {
   activatedRebels: string[],
   canActivateTwice: string[],
   escapedRebels: string[],
+  hpBoosts: {[id: string]: number},
   roster: string[],
   withdrawnHeroes: string[],
   woundedHeroes: string[],
@@ -24,6 +25,7 @@ const initialState = {
   activatedRebels: [],
   canActivateTwice: [],
   escapedRebels: [],
+  hpBoosts: {},
   roster: [],
   withdrawnHeroes: [],
   woundedHeroes: [],
@@ -34,9 +36,23 @@ export default (state: RebelsStateType = initialState, action: Object) => {
   switch (action.type) {
     case SET_ROSTER:
       const {roster} = action.payload;
+      const hpBoosts = {};
+      const heroes = roster.filter((id: string) => rebels[id].type === 'hero');
+
+      if (heroes.length === 2) {
+        heroes.forEach((id: string) => {
+          hpBoosts[id] = 10;
+        });
+      } else if (heroes.length === 3) {
+        heroes.forEach((id: string) => {
+          hpBoosts[id] = 3;
+        });
+      }
+
       return {
         ...initialState,
         canActivateTwice: roster.length === 2 ? roster.slice() : state.canActivateTwice,
+        hpBoosts,
         roster: roster.sort(),
       };
     case SET_REBEL_ACTIVATED: {
@@ -99,6 +115,16 @@ export default (state: RebelsStateType = initialState, action: Object) => {
         woundedOther: state.woundedOther.concat([id]),
       };
     }
+    case SET_REBEL_HP_BOOST: {
+      const {id, boost} = action.payload;
+      return {
+        ...state,
+        hpBoosts: {
+          ...state.hpBoosts,
+          [id]: boost,
+        },
+      };
+    }
     default:
       return state;
   }
@@ -113,6 +139,7 @@ export const WOUND_REBEL_HERO = 'WOUND_REBEL_HERO';
 export const SET_REBEL_ESCAPED = 'SET_REBEL_ESCAPED';
 export const ADD_TO_ROSTER = 'ADD_TO_ROSTER';
 export const WOUND_REBEL_OTHER = 'WOUND_REBEL_OTHER';
+export const SET_REBEL_HP_BOOST = 'SET_REBEL_HP_BOOST';
 
 // Action creators
 
@@ -123,12 +150,14 @@ export const woundRebelHero = (id: string) => createAction(WOUND_REBEL_HERO, {id
 export const setRebelEscaped = (id: string) => createAction(SET_REBEL_ESCAPED, {id});
 export const addToRoster = (id: string) => createAction(ADD_TO_ROSTER, {id});
 export const woundRebelOther = (id: string) => createAction(WOUND_REBEL_OTHER, {id});
+export const setRebelHpBoost = (id: string, boost: number) =>
+  createAction(SET_REBEL_HP_BOOST, {boost, id});
 
 // Selectors
 
 export const getRoster = (state: StateType) => state.rebels.roster;
-export const getRosterOnlyHeroes = (state: StateType) =>
-  state.rebels.roster.filter((id: string) => rebels[id].type === 'hero');
+export const getRosterOfType = (state: StateType, type: string) =>
+  state.rebels.roster.filter((id: string) => rebels[id].type === type);
 export const getIsThereReadyRebelFigures = (state: StateType) =>
   state.rebels.activatedRebels.length !==
   state.rebels.roster.length +
@@ -150,3 +179,5 @@ export const getIsHeroWithdrawn = (state: StateType, heroId: string) =>
   state.rebels.withdrawnHeroes.includes(heroId);
 export const getCanHeroActivateTwice = (state: StateType, heroId: string) =>
   state.rebels.canActivateTwice.includes(heroId);
+export const getWoundedOther = (state: StateType) => state.rebels.woundedOther;
+export const getEscapedRebels = (state: StateType) => state.rebels.escapedRebels;

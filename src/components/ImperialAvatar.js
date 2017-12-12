@@ -39,8 +39,8 @@ const styles = {
     color: 'white',
     display: 'flex',
     fontSize: '12px',
+    minWidth: '14px',
     padding: '5px',
-    width: '14px',
   },
   image: {
     height: '70%',

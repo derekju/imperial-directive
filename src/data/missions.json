@@ -794,6 +794,105 @@
     "noMercenaryAllowed": false,
     "openGroups": 3
   },
+  "friendsOfOld": {
+    "initialGroups": [
+      "imperialOfficer", "stormtrooper"
+    ],
+    "instructions": {
+      "imperialVictory": "2 Rebel Troopers are defeated or when all heroes are wounded",
+      "rebelVictory": "2 Rebel Troopers escape"
+    },
+    "mapImage": [
+      ["00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "18a", "18a"],
+      ["00a", "00a", "07a", "07a", "07a", "17a", "09a", "09a", "09a", "09a"],
+      ["00a", "07a", "07a", "07a", "07a", "17a", "09a", "09a", "09a", "09a"],
+      ["00a", "07a", "07a", "07a", "07a", "00a", "00a", "00a", "09a", "09a"],
+      ["00a", "07a", "07a", "07a", "00a", "00a", "00a", "00a", "09a", "09a"],
+      ["06a", "06a", "06a", "00a", "00a", "00a", "00a", "00a", "17a", "17a"],
+      ["06a", "06a", "06a", "06a", "04a", "04a", "04a", "04a", "11a", "11a"],
+      ["06a", "06a", "06a", "06a", "04a", "04a", "04a", "04a", "11a", "11a"],
+      ["06a", "06a", "06a", "06a", "04a", "04a", "04a", "04a", "11a", "11a"],
+      ["05a", "05a", "05a", "05a", "04a", "04a", "04a", "04a", "11a", "11a"],
+      ["05a", "05a", "05a", "05a", "12a", "12a", "12a", "12a", "14a", "14a"],
+      ["05a", "05a", "05a", "05a", "12a", "12a", "12a", "12a", "14a", "14a"],
+      ["05a", "05a", "05a", "05a", "00a", "00a", "00a", "00a", "00a", "00a"]
+    ],
+    "mapStates": {
+      "entrance-1": {
+        "activated": false,
+        "activateText": "",
+        "coordinates": {
+          "x": 0,
+          "y": 7
+        },
+        "description": "The entrance.",
+        "id": 1,
+        "interactable": false,
+        "type": "entrance",
+        "unactivateText": "",
+        "visible": true
+      },
+      "neutral-1": {
+        "activated": false,
+        "activateText": "Reveal",
+        "coordinates": {
+          "x": 3,
+          "y": 1
+        },
+        "description": "A hidden Rebel.",
+        "id": 1,
+        "interactable": true,
+        "type": "neutral",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "neutral-2": {
+        "activated": false,
+        "activateText": "Reveal",
+        "coordinates": {
+          "x": 6,
+          "y": 6
+        },
+        "description": "A hidden Rebel.",
+        "id": 2,
+        "interactable": true,
+        "type": "neutral",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "neutral-3": {
+        "activated": false,
+        "activateText": "Reveal",
+        "coordinates": {
+          "x": 9,
+          "y": 11
+        },
+        "description": "A hidden Rebel.",
+        "id": 3,
+        "interactable": true,
+        "type": "neutral",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "neutral-4": {
+        "activated": false,
+        "activateText": "Reveal",
+        "coordinates": {
+          "x": 0,
+          "y": 12
+        },
+        "description": "A hidden Rebel.",
+        "id": 4,
+        "interactable": true,
+        "type": "neutral",
+        "unactivateText": "Restore",
+        "visible": true
+      }
+    },
+    "name": "Friends of Old",
+    "noMercenaryAllowed": false,
+    "openGroups": 3
+  },
   "highMoon": {
     "initialGroups": [
       "eWebEngineer", "imperialOfficer", "nexuElite", "stormtrooper"

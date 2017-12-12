@@ -14,6 +14,7 @@ import type {StateType} from '../reducers/types';
 const mapStateToProps = (state: StateType) => ({
   activatedRebels: state.rebels.activatedRebels,
   canActivateTwice: state.rebels.canActivateTwice,
+  hpBoosts: state.rebels.hpBoosts,
   isRebelPlayerTurn: isRebelPlayerTurn(state),
   roster: state.rebels.roster,
   withdrawnHeroes: state.rebels.withdrawnHeroes,

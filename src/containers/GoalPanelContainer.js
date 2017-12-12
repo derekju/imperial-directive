@@ -7,6 +7,7 @@ import {getANewThreatGoalText} from '../reducers/missions/aNewThreat';
 import {getASimpleTaskGoalText} from '../reducers/missions/aSimpleTask';
 import {getBrushfireGoalText} from '../reducers/missions/brushfire';
 import {getCapturedGoalText} from '../reducers/missions/captured';
+import {getFriendsOfOldGoalText} from '../reducers/missions/friendsOfOld';
 import {getHighMoonGoalText} from '../reducers/missions/highMoon';
 import {getImperialHospitalityGoalText} from '../reducers/missions/imperialHospitality';
 import {getImpoundedGoalText} from '../reducers/missions/impounded';
@@ -31,6 +32,8 @@ const getGoalText = (state: StateType) => {
       return getBrushfireGoalText(state);
     case 'captured':
       return getCapturedGoalText(state);
+    case 'friendsOfOld':
+      return getFriendsOfOldGoalText(state);
     case 'highMoon':
       return getHighMoonGoalText(state);
     case 'imperialHospitality':

@@ -89,6 +89,36 @@
     "maxInGroup": 1,
     "type": "mission"
   },
+  "missionFriendsOfOldRebelTrooperR": {
+    "id": "missionFriendsOfOldRebelTrooperR",
+    "firstName": "Red Trooper",
+    "lastName": "",
+    "elite": false,
+    "threat": 0,
+    "reinforcementCost": -1,
+    "maxInGroup": 1,
+    "type": "mission"
+  },
+  "missionFriendsOfOldRebelTrooperB": {
+    "id": "missionFriendsOfOldRebelTrooperB",
+    "firstName": "Blue Trooper",
+    "lastName": "",
+    "elite": false,
+    "threat": 0,
+    "reinforcementCost": -1,
+    "maxInGroup": 1,
+    "type": "mission"
+  },
+  "missionFriendsOfOldRebelTrooperG": {
+    "id": "missionFriendsOfOldRebelTrooperG",
+    "firstName": "Green Trooper",
+    "lastName": "",
+    "elite": false,
+    "threat": 0,
+    "reinforcementCost": -1,
+    "maxInGroup": 1,
+    "type": "mission"
+  },
   "rebelSaboteur": {
     "id": "rebelSaboteur",
     "firstName": "Rebel",
