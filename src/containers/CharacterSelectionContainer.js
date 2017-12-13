@@ -8,7 +8,7 @@ import {setAllyChosen, setRoster} from '../reducers/rebels';
 import type {StateType} from '../reducers/types';
 
 const mapStateToProps = (state: StateType) => ({
-  availableAllies: ['han'],
+  availableAllies: ['han', 'rebelTrooper'],
   availableHeroes: ['diala', 'fenn', 'gaarkhan', 'gideon', 'jyn', 'mak'],
   availableMissions: Object.keys(missions),
 });

@@ -87,6 +87,7 @@ class HeroPanel extends React.Component<HeroPanelPropsType, HeroPanelStateType> 
                   hpBoost={this.props.hpBoosts[id] || 0}
                   id={id}
                   index={index}
+                  isHero={rebels[id].type === 'hero'}
                   isRebelPlayerTurn={this.props.isRebelPlayerTurn}
                   parentDiv={this.state.htmlDivAvatarContainer}
                   setRebelEscaped={this.props.isRebelPlayerTurn ? this.props.setRebelEscaped : noop}

@@ -121,8 +121,8 @@
   },
   "rebelSaboteur": {
     "id": "rebelSaboteur",
-    "firstName": "Rebel",
-    "lastName": "Saboteur",
+    "firstName": "Rebel Saboteurs",
+    "lastName": "",
     "elite": false,
     "threat": 5,
     "reinforcementCost": 3,
@@ -131,8 +131,8 @@
   },
   "rebelTrooper": {
     "id": "rebelTrooper",
-    "firstName": "Rebel",
-    "lastName": "Trooper",
+    "firstName": "Rebel Troopers",
+    "lastName": "",
     "elite": false,
     "threat": 6,
     "reinforcementCost": 2,

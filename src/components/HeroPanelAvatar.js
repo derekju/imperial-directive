@@ -83,6 +83,7 @@ type HeroPanelAvatarPropsType = {
   hpBoost: number,
   id: string,
   index: number,
+  isHero: boolean,
   isRebelPlayerTurn: boolean,
   parentDiv: ?HTMLDivElement,
   setRebelEscaped: Function,
@@ -134,6 +135,13 @@ class HeroPanelAvatar extends React.Component<HeroPanelAvatarPropsType, HeroPane
   };
 
   renderPopup() {
+    let buttonText = '';
+    if (this.props.isHero) {
+      buttonText = this.props.wounded ? 'Set withdrawn' : 'Set wounded';
+    } else {
+      buttonText = 'Defeat';
+    }
+
     return (
       <div style={styles.popup} ref={this.handlePopupPositioning}>
         <div style={styles.popupArrow}>
@@ -150,7 +158,7 @@ class HeroPanelAvatar extends React.Component<HeroPanelAvatarPropsType, HeroPane
           <Button text="End activation" onClick={this.handleEndActivation} />
         ) : null}
         <Button
-          text={this.props.wounded ? 'Set withdrawn' : 'Set wounded'}
+          text={buttonText}
           onClick={this.handleSetWounded}
         />
         {!this.props.activated && this.props.isRebelPlayerTurn ? (
