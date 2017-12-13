@@ -10,6 +10,7 @@ import without from 'lodash/without';
 
 export type RebelsStateType = {
   activatedRebels: string[],
+  allyChosen: ?string,
   canActivateTwice: string[],
   escapedRebels: string[],
   hpBoosts: {[id: string]: number},
@@ -23,6 +24,7 @@ export type RebelsStateType = {
 
 const initialState = {
   activatedRebels: [],
+  allyChosen: null,
   canActivateTwice: [],
   escapedRebels: [],
   hpBoosts: {},
@@ -125,6 +127,13 @@ export default (state: RebelsStateType = initialState, action: Object) => {
         },
       };
     }
+    case SET_ALLY_CHOSEN: {
+      const {id} = action.payload;
+      return {
+        ...state,
+        allyChosen: id,
+      };
+    }
     default:
       return state;
   }
@@ -140,6 +149,7 @@ export const SET_REBEL_ESCAPED = 'SET_REBEL_ESCAPED';
 export const ADD_TO_ROSTER = 'ADD_TO_ROSTER';
 export const WOUND_REBEL_OTHER = 'WOUND_REBEL_OTHER';
 export const SET_REBEL_HP_BOOST = 'SET_REBEL_HP_BOOST';
+export const SET_ALLY_CHOSEN = 'SET_ALLY_CHOSEN';
 
 // Action creators
 
@@ -152,6 +162,7 @@ export const addToRoster = (id: string) => createAction(ADD_TO_ROSTER, {id});
 export const woundRebelOther = (id: string) => createAction(WOUND_REBEL_OTHER, {id});
 export const setRebelHpBoost = (id: string, boost: number) =>
   createAction(SET_REBEL_HP_BOOST, {boost, id});
+export const setAllyChosen = (id: string) => createAction(SET_ALLY_CHOSEN, {id});
 
 // Selectors
 
@@ -181,3 +192,4 @@ export const getCanHeroActivateTwice = (state: StateType, heroId: string) =>
   state.rebels.canActivateTwice.includes(heroId);
 export const getWoundedOther = (state: StateType) => state.rebels.woundedOther;
 export const getEscapedRebels = (state: StateType) => state.rebels.escapedRebels;
+export const getAllyChosen = (state: StateType) => state.rebels.allyChosen;

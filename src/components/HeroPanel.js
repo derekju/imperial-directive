@@ -75,7 +75,7 @@ class HeroPanel extends React.Component<HeroPanelPropsType, HeroPanelStateType> 
             }
 
             return (
-              <div style={styles.heroPanelAvatarContainer}>
+              <div key={id} style={styles.heroPanelAvatarContainer}>
                 <HeroPanelAvatar
                   activated={
                     canHeroActivateTwice
@@ -88,7 +88,6 @@ class HeroPanel extends React.Component<HeroPanelPropsType, HeroPanelStateType> 
                   id={id}
                   index={index}
                   isRebelPlayerTurn={this.props.isRebelPlayerTurn}
-                  key={id}
                   parentDiv={this.state.htmlDivAvatarContainer}
                   setRebelEscaped={this.props.isRebelPlayerTurn ? this.props.setRebelEscaped : noop}
                   setRebelActivated={

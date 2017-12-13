@@ -52,6 +52,10 @@ type HeroAvatarPropsType = {
 };
 
 class HeroAvatar extends React.Component<HeroAvatarPropsType> {
+  static defaultProps = {
+    hpBoost: 0,
+  };
+
   render() {
     const combinedStyles = {
       ...styles.avatar,

@@ -4,15 +4,17 @@ import {setDifficulty, setMission, setMissionThreat} from '../reducers/app';
 import CharacterSelection from '../components/CharacterSelection';
 import {connect} from 'react-redux';
 import missions from '../data/missions';
-import {setRoster} from '../reducers/rebels';
+import {setAllyChosen, setRoster} from '../reducers/rebels';
 import type {StateType} from '../reducers/types';
 
 const mapStateToProps = (state: StateType) => ({
+  availableAllies: ['han'],
   availableHeroes: ['diala', 'fenn', 'gaarkhan', 'gideon', 'jyn', 'mak'],
   availableMissions: Object.keys(missions),
 });
 
 const mapDispatchToProps = {
+  setAllyChosen,
   setDifficulty,
   setMission,
   setMissionThreat,

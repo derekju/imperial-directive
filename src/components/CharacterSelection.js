@@ -109,9 +109,11 @@ const styles = {
 };
 
 type CharacterSelectionPropsType = {
+  availableAllies: string[],
   availableHeroes: string[],
   availableMissions: string[],
   history: Object,
+  setAllyChosen: Function,
   setDifficulty: Function,
   setMission: Function,
   setMissionThreat: Function,
@@ -129,6 +131,7 @@ class CharacterSelection extends React.Component<
   CharacterSelectionStateType
 > {
   select: ?HTMLSelectElement;
+  allySelect: ?HTMLSelectElement;
 
   state = {
     missionThreat: 2,
@@ -141,7 +144,15 @@ class CharacterSelection extends React.Component<
   };
 
   submit = () => {
-    this.props.setRoster(this.state.selectedRoster);
+    let selectedAlly = '';
+    if (this.allySelect) {
+      selectedAlly = this.allySelect.options[this.allySelect.selectedIndex].value;
+    }
+
+    this.props.setRoster(this.state.selectedRoster.concat(selectedAlly ? [selectedAlly] : []));
+    if (selectedAlly) {
+      this.props.setAllyChosen(selectedAlly);
+    }
     this.props.setMissionThreat(this.state.missionThreat);
     this.props.setDifficulty(this.state.selectedDifficulty);
     track('setDifficulty', this.state.selectedDifficulty);
@@ -174,6 +185,10 @@ class CharacterSelection extends React.Component<
 
   saveSelect = (ref: ?HTMLSelectElement) => {
     this.select = ref;
+  };
+
+  saveAllySelect = (ref: ?HTMLSelectElement) => {
+    this.allySelect = ref;
   };
 
   decrementThreat = () => {
@@ -239,6 +254,23 @@ class CharacterSelection extends React.Component<
                   />
                 </div>
               ))}
+            </div>
+          </div>
+          <div style={styles.section}>
+            <div style={styles.sectionHeader}>
+              <span style={styles.headerText}>Select Ally</span>
+            </div>
+            <div style={styles.sectionContents}>
+              <select ref={this.saveAllySelect} style={styles.selectInput}>
+                <option key="none" value="">
+                  None
+                </option>
+                {this.props.availableAllies.map((allyId: string) => (
+                  <option key={allyId} value={allyId}>
+                    {`${rebels[allyId].firstName} ${rebels[allyId].lastName}`}
+                  </option>
+                ))}
+              </select>
             </div>
           </div>
           <div style={styles.section}>

@@ -27,8 +27,18 @@ import {
   STATUS_PHASE_END_ROUND_EFFECTS,
   updateRebelVictory,
 } from '../mission';
-import {DEFEAT_IMPERIAL_FIGURE, OPTIONAL_DEPLOYMENT_DONE, optionalDeployment, setImperialUnitHpBuff} from '../imperials';
-import {REFER_CAMPAIGN_GUIDE, TARGET_ENTRANCE_TOKEN, TARGET_HERO_CLOSEST_UNWOUNDED, TARGET_REMAINING} from './constants';
+import {
+  DEFEAT_IMPERIAL_FIGURE,
+  OPTIONAL_DEPLOYMENT_DONE,
+  optionalDeployment,
+  setImperialUnitHpBuff,
+} from '../imperials';
+import {
+  REFER_CAMPAIGN_GUIDE,
+  TARGET_ENTRANCE_TOKEN,
+  TARGET_HERO_CLOSEST_UNWOUNDED,
+  TARGET_REMAINING,
+} from './constants';
 import createAction from '../createAction';
 import difference from 'lodash/difference';
 import {displayModal} from '../modal';
@@ -99,7 +109,10 @@ function* handleGarageOpens(): Generator<*, *, *> {
 
       // Han gets to attack
       yield call(helperEventModal, {
-        text: ['{ELITE}Han{END} may interrupt to perform an attack targeting Gerrin if he has LOS to Gerrin.', 'The Rebels win if Gerrin is defeated.'],
+        text: [
+          '{ELITE}Han{END} may interrupt to perform an attack targeting Gerrin if he has LOS to Gerrin.',
+          'The Rebels win if Gerrin is defeated.',
+        ],
         title: 'Old Friends',
       });
 
@@ -139,9 +152,7 @@ function* handleRegularsEvent(): Generator<*, *, *> {
   yield call(
     helperDeploy,
     'You sense the regular patrol approaching from behind.',
-    [
-      'Deploy an {ELITE}Elite Trandoshan Hunter{END} group to the entrance.',
-    ],
+    ['Deploy an {ELITE}Elite Trandoshan Hunter{END} group to the entrance.'],
     'Regulars',
     ['trandoshanHunterElite']
   );

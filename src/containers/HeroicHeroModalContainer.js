@@ -3,12 +3,12 @@
 import {closeModals} from '../reducers/modal';
 import {connect} from 'react-redux';
 import HeroicHeroModal from '../components/modals/HeroicHeroModal';
-import {setHeroActivateTwice} from '../reducers/rebels';
+import {getRosterOfType, setHeroActivateTwice} from '../reducers/rebels';
 import type {StateType} from '../reducers/types';
 
 const mapStateToProps = (state: StateType) => ({
   canActivateTwice: state.rebels.canActivateTwice,
-  roster: state.rebels.roster,
+  roster: getRosterOfType(state, 'hero'),
   type: state.modal.type,
 });
 

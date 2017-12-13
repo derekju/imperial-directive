@@ -2,6 +2,7 @@
 
 import {all, call, fork, put, select, take, takeEvery} from 'redux-saga/effects';
 import {
+  getAllyChosen,
   getIsThereReadyRebelFigures,
   getRosterOfType,
   SET_REBEL_ESCAPED,
@@ -10,11 +11,14 @@ import {
 import {
   getReadyImperialGroups,
   OPTIONAL_DEPLOYMENT_DONE,
+  optionalDeployment,
   SET_IMPERIAL_GROUP_ACTIVATED,
   triggerImperialActivation,
 } from './imperials';
 import createAction from './createAction';
 import {displayModal} from './modal';
+import helperEventModal from './missions/helpers/helperEventModal';
+import rebels from '../data/rebels.json';
 import type {StateType} from './types';
 import waitForModal from '../sagas/waitForModal';
 
@@ -326,12 +330,34 @@ function* handleCheckForThreeHeroes(): Generator<*, *, *> {
   }
 }
 
+function* handleCheckForAllies(): Generator<*, *, *> {
+  const allyChosen = yield select(getAllyChosen);
+  if (allyChosen) {
+    // Increase threat by the cost of the ally chosen
+    const ally = rebels[allyChosen];
+    const threatCost = ally.threat;
+    yield call(helperEventModal, {
+      text: [
+        'Because an ally was chosen, the Imperial receives extra threat.',
+        'The threat has been increased and an optional deployment will now be done.',
+      ],
+      title: 'Initial Setup',
+    });
+    // Double current threat
+    yield put(increaseThreat(threatCost));
+    // Do optional deployment
+    yield put(optionalDeployment());
+    yield take(OPTIONAL_DEPLOYMENT_DONE);
+  }
+}
+
 function* handleLoadMission(): Generator<*, *, *> {
   // yield put(eventPhaseBegin());
   // yield take(EVENT_PHASE_END);
   // Blocking call to let mission figure out any special setup needed
   yield put(missionSpecialSetup());
   yield take(MISSION_SPECIAL_SETUP_DONE);
+  yield call(handleCheckForAllies);
   yield call(handleCheckForThreeHeroes);
   yield put(activationPhaseBegin());
 }
