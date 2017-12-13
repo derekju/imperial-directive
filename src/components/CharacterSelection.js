@@ -254,7 +254,7 @@ class CharacterSelection extends React.Component<
                     ...(this.state.selectedDifficulty === 'standard' ? styles.selectedToggle : {}),
                   }}
                 >
-                  Standard
+                  Normal
                 </div>
                 <div
                   onClick={() => this.difficultyToggle('experienced')}
@@ -265,17 +265,17 @@ class CharacterSelection extends React.Component<
                       : {}),
                   }}
                 >
-                  Experienced
+                  Hard
                 </div>
                 <div style={styles.difficultyDescription}>
                   <span>
                     {this.state.selectedDifficulty === 'standard'
-                      ? 'Standard difficulty. Good for players new to Imperial Assault. Threat gained per round is standard campaign rules. HP buffs for units is standard.'
+                      ? 'Standard difficulty. Good for players of all experience levels to Imperial Assault. Threat gained per round is standard campaign rules. HP buffs for units is standard.'
                       : ''}
                   </span>
                   <span>
                     {this.state.selectedDifficulty === 'experienced'
-                      ? 'Experienced difficulty. Good for players experienced with Imperial Assault. Threat gained per round is increased. HP buffs for units is increased.'
+                      ? 'Hard difficulty. Good for players looking for a challenge. Threat gained per round is increased. HP buffs for units is increased.'
                       : ''}
                   </span>
                 </div>
