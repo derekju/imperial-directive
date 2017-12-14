@@ -174,18 +174,16 @@ export const getIsThereReadyRebelFigures = (state: StateType) =>
   state.rebels.roster.length +
     state.rebels.canActivateTwice.length -
     state.rebels.withdrawnHeroes.length;
-// Need to filter out non-heroes from the roster
 export const getAreAllHeroesWounded = (state: StateType) =>
   state.rebels.woundedHeroes.length + state.rebels.withdrawnHeroes.length ===
-  state.rebels.roster.filter((id: string) => rebels[id].type === 'hero').length;
+  getRosterOfType(state, 'hero').length;
 export const getIsOneHeroLeft = (state: StateType) =>
-  state.rebels.roster.filter((id: string) => rebels[id].type === 'hero').length -
+  getRosterOfType(state, 'hero').length -
     state.rebels.woundedHeroes.length -
     state.rebels.withdrawnHeroes.length ===
   1;
 export const getAreAllHeroesWithdrawn = (state: StateType) =>
-  state.rebels.withdrawnHeroes.length ===
-  state.rebels.roster.filter((id: string) => rebels[id].type === 'hero').length;
+  state.rebels.withdrawnHeroes.length === getRosterOfType(state, 'hero').length;
 export const getIsHeroWithdrawn = (state: StateType, heroId: string) =>
   state.rebels.withdrawnHeroes.includes(heroId);
 export const getCanHeroActivateTwice = (state: StateType, heroId: string) =>

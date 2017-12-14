@@ -1896,6 +1896,165 @@
     "noMercenaryAllowed": false,
     "openGroups": 3
   },
+  "theSpiceJob": {
+    "initialGroups": [
+      "nexuElite", "probeDroid", "trandoshanHunterElite"
+    ],
+    "instructions": {
+      "imperialVictory": "At the end of Round 5, when all heroes are wounded and Chewbacca is defeated",
+      "rebelVictory": "When all the spice has been claimed"
+    },
+    "mapImage": [
+      ["00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "36b", "36b", "00a", "00a"],
+      ["00a", "00a", "00a", "19b", "19b", "19b", "19b", "19b", "19b", "20b", "20b", "20b", "20b"],
+      ["00a", "00a", "00a", "19b", "19b", "19b", "19b", "19b", "19b", "20b", "20b", "20b", "20b"],
+      ["28b", "28b", "28b", "19b", "19b", "19b", "19b", "19b", "19b", "20b", "20b", "20b", "20b"],
+      ["28b", "28b", "28b", "19b", "19b", "19b", "19b", "19b", "19b", "20b", "20b", "20b", "20b"],
+      ["28b", "28b", "28b", "19b", "19b", "19b", "19b", "19b", "19b", "20b", "20b", "20b", "20b"],
+      ["24b", "24b", "24b", "19b", "19b", "19b", "19b", "19b", "19b", "20b", "20b", "20b", "20b"],
+      ["24b", "24b", "24b", "24b", "23b", "23b", "23b", "23b", "00a", "00a", "00a", "00a", "00a"],
+      ["24b", "24b", "24b", "24b", "23b", "23b", "23b", "23b", "00a", "00a", "00a", "00a", "00a"],
+      ["00a", "24b", "24b", "24b", "23b", "23b", "23b", "23b", "00a", "00a", "00a", "00a", "00a"],
+      ["00a", "00a", "00a", "00a", "23b", "23b", "23b", "23b", "00a", "00a", "00a", "00a", "00a"]
+    ],
+    "mapStates": {
+      "entrance-1": {
+        "activated": false,
+        "activateText": "",
+        "coordinates": {
+          "x": 10,
+          "y": 0
+        },
+        "description": "The entrance.",
+        "id": 1,
+        "interactable": false,
+        "type": "entrance",
+        "unactivateText": "",
+        "visible": true
+      },
+      "door-1": {
+        "activated": false,
+        "activateText": "Unlock",
+        "coordinates": {
+          "x": 1,
+          "y": 5
+        },
+        "description": "The door to the spice room. Requires a keycard to gain access.",
+        "id": 1,
+        "interactable": true,
+        "type": "door",
+        "unactivateText": "Close",
+        "visible": true
+      },
+      "door-2": {
+        "activated": false,
+        "activateText": "Unlock",
+        "coordinates": {
+          "x": 4,
+          "y": 8
+        },
+        "description": "The door to the spice room. Requires a keycard to gain access.",
+        "id": 2,
+        "interactable": true,
+        "type": "door",
+        "unactivateText": "Close",
+        "visible": true
+      },
+      "imperial-1": {
+        "activated": false,
+        "activateText": "Claim",
+        "color": "red",
+        "coordinates": {
+          "x": 1,
+          "y": 3
+        },
+        "description": "A spice barrel.",
+        "id": 1,
+        "interactable": true,
+        "type": "imperial",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "imperial-2": {
+        "activated": false,
+        "activateText": "Claim",
+        "color": "red",
+        "coordinates": {
+          "x": 0,
+          "y": 4
+        },
+        "description": "A spice barrel.",
+        "id": 2,
+        "interactable": true,
+        "type": "imperial",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "imperial-3": {
+        "activated": false,
+        "activateText": "Claim",
+        "color": "yellow",
+        "coordinates": {
+          "x": 2,
+          "y": 6
+        },
+        "description": "A spice barrel.",
+        "id": 3,
+        "interactable": true,
+        "type": "imperial",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "imperial-4": {
+        "activated": false,
+        "activateText": "Claim",
+        "color": "yellow",
+        "coordinates": {
+          "x": 3,
+          "y": 7
+        },
+        "description": "A spice barrel.",
+        "id": 4,
+        "interactable": true,
+        "type": "imperial",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "imperial-5": {
+        "activated": false,
+        "activateText": "Claim",
+        "color": "blue",
+        "coordinates": {
+          "x": 1,
+          "y": 9
+        },
+        "description": "A spice barrel.",
+        "id": 5,
+        "interactable": true,
+        "type": "imperial",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "imperial-6": {
+        "activated": false,
+        "activateText": "Claim",
+        "color": "blue",
+        "coordinates": {
+          "x": 2,
+          "y": 9
+        },
+        "description": "A spice barrel.",
+        "id": 6,
+        "interactable": true,
+        "type": "imperial",
+        "unactivateText": "Restore",
+        "visible": true
+      }
+    },
+    "name": "The Spice Job",
+    "noMercenaryAllowed": false,
+    "openGroups": 3
+  },
   "underSiege": {
     "initialGroups": [
       "eWebEngineer", "imperialOfficer", "stormtrooper"

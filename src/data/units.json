@@ -5,7 +5,7 @@
     "commands": [
       {
         "condition": "If within 7 spaces and have LOS of {ATTACK_TARGET}",
-        "command": "{ACTION} Only if adjacent, move at least 4 spaces away, then {ACTION} Attack {ATTACK_TARGET}, then {ACTION} Move to {MOVE_TARGET}."
+        "command": "{ACTION} Only if adjacent, move at least 4 spaces away, then {ACTION} Attack {ATTACK_TARGET}, then {ACTION} Move towards {MOVE_TARGET}."
       },
       {
         "condition": "If not within 7 spaces of {ATTACK_TARGET}",
@@ -351,7 +351,7 @@
       },
       {
         "condition": "If not within 6 spaces of {ATTACK_TARGET}",
-        "command": "{ACTION} Move to {MOVE_TARGET}."
+        "command": "{ACTION} Move towards {MOVE_TARGET}."
       },
       {
         "condition": "Reaction - At the end of the round, if adjacent to a Rebel figure with 2 or less Health left, and not adjacent to any friendly figures",
@@ -383,7 +383,7 @@
       },
       {
         "condition": "If not within 7 spaces of {ATTACK_TARGET}",
-        "command": "{ACTION} Move to {MOVE_TARGET}."
+        "command": "{ACTION} Move towards {MOVE_TARGET}."
       },
       {
         "condition": "Reaction - If an attack die is rolled that has no effect (no damage, no surge can be used to any effect)",
@@ -527,7 +527,7 @@
       },
       {
         "condition": "If not within 6 spaces of {ATTACK_TARGET}",
-        "command": "{ACTION} Move to {MOVE_TARGET}."
+        "command": "{ACTION} Move towards {MOVE_TARGET}."
       },
       {
         "condition": "Reaction - If adjacent to another friendly Trooper while attacking",
@@ -559,7 +559,7 @@
       },
       {
         "condition": "If not within 6 spaces of {ATTACK_TARGET}",
-        "command": "{ACTION} Move to {MOVE_TARGET}."
+        "command": "{ACTION} Move towards {MOVE_TARGET}."
       },
       {
         "condition": "Reaction - If adjacent to another friendly Trooper while attacking",

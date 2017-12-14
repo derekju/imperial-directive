@@ -29,6 +29,7 @@ type GoalPanelPropsType = {
   currentMission: string,
   goalText: string[],
   looseCannonDefeatAtst: Function,
+  spiceJobGetKeycard: Function,
 };
 
 type GoalPanelStateType = {
@@ -49,6 +50,13 @@ class GoalPanel extends React.Component<GoalPanelPropsType, GoalPanelStateType> 
     this.props.looseCannonDefeatAtst();
   };
 
+  handleSpiceJobGetKeycard = () => {
+    this.setState({
+      buttonPressed: true,
+    });
+    this.props.spiceJobGetKeycard();
+  };
+
   renderMissionSpecific() {
     const {currentMission} = this.props;
 
@@ -60,7 +68,17 @@ class GoalPanel extends React.Component<GoalPanelPropsType, GoalPanelStateType> 
           </div>
         );
       } else {
-        return <div style={styles.buttonContainer}>Defeated.</div>;
+        return <div style={styles.buttonContainer}>Defeated</div>;
+      }
+    } else if (currentMission === 'theSpiceJob') {
+      if (!this.state.buttonPressed) {
+        return (
+          <div style={styles.buttonContainer}>
+            <Button text="Get Keycard" onClick={this.handleSpiceJobGetKeycard} />
+          </div>
+        );
+      } else {
+        return null;
       }
     }
 

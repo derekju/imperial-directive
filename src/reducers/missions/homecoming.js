@@ -1,11 +1,6 @@
 // @flow
 
-import {
-  addToRoster,
-  SET_REBEL_ESCAPED,
-  setRebelHpBoost,
-  WOUND_REBEL_OTHER,
-} from '../rebels';
+import {addToRoster, SET_REBEL_ESCAPED, setRebelHpBoost, WOUND_REBEL_OTHER} from '../rebels';
 import {all, call, fork, put, select, take} from 'redux-saga/effects';
 import {
   getCurrentRound,

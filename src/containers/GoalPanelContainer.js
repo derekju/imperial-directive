@@ -18,6 +18,7 @@ import {getLuxuryCruiseGoalText} from '../reducers/missions/luxuryCruise';
 import {getMeansOfProductionGoalText} from '../reducers/missions/meansOfProduction';
 import {getSorryAboutTheMessGoalText} from '../reducers/missions/sorryAboutTheMess';
 import {getTemptationGoalText} from '../reducers/missions/temptation';
+import {getTheSpiceJobGoalText} from '../reducers/missions/theSpiceJob';
 import {getUnderSiegeGoalText} from '../reducers/missions/underSiege';
 import GoalPanel from '../components/GoalPanel';
 import type {StateType} from '../reducers/types';
@@ -56,6 +57,8 @@ const getGoalText = (state: StateType) => {
       return getSorryAboutTheMessGoalText(state);
     case 'temptation':
       return getTemptationGoalText(state);
+    case 'theSpiceJob':
+      return getTheSpiceJobGoalText(state);
     case 'underSiege':
       return getUnderSiegeGoalText(state);
     default:
@@ -69,9 +72,11 @@ const mapStateToProps = (state: StateType) => ({
 });
 
 const looseCannonDefeatAtst = () => createAction('LOOSE_CANNON_DEFEAT_ATST');
+const spiceJobGetKeycard = () => createAction('SPICE_JOB_GET_KEYCARD');
 
 const mapDispatchToProps = {
   looseCannonDefeatAtst,
+  spiceJobGetKeycard,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(GoalPanel);

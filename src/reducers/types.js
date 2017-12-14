@@ -18,6 +18,7 @@ import type {MissionStateType} from './mission';
 import type {ModalStateType} from './modal';
 import type {RebelsStateType} from './rebels';
 import type {TemptationStateType} from './missions/temptation';
+import type {TheSpiceJobStateType} from './missions/theSpiceJob';
 import type {UnderSiegeStateType} from './missions/underSiege';
 
 export type StateType = {
@@ -39,5 +40,6 @@ export type StateType = {
   modal: ModalStateType,
   rebels: RebelsStateType,
   temptation: TemptationStateType,
+  theSpiceJob: TheSpiceJobStateType,
   underSiege: UnderSiegeStateType,
 };

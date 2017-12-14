@@ -17,6 +17,7 @@ import mission from './mission';
 import modal from './modal';
 import rebels from './rebels';
 import temptation from './missions/temptation';
+import theSpiceJob from './missions/theSpiceJob';
 import underSiege from './missions/underSiege';
 
 export default {
@@ -37,5 +38,6 @@ export default {
   modal,
   rebels,
   temptation,
+  theSpiceJob,
   underSiege,
 };
