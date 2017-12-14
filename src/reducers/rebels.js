@@ -53,7 +53,7 @@ export default (state: RebelsStateType = initialState, action: Object) => {
 
       return {
         ...initialState,
-        canActivateTwice: roster.length === 2 ? roster.slice() : state.canActivateTwice,
+        canActivateTwice: heroes.length === 2 ? heroes.slice() : state.canActivateTwice,
         hpBoosts,
         roster: roster.sort(),
       };
