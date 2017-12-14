@@ -1,17 +1,6 @@
 // @flow
 
-import {
-  addToRoster,
-  getAreAllHeroesWounded,
-  getEscapedRebels,
-  getIsOneHeroLeft,
-  getRosterOfType,
-  getWoundedOther,
-  SET_REBEL_ESCAPED,
-  setRebelHpBoost,
-  WOUND_REBEL_HERO,
-  WOUND_REBEL_OTHER,
-} from '../rebels';
+import {addToRoster, WOUND_REBEL_OTHER} from '../rebels';
 import {all, call, fork, put, select, take} from 'redux-saga/effects';
 import {
   getCurrentRound,
@@ -20,8 +9,6 @@ import {
   SET_MAP_STATE_ACTIVATED,
   setAttackTarget,
   setDeploymentPoint,
-  setMapStateActivated,
-  setMapStateVisible,
   setMoveTarget,
   statusPhaseEndRoundEffectsDone,
   STATUS_PHASE_END_ROUND_EFFECTS,
@@ -33,14 +20,7 @@ import {
   optionalDeployment,
   setImperialUnitHpBuff,
 } from '../imperials';
-import {
-  REFER_CAMPAIGN_GUIDE,
-  TARGET_ENTRANCE_TOKEN,
-  TARGET_HERO_CLOSEST_UNWOUNDED,
-  TARGET_REMAINING,
-} from './constants';
-import createAction from '../createAction';
-import difference from 'lodash/difference';
+import {REFER_CAMPAIGN_GUIDE} from './constants';
 import {displayModal} from '../modal';
 import {getMissionThreat} from '../app';
 import helperDeploy from './helpers/helperDeploy';
@@ -49,8 +29,6 @@ import helperIncreaseThreat from './helpers/helperIncreaseThreat';
 import helperInitialSetup from './helpers/helperInitialSetup';
 import helperMissionBriefing from './helpers/helperMissionBriefing';
 import {missionSagaLoadDone} from '../app';
-import random from 'lodash/random';
-import shuffle from 'lodash/shuffle';
 import type {StateType} from '../types';
 import track from '../../lib/track';
 

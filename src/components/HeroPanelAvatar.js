@@ -157,10 +157,7 @@ class HeroPanelAvatar extends React.Component<HeroPanelAvatarPropsType, HeroPane
         {!this.props.activated && this.props.isRebelPlayerTurn ? (
           <Button text="End activation" onClick={this.handleEndActivation} />
         ) : null}
-        <Button
-          text={buttonText}
-          onClick={this.handleSetWounded}
-        />
+        <Button text={buttonText} onClick={this.handleSetWounded} />
         {!this.props.activated && this.props.isRebelPlayerTurn ? (
           <Button text="Escape" onClick={this.handleEscape} />
         ) : null}
