@@ -69,6 +69,16 @@
     "maxInGroup": 1,
     "type": "hero"
   },
+  "luke": {
+    "id": "luke",
+    "firstName": "Luke",
+    "lastName": "Skywalker",
+    "elite": true,
+    "threat": 10,
+    "reinforcementCost": -1,
+    "maxInGroup": 1,
+    "type": "ally"
+  },
   "mak": {
     "id": "mak",
     "firstName": "Mak",

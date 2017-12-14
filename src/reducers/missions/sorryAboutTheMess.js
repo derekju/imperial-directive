@@ -155,7 +155,11 @@ function* handleSpecialSetup(): Generator<*, *, *> {
   yield take(MISSION_SPECIAL_SETUP);
   yield call(helperInitialSetup, '{ELITE}Probe Droid{END}, Stormtrooper');
   yield call(helperEventModal, {
-    text: ['The threat has been increased.', 'An optional deployment will now be done.'],
+    text: [
+      'The heroes control {ELITE}Han Solo{END} as an ally.',
+      'The threat has been increased.',
+      'An optional deployment will now be done.',
+    ],
     title: 'Initial Setup',
   });
   // Double current threat

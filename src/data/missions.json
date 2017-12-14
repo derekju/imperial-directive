@@ -966,6 +966,106 @@
     "noMercenaryAllowed": false,
     "openGroups": 3
   },
+  "homecoming": {
+    "initialGroups": [
+      "probeDroid", "stormtrooper", "trandoshanHunter"
+    ],
+    "instructions": {
+      "imperialVictory": "At the end of Round 6 or when Luke Skywalker is defeated",
+      "rebelVictory": "(to be revealed)"
+    },
+    "mapImage": [
+      ["00a", "00a", "00a", "00a", "04b", "04b", "04b", "04b", "06b", "06b", "06b", "06b", "00a"],
+      ["00a", "07b", "07b", "07b", "04b", "04b", "04b", "04b", "06b", "06b", "06b", "06b", "18b"],
+      ["07b", "07b", "07b", "07b", "04b", "04b", "04b", "04b", "06b", "06b", "06b", "06b", "18b"],
+      ["07b", "07b", "07b", "07b", "04b", "04b", "04b", "04b", "00a", "06b", "06b", "06b", "00a"],
+      ["07b", "07b", "07b", "01b", "01b", "01b", "01b", "01b", "01b", "00a", "17b", "17b", "00a"],
+      ["11b", "11b", "00a", "01b", "01b", "01b", "01b", "01b", "01b", "05b", "05b", "05b", "05b"],
+      ["11b", "11b", "17b", "01b", "01b", "01b", "01b", "01b", "01b", "05b", "05b", "05b", "05b"],
+      ["11b", "11b", "17b", "01b", "01b", "01b", "01b", "01b", "01b", "05b", "05b", "05b", "05b"],
+      ["11b", "11b", "00a", "01b", "01b", "01b", "01b", "01b", "01b", "05b", "05b", "05b", "05b"],
+      ["10b", "10b", "10b", "01b", "01b", "01b", "01b", "01b", "01b", "00a", "00a", "00a", "00a"],
+      ["10b", "10b", "10b", "02b", "02b", "02b", "02b", "02b", "02b", "00a", "00a", "00a", "00a"],
+      ["10b", "10b", "10b", "02b", "02b", "02b", "02b", "02b", "02b", "00a", "00a", "00a", "00a"],
+      ["00a", "00a", "00a", "02b", "02b", "02b", "02b", "02b", "02b", "00a", "00a", "00a", "00a"],
+      ["00a", "00a", "00a", "02b", "02b", "02b", "02b", "02b", "02b", "00a", "00a", "00a", "00a"]
+    ],
+    "mapStates": {
+      "entrance-1": {
+        "activated": false,
+        "activateText": "",
+        "coordinates": {
+          "x": 12,
+          "y": 2
+        },
+        "description": "The entrance.",
+        "id": 1,
+        "interactable": false,
+        "type": "entrance",
+        "unactivateText": "",
+        "visible": true
+      },
+      "terminal-1": {
+        "activated": false,
+        "activateText": "Interact",
+        "coordinates": {
+          "x": 3,
+          "y": 12
+        },
+        "description": "The terminal controlling the doors.",
+        "id": 1,
+        "interactable": true,
+        "type": "terminal",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "door-1": {
+        "activated": false,
+        "activateText": "Open",
+        "coordinates": {
+          "x": 2,
+          "y": 6
+        },
+        "description": "The door to the garage.",
+        "id": 1,
+        "interactable": false,
+        "type": "door",
+        "unactivateText": "Close",
+        "visible": true
+      },
+      "door-2": {
+        "activated": false,
+        "activateText": "Open",
+        "coordinates": {
+          "x": 5,
+          "y": 10
+        },
+        "description": "The door to the garage.",
+        "id": 2,
+        "interactable": false,
+        "type": "door",
+        "unactivateText": "Close",
+        "visible": true
+      },
+      "door-3": {
+        "activated": false,
+        "activateText": "Open",
+        "coordinates": {
+          "x": 9,
+          "y": 6
+        },
+        "description": "The door to the garage.",
+        "id": 3,
+        "interactable": false,
+        "type": "door",
+        "unactivateText": "Close",
+        "visible": true
+      }
+    },
+    "name": "Homecoming",
+    "noMercenaryAllowed": false,
+    "openGroups": 3
+  },
   "imperialHospitality": {
     "initialGroups": [
       "probeDroid", "probeDroid", "royalGuard"

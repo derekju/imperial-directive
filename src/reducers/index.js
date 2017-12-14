@@ -7,6 +7,7 @@ import captured from './missions/captured';
 import events from './events';
 import friendsOfOld from './missions/friendsOfOld';
 import highMoon from './missions/highMoon';
+import homecoming from './missions/homecoming';
 import imperialHospitality from './missions/imperialHospitality';
 import imperials from './imperials';
 import impounded from './missions/impounded';
@@ -26,6 +27,7 @@ export default {
   events,
   friendsOfOld,
   highMoon,
+  homecoming,
   imperialHospitality,
   imperials,
   impounded,

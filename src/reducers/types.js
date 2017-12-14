@@ -7,6 +7,7 @@ import type {CapturedStateType} from './missions/captured';
 import type {EventsStateType} from './events';
 import type {FriendsOfOldStateType} from './missions/friendsOfOld';
 import type {HighMoonStateType} from './missions/highMoon';
+import type {HomecomingStateType} from './missions/homecoming';
 import type {ImperialHospitalityStateType} from './missions/imperialHospitality';
 import type {ImperialsStateType} from './imperials';
 import type {ImpoundedStateType} from './missions/impounded';
@@ -27,6 +28,7 @@ export type StateType = {
   events: EventsStateType,
   friendsOfOld: FriendsOfOldStateType,
   highMoon: HighMoonStateType,
+  homecoming: HomecomingStateType,
   imperialHospitality: ImperialHospitalityStateType,
   imperials: ImperialsStateType,
   impounded: ImpoundedStateType,
