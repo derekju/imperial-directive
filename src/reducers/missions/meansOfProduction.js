@@ -90,15 +90,16 @@ export const getMeansOfProductionGoalText = (state: StateType): string[] => {
   const {tokensLeft} = state.meansOfProduction;
 
   let doorHealth = missionThreat * 2;
+  let goals = ['{BOLD}Doors:{END}', `Health: ${doorHealth}, Defense: 1 {BLOCK}`];
+
   if (tokensLeft.blue < 2) {
     doorHealth = tokensLeft.blue === 1 ? missionThreat * 4 : missionThreat * 6;
+    goals = goals.concat(['{BREAK}', '{BOLD}Door #3:{END}', `Health: ${doorHealth}, Defense: 1 {BLOCK}`]);
   }
-
-  let goals = ['{BOLD}Doors:{END}', `Health: ${doorHealth}, Defense: 1 {BLOCK}`];
 
   if (tokensLeft.green < 2) {
     const damageTaken = tokensLeft.green === 1 ? 2 : 4;
-    goals = goals.concat([`When door is attacked: The attacker suffers ${damageTaken} {DAMAGE}`]);
+    goals = goals.concat([`When Door #3 is attacked: The attacker suffers ${damageTaken} {DAMAGE}`]);
   }
 
   goals = goals.concat([

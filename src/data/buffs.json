@@ -124,10 +124,10 @@
       "While declaring an attack, become focused (limit once per activation)."
     ]
   },
-  "targetSuffersStrainDmg": {
+  "surgicalStrike": {
     "name": "Surgical Strike",
     "text": [
-      "After attacking a target, the target suffers an additional 1 {STRAIN} and 1 {DMG}."
+      "After attacking a target, the target suffers an additional 1 {STRAIN} and 1 {DMG} if they suffered any damage."
     ]
   },
   "extraAttackThenStunned": {

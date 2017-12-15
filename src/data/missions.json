@@ -1688,7 +1688,7 @@
       "probeDroid", "stormtrooper"
     ],
     "instructions": {
-      "imperialVictory": "All heroes are wounded",
+      "imperialVictory": "At the end of Round 5 or when all heroes are wounded",
       "rebelVictory": "Data core destroyed"
     },
     "mapImage": [

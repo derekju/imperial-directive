@@ -27,7 +27,7 @@
   },
   "darthVader": {
     "affiliation": "imperial",
-    "buffs": ["getPlus2Dmg", "targetMinus1Block", "targetSuffersStrainDmg"],
+    "buffs": ["getPlus2Dmg", "targetMinus1Block", "surgicalStrike"],
     "commands": [
       {
         "condition": "If possible to be adjacent to 2 hostile figures",
@@ -67,7 +67,7 @@
   },
   "eWebEngineer": {
     "affiliation": "imperial",
-    "buffs": ["plusOneMovement", "figureNotBlockLOS", "showOfForce", "targetSuffersStrainDmg"],
+    "buffs": ["plusOneMovement", "figureNotBlockLOS", "showOfForce", "surgicalStrike"],
     "commands": [
       {
         "condition": "If within 7 spaces and have LOS of {ATTACK_TARGET}",
@@ -99,7 +99,7 @@
   },
   "eWebEngineerElite": {
     "affiliation": "imperial",
-    "buffs": ["plusOneMovement", "showOfForce", "showOfForce", "targetSuffersStrainDmg", "targetSuffersStrainDmg"],
+    "buffs": ["plusOneMovement", "showOfForce", "showOfForce", "surgicalStrike", "surgicalStrike"],
     "commands": [
       {
         "condition": "If within 7 spaces and have LOS of {ATTACK_TARGET}",
@@ -131,7 +131,7 @@
   },
   "generalWeiss": {
     "affiliation": "imperial",
-    "buffs": ["targetSuffersStrainDmg"],
+    "buffs": ["surgicalStrike"],
     "commands": [
       {
         "condition": "If 2 other friendly figures are not within attack range or LOS of {ATTACK_TARGET}",
@@ -161,7 +161,7 @@
   },
   "gerrin": {
     "affiliation": "mission",
-    "buffs": ["recovery", "showOfForce", "targetSuffersStrainDmg"],
+    "buffs": ["recovery", "showOfForce", "surgicalStrike"],
     "commands": [
       {
         "condition": "If within 2 spaces of a friendly target that is within attack range and LOS of {ATTACK_TARGET}",
@@ -271,7 +271,7 @@
   },
   "nexu": {
     "affiliation": "mercenary",
-    "buffs": ["recovery", "targetSuffersStrainDmg"],
+    "buffs": ["recovery", "surgicalStrike"],
     "commands": [
       {
         "condition": "If within 4 spaces of {ATTACK_TARGET}",
@@ -411,7 +411,7 @@
   },
   "royalGuard": {
     "affiliation": "imperial",
-    "buffs": ["targetMinus1Block", "targetMinus1Block", "extraSurgeIfTargetTwoStrain", "targetSuffersStrainDmg"],
+    "buffs": ["targetMinus1Block", "targetMinus1Block", "extraSurgeIfTargetTwoStrain", "surgicalStrike"],
     "commands": [
       {
         "condition": "If within 7 spaces of {ATTACK_TARGET}",
@@ -447,7 +447,7 @@
   },
   "royalGuardChampion": {
     "affiliation": "imperial",
-    "buffs": ["targetMinus1Block", "extraSurgeIfTargetTwoStrain", "showOfForce", "targetSuffersStrainDmg"],
+    "buffs": ["targetMinus1Block", "extraSurgeIfTargetTwoStrain", "showOfForce", "surgicalStrike"],
     "commands": [
       {
         "condition": "If possible to be adjacent to 2 hostile figures",
@@ -483,7 +483,7 @@
   },
   "royalGuardElite": {
     "affiliation": "imperial",
-    "buffs": ["targetMinus1Block", "gainSurgeStunSurgeDmg", "extraSurgeIfTargetTwoStrain", "targetSuffersStrainDmg"],
+    "buffs": ["targetMinus1Block", "gainSurgeStunSurgeDmg", "extraSurgeIfTargetTwoStrain", "surgicalStrike"],
     "commands": [
       {
         "condition": "If within 7 spaces of {ATTACK_TARGET}",
