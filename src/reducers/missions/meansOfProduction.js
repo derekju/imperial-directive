@@ -14,7 +14,7 @@ import {
   STATUS_PHASE_END_ROUND_EFFECTS,
 } from '../mission';
 import {OPTIONAL_DEPLOYMENT_DONE, optionalDeployment} from '../imperials';
-import {REFER_CAMPAIGN_GUIDE, TARGET_HERO_CLOSEST_UNWOUNDED, TARGET_REMAINING} from './constants';
+import {REFER_CAMPAIGN_GUIDE, TARGET_REMAINING} from './constants';
 import createAction from '../createAction';
 import {displayModal} from '../modal';
 import helperDeploy from './helpers/helperDeploy';
@@ -30,6 +30,7 @@ import track from '../../lib/track';
 
 const TARGET_DOOR = 'the first door';
 const TARGET_DOOR_3 = 'the third door';
+const TARGET_HERO_CLOSE_DOOR_3 = 'the unwounded hero closest to door 3';
 
 const DEPLOYMENT_POINT_GREEN = 'The green deployment point';
 const DEPLOYMENT_POINT_RED = 'The right red deployment point';
@@ -296,7 +297,7 @@ Priority target definitions:
 */
 export function* meansOfProduction(): Generator<*, *, *> {
   // SET TARGETS
-  yield put(setAttackTarget(TARGET_HERO_CLOSEST_UNWOUNDED));
+  yield put(setAttackTarget(TARGET_HERO_CLOSE_DOOR_3));
   yield put(setMoveTarget(TARGET_DOOR));
   // SET INITIAL DEPLOYMENT POINT
   yield put(setDeploymentPoint(DEPLOYMENT_POINT_GREEN));
