@@ -29,7 +29,7 @@ import waitForModal from '../../sagas/waitForModal';
 
 // Constants
 
-const TARGET_HERO_CLOSE_TERMINAL = 'the closest hero adjacent to a terminal';
+const TARGET_HERO_CLOSE_TERMINAL = 'the closest hero adjacent to a terminal (or closest unwounded hero)';
 const TARGET_NEAREST_TERMINAL = 'the nearest active terminal';
 
 const DEPLOYMENT_POINT_GREEN_TERMINAL = 'The green deployment point';
