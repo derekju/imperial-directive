@@ -5,7 +5,6 @@ import {
   getAreAllHeroesWounded,
   getIsOneHeroLeft,
   getWoundedOther,
-  setRebelHpBoost,
   WOUND_REBEL_HERO,
   WOUND_REBEL_OTHER,
 } from '../rebels';

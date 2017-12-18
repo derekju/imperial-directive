@@ -14,6 +14,7 @@ import createAction from './createAction';
 import decrementFigureFromGroup from './utils/decrementFigureFromGroup';
 import {displayModal} from './modal';
 import filter from 'lodash/filter';
+import last from 'lodash/last';
 import populateOpenGroups from './utils/populateOpenGroups';
 import random from 'lodash/random';
 import reverse from 'lodash/reverse';
@@ -334,6 +335,15 @@ export const getCurrentGroups = (state: StateType) => ({
   deployedGroups: state.imperials.deployedGroups,
   openGroups: state.imperials.openGroups,
 });
+export const isGroupIdInDeployedGroups = (state: StateType, id: string) =>
+  Boolean(state.imperials.deployedGroups.find((group: ImperialUnitType) => group.id === id));
+export const getDeployedGroupOfIdWithMostUnits = (state: StateType, id: string) =>
+  last(
+    sortBy(
+      state.imperials.deployedGroups.filter((group: ImperialUnitType) => group.id === id),
+      'currentNumFigures'
+    )
+  );
 
 // Sagas
 

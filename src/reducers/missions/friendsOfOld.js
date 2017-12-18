@@ -2,6 +2,7 @@
 
 import {
   addToRoster,
+  enableEscape,
   getAreAllHeroesWounded,
   getEscapedRebels,
   getIsOneHeroLeft,
@@ -332,6 +333,8 @@ function* handleSpecialSetup(): Generator<*, *, *> {
       missionThreat
     } {DAMAGE} and is stunned.`,
   ]);
+  // Enable escaping
+  yield put(enableEscape());
   yield put(missionSpecialSetupDone());
 }
 

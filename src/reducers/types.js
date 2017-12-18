@@ -4,6 +4,7 @@ import type {AftermathStateType} from './missions/aftermath';
 import type {AppStateType} from './app';
 import type {BrushfireStateType} from './missions/brushfire';
 import type {CapturedStateType} from './missions/captured';
+import type {DrawnInStateType} from './missions/drawnIn';
 import type {EventsStateType} from './events';
 import type {FriendsOfOldStateType} from './missions/friendsOfOld';
 import type {HighMoonStateType} from './missions/highMoon';
@@ -26,6 +27,7 @@ export type StateType = {
   app: AppStateType,
   brushfire: BrushfireStateType,
   captured: CapturedStateType,
+  drawnIn: DrawnInStateType,
   events: EventsStateType,
   friendsOfOld: FriendsOfOldStateType,
   highMoon: HighMoonStateType,

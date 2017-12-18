@@ -79,6 +79,7 @@ const styles = {
 type HeroPanelAvatarPropsType = {
   activated: boolean,
   elite: boolean,
+  enableEscape: boolean,
   firstName: string,
   hpBoost: number,
   id: string,
@@ -158,7 +159,7 @@ class HeroPanelAvatar extends React.Component<HeroPanelAvatarPropsType, HeroPane
           <Button text="End activation" onClick={this.handleEndActivation} />
         ) : null}
         <Button text={buttonText} onClick={this.handleSetWounded} />
-        {!this.props.activated && this.props.isRebelPlayerTurn ? (
+        {!this.props.activated && this.props.isRebelPlayerTurn && this.props.enableEscape ? (
           <Button text="Escape" onClick={this.handleEscape} />
         ) : null}
         <div style={styles.popupAccent} />

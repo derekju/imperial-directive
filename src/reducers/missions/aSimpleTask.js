@@ -2,6 +2,7 @@
 
 import {all, call, fork, put, select, take} from 'redux-saga/effects';
 import {
+  enableEscape,
   getAreAllHeroesWounded,
   getIsOneHeroLeft,
   SET_REBEL_ESCAPED,
@@ -175,6 +176,8 @@ function* handleSoundTheAlarmsEvent(): Generator<*, *, *> {
         yield put(setMoveTarget(TARGET_HERO_FORMULA));
       }
       yield put(setDeploymentPoint(DEPLOYMENT_POINT_RED));
+      // Enable escaping
+      yield put(enableEscape());
       // We're done
       break;
     }

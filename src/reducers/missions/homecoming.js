@@ -1,6 +1,12 @@
 // @flow
 
-import {addToRoster, SET_REBEL_ESCAPED, setRebelHpBoost, WOUND_REBEL_OTHER} from '../rebels';
+import {
+  addToRoster,
+  enableEscape,
+  SET_REBEL_ESCAPED,
+  setRebelHpBoost,
+  WOUND_REBEL_OTHER,
+} from '../rebels';
 import {all, call, fork, put, select, take} from 'redux-saga/effects';
 import {
   getCurrentRound,
@@ -32,7 +38,7 @@ import track from '../../lib/track';
 
 // Constants
 
-const TARGET_LUKE = 'Luke Skywalker';
+const TARGET_LUKE = 'Luke (or closest hero)';
 const TARGET_TERMINAL = 'the terminal';
 const TARGET_GARAGE = 'the center of the Garage';
 
@@ -123,6 +129,8 @@ function* handleGarageOpens(): Generator<*, *, *> {
   yield put(updateRebelVictory('Luke escapes'));
   // Switch targets
   yield put(setMoveTarget(TARGET_GARAGE));
+  // Enable escaping
+  yield put(enableEscape());
   yield put(setDeploymentPoint(DEPLOYMENT_POINT_GREEN_E));
 }
 

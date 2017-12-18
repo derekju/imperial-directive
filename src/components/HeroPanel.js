@@ -34,6 +34,7 @@ const styles = {
 type HeroPanelPropsType = {
   activatedRebels: string[],
   canActivateTwice: string[],
+  enableEscape: boolean,
   hpBoosts: {[id: string]: number},
   isRebelPlayerTurn: boolean,
   roster: string[],
@@ -83,6 +84,7 @@ class HeroPanel extends React.Component<HeroPanelPropsType, HeroPanelStateType> 
                       : this.props.activatedRebels.includes(id)
                   }
                   elite={rebels[id].elite}
+                  enableEscape={this.props.enableEscape}
                   firstName={nameToDisplay}
                   hpBoost={this.props.hpBoosts[id] || 0}
                   id={id}

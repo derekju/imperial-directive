@@ -2,6 +2,7 @@
 
 import {
   addToRoster,
+  enableEscape,
   getAreAllHeroesWounded,
   getIsOneHeroLeft,
   SET_REBEL_ESCAPED,
@@ -226,6 +227,8 @@ function* handlePrisonerEvent(): Generator<*, *, *> {
         yield put(setAttackTarget(TARGET_CAPTIVE));
         yield put(setMoveTarget(TARGET_ENTRANCE));
       }
+      // Enable escaping
+      yield put(enableEscape());
       // We're done
       break;
     }

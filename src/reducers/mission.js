@@ -45,6 +45,7 @@ export type MissionStateType = {
   currentRound: number,
   currentThreat: number,
   deploymentPoint: string,
+  extraThreatIncrease: number,
   instructions: {imperialVictory: string, rebelVictory: string},
   mapImage: Array<Array<string>>,
   mapStates: {[key: string]: MapStateType},
@@ -90,6 +91,7 @@ const initialState = {
   deploymentPoint: 'The green deployment point closest to the most hostile figures',
   difficulty: 'standard',
   disableThreatIncrease: false,
+  extraThreatIncrease: 0,
   instructions: {
     imperialVictory: '',
     rebelVictory: '',
@@ -183,7 +185,8 @@ export default (state: MissionStateType = initialState, action: Object) => {
           : 0;
       return {
         ...state,
-        currentThreat: state.currentThreat + state.missionThreat + extraThreatToAdd,
+        currentThreat:
+          state.currentThreat + state.missionThreat + state.extraThreatIncrease + extraThreatToAdd,
       };
     case STATUS_PHASE_DEPLOY_REINFORCE_DONE:
     case OPTIONAL_DEPLOYMENT_DONE:
@@ -237,6 +240,11 @@ export default (state: MissionStateType = initialState, action: Object) => {
         ...state,
         disableThreatIncrease: true,
       };
+    case SET_EXTRA_THREAT_INCREASE:
+      return {
+        ...state,
+        extraThreatIncrease: action.payload.increase,
+      };
     default:
       return state;
   }
@@ -269,6 +277,7 @@ export const INCREASE_THREAT = 'INCREASE_THREAT';
 export const UPDATE_REBEL_VICTORY = 'UPDATE_REBEL_VICTORY';
 export const UPDATE_IMPERIAL_VICTORY = 'UPDATE_IMPERIAL_VICTORY';
 export const DISABLE_THREAT_INCREASE = 'DISABLE_THREAT_INCREASE';
+export const SET_EXTRA_THREAT_INCREASE = 'SET_EXTRA_THREAT_INCREASE';
 
 // Action creators
 
@@ -307,6 +316,8 @@ export const updateRebelVictory = (newText: string) =>
 export const updateImperialVictory = (newText: string) =>
   createAction(UPDATE_IMPERIAL_VICTORY, {newText});
 export const disableThreatIncrease = () => createAction(DISABLE_THREAT_INCREASE);
+export const setExtraThreatIncrease = (increase: number) =>
+  createAction(SET_EXTRA_THREAT_INCREASE, {increase});
 
 // Selectors
 

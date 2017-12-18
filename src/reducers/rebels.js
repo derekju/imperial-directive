@@ -12,6 +12,7 @@ export type RebelsStateType = {
   activatedRebels: string[],
   allyChosen: ?string,
   canActivateTwice: string[],
+  enableEscape: boolean,
   escapedRebels: string[],
   hpBoosts: {[id: string]: number},
   roster: string[],
@@ -26,6 +27,7 @@ const initialState = {
   activatedRebels: [],
   allyChosen: null,
   canActivateTwice: [],
+  enableEscape: false,
   escapedRebels: [],
   hpBoosts: {},
   roster: [],
@@ -134,6 +136,12 @@ export default (state: RebelsStateType = initialState, action: Object) => {
         allyChosen: id,
       };
     }
+    case ENABLE_ESCAPE: {
+      return {
+        ...state,
+        enableEscape: true,
+      };
+    }
     default:
       return state;
   }
@@ -150,6 +158,7 @@ export const ADD_TO_ROSTER = 'ADD_TO_ROSTER';
 export const WOUND_REBEL_OTHER = 'WOUND_REBEL_OTHER';
 export const SET_REBEL_HP_BOOST = 'SET_REBEL_HP_BOOST';
 export const SET_ALLY_CHOSEN = 'SET_ALLY_CHOSEN';
+export const ENABLE_ESCAPE = 'ENABLE_ESCAPE';
 
 // Action creators
 
@@ -163,6 +172,7 @@ export const woundRebelOther = (id: string) => createAction(WOUND_REBEL_OTHER, {
 export const setRebelHpBoost = (id: string, boost: number) =>
   createAction(SET_REBEL_HP_BOOST, {boost, id});
 export const setAllyChosen = (id: string) => createAction(SET_ALLY_CHOSEN, {id});
+export const enableEscape = () => createAction(ENABLE_ESCAPE);
 
 // Selectors
 

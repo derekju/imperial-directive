@@ -4,6 +4,7 @@ import aftermath from './missions/aftermath';
 import app from './app';
 import brushfire from './missions/brushfire';
 import captured from './missions/captured';
+import drawnIn from './missions/drawnIn';
 import events from './events';
 import friendsOfOld from './missions/friendsOfOld';
 import highMoon from './missions/highMoon';
@@ -25,6 +26,7 @@ export default {
   app,
   brushfire,
   captured,
+  drawnIn,
   events,
   friendsOfOld,
   highMoon,
