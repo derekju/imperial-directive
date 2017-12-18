@@ -103,8 +103,8 @@ export const getDrawnInGoalText = (state: StateType): string[] => {
     '{BOLD}Doors:{END}',
     'Doors are locked. Interact ({STRENGTH} or {TECH}) to open.',
     '{BREAK}',
-    '{BOLD}Withdrawn:{END}',
-    'Withdrawn heroes receive 1 activation and they can only move.',
+    '{BOLD}Withdrawn hero:{END}',
+    'Withdrawn heroes receive only 1 action and they can only move.',
   ]);
 
   return goals;

@@ -51,6 +51,7 @@ export type MissionStateType = {
   mapStates: {[key: string]: MapStateType},
   moveTarget: string,
   missionThreat: number,
+  withdrawnHeroCanActivate: boolean,
 };
 
 export type MissionConfigType = {
@@ -100,6 +101,7 @@ const initialState = {
   mapStates: {},
   missionThreat: 0,
   moveTarget: 'the closest unwounded hero',
+  withdrawnHeroCanActivate: false,
 };
 
 export default (state: MissionStateType = initialState, action: Object) => {
@@ -116,6 +118,7 @@ export default (state: MissionStateType = initialState, action: Object) => {
         mapStates: config.mapStates,
         missionThreat,
         moveTarget: state.moveTarget,
+        withdrawnHeroCanActivate: config.withdrawnHeroCanActivate || false,
       };
     case CHANGE_PLAYER_TURN:
       return {

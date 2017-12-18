@@ -15,9 +15,11 @@ const mapStateToProps = (state: StateType) => ({
   activatedRebels: state.rebels.activatedRebels,
   canActivateTwice: state.rebels.canActivateTwice,
   enableEscape: state.rebels.enableEscape,
+  fakeWithdrawnHeroes: state.rebels.fakeWithdrawnHeroes,
   hpBoosts: state.rebels.hpBoosts,
   isRebelPlayerTurn: isRebelPlayerTurn(state),
   roster: state.rebels.roster,
+  withdrawnHeroCanActivate: state.mission.withdrawnHeroCanActivate,
   withdrawnHeroes: state.rebels.withdrawnHeroes,
   woundedHeroes: state.rebels.woundedHeroes,
 });

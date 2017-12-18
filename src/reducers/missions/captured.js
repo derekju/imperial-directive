@@ -82,7 +82,7 @@ export const getCapturedGoalText = (state: StateType): string[] => {
       'Attack an adjacent target with 1 green and 1 yellow die.{BREAK}Before attacking, test {STRENGTH}. If pass, gain {SURGE}: +2 {DAMAGE}.',
       '{BREAK}',
       '{BOLD}Withdrawn hero:{END}',
-      'One activation and can only move.',
+      'Withdrawn heroes receive only 1 action and they can only move.',
       '{BREAK}',
       '{BOLD}Doors:{END}',
       'Hallway and Storage Room doors are locked to Rebels. Imperials can move and attack through them.',

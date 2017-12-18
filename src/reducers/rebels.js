@@ -14,6 +14,7 @@ export type RebelsStateType = {
   canActivateTwice: string[],
   enableEscape: boolean,
   escapedRebels: string[],
+  fakeWithdrawnHeroes: string[],
   hpBoosts: {[id: string]: number},
   roster: string[],
   withdrawnHeroes: string[],
@@ -29,6 +30,7 @@ const initialState = {
   canActivateTwice: [],
   enableEscape: false,
   escapedRebels: [],
+  fakeWithdrawnHeroes: [],
   hpBoosts: {},
   roster: [],
   withdrawnHeroes: [],
@@ -79,8 +81,19 @@ export default (state: RebelsStateType = initialState, action: Object) => {
         activatedRebels: [],
       };
     case WOUND_REBEL_HERO: {
-      const {id} = action.payload;
+      const {id, withdrawnHeroCanActivate} = action.payload;
       if (state.woundedHeroes.includes(id)) {
+        // If the hero can still activate, we do want to flag them as withdrawn but not REALLY withdrawn
+        // The system assumes withdrawn is removed completely so add to a fakeWithdrawn state so we can separate the two
+        // Since they can still activate we need to preserve their canActivateTwice status
+        if (withdrawnHeroCanActivate) {
+          return {
+            ...state,
+            fakeWithdrawnHeroes: state.fakeWithdrawnHeroes.concat([id]),
+            woundedHeroes: without(state.woundedHeroes, id),
+          }
+        }
+
         return {
           ...state,
           canActivateTwice: without(state.canActivateTwice, id),
@@ -165,7 +178,7 @@ export const ENABLE_ESCAPE = 'ENABLE_ESCAPE';
 export const setRoster = (roster: string[]) => createAction(SET_ROSTER, {roster});
 export const setRebelActivated = (id: string) => createAction(SET_REBEL_ACTIVATED, {id});
 export const setHeroActivateTwice = (id: string) => createAction(SET_HERO_ACTIVATE_TWICE, {id});
-export const woundRebelHero = (id: string) => createAction(WOUND_REBEL_HERO, {id});
+export const woundRebelHero = (id: string, withdrawnHeroCanActivate: boolean) => createAction(WOUND_REBEL_HERO, {id, withdrawnHeroCanActivate});
 export const setRebelEscaped = (id: string) => createAction(SET_REBEL_ESCAPED, {id});
 export const addToRoster = (id: string) => createAction(ADD_TO_ROSTER, {id});
 export const woundRebelOther = (id: string) => createAction(WOUND_REBEL_OTHER, {id});
@@ -177,25 +190,26 @@ export const enableEscape = () => createAction(ENABLE_ESCAPE);
 // Selectors
 
 export const getRoster = (state: StateType) => state.rebels.roster;
-export const getRosterOfType = (state: StateType, type: string) =>
+export const getRosterOfType = (state: StateType, type: string): string[] =>
   state.rebels.roster.filter((id: string) => rebels[id].type === type);
+export const getWithdrawnHeroes = (state: StateType): string[] => state.rebels.withdrawnHeroes;
 export const getIsThereReadyRebelFigures = (state: StateType) =>
   state.rebels.activatedRebels.length !==
   state.rebels.roster.length +
     state.rebels.canActivateTwice.length -
     state.rebels.withdrawnHeroes.length;
 export const getAreAllHeroesWounded = (state: StateType) =>
-  state.rebels.woundedHeroes.length + state.rebels.withdrawnHeroes.length ===
+  state.rebels.woundedHeroes.length + state.rebels.withdrawnHeroes.length + state.rebels.fakeWithdrawnHeroes.length ===
   getRosterOfType(state, 'hero').length;
 export const getIsOneHeroLeft = (state: StateType) =>
   getRosterOfType(state, 'hero').length -
     state.rebels.woundedHeroes.length -
-    state.rebels.withdrawnHeroes.length ===
+    state.rebels.withdrawnHeroes.length - state.rebels.fakeWithdrawnHeroes.length ===
   1;
 export const getAreAllHeroesWithdrawn = (state: StateType) =>
-  state.rebels.withdrawnHeroes.length === getRosterOfType(state, 'hero').length;
+  state.rebels.withdrawnHeroes.length + state.rebels.fakeWithdrawnHeroes.length === getRosterOfType(state, 'hero').length;
 export const getIsHeroWithdrawn = (state: StateType, heroId: string) =>
-  state.rebels.withdrawnHeroes.includes(heroId);
+  state.rebels.withdrawnHeroes.includes(heroId) || state.rebels.fakeWithdrawnHeroes.includes(heroId);
 export const getCanHeroActivateTwice = (state: StateType, heroId: string) =>
   state.rebels.canActivateTwice.includes(heroId);
 export const getWoundedOther = (state: StateType) => state.rebels.woundedOther;

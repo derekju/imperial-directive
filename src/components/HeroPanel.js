@@ -35,11 +35,13 @@ type HeroPanelPropsType = {
   activatedRebels: string[],
   canActivateTwice: string[],
   enableEscape: boolean,
+  fakeWithdrawnHeroes: string[],
   hpBoosts: {[id: string]: number},
   isRebelPlayerTurn: boolean,
   roster: string[],
   setRebelEscaped: Function,
   setRebelActivated: Function,
+  withdrawnHeroCanActivate: boolean,
   withdrawnHeroes: string[],
   woundedHeroes: string[],
   woundRebelHero: Function,
@@ -96,7 +98,8 @@ class HeroPanel extends React.Component<HeroPanelPropsType, HeroPanelStateType> 
                   setRebelActivated={
                     this.props.isRebelPlayerTurn ? this.props.setRebelActivated : noop
                   }
-                  withdrawn={this.props.withdrawnHeroes.includes(id)}
+                  withdrawn={this.props.withdrawnHeroes.includes(id) || this.props.fakeWithdrawnHeroes.includes(id)}
+                  withdrawnHeroCanActivate={this.props.withdrawnHeroCanActivate}
                   wounded={this.props.woundedHeroes.includes(id)}
                   woundRebelHero={
                     rebels[id].type === 'hero'

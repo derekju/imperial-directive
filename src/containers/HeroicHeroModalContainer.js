@@ -3,14 +3,20 @@
 import {closeModals} from '../reducers/modal';
 import {connect} from 'react-redux';
 import HeroicHeroModal from '../components/modals/HeroicHeroModal';
-import {getRosterOfType, setHeroActivateTwice} from '../reducers/rebels';
+import {getRosterOfType, getWithdrawnHeroes, setHeroActivateTwice} from '../reducers/rebels';
 import type {StateType} from '../reducers/types';
 
-const mapStateToProps = (state: StateType) => ({
-  canActivateTwice: state.rebels.canActivateTwice,
-  roster: getRosterOfType(state, 'hero'),
-  type: state.modal.type,
-});
+const mapStateToProps = (state: StateType) => {
+  const withdrawnHeroes = getWithdrawnHeroes(state);
+
+  return {
+    canActivateTwice: state.rebels.canActivateTwice,
+    // Get roster but filter all withdrawn heroes out since they can't activate
+    // Exception are the fake withdrawn heroes. They still can.
+    roster: getRosterOfType(state, 'hero').filter((id: string) => !withdrawnHeroes.includes(id)),
+    type: state.modal.type,
+  };
+};
 
 const mapDispatchToProps = {
   closeModals,

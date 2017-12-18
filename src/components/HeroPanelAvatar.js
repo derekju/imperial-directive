@@ -90,6 +90,7 @@ type HeroPanelAvatarPropsType = {
   setRebelEscaped: Function,
   setRebelActivated: Function,
   withdrawn: boolean,
+  withdrawnHeroCanActivate: boolean,
   wounded: boolean,
   woundRebelHero: Function,
 };
@@ -114,7 +115,8 @@ class HeroPanelAvatar extends React.Component<HeroPanelAvatarPropsType, HeroPane
   };
 
   handleClick = () => {
-    if (this.props.withdrawn) {
+    // Don't allow popup if user is withdrawn AND we're not on a mission where withdrawn heroes can activate
+    if (this.props.withdrawn && !this.props.withdrawnHeroCanActivate) {
       return;
     }
     this.togglePopup();
@@ -126,7 +128,7 @@ class HeroPanelAvatar extends React.Component<HeroPanelAvatarPropsType, HeroPane
   };
 
   handleSetWounded = () => {
-    this.props.woundRebelHero(this.props.id);
+    this.props.woundRebelHero(this.props.id, this.props.withdrawnHeroCanActivate);
     this.togglePopup();
   };
 
@@ -143,6 +145,13 @@ class HeroPanelAvatar extends React.Component<HeroPanelAvatarPropsType, HeroPane
       buttonText = 'Defeat';
     }
 
+    // Don't display the wound button in the follow conditions:
+    // 1) Is a hero
+    // 2) We're on a mission where withdrawn heroes can activate
+    // 3) This hero is withdrawn
+    // In that case we are allowing the panel to appear but since they are withdrawn they can't be killed again
+    const doNotDisplayWoundButton = this.props.isHero && this.props.withdrawnHeroCanActivate && this.props.withdrawn;
+
     return (
       <div style={styles.popup} ref={this.handlePopupPositioning}>
         <div style={styles.popupArrow}>
@@ -158,7 +167,7 @@ class HeroPanelAvatar extends React.Component<HeroPanelAvatarPropsType, HeroPane
         {!this.props.activated && this.props.isRebelPlayerTurn ? (
           <Button text="End activation" onClick={this.handleEndActivation} />
         ) : null}
-        <Button text={buttonText} onClick={this.handleSetWounded} />
+        {!doNotDisplayWoundButton ? <Button text={buttonText} onClick={this.handleSetWounded} /> : null}
         {!this.props.activated && this.props.isRebelPlayerTurn && this.props.enableEscape ? (
           <Button text="Escape" onClick={this.handleEscape} />
         ) : null}

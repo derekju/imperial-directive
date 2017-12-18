@@ -792,7 +792,8 @@
     },
     "name": "Captured",
     "noMercenaryAllowed": false,
-    "openGroups": 3
+    "openGroups": 3,
+    "withdrawnHeroCanActivate": true
   },
   "drawnIn": {
     "initialGroups": [
@@ -948,7 +949,8 @@
     },
     "name": "Drawn In",
     "noMercenaryAllowed": true,
-    "openGroups": 4
+    "openGroups": 4,
+    "withdrawnHeroCanActivate": true
   },
   "friendsOfOld": {
     "initialGroups": [
