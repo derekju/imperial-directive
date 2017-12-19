@@ -22,6 +22,7 @@ import {looseCannon} from './missions/looseCannon';
 import {luxuryCruise} from './missions/luxuryCruise';
 import {meansOfProduction} from './missions/meansOfProduction';
 import {sorryAboutTheMess} from './missions/sorryAboutTheMess';
+import {targetOfOpportunity} from './missions/targetOfOpportunity';
 import {temptation} from './missions/temptation';
 import {theSpiceJob} from './missions/theSpiceJob';
 import {underSiege} from './missions/underSiege';
@@ -136,6 +137,9 @@ function* forkMission(currentMission: string): Generator<*, *, *> {
       break;
     case 'sorryAboutTheMess':
       yield fork(sorryAboutTheMess);
+      break;
+    case 'targetOfOpportunity':
+      yield fork(targetOfOpportunity);
       break;
     case 'temptation':
       yield fork(temptation);

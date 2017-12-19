@@ -17,6 +17,7 @@ import meansOfProduction from './missions/meansOfProduction';
 import mission from './mission';
 import modal from './modal';
 import rebels from './rebels';
+import targetOfOpportunity from './missions/targetOfOpportunity';
 import temptation from './missions/temptation';
 import theSpiceJob from './missions/theSpiceJob';
 import underSiege from './missions/underSiege';
@@ -39,6 +40,7 @@ export default {
   mission,
   modal,
   rebels,
+  targetOfOpportunity,
   temptation,
   theSpiceJob,
   underSiege,

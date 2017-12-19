@@ -18,6 +18,7 @@ import {getLooseCannonGoalText} from '../reducers/missions/looseCannon';
 import {getLuxuryCruiseGoalText} from '../reducers/missions/luxuryCruise';
 import {getMeansOfProductionGoalText} from '../reducers/missions/meansOfProduction';
 import {getSorryAboutTheMessGoalText} from '../reducers/missions/sorryAboutTheMess';
+import {getTargetOfOpportunityGoalText} from '../reducers/missions/targetOfOpportunity';
 import {getTemptationGoalText} from '../reducers/missions/temptation';
 import {getTheSpiceJobGoalText} from '../reducers/missions/theSpiceJob';
 import {getUnderSiegeGoalText} from '../reducers/missions/underSiege';
@@ -58,6 +59,8 @@ const getGoalText = (state: StateType) => {
       return getMeansOfProductionGoalText(state);
     case 'sorryAboutTheMess':
       return getSorryAboutTheMessGoalText(state);
+    case 'targetOfOpportunity':
+      return getTargetOfOpportunityGoalText(state);
     case 'temptation':
       return getTemptationGoalText(state);
     case 'theSpiceJob':
