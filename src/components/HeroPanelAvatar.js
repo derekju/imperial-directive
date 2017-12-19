@@ -78,6 +78,7 @@ const styles = {
 
 type HeroPanelAvatarPropsType = {
   activated: boolean,
+  canBeIncapacitated: boolean,
   elite: boolean,
   enableEscape: boolean,
   firstName: string,
@@ -150,8 +151,9 @@ class HeroPanelAvatar extends React.Component<HeroPanelAvatarPropsType, HeroPane
     // 2) We're on a mission where withdrawn heroes can activate
     // 3) This hero is withdrawn
     // In that case we are allowing the panel to appear but since they are withdrawn they can't be killed again
+    // Also don't show it if the figure is marked as being able to be incapicitated
     const doNotDisplayWoundButton =
-      this.props.isHero && this.props.withdrawnHeroCanActivate && this.props.withdrawn;
+      (this.props.isHero && this.props.withdrawnHeroCanActivate && this.props.withdrawn) || this.props.canBeIncapacitated;
 
     return (
       <div style={styles.popup} ref={this.handlePopupPositioning}>

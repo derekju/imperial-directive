@@ -1,6 +1,6 @@
 // @flow
 
-import {addToRoster, getAreAllHeroesWounded, getIsOneHeroLeft, WOUND_REBEL_HERO} from '../rebels';
+import {addToRoster, getAreAllHeroesWounded, getIsOneHeroLeft, setCanIncapacitate, WOUND_REBEL_HERO} from '../rebels';
 import {all, call, fork, put, select, take} from 'redux-saga/effects';
 import {
   getCurrentRound,
@@ -125,6 +125,7 @@ function* handleFinishJobEvent(): Generator<*, *, *> {
 
       yield put(createAction('TARGET_OF_OPPORTUNITY_SABOTEURS_FREED', true));
       yield put(addToRoster('rebelSaboteur'));
+      yield put(setCanIncapacitate(['rebelSaboteur']));
       break;
     }
   }

@@ -12,6 +12,7 @@ export type RebelsStateType = {
   activatedRebels: string[],
   allyChosen: ?string,
   canActivateTwice: string[],
+  canIncapacitate: string[],
   enableEscape: boolean,
   escapedRebels: string[],
   fakeWithdrawnHeroes: string[],
@@ -28,6 +29,7 @@ const initialState = {
   activatedRebels: [],
   allyChosen: null,
   canActivateTwice: [],
+  canIncapacitate: [],
   enableEscape: false,
   escapedRebels: [],
   fakeWithdrawnHeroes: [],
@@ -155,6 +157,12 @@ export default (state: RebelsStateType = initialState, action: Object) => {
         enableEscape: true,
       };
     }
+    case SET_CAN_INCAPACITATE: {
+      return {
+        ...state,
+        canIncapacitate: action.payload.groupIds,
+      };
+    }
     default:
       return state;
   }
@@ -172,6 +180,7 @@ export const WOUND_REBEL_OTHER = 'WOUND_REBEL_OTHER';
 export const SET_REBEL_HP_BOOST = 'SET_REBEL_HP_BOOST';
 export const SET_ALLY_CHOSEN = 'SET_ALLY_CHOSEN';
 export const ENABLE_ESCAPE = 'ENABLE_ESCAPE';
+export const SET_CAN_INCAPACITATE = 'SET_CAN_INCAPACITATE';
 
 // Action creators
 
@@ -187,6 +196,7 @@ export const setRebelHpBoost = (id: string, boost: number) =>
   createAction(SET_REBEL_HP_BOOST, {boost, id});
 export const setAllyChosen = (id: string) => createAction(SET_ALLY_CHOSEN, {id});
 export const enableEscape = () => createAction(ENABLE_ESCAPE);
+export const setCanIncapacitate = (groupIds: string[]) => createAction(SET_CAN_INCAPACITATE, {groupIds});
 
 // Selectors
 
