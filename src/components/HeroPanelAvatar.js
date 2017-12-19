@@ -150,7 +150,8 @@ class HeroPanelAvatar extends React.Component<HeroPanelAvatarPropsType, HeroPane
     // 2) We're on a mission where withdrawn heroes can activate
     // 3) This hero is withdrawn
     // In that case we are allowing the panel to appear but since they are withdrawn they can't be killed again
-    const doNotDisplayWoundButton = this.props.isHero && this.props.withdrawnHeroCanActivate && this.props.withdrawn;
+    const doNotDisplayWoundButton =
+      this.props.isHero && this.props.withdrawnHeroCanActivate && this.props.withdrawn;
 
     return (
       <div style={styles.popup} ref={this.handlePopupPositioning}>
@@ -167,7 +168,9 @@ class HeroPanelAvatar extends React.Component<HeroPanelAvatarPropsType, HeroPane
         {!this.props.activated && this.props.isRebelPlayerTurn ? (
           <Button text="End activation" onClick={this.handleEndActivation} />
         ) : null}
-        {!doNotDisplayWoundButton ? <Button text={buttonText} onClick={this.handleSetWounded} /> : null}
+        {!doNotDisplayWoundButton ? (
+          <Button text={buttonText} onClick={this.handleSetWounded} />
+        ) : null}
         {!this.props.activated && this.props.isRebelPlayerTurn && this.props.enableEscape ? (
           <Button text="Escape" onClick={this.handleEscape} />
         ) : null}

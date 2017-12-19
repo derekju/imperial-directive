@@ -1,15 +1,11 @@
 // @flow
 
 import {
-  addToRoster,
   enableEscape,
   getAreAllHeroesWounded,
   getIsOneHeroLeft,
-  getWoundedOther,
   SET_REBEL_ESCAPED,
-  setRebelHpBoost,
   WOUND_REBEL_HERO,
-  WOUND_REBEL_OTHER,
 } from '../rebels';
 import {all, call, fork, put, select, take} from 'redux-saga/effects';
 import {
@@ -30,27 +26,22 @@ import {
 } from '../mission';
 import createAction from '../createAction';
 import {
-  getCurrentGroups,
   getDeployedGroupOfIdWithMostUnits,
   isGroupIdInDeployedGroups,
-  OPTIONAL_DEPLOYMENT_DONE,
-  optionalDeployment,
   setInterruptedGroup,
   SET_INTERRUPTED_GROUP,
 } from '../imperials';
 import {displayModal} from '../modal';
-import {getMissionThreat} from '../app';
 import helperChoiceModal from './helpers/helperChoiceModal';
 import helperDeploy from './helpers/helperDeploy';
 import helperEventModal from './helpers/helperEventModal';
-import helperIncreaseThreat from './helpers/helperIncreaseThreat';
 import helperInitialSetup from './helpers/helperInitialSetup';
 import helperMissionBriefing from './helpers/helperMissionBriefing';
 import {missionSagaLoadDone} from '../app';
 import {
   REFER_CAMPAIGN_GUIDE,
-  TARGET_CLOSEST_REBEL,
   TARGET_ENTRANCE_TOKEN,
+  TARGET_HERO_CLOSEST_UNWOUNDED,
   TARGET_REMAINING,
 } from './constants';
 import type {StateType} from '../types';
@@ -265,6 +256,8 @@ function* handlePowerStationsDestroyed(): Generator<*, *, *> {
       }
       // Enable escaping
       yield put(enableEscape());
+      // Switch deployment to the one closest to entrance
+      yield put(setDeploymentPoint(DEPLOYMENT_POINT_GREEN_N));
       break;
     }
   }
@@ -339,13 +332,13 @@ function* handleSpecialSetup(): Generator<*, *, *> {
 
 /*
 Priority target definitions:
-1) Initial is closest unwounded, move is closest spice
-2) Once door opens, move is closest spice barrel
+1) Initial is closest unwounded, move is closest power station
+2) Once all power stations down, move is the entrance token
 */
 
 export function* drawnIn(): Generator<*, *, *> {
   // SET TARGETS
-  yield put(setAttackTarget(TARGET_CLOSEST_REBEL));
+  yield put(setAttackTarget(TARGET_HERO_CLOSEST_UNWOUNDED));
   yield put(setMoveTarget(TARGET_POWER_STATION));
   // SET INITIAL DEPLOYMENT POINT
   yield put(setDeploymentPoint(DEPLOYMENT_POINT_GREEN));

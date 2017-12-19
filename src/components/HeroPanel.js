@@ -98,7 +98,10 @@ class HeroPanel extends React.Component<HeroPanelPropsType, HeroPanelStateType> 
                   setRebelActivated={
                     this.props.isRebelPlayerTurn ? this.props.setRebelActivated : noop
                   }
-                  withdrawn={this.props.withdrawnHeroes.includes(id) || this.props.fakeWithdrawnHeroes.includes(id)}
+                  withdrawn={
+                    this.props.withdrawnHeroes.includes(id) ||
+                    this.props.fakeWithdrawnHeroes.includes(id)
+                  }
                   withdrawnHeroCanActivate={this.props.withdrawnHeroCanActivate}
                   wounded={this.props.woundedHeroes.includes(id)}
                   woundRebelHero={

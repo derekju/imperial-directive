@@ -122,10 +122,10 @@ function* sharedAttackOrRaiseThreat(): Generator<*, *, *> {
 
 function* handleBackRoomEvent(): Generator<*, *, *> {
   while (true) {
-    track('theSpiceJob', 'theBackRoom', 'triggered');
     const action = yield take(SET_MAP_STATE_ACTIVATED);
     const {id, type, value} = action.payload;
     if (type === 'door' && value === true) {
+      track('theSpiceJob', 'theBackRoom', 'triggered');
       yield call(
         helperDeploy,
         REFER_CAMPAIGN_GUIDE,
