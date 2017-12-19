@@ -50,7 +50,7 @@
         "activated": false,
         "activateText": "Destroy",
         "coordinates": {
-          "x": 10,
+          "x": 9,
           "y": 7
         },
         "description": "The second terminal broadcasting the signal.",
