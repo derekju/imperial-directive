@@ -1,6 +1,12 @@
 // @flow
 
-import {addToRoster, getAreAllHeroesWounded, getIsOneHeroLeft, setCanIncapacitate, WOUND_REBEL_HERO} from '../rebels';
+import {
+  addToRoster,
+  getAreAllHeroesWounded,
+  getIsOneHeroLeft,
+  setCanIncapacitate,
+  WOUND_REBEL_HERO,
+} from '../rebels';
 import {all, call, fork, put, select, take} from 'redux-saga/effects';
 import {
   getCurrentRound,

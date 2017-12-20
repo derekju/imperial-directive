@@ -22,6 +22,7 @@ import type {TargetOfOpportunityStateType} from './missions/targetOfOpportunity'
 import type {TemptationStateType} from './missions/temptation';
 import type {TheSpiceJobStateType} from './missions/theSpiceJob';
 import type {UnderSiegeStateType} from './missions/underSiege';
+import type {WantedStateType} from './missions/wanted';
 
 export type StateType = {
   aftermath: AftermathStateType,
@@ -46,4 +47,5 @@ export type StateType = {
   temptation: TemptationStateType,
   theSpiceJob: TheSpiceJobStateType,
   underSiege: UnderSiegeStateType,
+  wanted: WantedStateType,
 };

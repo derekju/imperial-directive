@@ -21,6 +21,7 @@ import targetOfOpportunity from './missions/targetOfOpportunity';
 import temptation from './missions/temptation';
 import theSpiceJob from './missions/theSpiceJob';
 import underSiege from './missions/underSiege';
+import wanted from './missions/wanted';
 
 export default {
   aftermath,
@@ -44,4 +45,5 @@ export default {
   temptation,
   theSpiceJob,
   underSiege,
+  wanted,
 };

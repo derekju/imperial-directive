@@ -101,7 +101,7 @@ export const getCapturedGoalText = (state: StateType): string[] => {
       'All heroes must be on or adjacent to the yellow Rebel mission tokens in order to depart!',
       '{BREAK}',
       '{BOLD}Withdrawn hero:{END}',
-      'One activation and can only move.',
+      'Withdrawn heroes receive only 1 action and they can only move.',
       '{BREAK}',
       '{BOLD}Doors:{END}',
       'Hallway and Storage Room doors are locked to Rebels. Imperials can move and attack through them.',

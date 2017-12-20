@@ -2480,5 +2480,147 @@
     "name": "Under Siege",
     "noMercenaryAllowed": false,
     "openGroups": 2
+  },
+  "wanted": {
+    "initialGroups": [
+      "probeDroid", "trandoshanHunter"
+    ],
+    "instructions": {
+      "imperialVictory": "At the end of Round 6 or when all heroes are wounded",
+      "rebelVictory": "(to be revealed)"
+    },
+    "mapImage": [
+      ["36b", "36b", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "36b", "32b", "32b"],
+      ["27b", "27b", "00a", "36b", "36b", "00a", "00a", "00a", "00a", "36b", "32b", "32b"],
+      ["27b", "27b", "00a", "26b", "26b", "00a", "22b", "22b", "22b", "22b", "29b", "29b"],
+      ["27b", "27b", "26b", "26b", "26b", "26b", "22b", "22b", "22b", "22b", "29b", "29b"],
+      ["27b", "27b", "26b", "26b", "26b", "26b", "22b", "22b", "22b", "22b", "29b", "29b"],
+      ["27b", "27b", "00a", "26b", "26b", "00a", "22b", "22b", "22b", "22b", "29b", "29b"],
+      ["27b", "27b", "21b", "21b", "21b", "21b", "21b", "00a", "00a", "24b", "24b", "24b"],
+      ["27b", "27b", "21b", "21b", "21b", "21b", "21b", "00a", "24b", "24b", "24b", "24b"],
+      ["27b", "27b", "21b", "21b", "21b", "21b", "21b", "35b", "24b", "24b", "24b", "24b"],
+      ["00a", "00a", "21b", "21b", "21b", "21b", "21b", "35b", "24b", "24b", "24b", "00a"]
+    ],
+    "mapStates": {
+      "entrance-1": {
+        "activated": false,
+        "activateText": "",
+        "coordinates": {
+          "x": 4,
+          "y": 7
+        },
+        "description": "The entrance.",
+        "id": 1,
+        "interactable": false,
+        "type": "entrance",
+        "unactivateText": "",
+        "visible": true
+      },
+      "terminal-1": {
+        "activated": false,
+        "activateText": "Interact",
+        "coordinates": {
+          "x": 10,
+          "y": 6
+        },
+        "description": "The terminal controlling the door to the exit.",
+        "id": 1,
+        "interactable": true,
+        "type": "terminal",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "door-1": {
+        "activated": false,
+        "activateText": "Open",
+        "coordinates": {
+          "x": 5,
+          "y": 3
+        },
+        "description": "The door to the Store Room.",
+        "id": 1,
+        "interactable": false,
+        "type": "door",
+        "unactivateText": "Close",
+        "visible": true
+      },
+      "door-2": {
+        "activated": false,
+        "activateText": "Open",
+        "coordinates": {
+          "x": 6,
+          "y": 8
+        },
+        "description": "The door to the Office. Can be opened with a keycard.",
+        "id": 2,
+        "interactable": true,
+        "type": "door",
+        "unactivateText": "Close",
+        "visible": true
+      },
+      "door-3": {
+        "activated": false,
+        "activateText": "Open",
+        "coordinates": {
+          "x": 11,
+          "y": 1
+        },
+        "description": "The door to the exit.",
+        "id": 3,
+        "interactable": false,
+        "type": "door",
+        "unactivateText": "Close",
+        "visible": true
+      },
+      "imperial-1": {
+        "activated": false,
+        "activateText": "Remove",
+        "color": "red",
+        "coordinates": {
+          "x": 10,
+          "y": 2
+        },
+        "description": "A barricade blocking the exit.",
+        "id": 1,
+        "interactable": true,
+        "type": "imperial",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "imperial-2": {
+        "activated": false,
+        "activateText": "Remove",
+        "color": "red",
+        "coordinates": {
+          "x": 11,
+          "y": 2
+        },
+        "description": "A barricade blocking the exit.",
+        "id": 2,
+        "interactable": true,
+        "type": "imperial",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "rebel-1": {
+        "activated": false,
+        "activateText": "Depart",
+        "color": "green",
+        "coordinates": {
+          "x": 10,
+          "y": 0
+        },
+        "description": "The exit.",
+        "id": 1,
+        "interactable": false,
+        "type": "rebel",
+        "unactivateText": "Restore",
+        "visible": true
+      }
+    },
+    "name": "Wanted",
+    "noMercenaryAllowed": false,
+    "openGroups": 3,
+    "withdrawnHeroCanActivate": true
   }
 }

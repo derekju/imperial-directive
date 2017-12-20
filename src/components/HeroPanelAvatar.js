@@ -153,7 +153,8 @@ class HeroPanelAvatar extends React.Component<HeroPanelAvatarPropsType, HeroPane
     // In that case we are allowing the panel to appear but since they are withdrawn they can't be killed again
     // Also don't show it if the figure is marked as being able to be incapicitated
     const doNotDisplayWoundButton =
-      (this.props.isHero && this.props.withdrawnHeroCanActivate && this.props.withdrawn) || this.props.canBeIncapacitated;
+      (this.props.isHero && this.props.withdrawnHeroCanActivate && this.props.withdrawn) ||
+      this.props.canBeIncapacitated;
 
     return (
       <div style={styles.popup} ref={this.handlePopupPositioning}>

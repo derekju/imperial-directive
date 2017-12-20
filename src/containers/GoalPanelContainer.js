@@ -22,6 +22,7 @@ import {getTargetOfOpportunityGoalText} from '../reducers/missions/targetOfOppor
 import {getTemptationGoalText} from '../reducers/missions/temptation';
 import {getTheSpiceJobGoalText} from '../reducers/missions/theSpiceJob';
 import {getUnderSiegeGoalText} from '../reducers/missions/underSiege';
+import {getWantedGoalText} from '../reducers/missions/wanted';
 import GoalPanel from '../components/GoalPanel';
 import type {StateType} from '../reducers/types';
 
@@ -67,6 +68,8 @@ const getGoalText = (state: StateType) => {
       return getTheSpiceJobGoalText(state);
     case 'underSiege':
       return getUnderSiegeGoalText(state);
+    case 'wanted':
+      return getWantedGoalText(state);
     default:
       return [];
   }

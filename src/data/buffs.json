@@ -1,12 +1,8 @@
 {
-  "rangeAfterTestStunGainSurgeDmgBlast": {
+  "arcBlasters": {
     "name": "Arc Blasters",
     "text": [
-      "After a figure resolves a {RANGED} attack, each figure that suffered 1 or more {DMG} tests {STR}. Each figure that fails is Stunned.{BREAK}",
-      "{BREAK}",
-      "Each figure in this group gains:{BREAK}",
-      "{SURGE}: +1 {DMG}, Blast 1 {DMG}{BREAK}",
-      "Apply this surge effect before all others."
+      "After a figure resolves a {RANGED} attack, each figure that suffered 1 or more {DMG} tests {STR}. Each figure that fails is Stunned."
     ]
   },
   "getPlus2AccuracyPlus1Dmg": {
@@ -15,7 +11,7 @@
       "While attacking, apply +2 Accuracy and +1 {DMG} to the results."
     ]
   },
-  "getPlus2Dmg": {
+  "criticalHit": {
     "name": "Critical Hit",
     "text": [
       "While attacking, apply +2 {DMG} to the results."

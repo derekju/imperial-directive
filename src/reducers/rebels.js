@@ -196,7 +196,8 @@ export const setRebelHpBoost = (id: string, boost: number) =>
   createAction(SET_REBEL_HP_BOOST, {boost, id});
 export const setAllyChosen = (id: string) => createAction(SET_ALLY_CHOSEN, {id});
 export const enableEscape = () => createAction(ENABLE_ESCAPE);
-export const setCanIncapacitate = (groupIds: string[]) => createAction(SET_CAN_INCAPACITATE, {groupIds});
+export const setCanIncapacitate = (groupIds: string[]) =>
+  createAction(SET_CAN_INCAPACITATE, {groupIds});
 
 // Selectors
 

@@ -27,7 +27,7 @@
   },
   "darthVader": {
     "affiliation": "imperial",
-    "buffs": ["getPlus2Dmg", "targetMinus1Block", "surgicalStrike"],
+    "buffs": ["criticalHit", "targetMinus1Block", "surgicalStrike"],
     "commands": [
       {
         "condition": "If possible to be adjacent to 2 hostile figures",
@@ -192,6 +192,36 @@
     "name": "Gerrin",
     "reinforcementCost": -1,
     "threat": 5
+  },
+  "ig88": {
+    "affiliation": "mercenary",
+    "buffs": ["criticalHit", "recovery", "showOfForce", "getPlus2AccuracyPlus1Dmg"],
+    "commands": [
+      {
+        "condition": "If within 6 spaces and have LOS of {ATTACK_TARGET}",
+        "command": "{ACTION} Attack {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}."
+      },
+      {
+        "condition": "If not within 6 spaces of {ATTACK_TARGET}",
+        "command": "{ACTION} Move within 2 spaces and LOS of {ATTACK_TARGET}."
+      },
+      {
+        "condition": "Reaction - If declaring an attack against a figure within 3 spaces",
+        "command": "Use Relentless ability."
+      },
+      {
+        "condition": "Reaction - Arsenel ability",
+        "command": "If within 2 spaces, use 2 red dice. Otherwise, use one blue and one green die."
+      }
+    ],
+    "eligibleForHpBoost": false,
+    "elite": true,
+    "hpBoosts": {},
+    "id": "ig88",
+    "maxInGroup": 1,
+    "name": "IG-88",
+    "reinforcementCost": -1,
+    "threat": 12
   },
   "imperialOfficer": {
     "affiliation": "imperial",
@@ -551,7 +581,7 @@
   },
   "stormtrooperElite": {
     "affiliation": "imperial",
-    "buffs": ["rangeAfterTestStunGainSurgeDmgBlast", "getPlus2AccuracyPlus1Dmg", "showOfForce"],
+    "buffs": ["arcBlasters", "getPlus2AccuracyPlus1Dmg", "showOfForce"],
     "commands": [
       {
         "condition": "If within 6 spaces of {ATTACK_TARGET}",
@@ -657,7 +687,7 @@
   },
   "trandoshanHunterElite": {
     "affiliation": "mercenary",
-    "buffs": ["rangeAfterTestStunGainSurgeDmgBlast", "targetMinus1Block", "gainSurgeStunSurgeDmg", "recovery"],
+    "buffs": ["arcBlasters", "targetMinus1Block", "gainSurgeStunSurgeDmg", "recovery"],
     "commands": [
       {
         "condition": "If within 4 spaces of {ATTACK_TARGET}",
