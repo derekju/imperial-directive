@@ -8,6 +8,7 @@ import {getASimpleTaskGoalText} from '../reducers/missions/aSimpleTask';
 import {getBrushfireGoalText} from '../reducers/missions/brushfire';
 import {getCapturedGoalText} from '../reducers/missions/captured';
 import {getDrawnInGoalText} from '../reducers/missions/drawnIn';
+import {getFlySoloGoalText} from '../reducers/missions/flySolo';
 import {getFriendsOfOldGoalText} from '../reducers/missions/friendsOfOld';
 import {getHighMoonGoalText} from '../reducers/missions/highMoon';
 import {getHomecomingGoalText} from '../reducers/missions/homecoming';
@@ -40,6 +41,8 @@ const getGoalText = (state: StateType) => {
       return getCapturedGoalText(state);
     case 'drawnIn':
       return getDrawnInGoalText(state);
+    case 'flySolo':
+      return getFlySoloGoalText(state);
     case 'friendsOfOld':
       return getFriendsOfOldGoalText(state);
     case 'highMoon':

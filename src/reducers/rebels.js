@@ -63,6 +63,7 @@ export default (state: RebelsStateType = initialState, action: Object) => {
         hpBoosts,
         roster: roster.sort(),
       };
+    case SILENT_SET_REBEL_ACTIVATED:
     case SET_REBEL_ACTIVATED: {
       const {id} = action.payload;
       return {
@@ -172,6 +173,7 @@ export default (state: RebelsStateType = initialState, action: Object) => {
 
 export const SET_ROSTER = 'SET_ROSTER';
 export const SET_REBEL_ACTIVATED = 'SET_REBEL_ACTIVATED';
+export const SILENT_SET_REBEL_ACTIVATED = 'SILENT_SET_REBEL_ACTIVATED';
 export const SET_HERO_ACTIVATE_TWICE = 'SET_HERO_ACTIVATE_TWICE';
 export const WOUND_REBEL_HERO = 'WOUND_REBEL_HERO';
 export const SET_REBEL_ESCAPED = 'SET_REBEL_ESCAPED';
@@ -186,6 +188,8 @@ export const SET_CAN_INCAPACITATE = 'SET_CAN_INCAPACITATE';
 
 export const setRoster = (roster: string[]) => createAction(SET_ROSTER, {roster});
 export const setRebelActivated = (id: string) => createAction(SET_REBEL_ACTIVATED, {id});
+export const silentSetRebelActivated = (id: string) =>
+  createAction(SILENT_SET_REBEL_ACTIVATED, {id});
 export const setHeroActivateTwice = (id: string) => createAction(SET_HERO_ACTIVATE_TWICE, {id});
 export const woundRebelHero = (id: string, withdrawnHeroCanActivate: boolean) =>
   createAction(WOUND_REBEL_HERO, {id, withdrawnHeroCanActivate});

@@ -344,6 +344,8 @@ export const getDeployedGroupOfIdWithMostUnits = (state: StateType, id: string) 
       'currentNumFigures'
     )
   );
+export const getLastDeployedGroupOfId = (state: StateType, id: string) =>
+  last(state.imperials.deployedGroups.filter((group: ImperialUnitType) => group.id === id));
 
 // Sagas
 

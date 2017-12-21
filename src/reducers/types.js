@@ -6,6 +6,7 @@ import type {BrushfireStateType} from './missions/brushfire';
 import type {CapturedStateType} from './missions/captured';
 import type {DrawnInStateType} from './missions/drawnIn';
 import type {EventsStateType} from './events';
+import type {FlySoloStateType} from './missions/flySolo';
 import type {FriendsOfOldStateType} from './missions/friendsOfOld';
 import type {HighMoonStateType} from './missions/highMoon';
 import type {HomecomingStateType} from './missions/homecoming';
@@ -31,6 +32,7 @@ export type StateType = {
   captured: CapturedStateType,
   drawnIn: DrawnInStateType,
   events: EventsStateType,
+  flySolo: FlySoloStateType,
   friendsOfOld: FriendsOfOldStateType,
   highMoon: HighMoonStateType,
   homecoming: HomecomingStateType,

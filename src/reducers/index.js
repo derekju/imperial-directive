@@ -6,6 +6,7 @@ import brushfire from './missions/brushfire';
 import captured from './missions/captured';
 import drawnIn from './missions/drawnIn';
 import events from './events';
+import flySolo from './missions/flySolo';
 import friendsOfOld from './missions/friendsOfOld';
 import highMoon from './missions/highMoon';
 import homecoming from './missions/homecoming';
@@ -30,6 +31,7 @@ export default {
   captured,
   drawnIn,
   events,
+  flySolo,
   friendsOfOld,
   highMoon,
   homecoming,

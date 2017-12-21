@@ -952,6 +952,83 @@
     "openGroups": 4,
     "withdrawnHeroCanActivate": true
   },
+  "flySolo": {
+    "initialGroups": [
+      "probeDroid", "stormtrooper", "stormtrooper", "trandoshanHunter"
+    ],
+    "instructions": {
+      "imperialVictory": "(to be revealed)",
+      "rebelVictory": "(to be revealed)"
+    },
+    "mapImage": [
+      ["00a", "14b", "14b", "11b", "11b", "11b", "11b", "13b", "13b", "16b", "16b"],
+      ["00a", "14b", "14b", "11b", "11b", "11b", "11b", "13b", "13b", "16b", "16b"],
+      ["04b", "04b", "04b", "04b", "12b", "12b", "06b", "06b", "06b", "06b", "18b"],
+      ["04b", "04b", "04b", "04b", "12b", "12b", "06b", "06b", "06b", "06b", "18b"],
+      ["04b", "04b", "04b", "04b", "12b", "12b", "06b", "06b", "06b", "06b", "00a"],
+      ["04b", "04b", "04b", "04b", "12b", "12b", "06b", "06b", "06b", "00a", "00a"],
+      ["00a", "17b", "17b", "00a", "18b", "18b", "00a", "39b", "39b", "00a", "00a"],
+      ["00a", "39b", "39b", "00a", "00a", "00a", "24b", "24b", "24b", "00a", "00a"],
+      ["21b", "21b", "21b", "21b", "00a", "24b", "24b", "24b", "24b", "00a", "00a"],
+      ["21b", "21b", "21b", "21b", "35b", "24b", "24b", "24b", "24b", "00a", "00a"],
+      ["21b", "21b", "21b", "21b", "35b", "24b", "24b", "24b", "00a", "00a", "00a"],
+      ["21b", "21b", "21b", "21b", "00a", "00a", "00a", "00a", "00a", "00a", "00a"],
+      ["21b", "21b", "21b", "21b", "22b", "22b", "22b", "22b", "00a", "00a", "00a"],
+      ["32b", "32b", "34b", "34b", "22b", "22b", "22b", "22b", "36b", "00a", "00a"],
+      ["32b", "32b", "34b", "34b", "22b", "22b", "22b", "22b", "36b", "00a", "00a"],
+      ["00a", "00a", "00a", "00a", "22b", "22b", "22b", "22b", "00a", "00a", "00a"]
+    ],
+    "mapStates": {
+      "entrance-1": {
+        "activated": false,
+        "activateText": "",
+        "coordinates": {
+          "x": 4,
+          "y": 6
+        },
+        "description": "The entrance.",
+        "id": 1,
+        "interactable": false,
+        "type": "entrance",
+        "unactivateText": "",
+        "visible": true
+      },
+      "door-1": {
+        "activated": false,
+        "activateText": "Open",
+        "coordinates": {
+          "x": 5,
+          "y": 9
+        },
+        "description": "A facility door.",
+        "id": 1,
+        "interactable": true,
+        "type": "door",
+        "unactivateText": "Close",
+        "visible": true
+      },
+      "door-2": {
+        "activated": false,
+        "activateText": "Open",
+        "coordinates": {
+          "x": 3,
+          "y": 13
+        },
+        "description": "Door to the back room.",
+        "id": 2,
+        "interactable": true,
+        "type": "door",
+        "unactivateText": "Close",
+        "visible": true
+      }
+    },
+    "name": "Fly Solo",
+    "noMercenaryAllowed": false,
+    "openGroups": 2,
+    "reservedGroups": [
+      "ig88", "imperialOfficerElite", "stormtrooperElite"
+    ]
+  },
   "friendsOfOld": {
     "initialGroups": [
       "imperialOfficer", "stormtrooper"
@@ -2621,6 +2698,9 @@
     "name": "Wanted",
     "noMercenaryAllowed": false,
     "openGroups": 3,
+    "reservedGroups": [
+      "ig88", "probeDroid"
+    ],
     "withdrawnHeroCanActivate": true
   }
 }

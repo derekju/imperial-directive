@@ -48,7 +48,7 @@ const DEPLOYMENT_POINT_RED = 'The red deployment point';
 
 // Types
 
-export type AftermathStateType = {
+export type WantedStateType = {
   officeDoorOpened: boolean,
   priorityTargetKillHero: boolean,
 };
@@ -60,7 +60,7 @@ const initialState = {
   priorityTargetKillHero: false,
 };
 
-export default (state: AftermathStateType = initialState, action: Object) => {
+export default (state: WantedStateType = initialState, action: Object) => {
   switch (action.type) {
     case 'WANTED_PRIORITY_TARGET_KILL_HERO':
       return {
