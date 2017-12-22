@@ -86,6 +86,9 @@ const getState = (state: StateType) => state.flySolo;
 export const getFlySoloGoalText = (state: StateType): string[] => {
   if (!state.flySolo.backRoomDoorOpened) {
     const goals = [
+      '{BOLD}Current Goal:{END}',
+      'Open the door to the Back Room.',
+      '{BREAK}',
       '{BOLD}Back Room Door:{END}',
       'Locked. A hero can interact ({STRENGTH}) to open the door.',
     ];
