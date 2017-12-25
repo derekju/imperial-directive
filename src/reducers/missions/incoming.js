@@ -1,11 +1,7 @@
 // @flow
 
 import {all, call, fork, put, select, take} from 'redux-saga/effects';
-import {
-  getAreAllHeroesWounded,
-  getIsOneHeroLeft,
-  WOUND_REBEL_HERO,
-} from '../rebels';
+import {getAreAllHeroesWounded, getIsOneHeroLeft, WOUND_REBEL_HERO} from '../rebels';
 import {
   getCurrentRound,
   MISSION_SPECIAL_SETUP,
@@ -20,11 +16,7 @@ import {
   STATUS_PHASE_END_ROUND_EFFECTS,
   updateRebelVictory,
 } from '../mission';
-import {
-  REFER_CAMPAIGN_GUIDE,
-  TARGET_HERO_CLOSEST_UNWOUNDED,
-  TARGET_REMAINING,
-} from './constants';
+import {REFER_CAMPAIGN_GUIDE, TARGET_HERO_CLOSEST_UNWOUNDED, TARGET_REMAINING} from './constants';
 import createAction from '../createAction';
 import {displayModal} from '../modal';
 import helperDeploy from './helpers/helperDeploy';
@@ -41,7 +33,8 @@ import track from '../../lib/track';
 const TARGET_BLAST_DOOR = 'the Blast Door';
 
 const DEPLOYMENT_POINT_GREEN = 'The south western green deployment point';
-const DEPLOYMENT_POINT_INTERIOR = 'An interior deployment point close to the most Rebel figures. If none exist, the south western green deployment point.';
+const DEPLOYMENT_POINT_INTERIOR =
+  'An interior deployment point close to the most Rebel figures. If none exist, the south western green deployment point.';
 
 const MAX_BOMBARDMENTS = 8;
 
@@ -168,7 +161,7 @@ function* handleCorridorEntered(): Generator<*, *, *> {
     ],
     title: 'Bombardment',
   });
-  yield put(createAction('INCOMING_SET_NEED_TO_DO_PURSUIT_EVENT', {value: true}))
+  yield put(createAction('INCOMING_SET_NEED_TO_DO_PURSUIT_EVENT', {value: true}));
   yield put(setMapStateInteractable(1, 'terminal', true));
   yield put(setMapStateInteractable(2, 'terminal', true));
   yield put(setMapStateInteractable(3, 'terminal', true));
@@ -197,7 +190,13 @@ function* handleYellowTerminalRevealed(): Generator<*, *, *> {
   while (true) {
     const action = yield take(SET_MAP_STATE_ACTIVATED);
     const {id, type, value} = action.payload;
-    const {activatedTerminalIndexes, numberBombardments, priorityTargetKillHero, terminals, yellowTerminalsDiscovered} = yield select(getState);
+    const {
+      activatedTerminalIndexes,
+      numberBombardments,
+      priorityTargetKillHero,
+      terminals,
+      yellowTerminalsDiscovered,
+    } = yield select(getState);
 
     if (!activatedTerminalIndexes.includes(id) && type === 'terminal' && value === true) {
       // Check which color is revealed
@@ -207,9 +206,7 @@ function* handleYellowTerminalRevealed(): Generator<*, *, *> {
         case 'yellow':
           track('incoming', 'schematics', 'triggered');
           yield call(helperEventModal, {
-            text: [
-              'The Rebels have discovered a clue to the exit!',
-            ],
+            text: ['The Rebels have discovered a clue to the exit!'],
             title: 'Schematics',
           });
 
@@ -217,9 +214,7 @@ function* handleYellowTerminalRevealed(): Generator<*, *, *> {
             if (numberBombardments < MAX_BOMBARDMENTS) {
               yield call(helperEventModal, {
                 story: REFER_CAMPAIGN_GUIDE,
-                text: [
-                  'The structure will now be bombarded.',
-                ],
+                text: ['The structure will now be bombarded.'],
                 title: 'Schematics',
               });
               yield call(handleBombardment);
@@ -242,9 +237,7 @@ function* handleYellowTerminalRevealed(): Generator<*, *, *> {
             if (numberBombardments < MAX_BOMBARDMENTS) {
               yield call(helperEventModal, {
                 story: REFER_CAMPAIGN_GUIDE,
-                text: [
-                  'The structure will now be bombarded.',
-                ],
+                text: ['The structure will now be bombarded.'],
                 title: 'Hidden Passage',
               });
               yield call(handleBombardment);
@@ -260,9 +253,7 @@ function* handleYellowTerminalRevealed(): Generator<*, *, *> {
           break;
         default:
           yield call(helperEventModal, {
-            text: [
-              'The terminal unfortunately was a decoy.',
-            ],
+            text: ['The terminal unfortunately was a decoy.'],
             title: 'Incoming',
           });
           break;
@@ -322,9 +313,7 @@ function* handleRoundEnd(): Generator<*, *, *> {
     if (corridorEntered && !bombardmentFromCorridorDone) {
       // Do bombardment
       yield call(helperEventModal, {
-        text: [
-          'The structure will now be bombarded.',
-        ],
+        text: ['The structure will now be bombarded.'],
         title: 'Bombardment',
       });
       yield call(handleBombardment);
@@ -337,11 +326,13 @@ function* handleRoundEnd(): Generator<*, *, *> {
       yield call(
         helperDeploy,
         'The Imperial troops are hot on your tail.',
-        ['Deploy an {ELITE}Elite Stormtrooper{END} group, {ELITE}Elite Imperial Officer{END}, and Imperial Officer to an interior deployment point if one exists. If not, the south western green deployment point.'],
+        [
+          'Deploy an {ELITE}Elite Stormtrooper{END} group, {ELITE}Elite Imperial Officer{END}, and Imperial Officer to an interior deployment point if one exists. If not, the south western green deployment point.',
+        ],
         'Pursuit',
         ['stormtrooperElite', 'imperialOfficerElite', 'imperialOfficer']
       );
-      yield put(createAction('INCOMING_SET_NEED_TO_DO_PURSUIT_EVENT', {value: false}))
+      yield put(createAction('INCOMING_SET_NEED_TO_DO_PURSUIT_EVENT', {value: false}));
     }
 
     yield put(statusPhaseEndRoundEffectsDone());
@@ -357,9 +348,7 @@ function* handleSpecialSetup(): Generator<*, *, *> {
     'A hero can interact with a terminal (3 {TECH} or {INSIGHT}) to reveal the color. If an Imperial figure is within 2 spaces of that hero, apply -1 {SURGE} to the results.',
   ]);
   yield call(helperEventModal, {
-    text: [
-      'The mission will proceed once a Rebel figure enters the Corridor.',
-    ],
+    text: ['The mission will proceed once a Rebel figure enters the Corridor.'],
     title: 'Incoming',
   });
   yield put(missionSpecialSetupDone());
