@@ -28,6 +28,7 @@ const styles = {
 type GoalPanelPropsType = {
   currentMission: string,
   goalText: string[],
+  incomingEnterCorridor: Function,
   looseCannonDefeatAtst: Function,
   spiceJobGetKeycard: Function,
 };
@@ -57,6 +58,13 @@ class GoalPanel extends React.Component<GoalPanelPropsType, GoalPanelStateType> 
     this.props.spiceJobGetKeycard();
   };
 
+  handleIncomingEnterCorridor = () => {
+    this.setState({
+      buttonPressed: true,
+    });
+    this.props.incomingEnterCorridor();
+  };
+
   renderMissionSpecific() {
     const {currentMission} = this.props;
 
@@ -75,6 +83,16 @@ class GoalPanel extends React.Component<GoalPanelPropsType, GoalPanelStateType> 
         return (
           <div style={styles.buttonContainer}>
             <Button text="Get Keycard" onClick={this.handleSpiceJobGetKeycard} />
+          </div>
+        );
+      } else {
+        return null;
+      }
+    } else if (currentMission === 'incoming') {
+      if (!this.state.buttonPressed) {
+        return (
+          <div style={styles.buttonContainer}>
+            <Button text="Corridor Entered" onClick={this.handleIncomingEnterCorridor} />
           </div>
         );
       } else {

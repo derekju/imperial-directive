@@ -105,7 +105,10 @@
     },
     "name": "Aftermath",
     "noMercenaryAllowed": false,
-    "openGroups": 0
+    "openGroups": 0,
+    "reservedGroups": [
+      "eWebEngineer", "imperialOfficer", "stormtrooper"
+    ]
   },
   "aNewThreat": {
     "initialGroups": [
@@ -1545,6 +1548,127 @@
     "name": "Impounded",
     "noMercenaryAllowed": false,
     "openGroups": 3
+  },
+  "incoming": {
+    "initialGroups": [
+      "stormtrooper", "trandoshanHunter"
+    ],
+    "instructions": {
+      "imperialVictory": "At the end of Round 7 or when all heroes are wounded",
+      "rebelVictory": "(to be revealed)"
+    },
+    "mapImage": [
+      ["00a", "00a", "00a", "25b", "25b", "25b", "25b", "00a", "00a", "00a", "00a"],
+      ["28b", "28b", "28b", "25b", "25b", "25b", "25b", "24b", "24b", "24b", "00a"],
+      ["28b", "28b", "28b", "25b", "25b", "25b", "25b", "24b", "24b", "24b", "24b"],
+      ["28b", "28b", "28b", "00a", "25b", "25b", "00a", "24b", "24b", "24b", "24b"],
+      ["36b", "36b", "00a", "00a", "26b", "26b", "00a", "00a", "24b", "24b", "24b"],
+      ["00a", "32b", "32b", "26b", "26b", "26b", "26b", "32b", "32b", "36b", "36b"],
+      ["00a", "32b", "32b", "26b", "26b", "26b", "26b", "32b", "32b", "00a", "00a"],
+      ["22b", "22b", "22b", "22b", "26b", "26b", "23b", "23b", "23b", "23b", "00a"],
+      ["22b", "22b", "22b", "22b", "38b", "38b", "23b", "23b", "23b", "23b", "36b"],
+      ["22b", "22b", "22b", "22b", "38b", "38b", "23b", "23b", "23b", "23b", "36b"],
+      ["22b", "22b", "22b", "22b", "03a", "03a", "23b", "23b", "23b", "23b", "00a"],
+      ["00a", "36b", "36b", "03a", "03a", "03a", "03a", "00a", "00a", "00a", "00a"],
+      ["14a", "14a", "03a", "03a", "03a", "03a", "03a", "03a", "14a", "14a", "00a"],
+      ["14a", "14a", "03a", "03a", "03a", "03a", "03a", "03a", "14a", "14a", "00a"],
+      ["10a", "10a", "10a", "03a", "03a", "03a", "03a", "05a", "05a", "05a", "05a"],
+      ["10a", "10a", "10a", "12a", "12a", "12a", "12a", "05a", "05a", "05a", "05a"],
+      ["10a", "10a", "10a", "12a", "12a", "12a", "12a", "05a", "05a", "05a", "05a"],
+      ["00a", "00a", "00a", "00a", "00a", "00a", "00a", "05a", "05a", "05a", "05a"]
+    ],
+    "mapStates": {
+      "entrance-1": {
+        "activated": false,
+        "activateText": "",
+        "coordinates": {
+          "x": 5,
+          "y": 16
+        },
+        "description": "The entrance.",
+        "id": 1,
+        "interactable": false,
+        "type": "entrance",
+        "unactivateText": "",
+        "visible": true
+      },
+      "terminal-1": {
+        "activated": false,
+        "activateText": "Reveal",
+        "coordinates": {
+          "x": 2,
+          "y": 9
+        },
+        "description": "A possible clue to the location of the exit.",
+        "id": 1,
+        "interactable": false,
+        "type": "terminal",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "terminal-2": {
+        "activated": false,
+        "activateText": "Reveal",
+        "coordinates": {
+          "x": 7,
+          "y": 9
+        },
+        "description": "A possible clue to the location of the exit.",
+        "id": 2,
+        "interactable": false,
+        "type": "terminal",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "terminal-3": {
+        "activated": false,
+        "activateText": "Reveal",
+        "coordinates": {
+          "x": 1,
+          "y": 2
+        },
+        "description": "A possible clue to the location of the exit.",
+        "id": 3,
+        "interactable": false,
+        "type": "terminal",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "terminal-4": {
+        "activated": false,
+        "activateText": "Reveal",
+        "coordinates": {
+          "x": 9,
+          "y": 3
+        },
+        "description": "A possible clue to the location of the exit.",
+        "id": 4,
+        "interactable": false,
+        "type": "terminal",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "neutral-1": {
+        "activated": false,
+        "activateText": "Open",
+        "coordinates": {
+          "x": 5,
+          "y": 5
+        },
+        "description": "The blast door blocking the exit.",
+        "id": 1,
+        "interactable": true,
+        "type": "neutral",
+        "unactivateText": "Restore",
+        "visible": false
+      }
+    },
+    "name": "Incoming",
+    "noMercenaryAllowed": false,
+    "openGroups": 2,
+    "reservedGroups": [
+      "imperialOfficer", "imperialOfficerElite", "stormtrooperElite"
+    ]
   },
   "indebted": {
     "initialGroups": [

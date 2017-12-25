@@ -13,6 +13,7 @@ import type {HomecomingStateType} from './missions/homecoming';
 import type {ImperialHospitalityStateType} from './missions/imperialHospitality';
 import type {ImperialsStateType} from './imperials';
 import type {ImpoundedStateType} from './missions/impounded';
+import type {IncomingStateType} from './missions/incoming';
 import type {IndebtedStateType} from './missions/indebted';
 import type {LooseCannonStateType} from './missions/looseCannon';
 import type {MeansOfProductionStateType} from './missions/meansOfProduction';
@@ -39,6 +40,7 @@ export type StateType = {
   imperialHospitality: ImperialHospitalityStateType,
   imperials: ImperialsStateType,
   impounded: ImpoundedStateType,
+  incoming: IncomingStateType,
   indebted: IndebtedStateType,
   looseCannon: LooseCannonStateType,
   meansOfProduction: MeansOfProductionStateType,

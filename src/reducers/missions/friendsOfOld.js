@@ -285,11 +285,11 @@ function* handleRoundEnd(): Generator<*, *, *> {
       // Figure out which index first
       const allIndexes = [1, 2, 3, 4];
       const indexesYetToActivate = difference(allIndexes, activatedTokenIndexes);
-      console.log(indexesYetToActivate);
+
       // Grab a random one from the indexes yet to activate
       const randomIndex = random(0, indexesYetToActivate.length - 1);
       const indexToUse = indexesYetToActivate[randomIndex];
-      console.log(indexToUse);
+
       // Do the action
       yield call(helperEventModal, {
         text: [

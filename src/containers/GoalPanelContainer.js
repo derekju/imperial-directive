@@ -14,6 +14,7 @@ import {getHighMoonGoalText} from '../reducers/missions/highMoon';
 import {getHomecomingGoalText} from '../reducers/missions/homecoming';
 import {getImperialHospitalityGoalText} from '../reducers/missions/imperialHospitality';
 import {getImpoundedGoalText} from '../reducers/missions/impounded';
+import {getIncomingGoalText} from '../reducers/missions/incoming';
 import {getIndebtedGoalText} from '../reducers/missions/indebted';
 import {getLooseCannonGoalText} from '../reducers/missions/looseCannon';
 import {getLuxuryCruiseGoalText} from '../reducers/missions/luxuryCruise';
@@ -53,6 +54,8 @@ const getGoalText = (state: StateType) => {
       return getImperialHospitalityGoalText(state);
     case 'impounded':
       return getImpoundedGoalText(state);
+    case 'incoming':
+      return getIncomingGoalText(state);
     case 'indebted':
       return getIndebtedGoalText(state);
     case 'looseCannon':
@@ -85,8 +88,10 @@ const mapStateToProps = (state: StateType) => ({
 
 const looseCannonDefeatAtst = () => createAction('LOOSE_CANNON_DEFEAT_ATST');
 const spiceJobGetKeycard = () => createAction('SPICE_JOB_GET_KEYCARD');
+const incomingEnterCorridor = () => createAction('INCOMING_ENTER_CORRIDOR');
 
 const mapDispatchToProps = {
+  incomingEnterCorridor,
   looseCannonDefeatAtst,
   spiceJobGetKeycard,
 };

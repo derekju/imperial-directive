@@ -13,6 +13,7 @@ import homecoming from './missions/homecoming';
 import imperialHospitality from './missions/imperialHospitality';
 import imperials from './imperials';
 import impounded from './missions/impounded';
+import incoming from './missions/incoming';
 import indebted from './missions/indebted';
 import meansOfProduction from './missions/meansOfProduction';
 import mission from './mission';
@@ -38,6 +39,7 @@ export default {
   imperialHospitality,
   imperials,
   impounded,
+  incoming,
   indebted,
   meansOfProduction,
   mission,
