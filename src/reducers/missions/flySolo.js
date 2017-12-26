@@ -213,7 +213,6 @@ function* handleRoundEnd(): Generator<*, *, *> {
       if (!backRoomDoorOpened) {
         yield call(handleDaringEscapeEvent);
       }
-      break;
     }
 
     yield put(statusPhaseEndRoundEffectsDone());

@@ -1,8 +1,7 @@
 // @flow
 
-import type {ImperialUnitType, UnitConfigType} from '../imperials';
 import type {MissionConfigType} from '../mission';
-import pickBy from 'lodash/pickBy';
+import type {UnitConfigType} from '../imperials';
 import reduce from 'lodash/reduce';
 import shuffle from 'lodash/shuffle';
 import units from '../../data/units';
