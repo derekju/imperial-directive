@@ -33,34 +33,38 @@ export default (config: MissionConfigType, missionThreat: number) => {
   // Need to build a new array of units that consists of the number of times the number of
   // deployment cards that unit has. Remove from it the reserved units and the initial deployed
   // units. Those are our open groups.
-  let unitList = reduce(units, (accumulator: UnitConfigType[], unit: UnitConfigType) => {
-    // Don't pick special units
-    if (unit.affiliation === 'mission') {
-      return accumulator;
-    }
-    // Don't pick mercenary units if we can't for this mission
-    if (noMercenaryAllowed && unit.affiliation === 'mercenary') {
-      return accumulator;
-    }
-    // Don't pick high threat units if they exceed our soft cap
-    if (unit.threat > threatCost) {
-      return accumulator;
-    }
-    // Don't pick unique units unless the imperial player has gained them
-    // TODO: Allow for inclusion of gained unique units
-    if (unit.unique) {
-      return accumulator;
-    }
+  let unitList = reduce(
+    units,
+    (accumulator: UnitConfigType[], unit: UnitConfigType) => {
+      // Don't pick special units
+      if (unit.affiliation === 'mission') {
+        return accumulator;
+      }
+      // Don't pick mercenary units if we can't for this mission
+      if (noMercenaryAllowed && unit.affiliation === 'mercenary') {
+        return accumulator;
+      }
+      // Don't pick high threat units if they exceed our soft cap
+      if (unit.threat > threatCost) {
+        return accumulator;
+      }
+      // Don't pick unique units unless the imperial player has gained them
+      // TODO: Allow for inclusion of gained unique units
+      if (unit.unique) {
+        return accumulator;
+      }
 
-    for (let i = 0; i < unit.maxDeployed; i++) {
-      accumulator.push(unit);
-    }
-    return accumulator;
-  }, []);
+      for (let i = 0; i < unit.maxDeployed; i++) {
+        accumulator.push(unit);
+      }
+      return accumulator;
+    },
+    []
+  );
 
   // Remove reserved units from list
   for (let i = 0; i < reservedGroups.length; i++) {
-    const index = unitList.findIndex((unit: UnitConfigType) => unit.id  === reservedGroups[i]);
+    const index = unitList.findIndex((unit: UnitConfigType) => unit.id === reservedGroups[i]);
     if (index !== -1) {
       // Splice and create a new array with that one index removed
       unitList.splice(index, 1);
@@ -69,7 +73,7 @@ export default (config: MissionConfigType, missionThreat: number) => {
 
   // Remove initial units from list
   for (let i = 0; i < initialGroups.length; i++) {
-    const index = unitList.findIndex((unit: UnitConfigType) => unit.id  === initialGroups[i]);
+    const index = unitList.findIndex((unit: UnitConfigType) => unit.id === initialGroups[i]);
     if (index !== -1) {
       // Splice and create a new array with that one index removed
       unitList.splice(index, 1);
