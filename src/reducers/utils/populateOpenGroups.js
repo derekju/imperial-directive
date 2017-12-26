@@ -1,7 +1,9 @@
 // @flow
 
-import type {ImperialUnitType} from '../imperials';
+import type {ImperialUnitType, UnitConfigType} from '../imperials';
+import type {MissionConfigType} from '../mission';
 import pickBy from 'lodash/pickBy';
+import reduce from 'lodash/reduce';
 import shuffle from 'lodash/shuffle';
 import units from '../../data/units';
 
@@ -22,22 +24,58 @@ const THREAT_COST_FOR_MISSION_THREAT = {
   '6': 99,
 };
 
-export default (numOpenGroups: number, noMercenaryAllowed: boolean, missionThreat: number) => {
-  const groupsToPull = numOpenGroups + EXTRA_GROUPS_TO_PULL[String(missionThreat)];
+export default (config: MissionConfigType, missionThreat: number) => {
+  const {initialGroups, openGroups, noMercenaryAllowed, reservedGroups} = config;
+
+  const groupsToPull = openGroups + EXTRA_GROUPS_TO_PULL[String(missionThreat)];
   const threatCost = THREAT_COST_FOR_MISSION_THREAT[String(missionThreat)];
 
-  const groupsToPullFrom = pickBy(units, (unit: ImperialUnitType) => {
+  // Need to build a new array of units that consists of the number of times the number of
+  // deployment cards that unit has. Remove from it the reserved units and the initial deployed
+  // units. Those are our open groups.
+  let unitList = reduce(units, (accumulator: UnitConfigType[], unit: UnitConfigType) => {
     // Don't pick special units
     if (unit.affiliation === 'mission') {
-      return false;
+      return accumulator;
+    }
+    // Don't pick mercenary units if we can't for this mission
+    if (noMercenaryAllowed && unit.affiliation === 'mercenary') {
+      return accumulator;
+    }
+    // Don't pick high threat units if they exceed our soft cap
+    if (unit.threat > threatCost) {
+      return accumulator;
+    }
+    // Don't pick unique units unless the imperial player has gained them
+    // TODO: Allow for inclusion of gained unique units
+    if (unit.unique) {
+      return accumulator;
     }
 
-    if (noMercenaryAllowed) {
-      return unit.threat <= threatCost && unit.affiliation !== 'mercenary';
-    } else {
-      return unit.threat <= threatCost;
+    for (let i = 0; i < unit.maxDeployed; i++) {
+      accumulator.push(unit);
     }
-  });
-  const shuffledGroups = shuffle(groupsToPullFrom);
+    return accumulator;
+  }, []);
+
+  // Remove reserved units from list
+  for (let i = 0; i < reservedGroups.length; i++) {
+    const index = unitList.findIndex((unit: UnitConfigType) => unit.id  === reservedGroups[i]);
+    if (index !== -1) {
+      // Splice and create a new array with that one index removed
+      unitList.splice(index, 1);
+    }
+  }
+
+  // Remove initial units from list
+  for (let i = 0; i < initialGroups.length; i++) {
+    const index = unitList.findIndex((unit: UnitConfigType) => unit.id  === initialGroups[i]);
+    if (index !== -1) {
+      // Splice and create a new array with that one index removed
+      unitList.splice(index, 1);
+    }
+  }
+
+  const shuffledGroups = shuffle(unitList);
   return shuffledGroups.slice(0, groupsToPull);
 };

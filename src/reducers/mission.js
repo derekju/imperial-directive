@@ -60,7 +60,10 @@ export type MissionConfigType = {
   mapImage: Array<Array<string>>,
   mapStates: {[key: string]: MapStateType},
   name: string,
+  noMercenaryAllowed: boolean,
   openGroups: number,
+  reservedGroups: string[],
+  withdrawnHeroCanActivate: boolean,
 };
 
 // Constants

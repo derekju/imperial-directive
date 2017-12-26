@@ -241,7 +241,10 @@
     },
     "name": "A New Threat",
     "noMercenaryAllowed": false,
-    "openGroups": 2
+    "openGroups": 2,
+    "reservedGroups": [
+      "generalWeiss", "nexu"
+    ]
   },
   "aSimpleTask": {
     "initialGroups": [
@@ -369,7 +372,10 @@
     },
     "name": "A Simple Task",
     "noMercenaryAllowed": false,
-    "openGroups": 4
+    "openGroups": 4,
+    "reservedGroups": [
+      "imperialOfficer", "stormtrooper"
+    ]
   },
   "brushfire": {
     "initialGroups": [
@@ -515,7 +521,10 @@
     },
     "name": "Brushfire",
     "noMercenaryAllowed": false,
-    "openGroups": 3
+    "openGroups": 3,
+    "reservedGroups": [
+      "trandoshanHunter"
+    ]
   },
   "captured": {
     "initialGroups": [
@@ -796,6 +805,7 @@
     "name": "Captured",
     "noMercenaryAllowed": false,
     "openGroups": 3,
+    "reservedGroups": [],
     "withdrawnHeroCanActivate": true
   },
   "drawnIn": {
@@ -953,6 +963,9 @@
     "name": "Drawn In",
     "noMercenaryAllowed": true,
     "openGroups": 4,
+    "reservedGroups": [
+      "royalGuardChampion"
+    ],
     "withdrawnHeroCanActivate": true
   },
   "flySolo": {
@@ -1129,7 +1142,10 @@
     },
     "name": "Friends of Old",
     "noMercenaryAllowed": false,
-    "openGroups": 3
+    "openGroups": 3,
+    "reservedGroups": [
+      "imperialOfficerElite", "probeDroid", "stormtrooper"
+    ]
   },
   "highMoon": {
     "initialGroups": [
@@ -1202,7 +1218,10 @@
     },
     "name": "High Moon",
     "noMercenaryAllowed": false,
-    "openGroups": 3
+    "openGroups": 3,
+    "reservedGroups": [
+      "trandoshanHunter", "trandoshanHunterElite"
+    ]
   },
   "homecoming": {
     "initialGroups": [
@@ -1302,7 +1321,10 @@
     },
     "name": "Homecoming",
     "noMercenaryAllowed": false,
-    "openGroups": 3
+    "openGroups": 3,
+    "reservedGroups": [
+      "darthVader", "stormtrooper"
+    ]
   },
   "imperialHospitality": {
     "initialGroups": [
@@ -1417,7 +1439,10 @@
     },
     "name": "Imperial Hospitality",
     "noMercenaryAllowed": false,
-    "openGroups": 2
+    "openGroups": 2,
+    "reservedGroups": [
+      "imperialOfficer", "trandoshanHunter"
+    ]
   },
   "impounded": {
     "initialGroups": [
@@ -1547,7 +1572,8 @@
     },
     "name": "Impounded",
     "noMercenaryAllowed": false,
-    "openGroups": 3
+    "openGroups": 3,
+    "reservedGroups": []
   },
   "incoming": {
     "initialGroups": [
@@ -1829,7 +1855,10 @@
     },
     "name": "Indebted",
     "noMercenaryAllowed": false,
-    "openGroups": 3
+    "openGroups": 3,
+    "reservedGroups": [
+      "eWebEngineer"
+    ]
   },
   "looseCannon": {
     "initialGroups": [
@@ -1869,7 +1898,10 @@
     },
     "name": "Loose Cannon",
     "noMercenaryAllowed": true,
-    "openGroups": 3
+    "openGroups": 3,
+    "reservedGroups": [
+      "eWebEngineer"
+    ]
   },
   "luxuryCruise": {
     "initialGroups": [
@@ -2040,7 +2072,10 @@
     },
     "name": "Luxury Cruise",
     "noMercenaryAllowed": true,
-    "openGroups": 3
+    "openGroups": 3,
+    "reservedGroups": [
+      "royalGuard"
+    ]
   },
   "meansOfProduction": {
     "initialGroups": [
@@ -2143,7 +2178,10 @@
     },
     "name": "Means of Production",
     "noMercenaryAllowed": false,
-    "openGroups": 3
+    "openGroups": 3,
+    "reservedGroups": [
+      "eWebEngineer"
+    ]
   },
   "sorryAboutTheMess": {
     "initialGroups": [
@@ -2198,7 +2236,10 @@
     },
     "name": "Sorry About The Mess",
     "noMercenaryAllowed": false,
-    "openGroups": 3
+    "openGroups": 3,
+    "reservedGroups": [
+      "eWebEngineer", "imperialOfficerElite", "trandoshanHunterElite"
+    ]
   },
   "targetOfOpportunity": {
     "initialGroups": [
@@ -2355,7 +2396,10 @@
     },
     "name": "Temptation",
     "noMercenaryAllowed": false,
-    "openGroups": 3
+    "openGroups": 3,
+    "reservedGroups": [
+      "darthVader"
+    ]
   },
   "theSpiceJob": {
     "initialGroups": [
@@ -2514,7 +2558,10 @@
     },
     "name": "The Spice Job",
     "noMercenaryAllowed": false,
-    "openGroups": 3
+    "openGroups": 3,
+    "reservedGroups": [
+      "eWebEngineer"
+    ]
   },
   "underSiege": {
     "initialGroups": [
@@ -2680,7 +2727,10 @@
     },
     "name": "Under Siege",
     "noMercenaryAllowed": false,
-    "openGroups": 2
+    "openGroups": 2,
+    "reservedGroups": [
+      "atst", "darthVader", "royalGuard", "stormtrooperElite"
+    ]
   },
   "wanted": {
     "initialGroups": [

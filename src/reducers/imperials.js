@@ -37,6 +37,22 @@ export type ImperialUnitCommandType = {
   command: string,
 };
 
+export type UnitConfigType = {
+  affiliation: string,
+  buffs: string[],
+  commands: ImperialUnitCommandType[],
+  eligibleForHpBoost: boolean,
+  elite: boolean,
+  hpBoosts: {[threatLevel: string]: number[]},
+  id: string,
+  maxDeployed: number,
+  maxInGroup: number,
+  name: string,
+  reinforcementCost: number,
+  threat: number,
+  unique: boolean,
+};
+
 export type ImperialUnitType = {
   affiliation: string,
   buffs: string[],
@@ -141,7 +157,7 @@ export default (state: ImperialsStateType = initialState, action: Object) => {
           createNewGroup(id, designationMap, missionThreat, difficulty)
         ),
         designationMap,
-        openGroups: populateOpenGroups(config.openGroups, config.noMercenaryAllowed, missionThreat),
+        openGroups: populateOpenGroups(config, missionThreat),
       };
     case ACTIVATE_IMPERIAL_GROUP: {
       const {group} = action.payload;

@@ -20,10 +20,12 @@
     "elite": true,
     "hpBoosts": {},
     "id": "atst",
+    "maxDeployed": 1,
     "maxInGroup": 1,
     "name": "AT-ST",
     "reinforcementCost": -1,
-    "threat": 14
+    "threat": 14,
+    "unique": true
   },
   "darthVader": {
     "affiliation": "imperial",
@@ -60,10 +62,12 @@
       "6": [1, 2, 2, 3, 3]
     },
     "id": "darthVader",
+    "maxDeployed": 1,
     "maxInGroup": 1,
     "name": "Darth Vader",
     "reinforcementCost": -1,
-    "threat": 18
+    "threat": 18,
+    "unique": true
   },
   "eWebEngineer": {
     "affiliation": "imperial",
@@ -92,10 +96,12 @@
       "6": [1, 2, 2, 2, 3]
     },
     "id": "eWebEngineer",
+    "maxDeployed": 1,
     "maxInGroup": 1,
     "name": "E-Web Engineer",
     "reinforcementCost": -1,
-    "threat": 6
+    "threat": 6,
+    "unique": false
   },
   "eWebEngineerElite": {
     "affiliation": "imperial",
@@ -124,10 +130,12 @@
       "6": [1, 2, 2, 2, 3]
     },
     "id": "eWebEngineerElite",
+    "maxDeployed": 1,
     "maxInGroup": 1,
     "name": "E E-Web Engineer",
     "reinforcementCost": -1,
-    "threat": 8
+    "threat": 8,
+    "unique": false
   },
   "generalWeiss": {
     "affiliation": "imperial",
@@ -154,10 +162,12 @@
     "elite": true,
     "hpBoosts": {},
     "id": "generalWeiss",
+    "maxDeployed": 1,
     "maxInGroup": 1,
     "name": "General Weiss",
     "reinforcementCost": -1,
-    "threat": 16
+    "threat": 16,
+    "unique": true
   },
   "gerrin": {
     "affiliation": "mission",
@@ -188,10 +198,12 @@
     "elite": true,
     "hpBoosts": {},
     "id": "gerrin",
+    "maxDeployed": 1,
     "maxInGroup": 1,
     "name": "Gerrin",
     "reinforcementCost": -1,
-    "threat": 5
+    "threat": 5,
+    "unique": true
   },
   "ig88": {
     "affiliation": "mercenary",
@@ -218,10 +230,12 @@
     "elite": true,
     "hpBoosts": {},
     "id": "ig88",
+    "maxDeployed": 1,
     "maxInGroup": 1,
     "name": "IG-88",
     "reinforcementCost": -1,
-    "threat": 12
+    "threat": 12,
+    "unique": true
   },
   "imperialOfficer": {
     "affiliation": "imperial",
@@ -254,10 +268,12 @@
       "6": [1, 2, 2, 2, 3]
     },
     "id": "imperialOfficer",
+    "maxDeployed": 2,
     "maxInGroup": 1,
     "name": "Imperial Officer",
     "reinforcementCost": -1,
-    "threat": 2
+    "threat": 2,
+    "unique": false
   },
   "imperialOfficerElite": {
     "affiliation": "imperial",
@@ -294,10 +310,12 @@
       "6": [1, 2, 2, 2, 3]
     },
     "id": "imperialOfficerElite",
+    "maxDeployed": 1,
     "maxInGroup": 1,
     "name": "E Imperial Officer",
     "reinforcementCost": -1,
-    "threat": 5
+    "threat": 5,
+    "unique": false
   },
   "nexu": {
     "affiliation": "mercenary",
@@ -330,10 +348,12 @@
       "6": [1, 2, 2, 2, 3]
     },
     "id": "nexu",
+    "maxDeployed": 1,
     "maxInGroup": 1,
     "name": "Nexu",
     "reinforcementCost": -1,
-    "threat": 4
+    "threat": 4,
+    "unique": false
   },
   "nexuElite": {
     "affiliation": "mercenary",
@@ -366,10 +386,12 @@
       "6": [1, 2, 2, 2, 3]
     },
     "id": "nexuElite",
+    "maxDeployed": 1,
     "maxInGroup": 1,
     "name": "E Nexu",
     "reinforcementCost": -1,
-    "threat": 6
+    "threat": 6,
+    "unique": false
   },
   "probeDroid": {
     "affiliation": "imperial",
@@ -398,10 +420,12 @@
       "6": [1, 2, 2, 2, 3]
     },
     "id": "probeDroid",
+    "maxDeployed": 2,
     "maxInGroup": 1,
     "name": "Probe Droid",
     "reinforcementCost": -1,
-    "threat": 3
+    "threat": 3,
+    "unique": false
   },
   "probeDroidElite": {
     "affiliation": "imperial",
@@ -434,10 +458,12 @@
       "6": [1, 2, 2, 2, 3]
     },
     "id": "probeDroidElite",
+    "maxDeployed": 1,
     "maxInGroup": 1,
     "name": "E Probe Droid",
     "reinforcementCost": -1,
-    "threat": 5
+    "threat": 5,
+    "unique": false
   },
   "royalGuard": {
     "affiliation": "imperial",
@@ -470,10 +496,12 @@
       "6": [1, 2, 2, 2, 3]
     },
     "id": "royalGuard",
+    "maxDeployed": 1,
     "maxInGroup": 2,
     "name": "Royal Guard",
     "reinforcementCost": 4,
-    "threat": 8
+    "threat": 8,
+    "unique": false
   },
   "royalGuardChampion": {
     "affiliation": "imperial",
@@ -506,10 +534,12 @@
       "6": [1, 2, 2, 2, 3]
     },
     "id": "royalGuardChampion",
+    "maxDeployed": 1,
     "maxInGroup": 1,
     "name": "Royal Guard Champion",
     "reinforcementCost": -1,
-    "threat": 15
+    "threat": 15,
+    "unique": true
   },
   "royalGuardElite": {
     "affiliation": "imperial",
@@ -542,10 +572,12 @@
       "6": [1, 2, 2, 2, 3]
     },
     "id": "royalGuardElite",
+    "maxDeployed": 1,
     "maxInGroup": 2,
     "name": "E Royal Guard",
     "reinforcementCost": 6,
-    "threat": 12
+    "threat": 12,
+    "unique": false
   },
   "stormtrooper": {
     "affiliation": "imperial",
@@ -574,10 +606,12 @@
       "6": [1, 2, 2, 2, 3]
     },
     "id": "stormtrooper",
+    "maxDeployed": 2,
     "maxInGroup": 3,
     "name": "Stormtrooper",
     "reinforcementCost": 2,
-    "threat": 6
+    "threat": 6,
+    "unique": false
   },
   "stormtrooperElite": {
     "affiliation": "imperial",
@@ -610,10 +644,12 @@
       "6": [1, 2, 2, 2, 3]
     },
     "id": "stormtrooperElite",
+    "maxDeployed": 1,
     "maxInGroup": 3,
     "name": "E Stormtrooper",
     "reinforcementCost": 3,
-    "threat": 9
+    "threat": 9,
+    "unique": false
   },
   "szark": {
     "affiliation": "mission",
@@ -640,10 +676,12 @@
     "elite": false,
     "hpBoosts": {},
     "id": "szark",
+    "maxDeployed": 1,
     "maxInGroup": 1,
     "name": "Szark",
     "reinforcementCost": -1,
-    "threat": 7
+    "threat": 7,
+    "unique": true
   },
   "trandoshanHunter": {
     "affiliation": "mercenary",
@@ -680,10 +718,12 @@
       "6": [1, 2, 2, 2, 3]
     },
     "id": "trandoshanHunter",
+    "maxDeployed": 1,
     "maxInGroup": 2,
     "name": "Trandoshan Hunter",
     "reinforcementCost": 3,
-    "threat": 7
+    "threat": 7,
+    "unique": false
   },
   "trandoshanHunterElite": {
     "affiliation": "mercenary",
@@ -720,9 +760,11 @@
       "6": [1, 2, 2, 2, 3]
     },
     "id": "trandoshanHunterElite",
+    "maxDeployed": 1,
     "maxInGroup": 2,
     "name": "E Trandoshan Hunter",
     "reinforcementCost": 5,
-    "threat": 10
+    "threat": 10,
+    "unique": false
   }
 }
