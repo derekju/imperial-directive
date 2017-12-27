@@ -1,4 +1,5 @@
 // @flow
+/* globals Raven */
 
 import {applyMiddleware, combineReducers, compose, createStore} from 'redux';
 import createSagaMiddleware from 'redux-saga';
@@ -23,7 +24,13 @@ export default () => {
   }
   */
 
-  const sagaMiddleware = createSagaMiddleware();
+  const sagaMiddleware = createSagaMiddleware({
+    onError: (e) => {
+      // $FlowFixMe - Don't worry about this
+      Raven.captureException(e);
+      throw e;
+    },
+  });
   const store = createStore(
     combineReducers(reducers),
     composeEnhancers(applyMiddleware(sagaMiddleware, persistMiddleware))
