@@ -24,44 +24,32 @@ export default (text: string) => {
   // SURGE IMAGE
   replaced = replaced.replace(
     /{SURGE}/g,
-    `<img alt="Surge" src='${
-      surgePng
-    }' style='height: 24px; width: 25px; vertical-align: middle' />`
+    `<img alt="Surge" src='${surgePng}' style='height: 24px; width: 25px; vertical-align: middle' />`
   );
   // STRAIN IMAGE
   replaced = replaced.replace(
     /{STRAIN}/g,
-    `<img alt="Strain" src='${
-      strainPng
-    }' style='height: 24px; width: 18px; vertical-align: middle' />`
+    `<img alt="Strain" src='${strainPng}' style='height: 24px; width: 18px; vertical-align: middle' />`
   );
   // BLOCK IMAGE
   replaced = replaced.replace(
     /{BLOCK}/g,
-    `<img alt="Block" src='${
-      blockPng
-    }' style='height: 20px; width: 18px; vertical-align: middle' />`
+    `<img alt="Block" src='${blockPng}' style='height: 20px; width: 18px; vertical-align: middle' />`
   );
   // DAMAGE IMAGE
   replaced = replaced.replace(
     /{DAMAGE}/g,
-    `<img alt="Damage" src='${
-      damagePng
-    }' style='height: 24px; width: 20px; vertical-align: middle' />`
+    `<img alt="Damage" src='${damagePng}' style='height: 24px; width: 20px; vertical-align: middle' />`
   );
   // STRENGTH IMAGE
   replaced = replaced.replace(
     /{STRENGTH}/g,
-    `<img alt="Strength" src='${
-      strengthPng
-    }' style='height: 24px; width: 18px; vertical-align: middle' />`
+    `<img alt="Strength" src='${strengthPng}' style='height: 24px; width: 18px; vertical-align: middle' />`
   );
   // INSIGHT IMAGE
   replaced = replaced.replace(
     /{INSIGHT}/g,
-    `<img alt="Insight" src='${
-      insightPng
-    }' style='height: 24px; width: 20px; vertical-align: middle' />`
+    `<img alt="Insight" src='${insightPng}' style='height: 24px; width: 20px; vertical-align: middle' />`
   );
   // TECH IMAGE
   replaced = replaced.replace(

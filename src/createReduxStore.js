@@ -25,7 +25,7 @@ export default () => {
   */
 
   const sagaMiddleware = createSagaMiddleware({
-    onError: (e) => {
+    onError: e => {
       // $FlowFixMe - Don't worry about this
       Raven.captureException(e);
       throw e;

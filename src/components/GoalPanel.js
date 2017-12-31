@@ -31,6 +31,10 @@ type GoalPanelPropsType = {
   incomingEnterCorridor: Function,
   looseCannonDefeatAtst: Function,
   spiceJobGetKeycard: Function,
+  vipersDenFigureDropsCore: Function,
+  vipersDenHeroGetCore: Function,
+  vipersDenImperialEscapes: Function,
+  vipersDenImperialGetCore: Function,
 };
 
 type GoalPanelStateType = {
@@ -65,6 +69,22 @@ class GoalPanel extends React.Component<GoalPanelPropsType, GoalPanelStateType> 
     this.props.incomingEnterCorridor();
   };
 
+  handleVipersDenHeroGetCore = () => {
+    this.props.vipersDenHeroGetCore();
+  };
+
+  handleVipersDenImperialGetCore = () => {
+    this.props.vipersDenImperialGetCore();
+  };
+
+  handleVipersDenFigureDropsCore = () => {
+    this.props.vipersDenFigureDropsCore();
+  };
+
+  handleVipersDenImperialEscapes = () => {
+    this.props.vipersDenImperialEscapes();
+  };
+
   renderMissionSpecific() {
     const {currentMission} = this.props;
 
@@ -93,6 +113,39 @@ class GoalPanel extends React.Component<GoalPanelPropsType, GoalPanelStateType> 
         return (
           <div style={styles.buttonContainer}>
             <Button text="Corridor Entered" onClick={this.handleIncomingEnterCorridor} />
+          </div>
+        );
+      } else {
+        return null;
+      }
+    } else if (currentMission === 'vipersDen') {
+      if (!this.state.buttonPressed) {
+        return (
+          <div>
+            <div style={styles.buttonContainer}>
+              <Button text="Hero Gets Core" width={180} onClick={this.handleVipersDenHeroGetCore} />
+            </div>
+            <div style={styles.buttonContainer}>
+              <Button
+                text="Imperial Gets Core"
+                width={180}
+                onClick={this.handleVipersDenImperialGetCore}
+              />
+            </div>
+            <div style={styles.buttonContainer}>
+              <Button
+                text="Figure Drops Core"
+                width={180}
+                onClick={this.handleVipersDenFigureDropsCore}
+              />
+            </div>
+            <div style={styles.buttonContainer}>
+              <Button
+                text="Imperial Escapes"
+                width={180}
+                onClick={this.handleVipersDenImperialEscapes}
+              />
+            </div>
           </div>
         );
       } else {

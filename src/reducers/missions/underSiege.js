@@ -202,9 +202,7 @@ function* handleSpecialists(): Generator<*, *, *> {
       helperDeploy,
       'Tree branches snap outside as a giant AT-ST roars to life.',
       [
-        `Deploy a {ELITE}AT-ST{END} to the yellow deployment point closest to door ${
-          randomDoorNumOutside
-        }.`,
+        `Deploy a {ELITE}AT-ST{END} to the yellow deployment point closest to door ${randomDoorNumOutside}.`,
       ],
       'Specialists',
       ['atst']

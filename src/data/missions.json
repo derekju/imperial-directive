@@ -2732,6 +2732,92 @@
       "atst", "darthVader", "royalGuard", "stormtrooperElite"
     ]
   },
+  "vipersDen": {
+    "initialGroups": [
+      "eWebEngineer", "stormtrooper", "trandoshanHunter"
+    ],
+    "instructions": {
+      "imperialVictory": "Figure escapes or when all heroes are wounded",
+      "rebelVictory": "Figure escapes"
+    },
+    "mapImage": [
+      ["00a", "00a", "00a", "24b", "24b", "24b", "39b", "14b", "14b", "00a", "00a", "00a", "00a", "00a", "00a", "00a"],
+      ["00a", "00a", "24b", "24b", "24b", "24b", "39b", "14b", "14b", "00a", "00a", "00a", "00a", "00a", "00a", "00a"],
+      ["00a", "00a", "24b", "24b", "24b", "24b", "00a", "03b", "03b", "00a", "00a", "00a", "00a", "00a", "00a", "00a"],
+      ["00a", "00a", "24b", "24b", "24b", "00a", "03b", "03b", "03b", "03b", "00a", "00a", "00a", "00a", "00a", "00a"],
+      ["00a", "22b", "22b", "22b", "22b", "00a", "03b", "03b", "03b", "03b", "03b", "14b", "14b", "00a", "00a", "00a"],
+      ["00a", "22b", "22b", "22b", "22b", "00a", "03b", "03b", "03b", "03b", "03b", "14b", "14b", "00a", "00a", "00a"],
+      ["00a", "22b", "22b", "22b", "22b", "00a", "03b", "03b", "03b", "03b", "00a", "09b", "09b", "00a", "00a", "00a"],
+      ["00a", "22b", "22b", "22b", "22b", "00a", "00a", "03b", "03b", "00a", "00a", "09b", "09b", "00a", "00a", "00a"],
+      ["36b", "29b", "29b", "29b", "29b", "39b", "11b", "11b", "11b", "11b", "17b", "09b", "09b", "09b", "09b", "11b"],
+      ["36b", "29b", "29b", "29b", "29b", "39b", "11b", "11b", "11b", "11b", "17b", "09b", "09b", "09b", "09b", "11b"]
+    ],
+    "mapStates": {
+      "entrance-1": {
+        "activated": false,
+        "activateText": "",
+        "coordinates": {
+          "x": 14,
+          "y": 8
+        },
+        "description": "The entrance.",
+        "id": 1,
+        "interactable": false,
+        "type": "entrance",
+        "unactivateText": "",
+        "visible": true
+      },
+      "door-1": {
+        "activated": false,
+        "activateText": "Destroy",
+        "coordinates": {
+          "x": 5,
+          "y": 8
+        },
+        "description": "A door to the data core.",
+        "id": 1,
+        "interactable": true,
+        "type": "door",
+        "unactivateText": "Close",
+        "visible": true
+      },
+      "door-2": {
+        "activated": false,
+        "activateText": "Destroy",
+        "coordinates": {
+          "x": 6,
+          "y": 0
+        },
+        "description": "A door to the data core.",
+        "id": 2,
+        "interactable": true,
+        "type": "door",
+        "unactivateText": "Close",
+        "visible": true
+      },
+      "imperial-1": {
+        "activated": false,
+        "activateText": "Retrieve",
+        "color": "red",
+        "coordinates": {
+          "x": 3,
+          "y": 4
+        },
+        "description": "The data core.",
+        "id": 1,
+        "interactable": false,
+        "type": "imperial",
+        "unactivateText": "Restore",
+        "visible": true
+      }
+    },
+    "name": "Viper's Den",
+    "noMercenaryAllowed": false,
+    "openGroups": 3,
+    "reservedGroups": [
+      "imperialOfficerElite", "stormtrooper"
+    ]
+  },
   "wanted": {
     "initialGroups": [
       "probeDroid", "trandoshanHunter"

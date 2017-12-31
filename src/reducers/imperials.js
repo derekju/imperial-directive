@@ -72,6 +72,7 @@ export type ImperialUnitType = {
 export type ImperialsStateType = {
   activatedGroup: ?ImperialUnitType,
   customAI: ?(Object[]),
+  customAIExceptionList: string[],
   deployedGroups: ImperialUnitType[],
   designationMap: DesignationMapType,
   interruptedGroup: ?ImperialUnitType,
@@ -140,6 +141,7 @@ const createNewGroup = (
 const initialState = {
   activatedGroup: null,
   customAI: null,
+  customAIExceptionList: [],
   deployedGroups: [],
   designationMap: {},
   interruptedGroup: null,
@@ -153,6 +155,8 @@ export default (state: ImperialsStateType = initialState, action: Object) => {
       const designationMap = {};
       return {
         ...initialState,
+        customAI: state.customAI,
+        customAIExceptionList: state.customAIExceptionList,
         deployedGroups: config.initialGroups.map((id: string) =>
           createNewGroup(id, designationMap, missionThreat, difficulty)
         ),
@@ -258,6 +262,7 @@ export default (state: ImperialsStateType = initialState, action: Object) => {
       return {
         ...state,
         customAI: action.payload.customAI,
+        customAIExceptionList: action.payload.exceptionList,
       };
     case SET_IMPERIAL_UNIT_HP_BUFF:
       const {groupId, hpBuff} = action.payload;
@@ -337,7 +342,8 @@ export const setInterruptedGroupActivated = () =>
 export const optionalDeployment = () => createAction(OPTIONAL_DEPLOYMENT);
 export const optionalDeploymentDone = (newThreat: number) =>
   createAction(OPTIONAL_DEPLOYMENT_DONE, {newThreat});
-export const setCustomAI = (customAI: ?(Object[])) => createAction(SET_CUSTOM_AI, {customAI});
+export const setCustomAI = (customAI: ?(Object[]), exceptionList: string[] = []) =>
+  createAction(SET_CUSTOM_AI, {customAI, exceptionList});
 export const setImperialUnitHpBuff = (groupId: string, hpBuff: number) =>
   createAction(SET_IMPERIAL_UNIT_HP_BUFF, {groupId, hpBuff});
 

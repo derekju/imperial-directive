@@ -23,6 +23,7 @@ import targetOfOpportunity from './missions/targetOfOpportunity';
 import temptation from './missions/temptation';
 import theSpiceJob from './missions/theSpiceJob';
 import underSiege from './missions/underSiege';
+import vipersDen from './missions/vipersDen';
 import wanted from './missions/wanted';
 
 export default {
@@ -49,5 +50,6 @@ export default {
   temptation,
   theSpiceJob,
   underSiege,
+  vipersDen,
   wanted,
 };

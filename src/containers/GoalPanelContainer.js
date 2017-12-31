@@ -24,6 +24,7 @@ import {getTargetOfOpportunityGoalText} from '../reducers/missions/targetOfOppor
 import {getTemptationGoalText} from '../reducers/missions/temptation';
 import {getTheSpiceJobGoalText} from '../reducers/missions/theSpiceJob';
 import {getUnderSiegeGoalText} from '../reducers/missions/underSiege';
+import {getVipersDenGoalText} from '../reducers/missions/vipersDen';
 import {getWantedGoalText} from '../reducers/missions/wanted';
 import GoalPanel from '../components/GoalPanel';
 import type {StateType} from '../reducers/types';
@@ -74,6 +75,8 @@ const getGoalText = (state: StateType) => {
       return getTheSpiceJobGoalText(state);
     case 'underSiege':
       return getUnderSiegeGoalText(state);
+    case 'vipersDen':
+      return getVipersDenGoalText(state);
     case 'wanted':
       return getWantedGoalText(state);
     default:
@@ -89,11 +92,19 @@ const mapStateToProps = (state: StateType) => ({
 const looseCannonDefeatAtst = () => createAction('LOOSE_CANNON_DEFEAT_ATST');
 const spiceJobGetKeycard = () => createAction('SPICE_JOB_GET_KEYCARD');
 const incomingEnterCorridor = () => createAction('INCOMING_ENTER_CORRIDOR');
+const vipersDenHeroGetCore = () => createAction('VIPERS_DEN_HERO_GET_CORE');
+const vipersDenImperialGetCore = () => createAction('VIPERS_DEN_IMPERIAL_GET_CORE');
+const vipersDenFigureDropsCore = () => createAction('VIPERS_DEN_FIGURE_DROPS_CORE');
+const vipersDenImperialEscapes = () => createAction('VIPERS_DEN_IMPERIAL_ESCAPES');
 
 const mapDispatchToProps = {
   incomingEnterCorridor,
   looseCannonDefeatAtst,
   spiceJobGetKeycard,
+  vipersDenFigureDropsCore,
+  vipersDenHeroGetCore,
+  vipersDenImperialGetCore,
+  vipersDenImperialEscapes,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(GoalPanel);

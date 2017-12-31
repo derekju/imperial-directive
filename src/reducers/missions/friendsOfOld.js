@@ -293,9 +293,7 @@ function* handleRoundEnd(): Generator<*, *, *> {
       // Do the action
       yield call(helperEventModal, {
         text: [
-          `A mission token will now be randomly flipped. If a Rebel Trooper is revealed, that Trooper suffers ${
-            missionThreat
-          } {DAMAGE} and is stunned.`,
+          `A mission token will now be randomly flipped. If a Rebel Trooper is revealed, that Trooper suffers ${missionThreat} {DAMAGE} and is stunned.`,
         ],
         title: 'The Squad',
       });
@@ -324,14 +322,10 @@ function* handleSpecialSetup(): Generator<*, *, *> {
 
   yield call(helperMissionBriefing, [
     'Neutral mission tokens are hidden rebels. A hero can interact ({INSIGHT}) with a token to reveal it and replace it with a Rebel Trooper. Rebel Troopers are allies.',
-    `Each Trooper gains ${
-      missionThreat
-    } Health. Rebel Troopers can only move once each activation.`,
+    `Each Trooper gains ${missionThreat} Health. Rebel Troopers can only move once each activation.`,
     'All Rebel Troopers share a single deployment card! If a Trooper is revealed after the group has already activated, they must wait until the next turn to activate.',
     'A Rebel Trooper can escape through the entrance.',
-    `Starting with round 4, at the end of the round, one mission token is flipped at random and replaced with a Rebel Trooper. This figure suffers ${
-      missionThreat
-    } {DAMAGE} and is stunned.`,
+    `Starting with round 4, at the end of the round, one mission token is flipped at random and replaced with a Rebel Trooper. This figure suffers ${missionThreat} {DAMAGE} and is stunned.`,
   ]);
   // Enable escaping
   yield put(enableEscape());

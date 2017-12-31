@@ -16,6 +16,7 @@ const mapStateToProps = (state: StateType) => ({
   currentRound: state.mission.currentRound,
   currentThreat: state.mission.currentThreat,
   customAI: state.imperials.customAI,
+  customAIExceptionList: state.imperials.customAIExceptionList,
   displayModal: Boolean(state.modal.type),
   instructions: state.mission.instructions,
   interruptedGroup: state.imperials.interruptedGroup,

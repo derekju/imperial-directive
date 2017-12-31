@@ -28,6 +28,7 @@ import {targetOfOpportunity} from './missions/targetOfOpportunity';
 import {temptation} from './missions/temptation';
 import {theSpiceJob} from './missions/theSpiceJob';
 import {underSiege} from './missions/underSiege';
+import {vipersDen} from './missions/vipersDen';
 import {wanted} from './missions/wanted';
 
 // Types
@@ -158,6 +159,9 @@ function* forkMission(currentMission: string): Generator<*, *, *> {
       break;
     case 'underSiege':
       yield fork(underSiege);
+      break;
+    case 'vipersDen':
+      yield fork(vipersDen);
       break;
     case 'wanted':
       yield fork(wanted);

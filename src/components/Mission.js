@@ -76,6 +76,7 @@ type MissionPropsType = {
   currentRound: number,
   currentThreat: number,
   customAI: ?(Object[]),
+  customAIExceptionList: string[],
   displayModal: boolean,
   history: Object,
   instructions: {imperialVictory: string, rebelVictory: string},
@@ -125,6 +126,7 @@ class Mission extends React.Component<MissionPropsType> {
             <AiCard
               attackTarget={this.props.attackTarget}
               customAI={this.props.customAI}
+              customAIExceptionList={this.props.customAIExceptionList}
               group={this.props.activatedGroup}
               moveTarget={this.props.moveTarget}
               setImperialGroupActivated={this.props.setImperialGroupActivated}
@@ -136,6 +138,7 @@ class Mission extends React.Component<MissionPropsType> {
             <AiCard
               attackTarget={this.props.attackTarget}
               customAI={this.props.customAI}
+              customAIExceptionList={this.props.customAIExceptionList}
               group={this.props.interruptedGroup}
               moveTarget={this.props.moveTarget}
               setImperialGroupActivated={this.props.setInterruptedGroupActivated}

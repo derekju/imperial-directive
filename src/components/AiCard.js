@@ -68,6 +68,7 @@ const styles = {
 type AiCardPropsType = {
   attackTarget: string,
   customAI: ?(Object[]),
+  customAIExceptionList: string[],
   group: ImperialUnitType,
   moveTarget: string,
   setImperialGroupActivated: Function,
@@ -150,7 +151,7 @@ class AiCard extends React.PureComponent<AiCardPropsType> {
         }`}</div>
         <div style={styles.buffContainer}>{this.renderBuff()}</div>
         <div style={styles.commandContainer}>
-          {this.props.customAI
+          {this.props.customAI && !this.props.customAIExceptionList.includes(this.props.group.id)
             ? this.props.customAI.map((customAI, index) =>
                 this.renderCommand(`custom-${index}`, customAI.condition, customAI.command)
               )
