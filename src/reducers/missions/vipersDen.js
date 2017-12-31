@@ -20,11 +20,7 @@ import {
   STATUS_PHASE_END_ROUND_EFFECTS,
 } from '../mission';
 import {OPTIONAL_DEPLOYMENT_DONE, optionalDeployment, setCustomAI} from '../imperials';
-import {
-  REFER_CAMPAIGN_GUIDE,
-  TARGET_HERO_CLOSEST_UNWOUNDED,
-  TARGET_REMAINING,
-} from './constants';
+import {REFER_CAMPAIGN_GUIDE, TARGET_HERO_CLOSEST_UNWOUNDED, TARGET_REMAINING} from './constants';
 import createAction from '../createAction';
 import {displayModal} from '../modal';
 import helperDeploy from './helpers/helperDeploy';
