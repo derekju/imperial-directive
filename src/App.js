@@ -21,6 +21,15 @@ const styles = {
 };
 
 class App extends React.Component<{}> {
+  componentDidMount() {
+    window.onpopstate = (event) => {
+      // Hack to fix going back in the browser once you're on a mission
+      // Since we don't clean up any of our sagas that are running, this is the easiest way to
+      // reboot the entire system
+      window.location = '/';
+    };
+  }
+
   render() {
     return (
       <Router>
