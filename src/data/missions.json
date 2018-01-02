@@ -1147,6 +1147,123 @@
       "imperialOfficerElite", "probeDroid", "stormtrooper"
     ]
   },
+  "generousDonations": {
+    "initialGroups": [
+      "eWebEngineer", "probeDroid", "trandoshanHunter"
+    ],
+    "instructions": {
+      "imperialVictory": "At the end of Round 8 or when all heroes are wounded",
+      "rebelVictory": "(to be revealed)"
+    },
+    "mapImage": [
+      ["00a", "00a", "00a", "00a", "00a", "00a", "00a", "04a", "04a", "04a", "04a", "00a", "00a", "00a", "00a", "00a"],
+      ["00a", "00a", "00a", "00a", "00a", "00a", "18a", "04a", "04a", "04a", "04a", "10a", "10a", "10a", "00a", "00a"],
+      ["00a", "00a", "00a", "00a", "00a", "00a", "18a", "04a", "04a", "04a", "04a", "10a", "10a", "10a", "00a", "00a"],
+      ["00a", "00a", "00a", "00a", "00a", "00a", "00a", "04a", "04a", "04a", "04a", "10a", "10a", "10a", "00a", "00a"],
+      ["00a", "00a", "00a", "00a", "00a", "00a", "01a", "01a", "01a", "01a", "01a", "01a", "02a", "02a", "02a", "02a"],
+      ["00a", "00a", "00a", "00a", "00a", "00a", "01a", "01a", "01a", "01a", "01a", "01a", "02a", "02a", "02a", "02a"],
+      ["00a", "00a", "24a", "24a", "24a", "39a", "01a", "01a", "01a", "01a", "01a", "01a", "02a", "02a", "02a", "02a"],
+      ["00a", "24a", "24a", "24a", "24a", "39a", "01a", "01a", "01a", "01a", "01a", "01a", "02a", "02a", "02a", "02a"],
+      ["00a", "24a", "24a", "24a", "24a", "00a", "01a", "01a", "01a", "01a", "01a", "01a", "02a", "02a", "02a", "02a"],
+      ["00a", "24a", "24a", "24a", "00a", "00a", "01a", "01a", "01a", "01a", "01a", "01a", "02a", "02a", "02a", "02a"],
+      ["23a", "23a", "23a", "23a", "22a", "22a", "22a", "22a", "39a", "39a", "00a", "00a", "00a", "00a", "00a", "00a"],
+      ["23a", "23a", "23a", "23a", "22a", "22a", "22a", "22a", "32a", "32a", "00a", "00a", "00a", "00a", "00a", "00a"],
+      ["23a", "23a", "23a", "23a", "22a", "22a", "22a", "22a", "32a", "32a", "00a", "00a", "00a", "00a", "00a", "00a"],
+      ["23a", "23a", "23a", "23a", "22a", "22a", "22a", "22a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a"]
+    ],
+    "mapStates": {
+      "entrance-1": {
+        "activated": false,
+        "activateText": "",
+        "coordinates": {
+          "x": 6,
+          "y": 1
+        },
+        "description": "The entrance.",
+        "id": 1,
+        "interactable": false,
+        "type": "entrance",
+        "unactivateText": "",
+        "visible": true
+      },
+      "terminal-1": {
+        "activated": false,
+        "activateText": "Upload Virus",
+        "coordinates": {
+          "x": 2,
+          "y": 7
+        },
+        "description": "A terminal to access the main computer.",
+        "id": 1,
+        "interactable": true,
+        "type": "terminal",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "terminal-2": {
+        "activated": false,
+        "activateText": "Upload Virus",
+        "coordinates": {
+          "x": 4,
+          "y": 10
+        },
+        "description": "A terminal to access the main computer.",
+        "id": 2,
+        "interactable": true,
+        "type": "terminal",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "terminal-3": {
+        "activated": false,
+        "activateText": "Upload Virus",
+        "coordinates": {
+          "x": 1,
+          "y": 12
+        },
+        "description": "A terminal to access the main computer.",
+        "id": 3,
+        "interactable": true,
+        "type": "terminal",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "door-1": {
+        "activated": false,
+        "activateText": "Destroy",
+        "coordinates": {
+          "x": 5,
+          "y": 7
+        },
+        "description": "A door to the facility.",
+        "id": 1,
+        "interactable": true,
+        "type": "door",
+        "unactivateText": "Close",
+        "visible": true
+      },
+      "door-2": {
+        "activated": false,
+        "activateText": "Destroy",
+        "coordinates": {
+          "x": 9,
+          "y": 10
+        },
+        "description": "A door to the facility.",
+        "id": 2,
+        "interactable": true,
+        "type": "door",
+        "unactivateText": "Close",
+        "visible": true
+      }
+    },
+    "name": "Generous Donations",
+    "noMercenaryAllowed": false,
+    "openGroups": 4,
+    "reservedGroups": [
+      "atst", "eWebEngineerElite", "royalGuard", "stormtrooper"
+    ]
+  },
   "highMoon": {
     "initialGroups": [
       "eWebEngineer", "imperialOfficer", "nexuElite", "stormtrooper"

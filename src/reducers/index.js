@@ -8,6 +8,7 @@ import drawnIn from './missions/drawnIn';
 import events from './events';
 import flySolo from './missions/flySolo';
 import friendsOfOld from './missions/friendsOfOld';
+import generousDonations from './missions/generousDonations';
 import highMoon from './missions/highMoon';
 import homecoming from './missions/homecoming';
 import imperialHospitality from './missions/imperialHospitality';
@@ -35,6 +36,7 @@ export default {
   events,
   flySolo,
   friendsOfOld,
+  generousDonations,
   highMoon,
   homecoming,
   imperialHospitality,

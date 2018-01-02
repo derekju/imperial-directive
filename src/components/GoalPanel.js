@@ -27,6 +27,8 @@ const styles = {
 
 type GoalPanelPropsType = {
   currentMission: string,
+  generousDonationsTerminalDestroyed: Function,
+  generousDonationsVirusUploaded: boolean,
   goalText: string[],
   incomingEnterCorridor: Function,
   looseCannonDefeatAtst: Function,
@@ -151,6 +153,35 @@ class GoalPanel extends React.Component<GoalPanelPropsType, GoalPanelStateType> 
       } else {
         return null;
       }
+    } else if (
+      currentMission === 'generousDonations' &&
+      this.props.generousDonationsVirusUploaded
+    ) {
+      return (
+        <div>
+          <div style={styles.buttonContainer}>
+            <Button
+              text="Terminal 1 Destroyed"
+              width={180}
+              onClick={() => this.props.generousDonationsTerminalDestroyed(1)}
+            />
+          </div>
+          <div style={styles.buttonContainer}>
+            <Button
+              text="Terminal 2 Destroyed"
+              width={180}
+              onClick={() => this.props.generousDonationsTerminalDestroyed(2)}
+            />
+          </div>
+          <div style={styles.buttonContainer}>
+            <Button
+              text="Terminal 3 Destroyed"
+              width={180}
+              onClick={() => this.props.generousDonationsTerminalDestroyed(3)}
+            />
+          </div>
+        </div>
+      );
     }
 
     return null;

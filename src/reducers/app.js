@@ -14,6 +14,7 @@ import {captured} from './missions/captured';
 import {drawnIn} from './missions/drawnIn';
 import {flySolo} from './missions/flySolo';
 import {friendsOfOld} from './missions/friendsOfOld';
+import {generousDonations} from './missions/generousDonations';
 import {highMoon} from './missions/highMoon';
 import {homecoming} from './missions/homecoming';
 import {imperialHospitality} from './missions/imperialHospitality';
@@ -117,6 +118,9 @@ function* forkMission(currentMission: string): Generator<*, *, *> {
       break;
     case 'friendsOfOld':
       yield fork(friendsOfOld);
+      break;
+    case 'generousDonations':
+      yield fork(generousDonations);
       break;
     case 'highMoon':
       yield fork(highMoon);

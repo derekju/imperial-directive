@@ -10,6 +10,7 @@ import {getCapturedGoalText} from '../reducers/missions/captured';
 import {getDrawnInGoalText} from '../reducers/missions/drawnIn';
 import {getFlySoloGoalText} from '../reducers/missions/flySolo';
 import {getFriendsOfOldGoalText} from '../reducers/missions/friendsOfOld';
+import {getGenerousDonationsGoalText} from '../reducers/missions/generousDonations';
 import {getHighMoonGoalText} from '../reducers/missions/highMoon';
 import {getHomecomingGoalText} from '../reducers/missions/homecoming';
 import {getImperialHospitalityGoalText} from '../reducers/missions/imperialHospitality';
@@ -47,6 +48,8 @@ const getGoalText = (state: StateType) => {
       return getFlySoloGoalText(state);
     case 'friendsOfOld':
       return getFriendsOfOldGoalText(state);
+    case 'generousDonations':
+      return getGenerousDonationsGoalText(state);
     case 'highMoon':
       return getHighMoonGoalText(state);
     case 'homecoming':
@@ -86,6 +89,7 @@ const getGoalText = (state: StateType) => {
 
 const mapStateToProps = (state: StateType) => ({
   currentMission: state.app.currentMission,
+  generousDonationsVirusUploaded: state.generousDonations.virusUploaded,
   goalText: getGoalText(state),
 });
 
@@ -96,15 +100,18 @@ const vipersDenHeroGetCore = () => createAction('VIPERS_DEN_HERO_GET_CORE');
 const vipersDenImperialGetCore = () => createAction('VIPERS_DEN_IMPERIAL_GET_CORE');
 const vipersDenFigureDropsCore = () => createAction('VIPERS_DEN_FIGURE_DROPS_CORE');
 const vipersDenImperialEscapes = () => createAction('VIPERS_DEN_IMPERIAL_ESCAPES');
+const generousDonationsTerminalDestroyed = (id: number) =>
+  createAction('GENEROUS_DONATIONS_TERMINAL_DESTROYED', {id});
 
 const mapDispatchToProps = {
+  generousDonationsTerminalDestroyed,
   incomingEnterCorridor,
   looseCannonDefeatAtst,
   spiceJobGetKeycard,
   vipersDenFigureDropsCore,
   vipersDenHeroGetCore,
-  vipersDenImperialGetCore,
   vipersDenImperialEscapes,
+  vipersDenImperialGetCore,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(GoalPanel);
