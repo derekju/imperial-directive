@@ -11,6 +11,7 @@ import {all, call, fork, put, select, take} from 'redux-saga/effects';
 import {
   getCurrentRound,
   getCurrentThreat,
+  getDeploymentPoint,
   getMapStates,
   increaseThreat,
   MISSION_SPECIAL_SETUP,
@@ -21,8 +22,10 @@ import {
   setExtraThreatIncrease,
   setMapStateVisible,
   setMoveTarget,
-  statusPhaseEndRoundEffectsDone,
+  STATUS_PHASE_BEGIN,
   STATUS_PHASE_END_ROUND_EFFECTS,
+  statusPhaseBeginDone,
+  statusPhaseEndRoundEffectsDone,
 } from '../mission';
 import createAction from '../createAction';
 import {
@@ -31,6 +34,12 @@ import {
   setInterruptedGroup,
   SET_INTERRUPTED_GROUP,
 } from '../imperials';
+import {
+  REFER_CAMPAIGN_GUIDE,
+  TARGET_ENTRANCE_TOKEN,
+  TARGET_HERO_CLOSEST_UNWOUNDED,
+  TARGET_REMAINING,
+} from './constants';
 import {displayModal} from '../modal';
 import helperChoiceModal from './helpers/helperChoiceModal';
 import helperDeploy from './helpers/helperDeploy';
@@ -38,21 +47,18 @@ import helperEventModal from './helpers/helperEventModal';
 import helperInitialSetup from './helpers/helperInitialSetup';
 import helperMissionBriefing from './helpers/helperMissionBriefing';
 import {missionSagaLoadDone} from '../app';
-import {
-  REFER_CAMPAIGN_GUIDE,
-  TARGET_ENTRANCE_TOKEN,
-  TARGET_HERO_CLOSEST_UNWOUNDED,
-  TARGET_REMAINING,
-} from './constants';
+import random from 'lodash/random';
 import type {StateType} from '../types';
 import track from '../../lib/track';
 
 // Constants
 
-const TARGET_POWER_STATION = 'the closest active power station';
+const TARGET_POWER_STATION = 'the closest power station (or door blocking station)';
 
-const DEPLOYMENT_POINT_GREEN = 'The green deployment point closest to an active power station';
 const DEPLOYMENT_POINT_GREEN_N = 'The northern green deployment point';
+const DEPLOYMENT_POINT_GREEN_E = 'The eastern green deployment point';
+const DEPLOYMENT_POINT_GREEN_S = 'The southern green deployment point';
+const DEPLOYMENT_POINT_GREEN_W = 'The western green deployment point';
 
 // Types
 
@@ -116,7 +122,9 @@ function* handleSubdueEvent(chosenOption: number = -1): Generator<*, *, *> {
   if (chosenOption !== 0 && currentThreat === 0) {
     yield call(helperEventModal, {
       story: 'The Imperial army is doing everything they can to stop you.',
-      text: ['If any doors are open to an active power station, choose one to close it.'],
+      text: [
+        'If all power stations are destroyed and door 4 is closed, open it.',
+        'If any doors are open to its closest active power station, choose one to close it.'],
       title: 'Subdue',
     });
 
@@ -171,8 +179,8 @@ function* handleSubdueEvent(chosenOption: number = -1): Generator<*, *, *> {
           title: 'Subdue',
         });
         yield put(increaseThreat(-1));
-        newChosenOption = 3;
       }
+      newChosenOption = 3;
     }
   }
 
@@ -212,11 +220,12 @@ function* handleArrivalEvent(): Generator<*, *, *> {
     }
 
     if (results.length === 2) {
+      const deploymentPoint = yield select(getDeploymentPoint);
       yield call(
         helperDeploy,
         REFER_CAMPAIGN_GUIDE,
         [
-          'Deploy a {ELITE}Royal Guard Champion{END} to a green deployment point close to an active power station.',
+          `Deploy a {ELITE}Royal Guard Champion{END} to: ${deploymentPoint}.`,
         ],
         'Arrival',
         ['royalGuardChampion']
@@ -291,6 +300,39 @@ function* handleHeroesWounded(): Generator<*, *, *> {
 }
 
 // REQUIRED SAGA
+function* handleStatusPhaseBegin(): Generator<*, *, *> {
+  while (true) {
+    yield take(STATUS_PHASE_BEGIN);
+
+    // Change deployment based on if terminals 2 through 4 are active
+    const mapStates = yield select(getMapStates);
+    const results = [];
+    if (!mapStates['terminal-2'].activated) {
+      results.push('terminal-2');
+    }
+    if (!mapStates['terminal-3'].activated) {
+      results.push('terminal-3');
+    }
+    if (!mapStates['terminal-4'].activated) {
+      results.push('terminal-4');
+    }
+
+    const randomNumber = random(0, results.length - 1);
+    const randomResult = results[randomNumber];
+
+    if (randomResult === 'terminal-2') {
+      yield put(setDeploymentPoint(DEPLOYMENT_POINT_GREEN_W));
+    } else if (randomResult === 'terminal-3') {
+      yield put(setDeploymentPoint(DEPLOYMENT_POINT_GREEN_S));
+    } else if (randomResult === 'terminal-4') {
+      yield put(setDeploymentPoint(DEPLOYMENT_POINT_GREEN_E));
+    }
+
+    yield put(statusPhaseBeginDone());
+  }
+}
+
+// REQUIRED SAGA
 function* handleRoundEnd(): Generator<*, *, *> {
   while (true) {
     yield take(STATUS_PHASE_END_ROUND_EFFECTS);
@@ -341,7 +383,7 @@ export function* drawnIn(): Generator<*, *, *> {
   yield put(setAttackTarget(TARGET_HERO_CLOSEST_UNWOUNDED));
   yield put(setMoveTarget(TARGET_POWER_STATION));
   // SET INITIAL DEPLOYMENT POINT
-  yield put(setDeploymentPoint(DEPLOYMENT_POINT_GREEN));
+  yield put(setDeploymentPoint(DEPLOYMENT_POINT_GREEN_S));
 
   yield all([
     fork(handleSpecialSetup),
@@ -349,6 +391,7 @@ export function* drawnIn(): Generator<*, *, *> {
     fork(handlePowerStationsDestroyed),
     fork(handleHeroesDeparted),
     fork(handleHeroesWounded),
+    fork(handleStatusPhaseBegin),
     fork(handleRoundEnd),
   ]);
 

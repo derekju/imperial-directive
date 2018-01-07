@@ -32,7 +32,7 @@
     "buffs": ["criticalHit", "targetMinus1Block", "surgicalStrike"],
     "commands": [
       {
-        "condition": "If possible to be adjacent to 2 hostile figures",
+        "condition": "If possible to be adjacent to 2 hostile figures (one being {ATTACK_TARGET})",
         "command": "{ACTION} If necessary, move adjacent to those figures, then {ACTION} Use Brutality ability to attack those targets."
       },
       {
@@ -508,7 +508,7 @@
     "buffs": ["targetMinus1Block", "extraSurgeIfTargetTwoStrain", "showOfForce", "surgicalStrike"],
     "commands": [
       {
-        "condition": "If possible to be adjacent to 2 hostile figures",
+        "condition": "If possible to be adjacent to 2 hostile figures (one being {ATTACK_TARGET})",
         "command": "{ACTION} If necessary, move adjacent to those figures, then {ACTION} Use Brutality ability to attack those targets."
       },
       {

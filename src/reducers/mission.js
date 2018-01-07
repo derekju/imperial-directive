@@ -336,6 +336,7 @@ export const isImperialPlayerTurn = (state: StateType) =>
 export const getCurrentThreat = (state: StateType) => state.mission.currentThreat;
 export const getCurrentRound = (state: StateType) => state.mission.currentRound;
 export const getMapStates = (state: StateType) => state.mission.mapStates;
+export const getDeploymentPoint = (state: StateType) => state.mission.deploymentPoint;
 
 // Sagas
 
