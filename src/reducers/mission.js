@@ -267,6 +267,7 @@ export const SET_MAP_STATE_ACTIVATED = 'SET_MAP_STATE_ACTIVATED';
 export const SET_MAP_STATE_INTERACTABLE = 'SET_MAP_STATE_INTERACTABLE';
 export const SET_MAP_STATE_VISIBLE = 'SET_MAP_STATE_VISIBLE';
 export const STATUS_PHASE_BEGIN = 'STATUS_PHASE_BEGIN';
+export const STATUS_PHASE_BEGIN_DONE = 'STATUS_PHASE_BEGIN_DONE';
 export const STATUS_PHASE_INCREASE_THREAT = 'STATUS_PHASE_INCREASE_THREAT';
 export const STATUS_PHASE_READY_GROUPS = 'STATUS_PHASE_READY_GROUPS';
 export const STATUS_PHASE_DEPLOY_REINFORCE = 'STATUS_PHASE_DEPLOY_REINFORCE';
@@ -300,6 +301,7 @@ export const eventPhaseBegin = () => createAction(EVENT_PHASE_BEGIN);
 export const eventPhaseEnd = () => createAction(EVENT_PHASE_END);
 export const activationPhaseBegin = () => createAction(ACTIVATION_PHASE_BEGIN);
 export const statusPhaseBegin = () => createAction(STATUS_PHASE_BEGIN);
+export const statusPhaseBeginDone = () => createAction(STATUS_PHASE_BEGIN_DONE);
 export const statusPhaseIncreaseThreat = () => createAction(STATUS_PHASE_INCREASE_THREAT);
 export const statusPhaseReadyGroups = () => createAction(STATUS_PHASE_READY_GROUPS);
 export const statusPhaseDeployReinforce = () => createAction(STATUS_PHASE_DEPLOY_REINFORCE);
@@ -381,6 +383,7 @@ function* handleLoadMission(): Generator<*, *, *> {
 
 function* missionEndOfTurn(): Generator<*, *, *> {
   yield put(statusPhaseBegin());
+  yield take(STATUS_PHASE_BEGIN_DONE);
   yield put(statusPhaseIncreaseThreat());
   yield put(statusPhaseReadyGroups());
   yield put(statusPhaseDeployReinforce());

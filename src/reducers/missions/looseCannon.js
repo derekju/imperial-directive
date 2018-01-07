@@ -9,8 +9,10 @@ import {
   setAttackTarget,
   setDeploymentPoint,
   setMoveTarget,
-  statusPhaseEndRoundEffectsDone,
+  STATUS_PHASE_BEGIN,
   STATUS_PHASE_END_ROUND_EFFECTS,
+  statusPhaseBeginDone,
+  statusPhaseEndRoundEffectsDone,
 } from '../mission';
 import {getAreAllHeroesWounded, getIsOneHeroLeft, WOUND_REBEL_HERO} from '../rebels';
 import {
@@ -139,6 +141,14 @@ function* handleHeroesWounded(): Generator<*, *, *> {
 }
 
 // REQUIRED SAGA
+function* handleStatusPhaseBegin(): Generator<*, *, *> {
+  while (true) {
+    yield take(STATUS_PHASE_BEGIN);
+    yield put(statusPhaseBeginDone());
+  }
+}
+
+// REQUIRED SAGA
 function* handleRoundEnd(): Generator<*, *, *> {
   while (true) {
     yield take(STATUS_PHASE_END_ROUND_EFFECTS);
@@ -224,6 +234,7 @@ export function* looseCannon(): Generator<*, *, *> {
     fork(handleAllImperialsDefeated),
     fork(handleAtstDefeated),
     fork(handleHeroesWounded),
+    fork(handleStatusPhaseBegin),
     fork(handleRoundEnd),
   ]);
 

@@ -21,8 +21,10 @@ import {
   setMapStateActivated,
   setMapStateVisible,
   setMoveTarget,
-  statusPhaseEndRoundEffectsDone,
+  STATUS_PHASE_BEGIN,
   STATUS_PHASE_END_ROUND_EFFECTS,
+  statusPhaseBeginDone,
+  statusPhaseEndRoundEffectsDone,
   updateImperialVictory,
   updateRebelVictory,
 } from '../mission';
@@ -283,6 +285,14 @@ function* handleHeroesWounded(): Generator<*, *, *> {
 }
 
 // REQUIRED SAGA
+function* handleStatusPhaseBegin(): Generator<*, *, *> {
+  while (true) {
+    yield take(STATUS_PHASE_BEGIN);
+    yield put(statusPhaseBeginDone());
+  }
+}
+
+// REQUIRED SAGA
 function* handleRoundEnd(): Generator<*, *, *> {
   while (true) {
     yield take(STATUS_PHASE_END_ROUND_EFFECTS);
@@ -328,6 +338,7 @@ export function* imperialHospitality(): Generator<*, *, *> {
     fork(handleCaptiveKilled),
     fork(handleCaptiveEscaped),
     fork(handleHeroesWounded),
+    fork(handleStatusPhaseBegin),
     fork(handleRoundEnd),
   ]);
 

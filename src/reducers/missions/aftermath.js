@@ -13,8 +13,10 @@ import {
   setMapStateActivated,
   setMapStateVisible,
   setMoveTarget,
-  statusPhaseEndRoundEffectsDone,
+  STATUS_PHASE_BEGIN,
   STATUS_PHASE_END_ROUND_EFFECTS,
+  statusPhaseBeginDone,
+  statusPhaseEndRoundEffectsDone,
 } from '../mission';
 import {REFER_CAMPAIGN_GUIDE, TARGET_HERO_CLOSEST_UNWOUNDED, TARGET_REMAINING} from './constants';
 import createAction from '../createAction';
@@ -256,6 +258,14 @@ function* handleRoundEnd(): Generator<*, *, *> {
 }
 
 // REQUIRED SAGA
+function* handleStatusPhaseBegin(): Generator<*, *, *> {
+  while (true) {
+    yield take(STATUS_PHASE_BEGIN);
+    yield put(statusPhaseBeginDone());
+  }
+}
+
+// REQUIRED SAGA
 function* handleSpecialSetup(): Generator<*, *, *> {
   yield take(MISSION_SPECIAL_SETUP);
   yield call(helperInitialSetup, 'Imperial Officer, Probe Droid, Stormtrooper');
@@ -287,6 +297,7 @@ export function* aftermath(): Generator<*, *, *> {
     fork(handleSingleTerminalDestroyed),
     fork(handleTerminalsDestroyed),
     fork(handleHeroesWounded),
+    fork(handleStatusPhaseBegin),
     fork(handleRoundEnd),
   ]);
 

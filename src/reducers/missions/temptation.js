@@ -11,8 +11,10 @@ import {
   setAttackTarget,
   setDeploymentPoint,
   setMoveTarget,
-  statusPhaseEndRoundEffectsDone,
+  STATUS_PHASE_BEGIN,
   STATUS_PHASE_END_ROUND_EFFECTS,
+  statusPhaseBeginDone,
+  statusPhaseEndRoundEffectsDone,
   updateRebelVictory,
 } from '../mission';
 import {getMissionThreat, missionSagaLoadDone} from '../app';
@@ -208,6 +210,14 @@ function* handleHeroesWounded(): Generator<*, *, *> {
 }
 
 // REQUIRED SAGA
+function* handleStatusPhaseBegin(): Generator<*, *, *> {
+  while (true) {
+    yield take(STATUS_PHASE_BEGIN);
+    yield put(statusPhaseBeginDone());
+  }
+}
+
+// REQUIRED SAGA
 function* handleRoundEnd(): Generator<*, *, *> {
   while (true) {
     yield take(STATUS_PHASE_END_ROUND_EFFECTS);
@@ -294,6 +304,7 @@ export function* temptation(): Generator<*, *, *> {
     fork(handleDefeatVader),
     fork(handleTokensDepleted),
     fork(handleHeroesWounded),
+    fork(handleStatusPhaseBegin),
     fork(handleRoundEnd),
   ]);
 

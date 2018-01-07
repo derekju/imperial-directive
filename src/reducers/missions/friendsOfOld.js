@@ -24,8 +24,10 @@ import {
   setMapStateActivated,
   setMapStateVisible,
   setMoveTarget,
-  statusPhaseEndRoundEffectsDone,
+  STATUS_PHASE_BEGIN,
   STATUS_PHASE_END_ROUND_EFFECTS,
+  statusPhaseBeginDone,
+  statusPhaseEndRoundEffectsDone,
 } from '../mission';
 import {OPTIONAL_DEPLOYMENT_DONE, optionalDeployment} from '../imperials';
 import {TARGET_ENTRANCE_TOKEN, TARGET_HERO_CLOSEST_UNWOUNDED, TARGET_REMAINING} from './constants';
@@ -273,6 +275,14 @@ function* handleHeroesWounded(): Generator<*, *, *> {
 }
 
 // REQUIRED SAGA
+function* handleStatusPhaseBegin(): Generator<*, *, *> {
+  while (true) {
+    yield take(STATUS_PHASE_BEGIN);
+    yield put(statusPhaseBeginDone());
+  }
+}
+
+// REQUIRED SAGA
 function* handleRoundEnd(): Generator<*, *, *> {
   while (true) {
     yield take(STATUS_PHASE_END_ROUND_EFFECTS);
@@ -352,6 +362,7 @@ export function* friendsOfOld(): Generator<*, *, *> {
     fork(handleTrooperDefeated),
     fork(handleTrooperEscaped),
     fork(handleHeroesWounded),
+    fork(handleStatusPhaseBegin),
     fork(handleRoundEnd),
   ]);
 

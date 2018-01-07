@@ -19,8 +19,10 @@ import {
   setDeploymentPoint,
   setMapStateVisible,
   setMoveTarget,
-  statusPhaseEndRoundEffectsDone,
+  STATUS_PHASE_BEGIN,
   STATUS_PHASE_END_ROUND_EFFECTS,
+  statusPhaseBeginDone,
+  statusPhaseEndRoundEffectsDone,
 } from '../mission';
 import {getCurrentGroups, OPTIONAL_DEPLOYMENT_DONE, optionalDeployment} from '../imperials';
 import {displayModal} from '../modal';
@@ -234,6 +236,14 @@ function* handleHeroesWounded(): Generator<*, *, *> {
 }
 
 // REQUIRED SAGA
+function* handleStatusPhaseBegin(): Generator<*, *, *> {
+  while (true) {
+    yield take(STATUS_PHASE_BEGIN);
+    yield put(statusPhaseBeginDone());
+  }
+}
+
+// REQUIRED SAGA
 function* handleRoundEnd(): Generator<*, *, *> {
   while (true) {
     yield take(STATUS_PHASE_END_ROUND_EFFECTS);
@@ -309,6 +319,7 @@ export function* theSpiceJob(): Generator<*, *, *> {
     fork(handleSpiceClaimed),
     fork(handleChewbaccaDefeated),
     fork(handleHeroesWounded),
+    fork(handleStatusPhaseBegin),
     fork(handleRoundEnd),
   ]);
 

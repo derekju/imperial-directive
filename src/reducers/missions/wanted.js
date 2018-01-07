@@ -20,8 +20,10 @@ import {
   setMapStateInteractable,
   setMapStateVisible,
   setMoveTarget,
-  statusPhaseEndRoundEffectsDone,
+  STATUS_PHASE_BEGIN,
   STATUS_PHASE_END_ROUND_EFFECTS,
+  statusPhaseBeginDone,
+  statusPhaseEndRoundEffectsDone,
   updateRebelVictory,
 } from '../mission';
 import {OPTIONAL_DEPLOYMENT_DONE, optionalDeployment} from '../imperials';
@@ -228,6 +230,14 @@ function* handleHeroesWounded(): Generator<*, *, *> {
 }
 
 // REQUIRED SAGA
+function* handleStatusPhaseBegin(): Generator<*, *, *> {
+  while (true) {
+    yield take(STATUS_PHASE_BEGIN);
+    yield put(statusPhaseBeginDone());
+  }
+}
+
+// REQUIRED SAGA
 function* handleRoundEnd(): Generator<*, *, *> {
   while (true) {
     yield take(STATUS_PHASE_END_ROUND_EFFECTS);
@@ -301,6 +311,7 @@ export function* wanted(): Generator<*, *, *> {
     fork(handleTerminalInteraction),
     fork(handleHeroesDepart),
     fork(handleHeroesWounded),
+    fork(handleStatusPhaseBegin),
     fork(handleRoundEnd),
   ]);
 
