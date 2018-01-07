@@ -226,7 +226,7 @@ function* handleHeroesWounded(): Generator<*, *, *> {
     }
     const isOneHeroLeft = yield select(getIsOneHeroLeft);
     if (isOneHeroLeft) {
-      // PRIORITY TARGET SWITCH #4
+      // Switch targets
       yield put(createAction('AFTERMATH_PRIORITY_TARGET_KILL_HERO', true));
       yield put(setAttackTarget(TARGET_REMAINING));
       yield put(setMoveTarget(TARGET_REMAINING));
