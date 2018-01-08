@@ -124,7 +124,8 @@ function* handleSubdueEvent(chosenOption: number = -1): Generator<*, *, *> {
       story: 'The Imperial army is doing everything they can to stop you.',
       text: [
         'If all power stations are destroyed and door 4 is closed, open it.',
-        'If any doors are open to its closest active power station, choose one to close it.'],
+        'If any doors are open to its closest active power station, choose one to close it.',
+      ],
       title: 'Subdue',
     });
 
@@ -224,9 +225,7 @@ function* handleArrivalEvent(): Generator<*, *, *> {
       yield call(
         helperDeploy,
         REFER_CAMPAIGN_GUIDE,
-        [
-          `Deploy a {ELITE}Royal Guard Champion{END} to: ${deploymentPoint}.`,
-        ],
+        [`Deploy a {ELITE}Royal Guard Champion{END} to: ${deploymentPoint}.`],
         'Arrival',
         ['royalGuardChampion']
       );

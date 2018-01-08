@@ -155,7 +155,9 @@ function* handleDefenseProtocolsEvent(): Generator<*, *, *> {
             displayModal('RESOLVE_EVENT', {
               story:
                 'Unknowingly to you, the door was trapped! Electric bolts erupt from the walls surrounding the door.',
-              text: ['Each hero within 3 spaces of the door makes an Insight test. Each hero who fails is Stunned.'],
+              text: [
+                'Each hero within 3 spaces of the door makes an Insight test. Each hero who fails is Stunned.',
+              ],
               title: 'Defense Protocols',
             })
           );
