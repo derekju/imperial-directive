@@ -18,7 +18,7 @@ import {
   statusPhaseEndRoundEffectsDone,
   updateRebelVictory,
 } from '../mission';
-import {OPTIONAL_DEPLOYMENT_DONE, optionalDeployment} from '../imperials';
+import {OPTIONAL_DEPLOYMENT_DONE, optionalDeployment, setCustomAI} from '../imperials';
 import {REFER_CAMPAIGN_GUIDE, TARGET_HERO_CLOSEST_UNWOUNDED, TARGET_REMAINING} from './constants';
 import createAction from '../createAction';
 import {displayModal} from '../modal';
@@ -37,6 +37,13 @@ const TARGET_HERO_PILOT = 'the hero escorting the pilot';
 const TARGET_ESCAPE_HATCH = 'the escape hatch';
 
 const DEPLOYMENT_POINT_GREEN_SW = 'The south west green deployment point';
+
+const CUSTOM_AI = [
+  {
+    command: '{ACTION} Interact with door to open it',
+    condition: 'If necessary to open door to reach target',
+  },
+];
 
 // Types
 
@@ -237,6 +244,8 @@ export function* impounded(): Generator<*, *, *> {
   yield put(setMoveTarget(TARGET_TERMINAL_PILOT));
   // SET INITIAL DEPLOYMENT POINT
   yield put(setDeploymentPoint(DEPLOYMENT_POINT_GREEN_SW));
+
+  yield put(setCustomAI(CUSTOM_AI, ['nexu', 'nexuElite']));
 
   yield all([
     fork(handleSpecialSetup),
