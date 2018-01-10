@@ -4,9 +4,12 @@ import {all, call, fork, put, select, take} from 'redux-saga/effects';
 import {
   ACTIVATE_IMPERIAL_GROUP,
   DEFEAT_IMPERIAL_FIGURE,
+  getLastDeployedGroupOfId,
   OPTIONAL_DEPLOYMENT_DONE,
   optionalDeployment,
   setImperialUnitHpBuff,
+  SET_INTERRUPTED_GROUP,
+  setInterruptedGroup,
 } from '../imperials';
 import {getAreAllHeroesWounded, getIsOneHeroLeft, WOUND_REBEL_HERO} from '../rebels';
 import {
@@ -124,7 +127,7 @@ function* handleGunFightEvent(): Generator<*, *, *> {
           'Deploy a {ELITE}Elite Trandoshan Hunter{END} at each of the red points.',
         ],
         'Gun Fight',
-        ['szark', 'trandoshanHunterElite', 'trandoshanHunterElite']
+        ['szark', 'trandoshanHunterElite']
       );
       yield put(setMapStateActivated(1, 'door', true));
       yield put(setMapStateVisible(1, 'rebel', false));
@@ -147,10 +150,21 @@ function* handleGunFightEvent(): Generator<*, *, *> {
       } else {
         yield call(helperEventModal, {
           story: 'Szark catches Jyn unawares...',
-          text: ['Szark interrupts to perform an attack targeting Jyn.'],
+          text: ['Szark interrupts to perform an attack targeting Jyn.', 'Szark\'s AI card will now be shown.'],
           title: 'Gun Fight',
         });
+
+        // Need to show Szark's AI panel now
+        const szarkGroup = yield select(getLastDeployedGroupOfId, 'szark');
+        yield put(setInterruptedGroup(szarkGroup));
+        // Wait for panel to be dismissed
+        yield take(SET_INTERRUPTED_GROUP);
       }
+
+      yield call(helperEventModal, {
+        text: [`Szark gets ${missionThreat * 2} extra Health.`, 'If the Rebels defeat Szark, they win.'],
+        title: 'High Moon',
+      });
 
       yield put(createAction('HIGH_MOON_SET_CALL_OUT_SZARK', true));
       yield put(updateRebelVictory('Defeat Szark'));

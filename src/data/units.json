@@ -357,7 +357,7 @@
   },
   "nexuElite": {
     "affiliation": "mercenary",
-    "buffs": ["recovery", "showOfForce", "extraAttackThenStunned", "extraAttackThenStunned"],
+    "buffs": ["recovery", "showOfForce", "showOfForce", "sustainedFire"],
     "commands": [
       {
         "condition": "If within 4 spaces of {ATTACK_TARGET}",
@@ -543,7 +543,7 @@
   },
   "royalGuardElite": {
     "affiliation": "imperial",
-    "buffs": ["targetMinus1Block", "gainSurgeStunSurgeDmg", "extraSurgeIfTargetTwoStrain", "surgicalStrike"],
+    "buffs": ["targetMinus1Block", "gainSurgeStunSurgeDmg", "sustainedFire", "surgicalStrike"],
     "commands": [
       {
         "condition": "If within 7 spaces of {ATTACK_TARGET}",
@@ -656,12 +656,12 @@
     "buffs": ["szark"],
     "commands": [
       {
-        "condition": "If within 5 spaces and LOS of any Rebel figure",
-        "command": "{ACTION} Attempt to move away and out of LOS of any Rebel figures. If still in LOS, {ACTION} attempt to move away and out of LOS of any Rebel figures."
+        "condition": "If more than 8 Health remaining",
+        "command": "{ACTION} Move within 4 spaces and LOS of {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}, then {ACTION} Move behind the closest friendly figure, out of attack range and LOS if possible."
       },
       {
-        "condition": "If within 5 spaces and LOS of any Rebel figure",
-        "command": "{ACTION} Attack the closest unwounded hero, then move away and out of LOS of any Rebel figures."
+        "condition": "If less than 8 Health remaining",
+        "command": "{ACTION} Move behind the closest friendly figure, out of attack range and LOS if possible."
       },
       {
         "condition": "Reaction - If attacking a target within 3 spaces",
@@ -727,7 +727,7 @@
   },
   "trandoshanHunterElite": {
     "affiliation": "mercenary",
-    "buffs": ["arcBlasters", "targetMinus1Block", "gainSurgeStunSurgeDmg", "recovery"],
+    "buffs": ["arcBlasters", "targetMinus1Block", "gainSurgeStunSurgeDmg", "recovery", "sustainedFire"],
     "commands": [
       {
         "condition": "If within 4 spaces of {ATTACK_TARGET}",

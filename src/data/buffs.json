@@ -126,10 +126,10 @@
       "After attacking a target, the target suffers an additional 1 {STRAIN} and 1 {DMG} if they suffered any damage."
     ]
   },
-  "extraAttackThenStunned": {
+  "sustainedFire": {
     "name": "Sustained Fire",
     "text": [
-      "After resolving an attack, perform an additional attack. Then, become stunned and suffer 2 {DMG}."
+      "After resolving an attack, perform an additional attack if the unit has another action left. Then, become stunned and suffer 2 {DMG}."
     ]
   },
   "szark": {
