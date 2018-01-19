@@ -766,5 +766,37 @@
     "reinforcementCost": 5,
     "threat": 10,
     "unique": false
+  },
+  "weiss": {
+    "affiliation": "mission",
+    "buffs": ["weiss"],
+    "commands": [
+      {
+        "condition": "If General Weiss is deployed",
+        "command": "{ACTION} Move until adjacent to General Weiss, then {ACTION} Move until adjacent to General Weiss, then {ACTION} Interact with General Weiss."
+      },
+      {
+        "condition": "If within 2 spaces of a friendly target that is within attack range and LOS of {ATTACK_TARGET}",
+        "command": "{ACTION} Use Executive Order ability on that friendly figure to have it attack {ATTACK_TARGET}."
+      },
+      {
+        "condition": "If within 4 spaces and in LOS of {ATTACK_TARGET}",
+        "command": "{ACTION} Move to be in LOS of {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}, then {ACTION} Move adjacent to the most friendly figures."
+      },
+      {
+        "condition": "Reaction - If defending while adjacent to a friendly figure",
+        "command": "Use Cower ability if a rolled dice does not cancel anything."
+      }
+    ],
+    "eligibleForHpBoost": false,
+    "elite": true,
+    "hpBoosts": {},
+    "id": "weiss",
+    "maxDeployed": 1,
+    "maxInGroup": 1,
+    "name": "Weiss",
+    "reinforcementCost": -1,
+    "threat": 5,
+    "unique": true
   }
 }

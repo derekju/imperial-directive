@@ -808,6 +808,109 @@
     "reservedGroups": [],
     "withdrawnHeroCanActivate": true
   },
+  "chainOfCommand": {
+    "initialGroups": [
+      "imperialOfficer", "weiss", "probeDroid", "royalGuard", "stormtrooper", "stormtrooperElite"
+    ],
+    "instructions": {
+      "imperialVictory": "When all heroes are wounded",
+      "rebelVictory": "When Weiss is defeated"
+    },
+    "mapImage": [
+      ["28a", "28a", "28a", "28a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a"],
+      ["28a", "28a", "28a", "28a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a"],
+      ["28a", "28a", "28a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "36a", "36a", "00a"],
+      ["21a", "21a", "21a", "21a", "19a", "19a", "19a", "19a", "19a", "19a", "27a", "27a", "00a"],
+      ["21a", "21a", "21a", "21a", "19a", "19a", "19a", "19a", "19a", "19a", "27a", "27a", "00a"],
+      ["21a", "21a", "21a", "21a", "19a", "19a", "19a", "19a", "19a", "19a", "27a", "27a", "00a"],
+      ["21a", "21a", "21a", "21a", "19a", "19a", "19a", "19a", "19a", "19a", "27a", "27a", "00a"],
+      ["21a", "21a", "21a", "21a", "19a", "19a", "19a", "19a", "19a", "19a", "27a", "27a", "00a"],
+      ["00a", "24a", "24a", "24a", "19a", "19a", "19a", "19a", "19a", "19a", "27a", "27a", "00a"],
+      ["00a", "24a", "24a", "24a", "24a", "23a", "23a", "23a", "23a", "22a", "22a", "22a", "22a"],
+      ["00a", "24a", "24a", "24a", "24a", "23a", "23a", "23a", "23a", "22a", "22a", "22a", "22a"],
+      ["00a", "00a", "24a", "24a", "24a", "23a", "23a", "23a", "23a", "22a", "22a", "22a", "22a"],
+      ["00a", "00a", "00a", "00a", "00a", "23a", "23a", "23a", "23a", "22a", "22a", "22a", "22a"],
+      ["00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "36a", "36a", "00a"]
+    ],
+    "mapStates": {
+      "entrance-1": {
+        "activated": false,
+        "activateText": "",
+        "coordinates": {
+          "x": 11,
+          "y": 10
+        },
+        "description": "The entrance.",
+        "id": 1,
+        "interactable": false,
+        "type": "entrance",
+        "unactivateText": "",
+        "visible": true
+      },
+      "terminal-1": {
+        "activated": false,
+        "activateText": "Destroy",
+        "coordinates": {
+          "x": 10,
+          "y": 13
+        },
+        "description": "A reinforcement terminal.",
+        "id": 1,
+        "interactable": true,
+        "type": "terminal",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "terminal-2": {
+        "activated": false,
+        "activateText": "Destroy",
+        "coordinates": {
+          "x": 9,
+          "y": 3
+        },
+        "description": "A reinforcement terminal.",
+        "id": 2,
+        "interactable": true,
+        "type": "terminal",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "terminal-3": {
+        "activated": false,
+        "activateText": "Destroy",
+        "coordinates": {
+          "x": 2,
+          "y": 10
+        },
+        "description": "A reinforcement terminal.",
+        "id": 3,
+        "interactable": true,
+        "type": "terminal",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "door-1": {
+        "activated": false,
+        "activateText": "Open",
+        "coordinates": {
+          "x": 1,
+          "y": 3
+        },
+        "description": "The door to the Operations Room.",
+        "id": 1,
+        "interactable": true,
+        "type": "door",
+        "unactivateText": "Close",
+        "visible": true
+      }
+    },
+    "name": "Chain of Command",
+    "noMercenaryAllowed": true,
+    "openGroups": 2,
+    "reservedGroups": [
+      "generalWeiss"
+    ]
+  },
   "drawnIn": {
     "initialGroups": [
       "eWebEngineer", "imperialOfficerElite", "stormtrooper", "stormtrooper"

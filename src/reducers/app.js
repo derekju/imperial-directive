@@ -11,6 +11,7 @@ import {aNewThreat} from './missions/aNewThreat';
 import {aSimpleTask} from './missions/aSimpleTask';
 import {brushfire} from './missions/brushfire';
 import {captured} from './missions/captured';
+import {chainOfCommand} from './missions/chainOfCommand';
 import {drawnIn} from './missions/drawnIn';
 import {flySolo} from './missions/flySolo';
 import {friendsOfOld} from './missions/friendsOfOld';
@@ -109,6 +110,9 @@ function* forkMission(currentMission: string): Generator<*, *, *> {
       break;
     case 'captured':
       yield fork(captured);
+      break;
+    case 'chainOfCommand':
+      yield fork(chainOfCommand);
       break;
     case 'drawnIn':
       yield fork(drawnIn);

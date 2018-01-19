@@ -4,6 +4,7 @@ import blockPng from '../../assets/icons/block.png';
 import damagePng from '../../assets/icons/damage.png';
 import {ELITE_RED} from '../../styles/colors';
 import insightPng from '../../assets/icons/insight.png';
+import meleePng from '../../assets/icons/melee.png';
 import strainPng from '../../assets/icons/strain.png';
 import strengthPng from '../../assets/icons/strength.png';
 import surgePng from '../../assets/icons/surge.png';
@@ -40,6 +41,11 @@ export default (text: string) => {
   replaced = replaced.replace(
     /{DAMAGE}/g,
     `<img alt="Damage" src='${damagePng}' style='height: 24px; width: 20px; vertical-align: middle' />`
+  );
+  // MELEE IMAGE
+  replaced = replaced.replace(
+    /{MELEE}/g,
+    `<img alt="Melee" src='${meleePng}' style='height: 24px; width: 11px; vertical-align: middle' />`
   );
   // STRENGTH IMAGE
   replaced = replaced.replace(

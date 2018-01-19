@@ -7,6 +7,7 @@ import {getANewThreatGoalText} from '../reducers/missions/aNewThreat';
 import {getASimpleTaskGoalText} from '../reducers/missions/aSimpleTask';
 import {getBrushfireGoalText} from '../reducers/missions/brushfire';
 import {getCapturedGoalText} from '../reducers/missions/captured';
+import {getChainOfCommandGoalText} from '../reducers/missions/chainOfCommand';
 import {getDrawnInGoalText} from '../reducers/missions/drawnIn';
 import {getFlySoloGoalText} from '../reducers/missions/flySolo';
 import {getFriendsOfOldGoalText} from '../reducers/missions/friendsOfOld';
@@ -42,6 +43,8 @@ const getGoalText = (state: StateType) => {
       return getBrushfireGoalText(state);
     case 'captured':
       return getCapturedGoalText(state);
+    case 'chainOfCommand':
+      return getChainOfCommandGoalText(state);
     case 'drawnIn':
       return getDrawnInGoalText(state);
     case 'flySolo':
@@ -89,6 +92,8 @@ const getGoalText = (state: StateType) => {
 
 const mapStateToProps = (state: StateType) => ({
   currentMission: state.app.currentMission,
+  generalWeissActive: state.chainOfCommand.generalWeissActive,
+  generalWeissDeployed: state.chainOfCommand.generalWeissDeployed,
   generousDonationsVirusUploaded: state.generousDonations.virusUploaded,
   goalText: getGoalText(state),
 });
@@ -102,8 +107,14 @@ const vipersDenFigureDropsCore = () => createAction('VIPERS_DEN_FIGURE_DROPS_COR
 const vipersDenImperialEscapes = () => createAction('VIPERS_DEN_IMPERIAL_ESCAPES');
 const generousDonationsTerminalDestroyed = (id: number) =>
   createAction('GENEROUS_DONATIONS_TERMINAL_DESTROYED', {id});
+const chainOfCommandTerminalInteract = () => createAction('CHAIN_OF_COMMAND_TERMINAL_INTERACT');
+const chainOfCommandWeissDefends = () => createAction('CHAIN_OF_COMMAND_WEISS_DEFENDS');
+const chainOfCommandWeissEntered = () => createAction('CHAIN_OF_COMMAND_WEISS_ENTERED');
 
 const mapDispatchToProps = {
+  chainOfCommandTerminalInteract,
+  chainOfCommandWeissDefends,
+  chainOfCommandWeissEntered,
   generousDonationsTerminalDestroyed,
   incomingEnterCorridor,
   looseCannonDefeatAtst,

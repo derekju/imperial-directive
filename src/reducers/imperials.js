@@ -170,7 +170,8 @@ export default (state: ImperialsStateType = initialState, action: Object) => {
         activatedGroup: group,
       };
     }
-    case SET_IMPERIAL_GROUP_ACTIVATED: {
+    case SILENT_SET_IMPERIAL_GROUP_ACTIVATED:
+    case SET_IMPERIAL_GROUP_ACTIVATED:
       const {group} = action.payload;
       return {
         ...state,
@@ -178,6 +179,18 @@ export default (state: ImperialsStateType = initialState, action: Object) => {
         deployedGroups: state.deployedGroups.map((deployedGroup: ImperialUnitType) => {
           if (deployedGroup.id === group.id && deployedGroup.groupNumber === group.groupNumber) {
             deployedGroup.exhausted = true;
+          }
+          return deployedGroup;
+        }),
+      };
+    case SET_IMPERIAL_GROUP_UNACTIVATED: {
+      const {group} = action.payload;
+      return {
+        ...state,
+        activatedGroup: null,
+        deployedGroups: state.deployedGroups.map((deployedGroup: ImperialUnitType) => {
+          if (deployedGroup.id === group.id && deployedGroup.groupNumber === group.groupNumber) {
+            deployedGroup.exhausted = false;
           }
           return deployedGroup;
         }),
@@ -283,6 +296,8 @@ export default (state: ImperialsStateType = initialState, action: Object) => {
 // Action types
 
 export const SET_IMPERIAL_GROUP_ACTIVATED = 'SET_IMPERIAL_GROUP_ACTIVATED';
+export const SILENT_SET_IMPERIAL_GROUP_ACTIVATED = 'SILENT_SET_IMPERIAL_GROUP_ACTIVATED';
+export const SET_IMPERIAL_GROUP_UNACTIVATED = 'SET_IMPERIAL_GROUP_UNACTIVATED';
 export const ACTIVATE_IMPERIAL_GROUP = 'ACTIVATE_IMPERIAL_GROUP';
 export const TRIGGER_IMPERIAL_ACTIVATION = 'TRIGGER_IMPERIAL_ACTIVATION';
 export const DEFEAT_IMPERIAL_FIGURE = 'DEFEAT_IMPERIAL_FIGURE';
@@ -301,6 +316,14 @@ export const SET_IMPERIAL_UNIT_HP_BUFF = 'SET_IMPERIAL_UNIT_HP_BUFF';
 export const setImperialGroupActivated = (group: ImperialUnitType) => ({
   payload: {group},
   type: SET_IMPERIAL_GROUP_ACTIVATED,
+});
+export const silentSetImperialGroupActivated = (group: ImperialUnitType) => ({
+  payload: {group},
+  type: SILENT_SET_IMPERIAL_GROUP_ACTIVATED,
+});
+export const setImperialGroupUnactivated = (group: ImperialUnitType) => ({
+  payload: {group},
+  type: SET_IMPERIAL_GROUP_UNACTIVATED,
 });
 export const activateImperialGroup = (group: ImperialUnitType) => ({
   payload: {group},
@@ -366,7 +389,7 @@ export const getDeployedGroupOfIdWithMostUnits = (state: StateType, id: string) 
       'currentNumFigures'
     )
   );
-export const getLastDeployedGroupOfId = (state: StateType, id: string) =>
+export const getLastDeployedGroupOfId = (state: StateType, id: string): ImperialUnitType =>
   last(state.imperials.deployedGroups.filter((group: ImperialUnitType) => group.id === id));
 
 // Sagas

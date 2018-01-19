@@ -140,5 +140,15 @@
       "Accuracy +2{BREAK}",
       "{SURGE}: +2 {DMG}"
     ]
+  },
+  "weiss": {
+    "name": "Weiss",
+    "text": [
+      "Weiss gains:{BREAK}",
+      "{BREAK}",
+      "+1 Speed{BREAK}",
+      "+2 {DMG} to Attack{BREAK}",
+      "+1 {BLOCK} to Defense"
+    ]
   }
 }

@@ -40,6 +40,7 @@ import helperEventModal from './helpers/helperEventModal';
 import helperIncreaseThreat from './helpers/helperIncreaseThreat';
 import helperInitialSetup from './helpers/helperInitialSetup';
 import helperMissionBriefing from './helpers/helperMissionBriefing';
+import helperShowInterruptedGroup from './helpers/helperShowInterruptedGroup';
 import type {StateType} from '../types';
 import track from '../../lib/track';
 
@@ -150,19 +151,22 @@ function* handleGunFightEvent(): Generator<*, *, *> {
       } else {
         yield call(helperEventModal, {
           story: 'Szark catches Jyn unawares...',
-          text: ['Szark interrupts to perform an attack targeting Jyn.', 'Szark\'s AI card will now be shown.'],
+          text: [
+            'Szark interrupts to perform an attack targeting Jyn.',
+            "Szark's AI card will now be shown.",
+          ],
           title: 'Gun Fight',
         });
 
         // Need to show Szark's AI panel now
-        const szarkGroup = yield select(getLastDeployedGroupOfId, 'szark');
-        yield put(setInterruptedGroup(szarkGroup));
-        // Wait for panel to be dismissed
-        yield take(SET_INTERRUPTED_GROUP);
+        yield call(helperShowInterruptedGroup, 'szark');
       }
 
       yield call(helperEventModal, {
-        text: [`Szark gets ${missionThreat * 2} extra Health.`, 'If the Rebels defeat Szark, they win.'],
+        text: [
+          `Szark gets ${missionThreat * 2} extra Health.`,
+          'If the Rebels defeat Szark, they win.',
+        ],
         title: 'High Moon',
       });
 

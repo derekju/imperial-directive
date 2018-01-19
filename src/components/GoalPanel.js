@@ -26,7 +26,12 @@ const styles = {
 };
 
 type GoalPanelPropsType = {
+  chainOfCommandTerminalInteract: Function,
+  chainOfCommandWeissDefends: Function,
+  chainOfCommandWeissEntered: Function,
   currentMission: string,
+  generalWeissActive: boolean,
+  generalWeissDeployed: boolean,
   generousDonationsTerminalDestroyed: Function,
   generousDonationsVirusUploaded: boolean,
   goalText: string[],
@@ -182,35 +187,78 @@ class GoalPanel extends React.Component<GoalPanelPropsType, GoalPanelStateType> 
           </div>
         </div>
       );
+    } else if (currentMission === 'chainOfCommand') {
+      const weissDeployedGoalText = [
+        '{BREAK}',
+        '{BOLD}Weiss:{END}',
+        'Weiss can interact with the AT-ST to enter it.',
+      ];
+
+      const weissActiveGoalText = [
+        '{BREAK}',
+        '{BOLD}General Weiss:{END}',
+        'Cannot exit the hanger.',
+        '{BREAK}',
+        'When an attack targeting {ELITE}General Weiss{END} is declared, if the attack can cause 5 or more {DAMAGE}, click the button below.',
+      ];
+
+      return (
+        <div>
+          <div style={styles.buttonContainer}>
+            <Button
+              text="Terminal Interacted"
+              width={180}
+              onClick={this.props.chainOfCommandTerminalInteract}
+            />
+          </div>
+          {this.props.generalWeissDeployed && !this.props.generalWeissActive ? (
+            <div>
+              <div style={styles.contents}>{this.renderGoals(weissDeployedGoalText)}</div>
+              <div style={styles.buttonContainer}>
+                <Button
+                  text="Weiss entered AT-ST"
+                  width={180}
+                  onClick={this.props.chainOfCommandWeissEntered}
+                />
+              </div>
+            </div>
+          ) : null}
+          {this.props.generalWeissDeployed && this.props.generalWeissActive ? (
+            <div>
+              <div style={styles.contents}>{this.renderGoals(weissActiveGoalText)}</div>
+              <div style={styles.buttonContainer}>
+                <Button
+                  text="Weiss defends"
+                  width={180}
+                  onClick={this.props.chainOfCommandWeissDefends}
+                />
+              </div>
+            </div>
+          ) : null}
+        </div>
+      );
     }
 
     return null;
   }
 
-  renderGoals() {
-    if (this.props.goalText.length === 0) {
+  renderGoals(goalText: string[]) {
+    if (goalText.length === 0) {
       return null;
     }
 
-    return (
-      <div>
-        {this.props.goalText.map((goalText: string, index: number) => {
-          return (
-            <div
-              key={`goal-${index}`}
-              dangerouslySetInnerHTML={{__html: handleTextSubs(goalText)}}
-            />
-          );
-        })}
-      </div>
-    );
+    return goalText.map((gText: string, index: number) => {
+      return (
+        <div key={`goal-${index}`} dangerouslySetInnerHTML={{__html: handleTextSubs(gText)}} />
+      );
+    });
   }
 
   render() {
     return (
       <div style={styles.base}>
         <div style={styles.header}>Mission Goals</div>
-        <div style={styles.contents}>{this.renderGoals()}</div>
+        <div style={styles.contents}>{this.renderGoals(this.props.goalText)}</div>
         <div>{this.renderMissionSpecific()}</div>
       </div>
     );

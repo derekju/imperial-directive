@@ -4,6 +4,7 @@ import aftermath from './missions/aftermath';
 import app from './app';
 import brushfire from './missions/brushfire';
 import captured from './missions/captured';
+import chainOfCommand from './missions/chainOfCommand';
 import drawnIn from './missions/drawnIn';
 import events from './events';
 import flySolo from './missions/flySolo';
@@ -32,6 +33,7 @@ export default {
   app,
   brushfire,
   captured,
+  chainOfCommand,
   drawnIn,
   events,
   flySolo,
