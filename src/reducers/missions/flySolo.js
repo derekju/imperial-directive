@@ -17,9 +17,7 @@ import {
   setAttackTarget,
   setDeploymentPoint,
   setMoveTarget,
-  STATUS_PHASE_BEGIN,
   STATUS_PHASE_END_ROUND_EFFECTS,
-  statusPhaseBeginDone,
   statusPhaseEndRoundEffectsDone,
   updateImperialVictory,
   updateRebelVictory,
@@ -28,6 +26,7 @@ import {getLastDeployedGroupOfId, setCustomAI, setImperialGroupActivated} from '
 import {REFER_CAMPAIGN_GUIDE, TARGET_CLOSEST_REBEL, TARGET_ENTRANCE_TOKEN} from './constants';
 import createAction from '../createAction';
 import {displayModal} from '../modal';
+import handleStatusPhaseBegin from './sharedSagas/handleStatusPhaseBegin';
 import helperDeploy from './helpers/helperDeploy';
 import helperEventModal from './helpers/helperEventModal';
 import helperInitialSetup from './helpers/helperInitialSetup';
@@ -201,14 +200,6 @@ function* handleHanEscaped(): Generator<*, *, *> {
   // End game with rebel victory
   yield put(displayModal('REBEL_VICTORY'));
   track('flySolo', 'victory', 'hanEscaped');
-}
-
-// REQUIRED SAGA
-function* handleStatusPhaseBegin(): Generator<*, *, *> {
-  while (true) {
-    yield take(STATUS_PHASE_BEGIN);
-    yield put(statusPhaseBeginDone());
-  }
 }
 
 // REQUIRED SAGA

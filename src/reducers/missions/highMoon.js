@@ -24,9 +24,7 @@ import {
   setMapStateActivated,
   setMapStateVisible,
   setMoveTarget,
-  STATUS_PHASE_BEGIN,
   STATUS_PHASE_END_ROUND_EFFECTS,
-  statusPhaseBeginDone,
   statusPhaseEndRoundEffectsDone,
   updateRebelVictory,
 } from '../mission';
@@ -34,6 +32,7 @@ import {getMissionThreat, missionSagaLoadDone} from '../app';
 import {REFER_CAMPAIGN_GUIDE, TARGET_HERO_CLOSEST_UNWOUNDED, TARGET_REMAINING} from './constants';
 import createAction from '../createAction';
 import {displayModal} from '../modal';
+import handleStatusPhaseBegin from './sharedSagas/handleStatusPhaseBegin';
 import helperChoiceModal from './helpers/helperChoiceModal';
 import helperDeploy from './helpers/helperDeploy';
 import helperEventModal from './helpers/helperEventModal';
@@ -257,14 +256,6 @@ function* handleRoundStart(): Generator<*, *, *> {
     if (callOutSzarkDone) {
       yield call(checkSzarkHealth);
     }
-  }
-}
-
-// REQUIRED SAGA
-function* handleStatusPhaseBegin(): Generator<*, *, *> {
-  while (true) {
-    yield take(STATUS_PHASE_BEGIN);
-    yield put(statusPhaseBeginDone());
   }
 }
 

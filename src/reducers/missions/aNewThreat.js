@@ -11,13 +11,12 @@ import {
   setAttackTarget,
   setDeploymentPoint,
   setMoveTarget,
-  STATUS_PHASE_BEGIN,
   STATUS_PHASE_END_ROUND_EFFECTS,
-  statusPhaseBeginDone,
   statusPhaseEndRoundEffectsDone,
 } from '../mission';
 import {REFER_CAMPAIGN_GUIDE, TARGET_HERO_CLOSEST_UNWOUNDED, TARGET_REMAINING} from './constants';
 import {displayModal} from '../modal';
+import handleStatusPhaseBegin from './sharedSagas/handleStatusPhaseBegin';
 import helperDeploy from './helpers/helperDeploy';
 import helperInitialSetup from './helpers/helperInitialSetup';
 import helperMissionBriefing from './helpers/helperMissionBriefing';
@@ -223,14 +222,6 @@ function* handleHeroesWounded(): Generator<*, *, *> {
       yield put(setAttackTarget(TARGET_REMAINING));
       yield put(setMoveTarget(TARGET_REMAINING));
     }
-  }
-}
-
-// REQUIRED SAGA
-function* handleStatusPhaseBegin(): Generator<*, *, *> {
-  while (true) {
-    yield take(STATUS_PHASE_BEGIN);
-    yield put(statusPhaseBeginDone());
   }
 }
 

@@ -10,9 +10,7 @@ import {
   setAttackTarget,
   setDeploymentPoint,
   setMoveTarget,
-  STATUS_PHASE_BEGIN,
   STATUS_PHASE_END_ROUND_EFFECTS,
-  statusPhaseBeginDone,
   statusPhaseEndRoundEffectsDone,
   updateRebelVictory,
 } from '../mission';
@@ -25,6 +23,7 @@ import {
 import {REFER_CAMPAIGN_GUIDE} from './constants';
 import {displayModal} from '../modal';
 import {getMissionThreat} from '../app';
+import handleStatusPhaseBegin from './sharedSagas/handleStatusPhaseBegin';
 import helperDeploy from './helpers/helperDeploy';
 import helperEventModal from './helpers/helperEventModal';
 import helperIncreaseThreat from './helpers/helperIncreaseThreat';
@@ -136,14 +135,6 @@ function* handleRegularsEvent(): Generator<*, *, *> {
     'Regulars',
     ['trandoshanHunterElite']
   );
-}
-
-// REQUIRED SAGA
-function* handleStatusPhaseBegin(): Generator<*, *, *> {
-  while (true) {
-    yield take(STATUS_PHASE_BEGIN);
-    yield put(statusPhaseBeginDone());
-  }
 }
 
 // REQUIRED SAGA

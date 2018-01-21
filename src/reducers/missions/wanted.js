@@ -20,9 +20,7 @@ import {
   setMapStateInteractable,
   setMapStateVisible,
   setMoveTarget,
-  STATUS_PHASE_BEGIN,
   STATUS_PHASE_END_ROUND_EFFECTS,
-  statusPhaseBeginDone,
   statusPhaseEndRoundEffectsDone,
   updateRebelVictory,
 } from '../mission';
@@ -30,6 +28,7 @@ import {OPTIONAL_DEPLOYMENT_DONE, optionalDeployment} from '../imperials';
 import {TARGET_HERO_CLOSEST_UNWOUNDED, TARGET_REMAINING} from './constants';
 import createAction from '../createAction';
 import {displayModal} from '../modal';
+import handleStatusPhaseBegin from './sharedSagas/handleStatusPhaseBegin';
 import helperDeploy from './helpers/helperDeploy';
 import helperEventModal from './helpers/helperEventModal';
 import helperIncreaseThreat from './helpers/helperIncreaseThreat';
@@ -226,14 +225,6 @@ function* handleHeroesWounded(): Generator<*, *, *> {
       yield put(setAttackTarget(TARGET_REMAINING));
       yield put(setMoveTarget(TARGET_REMAINING));
     }
-  }
-}
-
-// REQUIRED SAGA
-function* handleStatusPhaseBegin(): Generator<*, *, *> {
-  while (true) {
-    yield take(STATUS_PHASE_BEGIN);
-    yield put(statusPhaseBeginDone());
   }
 }
 
