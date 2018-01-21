@@ -1,7 +1,6 @@
 // @flow
 
 import {all, call, fork, put, select, take} from 'redux-saga/effects';
-import {getAreAllHeroesWounded, getIsOneHeroLeft, WOUND_REBEL_HERO} from '../rebels';
 import {
   getCurrentRound,
   getMapStates,
@@ -16,9 +15,10 @@ import {
   STATUS_PHASE_END_ROUND_EFFECTS,
   statusPhaseEndRoundEffectsDone,
 } from '../mission';
-import {REFER_CAMPAIGN_GUIDE, TARGET_HERO_CLOSEST_UNWOUNDED, TARGET_REMAINING} from './constants';
+import {REFER_CAMPAIGN_GUIDE, TARGET_HERO_CLOSEST_UNWOUNDED} from './constants';
 import createAction from '../createAction';
 import {displayModal} from '../modal';
+import handleHeroesWounded from './sharedSagas/handleHeroesWounded';
 import handleStatusPhaseBegin from './sharedSagas/handleStatusPhaseBegin';
 import helperChoiceModal from './helpers/helperChoiceModal';
 import helperDeploy from './helpers/helperDeploy';
@@ -215,26 +215,6 @@ function* handleTerminalsDestroyed(): Generator<*, *, *> {
   }
 }
 
-function* handleHeroesWounded(): Generator<*, *, *> {
-  while (true) {
-    yield take(WOUND_REBEL_HERO);
-    const allWounded = yield select(getAreAllHeroesWounded);
-    if (allWounded) {
-      // End game with imperial victory
-      yield put(displayModal('IMPERIAL_VICTORY'));
-      track('aftermath', 'defeat', 'wounded');
-      break;
-    }
-    const isOneHeroLeft = yield select(getIsOneHeroLeft);
-    if (isOneHeroLeft) {
-      // Switch targets
-      yield put(createAction('AFTERMATH_PRIORITY_TARGET_KILL_HERO', true));
-      yield put(setAttackTarget(TARGET_REMAINING));
-      yield put(setMoveTarget(TARGET_REMAINING));
-    }
-  }
-}
-
 // REQUIRED SAGA
 function* handleRoundEnd(): Generator<*, *, *> {
   while (true) {
@@ -287,7 +267,7 @@ export function* aftermath(): Generator<*, *, *> {
     fork(handleFortifiedEvent),
     fork(handleSingleTerminalDestroyed),
     fork(handleTerminalsDestroyed),
-    fork(handleHeroesWounded),
+    fork(handleHeroesWounded('aftermath', 'AFTERMATH_PRIORITY_TARGET_KILL_HERO')),
     fork(handleStatusPhaseBegin),
     fork(handleRoundEnd),
   ]);
