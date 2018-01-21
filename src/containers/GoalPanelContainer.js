@@ -25,6 +25,7 @@ import {getSorryAboutTheMessGoalText} from '../reducers/missions/sorryAboutTheMe
 import {getTargetOfOpportunityGoalText} from '../reducers/missions/targetOfOpportunity';
 import {getTemptationGoalText} from '../reducers/missions/temptation';
 import {getTheSpiceJobGoalText} from '../reducers/missions/theSpiceJob';
+import {getTheSourceGoalText} from '../reducers/missions/theSource';
 import {getUnderSiegeGoalText} from '../reducers/missions/underSiege';
 import {getVipersDenGoalText} from '../reducers/missions/vipersDen';
 import {getWantedGoalText} from '../reducers/missions/wanted';
@@ -79,6 +80,8 @@ const getGoalText = (state: StateType) => {
       return getTemptationGoalText(state);
     case 'theSpiceJob':
       return getTheSpiceJobGoalText(state);
+    case 'theSource':
+      return getTheSourceGoalText(state);
     case 'underSiege':
       return getUnderSiegeGoalText(state);
     case 'vipersDen':
@@ -110,6 +113,7 @@ const generousDonationsTerminalDestroyed = (id: number) =>
 const chainOfCommandTerminalInteract = () => createAction('CHAIN_OF_COMMAND_TERMINAL_INTERACT');
 const chainOfCommandWeissDefends = () => createAction('CHAIN_OF_COMMAND_WEISS_DEFENDS');
 const chainOfCommandWeissEntered = () => createAction('CHAIN_OF_COMMAND_WEISS_ENTERED');
+const theSourceOfficerFreed = () => createAction('THE_SOURCE_OFFICER_FREED');
 
 const mapDispatchToProps = {
   chainOfCommandTerminalInteract,
@@ -119,6 +123,7 @@ const mapDispatchToProps = {
   incomingEnterCorridor,
   looseCannonDefeatAtst,
   spiceJobGetKeycard,
+  theSourceOfficerFreed,
   vipersDenFigureDropsCore,
   vipersDenHeroGetCore,
   vipersDenImperialEscapes,

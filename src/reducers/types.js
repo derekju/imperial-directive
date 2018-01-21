@@ -25,6 +25,7 @@ import type {RebelsStateType} from './rebels';
 import type {TargetOfOpportunityStateType} from './missions/targetOfOpportunity';
 import type {TemptationStateType} from './missions/temptation';
 import type {TheSpiceJobStateType} from './missions/theSpiceJob';
+import type {TheSourceStateType} from './missions/theSource';
 import type {UnderSiegeStateType} from './missions/underSiege';
 import type {VipersDenStateType} from './missions/vipersDen';
 import type {WantedStateType} from './missions/wanted';
@@ -55,6 +56,7 @@ export type StateType = {
   targetOfOpportunity: TargetOfOpportunityStateType,
   temptation: TemptationStateType,
   theSpiceJob: TheSpiceJobStateType,
+  theSource: TheSourceStateType,
   underSiege: UnderSiegeStateType,
   vipersDen: VipersDenStateType,
   wanted: WantedStateType,

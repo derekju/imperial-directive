@@ -38,6 +38,7 @@ type GoalPanelPropsType = {
   incomingEnterCorridor: Function,
   looseCannonDefeatAtst: Function,
   spiceJobGetKeycard: Function,
+  theSourceOfficerFreed: Function,
   vipersDenFigureDropsCore: Function,
   vipersDenHeroGetCore: Function,
   vipersDenImperialEscapes: Function,
@@ -92,6 +93,13 @@ class GoalPanel extends React.Component<GoalPanelPropsType, GoalPanelStateType> 
     this.props.vipersDenImperialEscapes();
   };
 
+  handleTheSourceOfficerFreed = () => {
+    this.setState({
+      buttonPressed: true,
+    });
+    this.props.theSourceOfficerFreed();
+  };
+
   renderMissionSpecific() {
     const {currentMission} = this.props;
 
@@ -110,6 +118,16 @@ class GoalPanel extends React.Component<GoalPanelPropsType, GoalPanelStateType> 
         return (
           <div style={styles.buttonContainer}>
             <Button text="Get Keycard" onClick={this.handleSpiceJobGetKeycard} />
+          </div>
+        );
+      } else {
+        return null;
+      }
+    } else if (currentMission === 'theSource') {
+      if (!this.state.buttonPressed) {
+        return (
+          <div style={styles.buttonContainer}>
+            <Button text="Officer Freed" onClick={this.handleTheSourceOfficerFreed} />
           </div>
         );
       } else {

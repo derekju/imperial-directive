@@ -24,6 +24,7 @@ import rebels from './rebels';
 import targetOfOpportunity from './missions/targetOfOpportunity';
 import temptation from './missions/temptation';
 import theSpiceJob from './missions/theSpiceJob';
+import theSource from './missions/theSource';
 import underSiege from './missions/underSiege';
 import vipersDen from './missions/vipersDen';
 import wanted from './missions/wanted';
@@ -53,6 +54,7 @@ export default {
   targetOfOpportunity,
   temptation,
   theSpiceJob,
+  theSource,
   underSiege,
   vipersDen,
   wanted,
