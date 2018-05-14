@@ -67,7 +67,6 @@ export default (state: TheSourceStateType = initialState, action: Object) => {
 
 // Selectors
 
-const getState = (state: StateType) => state.theSource;
 export const getTheSourceGoalText = (state: StateType): string[] => {
   const goals = [
     '{BOLD}Doors:{END}',

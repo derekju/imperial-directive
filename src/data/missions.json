@@ -2080,6 +2080,114 @@
       "eWebEngineer"
     ]
   },
+  "lastStand": {
+    "initialGroups": [
+      "eWebEngineerElite", "royalGuard", "stormtrooper"
+    ],
+    "instructions": {
+      "imperialVictory": "At the end of Round 12 or when all heroes are wounded",
+      "rebelVictory": "(to be revealed)"
+    },
+    "mapImage": [
+      ["00a", "05b", "05b", "05b", "05b", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a"],
+      ["00a", "05b", "05b", "05b", "05b", "13b", "13b", "14b", "14b", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a"],
+      ["00a", "05b", "05b", "05b", "05b", "13b", "13b", "14b", "14b", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a"],
+      ["00a", "05b", "05b", "05b", "05b", "17b", "17b", "18b", "18b", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a"],
+      ["02b", "02b", "02b", "02b", "00a", "06b", "06b", "06b", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a"],
+      ["02b", "02b", "02b", "02b", "06b", "06b", "06b", "06b", "00a", "00a", "24b", "24b", "24b", "32b", "32b", "00a", "00a"],
+      ["02b", "02b", "02b", "02b", "06b", "06b", "06b", "06b", "00a", "24b", "24b", "24b", "24b", "32b", "32b", "00a", "00a"],
+      ["02b", "02b", "02b", "02b", "06b", "06b", "06b", "06b", "00a", "24b", "24b", "24b", "24b", "37b", "37b", "00a", "00a"],
+      ["02b", "02b", "02b", "02b", "00a", "10b", "10b", "10b", "00a", "24b", "24b", "24b", "00a", "37b", "37b", "00a", "00a"],
+      ["02b", "02b", "02b", "02b", "00a", "10b", "10b", "10b", "39b", "32b", "32b", "19a", "19a", "19a", "19a", "19a", "19a"],
+      ["00a", "00a", "00a", "00a", "00a", "10b", "10b", "10b", "39b", "32b", "32b", "19a", "19a", "19a", "19a", "19a", "19a"],
+      ["00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "28a", "28a", "28a", "19a", "19a", "19a", "19a", "19a", "19a"],
+      ["00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "28a", "28a", "28a", "19a", "19a", "19a", "19a", "19a", "19a"],
+      ["00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "28a", "28a", "28a", "19a", "19a", "19a", "19a", "19a", "19a"],
+      ["00a", "00a", "00a", "00a", "00a", "00a", "00a", "23a", "23a", "23a", "23a", "19a", "19a", "19a", "19a", "19a", "19a"],
+      ["00a", "00a", "00a", "00a", "00a", "00a", "00a", "23a", "23a", "23a", "23a", "20a", "20a", "20a", "20a", "20a", "20a"],
+      ["00a", "00a", "00a", "00a", "00a", "00a", "00a", "23a", "23a", "23a", "23a", "20a", "20a", "20a", "20a", "20a", "20a"],
+      ["00a", "00a", "00a", "00a", "00a", "00a", "00a", "23a", "23a", "23a", "23a", "20a", "20a", "20a", "20a", "20a", "20a"],
+      ["00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "20a", "20a", "20a", "20a", "20a", "20a"]
+    ],
+    "mapStates": {
+      "entrance-1": {
+        "activated": false,
+        "activateText": "",
+        "coordinates": {
+          "x": 7,
+          "y": 3
+        },
+        "description": "The entrance.",
+        "id": 1,
+        "interactable": false,
+        "type": "entrance",
+        "unactivateText": "",
+        "visible": true
+      },
+      "door-1": {
+        "activated": false,
+        "activateText": "Open",
+        "coordinates": {
+          "x": 8,
+          "y": 10
+        },
+        "description": "The door to the Warehouse.",
+        "id": 1,
+        "interactable": true,
+        "type": "door",
+        "unactivateText": "Close",
+        "visible": true
+      },
+      "door-2": {
+        "activated": false,
+        "activateText": "Open",
+        "coordinates": {
+          "x": 13,
+          "y": 8
+        },
+        "description": "The door out of the Warehouse.",
+        "id": 2,
+        "interactable": true,
+        "type": "door",
+        "unactivateText": "Close",
+        "visible": true
+      },
+      "door-3": {
+        "activated": false,
+        "activateText": "Open",
+        "coordinates": {
+          "x": 8,
+          "y": 13
+        },
+        "description": "The door to the Command Center.",
+        "id": 3,
+        "interactable": true,
+        "type": "door",
+        "unactivateText": "Close",
+        "visible": true
+      },
+      "door-4": {
+        "activated": false,
+        "activateText": "Open",
+        "coordinates": {
+          "x": 11,
+          "y": 15
+        },
+        "description": "The door to the Command Center.",
+        "id": 4,
+        "interactable": true,
+        "type": "door",
+        "unactivateText": "Close",
+        "visible": true
+      }
+    },
+    "name": "Last Stand",
+    "noMercenaryAllowed": false,
+    "openGroups": 2,
+    "reservedGroups": [
+      "darthVader", "imperialOfficer", "probeDroid", "probeDroid", "royalGuardElite", "stormtrooper"
+    ]
+  },
   "looseCannon": {
     "initialGroups": [
       "royalGuardChampion", "imperialOfficerElite", "royalGuard", "stormtrooperElite"

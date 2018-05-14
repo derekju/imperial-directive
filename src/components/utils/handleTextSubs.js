@@ -1,5 +1,6 @@
 // @flow
 
+import actionPng from '../../assets/icons/action.png';
 import blockPng from '../../assets/icons/block.png';
 import damagePng from '../../assets/icons/damage.png';
 import {ELITE_RED} from '../../styles/colors';
@@ -21,6 +22,11 @@ export default (text: string) => {
   replaced = replaced.replace(
     /{ELITE}(.*?){END}/g,
     `<span style='color: ${ELITE_RED}; font-weight: bold'>$1</span>`
+  );
+  // ACTION IMAGE
+  replaced = replaced.replace(
+    /{ACTION}/g,
+    `<img alt="Action" src='${actionPng}' style='height: 24px; width: 26px; vertical-align: middle' />`
   );
   // SURGE IMAGE
   replaced = replaced.replace(

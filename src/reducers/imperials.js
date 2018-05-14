@@ -170,8 +170,19 @@ export default (state: ImperialsStateType = initialState, action: Object) => {
         activatedGroup: group,
       };
     }
-    case SILENT_SET_IMPERIAL_GROUP_ACTIVATED:
-    case SET_IMPERIAL_GROUP_ACTIVATED:
+    case SILENT_SET_IMPERIAL_GROUP_ACTIVATED: {
+      const {group} = action.payload;
+      return {
+        ...state,
+        deployedGroups: state.deployedGroups.map((deployedGroup: ImperialUnitType) => {
+          if (deployedGroup.id === group.id && deployedGroup.groupNumber === group.groupNumber) {
+            deployedGroup.exhausted = true;
+          }
+          return deployedGroup;
+        }),
+      };
+    }
+    case SET_IMPERIAL_GROUP_ACTIVATED: {
       const {group} = action.payload;
       return {
         ...state,
@@ -183,6 +194,7 @@ export default (state: ImperialsStateType = initialState, action: Object) => {
           return deployedGroup;
         }),
       };
+    }
     case SET_IMPERIAL_GROUP_UNACTIVATED: {
       const {group} = action.payload;
       return {

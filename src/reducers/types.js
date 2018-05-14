@@ -18,6 +18,7 @@ import type {ImpoundedStateType} from './missions/impounded';
 import type {IncomingStateType} from './missions/incoming';
 import type {IndebtedStateType} from './missions/indebted';
 import type {LooseCannonStateType} from './missions/looseCannon';
+import type {LastStandStateType} from './missions/lastStand';
 import type {MeansOfProductionStateType} from './missions/meansOfProduction';
 import type {MissionStateType} from './mission';
 import type {ModalStateType} from './modal';
@@ -48,6 +49,7 @@ export type StateType = {
   impounded: ImpoundedStateType,
   incoming: IncomingStateType,
   indebted: IndebtedStateType,
+  lastStand: LastStandStateType,
   looseCannon: LooseCannonStateType,
   meansOfProduction: MeansOfProductionStateType,
   mission: MissionStateType,

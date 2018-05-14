@@ -17,6 +17,8 @@ import imperials from './imperials';
 import impounded from './missions/impounded';
 import incoming from './missions/incoming';
 import indebted from './missions/indebted';
+import lastStand from './missions/lastStand';
+import looseCannon from './missions/looseCannon';
 import meansOfProduction from './missions/meansOfProduction';
 import mission from './mission';
 import modal from './modal';
@@ -47,6 +49,8 @@ export default {
   impounded,
   incoming,
   indebted,
+  lastStand,
+  looseCannon,
   meansOfProduction,
   mission,
   modal,

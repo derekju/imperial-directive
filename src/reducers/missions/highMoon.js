@@ -4,12 +4,9 @@ import {all, call, fork, put, select, take} from 'redux-saga/effects';
 import {
   ACTIVATE_IMPERIAL_GROUP,
   DEFEAT_IMPERIAL_FIGURE,
-  getLastDeployedGroupOfId,
   OPTIONAL_DEPLOYMENT_DONE,
   optionalDeployment,
   setImperialUnitHpBuff,
-  SET_INTERRUPTED_GROUP,
-  setInterruptedGroup,
 } from '../imperials';
 import {getAreAllHeroesWounded, getIsOneHeroLeft, WOUND_REBEL_HERO} from '../rebels';
 import {

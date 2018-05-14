@@ -155,7 +155,7 @@ function* handleVulnerableEvent(): Generator<*, *, *> {
     });
     yield call(helperShowInterruptedGroup, 'weiss');
   }
-  // Need to set General Weiss as activated so it doesn't take its turn
+  // Need to set General Weiss as activated so he doesn't take his turn
   const generalWeissGroup = yield select(getLastDeployedGroupOfId, 'generalWeiss');
   yield put(silentSetImperialGroupActivated(generalWeissGroup));
   yield put(createAction('CHAIN_OF_COMMAND_SET_GENERAL_WEISS_DEPLOYED', true));

@@ -36,6 +36,8 @@ type GoalPanelPropsType = {
   generousDonationsVirusUploaded: boolean,
   goalText: string[],
   incomingEnterCorridor: Function,
+  lastStandVaderBlock: Function,
+  lastStandVaderDeployed: boolean,
   looseCannonDefeatAtst: Function,
   spiceJobGetKeycard: Function,
   theSourceOfficerFreed: Function,
@@ -253,6 +255,12 @@ class GoalPanel extends React.Component<GoalPanelPropsType, GoalPanelStateType> 
               </div>
             </div>
           ) : null}
+        </div>
+      );
+    } else if (currentMission === 'lastStand' && this.props.lastStandVaderDeployed) {
+      return (
+        <div style={styles.buttonContainer}>
+          <Button text="Add 2 Block" onClick={this.props.lastStandVaderBlock} />
         </div>
       );
     }

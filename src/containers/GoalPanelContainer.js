@@ -18,6 +18,7 @@ import {getImperialHospitalityGoalText} from '../reducers/missions/imperialHospi
 import {getImpoundedGoalText} from '../reducers/missions/impounded';
 import {getIncomingGoalText} from '../reducers/missions/incoming';
 import {getIndebtedGoalText} from '../reducers/missions/indebted';
+import {getLastStandGoalText} from '../reducers/missions/lastStand';
 import {getLooseCannonGoalText} from '../reducers/missions/looseCannon';
 import {getLuxuryCruiseGoalText} from '../reducers/missions/luxuryCruise';
 import {getMeansOfProductionGoalText} from '../reducers/missions/meansOfProduction';
@@ -66,6 +67,8 @@ const getGoalText = (state: StateType) => {
       return getIncomingGoalText(state);
     case 'indebted':
       return getIndebtedGoalText(state);
+    case 'lastStand':
+      return getLastStandGoalText(state);
     case 'looseCannon':
       return getLooseCannonGoalText(state);
     case 'luxuryCruise':
@@ -99,6 +102,7 @@ const mapStateToProps = (state: StateType) => ({
   generalWeissDeployed: state.chainOfCommand.generalWeissDeployed,
   generousDonationsVirusUploaded: state.generousDonations.virusUploaded,
   goalText: getGoalText(state),
+  lastStandVaderDeployed: state.lastStand.doorState === 3,
 });
 
 const looseCannonDefeatAtst = () => createAction('LOOSE_CANNON_DEFEAT_ATST');
@@ -114,6 +118,7 @@ const chainOfCommandTerminalInteract = () => createAction('CHAIN_OF_COMMAND_TERM
 const chainOfCommandWeissDefends = () => createAction('CHAIN_OF_COMMAND_WEISS_DEFENDS');
 const chainOfCommandWeissEntered = () => createAction('CHAIN_OF_COMMAND_WEISS_ENTERED');
 const theSourceOfficerFreed = () => createAction('THE_SOURCE_OFFICER_FREED');
+const lastStandVaderBlock = () => createAction('LAST_STAND_VADER_BLOCK');
 
 const mapDispatchToProps = {
   chainOfCommandTerminalInteract,
@@ -121,6 +126,7 @@ const mapDispatchToProps = {
   chainOfCommandWeissEntered,
   generousDonationsTerminalDestroyed,
   incomingEnterCorridor,
+  lastStandVaderBlock,
   looseCannonDefeatAtst,
   spiceJobGetKeycard,
   theSourceOfficerFreed,
