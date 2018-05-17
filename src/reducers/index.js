@@ -5,6 +5,7 @@ import app from './app';
 import brushfire from './missions/brushfire';
 import captured from './missions/captured';
 import chainOfCommand from './missions/chainOfCommand';
+import desperateHour from './missions/desperateHour';
 import drawnIn from './missions/drawnIn';
 import events from './events';
 import flySolo from './missions/flySolo';
@@ -37,6 +38,7 @@ export default {
   brushfire,
   captured,
   chainOfCommand,
+  desperateHour,
   drawnIn,
   events,
   flySolo,
@@ -57,8 +59,8 @@ export default {
   rebels,
   targetOfOpportunity,
   temptation,
-  theSpiceJob,
   theSource,
+  theSpiceJob,
   underSiege,
   vipersDen,
   wanted,

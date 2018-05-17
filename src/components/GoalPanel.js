@@ -30,6 +30,8 @@ type GoalPanelPropsType = {
   chainOfCommandWeissDefends: Function,
   chainOfCommandWeissEntered: Function,
   currentMission: string,
+  desperateHourClearingReachable: boolean,
+  desperateHourEnteredClearing: Function,
   generalWeissActive: boolean,
   generalWeissDeployed: boolean,
   generousDonationsTerminalDestroyed: Function,
@@ -261,6 +263,12 @@ class GoalPanel extends React.Component<GoalPanelPropsType, GoalPanelStateType> 
       return (
         <div style={styles.buttonContainer}>
           <Button text="Add 2 Block" onClick={this.props.lastStandVaderBlock} />
+        </div>
+      );
+    } else if (currentMission === 'desperateHour' && this.props.desperateHourClearingReachable) {
+      return (
+        <div style={styles.buttonContainer}>
+          <Button text="Clearing Entered" onClick={this.props.desperateHourEnteredClearing} />
         </div>
       );
     }

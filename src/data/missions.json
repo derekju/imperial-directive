@@ -911,6 +911,114 @@
       "generalWeiss"
     ]
   },
+  "desperateHour": {
+    "initialGroups": [
+      "royalGuard", "stormtrooperElite"
+    ],
+    "instructions": {
+      "imperialVictory": "At the end of Round 8 or when all heroes are wounded",
+      "rebelVictory": "(to be revealed)"
+    },
+    "mapImage": [
+      ["00a", "05b", "05b", "05b", "05b", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a"],
+      ["00a", "05b", "05b", "05b", "05b", "13b", "13b", "14b", "14b", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a"],
+      ["00a", "05b", "05b", "05b", "05b", "13b", "13b", "14b", "14b", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a"],
+      ["00a", "05b", "05b", "05b", "05b", "17b", "17b", "18b", "18b", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a"],
+      ["02b", "02b", "02b", "02b", "00a", "06b", "06b", "06b", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a"],
+      ["02b", "02b", "02b", "02b", "06b", "06b", "06b", "06b", "00a", "00a", "24b", "24b", "24b", "32b", "32b", "00a", "00a"],
+      ["02b", "02b", "02b", "02b", "06b", "06b", "06b", "06b", "00a", "24b", "24b", "24b", "24b", "32b", "32b", "00a", "00a"],
+      ["02b", "02b", "02b", "02b", "06b", "06b", "06b", "06b", "00a", "24b", "24b", "24b", "24b", "37b", "37b", "00a", "00a"],
+      ["02b", "02b", "02b", "02b", "00a", "10b", "10b", "10b", "00a", "24b", "24b", "24b", "00a", "37b", "37b", "00a", "00a"],
+      ["02b", "02b", "02b", "02b", "00a", "10b", "10b", "10b", "39b", "32b", "32b", "19a", "19a", "19a", "19a", "19a", "19a"],
+      ["00a", "00a", "00a", "00a", "00a", "10b", "10b", "10b", "39b", "32b", "32b", "19a", "19a", "19a", "19a", "19a", "19a"],
+      ["00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "28a", "28a", "28a", "19a", "19a", "19a", "19a", "19a", "19a"],
+      ["00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "28a", "28a", "28a", "19a", "19a", "19a", "19a", "19a", "19a"],
+      ["00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "28a", "28a", "28a", "19a", "19a", "19a", "19a", "19a", "19a"],
+      ["00a", "00a", "00a", "00a", "00a", "00a", "00a", "23a", "23a", "23a", "23a", "19a", "19a", "19a", "19a", "19a", "19a"],
+      ["00a", "00a", "00a", "00a", "00a", "00a", "00a", "23a", "23a", "23a", "23a", "20a", "20a", "20a", "20a", "20a", "20a"],
+      ["00a", "00a", "00a", "00a", "00a", "00a", "00a", "23a", "23a", "23a", "23a", "20a", "20a", "20a", "20a", "20a", "20a"],
+      ["00a", "00a", "00a", "00a", "00a", "00a", "00a", "23a", "23a", "23a", "23a", "20a", "20a", "20a", "20a", "20a", "20a"],
+      ["00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "20a", "20a", "20a", "20a", "20a", "20a"]
+    ],
+    "mapStates": {
+      "entrance-1": {
+        "activated": false,
+        "activateText": "",
+        "coordinates": {
+          "x": 8,
+          "y": 16
+        },
+        "description": "The entrance.",
+        "id": 1,
+        "interactable": false,
+        "type": "entrance",
+        "unactivateText": "",
+        "visible": true
+      },
+      "door-1": {
+        "activated": false,
+        "activateText": "Destroy",
+        "coordinates": {
+          "x": 10,
+          "y": 11
+        },
+        "description": "A door to the Hanger.",
+        "id": 1,
+        "interactable": true,
+        "type": "door",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "door-2": {
+        "activated": false,
+        "activateText": "Destroy",
+        "coordinates": {
+          "x": 13,
+          "y": 15
+        },
+        "description": "A door to the Hanger.",
+        "id": 2,
+        "interactable": true,
+        "type": "door",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "door-3": {
+        "activated": false,
+        "activateText": "Destroy",
+        "coordinates": {
+          "x": 13,
+          "y": 5
+        },
+        "description": "The door to the Warehouse.",
+        "id": 3,
+        "interactable": false,
+        "type": "door",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "door-4": {
+        "activated": false,
+        "activateText": "Destroy",
+        "coordinates": {
+          "x": 9,
+          "y": 10
+        },
+        "description": "The door to the Clearing.",
+        "id": 4,
+        "interactable": false,
+        "type": "door",
+        "unactivateText": "Restore",
+        "visible": true
+      }
+    },
+    "name": "Desperate Hour",
+    "noMercenaryAllowed": false,
+    "openGroups": 4,
+    "reservedGroups": [
+      "atst", "eWebEngineerElite", "generalWeiss", "imperialOfficerElite", "royalGuardElite", "stormtrooper", "trandoshanHunterElite"
+    ]
+  },
   "drawnIn": {
     "initialGroups": [
       "eWebEngineer", "imperialOfficerElite", "stormtrooper", "stormtrooper"

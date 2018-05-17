@@ -5,6 +5,7 @@ import type {AppStateType} from './app';
 import type {BrushfireStateType} from './missions/brushfire';
 import type {CapturedStateType} from './missions/captured';
 import type {ChainOfCommandStateType} from './missions/chainOfCommand';
+import type {DesperateHourStateType} from './missions/desperateHour';
 import type {DrawnInStateType} from './missions/drawnIn';
 import type {EventsStateType} from './events';
 import type {FlySoloStateType} from './missions/flySolo';
@@ -37,6 +38,7 @@ export type StateType = {
   brushfire: BrushfireStateType,
   captured: CapturedStateType,
   chainOfCommand: ChainOfCommandStateType,
+  desperateHour: DesperateHourStateType,
   drawnIn: DrawnInStateType,
   events: EventsStateType,
   flySolo: FlySoloStateType,
