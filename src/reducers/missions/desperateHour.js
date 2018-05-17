@@ -39,7 +39,7 @@ import track from '../../lib/track';
 // Constants
 
 const TARGET_WEISS = 'General Weiss';
-const TARGET_CLEARING = 'the entrance to the Clearing`';
+const TARGET_CLEARING = 'the entrance to the Clearing';
 
 const DEPLOYMENT_POINT_GREEN = 'The northern green deployment point';
 const DEPLOYMENT_POINT_RED = 'The red deployment point closest to General Weiss';
@@ -178,7 +178,7 @@ function* handleRespite(): Generator<*, *, *> {
           'All doors will now be opened.',
           'Deploy an {ELITE}Elite Imperial Officer{END}, Stormtrooper group, and {ELITE}Elite Royal Guard{END} group to the Warehouse (tile 24B).',
           'Deploy the {ELITE}AT-ST{END} to the yellow point as a Rebel controlled figure. The {ELITE}AT-ST{END} gains "Epic Arsenel" from {ELITE}General Weiss\'{END} ability card.',
-          'The {ELITE}AT-ST{END} performs one action after each hero\'s activation!',
+          'The {ELITE}AT-ST{END} performs one action after each hero\'s activation.',
           'Reach the Clearing (tile 06B) to progress the mission.',
         ],
         'Respite',
