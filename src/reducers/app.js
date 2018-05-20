@@ -36,11 +36,21 @@ import {underSiege} from './missions/underSiege';
 import {vipersDen} from './missions/vipersDen';
 import {wanted} from './missions/wanted';
 
+// Constants
+
+export const IMPERIAL_REWARDS = [
+  'imperialIndustry',
+  'oldWounds',
+  'specialOperations',
+  'supplyDeficit',
+];
+
 // Types
 
 export type AppStateType = {
   currentDifficulty: string,
   currentMission: string,
+  imperialRewards: {[string]: boolean},
   missionThreat: number,
 };
 
@@ -49,6 +59,7 @@ export type AppStateType = {
 const initialState = {
   currentDifficulty: 'standard',
   currentMission: '',
+  imperialRewards: {},
   missionThreat: 2,
 };
 
@@ -69,6 +80,11 @@ export default (state: AppStateType = initialState, action: Function) => {
         ...state,
         currentDifficulty: action.payload.difficulty,
       };
+    case SET_IMPERIAL_REWARDS:
+      return {
+        ...state,
+        imperialRewards: Object.assign({}, action.payload.rewards),
+      };
     default:
       return state;
   }
@@ -79,6 +95,7 @@ export default (state: AppStateType = initialState, action: Function) => {
 export const SET_MISSION = 'SET_MISSION';
 export const SET_MISSION_THREAT = 'SET_MISSION_THREAT';
 export const SET_DIFFICULTY = 'SET_DIFFICULTY';
+export const SET_IMPERIAL_REWARDS = 'SET_IMPERIAL_REWARDS';
 export const MISSION_SAGA_LOAD_DONE = 'MISSION_SAGA_LOAD_DONE';
 
 // Action creators
@@ -87,6 +104,7 @@ export const setMission = (mission: string) => createAction(SET_MISSION, {missio
 export const setMissionThreat = (missionThreat: number) =>
   createAction(SET_MISSION_THREAT, {missionThreat});
 export const setDifficulty = (difficulty: string) => createAction(SET_DIFFICULTY, {difficulty});
+export const setImperialRewards = (rewards: Object) => createAction(SET_IMPERIAL_REWARDS, {rewards});
 export const missionSagaLoadDone = () => createAction(MISSION_SAGA_LOAD_DONE);
 
 // Selectors
@@ -94,6 +112,7 @@ export const missionSagaLoadDone = () => createAction(MISSION_SAGA_LOAD_DONE);
 export const getCurrentMission = (state: StateType) => state.app.currentMission;
 export const getMissionThreat = (state: StateType) => state.app.missionThreat;
 export const getDifficulty = (state: StateType) => state.app.currentDifficulty;
+export const getImperialRewards = (state: StateType) => state.app.imperialRewards;
 
 // Sagas
 

@@ -1,7 +1,8 @@
 {
   "atst": {
     "affiliation": "imperial",
-    "buffs": ["showOfForce", "getPlus2AccuracyPlus1Dmg", "getPlus2AccuracyPlus1Dmg", "getPlus2AccuracyPlus1Dmg"],
+    "attributes": ["vehicle", "heavyWeapon"],
+    "buffs": ["showOfForce", "combatVeteran", "combatVeteran", "combatVeteran"],
     "commands": [
       {
         "condition": "If within 7 spaces and have LOS of {ATTACK_TARGET}",
@@ -29,7 +30,8 @@
   },
   "darthVader": {
     "affiliation": "imperial",
-    "buffs": ["criticalHit", "targetMinus1Block", "surgicalStrike"],
+    "attributes": ["forceUser", "leader", "brawler"],
+    "buffs": ["criticalHit", "exploitWeakness", "surgicalStrike"],
     "commands": [
       {
         "condition": "If possible to be adjacent to 2 hostile figures (one being {ATTACK_TARGET})",
@@ -71,7 +73,8 @@
   },
   "eWebEngineer": {
     "affiliation": "imperial",
-    "buffs": ["plusOneMovement", "figureNotBlockLOS", "showOfForce", "surgicalStrike"],
+    "attributes": ["trooper", "heavyWeapon"],
+    "buffs": ["fleetFooted", "marksman", "showOfForce", "surgicalStrike"],
     "commands": [
       {
         "condition": "If within 7 spaces and have LOS of {ATTACK_TARGET}",
@@ -105,7 +108,8 @@
   },
   "eWebEngineerElite": {
     "affiliation": "imperial",
-    "buffs": ["plusOneMovement", "showOfForce", "showOfForce", "surgicalStrike", "surgicalStrike"],
+    "attributes": ["trooper", "heavyWeapon"],
+    "buffs": ["fleetFooted", "showOfForce", "showOfForce", "surgicalStrike", "surgicalStrike"],
     "commands": [
       {
         "condition": "If within 7 spaces and have LOS of {ATTACK_TARGET}",
@@ -139,6 +143,7 @@
   },
   "generalWeiss": {
     "affiliation": "imperial",
+    "attributes": ["vehicle", "leader", "heavyWeapon"],
     "buffs": ["surgicalStrike"],
     "commands": [
       {
@@ -171,6 +176,7 @@
   },
   "gerrin": {
     "affiliation": "mission",
+    "attributes": ["leader"],
     "buffs": ["recovery", "showOfForce", "surgicalStrike"],
     "commands": [
       {
@@ -207,7 +213,8 @@
   },
   "ig88": {
     "affiliation": "mercenary",
-    "buffs": ["criticalHit", "recovery", "showOfForce", "getPlus2AccuracyPlus1Dmg"],
+    "attributes": ["droid", "hunter"],
+    "buffs": ["criticalHit", "recovery", "showOfForce", "combatVeteran"],
     "commands": [
       {
         "condition": "If within 6 spaces and have LOS of {ATTACK_TARGET}",
@@ -239,7 +246,8 @@
   },
   "imperialOfficer": {
     "affiliation": "imperial",
-    "buffs": ["plusOneMovement", "heavyPressure"],
+    "attributes": ["leader"],
+    "buffs": ["fleetFooted", "heavyPressure"],
     "commands": [
       {
         "condition": "If within 2 spaces of a friendly target that is not adjacent to {MOVE_TARGET}",
@@ -277,6 +285,7 @@
   },
   "imperialOfficerElite": {
     "affiliation": "imperial",
+    "attributes": ["leader"],
     "buffs": ["heavyPressure", "riotGrenades"],
     "commands": [
       {
@@ -319,6 +328,7 @@
   },
   "nexu": {
     "affiliation": "mercenary",
+    "attributes": ["creature", "brawler"],
     "buffs": ["recovery", "surgicalStrike"],
     "commands": [
       {
@@ -357,6 +367,7 @@
   },
   "nexuElite": {
     "affiliation": "mercenary",
+    "attributes": ["creature", "brawler"],
     "buffs": ["recovery", "showOfForce", "showOfForce", "sustainedFire"],
     "commands": [
       {
@@ -395,7 +406,8 @@
   },
   "probeDroid": {
     "affiliation": "imperial",
-    "buffs": ["getPlus2AccuracyPlus1Dmg", "getPlus2AccuracyPlus1Dmg", "plusOneMovement", "heavyPressure"],
+    "attributes": ["droid"],
+    "buffs": ["combatVeteran", "combatVeteran", "fleetFooted", "heavyPressure"],
     "commands": [
       {
         "condition": "If within 6 spaces of {ATTACK_TARGET}",
@@ -429,7 +441,8 @@
   },
   "probeDroidElite": {
     "affiliation": "imperial",
-    "buffs": ["getPlus2AccuracyPlus1Dmg", "targetMinus1Block", "targetMinus1Block", "plusOneMovement"],
+    "attributes": ["droid"],
+    "buffs": ["combatVeteran", "exploitWeakness", "exploitWeakness", "fleetFooted"],
     "commands": [
       {
         "condition": "If within 7 spaces of {ATTACK_TARGET}",
@@ -467,7 +480,8 @@
   },
   "royalGuard": {
     "affiliation": "imperial",
-    "buffs": ["targetMinus1Block", "targetMinus1Block", "extraSurgeIfTargetTwoStrain", "surgicalStrike"],
+    "attributes": ["guardian", "brawler"],
+    "buffs": ["exploitWeakness", "exploitWeakness", "noQuarter", "surgicalStrike"],
     "commands": [
       {
         "condition": "If within 7 spaces of {ATTACK_TARGET}",
@@ -505,7 +519,8 @@
   },
   "royalGuardChampion": {
     "affiliation": "imperial",
-    "buffs": ["targetMinus1Block", "extraSurgeIfTargetTwoStrain", "showOfForce", "surgicalStrike"],
+    "attributes": ["guardian", "brawler"],
+    "buffs": ["exploitWeakness", "noQuarter", "showOfForce", "surgicalStrike"],
     "commands": [
       {
         "condition": "If possible to be adjacent to 2 hostile figures (one being {ATTACK_TARGET})",
@@ -543,7 +558,8 @@
   },
   "royalGuardElite": {
     "affiliation": "imperial",
-    "buffs": ["targetMinus1Block", "gainSurgeStunSurgeDmg", "sustainedFire", "surgicalStrike"],
+    "attributes": ["guardian", "brawler"],
+    "buffs": ["exploitWeakness", "sustainedFire", "surgicalStrike"],
     "commands": [
       {
         "condition": "If within 7 spaces of {ATTACK_TARGET}",
@@ -581,7 +597,8 @@
   },
   "stormtrooper": {
     "affiliation": "imperial",
-    "buffs": ["getPlus2AccuracyPlus1Dmg", "getPlus2AccuracyPlus1Dmg", "riotGrenades", "shockTroopers"],
+    "attributes": ["trooper"],
+    "buffs": ["combatVeteran", "combatVeteran", "riotGrenades", "shockTroopers"],
     "commands": [
       {
         "condition": "If within 6 spaces of {ATTACK_TARGET}",
@@ -615,7 +632,8 @@
   },
   "stormtrooperElite": {
     "affiliation": "imperial",
-    "buffs": ["arcBlasters", "getPlus2AccuracyPlus1Dmg", "showOfForce"],
+    "attributes": ["trooper"],
+    "buffs": ["arcBlasters", "combatVeteran", "showOfForce"],
     "commands": [
       {
         "condition": "If within 6 spaces of {ATTACK_TARGET}",
@@ -653,6 +671,7 @@
   },
   "szark": {
     "affiliation": "mission",
+    "attributes": ["hunter", "brawler"],
     "buffs": ["szark"],
     "commands": [
       {
@@ -685,7 +704,8 @@
   },
   "trandoshanHunter": {
     "affiliation": "mercenary",
-    "buffs": ["getPlus2AccuracyPlus1Dmg", "gainSurgeAfterSufferOneDmg", "targetMinus1Block", "recovery"],
+    "attributes": ["hunter", "brawler"],
+    "buffs": ["combatVeteran", "experimentalArms", "exploitWeakness", "recovery"],
     "commands": [
       {
         "condition": "If within 4 spaces of {ATTACK_TARGET}",
@@ -727,7 +747,8 @@
   },
   "trandoshanHunterElite": {
     "affiliation": "mercenary",
-    "buffs": ["arcBlasters", "targetMinus1Block", "gainSurgeStunSurgeDmg", "recovery", "sustainedFire"],
+    "attributes": ["hunter", "brawler"],
+    "buffs": ["arcBlasters", "exploitWeakness", "recovery", "sustainedFire"],
     "commands": [
       {
         "condition": "If within 4 spaces of {ATTACK_TARGET}",
@@ -769,6 +790,7 @@
   },
   "weiss": {
     "affiliation": "mission",
+    "attributes": ["leader"],
     "buffs": ["weiss"],
     "commands": [
       {

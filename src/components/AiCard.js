@@ -71,6 +71,7 @@ type AiCardPropsType = {
   customAIExceptionList: string[],
   group: ImperialUnitType,
   moveTarget: string,
+  rewardImperialIndustryEarned: boolean,
   setImperialGroupActivated: Function,
 };
 
@@ -109,13 +110,27 @@ class AiCard extends React.PureComponent<AiCardPropsType> {
   };
 
   renderBuff() {
+    const groupBuffList = this.props.group.buffs.slice();
+
     // Pick a random one from the buff list if we don't have one already
     // Since we aren't doing anything more complicated than just picking a random one, just
-    // put the business logic here. If we ever do anymore more, MOVE IT OUT!
+    // put the business logic here. If we ever do anymore, MOVE IT OUT!
     if (!this.chosenBuffIndex) {
-      this.chosenBuffIndex = random(0, this.props.group.buffs.length - 1);
+      // If Imperial Industry is chosen, we're just going to add it to the list of applicable
+      // buffs for a unit
+      // We have to make it hard to earn though so we'll need to roll to even add it to the list
+      if (this.props.rewardImperialIndustryEarned) {
+        // Just use a 50% chance, since the buff gets added to the group list which has to roll again
+        // This is probably a really bad place to do this but I'll leave this refactor for a future
+        // date
+        const roll = Math.floor(Math.random() * 100);
+        if (roll >= 50) {
+          groupBuffList.push("imperialIndustry");
+        }
+      }
+      this.chosenBuffIndex = random(0, groupBuffList.length - 1);
     }
-    const randomBuff = this.props.group.buffs[this.chosenBuffIndex];
+    const randomBuff = groupBuffList[this.chosenBuffIndex];
     const buff = buffs[randomBuff];
 
     // Not sure why buff isn't defined sometimes but error check so the app doesn't crash

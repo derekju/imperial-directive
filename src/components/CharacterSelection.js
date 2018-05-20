@@ -4,6 +4,7 @@ import {LIGHT_WHITE, REBEL_RED} from '../styles/colors';
 import {BrowserRouter as Router} from 'react-router-dom';
 import Button from './Button';
 import HeroAvatar from './HeroAvatar';
+import {IMPERIAL_REWARDS} from '../reducers/app';
 import missions from '../data/missions.json';
 import React from 'react';
 import rebels from '../data/rebels.json';
@@ -37,6 +38,10 @@ const styles = {
     padding: '5px 5px 2px 5px',
     width: '150px',
   },
+  label: {
+    fontSize: '14px',
+    marginRight: '10px',
+  },
   section: {
     width: '800px',
   },
@@ -48,6 +53,11 @@ const styles = {
     flexDirection: 'row',
     flexWrap: 'wrap',
     padding: '20px',
+  },
+  sectionDescription: {
+    fontSize: '13px',
+    fontStyle: 'italic',
+    marginBottom: '10px',
   },
   sectionHeader: {
     borderBottom: '2px solid black',
@@ -115,6 +125,7 @@ type CharacterSelectionPropsType = {
   history: Object,
   setAllyChosen: Function,
   setDifficulty: Function,
+  setImperialRewards: Function,
   setMission: Function,
   setMissionThreat: Function,
   setRoster: Function,
@@ -150,16 +161,32 @@ class CharacterSelection extends React.Component<
     }
 
     this.props.setRoster(this.state.selectedRoster.concat(selectedAlly ? [selectedAlly] : []));
+
     if (selectedAlly) {
       this.props.setAllyChosen(selectedAlly);
     }
+
     this.props.setMissionThreat(this.state.missionThreat);
+
     this.props.setDifficulty(this.state.selectedDifficulty);
     track('setDifficulty', this.state.selectedDifficulty);
+
+    // Get which checkboxes are checked for rewards
+    // Gonna just dig into the DOM to do this
+    const imperialRewards = IMPERIAL_REWARDS.reduce((accumulator: Object, key: string) => {
+      const checkbox = document.querySelector('#' + key);
+      if (checkbox) {
+        accumulator[key] = checkbox.checked;
+      }
+      return accumulator;
+    }, {});
+    this.props.setImperialRewards(imperialRewards);
+
     if (this.select) {
       const selectedMission = this.select.options[this.select.selectedIndex].value;
       this.props.setMission(selectedMission);
     }
+
     this.props.history.push('/mission');
   };
 
@@ -209,114 +236,171 @@ class CharacterSelection extends React.Component<
     }));
   };
 
+  renderSelectMission() {
+    return (
+      <div style={styles.section}>
+        <div style={styles.sectionHeader}>
+          <span style={styles.headerText}>Select Mission</span>
+        </div>
+        <div style={styles.sectionContents}>
+          <select ref={this.saveSelect} style={styles.selectInput}>
+            {this.props.availableMissions.map((missionId: string) => (
+              <option key={missionId} value={missionId}>
+                {missions[missionId].name}
+              </option>
+            ))}
+          </select>
+          <div style={styles.threatInputSection}>
+            <div style={styles.threatTitle}>Mission Threat:</div>
+            <div style={styles.threatButton} onClick={this.decrementThreat}>
+              -
+            </div>
+            <div style={styles.threatNumber}>{this.state.missionThreat}</div>
+            <div style={styles.threatButton} onClick={this.incrementThreat}>
+              +
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  renderSelectHeroes() {
+    return (
+      <div style={styles.section}>
+        <div style={styles.sectionHeader}>
+          <span style={styles.headerText}>Select Heroes</span>
+        </div>
+        <div style={styles.sectionContents}>
+          {this.props.availableHeroes.map((heroId: string) => (
+            <div
+              key={heroId}
+              style={styles.avatarContainer}
+              onClick={() => this.handleAvatarClick(heroId)}
+            >
+              <HeroAvatar
+                firstName={rebels[heroId].firstName}
+                style={this.state.selectedRoster.includes(heroId) ? styles.selected : {}}
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  renderSelectAlly() {
+    return (
+      <div style={styles.section}>
+        <div style={styles.sectionHeader}>
+          <span style={styles.headerText}>Select Ally</span>
+        </div>
+        <div style={styles.sectionContents}>
+          <select ref={this.saveAllySelect} style={styles.selectInput}>
+            <option key="none" value="">
+              None
+            </option>
+            {this.props.availableAllies.map((allyId: string) => (
+              <option key={allyId} value={allyId}>
+                {`${rebels[allyId].firstName} ${rebels[allyId].lastName}`}
+              </option>
+            ))}
+          </select>
+        </div>
+      </div>
+    );
+  }
+
+  renderDifficultySection() {
+    return (
+      <div style={styles.section}>
+        <div style={styles.sectionHeader}>
+          <span style={styles.headerText}>Difficulty</span>
+        </div>
+        <div style={styles.sectionContents}>
+          <div style={styles.toggleSection}>
+            <div
+              onClick={() => this.difficultyToggle('standard')}
+              style={{
+                ...styles.toggle,
+                ...(this.state.selectedDifficulty === 'standard' ? styles.selectedToggle : {}),
+              }}
+            >
+              Normal
+            </div>
+            <div
+              onClick={() => this.difficultyToggle('experienced')}
+              style={{
+                ...styles.toggle,
+                ...(this.state.selectedDifficulty === 'experienced'
+                  ? styles.selectedToggle
+                  : {}),
+              }}
+            >
+              Hard
+            </div>
+            <div style={styles.difficultyDescription}>
+              <span>
+                {this.state.selectedDifficulty === 'standard'
+                  ? 'Standard difficulty. Good for players of all experience levels to Imperial Assault. Threat gained per round is standard campaign rules. HP buffs for units is standard.'
+                  : ''}
+              </span>
+              <span>
+                {this.state.selectedDifficulty === 'experienced'
+                  ? 'Hard difficulty. Good for players looking for a challenge. Threat gained per round is increased. HP buffs for units is increased.'
+                  : ''}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  renderSelectImperialRewards() {
+    return (
+      <div style={styles.section}>
+        <div style={styles.sectionHeader}>
+          <span style={styles.headerText}>Imperial Rewards</span>
+        </div>
+        <div style={styles.sectionContents}>
+          <div style={styles.sectionDescription}>
+            Select the rewards that the Imperial Player has earned. They will be activated when the mission starts.
+          </div>
+          <div style={styles.toggleSection}>
+            <div>
+              <input type="checkbox" id="imperialIndustry" />
+              <label style={styles.label} htmlFor="imperialIndustry">Imperial Industry</label>
+            </div>
+            <div>
+              <input type="checkbox" id="oldWounds" />
+              <label style={styles.label} htmlFor="oldWounds">Old Wounds</label>
+            </div>
+            <div>
+              <input type="checkbox" id="specialOperations" />
+              <label style={styles.label} htmlFor="specialOperations">Special Operations</label>
+            </div>
+            <div>
+              <input type="checkbox" id="supplyDeficit" />
+              <label style={styles.label} htmlFor="supplyDeficit">Supply Deficit</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   render() {
     return (
       <Router>
         <div style={styles.base}>
-          <div style={styles.section}>
-            <div style={styles.sectionHeader}>
-              <span style={styles.headerText}>Select Mission</span>
-            </div>
-            <div style={styles.sectionContents}>
-              <select ref={this.saveSelect} style={styles.selectInput}>
-                {this.props.availableMissions.map((missionId: string) => (
-                  <option key={missionId} value={missionId}>
-                    {missions[missionId].name}
-                  </option>
-                ))}
-              </select>
-              <div style={styles.threatInputSection}>
-                <div style={styles.threatTitle}>Mission Threat:</div>
-                <div style={styles.threatButton} onClick={this.decrementThreat}>
-                  -
-                </div>
-                <div style={styles.threatNumber}>{this.state.missionThreat}</div>
-                <div style={styles.threatButton} onClick={this.incrementThreat}>
-                  +
-                </div>
-              </div>
-            </div>
-          </div>
-          <div style={styles.section}>
-            <div style={styles.sectionHeader}>
-              <span style={styles.headerText}>Select Heroes</span>
-            </div>
-            <div style={styles.sectionContents}>
-              {this.props.availableHeroes.map((heroId: string) => (
-                <div
-                  key={heroId}
-                  style={styles.avatarContainer}
-                  onClick={() => this.handleAvatarClick(heroId)}
-                >
-                  <HeroAvatar
-                    firstName={rebels[heroId].firstName}
-                    style={this.state.selectedRoster.includes(heroId) ? styles.selected : {}}
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
-          <div style={styles.section}>
-            <div style={styles.sectionHeader}>
-              <span style={styles.headerText}>Select Ally</span>
-            </div>
-            <div style={styles.sectionContents}>
-              <select ref={this.saveAllySelect} style={styles.selectInput}>
-                <option key="none" value="">
-                  None
-                </option>
-                {this.props.availableAllies.map((allyId: string) => (
-                  <option key={allyId} value={allyId}>
-                    {`${rebels[allyId].firstName} ${rebels[allyId].lastName}`}
-                  </option>
-                ))}
-              </select>
-            </div>
-          </div>
-          <div style={styles.section}>
-            <div style={styles.sectionHeader}>
-              <span style={styles.headerText}>Difficulty</span>
-            </div>
-            <div style={styles.sectionContents}>
-              <div style={styles.toggleSection}>
-                <div
-                  onClick={() => this.difficultyToggle('standard')}
-                  style={{
-                    ...styles.toggle,
-                    ...(this.state.selectedDifficulty === 'standard' ? styles.selectedToggle : {}),
-                  }}
-                >
-                  Normal
-                </div>
-                <div
-                  onClick={() => this.difficultyToggle('experienced')}
-                  style={{
-                    ...styles.toggle,
-                    ...(this.state.selectedDifficulty === 'experienced'
-                      ? styles.selectedToggle
-                      : {}),
-                  }}
-                >
-                  Hard
-                </div>
-                <div style={styles.difficultyDescription}>
-                  <span>
-                    {this.state.selectedDifficulty === 'standard'
-                      ? 'Standard difficulty. Good for players of all experience levels to Imperial Assault. Threat gained per round is standard campaign rules. HP buffs for units is standard.'
-                      : ''}
-                  </span>
-                  <span>
-                    {this.state.selectedDifficulty === 'experienced'
-                      ? 'Hard difficulty. Good for players looking for a challenge. Threat gained per round is increased. HP buffs for units is increased.'
-                      : ''}
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
+          {this.renderSelectMission()}
+          {this.renderSelectHeroes()}
+          {this.renderSelectAlly()}
+          {this.renderSelectImperialRewards()}
           <div>
             <Button text="Cancel" onClick={this.cancel} style={styles.cancelButton} />
-            <Button text="OK" onClick={this.submit} />
+            <Button text="Start" onClick={this.submit} />
           </div>
         </div>
       </Router>

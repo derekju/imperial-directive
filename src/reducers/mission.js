@@ -1,6 +1,6 @@
 // @flow
 
-import {all, call, fork, put, select, take, takeEvery} from 'redux-saga/effects';
+import {all, call, fork, put, select, spawn, take, takeEvery} from 'redux-saga/effects';
 import {
   getAllyChosen,
   getIsThereReadyRebelFigures,
@@ -8,6 +8,7 @@ import {
   SET_REBEL_ESCAPED,
   SET_REBEL_ACTIVATED,
 } from './rebels';
+import {getImperialRewards} from './app';
 import {
   getReadyImperialGroups,
   OPTIONAL_DEPLOYMENT_DONE,
@@ -17,6 +18,7 @@ import {
 } from './imperials';
 import createAction from './createAction';
 import {displayModal} from './modal';
+import {handleSpecialOperationsReward} from './imperialRewards';
 import helperEventModal from './missions/helpers/helperEventModal';
 import rebels from '../data/rebels.json';
 import type {StateType} from './types';
@@ -371,6 +373,52 @@ function* handleCheckForAllies(): Generator<*, *, *> {
   }
 }
 
+function* handleCheckForImperialRewards(): Generator<*, *, *> {
+  // If any of the rewards are toggled, we need to handle them one by one
+  // There's not really an elegant way to do this so just check them one by one
+  const imperialRewards = yield select(getImperialRewards);
+  if (imperialRewards.supplyDeficit) {
+    yield call(helperEventModal, {
+      text: [
+        'The Imperial player has earned the Supply Deficit reward.',
+        'You may choose to spend 100 credits. If you do not, each hero suffers 2 {STRAIN}.',
+      ],
+      title: 'Supply Deficit',
+    });
+  }
+
+  if (imperialRewards.oldWounds) {
+    yield call(helperEventModal, {
+      text: [
+        'The Imperial player has earned the Old Wounds reward.',
+        'When a wounded hero is attacking, apply -1 {DAMAGE} to the attack results.',
+      ],
+      title: 'Old Wounds',
+    });
+  }
+
+  if (imperialRewards.specialOperations) {
+    yield call(helperEventModal, {
+      text: [
+        'The Imperial player has earned the Special Operations reward.',
+        'As long as the Imperial player has a Leader unit deployed at the beginning of the round, they will automatically gain 1 threat at the beginning of each round.',
+      ],
+      title: 'Special Operations',
+    });
+    yield spawn(handleSpecialOperationsReward);
+  }
+
+  if (imperialRewards.imperialIndustry) {
+    yield call(helperEventModal, {
+      text: [
+        'The Imperial player has earned the Imperial Industry reward.',
+        'The bonus will be randomly applied to a unit each turn.',
+      ],
+      title: 'Imperial Industry',
+    });
+  }
+}
+
 function* handleLoadMission(): Generator<*, *, *> {
   // yield put(eventPhaseBegin());
   // yield take(EVENT_PHASE_END);
@@ -379,6 +427,7 @@ function* handleLoadMission(): Generator<*, *, *> {
   yield take(MISSION_SPECIAL_SETUP_DONE);
   yield call(handleCheckForAllies);
   yield call(handleCheckForThreeHeroes);
+  yield call(handleCheckForImperialRewards);
   yield put(activationPhaseBegin());
 }
 

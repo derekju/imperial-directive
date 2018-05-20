@@ -5,7 +5,7 @@
       "After a figure resolves a {RANGED} attack, each figure that suffered 1 or more {DMG} tests {STR}. Each figure that fails is Stunned."
     ]
   },
-  "getPlus2AccuracyPlus1Dmg": {
+  "combatVeteran": {
     "name": "Combat Veteran",
     "text": [
       "While attacking, apply +2 Accuracy and +1 {DMG} to the results."
@@ -23,20 +23,20 @@
       "While attacking, apply +2 Accuracy to the results."
     ]
   },
-  "gainSurgeAfterSufferOneDmg": {
+  "experimentalArms": {
     "name": "Experimental Arms",
     "text": [
       "Each figure gains +1 {SURGE} while attacking.{BREAK}",
       "After the attack is resolved, the attacking figure suffers +1 {DMG}."
     ]
   },
-  "targetMinus1Block": {
+  "exploitWeakness": {
     "name": "Exploit Weakness",
     "text": [
       "All targets attacked by figures in this group apply -1 {BLOCK} to their defense results."
     ]
   },
-  "plusOneMovement": {
+  "fleetFooted": {
     "name": "Fleet Footed",
     "text": [
       "All figures gain 1 extra movement point."
@@ -48,23 +48,13 @@
       "After attacking a target, the target suffers an additional 1 {STRAIN}."
     ]
   },
-  "gainSurgeStunSurgeDmg": {
+  "imperialIndustry": {
     "name": "Imperial Industry",
     "text": [
       "Each figure in this group gains:{BREAK}",
-      "{SURGE}: Stun{BREAK}",
-      "{SURGE}: +1 {DMG}{BREAK}",
-      "Apply these surge effects before all others."
-    ]
-  },
-  "imperialIndustryElite": {
-    "name": "Imperial Industry",
-    "text": [
-      "Each figure in this group gains:{BREAK}",
-      "{SURGE}: Stun{BREAK}",
-      "{SURGE}: +2 {DMG}{BREAK}",
-      "{SURGE}: Recover 2 {DMG}{BREAK}",
-      "Apply these surge effects before all others."
+      "Stun{BREAK}",
+      "+1 {DMG}{BREAK}",
+      "{SURGE}: Recover 2 {DAMAGE}"
     ]
   },
   "jetpacks": {
@@ -73,13 +63,13 @@
       "All figures gain Mobile."
     ]
   },
-  "figureNotBlockLOS": {
+  "marksman": {
     "name": "Marksman",
     "text": [
       "Figures do not block line of sight for attacks."
     ]
   },
-  "extraSurgeIfTargetTwoStrain": {
+  "noQuarter": {
     "name": "No Quarter",
     "text": [
       "If attacking a hero who has suffered 2 or more {STRAIN}, apply +1 {SURGE} to the results."
@@ -99,7 +89,7 @@
       "Limit 1 test per hero."
     ]
   },
-  "gainPierceSurgeBleed": {
+  "savageWeaponry": {
     "name": "Savage Weaponry",
     "text": [
       "Each figure gains:{BREAK}",

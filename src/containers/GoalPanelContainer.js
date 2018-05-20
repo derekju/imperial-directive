@@ -16,6 +16,7 @@ import {getGenerousDonationsGoalText} from '../reducers/missions/generousDonatio
 import {getHighMoonGoalText} from '../reducers/missions/highMoon';
 import {getHomecomingGoalText} from '../reducers/missions/homecoming';
 import {getImperialHospitalityGoalText} from '../reducers/missions/imperialHospitality';
+import {getImperialRewards} from '../reducers/app';
 import {getImpoundedGoalText} from '../reducers/missions/impounded';
 import {getIncomingGoalText} from '../reducers/missions/incoming';
 import {getIndebtedGoalText} from '../reducers/missions/indebted';
@@ -107,6 +108,7 @@ const mapStateToProps = (state: StateType) => ({
   generousDonationsVirusUploaded: state.generousDonations.virusUploaded,
   goalText: getGoalText(state),
   lastStandVaderDeployed: state.lastStand.doorState === 3,
+  rewardOldWoundsEarned: Boolean(getImperialRewards(state).oldWounds),
 });
 
 const looseCannonDefeatAtst = () => createAction('LOOSE_CANNON_DEFEAT_ATST');

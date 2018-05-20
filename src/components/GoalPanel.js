@@ -7,6 +7,8 @@ import React from 'react';
 const styles = {
   base: {
     border: '2px solid black',
+    maxHeight: '420px',
+    overflowY: 'scroll',
     width: '200px',
   },
   buttonContainer: {
@@ -41,6 +43,7 @@ type GoalPanelPropsType = {
   lastStandVaderBlock: Function,
   lastStandVaderDeployed: boolean,
   looseCannonDefeatAtst: Function,
+  rewardOldWoundsEarned: boolean,
   spiceJobGetKeycard: Function,
   theSourceOfficerFreed: Function,
   vipersDenFigureDropsCore: Function,
@@ -79,22 +82,6 @@ class GoalPanel extends React.Component<GoalPanelPropsType, GoalPanelStateType> 
       buttonPressed: true,
     });
     this.props.incomingEnterCorridor();
-  };
-
-  handleVipersDenHeroGetCore = () => {
-    this.props.vipersDenHeroGetCore();
-  };
-
-  handleVipersDenImperialGetCore = () => {
-    this.props.vipersDenImperialGetCore();
-  };
-
-  handleVipersDenFigureDropsCore = () => {
-    this.props.vipersDenFigureDropsCore();
-  };
-
-  handleVipersDenImperialEscapes = () => {
-    this.props.vipersDenImperialEscapes();
   };
 
   handleTheSourceOfficerFreed = () => {
@@ -152,27 +139,27 @@ class GoalPanel extends React.Component<GoalPanelPropsType, GoalPanelStateType> 
         return (
           <div>
             <div style={styles.buttonContainer}>
-              <Button text="Hero Gets Core" width={180} onClick={this.handleVipersDenHeroGetCore} />
+              <Button text="Hero Gets Core" width={180} onClick={this.props.vipersDenHeroGetCore} />
             </div>
             <div style={styles.buttonContainer}>
               <Button
                 text="Imperial Gets Core"
                 width={180}
-                onClick={this.handleVipersDenImperialGetCore}
+                onClick={this.props.vipersDenImperialGetCore}
               />
             </div>
             <div style={styles.buttonContainer}>
               <Button
                 text="Figure Drops Core"
                 width={180}
-                onClick={this.handleVipersDenFigureDropsCore}
+                onClick={this.props.vipersDenFigureDropsCore}
               />
             </div>
             <div style={styles.buttonContainer}>
               <Button
                 text="Imperial Escapes"
                 width={180}
-                onClick={this.handleVipersDenImperialEscapes}
+                onClick={this.props.vipersDenImperialEscapes}
               />
             </div>
           </div>
@@ -276,6 +263,20 @@ class GoalPanel extends React.Component<GoalPanelPropsType, GoalPanelStateType> 
     return null;
   }
 
+  renderRewards() {
+    if (this.props.rewardOldWoundsEarned) {
+      const oldWoundsRewardText = [
+        '{BREAK}',
+        '{BOLD}Old Wounds:{END}',
+        'When a wounded hero is attacking, apply -1 {DAMAGE} to the attack results.',
+      ];
+
+      return (
+        <div style={styles.contents}>{this.renderGoals(oldWoundsRewardText)}</div>
+      );
+    }
+  }
+
   renderGoals(goalText: string[]) {
     if (goalText.length === 0) {
       return null;
@@ -294,6 +295,7 @@ class GoalPanel extends React.Component<GoalPanelPropsType, GoalPanelStateType> 
         <div style={styles.header}>Mission Goals</div>
         <div style={styles.contents}>{this.renderGoals(this.props.goalText)}</div>
         <div>{this.renderMissionSpecific()}</div>
+        <div>{this.renderRewards()}</div>
       </div>
     );
   }

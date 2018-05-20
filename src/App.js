@@ -11,7 +11,7 @@ const styles = {
     alignItems: 'center',
     backgroundColor: '#333',
     display: 'flex',
-    height: '100%',
+    flex: 1,
     justifyContent: 'center',
   },
   canvas: {

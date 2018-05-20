@@ -82,6 +82,7 @@ type MissionPropsType = {
   instructions: {imperialVictory: string, rebelVictory: string},
   interruptedGroup: ?ImperialUnitType,
   moveTarget: string,
+  rewardImperialIndustryEarned: boolean,
   setImperialGroupActivated: Function,
   setInterruptedGroupActivated: Function,
 };
@@ -129,6 +130,7 @@ class Mission extends React.Component<MissionPropsType> {
               customAIExceptionList={this.props.customAIExceptionList}
               group={this.props.activatedGroup}
               moveTarget={this.props.moveTarget}
+              rewardImperialIndustryEarned={this.props.rewardImperialIndustryEarned}
               setImperialGroupActivated={this.props.setImperialGroupActivated}
             />
           </div>
@@ -141,6 +143,7 @@ class Mission extends React.Component<MissionPropsType> {
               customAIExceptionList={this.props.customAIExceptionList}
               group={this.props.interruptedGroup}
               moveTarget={this.props.moveTarget}
+              rewardImperialIndustryEarned={this.props.rewardImperialIndustryEarned}
               setImperialGroupActivated={this.props.setInterruptedGroupActivated}
             />
           </div>

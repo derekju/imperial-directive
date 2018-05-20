@@ -39,6 +39,7 @@ export type ImperialUnitCommandType = {
 
 export type UnitConfigType = {
   affiliation: string,
+  attributes: string[],
   buffs: string[],
   commands: ImperialUnitCommandType[],
   eligibleForHpBoost: boolean,
@@ -55,6 +56,7 @@ export type UnitConfigType = {
 
 export type ImperialUnitType = {
   affiliation: string,
+  attributes: string[],
   buffs: string[],
   commands: ImperialUnitCommandType[],
   currentNumFigures: number,

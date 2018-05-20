@@ -21,6 +21,7 @@ const mapStateToProps = (state: StateType) => ({
   instructions: state.mission.instructions,
   interruptedGroup: state.imperials.interruptedGroup,
   moveTarget: state.mission.moveTarget,
+  rewardImperialIndustryEarned: Boolean(state.app.imperialRewards.imperialIndustry),
 });
 
 const mapDispatchToProps = {
