@@ -164,6 +164,7 @@ class CharacterSelection extends React.Component<
 
     if (selectedAlly) {
       this.props.setAllyChosen(selectedAlly);
+      track('setAlly', selectedAlly);
     }
 
     this.props.setMissionThreat(this.state.missionThreat);
@@ -332,9 +333,7 @@ class CharacterSelection extends React.Component<
               onClick={() => this.difficultyToggle('experienced')}
               style={{
                 ...styles.toggle,
-                ...(this.state.selectedDifficulty === 'experienced'
-                  ? styles.selectedToggle
-                  : {}),
+                ...(this.state.selectedDifficulty === 'experienced' ? styles.selectedToggle : {}),
               }}
             >
               Hard
@@ -365,24 +364,33 @@ class CharacterSelection extends React.Component<
         </div>
         <div style={styles.sectionContents}>
           <div style={styles.sectionDescription}>
-            Select the rewards that the Imperial Player has earned. They will be activated when the mission starts.
+            Select the rewards that the Imperial Player has earned. They will be activated when the
+            mission starts.
           </div>
           <div style={styles.toggleSection}>
             <div>
               <input type="checkbox" id="imperialIndustry" />
-              <label style={styles.label} htmlFor="imperialIndustry">Imperial Industry</label>
+              <label style={styles.label} htmlFor="imperialIndustry">
+                Imperial Industry
+              </label>
             </div>
             <div>
               <input type="checkbox" id="oldWounds" />
-              <label style={styles.label} htmlFor="oldWounds">Old Wounds</label>
+              <label style={styles.label} htmlFor="oldWounds">
+                Old Wounds
+              </label>
             </div>
             <div>
               <input type="checkbox" id="specialOperations" />
-              <label style={styles.label} htmlFor="specialOperations">Special Operations</label>
+              <label style={styles.label} htmlFor="specialOperations">
+                Special Operations
+              </label>
             </div>
             <div>
               <input type="checkbox" id="supplyDeficit" />
-              <label style={styles.label} htmlFor="supplyDeficit">Supply Deficit</label>
+              <label style={styles.label} htmlFor="supplyDeficit">
+                Supply Deficit
+              </label>
             </div>
           </div>
         </div>
