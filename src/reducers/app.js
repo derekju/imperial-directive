@@ -4,37 +4,8 @@ import {cancel, fork, put, select, take} from 'redux-saga/effects';
 import createAction from './createAction';
 import {loadMission} from './mission';
 import missions from '../data/missions';
+import missionSagas from './missions';
 import type {StateType} from './types';
-
-import {aftermath} from './missions/aftermath';
-import {aNewThreat} from './missions/aNewThreat';
-import {aSimpleTask} from './missions/aSimpleTask';
-import {brushfire} from './missions/brushfire';
-import {captured} from './missions/captured';
-import {chainOfCommand} from './missions/chainOfCommand';
-import {desperateHour} from './missions/desperateHour';
-import {drawnIn} from './missions/drawnIn';
-import {flySolo} from './missions/flySolo';
-import {friendsOfOld} from './missions/friendsOfOld';
-import {generousDonations} from './missions/generousDonations';
-import {highMoon} from './missions/highMoon';
-import {homecoming} from './missions/homecoming';
-import {imperialHospitality} from './missions/imperialHospitality';
-import {impounded} from './missions/impounded';
-import {incoming} from './missions/incoming';
-import {indebted} from './missions/indebted';
-import {lastStand} from './missions/lastStand';
-import {looseCannon} from './missions/looseCannon';
-import {luxuryCruise} from './missions/luxuryCruise';
-import {meansOfProduction} from './missions/meansOfProduction';
-import {sorryAboutTheMess} from './missions/sorryAboutTheMess';
-import {targetOfOpportunity} from './missions/targetOfOpportunity';
-import {temptation} from './missions/temptation';
-import {theSpiceJob} from './missions/theSpiceJob';
-import {theSource} from './missions/theSource';
-import {underSiege} from './missions/underSiege';
-import {vipersDen} from './missions/vipersDen';
-import {wanted} from './missions/wanted';
 
 // Constants
 
@@ -117,96 +88,8 @@ export const getImperialRewards = (state: StateType) => state.app.imperialReward
 // Sagas
 
 function* forkMission(currentMission: string): Generator<*, *, *> {
-  switch (currentMission) {
-    case 'aftermath':
-      yield fork(aftermath);
-      break;
-    case 'aNewThreat':
-      yield fork(aNewThreat);
-      break;
-    case 'aSimpleTask':
-      yield fork(aSimpleTask);
-      break;
-    case 'brushfire':
-      yield fork(brushfire);
-      break;
-    case 'captured':
-      yield fork(captured);
-      break;
-    case 'chainOfCommand':
-      yield fork(chainOfCommand);
-      break;
-    case 'desperateHour':
-      yield fork(desperateHour);
-      break;
-    case 'drawnIn':
-      yield fork(drawnIn);
-      break;
-    case 'flySolo':
-      yield fork(flySolo);
-      break;
-    case 'friendsOfOld':
-      yield fork(friendsOfOld);
-      break;
-    case 'generousDonations':
-      yield fork(generousDonations);
-      break;
-    case 'highMoon':
-      yield fork(highMoon);
-      break;
-    case 'homecoming':
-      yield fork(homecoming);
-      break;
-    case 'imperialHospitality':
-      yield fork(imperialHospitality);
-      break;
-    case 'impounded':
-      yield fork(impounded);
-      break;
-    case 'incoming':
-      yield fork(incoming);
-      break;
-    case 'indebted':
-      yield fork(indebted);
-      break;
-    case 'lastStand':
-      yield fork(lastStand);
-      break;
-    case 'looseCannon':
-      yield fork(looseCannon);
-      break;
-    case 'luxuryCruise':
-      yield fork(luxuryCruise);
-      break;
-    case 'meansOfProduction':
-      yield fork(meansOfProduction);
-      break;
-    case 'sorryAboutTheMess':
-      yield fork(sorryAboutTheMess);
-      break;
-    case 'targetOfOpportunity':
-      yield fork(targetOfOpportunity);
-      break;
-    case 'temptation':
-      yield fork(temptation);
-      break;
-    case 'theSpiceJob':
-      yield fork(theSpiceJob);
-      break;
-    case 'theSource':
-      yield fork(theSource);
-      break;
-    case 'underSiege':
-      yield fork(underSiege);
-      break;
-    case 'vipersDen':
-      yield fork(vipersDen);
-      break;
-    case 'wanted':
-      yield fork(wanted);
-      break;
-    default:
-      return;
+  if (currentMission in missionSagas) {
+    yield fork(missionSagas[currentMission]);
   }
 }
 
