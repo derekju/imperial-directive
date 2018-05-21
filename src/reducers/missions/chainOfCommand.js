@@ -4,6 +4,7 @@ import {all, call, fork, put, select, take} from 'redux-saga/effects';
 import {
   ACTIVATE_IMPERIAL_GROUP,
   DEFEAT_IMPERIAL_FIGURE,
+  clearCustomAI,
   defeatImperialFigure,
   getLastDeployedGroupOfId,
   setCustomAI,
@@ -50,10 +51,12 @@ const DEPLOYMENT_POINT_GREEN = 'The western green deployment point';
 
 const CUSTOM_AI_TERMINAL = [
   {
-    command: '{ACTION} Interact with the terminal.',
-    condition: 'If adjacent to an unused terminal',
+    command: '{ACTION} Move to be adjacent to the terminal and {ACTION} Interact with the terminal.',
+    condition: 'If within distance to a terminal or adjacent to a terminal (and one has not been activated this round)',
   },
 ];
+
+const CUSTOM_AI_EXCLUSION_LIST = ['nexu', 'nexuElite', 'weiss', 'generalWeiss'];
 
 // Types
 
@@ -61,6 +64,7 @@ export type ChainOfCommandStateType = {
   generalWeissActive: boolean,
   generalWeissDeployed: boolean,
   priorityTargetKillHero: boolean,
+  terminalActivatedForRound: boolean,
 };
 
 // State
@@ -69,6 +73,7 @@ const initialState = {
   generalWeissActive: false,
   generalWeissDeployed: false,
   priorityTargetKillHero: false,
+  terminalActivatedForRound: false,
 };
 
 export default (state: ChainOfCommandStateType = initialState, action: Object) => {
@@ -87,6 +92,17 @@ export default (state: ChainOfCommandStateType = initialState, action: Object) =
       return {
         ...state,
         priorityTargetKillHero: action.payload,
+      };
+    case 'CHAIN_OF_COMMAND_TERMINAL_INTERACT':
+      return {
+        ...state,
+        terminalActivatedForRound: true,
+      };
+    // Use this as a proxy for a new round starting so the Imperial troops can re-activate
+    case STATUS_PHASE_END_ROUND_EFFECTS:
+      return {
+        ...state,
+        terminalActivatedForRound: false,
       };
     default:
       return state;
@@ -269,6 +285,7 @@ function* handleTerminalDestroyed(): Generator<*, *, *> {
 function* handleTerminalInteracted(): Generator<*, *, *> {
   while (true) {
     yield take('CHAIN_OF_COMMAND_TERMINAL_INTERACT');
+    yield put(clearCustomAI());
     yield call(helperEventModal, {
       text: ['The threat has been increased by 2.'],
       title: 'Chain of Command',
@@ -315,6 +332,9 @@ function* handleRoundEnd(): Generator<*, *, *> {
       yield put(silentSetImperialGroupActivated(generalWeissGroup));
     }
 
+    // Reset Custom AI in case it was cleared
+    yield put(setCustomAI(CUSTOM_AI_TERMINAL, CUSTOM_AI_EXCLUSION_LIST));
+
     yield put(statusPhaseEndRoundEffectsDone());
   }
 }
@@ -350,7 +370,7 @@ export function* chainOfCommand(): Generator<*, *, *> {
   yield put(setDeploymentPoint(DEPLOYMENT_POINT_GREEN));
 
   // Set custom AI
-  yield put(setCustomAI(CUSTOM_AI_TERMINAL, ['nexu', 'nexuElite', 'weiss', 'generalWeiss']));
+  yield put(setCustomAI(CUSTOM_AI_TERMINAL, CUSTOM_AI_EXCLUSION_LIST));
 
   yield all([
     fork(handleSpecialSetup),

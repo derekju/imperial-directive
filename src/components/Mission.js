@@ -17,7 +17,7 @@ import RoundThreatTracker from './RoundThreatTracker';
 
 const styles = {
   activatedGroupContainer: {
-    ...positionAbsolute(100, 200, 100, 200),
+    ...positionAbsolute(25, 25, 25, 25),
     backgroundColor: 'transparent',
     display: 'flex',
     flexDirection: 'column',
@@ -35,6 +35,7 @@ const styles = {
     flexDirection: 'column',
     justifyContent: 'flex-start',
     margin: '10px 0 10px 10px',
+    position: 'relative',
     width: '665px',
   },
   leftPanelContainer: {
@@ -107,6 +108,32 @@ class Mission extends React.Component<MissionPropsType> {
         <div style={styles.contents}>
           <ImperialDashboardContainer />
           <MapContainer />
+          {this.props.activatedGroup ? (
+            <div style={styles.activatedGroupContainer}>
+              <AiCard
+                attackTarget={this.props.attackTarget}
+                customAI={this.props.customAI}
+                customAIExceptionList={this.props.customAIExceptionList}
+                group={this.props.activatedGroup}
+                moveTarget={this.props.moveTarget}
+                rewardImperialIndustryEarned={this.props.rewardImperialIndustryEarned}
+                setImperialGroupActivated={this.props.setImperialGroupActivated}
+              />
+            </div>
+          ) : null}
+          {this.props.interruptedGroup ? (
+            <div style={styles.activatedGroupContainer}>
+              <AiCard
+                attackTarget={this.props.attackTarget}
+                customAI={this.props.customAI}
+                customAIExceptionList={this.props.customAIExceptionList}
+                group={this.props.interruptedGroup}
+                moveTarget={this.props.moveTarget}
+                rewardImperialIndustryEarned={this.props.rewardImperialIndustryEarned}
+                setImperialGroupActivated={this.props.setInterruptedGroupActivated}
+              />
+            </div>
+          ) : null}
         </div>
         <div style={styles.rightPanelContainer}>
           <div style={styles.panelItem}>
@@ -122,32 +149,6 @@ class Mission extends React.Component<MissionPropsType> {
         <div style={styles.menuContainer}>
           <Button style={styles.quitButton} onClick={this.handleQuit} text="Quit" width={80} />
         </div>
-        {this.props.activatedGroup ? (
-          <div style={styles.activatedGroupContainer}>
-            <AiCard
-              attackTarget={this.props.attackTarget}
-              customAI={this.props.customAI}
-              customAIExceptionList={this.props.customAIExceptionList}
-              group={this.props.activatedGroup}
-              moveTarget={this.props.moveTarget}
-              rewardImperialIndustryEarned={this.props.rewardImperialIndustryEarned}
-              setImperialGroupActivated={this.props.setImperialGroupActivated}
-            />
-          </div>
-        ) : null}
-        {this.props.interruptedGroup ? (
-          <div style={styles.activatedGroupContainer}>
-            <AiCard
-              attackTarget={this.props.attackTarget}
-              customAI={this.props.customAI}
-              customAIExceptionList={this.props.customAIExceptionList}
-              group={this.props.interruptedGroup}
-              moveTarget={this.props.moveTarget}
-              rewardImperialIndustryEarned={this.props.rewardImperialIndustryEarned}
-              setImperialGroupActivated={this.props.setInterruptedGroupActivated}
-            />
-          </div>
-        ) : null}
         {this.props.displayModal ? (
           <div style={styles.modalContainer}>
             <ModalManagerContainer />

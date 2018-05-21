@@ -291,6 +291,12 @@ export default (state: ImperialsStateType = initialState, action: Object) => {
         customAI: action.payload.customAI,
         customAIExceptionList: action.payload.exceptionList,
       };
+    case CLEAR_CUSTOM_AI:
+      return {
+        ...state,
+        customAI: initialState.customAI,
+        customAIExceptionList: initialState.customAIExceptionList,
+      };
     case SET_IMPERIAL_UNIT_HP_BUFF:
       const {groupId, hpBuff} = action.payload;
       return {
@@ -323,6 +329,7 @@ export const SET_INTERRUPTED_GROUP = 'SET_INTERRUPTED_GROUP';
 export const OPTIONAL_DEPLOYMENT = 'OPTIONAL_DEPLOYMENT';
 export const OPTIONAL_DEPLOYMENT_DONE = 'OPTIONAL_DEPLOYMENT_DONE';
 export const SET_CUSTOM_AI = 'SET_CUSTOM_AI';
+export const CLEAR_CUSTOM_AI = 'CLEAR_CUSTOM_AI';
 export const SET_IMPERIAL_UNIT_HP_BUFF = 'SET_IMPERIAL_UNIT_HP_BUFF';
 
 // Action creators
@@ -381,6 +388,7 @@ export const optionalDeploymentDone = (newThreat: number) =>
   createAction(OPTIONAL_DEPLOYMENT_DONE, {newThreat});
 export const setCustomAI = (customAI: ?(Object[]), exceptionList: string[] = []) =>
   createAction(SET_CUSTOM_AI, {customAI, exceptionList});
+export const clearCustomAI = () => createAction(CLEAR_CUSTOM_AI);
 export const setImperialUnitHpBuff = (groupId: string, hpBuff: number) =>
   createAction(SET_IMPERIAL_UNIT_HP_BUFF, {groupId, hpBuff});
 

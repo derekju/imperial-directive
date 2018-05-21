@@ -602,7 +602,7 @@
     "commands": [
       {
         "condition": "If within 6 spaces of {ATTACK_TARGET}",
-        "command": "{ACTION} Move within 4 spaces and LOS of {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}, then move to {MOVE_TARGET}."
+        "command": "{ACTION} Move within 4 spaces and LOS of {ATTACK_TARGET} (next to a friendly Trooper if possible), then {ACTION} Attack {ATTACK_TARGET}, then move to {MOVE_TARGET}."
       },
       {
         "condition": "If not within 6 spaces of {ATTACK_TARGET}",
@@ -637,7 +637,7 @@
     "commands": [
       {
         "condition": "If within 6 spaces of {ATTACK_TARGET}",
-        "command": "{ACTION} Move within 4 spaces and LOS of {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}, then move to {MOVE_TARGET}."
+        "command": "{ACTION} Move within 4 spaces and LOS of {ATTACK_TARGET} (next to a friendly Trooper if possible), then {ACTION} Attack {ATTACK_TARGET}, then move to {MOVE_TARGET}."
       },
       {
         "condition": "If not within 6 spaces of {ATTACK_TARGET}",
