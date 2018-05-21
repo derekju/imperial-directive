@@ -271,9 +271,7 @@ class GoalPanel extends React.Component<GoalPanelPropsType, GoalPanelStateType> 
         'When a wounded hero is attacking, apply -1 {DAMAGE} to the attack results.',
       ];
 
-      return (
-        <div style={styles.contents}>{this.renderGoals(oldWoundsRewardText)}</div>
-      );
+      return <div style={styles.contents}>{this.renderGoals(oldWoundsRewardText)}</div>;
     }
   }
 

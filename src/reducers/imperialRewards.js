@@ -21,9 +21,7 @@ export function* handleSpecialOperationsReward(): Generator<*, *, *> {
     if (leaderExists) {
       yield put(increaseThreat(1));
       yield call(helperEventModal, {
-        text: [
-          'The Imperial player has exhausted Special Operations to gain 1 threat.',
-        ],
+        text: ['The Imperial player has exhausted Special Operations to gain 1 threat.'],
         title: 'Special Operations',
       });
     }

@@ -75,7 +75,8 @@ export const setMission = (mission: string) => createAction(SET_MISSION, {missio
 export const setMissionThreat = (missionThreat: number) =>
   createAction(SET_MISSION_THREAT, {missionThreat});
 export const setDifficulty = (difficulty: string) => createAction(SET_DIFFICULTY, {difficulty});
-export const setImperialRewards = (rewards: Object) => createAction(SET_IMPERIAL_REWARDS, {rewards});
+export const setImperialRewards = (rewards: Object) =>
+  createAction(SET_IMPERIAL_REWARDS, {rewards});
 export const missionSagaLoadDone = () => createAction(MISSION_SAGA_LOAD_DONE);
 
 // Selectors

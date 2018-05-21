@@ -125,7 +125,7 @@ class AiCard extends React.PureComponent<AiCardPropsType> {
         // date
         const roll = Math.floor(Math.random() * 100);
         if (roll >= 50) {
-          groupBuffList.push("imperialIndustry");
+          groupBuffList.push('imperialIndustry');
         }
       }
       this.chosenBuffIndex = random(0, groupBuffList.length - 1);

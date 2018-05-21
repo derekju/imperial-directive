@@ -51,8 +51,10 @@ const DEPLOYMENT_POINT_GREEN = 'The western green deployment point';
 
 const CUSTOM_AI_TERMINAL = [
   {
-    command: '{ACTION} Move to be adjacent to the terminal and {ACTION} Interact with the terminal.',
-    condition: 'If within distance to a terminal or adjacent to a terminal (and one has not been activated this round)',
+    command:
+      '{ACTION} Move to be adjacent to the terminal and {ACTION} Interact with the terminal.',
+    condition:
+      'If within distance to a terminal or adjacent to a terminal (and one has not been activated this round)',
   },
 ];
 

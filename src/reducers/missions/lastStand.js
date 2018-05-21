@@ -21,7 +21,7 @@ import {
   DEFEAT_IMPERIAL_FIGURE,
   getLastDeployedGroupOfId,
   setImperialUnitHpBuff,
-  silentSetImperialGroupActivated
+  silentSetImperialGroupActivated,
 } from '../imperials';
 import {getRosterOfType, SET_REBEL_ACTIVATED} from '../rebels';
 import {REFER_CAMPAIGN_GUIDE, TARGET_HERO_CLOSEST_UNWOUNDED} from './constants';
@@ -86,17 +86,9 @@ export const getLastStandGoalText = (state: StateType): string[] => {
   let goals = [];
 
   if (state.lastStand.doorState === 0) {
-    goals = goals.concat([
-      '{BOLD}Current Goal:{END}',
-      'Open the first door.',
-      '{BREAK}',
-    ]);
+    goals = goals.concat(['{BOLD}Current Goal:{END}', 'Open the first door.', '{BREAK}']);
   } else if (state.lastStand.doorState === 1) {
-    goals = goals.concat([
-      '{BOLD}Current Goal:{END}',
-      'Open the second door.',
-      '{BREAK}',
-    ]);
+    goals = goals.concat(['{BOLD}Current Goal:{END}', 'Open the second door.', '{BREAK}']);
   } else if (state.lastStand.doorState === 2) {
     goals = goals.concat([
       '{BOLD}Current Goal:{END}',
@@ -115,7 +107,7 @@ export const getLastStandGoalText = (state: StateType): string[] => {
     goals = goals.concat([
       '{BREAK}',
       '{BOLD}Darth Vader:{END}',
-      '{ELITE}Vader{END} activates after every heroes\' turn.',
+      "{ELITE}Vader{END} activates after every heroes' turn.",
       '{BREAK}',
       'He cannot receive conditions.',
       '{BREAK}',
@@ -196,7 +188,7 @@ function* handleEndOfTheLineEvent(): Generator<*, *, *> {
         REFER_CAMPAIGN_GUIDE,
         [
           'Deploy {ELITE}Darth Vader{END} to the red point. {ELITE}Darth Vader{END} gets +8 Health.',
-          'Instead of activating as normal, {ELITE}Darth Vader{END} performs 1 action after each hero\'s activation.',
+          "Instead of activating as normal, {ELITE}Darth Vader{END} performs 1 action after each hero's activation.",
           'He also cannot receive conditions.',
           'He can also spend 2 threat to apply +2 {BLOCK} to defense results.',
           'Door 1 and Door 2 will now close.',

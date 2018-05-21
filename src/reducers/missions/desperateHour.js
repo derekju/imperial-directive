@@ -21,7 +21,7 @@ import {
   getLastDeployedGroupOfId,
   SET_IMPERIAL_GROUP_ACTIVATED,
   setImperialUnitHpBuff,
-  silentSetImperialGroupActivated
+  silentSetImperialGroupActivated,
 } from '../imperials';
 import {REFER_CAMPAIGN_GUIDE, TARGET_HERO_CLOSEST_UNWOUNDED} from './constants';
 import createAction from '../createAction';
@@ -93,11 +93,7 @@ export const getDesperateHourGoalText = (state: StateType): string[] => {
       '{BREAK}',
     ]);
   } else if (state.desperateHour.missionState === 2) {
-    goals = goals.concat([
-      '{BOLD}Current Goal:{END}',
-      'Enter the Clearing (tile 06B).',
-      '{BREAK}',
-    ]);
+    goals = goals.concat(['{BOLD}Current Goal:{END}', 'Enter the Clearing (tile 06B).', '{BREAK}']);
   } else if (state.desperateHour.missionState === 3) {
     goals = goals.concat([
       '{BREAK}',
@@ -120,7 +116,7 @@ export const getDesperateHourGoalText = (state: StateType): string[] => {
     goals = goals.concat([
       '{BOLD}AT-ST:{END}',
       'Gains "Epic Arsenel" from General Weiss\' ability card.',
-      'Also gains one action at the end of each hero\'s turn.',
+      "Also gains one action at the end of each hero's turn.",
       '{BREAK}',
     ]);
   }
@@ -178,7 +174,7 @@ function* handleRespite(): Generator<*, *, *> {
           'All doors will now be opened.',
           'Deploy an {ELITE}Elite Imperial Officer{END}, Stormtrooper group, and {ELITE}Elite Royal Guard{END} group to the Warehouse (tile 24B).',
           'Deploy the {ELITE}AT-ST{END} to the yellow point as a Rebel controlled figure. The {ELITE}AT-ST{END} gains "Epic Arsenel" from {ELITE}General Weiss\'{END} ability card.',
-          'The {ELITE}AT-ST{END} performs one action after each hero\'s activation.',
+          "The {ELITE}AT-ST{END} performs one action after each hero's activation.",
           'Reach the Clearing (tile 06B) to progress the mission.',
         ],
         'Respite',
@@ -228,7 +224,6 @@ function* handleClearingEntered(): Generator<*, *, *> {
   yield put(setDeploymentPoint(DEPLOYMENT_POINT_RED));
   yield put(setMoveTarget(TARGET_WEISS));
   yield put(createAction('DESPERATE_HOUR_MISSION_STATE', {missionState: 3}));
-
 
   // Manually set him as activated so he doesn't activate as normal after this time
   const group = yield select(getLastDeployedGroupOfId, 'generalWeiss');
