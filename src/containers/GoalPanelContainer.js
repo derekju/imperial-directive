@@ -2,102 +2,18 @@
 
 import {connect} from 'react-redux';
 import createAction from '../reducers/createAction';
-import {getAftermathGoalText} from '../reducers/missions/aftermath';
-import {getANewThreatGoalText} from '../reducers/missions/aNewThreat';
-import {getASimpleTaskGoalText} from '../reducers/missions/aSimpleTask';
-import {getBrushfireGoalText} from '../reducers/missions/brushfire';
-import {getCapturedGoalText} from '../reducers/missions/captured';
-import {getChainOfCommandGoalText} from '../reducers/missions/chainOfCommand';
-import {getDesperateHourGoalText} from '../reducers/missions/desperateHour';
-import {getDrawnInGoalText} from '../reducers/missions/drawnIn';
-import {getFlySoloGoalText} from '../reducers/missions/flySolo';
-import {getFriendsOfOldGoalText} from '../reducers/missions/friendsOfOld';
-import {getGenerousDonationsGoalText} from '../reducers/missions/generousDonations';
-import {getHighMoonGoalText} from '../reducers/missions/highMoon';
-import {getHomecomingGoalText} from '../reducers/missions/homecoming';
-import {getImperialHospitalityGoalText} from '../reducers/missions/imperialHospitality';
 import {getImperialRewards} from '../reducers/app';
-import {getImpoundedGoalText} from '../reducers/missions/impounded';
-import {getIncomingGoalText} from '../reducers/missions/incoming';
-import {getIndebtedGoalText} from '../reducers/missions/indebted';
-import {getLastStandGoalText} from '../reducers/missions/lastStand';
-import {getLooseCannonGoalText} from '../reducers/missions/looseCannon';
-import {getLuxuryCruiseGoalText} from '../reducers/missions/luxuryCruise';
-import {getMeansOfProductionGoalText} from '../reducers/missions/meansOfProduction';
-import {getSorryAboutTheMessGoalText} from '../reducers/missions/sorryAboutTheMess';
-import {getTargetOfOpportunityGoalText} from '../reducers/missions/targetOfOpportunity';
-import {getTemptationGoalText} from '../reducers/missions/temptation';
-import {getTheSpiceJobGoalText} from '../reducers/missions/theSpiceJob';
-import {getTheSourceGoalText} from '../reducers/missions/theSource';
-import {getUnderSiegeGoalText} from '../reducers/missions/underSiege';
-import {getVipersDenGoalText} from '../reducers/missions/vipersDen';
-import {getWantedGoalText} from '../reducers/missions/wanted';
+import goalFunctions from '../reducers/missions';
 import GoalPanel from '../components/GoalPanel';
 import type {StateType} from '../reducers/types';
+import upperFirst from 'lodash/upperFirst';
 
 const getGoalText = (state: StateType) => {
-  switch (state.app.currentMission) {
-    case 'aftermath':
-      return getAftermathGoalText(state);
-    case 'aNewThreat':
-      return getANewThreatGoalText(state);
-    case 'aSimpleTask':
-      return getASimpleTaskGoalText(state);
-    case 'brushfire':
-      return getBrushfireGoalText(state);
-    case 'captured':
-      return getCapturedGoalText(state);
-    case 'chainOfCommand':
-      return getChainOfCommandGoalText(state);
-    case 'desperateHour':
-      return getDesperateHourGoalText(state);
-    case 'drawnIn':
-      return getDrawnInGoalText(state);
-    case 'flySolo':
-      return getFlySoloGoalText(state);
-    case 'friendsOfOld':
-      return getFriendsOfOldGoalText(state);
-    case 'generousDonations':
-      return getGenerousDonationsGoalText(state);
-    case 'highMoon':
-      return getHighMoonGoalText(state);
-    case 'homecoming':
-      return getHomecomingGoalText(state);
-    case 'imperialHospitality':
-      return getImperialHospitalityGoalText(state);
-    case 'impounded':
-      return getImpoundedGoalText(state);
-    case 'incoming':
-      return getIncomingGoalText(state);
-    case 'indebted':
-      return getIndebtedGoalText(state);
-    case 'lastStand':
-      return getLastStandGoalText(state);
-    case 'looseCannon':
-      return getLooseCannonGoalText(state);
-    case 'luxuryCruise':
-      return getLuxuryCruiseGoalText(state);
-    case 'meansOfProduction':
-      return getMeansOfProductionGoalText(state);
-    case 'sorryAboutTheMess':
-      return getSorryAboutTheMessGoalText(state);
-    case 'targetOfOpportunity':
-      return getTargetOfOpportunityGoalText(state);
-    case 'temptation':
-      return getTemptationGoalText(state);
-    case 'theSpiceJob':
-      return getTheSpiceJobGoalText(state);
-    case 'theSource':
-      return getTheSourceGoalText(state);
-    case 'underSiege':
-      return getUnderSiegeGoalText(state);
-    case 'vipersDen':
-      return getVipersDenGoalText(state);
-    case 'wanted':
-      return getWantedGoalText(state);
-    default:
-      return [];
+  const fn = goalFunctions[`get${upperFirst(state.app.currentMission)}GoalText`];
+  if (fn) {
+    return fn(state);
   }
+  return [];
 };
 
 const mapStateToProps = (state: StateType) => ({

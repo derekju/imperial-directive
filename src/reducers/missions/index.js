@@ -1,34 +1,34 @@
 // @flow
 
-import {aNewThreat} from './aNewThreat';
-import {aSimpleTask} from './aSimpleTask';
-import {aftermath} from './aftermath';
-import {brushfire} from './brushfire';
-import {captured} from './captured';
-import {chainOfCommand} from './chainOfCommand';
-import {desperateHour} from './desperateHour';
-import {drawnIn} from './drawnIn';
-import {flySolo} from './flySolo';
-import {friendsOfOld} from './friendsOfOld';
-import {generousDonations} from './generousDonations';
-import {highMoon} from './highMoon';
-import {homecoming} from './homecoming';
-import {imperialHospitality} from './imperialHospitality';
-import {impounded} from './impounded';
-import {incoming} from './incoming';
-import {indebted} from './indebted';
-import {lastStand} from './lastStand';
-import {looseCannon} from './looseCannon';
-import {luxuryCruise} from './luxuryCruise';
-import {meansOfProduction} from './meansOfProduction';
-import {sorryAboutTheMess} from './sorryAboutTheMess';
-import {targetOfOpportunity} from './targetOfOpportunity';
-import {temptation} from './temptation';
-import {theSource} from './theSource';
-import {theSpiceJob} from './theSpiceJob';
-import {underSiege} from './underSiege';
-import {vipersDen} from './vipersDen';
-import {wanted} from './wanted';
+import {aNewThreat, getANewThreatGoalText} from './aNewThreat';
+import {aSimpleTask, getASimpleTaskGoalText} from './aSimpleTask';
+import {aftermath, getAftermathGoalText} from './aftermath';
+import {brushfire, getBrushfireGoalText} from './brushfire';
+import {captured, getCapturedGoalText} from './captured';
+import {chainOfCommand, getChainOfCommandGoalText} from './chainOfCommand';
+import {desperateHour, getDesperateHourGoalText} from './desperateHour';
+import {drawnIn, getDrawnInGoalText} from './drawnIn';
+import {flySolo, getFlySoloGoalText} from './flySolo';
+import {friendsOfOld, getFriendsOfOldGoalText} from './friendsOfOld';
+import {generousDonations, getGenerousDonationsGoalText} from './generousDonations';
+import {highMoon, getHighMoonGoalText} from './highMoon';
+import {homecoming, getHomecomingGoalText} from './homecoming';
+import {imperialHospitality, getImperialHospitalityGoalText} from './imperialHospitality';
+import {impounded, getImpoundedGoalText} from './impounded';
+import {incoming, getIncomingGoalText} from './incoming';
+import {indebted, getIndebtedGoalText} from './indebted';
+import {lastStand, getLastStandGoalText} from './lastStand';
+import {looseCannon, getLooseCannonGoalText} from './looseCannon';
+import {luxuryCruise, getLuxuryCruiseGoalText} from './luxuryCruise';
+import {meansOfProduction, getMeansOfProductionGoalText} from './meansOfProduction';
+import {sorryAboutTheMess, getSorryAboutTheMessGoalText} from './sorryAboutTheMess';
+import {targetOfOpportunity, getTargetOfOpportunityGoalText} from './targetOfOpportunity';
+import {temptation, getTemptationGoalText} from './temptation';
+import {theSource, getTheSourceGoalText} from './theSource';
+import {theSpiceJob, getTheSpiceJobGoalText} from './theSpiceJob';
+import {underSiege, getUnderSiegeGoalText} from './underSiege';
+import {vipersDen, getVipersDenGoalText} from './vipersDen';
+import {wanted, getWantedGoalText} from './wanted';
 
 export default {
   aNewThreat,
@@ -42,6 +42,35 @@ export default {
   flySolo,
   friendsOfOld,
   generousDonations,
+  getANewThreatGoalText,
+  getASimpleTaskGoalText,
+  getAftermathGoalText,
+  getBrushfireGoalText,
+  getCapturedGoalText,
+  getChainOfCommandGoalText,
+  getDesperateHourGoalText,
+  getDrawnInGoalText,
+  getFlySoloGoalText,
+  getFriendsOfOldGoalText,
+  getGenerousDonationsGoalText,
+  getHighMoonGoalText,
+  getHomecomingGoalText,
+  getImperialHospitalityGoalText,
+  getImpoundedGoalText,
+  getIncomingGoalText,
+  getIndebtedGoalText,
+  getLastStandGoalText,
+  getLooseCannonGoalText,
+  getLuxuryCruiseGoalText,
+  getMeansOfProductionGoalText,
+  getSorryAboutTheMessGoalText,
+  getTargetOfOpportunityGoalText,
+  getTemptationGoalText,
+  getTheSourceGoalText,
+  getTheSpiceJobGoalText,
+  getUnderSiegeGoalText,
+  getVipersDenGoalText,
+  getWantedGoalText,
   highMoon,
   homecoming,
   imperialHospitality,
