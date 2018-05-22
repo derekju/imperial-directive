@@ -61,7 +61,7 @@
       "3": [0, 1, 1, 1, 1],
       "4": [1, 1, 1, 2, 2],
       "5": [1, 2, 2, 2, 2],
-      "6": [1, 2, 2, 3, 3]
+      "6": [1, 2, 2, 2, 2]
     },
     "id": "darthVader",
     "maxDeployed": 1,
@@ -96,7 +96,7 @@
       "3": [0, 0, 1, 1, 1],
       "4": [0, 1, 1, 1, 2],
       "5": [1, 1, 1, 2, 2],
-      "6": [1, 2, 2, 2, 3]
+      "6": [1, 1, 1, 2, 2]
     },
     "id": "eWebEngineer",
     "maxDeployed": 1,
@@ -131,7 +131,7 @@
       "3": [0, 0, 1, 1, 1],
       "4": [0, 1, 1, 1, 2],
       "5": [1, 1, 1, 2, 2],
-      "6": [1, 2, 2, 2, 3]
+      "6": [1, 1, 1, 2, 2]
     },
     "id": "eWebEngineerElite",
     "maxDeployed": 1,
@@ -254,11 +254,11 @@
         "command": "{ACTION} Use Order ability on that friendly figure to have it move to {MOVE_TARGET}."
       },
       {
-        "condition": "If within 4 spaces of {ATTACK_TARGET}",
-        "command": "{ACTION} Move to be in LOS of {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}, then {ACTION} Move adjacent to the most friendly figures."
+        "condition": "If within 6 spaces of {ATTACK_TARGET}",
+        "command": "{ACTION} Move to be within 4 spaces and LOS of {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}, then {ACTION} Move adjacent to the most friendly figures."
       },
       {
-        "condition": "If not within 4 spaces of {ATTACK_TARGET}",
+        "condition": "If not within 6 spaces of {ATTACK_TARGET}",
         "command": "{ACTION} Move adjacent to the most friendly figures."
       },
       {
@@ -273,7 +273,7 @@
       "3": [0, 0, 1, 1, 1],
       "4": [0, 1, 1, 1, 2],
       "5": [1, 1, 1, 2, 2],
-      "6": [1, 2, 2, 2, 3]
+      "6": [1, 1, 1, 2, 2]
     },
     "id": "imperialOfficer",
     "maxDeployed": 2,
@@ -297,11 +297,11 @@
         "command": "{ACTION} Use Executive Order ability on that friendly figure to have it move to {MOVE_TARGET}."
       },
       {
-        "condition": "If within 4 spaces and in LOS of {ATTACK_TARGET}",
+        "condition": "If within 6 spaces and in LOS of {ATTACK_TARGET}",
         "command": "{ACTION} Move to be in LOS of {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}, then {ACTION} Move adjacent to the most friendly figures."
       },
       {
-        "condition": "If not within 4 spaces of {ATTACK_TARGET}",
+        "condition": "If not within 6 spaces of {ATTACK_TARGET}",
         "command": "{ACTION} Move adjacent to the most friendly figures."
       },
       {
@@ -316,7 +316,7 @@
       "3": [0, 0, 1, 1, 1],
       "4": [0, 1, 1, 1, 2],
       "5": [1, 1, 1, 2, 2],
-      "6": [1, 2, 2, 2, 3]
+      "6": [1, 1, 1, 2, 2]
     },
     "id": "imperialOfficerElite",
     "maxDeployed": 1,
@@ -355,7 +355,7 @@
       "3": [0, 0, 1, 1, 1],
       "4": [0, 1, 1, 1, 2],
       "5": [1, 1, 1, 2, 2],
-      "6": [1, 2, 2, 2, 3]
+      "6": [1, 1, 1, 2, 2]
     },
     "id": "nexu",
     "maxDeployed": 1,
@@ -394,7 +394,7 @@
       "3": [0, 0, 1, 1, 1],
       "4": [0, 1, 1, 1, 2],
       "5": [1, 1, 1, 2, 2],
-      "6": [1, 2, 2, 2, 3]
+      "6": [1, 1, 1, 2, 2]
     },
     "id": "nexuElite",
     "maxDeployed": 1,
@@ -429,7 +429,7 @@
       "3": [0, 0, 1, 1, 1],
       "4": [0, 1, 1, 1, 2],
       "5": [1, 1, 1, 2, 2],
-      "6": [1, 2, 2, 2, 3]
+      "6": [1, 1, 1, 2, 2]
     },
     "id": "probeDroid",
     "maxDeployed": 2,
@@ -468,7 +468,7 @@
       "3": [0, 0, 1, 1, 1],
       "4": [0, 1, 1, 1, 2],
       "5": [1, 1, 1, 2, 2],
-      "6": [1, 2, 2, 2, 3]
+      "6": [1, 1, 1, 2, 2]
     },
     "id": "probeDroidElite",
     "maxDeployed": 1,
@@ -507,7 +507,7 @@
       "3": [0, 0, 1, 1, 1],
       "4": [0, 1, 1, 1, 2],
       "5": [1, 1, 1, 2, 2],
-      "6": [1, 2, 2, 2, 3]
+      "6": [1, 1, 1, 2, 2]
     },
     "id": "royalGuard",
     "maxDeployed": 1,
@@ -546,7 +546,7 @@
       "3": [0, 0, 1, 1, 1],
       "4": [0, 1, 1, 1, 2],
       "5": [1, 1, 1, 2, 2],
-      "6": [1, 2, 2, 2, 3]
+      "6": [1, 1, 1, 2, 2]
     },
     "id": "royalGuardChampion",
     "maxDeployed": 1,
@@ -585,7 +585,7 @@
       "3": [0, 0, 1, 1, 1],
       "4": [0, 1, 1, 1, 2],
       "5": [1, 1, 1, 2, 2],
-      "6": [1, 2, 2, 2, 3]
+      "6": [1, 1, 1, 2, 2]
     },
     "id": "royalGuardElite",
     "maxDeployed": 1,
@@ -620,7 +620,7 @@
       "3": [0, 0, 1, 1, 1],
       "4": [0, 1, 1, 1, 2],
       "5": [1, 1, 1, 2, 2],
-      "6": [1, 2, 2, 2, 3]
+      "6": [1, 1, 1, 2, 2]
     },
     "id": "stormtrooper",
     "maxDeployed": 2,
@@ -659,7 +659,7 @@
       "3": [0, 0, 1, 1, 1],
       "4": [0, 1, 1, 1, 2],
       "5": [1, 1, 1, 2, 2],
-      "6": [1, 2, 2, 2, 3]
+      "6": [1, 1, 1, 2, 2]
     },
     "id": "stormtrooperElite",
     "maxDeployed": 1,
@@ -735,7 +735,7 @@
       "3": [0, 0, 1, 1, 1],
       "4": [0, 1, 1, 1, 2],
       "5": [1, 1, 1, 2, 2],
-      "6": [1, 2, 2, 2, 3]
+      "6": [1, 1, 1, 2, 2]
     },
     "id": "trandoshanHunter",
     "maxDeployed": 1,
@@ -778,7 +778,7 @@
       "3": [0, 0, 1, 1, 1],
       "4": [0, 1, 1, 1, 2],
       "5": [1, 1, 1, 2, 2],
-      "6": [1, 2, 2, 2, 3]
+      "6": [1, 1, 1, 2, 2]
     },
     "id": "trandoshanHunterElite",
     "maxDeployed": 1,
