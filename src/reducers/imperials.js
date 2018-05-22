@@ -77,6 +77,7 @@ export type ImperialsStateType = {
   activatedGroup: ?ImperialUnitType,
   customAI: ?(Object[]),
   customAIExceptionList: string[],
+  customUnitAI: {[string]: Object[]},
   deployedGroups: ImperialUnitType[],
   designationMap: DesignationMapType,
   interruptedGroup: ?ImperialUnitType,
@@ -146,6 +147,7 @@ const initialState = {
   activatedGroup: null,
   customAI: null,
   customAIExceptionList: [],
+  customUnitAI: {},
   deployedGroups: [],
   designationMap: {},
   interruptedGroup: null,
@@ -161,6 +163,7 @@ export default (state: ImperialsStateType = initialState, action: Object) => {
         ...initialState,
         customAI: state.customAI,
         customAIExceptionList: state.customAIExceptionList,
+        customUnitAI: state.customUnitAI,
         deployedGroups: config.initialGroups.map((id: string) =>
           createNewGroup(id, designationMap, missionThreat, difficulty)
         ),
@@ -310,6 +313,15 @@ export default (state: ImperialsStateType = initialState, action: Object) => {
           return deployedGroup;
         }),
       };
+    case SET_CUSTOM_UNIT_AI:
+      const {commands, unit} = action.payload;
+      return {
+        ...state,
+        customUnitAI: {
+          ...state.customUnitAI,
+          [unit]: commands.slice(),
+        },
+      };
     default:
       return state;
   }
@@ -332,6 +344,7 @@ export const OPTIONAL_DEPLOYMENT_DONE = 'OPTIONAL_DEPLOYMENT_DONE';
 export const SET_CUSTOM_AI = 'SET_CUSTOM_AI';
 export const CLEAR_CUSTOM_AI = 'CLEAR_CUSTOM_AI';
 export const SET_IMPERIAL_UNIT_HP_BUFF = 'SET_IMPERIAL_UNIT_HP_BUFF';
+export const SET_CUSTOM_UNIT_AI = 'SET_CUSTOM_UNIT_AI';
 
 // Action creators
 
@@ -391,6 +404,7 @@ export const setCustomAI = (customAI: ?(Object[]), exceptionList: string[] = [])
 export const clearCustomAI = () => createAction(CLEAR_CUSTOM_AI);
 export const setImperialUnitHpBuff = (groupId: string, hpBuff: number) =>
   createAction(SET_IMPERIAL_UNIT_HP_BUFF, {groupId, hpBuff});
+export const setCustomUnitAI = (unit: string, commands: Object[]) => createAction(SET_CUSTOM_UNIT_AI, {commands, unit});
 
 // Selectors
 

@@ -8,6 +8,7 @@ import {
   defeatImperialFigure,
   getLastDeployedGroupOfId,
   setCustomAI,
+  setCustomUnitAI,
   setImperialGroupUnactivated,
   setImperialUnitHpBuff,
   silentSetImperialGroupActivated,
@@ -58,6 +59,41 @@ const CUSTOM_AI_TERMINAL = [
     condition:
       'If within distance to a terminal or adjacent to a terminal (and one has not been activated this round)',
   },
+];
+
+const CUSTOM_AI_WEISS_BEHIND_DOOR = [
+  {
+    command:
+      '{ACTION} Stay put and hide behind the door.',
+    condition:
+      'If the door out of the Operations Room has not yet been opened',
+  },
+];
+
+const CUSTOM_AI_WEISS_GO_TO_ATST = [
+  {
+    "command": "{ACTION} Move until adjacent to the door, then {ACTION} Open the door, then {ACTION} Move towards General Weiss.",
+    "condition": "If the door to the Operation Room is still closed",
+  },
+  {
+    "command": "{ACTION} Move until adjacent to General Weiss, then {ACTION} Move until adjacent to General Weiss, then {ACTION} Interact with General Weiss to enter the {ELITE}ATST{END}.",
+    "condition": "If General Weiss is deployed",
+  },
+];
+
+const CUSTOM_AI_WEISS_REGULAR_BEHAVIOR = [
+  {
+    "command": "{ACTION} Use Executive Order ability on that friendly figure to have it attack {ATTACK_TARGET}.",
+    "condition": "If within 2 spaces of a friendly target that is within attack range and LOS of {ATTACK_TARGET}"
+  },
+  {
+    "command": "{ACTION} Move to be within 4 spaces and LOS of {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}, then {ACTION} Move adjacent to the most friendly figures.",
+    "condition": "If within 6 spaces and in LOS of {ATTACK_TARGET}"
+  },
+  {
+    "command": "Use Cower ability if a rolled dice does not cancel anything.",
+    "condition": "Reaction - If defending while adjacent to a friendly figure"
+  }
 ];
 
 const CUSTOM_AI_EXCLUSION_LIST = ['nexu', 'nexuElite', 'weiss', 'generalWeiss'];
@@ -150,6 +186,25 @@ function getRandomDeploymentPoint() {
   return DEPLOYMENT_POINT_GREEN_SOUTH;
 }
 
+function* handleWeissDoorOpened(): Generator<*, *, *> {
+  while (true) {
+    const action = yield take(SET_MAP_STATE_ACTIVATED);
+    const {id, type, value} = action.payload;
+    if (id === 1 && type === 'door' && value === true) {
+      // If the door opens before the ATST is deployed, then use regular commands
+      // Otherwise if Weiss moves it
+      const {generalWeissDeployed} = yield select(getState);
+      if (generalWeissDeployed) {
+        yield put(setCustomUnitAI('weiss', CUSTOM_AI_WEISS_GO_TO_ATST));
+      } else {
+        yield put(setCustomUnitAI('weiss', CUSTOM_AI_WEISS_REGULAR_BEHAVIOR));
+      }
+      // We're done
+      break;
+    }
+  }
+}
+
 function* handleVulnerableEvent(): Generator<*, *, *> {
   track('chainOfCommand', 'vulnerable', 'triggered');
   yield call(
@@ -190,13 +245,15 @@ function* handleVulnerableEvent(): Generator<*, *, *> {
   const generalWeissGroup = yield select(getLastDeployedGroupOfId, 'generalWeiss');
   yield put(silentSetImperialGroupActivated(generalWeissGroup));
   yield put(createAction('CHAIN_OF_COMMAND_SET_GENERAL_WEISS_DEPLOYED', true));
+  // Weiss needs to move now
+  yield put(setCustomUnitAI('weiss', CUSTOM_AI_WEISS_GO_TO_ATST));
 }
 
 function* handleWeissDefeated(): Generator<*, *, *> {
   while (true) {
     const action = yield take(DEFEAT_IMPERIAL_FIGURE);
     const {group} = action.payload;
-    const {generalWeissActive} = yield select(getState);
+    const {generalWeissActive, generalWeissDeployed} = yield select(getState);
     if (
       (!generalWeissActive && group.id === 'weiss') ||
       (generalWeissActive && group.id === 'generalWeiss')
@@ -204,6 +261,10 @@ function* handleWeissDefeated(): Generator<*, *, *> {
       yield put(displayModal('REBEL_VICTORY'));
       track('chainOfCommand', 'victory', group.id);
       break;
+    } else if (!generalWeissActive && generalWeissDeployed && group.id === 'generalWeiss') {
+      // If the ATST was deployed but defeated, revert Weiss back to regular unit since he
+      // has no ATST to enter anymore
+      yield put(setCustomUnitAI('weiss', CUSTOM_AI_WEISS_REGULAR_BEHAVIOR));
     }
   }
 }
@@ -390,8 +451,12 @@ export function* chainOfCommand(): Generator<*, *, *> {
   // Set custom AI
   yield put(setCustomAI(CUSTOM_AI_TERMINAL, CUSTOM_AI_EXCLUSION_LIST));
 
+  // Set initial AI for Weiss
+  yield put(setCustomUnitAI('weiss', CUSTOM_AI_WEISS_BEHIND_DOOR));
+
   yield all([
     fork(handleSpecialSetup),
+    fork(handleWeissDoorOpened),
     fork(handleWeissDefeated),
     fork(handleWeissEntersATST),
     fork(handleGeneralWeissDefends),

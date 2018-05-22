@@ -70,6 +70,7 @@ type AiCardPropsType = {
   attackTarget: string,
   customAI: ?(Object[]),
   customAIExceptionList: string[],
+  customUnitAI: {[string]: Object[]},
   group: ImperialUnitType,
   moveTarget: string,
   rewardImperialIndustryEarned: boolean,
@@ -166,6 +167,11 @@ class AiCard extends React.PureComponent<AiCardPropsType> {
         }`}</div>
         <div style={styles.buffContainer}>{this.renderBuff()}</div>
         <div style={styles.commandContainer}>
+          {this.props.customUnitAI[this.props.group.id] !== undefined
+            ? this.props.customUnitAI[this.props.group.id].map((customAI, index) =>
+                this.renderCommand(`custom-${index}`, customAI.condition, customAI.command)
+              )
+            : null}
           {this.props.customAI && !this.props.customAIExceptionList.includes(this.props.group.id)
             ? this.props.customAI.map((customAI, index) =>
                 this.renderCommand(`custom-${index}`, customAI.condition, customAI.command)
