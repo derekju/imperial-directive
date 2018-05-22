@@ -3,6 +3,7 @@
 import {aNewThreat, getANewThreatGoalText} from './aNewThreat';
 import {aSimpleTask, getASimpleTaskGoalText} from './aSimpleTask';
 import {aftermath, getAftermathGoalText} from './aftermath';
+import {breakingPoint, getBreakingPointGoalText} from './breakingPoint';
 import {brushfire, getBrushfireGoalText} from './brushfire';
 import {captured, getCapturedGoalText} from './captured';
 import {chainOfCommand, getChainOfCommandGoalText} from './chainOfCommand';
@@ -34,6 +35,7 @@ export default {
   aNewThreat,
   aSimpleTask,
   aftermath,
+  breakingPoint,
   brushfire,
   captured,
   chainOfCommand,
@@ -45,6 +47,7 @@ export default {
   getANewThreatGoalText,
   getASimpleTaskGoalText,
   getAftermathGoalText,
+  getBreakingPointGoalText,
   getBrushfireGoalText,
   getCapturedGoalText,
   getChainOfCommandGoalText,

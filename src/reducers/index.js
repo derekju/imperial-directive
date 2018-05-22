@@ -2,6 +2,7 @@
 
 import aftermath from './missions/aftermath';
 import app from './app';
+import breakingPoint from './missions/breakingPoint';
 import brushfire from './missions/brushfire';
 import captured from './missions/captured';
 import chainOfCommand from './missions/chainOfCommand';
@@ -35,6 +36,7 @@ import wanted from './missions/wanted';
 export default {
   aftermath,
   app,
+  breakingPoint,
   brushfire,
   captured,
   chainOfCommand,

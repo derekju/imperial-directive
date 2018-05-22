@@ -2,8 +2,10 @@
 
 import {all, call, put, select, takeEvery} from 'redux-saga/effects';
 import {
+  CHANGE_PLAYER_TURN,
   getCurrentThreat,
   LOAD_MISSION,
+  PLAYER_IMPERIALS,
   statusPhaseDeployReinforceDone,
   STATUS_PHASE_DEPLOY_REINFORCE,
   STATUS_PHASE_READY_GROUPS,
@@ -319,7 +321,6 @@ export const SET_IMPERIAL_GROUP_ACTIVATED = 'SET_IMPERIAL_GROUP_ACTIVATED';
 export const SILENT_SET_IMPERIAL_GROUP_ACTIVATED = 'SILENT_SET_IMPERIAL_GROUP_ACTIVATED';
 export const SET_IMPERIAL_GROUP_UNACTIVATED = 'SET_IMPERIAL_GROUP_UNACTIVATED';
 export const ACTIVATE_IMPERIAL_GROUP = 'ACTIVATE_IMPERIAL_GROUP';
-export const TRIGGER_IMPERIAL_ACTIVATION = 'TRIGGER_IMPERIAL_ACTIVATION';
 export const DEFEAT_IMPERIAL_FIGURE = 'DEFEAT_IMPERIAL_FIGURE';
 export const SET_IMPERIAL_FIGURES_AFTER_DEFEAT = 'SET_IMPERIAL_FIGURES_AFTER_DEFEAT';
 export const SET_IMPERIAL_FIGURES_AFTER_DEPLOY_REINFORCE =
@@ -350,7 +351,6 @@ export const activateImperialGroup = (group: ImperialUnitType) => ({
   payload: {group},
   type: ACTIVATE_IMPERIAL_GROUP,
 });
-export const triggerImperialActivation = () => ({type: TRIGGER_IMPERIAL_ACTIVATION});
 export const defeatImperialFigure = (group: ImperialUnitType) => ({
   payload: {group},
   type: DEFEAT_IMPERIAL_FIGURE,
@@ -566,7 +566,8 @@ function* handleImperialActivation(): Generator<*, *, *> {
 export function* imperialsSaga(): Generator<*, *, *> {
   yield all([
     takeEvery(
-      [SET_REBEL_ACTIVATED, SET_REBEL_ESCAPED, TRIGGER_IMPERIAL_ACTIVATION],
+      (action: Object) =>
+        action.type === CHANGE_PLAYER_TURN && action.payload.player === PLAYER_IMPERIALS,
       handleImperialActivation
     ),
     takeEvery(DEFEAT_IMPERIAL_FIGURE, handleImperialFigureDefeat),

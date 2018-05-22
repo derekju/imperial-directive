@@ -14,7 +14,6 @@ import {
   OPTIONAL_DEPLOYMENT_DONE,
   optionalDeployment,
   SET_IMPERIAL_GROUP_ACTIVATED,
-  triggerImperialActivation,
 } from './imperials';
 import createAction from './createAction';
 import {displayModal} from './modal';
@@ -473,7 +472,7 @@ function* handleEndOfRebelOrImperialTurn(action: Object): Generator<*, *, *> {
         yield put(changePlayerTurn(PLAYER_REBELS));
       } else {
         // Rebels can't do anything anymore so just activate the next imperial troop
-        yield put(triggerImperialActivation());
+        yield put(changePlayerTurn(PLAYER_IMPERIALS));
       }
     }
   }

@@ -377,6 +377,265 @@
       "imperialOfficer", "stormtrooper"
     ]
   },
+  "breakingPoint": {
+    "initialGroups": ["royalGuard"],
+    "instructions": {
+      "imperialVictory": "When 5 supply caches are destroyed or when all heroes are wounded",
+      "rebelVictory": "At the end of Round 5"
+    },
+    "mapImage": [
+      ["20b", "20b", "20b", "20b", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a"],
+      ["20b", "20b", "20b", "20b", "25b", "25b", "25b", "25b", "00a", "00a", "00a", "00a"],
+      ["20b", "20b", "20b", "20b", "25b", "25b", "25b", "25b", "24b", "24b", "24b", "00a"],
+      ["20b", "20b", "20b", "20b", "25b", "25b", "25b", "25b", "24b", "24b", "24b", "24b"],
+      ["20b", "20b", "20b", "20b", "00a", "25b", "25b", "00a", "24b", "24b", "24b", "24b"],
+      ["20b", "20b", "20b", "20b", "21b", "21b", "21b", "21b", "21b", "24b", "24b", "24b"],
+      ["00a", "00a", "31b", "31b", "21b", "21b", "21b", "21b", "21b", "28b", "28b", "28b"],
+      ["00a", "00a", "31b", "31b", "21b", "21b", "21b", "21b", "21b", "28b", "28b", "28b"],
+      ["00a", "00a", "39b", "39b", "21b", "21b", "21b", "21b", "21b", "28b", "28b", "28b"],
+      ["00a", "00a", "18b", "18b", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a"]
+    ],
+    "mapStates": {
+      "rebel-1": {
+        "activated": false,
+        "activateText": "Destroy",
+        "color": "yellow",
+        "coordinates": {
+          "x": 0,
+          "y": 0
+        },
+        "description": "A supply cache.",
+        "id": 1,
+        "interactable": true,
+        "type": "rebel",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "rebel-2": {
+        "activated": false,
+        "activateText": "Destroy",
+        "color": "red",
+        "coordinates": {
+          "x": 0,
+          "y": 2
+        },
+        "description": "A supply cache.",
+        "id": 2,
+        "interactable": true,
+        "type": "rebel",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "rebel-3": {
+        "activated": false,
+        "activateText": "Destroy",
+        "color": "green",
+        "coordinates": {
+          "x": 3,
+          "y": 0
+        },
+        "description": "A supply cache.",
+        "id": 3,
+        "interactable": true,
+        "type": "rebel",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "rebel-4": {
+        "activated": false,
+        "activateText": "Destroy",
+        "color": "yellow",
+        "coordinates": {
+          "x": 5,
+          "y": 1
+        },
+        "description": "A supply cache.",
+        "id": 4,
+        "interactable": true,
+        "type": "rebel",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "rebel-5": {
+        "activated": false,
+        "activateText": "Destroy",
+        "color": "red",
+        "coordinates": {
+          "x": 7,
+          "y": 1
+        },
+        "description": "A supply cache.",
+        "id": 5,
+        "interactable": true,
+        "type": "rebel",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "rebel-6": {
+        "activated": false,
+        "activateText": "Destroy",
+        "color": "blue",
+        "coordinates": {
+          "x": 7,
+          "y": 3
+        },
+        "description": "A supply cache.",
+        "id": 6,
+        "interactable": true,
+        "type": "rebel",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "rebel-7": {
+        "activated": false,
+        "activateText": "Destroy",
+        "color": "green",
+        "coordinates": {
+          "x": 9,
+          "y": 2
+        },
+        "description": "A supply cache.",
+        "id": 7,
+        "interactable": true,
+        "type": "rebel",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "rebel-8": {
+        "activated": false,
+        "activateText": "Destroy",
+        "color": "blue",
+        "coordinates": {
+          "x": 11,
+          "y": 4
+        },
+        "description": "A supply cache.",
+        "id": 8,
+        "interactable": true,
+        "type": "rebel",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "neutral-1": {
+        "activated": false,
+        "activateText": "Destroy",
+        "coordinates": {
+          "x": 4,
+          "y": 5
+        },
+        "description": "A barricade.",
+        "id": 1,
+        "interactable": false,
+        "type": "neutral",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "neutral-2": {
+        "activated": false,
+        "activateText": "Destroy",
+        "coordinates": {
+          "x": 5,
+          "y": 5
+        },
+        "description": "A barricade.",
+        "id": 2,
+        "interactable": false,
+        "type": "neutral",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "neutral-3": {
+        "activated": false,
+        "activateText": "Destroy",
+        "coordinates": {
+          "x": 6,
+          "y": 5
+        },
+        "description": "A barricade.",
+        "id": 3,
+        "interactable": false,
+        "type": "neutral",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "neutral-4": {
+        "activated": false,
+        "activateText": "Destroy",
+        "coordinates": {
+          "x": 7,
+          "y": 5
+        },
+        "description": "A barricade.",
+        "id": 4,
+        "interactable": false,
+        "type": "neutral",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "door-1": {
+        "activated": false,
+        "activateText": "Destroy",
+        "coordinates": {
+          "x": 2,
+          "y": 6
+        },
+        "description": "A door to the supply caches.",
+        "id": 1,
+        "interactable": true,
+        "type": "door",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "door-2": {
+        "activated": false,
+        "activateText": "Destroy",
+        "coordinates": {
+          "x": 3,
+          "y": 3
+        },
+        "description": "A door to the supply caches.",
+        "id": 2,
+        "interactable": true,
+        "type": "door",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "door-3": {
+        "activated": false,
+        "activateText": "Destroy",
+        "coordinates": {
+          "x": 8,
+          "y": 3
+        },
+        "description": "A door to the supply caches.",
+        "id": 3,
+        "interactable": true,
+        "type": "door",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "door-4": {
+        "activated": false,
+        "activateText": "Destroy",
+        "coordinates": {
+          "x": 10,
+          "y": 6
+        },
+        "description": "A door to the supply caches.",
+        "id": 4,
+        "interactable": true,
+        "type": "door",
+        "unactivateText": "Restore",
+        "visible": true
+      }
+    },
+    "name": "Breaking Point",
+    "noMercenaryAllowed": false,
+    "openGroups": 2,
+    "reservedGroups": [
+      "royalGuardChampion"
+    ]
+  },
   "brushfire": {
     "initialGroups": [
       "atst", "eWebEngineer", "imperialOfficer", "probeDroid"

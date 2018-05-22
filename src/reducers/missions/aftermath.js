@@ -20,6 +20,7 @@ import createAction from '../createAction';
 import {displayModal} from '../modal';
 import handleHeroesWounded from './sharedSagas/handleHeroesWounded';
 import handleStatusPhaseBegin from './sharedSagas/handleStatusPhaseBegin';
+import helperCheckMapStateActivations from './helpers/helperCheckMapStateActivations';
 import helperChoiceModal from './helpers/helperChoiceModal';
 import helperDeploy from './helpers/helperDeploy';
 import helperEventModal from './helpers/helperEventModal';
@@ -199,14 +200,13 @@ function* handleSingleTerminalDestroyed(): Generator<*, *, *> {
 function* handleTerminalsDestroyed(): Generator<*, *, *> {
   while (true) {
     yield take(SET_MAP_STATE_ACTIVATED);
-    const mapStates = yield select(getMapStates);
+    const allActivated = yield call(
+      helperCheckMapStateActivations,
+      ['terminal-1', 'terminal-2', 'terminal-3', 'terminal-4'],
+      4
+    );
     // Now check all 4 terminals, if they are activated, then game over for rebels
-    if (
-      mapStates['terminal-1'].activated &&
-      mapStates['terminal-2'].activated &&
-      mapStates['terminal-3'].activated &&
-      mapStates['terminal-4'].activated
-    ) {
+    if (allActivated) {
       yield put(displayModal('REBEL_VICTORY'));
       track('aftermath', 'victory', 'terminals');
       // We're done
