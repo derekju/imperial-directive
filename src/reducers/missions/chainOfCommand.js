@@ -63,37 +63,40 @@ const CUSTOM_AI_TERMINAL = [
 
 const CUSTOM_AI_WEISS_BEHIND_DOOR = [
   {
-    command:
-      '{ACTION} Stay put and hide behind the door.',
-    condition:
-      'If the door out of the Operations Room has not yet been opened',
+    command: '{ACTION} Stay put and hide behind the door.',
+    condition: 'If the door out of the Operations Room has not yet been opened',
   },
 ];
 
 const CUSTOM_AI_WEISS_GO_TO_ATST = [
   {
-    "command": "{ACTION} Move until adjacent to the door, then {ACTION} Open the door, then {ACTION} Move towards General Weiss.",
-    "condition": "If the door to the Operation Room is still closed",
+    command:
+      '{ACTION} Move until adjacent to the door, then {ACTION} Open the door, then {ACTION} Move towards General Weiss.',
+    condition: 'If the door to the Operation Room is still closed',
   },
   {
-    "command": "{ACTION} Move until adjacent to General Weiss, then {ACTION} Move until adjacent to General Weiss, then {ACTION} Interact with General Weiss to enter the {ELITE}ATST{END}.",
-    "condition": "If General Weiss is deployed",
+    command:
+      '{ACTION} Move until adjacent to General Weiss, then {ACTION} Move until adjacent to General Weiss, then {ACTION} Interact with General Weiss to enter the {ELITE}ATST{END}.',
+    condition: 'If General Weiss is deployed',
   },
 ];
 
 const CUSTOM_AI_WEISS_REGULAR_BEHAVIOR = [
   {
-    "command": "{ACTION} Use Executive Order ability on that friendly figure to have it attack {ATTACK_TARGET}.",
-    "condition": "If within 2 spaces of a friendly target that is within attack range and LOS of {ATTACK_TARGET}"
+    command:
+      '{ACTION} Use Executive Order ability on that friendly figure to have it attack {ATTACK_TARGET}.',
+    condition:
+      'If within 2 spaces of a friendly target that is within attack range and LOS of {ATTACK_TARGET}',
   },
   {
-    "command": "{ACTION} Move to be within 4 spaces and LOS of {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}, then {ACTION} Move adjacent to the most friendly figures.",
-    "condition": "If within 6 spaces and in LOS of {ATTACK_TARGET}"
+    command:
+      '{ACTION} Move to be within 4 spaces and LOS of {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}, then {ACTION} Move adjacent to the most friendly figures.',
+    condition: 'If within 6 spaces and in LOS of {ATTACK_TARGET}',
   },
   {
-    "command": "Use Cower ability if a rolled dice does not cancel anything.",
-    "condition": "Reaction - If defending while adjacent to a friendly figure"
-  }
+    command: 'Use Cower ability if a rolled dice does not cancel anything.',
+    condition: 'Reaction - If defending while adjacent to a friendly figure',
+  },
 ];
 
 const CUSTOM_AI_EXCLUSION_LIST = ['nexu', 'nexuElite', 'weiss', 'generalWeiss'];

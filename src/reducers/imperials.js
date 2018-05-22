@@ -11,7 +11,6 @@ import {
   STATUS_PHASE_READY_GROUPS,
 } from './mission';
 import {getDifficulty, getMissionThreat} from './app';
-import {SET_REBEL_ESCAPED, SET_REBEL_ACTIVATED} from './rebels';
 import createAction from './createAction';
 import decrementFigureFromGroup from './utils/decrementFigureFromGroup';
 import {displayModal} from './modal';
@@ -404,7 +403,8 @@ export const setCustomAI = (customAI: ?(Object[]), exceptionList: string[] = [])
 export const clearCustomAI = () => createAction(CLEAR_CUSTOM_AI);
 export const setImperialUnitHpBuff = (groupId: string, hpBuff: number) =>
   createAction(SET_IMPERIAL_UNIT_HP_BUFF, {groupId, hpBuff});
-export const setCustomUnitAI = (unit: string, commands: Object[]) => createAction(SET_CUSTOM_UNIT_AI, {commands, unit});
+export const setCustomUnitAI = (unit: string, commands: Object[]) =>
+  createAction(SET_CUSTOM_UNIT_AI, {commands, unit});
 
 // Selectors
 

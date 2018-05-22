@@ -3,7 +3,6 @@
 import {all, call, fork, put, select, take} from 'redux-saga/effects';
 import {
   getCurrentRound,
-  getMapStates,
   MISSION_SPECIAL_SETUP,
   missionSpecialSetupDone,
   SET_MAP_STATE_ACTIVATED,
