@@ -7,6 +7,7 @@ import Button from './Button';
 import type {ImperialUnitType} from '../reducers/imperials';
 import {positionAbsolute} from '../styles/mixins';
 import random from 'lodash/random';
+import roll from '../lib/roll';
 import React from 'react';
 
 const styles = {
@@ -123,8 +124,7 @@ class AiCard extends React.PureComponent<AiCardPropsType> {
         // Just use a 50% chance, since the buff gets added to the group list which has to roll again
         // This is probably a really bad place to do this but I'll leave this refactor for a future
         // date
-        const roll = Math.floor(Math.random() * 100);
-        if (roll >= 50) {
+        if (roll(50)) {
           groupBuffList.push('imperialIndustry');
         }
       }

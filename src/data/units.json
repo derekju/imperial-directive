@@ -802,8 +802,8 @@
         "command": "{ACTION} Use Executive Order ability on that friendly figure to have it attack {ATTACK_TARGET}."
       },
       {
-        "condition": "If within 4 spaces and in LOS of {ATTACK_TARGET}",
-        "command": "{ACTION} Move to be in LOS of {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}, then {ACTION} Move adjacent to the most friendly figures."
+        "condition": "If within 6 spaces and in LOS of {ATTACK_TARGET}",
+        "command": "{ACTION} Move to be within 4 spaces and LOS of {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}, then {ACTION} Move adjacent to the most friendly figures."
       },
       {
         "condition": "Reaction - If defending while adjacent to a friendly figure",

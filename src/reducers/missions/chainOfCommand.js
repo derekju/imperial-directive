@@ -39,6 +39,7 @@ import helperInitialSetup from './helpers/helperInitialSetup';
 import helperMissionBriefing from './helpers/helperMissionBriefing';
 import helperShowInterruptedGroup from './helpers/helperShowInterruptedGroup';
 import {missionSagaLoadDone} from '../app';
+import roll from '../../lib/roll';
 import type {StateType} from '../types';
 import track from '../../lib/track';
 
@@ -47,7 +48,8 @@ import track from '../../lib/track';
 const TARGET_WEISS = 'Weiss';
 const TARGET_GENERAL_WEISS = 'General Weiss';
 
-const DEPLOYMENT_POINT_GREEN = 'The western green deployment point';
+const DEPLOYMENT_POINT_GREEN_WEST = 'The western green deployment point';
+const DEPLOYMENT_POINT_GREEN_SOUTH = 'The southern green deployment point';
 
 const CUSTOM_AI_TERMINAL = [
   {
@@ -122,6 +124,9 @@ export const getChainOfCommandGoalText = (state: StateType): string[] => {
       '{BOLD}Door:{END}',
       'Locked to heroes. A hero can interact (2 {STRENGTH} or {TECH}) to open it.',
       '{BREAK}',
+      '{BOLD}Weiss:{END}',
+      'Gains +6 Health, +1 Speed, +2 {DAMAGE} to attack, and +1 {BLOCK} to defense',
+      '{BREAK}',
     ]);
   }
 
@@ -136,6 +141,14 @@ export const getChainOfCommandGoalText = (state: StateType): string[] => {
 };
 
 // Sagas
+
+function getRandomDeploymentPoint() {
+  if (roll(50)) {
+    return DEPLOYMENT_POINT_GREEN_WEST;
+  }
+
+  return DEPLOYMENT_POINT_GREEN_SOUTH;
+}
 
 function* handleVulnerableEvent(): Generator<*, *, *> {
   track('chainOfCommand', 'vulnerable', 'triggered');
@@ -200,7 +213,7 @@ function* handleWeissEntersATST(): Generator<*, *, *> {
 
   track('chainOfCommand', 'invulnerable', 'triggered');
 
-  // Need to remove Weiss and General Weiss active
+  // Need to remove Weiss and make General Weiss active
   yield put(createAction('CHAIN_OF_COMMAND_SET_GENERAL_WEISS_ACTIVE', true));
   // Defeat the old one since it's fine now since it won't trigger end game
   const weissGroup = yield select(getLastDeployedGroupOfId, 'weiss');
@@ -337,6 +350,9 @@ function* handleRoundEnd(): Generator<*, *, *> {
     // Reset Custom AI in case it was cleared
     yield put(setCustomAI(CUSTOM_AI_TERMINAL, CUSTOM_AI_EXCLUSION_LIST));
 
+    // Change deployment point to a random one at the end of each round
+    yield put(setDeploymentPoint(getRandomDeploymentPoint()));
+
     yield put(statusPhaseEndRoundEffectsDone());
   }
 }
@@ -369,7 +385,7 @@ export function* chainOfCommand(): Generator<*, *, *> {
   yield put(setAttackTarget(TARGET_HERO_CLOSEST_UNWOUNDED));
   yield put(setMoveTarget(TARGET_WEISS));
   // SET INITIAL DEPLOYMENT POINT
-  yield put(setDeploymentPoint(DEPLOYMENT_POINT_GREEN));
+  yield put(setDeploymentPoint(getRandomDeploymentPoint()));
 
   // Set custom AI
   yield put(setCustomAI(CUSTOM_AI_TERMINAL, CUSTOM_AI_EXCLUSION_LIST));
