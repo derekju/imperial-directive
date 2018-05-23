@@ -33,6 +33,7 @@ import helperInitialSetup from './helpers/helperInitialSetup';
 import helperMissionBriefing from './helpers/helperMissionBriefing';
 import helperShowInterruptedGroup from './helpers/helperShowInterruptedGroup';
 import {missionSagaLoadDone} from '../app';
+import roll from '../../lib/roll';
 import type {StateType} from '../types';
 import track from '../../lib/track';
 
@@ -41,8 +42,10 @@ import track from '../../lib/track';
 const TARGET_WEISS = 'General Weiss';
 const TARGET_CLEARING = 'the entrance to the Clearing';
 
-const DEPLOYMENT_POINT_GREEN = 'The northern green deployment point';
-const DEPLOYMENT_POINT_RED = 'The red deployment point closest to General Weiss';
+const DEPLOYMENT_POINT_GREEN_NORTH = 'The northern green deployment point';
+const DEPLOYMENT_POINT_GREEN_SOUTH = 'The southern green deployment point';
+const DEPLOYMENT_POINT_RED_EAST = 'The eastern red deployment point';
+const DEPLOYMENT_POINT_RED_WEST = 'The western red deployment point';
 
 // Types
 
@@ -131,6 +134,22 @@ export const getDesperateHourGoalText = (state: StateType): string[] => {
 };
 
 // Sagas
+
+function getRandomDeploymentPoint(missionState: number) {
+  if (roll(50)) {
+    if (missionState < 3) {
+      return DEPLOYMENT_POINT_GREEN_NORTH;
+    } else {
+      return DEPLOYMENT_POINT_RED_WEST;
+    }
+  }
+
+  if (missionState < 3) {
+    return DEPLOYMENT_POINT_GREEN_SOUTH;
+  } else {
+    return DEPLOYMENT_POINT_RED_EAST;
+  }
+}
 
 function* handleNotSoFast(): Generator<*, *, *> {
   while (true) {
@@ -221,7 +240,7 @@ function* handleClearingEntered(): Generator<*, *, *> {
 
   yield put(setImperialUnitHpBuff('generalWeiss', 10));
   yield put(updateRebelVictory('When General Weiss is defeated'));
-  yield put(setDeploymentPoint(DEPLOYMENT_POINT_RED));
+  yield put(setDeploymentPoint(getRandomDeploymentPoint(3)));
   yield put(setMoveTarget(TARGET_WEISS));
   yield put(createAction('DESPERATE_HOUR_MISSION_STATE', {missionState: 3}));
 
@@ -270,6 +289,7 @@ function* handleRoundEnd(): Generator<*, *, *> {
   while (true) {
     yield take(STATUS_PHASE_END_ROUND_EFFECTS);
     const currentRound = yield select(getCurrentRound);
+    const {missionState} = yield select(getState);
 
     if (currentRound === 8) {
       // End game with imperial victory
@@ -277,6 +297,9 @@ function* handleRoundEnd(): Generator<*, *, *> {
       track('desperateHour', 'defeat', 'round');
       break;
     }
+
+    // Change deployment point to a random one at the end of each round
+    yield put(setDeploymentPoint(getRandomDeploymentPoint(missionState)));
 
     yield put(statusPhaseEndRoundEffectsDone());
   }
@@ -305,7 +328,7 @@ export function* desperateHour(): Generator<*, *, *> {
   yield put(setAttackTarget(TARGET_HERO_CLOSEST_UNWOUNDED));
   yield put(setMoveTarget(TARGET_HERO_CLOSEST_UNWOUNDED));
   // SET INITIAL DEPLOYMENT POINT
-  yield put(setDeploymentPoint(DEPLOYMENT_POINT_GREEN));
+  yield put(setDeploymentPoint(getRandomDeploymentPoint(0)));
 
   yield all([
     fork(handleSpecialSetup),
