@@ -20,6 +20,7 @@ import {
   DEFEAT_IMPERIAL_FIGURE,
   getLastDeployedGroupOfId,
   SET_IMPERIAL_GROUP_ACTIVATED,
+  setCustomUnitAI,
   setImperialUnitHpBuff,
   silentSetImperialGroupActivated,
 } from '../imperials';
@@ -47,12 +48,36 @@ const DEPLOYMENT_POINT_GREEN_SOUTH = 'The southern green deployment point';
 const DEPLOYMENT_POINT_RED_EAST = 'The eastern red deployment point';
 const DEPLOYMENT_POINT_RED_WEST = 'The western red deployment point';
 
+// Constants
+
+const WEISS_CUSTOM_AI = [
+  {
+    command: '{ACTION} Attack {ATTACK_TARGET}.',
+    condition: 'If within 10 spaces of {ATTACK_TARGET}',
+  },
+  {
+    command:
+      "{ACTION} Use General's Orders ability to move those figures within attack range and LOS of {ATTACK_TARGET}.",
+    condition: 'If 2 other friendly figures are not within attack range or LOS of {ATTACK_TARGET}',
+  },
+  {
+    command: '{ACTION} Move adjacent to {ATTACK_TARGET}.',
+    condition: 'If not within 10 spaces of {ATTACK_TARGET}',
+  },
+  {
+    command:
+      'If within 2 spaces of {ATTACK_TARGET}, use two red and one green dice. If greater than 8 spaces away, use one red and two blue dice. Otherwise, use one red, one blue, and one green dice.',
+    condition: 'Reaction - Epic Arsenal',
+  },
+];
+
 // Types
 
 export type DesperateHourStateType = {
   missionState: number,
   priorityTargetKillHero: boolean,
 };
+
 // State
 
 const initialState = {
@@ -247,6 +272,9 @@ function* handleClearingEntered(): Generator<*, *, *> {
   // Manually set him as activated so he doesn't activate as normal after this time
   const group = yield select(getLastDeployedGroupOfId, 'generalWeiss');
   yield put(silentSetImperialGroupActivated(group));
+
+  // Give him some custom AI since he only gets one action
+  yield put(setCustomUnitAI('generalWeiss', WEISS_CUSTOM_AI));
 
   yield fork(handleWeissActivations);
 }

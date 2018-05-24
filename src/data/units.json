@@ -152,11 +152,11 @@
       },
       {
         "condition": "If within 6 spaces of {ATTACK_TARGET}",
-        "command": "{ACTION} Move to be in LOS of {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}, then {ACTION} move adjacent to {MOVE_TARGET}."
+        "command": "{ACTION} Move to be in LOS of {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}, then {ACTION} move adjacent to {ATTACK_TARGET}."
       },
       {
         "condition": "If not within 6 spaces of {ATTACK_TARGET}",
-        "command": "{ACTION} Move adjacent to {MOVE_TARGET}."
+        "command": "{ACTION} Move adjacent to {ATTACK_TARGET}."
       },
       {
         "condition": "Reaction - Epic Arsenal",
@@ -332,8 +332,8 @@
     "buffs": ["recovery", "surgicalStrike"],
     "commands": [
       {
-        "condition": "If within 4 spaces of {ATTACK_TARGET}",
-        "command": "{ACTION} Use Pounce ability to attack {ATTACK_TARGET}."
+        "condition": "If within 4 spaces of {ATTACK_TARGET} or any target",
+        "command": "{ACTION} Use Pounce ability to attack {ATTACK_TARGET} or any target."
       },
       {
         "condition": "If within 6 spaces of any target",

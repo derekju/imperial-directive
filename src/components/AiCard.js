@@ -177,13 +177,13 @@ class AiCard extends React.PureComponent<AiCardPropsType> {
                 this.renderCommand(`custom-${index}`, customAI.condition, customAI.command)
               )
             : null}
-          {this.props.group.commands.map((command, index) =>
+          {this.props.customUnitAI[this.props.group.id] === undefined ? this.props.group.commands.map((command, index) =>
             this.renderCommand(
               `${this.props.group.name}-${index}`,
               command.condition,
               command.command
             )
-          )}
+          ) : null}
         </div>
         <div style={styles.buttonContainer}>
           <Button onClick={this.handleGroupActivated} text="All figures activated" width={200} />
