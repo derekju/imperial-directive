@@ -10,9 +10,9 @@ import units from '../../data/units';
 const EXTRA_GROUPS_TO_PULL = {
   '2': 0,
   '3': 0,
-  '4': 1,
+  '4': 0,
   '5': 1,
-  '6': 2,
+  '6': 1,
 };
 
 const THREAT_COST_FOR_MISSION_THREAT = {
