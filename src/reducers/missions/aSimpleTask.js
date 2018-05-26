@@ -42,9 +42,9 @@ const TARGET_NEUTRAL = 'the formula';
 const TARGET_HERO_FORMULA = 'the hero carrying the formula (or closest hero)';
 const TARGET_ENTRANCE = 'the entrance';
 
-const DEPLOYMENT_POINT_GREEN_TERMINAL_1 = 'The green deployment point next to terminal 1';
-const DEPLOYMENT_POINT_GREEN_TERMINAL_2 = 'The green deployment point next to the entrance';
-const DEPLOYMENT_POINT_RED = 'If red deployment point next to the hero carrying the formula';
+const DEPLOYMENT_POINT_GREEN_TERMINAL_1 = 'Green deployment point next to terminal 1';
+const DEPLOYMENT_POINT_GREEN_TERMINAL_2 = 'Green deployment point next to the entrance';
+const DEPLOYMENT_POINT_RED = 'Red deployment point next to the hero carrying the formula';
 
 // Local state
 
@@ -105,13 +105,11 @@ function* handleLightlyGuardedEvent(): Generator<*, *, *> {
     if (id === 1 && type === 'door' && value === true) {
       yield call(
         helperDeploy,
-        REFER_CAMPAIGN_GUIDE,
-        [
-          'Deploy an Imperial Officer and Stormtrooper group to the Command Room.',
-          'The units should be deployed next to door 2.',
-        ],
         'Lightly Guarded',
-        ['stormtrooper', 'imperialOfficer']
+        REFER_CAMPAIGN_GUIDE,
+        ['A Stormtrooper group and an Imperial Officer will now be deployed.'],
+        ['stormtrooper', 'Deploy to the Command Room next to door 2.'],
+        ['imperialOfficer', 'Deploy to the Command Room next to door 2.']
       );
       // Change target
       if (!priorityTargetKillHero) {
@@ -224,7 +222,7 @@ function* handleRoundEnd(): Generator<*, *, *> {
 // REQUIRED SAGA
 function* handleSpecialSetup(): Generator<*, *, *> {
   yield take(MISSION_SPECIAL_SETUP);
-  yield call(helperInitialSetup, 'Stormtrooper, {ELITE}Elite Trandoshan Hunter{END}');
+  yield call(helperInitialSetup, ['stormtrooper', 'trandoshanHunterElite']);
   yield call(helperEventModal, {
     text: ['The threat has been increased.', 'An optional deployment will now be done.'],
     title: 'Initial Setup',

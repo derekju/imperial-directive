@@ -129,10 +129,10 @@ function* handleBackRoomEvent(): Generator<*, *, *> {
       track('theSpiceJob', 'theBackRoom', 'triggered');
       yield call(
         helperDeploy,
-        REFER_CAMPAIGN_GUIDE,
-        ['Deploy an E-Web Engineer to the yellow point.'],
         'The Back Room',
-        ['eWebEngineer']
+        REFER_CAMPAIGN_GUIDE,
+        ['An E-Web Engineer will now be deployed.'],
+        ['eWebEngineer', 'Deploy to the yellow point.']
       );
 
       yield call(sharedAttackOrRaiseThreat);
@@ -256,7 +256,7 @@ function* handleSpecialSetup(): Generator<*, *, *> {
   yield take(MISSION_SPECIAL_SETUP);
   yield call(
     helperInitialSetup,
-    '{ELITE}Elite Nexu{END}, Probe Droid, {ELITE}Trandoshan Hunter{END}'
+    ['nexuElite', 'probeDroid', 'trandoshanHunterElite']
   );
   yield call(helperEventModal, {
     text: [

@@ -212,14 +212,14 @@ function* handleVulnerableEvent(): Generator<*, *, *> {
   track('chainOfCommand', 'vulnerable', 'triggered');
   yield call(
     helperDeploy,
+    'Vulnerable',
     REFER_CAMPAIGN_GUIDE,
     [
       'Deploy {ELITE}General Weiss{END} to the red points, touching the base with all points.',
       '{ELITE}General Weiss{END} cannot activate but can still be attacked.',
       '{ELITE}Weiss{END} can interact with the AT-ST to enter it.',
     ],
-    'Vulnerable',
-    ['generalWeiss']
+    ['generalWeiss', 'Deploy to the red points, touching the base with all points.']
   );
   const answer = yield call(
     helperChoiceModal,
@@ -426,7 +426,7 @@ function* handleSpecialSetup(): Generator<*, *, *> {
   yield take(MISSION_SPECIAL_SETUP);
   yield call(
     helperInitialSetup,
-    'Imperial Officer, {ELITE}Elite Imperial Officer{END}, Probe Droid, Royal Guard, Stormtrooper, {ELITE}Elite Stormtrooper{END}'
+    ['imperialOfficer', 'imperialOfficerElite', 'probeDroid', 'royalGuard', 'stormtrooper', 'stormtrooperElite']
   );
   yield call(helperMissionBriefing, [
     'The {ELITE}Elite Imperial Officer{END} is {ELITE}Weiss{END}. He has +6 Health and +1 Speed. He gets +2 {DAMAGE} to attack and +1 {BLOCK} to defense.',

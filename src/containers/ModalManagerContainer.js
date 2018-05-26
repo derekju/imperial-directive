@@ -1,6 +1,6 @@
 // @flow
 
-import {closeModals, choiceModalAnswer} from '../reducers/modal';
+import {closeModals, choiceModalAnswer, deployGroupInteractiveModalAnswer} from '../reducers/modal';
 import {connect} from 'react-redux';
 import ModalManager from '../components/ModalManager';
 import type {StateType} from '../reducers/types';
@@ -13,6 +13,7 @@ const mapStateToProps = (state: StateType) => ({
 const mapDispatchToProps = {
   choiceModalAnswer,
   closeModals,
+  deployGroupInteractiveModalAnswer,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ModalManager);

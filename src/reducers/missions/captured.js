@@ -265,7 +265,7 @@ function* handleSpecialSetup(): Generator<*, *, *> {
   yield take(MISSION_SPECIAL_SETUP);
   yield call(
     helperInitialSetup,
-    'Imperial Officer, {ELITE}Elite Imperial Officer{END}, Stormtrooper, {ELITE}Elite Stormtrooper{END}'
+    ['imperialOfficer', 'imperialOfficerElite', 'stormtrooper', 'stormtrooperElite']
   );
   yield call(helperMissionBriefing, [
     'Heroes cannot bring allies!',

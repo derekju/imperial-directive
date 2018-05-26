@@ -130,12 +130,13 @@ function* handleWelcomingPartyEvent(): Generator<*, *, *> {
 
       yield call(
         helperDeploy,
+        'Welcoming Party',
         REFER_CAMPAIGN_GUIDE,
         [
-          'Deploy an {ELITE}Elite Royal Guard{END} group and Probe Droid to the right edge of the Warehouse.',
+          'An {ELITE}Elite Royal Guard{END} group and Probe Droid will now be deployed.',
         ],
-        'Welcoming Party',
-        ['royalGuardElite', 'probeDroid']
+        ['royalGuardElite', 'Deploy to the right edge of the Warehouse.'],
+        ['probeDroid', 'Deploy to the right edge of the Warehouse.']
       );
 
       yield put(createAction('LAST_STAND_DOOR_OPEN', {doorNumber: 1}));
@@ -157,13 +158,14 @@ function* handleDefensesBreachedEvent(): Generator<*, *, *> {
 
       yield call(
         helperDeploy,
+        'Defenses Breached',
         REFER_CAMPAIGN_GUIDE,
         [
-          'Deploy an Imperial Officer and Probe Droid to the top edge of the Medical Center.',
-          'Deploy a Stormtrooper group to the right edge of the Reception Chamber.',
+          'An Imperial Officer, Probe Droid, and a Stormtrooper group will now be deployed.',
         ],
-        'Defenses Breached',
-        ['imperialOfficer', 'probeDroid', 'stormtrooper']
+        ['imperialOfficer', 'Deploy to the top edge of the Medical Center.'],
+        ['probeDroid', 'Deploy to the top edge of the Medical Center.'],
+        ['stormtrooper', 'Deploy to the right edge of the Reception Chamber.']
       );
 
       yield put(createAction('LAST_STAND_DOOR_OPEN', {doorNumber: 2}));
@@ -185,6 +187,7 @@ function* handleEndOfTheLineEvent(): Generator<*, *, *> {
 
       yield call(
         helperDeploy,
+        'End of the Line',
         REFER_CAMPAIGN_GUIDE,
         [
           'Deploy {ELITE}Darth Vader{END} to the red point. {ELITE}Darth Vader{END} gets +8 Health.',
@@ -193,8 +196,7 @@ function* handleEndOfTheLineEvent(): Generator<*, *, *> {
           'He can also spend 2 threat to apply +2 {BLOCK} to defense results.',
           'Door 1 and Door 2 will now close.',
         ],
-        'End of the Line',
-        ['darthVader']
+        ['darthVader', 'Deploy to the red point.']
       );
 
       yield put(setMapStateActivated(1, 'door', false));
@@ -293,7 +295,7 @@ function* handleRoundEnd(): Generator<*, *, *> {
 // REQUIRED SAGA
 function* handleSpecialSetup(): Generator<*, *, *> {
   yield take(MISSION_SPECIAL_SETUP);
-  yield call(helperInitialSetup, '{ELITE}Elite E-Web Engineer{END}, Royal Guard, Stormtrooper');
+  yield call(helperInitialSetup, ['eWebEngineerElite', 'royalGuard', 'stormtrooper']);
   yield call(helperMissionBriefing, [
     'Doors are locked. A Rebel figure can attack a door (Health: 5, Defense: 1 black die), or a hero can interact with a door ({TECH}) to open it.',
   ]);

@@ -3,12 +3,16 @@
 import {ELITE_RED, LIGHT_WHITE, IMPERIAL_BLUE, SUCCESS_GREEN} from '../styles/colors';
 import Arrow from 'react-svg-arrow';
 import Button from './Button';
+import Circle from './Circle';
 import imperialPng from '../assets/icons/imperial.png';
 import type {ImperialUnitType} from '../reducers/imperials';
 import {positionAbsolute} from '../styles/mixins';
 import React from 'react';
 
 const styles = {
+  alias: {
+    ...positionAbsolute(0, null, null, 0),
+  },
   avatar: {
     alignItems: 'center',
     border: '3px solid black',
@@ -21,7 +25,6 @@ const styles = {
     width: '80px',
   },
   base: {
-    marginBottom: '10px',
     position: 'relative',
     width: '86px',
   },
@@ -43,8 +46,8 @@ const styles = {
     padding: '5px',
   },
   image: {
-    height: '70%',
-    width: '70%',
+    height: '80%',
+    width: '80%',
   },
   name: {
     fontSize: '13px',
@@ -99,8 +102,6 @@ const styles = {
 type ImperialAvatarPropsType = {
   activateImperialGroup: Function,
   defeatImperialFigure: Function,
-  elite: boolean,
-  exhausted: boolean,
   imperialUnit: ImperialUnitType,
   index: number,
   isImperialPlayerTurn: boolean,
@@ -166,27 +167,30 @@ class ImperialAvatar extends React.Component<ImperialAvatarPropsType, ImperialAv
   }
 
   render() {
+    const {alias, currentNumFigures, elite, exhausted, hpBoost, name} = this.props.imperialUnit;
+
     const avatarStyles = Object.assign(
       {},
       styles.avatar,
-      this.props.elite ? styles.eliteAvatar : {},
-      this.props.exhausted ? styles.exhausted : {}
+      elite ? styles.eliteAvatar : {},
+      exhausted ? styles.exhausted : {}
     );
 
     return (
       <div style={styles.outer}>
         <div style={styles.base} onClick={this.handleClick}>
           <div style={avatarStyles}>
-            <img alt={this.props.imperialUnit.name} src={imperialPng} style={styles.image} />
+            <img alt={name} src={imperialPng} style={styles.image} />
           </div>
-          <div style={styles.name}>{`${this.props.imperialUnit.name} G${
-            this.props.imperialUnit.groupNumber
-          }`}</div>
-          <div style={styles.numInGroup}>{this.props.imperialUnit.currentNumFigures}</div>
+          <div style={styles.name}>
+            {name}
+            <Circle color={alias.color} number={alias.number} useSmallSize={true} />
+          </div>
+          <div style={styles.numInGroup}>{`x${currentNumFigures}`}</div>
           {this.props.imperialUnit.hpBoost ? (
             <div style={styles.hpBoost}>
               <span style={styles.plus}>+</span>
-              {this.props.imperialUnit.hpBoost}
+              {`${hpBoost} HP`}
             </div>
           ) : null}
         </div>

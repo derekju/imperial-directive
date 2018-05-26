@@ -129,10 +129,10 @@ function* handleGuardedEvent(): Generator<*, *, *> {
       track('meansOfProduction', 'guarded', 'triggered');
       yield call(
         helperDeploy,
-        REFER_CAMPAIGN_GUIDE,
-        ['Deploy an E-Web Engineer to the Yellow deployment point.'],
         'Guarded',
-        ['eWebEngineer']
+        REFER_CAMPAIGN_GUIDE,
+        ['An E-Web Engineer will now be deployed.'],
+        ['eWebEngineer', 'Deploy to the Yellow deployment point.']
       );
       // SWITCH TARGET
       const {priorityTargetKillHero} = yield select(getState);
@@ -274,7 +274,7 @@ function* handleRoundEnd(): Generator<*, *, *> {
 // REQUIRED SAGA
 function* handleSpecialSetup(): Generator<*, *, *> {
   yield take(MISSION_SPECIAL_SETUP);
-  yield call(helperInitialSetup, 'Probe Droid, Stormtrooper');
+  yield call(helperInitialSetup, ['probeDroid', 'stormtrooper']);
   yield call(helperEventModal, {
     text: ['The threat has been increased.', 'An optional deployment will now be done.'],
     title: 'Initial Setup',

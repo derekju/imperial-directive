@@ -169,12 +169,13 @@ function* handleFindTheDroidEvent(): Generator<*, *, *> {
       track('vipersDen', 'findTheDroid', 'triggered');
       yield call(
         helperDeploy,
+        'Find the Droid',
         REFER_CAMPAIGN_GUIDE,
         [
-          'Deploy an {ELITE}Elite Imperial Officer{END} and a Stormtrooper group to the yellow point.',
+          'An {ELITE}Elite Imperial Officer{END} and a Stormtrooper group will now be deployed.',
         ],
-        'Find the Droid',
-        ['imperialOfficerElite', 'stormtrooper']
+        ['imperialOfficerElite', 'Deploy to the yellow point.'],
+        ['stormtrooper', 'Deploy to the yellow point.']
       );
       break;
     }
@@ -295,7 +296,7 @@ function* handleRoundEnd(): Generator<*, *, *> {
 // REQUIRED SAGA
 function* handleSpecialSetup(): Generator<*, *, *> {
   yield take(MISSION_SPECIAL_SETUP);
-  yield call(helperInitialSetup, 'E-Web Engineer, Stormtrooper, Trandoshan Hunter');
+  yield call(helperInitialSetup, ['eWebEngineer', 'stormtrooper', 'trandoshanHunter']);
   yield call(helperEventModal, {
     text: ['The threat has been increased.', 'An optional deployment will now be done.'],
     title: 'Initial Setup',

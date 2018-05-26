@@ -140,10 +140,10 @@ function* handleRoundEnd(): Generator<*, *, *> {
     if (currentRound === 2) {
       yield call(
         helperDeploy,
-        REFER_CAMPAIGN_GUIDE,
-        ['Resolve the Secure the Ship event.'],
         'Secure the Ship',
-        ['royalGuard']
+        REFER_CAMPAIGN_GUIDE,
+        ['A Royal Guard group will now be deployed.'],
+        ['royalGuard', 'Deploy to the green point.']
       );
     }
 
@@ -156,7 +156,7 @@ function* handleSpecialSetup(): Generator<*, *, *> {
   yield take(MISSION_SPECIAL_SETUP);
   yield call(
     helperInitialSetup,
-    'Imperial Officer, Probe Droid, Stormtrooper, {ELITE}Elite Stormtrooper{END}'
+    ['imperialOfficer', 'probeDroid', 'stormtrooper', 'stormtrooperElite']
   );
   yield call(helperEventModal, {
     text: ['The threat has been increased.', 'An optional deployment will now be done.'],

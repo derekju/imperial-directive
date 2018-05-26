@@ -46,6 +46,7 @@ import helperDeploy from './helpers/helperDeploy';
 import helperEventModal from './helpers/helperEventModal';
 import helperInitialSetup from './helpers/helperInitialSetup';
 import helperMissionBriefing from './helpers/helperMissionBriefing';
+import lowerFirst from 'lodash/lowerFirst';
 import {missionSagaLoadDone} from '../app';
 import random from 'lodash/random';
 import type {StateType} from '../types';
@@ -224,10 +225,10 @@ function* handleArrivalEvent(): Generator<*, *, *> {
       const deploymentPoint = yield select(getDeploymentPoint);
       yield call(
         helperDeploy,
-        REFER_CAMPAIGN_GUIDE,
-        [`Deploy a {ELITE}Royal Guard Champion{END} to: ${deploymentPoint}.`],
         'Arrival',
-        ['royalGuardChampion']
+        REFER_CAMPAIGN_GUIDE,
+        ['A {ELITE}Royal Guard Champion{END} will now be deployed.'],
+        ['royalGuardChampion', `Deploy to ${lowerFirst(deploymentPoint)}`]
       );
       break;
     }
@@ -361,7 +362,7 @@ function* handleSpecialSetup(): Generator<*, *, *> {
   yield take(MISSION_SPECIAL_SETUP);
   yield call(
     helperInitialSetup,
-    'E-Web Engineer, {ELITE}Elite Imperial Officer{END}, Stormtrooper (2)'
+    ['eWebEngineer', 'imperialOfficerElite', 'stormtrooper', 'stormtrooper']
   );
   yield call(helperMissionBriefing, [
     'Terminals represent power stations. Rebel figures can attack a power station (Health: 8, Defense: 1 {BLOCK}) to destroy it.',

@@ -4,6 +4,7 @@ import {expandText, generateTextArray, replaceAttackMoveText} from '../lib/iconS
 import {ELITE_RED, IMPERIAL_BLUE, LIGHT_WHITE} from '../styles/colors';
 import buffs from '../data/buffs.json';
 import Button from './Button';
+import Circle from './Circle';
 import type {ImperialUnitType} from '../reducers/imperials';
 import {positionAbsolute} from '../styles/mixins';
 import random from 'lodash/random';
@@ -162,9 +163,15 @@ class AiCard extends React.PureComponent<AiCardPropsType> {
   render() {
     return (
       <div style={styles.base}>
-        <div style={styles.header}>{`${this.props.group.name} G${
-          this.props.group.groupNumber
-        }`}</div>
+        <div style={styles.header}>
+          {this.props.group.name}
+          <Circle
+            color={this.props.group.alias.color}
+            isSelected={true}
+            number={this.props.group.alias.number}
+            useSmallSize={true}
+          />
+        </div>
         <div style={styles.buffContainer}>{this.renderBuff()}</div>
         <div style={styles.commandContainer}>
           {this.props.customUnitAI[this.props.group.id] !== undefined
@@ -177,13 +184,15 @@ class AiCard extends React.PureComponent<AiCardPropsType> {
                 this.renderCommand(`custom-${index}`, customAI.condition, customAI.command)
               )
             : null}
-          {this.props.customUnitAI[this.props.group.id] === undefined ? this.props.group.commands.map((command, index) =>
-            this.renderCommand(
-              `${this.props.group.name}-${index}`,
-              command.condition,
-              command.command
-            )
-          ) : null}
+          {this.props.customUnitAI[this.props.group.id] === undefined
+            ? this.props.group.commands.map((command, index) =>
+                this.renderCommand(
+                  `${this.props.group.name}-${index}`,
+                  command.condition,
+                  command.command
+                )
+              )
+            : null}
         </div>
         <div style={styles.buttonContainer}>
           <Button onClick={this.handleGroupActivated} text="All figures activated" width={200} />

@@ -118,10 +118,10 @@ function* handleAllTerminalsActivated(): Generator<*, *, *> {
       track('indebted', 'prisonGuards', 'triggered');
       yield call(
         helperDeploy,
-        REFER_CAMPAIGN_GUIDE,
-        ['The door to the cell is now open.', 'Deploy an E-Web Engineer to the yellow point.'],
         'Prison Guards',
-        ['eWebEngineer']
+        REFER_CAMPAIGN_GUIDE,
+        ['The door to the cell is now open.', 'An E-Web Engineer will now be deployed.'],
+        ['eWebEngineer', 'Deploy to the yellow point.']
       );
       yield put(setMapStateActivated(1, 'door', true));
       const {priorityTargetKillHero} = yield select(getState);
@@ -243,7 +243,7 @@ function* handleRoundEnd(): Generator<*, *, *> {
 // REQUIRED SAGA
 function* handleSpecialSetup(): Generator<*, *, *> {
   yield take(MISSION_SPECIAL_SETUP);
-  yield call(helperInitialSetup, 'Nexu, {ELITE}Stormtrooper{END}');
+  yield call(helperInitialSetup, ['nexu', 'stormtrooperElite']);
   yield call(helperEventModal, {
     text: ['The threat has been increased.', 'An optional deployment will now be done.'],
     title: 'Initial Setup',

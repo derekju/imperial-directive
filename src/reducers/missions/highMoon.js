@@ -117,14 +117,14 @@ function* handleGunFightEvent(): Generator<*, *, *> {
       // First part
       yield call(
         helperDeploy,
+        'Gun Fight',
         REFER_CAMPAIGN_GUIDE,
         [
           'The door will now open.',
-          'Deploy Szark (a Trandoshan Hunter) to the yellow point.',
-          'Deploy a {ELITE}Elite Trandoshan Hunter{END} at each of the red points.',
+          'Szark (a Trandoshan Hunter) and an {ELITE}Elite Trandoshan Hunter{END} group will now be deployed.',
         ],
-        'Gun Fight',
-        ['szark', 'trandoshanHunterElite']
+        ['szark', 'Deploy to the yellow point.'],
+        ['trandoshanHunterElite', 'Deploy one unit to each of the red points.']
       );
       yield put(setMapStateActivated(1, 'door', true));
       yield put(setMapStateVisible(1, 'rebel', false));
@@ -269,7 +269,7 @@ function* handleSpecialSetup(): Generator<*, *, *> {
   yield take(MISSION_SPECIAL_SETUP);
   yield call(
     helperInitialSetup,
-    'E-Web Engineer, Imperial Officer, {ELITE}Nexu{END}, Stormtrooper'
+    ['eWebEngineer', 'imperialOfficer', 'nexuElite', 'stormtrooper']
   );
   yield call(helperEventModal, {
     text: ['The threat has been increased.', 'An optional deployment will now be done.'],

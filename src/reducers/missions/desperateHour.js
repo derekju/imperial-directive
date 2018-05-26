@@ -185,13 +185,13 @@ function* handleNotSoFast(): Generator<*, *, *> {
 
       yield call(
         helperDeploy,
+        'Not So Fast',
         REFER_CAMPAIGN_GUIDE,
         [
           'Deploy {ELITE}General Weiss{END} to the yellow point.',
           'Defeat {ELITE}General Weiss{END} to progress the mission.',
         ],
-        'Not So Fast',
-        ['generalWeiss']
+        ['generalWeiss', 'Deploy to the yellow point.']
       );
 
       yield put(createAction('DESPERATE_HOUR_MISSION_STATE', {missionState: 1}));
@@ -213,16 +213,18 @@ function* handleRespite(): Generator<*, *, *> {
 
       yield call(
         helperDeploy,
+        'Respite',
         REFER_CAMPAIGN_GUIDE,
         [
           'All doors will now be opened.',
-          'Deploy an {ELITE}Elite Imperial Officer{END}, Stormtrooper group, and {ELITE}Elite Royal Guard{END} group to the Warehouse (tile 24B).',
-          'Deploy the {ELITE}AT-ST{END} to the yellow point as a Rebel controlled figure. The {ELITE}AT-ST{END} gains "Epic Arsenel" from {ELITE}General Weiss\'{END} ability card.',
+          'Deploy an {ELITE}AT-ST{END} to the yellow point as a Rebel controlled figure. The {ELITE}AT-ST{END} gains "Epic Arsenel" from {ELITE}General Weiss\'{END} ability card.',
           "The {ELITE}AT-ST{END} performs one action after each hero's activation.",
           'Reach the Clearing (tile 06B) to progress the mission.',
+          'An {ELITE}Elite Imperial Officer{END}, Stormtrooper group, and {ELITE}Elite Royal Guard{END} group will now be deployed.',
         ],
-        'Respite',
-        ['imperialOfficerElite', 'stormtrooper', 'royalGuardElite']
+        ['imperialOfficerElite', 'Deploy to the Warehouse (tile 24B).'],
+        ['stormtrooper', 'Deploy to the Warehouse (tile 24B).'],
+        ['royalGuardElite', 'Deploy to the Warehouse (tile 24B).']
       );
 
       yield put(setMapStateActivated(1, 'door', true));
@@ -244,16 +246,18 @@ function* handleClearingEntered(): Generator<*, *, *> {
 
   yield call(
     helperDeploy,
+    'The Bitter End',
     REFER_CAMPAIGN_GUIDE,
     [
       'Deploy {ELITE}General Weiss{END} to the bottom left corner of the Canyon (tile 02B).',
-      'Deploy an {ELITE}Elite E-Web Engineer{END} to the left red point and {ELITE}Elite Trandoshan Hunter{END} group to top red point.',
       'All doors will now close and are locked. Any figure can attack a door to open it (Health: 10, Defense: 2 {BLOCK})',
       '{ELITE}General Weiss{END} gains +10 Health. He performs 1 action after each Imperial group activation.',
       'Defeat {ELITE}General Weiss{END} to win!',
+      'An {ELITE}Elite E-Web Engineer{END} and {ELITE}Elite Trandoshan Hunter{END} group will now be deployed.',
     ],
-    'The Bitter End',
-    ['generalWeiss', 'eWebEngineerElite', 'trandoshanHunterElite']
+    ['generalWeiss', 'Deploy to the bottom left corner of the Canyon (tile 02B).'],
+    ['eWebEngineerElite', 'Deploy to the left red point.'],
+    ['trandoshanHunterElite', 'Deploy to the top red point.']
   );
 
   yield put(setMapStateActivated(1, 'door', false));
@@ -336,7 +340,7 @@ function* handleRoundEnd(): Generator<*, *, *> {
 // REQUIRED SAGA
 function* handleSpecialSetup(): Generator<*, *, *> {
   yield take(MISSION_SPECIAL_SETUP);
-  yield call(helperInitialSetup, 'Royal Guard, {ELITE}Stormtrooper{END}');
+  yield call(helperInitialSetup, ['royalGuard', 'stormtrooperElite']);
   yield call(helperMissionBriefing, [
     'Doors are locked. A Rebel figure can attack Doors 1 or 2 (Health: 6) to open it.',
     'A massive figure can move through and occupy interior spaces.',

@@ -147,10 +147,10 @@ function* handleArchiveDoorOpens(): Generator<*, *, *> {
 
       yield call(
         helperDeploy,
-        'As you step through the remains of the door, you spot the Royal Guards waiting in the shadows.',
-        ['Deploy a Royal Guard group to the red point.'],
         'Data Core',
-        ['royalGuard']
+        'As you step through the remains of the door, you spot the Royal Guards waiting in the shadows.',
+        ['A Royal Guard group will now be deployed.'],
+        ['royalGuard', 'Deploy to the red point.']
       );
 
       const currentThreat = yield select(getCurrentThreat);
@@ -226,7 +226,7 @@ function* handleRoundEnd(): Generator<*, *, *> {
 // REQUIRED SAGA
 function* handleSpecialSetup(): Generator<*, *, *> {
   yield take(MISSION_SPECIAL_SETUP);
-  yield call(helperInitialSetup, 'Imperial Officer, Probe Droid, Stormtrooper');
+  yield call(helperInitialSetup, ['imperialOfficer', 'probeDroid', 'stormtrooper']);
   yield call(helperEventModal, {
     text: ['The threat has been increased.', 'An optional deployment will now be done.'],
     title: 'Initial Setup',

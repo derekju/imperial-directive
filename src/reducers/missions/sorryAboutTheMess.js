@@ -63,14 +63,15 @@ function* handleGarageOpens(): Generator<*, *, *> {
       // Deploy imperial officer
       yield call(
         helperDeploy,
+        'Old Friends',
         REFER_CAMPAIGN_GUIDE,
         [
           'Deploy an {ELITE}Elite Imperial Officer{END} to the yellow point. This officer is Gerrin.',
           `Gerrin gains ${missionThreat * 2} extra Health.`,
-          'Deploy an E-Web Engineer to the red point.',
+          'An E-Web Engineer will now be deployed.',
         ],
-        'Old Friends',
-        ['gerrin', 'eWebEngineer']
+        ['gerrin', 'Deploy to the yellow point.'],
+        ['eWebEngineer', 'Deploy to the red point.']
       );
       yield put(setImperialUnitHpBuff('gerrin', missionThreat * 2));
 
@@ -130,10 +131,10 @@ function* handleRegularsEvent(): Generator<*, *, *> {
   track('sorryAboutTheMess', 'regulars', 'triggered');
   yield call(
     helperDeploy,
-    'You sense the regular patrol approaching from behind.',
-    ['Deploy an {ELITE}Elite Trandoshan Hunter{END} group to the entrance.'],
     'Regulars',
-    ['trandoshanHunterElite']
+    'You sense the regular patrol approaching from behind.',
+    ['An {ELITE}Elite Trandoshan Hunter{END} will now be deployed.'],
+    ['trandoshanHunterElite', 'Deploy to the entrance.']
   );
 }
 
@@ -154,7 +155,7 @@ function* handleRoundEnd(): Generator<*, *, *> {
 // REQUIRED SAGA
 function* handleSpecialSetup(): Generator<*, *, *> {
   yield take(MISSION_SPECIAL_SETUP);
-  yield call(helperInitialSetup, '{ELITE}Probe Droid{END}, Stormtrooper');
+  yield call(helperInitialSetup, ['probeDroidElite', 'stormtrooper']);
   yield call(helperEventModal, {
     text: [
       'The heroes control {ELITE}Han Solo{END} as an ally.',

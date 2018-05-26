@@ -150,10 +150,10 @@ function* handleRoundEnd(): Generator<*, *, *> {
       track('looseCannon', 'chaos', 'triggered');
       yield call(
         helperDeploy,
-        REFER_CAMPAIGN_GUIDE,
-        ['Deploy an E-Web Engineer to the southern green deployment point.'],
         'Chaos',
-        ['eWebEngineer']
+        REFER_CAMPAIGN_GUIDE,
+        ['An E-Web Engineer will now be deployed.'],
+        ['eWebEngineer', 'Deploy to the southern green deployment point.']
       );
     } else if (currentRound === 3) {
       yield call(helperEventModal, {
@@ -186,7 +186,7 @@ function* handleSpecialSetup(): Generator<*, *, *> {
   yield take(MISSION_SPECIAL_SETUP);
   yield call(
     helperInitialSetup,
-    '{ELITE}Royal Guard Champion{END}, {ELITE}Imperial Officer{END}, Royal Guard, {ELITE}Stormtrooper{END}'
+    ['royalGuardChampion', 'imperialOfficerElite', 'royalGuard', 'stormtrooperElite']
   );
   yield call(helperEventModal, {
     text: ['The threat has been increased.', 'An optional deployment will now be done.'],

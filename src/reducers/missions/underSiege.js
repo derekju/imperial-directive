@@ -110,13 +110,13 @@ export const getUnderSiegeGoalText = (state: StateType): string[] => {
 function* handleWave1(): Generator<*, *, *> {
   yield call(
     helperDeploy,
+    'Wave 1',
     REFER_CAMPAIGN_GUIDE,
     [
-      'Deploy a Royal Guard to the green deployment point.',
       'The current threat has been increased by 5.',
+      'A Royal Guard group will now be deployed.',
     ],
-    'Wave 1',
-    ['royalGuard']
+    ['royalGuard', 'Deploy to the green deployment point.']
   );
   yield put(increaseThreat(5));
 }
@@ -160,13 +160,13 @@ function* handleAssault(): Generator<*, *, *> {
 function* handleWave2(): Generator<*, *, *> {
   yield call(
     helperDeploy,
+    'Wave 2',
     REFER_CAMPAIGN_GUIDE,
     [
-      'Deploy an {ELITE}Elite Stormtrooper{END} group to the green deployment point.',
       'The current threat has been increased by 3.',
+      'An {ELITE}Elite Stormtrooper{END} group will now be deployed.',
     ],
-    'Wave 2',
-    ['stormtrooperElite']
+    ['stormtrooperElite', 'Deploy to the green deployment point.']
   );
   yield put(increaseThreat(3));
 }
@@ -201,12 +201,12 @@ function* handleSpecialists(): Generator<*, *, *> {
   } else {
     yield call(
       helperDeploy,
+      'Specialists',
       'Tree branches snap outside as a giant AT-ST roars to life.',
       [
-        `Deploy a {ELITE}AT-ST{END} to the yellow deployment point closest to door ${randomDoorNumOutside}.`,
+        'An {ELITE}AT-ST{END} will now be deployed.',
       ],
-      'Specialists',
-      ['atst']
+      ['atst', `Deploy to the yellow deployment point closest to door ${randomDoorNumOutside}.`]
     );
   }
 }
@@ -214,13 +214,13 @@ function* handleSpecialists(): Generator<*, *, *> {
 function* handleWave3(): Generator<*, *, *> {
   yield call(
     helperDeploy,
+    'Wave 3',
     REFER_CAMPAIGN_GUIDE,
     [
       'Deploy {ELITE}Darth Vader{END} to the green deployment point.',
       'The current threat has been increased by 3.',
     ],
-    'Wave 3',
-    ['darthVader']
+    ['darthVader', 'Deploy to the green deployment point.']
   );
   yield put(increaseThreat(3));
 }
@@ -379,7 +379,7 @@ function* handleRoundEnd(): Generator<*, *, *> {
 // REQUIRED SAGA
 function* handleSpecialSetup(): Generator<*, *, *> {
   yield take(MISSION_SPECIAL_SETUP);
-  yield call(helperInitialSetup, 'E-Web Engineer, Imperial Officer, Stormtrooper');
+  yield call(helperInitialSetup, ['eWebEngineer', 'imperialOfficer', 'stormtrooper']);
   yield call(helperMissionBriefing, [
     'Rebel mission tokens represent capture sites. At the end of each round, if an Imperial figure occupies a tile with a mission token and there are no healthy Rebel figures on that site, it is captured. Manually activate that token to secure it.',
     'Doors are locked. An Imperial figure can attack a Door to destroy it (Health: 6, Defense: 1 black die).',

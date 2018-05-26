@@ -2,6 +2,7 @@
 
 import BeginRoundModal from './modals/BeginRoundModal';
 import ChoiceModal from './modals/ChoiceModal';
+import DeployGroupInteractiveModal from './modals/DeployGroupInteractiveModal';
 import HeroicHeroModalContainer from '../containers/HeroicHeroModalContainer';
 import InteractObjectContainer from '../containers/InteractObjectContainer';
 import NewEventModal from './modals/NewEventModal';
@@ -14,6 +15,7 @@ type ModalManagerPropsType = {
   choiceModalAnswer: Function,
   closeModals: Function,
   data: Object,
+  deployGroupInteractiveModalAnswer: Function,
   type: string,
 };
 
@@ -41,6 +43,17 @@ class ModalManager extends React.Component<ModalManagerPropsType> {
             yesText={this.props.data.yesText}
           />
         );
+      case 'DEPLOY_GROUP_INTERACTIVE':
+        return (
+          <DeployGroupInteractiveModal
+            closeModals={this.props.closeModals}
+            deployGroupInteractiveModalAnswer={this.props.deployGroupInteractiveModalAnswer}
+            group={this.props.data.group}
+            location={this.props.data.location}
+            title={this.props.data.title}
+            type={this.props.type}
+          />
+        );
       case 'HEROIC_HERO_MODAL':
         return <HeroicHeroModalContainer />;
       case 'IMPERIAL_VICTORY':
@@ -64,6 +77,7 @@ class ModalManager extends React.Component<ModalManagerPropsType> {
       case 'RESOLVE_EVENT':
         return (
           <ResolveEventModal
+            buttonText={this.props.data.buttonText || ''}
             closeModals={this.props.closeModals}
             story={this.props.data.story || ''}
             text={this.props.data.text}

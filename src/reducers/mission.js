@@ -419,8 +419,6 @@ function* handleCheckForImperialRewards(): Generator<*, *, *> {
 }
 
 function* handleLoadMission(): Generator<*, *, *> {
-  // yield put(eventPhaseBegin());
-  // yield take(EVENT_PHASE_END);
   // Blocking call to let mission figure out any special setup needed
   yield put(missionSpecialSetup());
   yield take(MISSION_SPECIAL_SETUP_DONE);

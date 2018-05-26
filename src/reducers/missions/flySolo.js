@@ -16,6 +16,7 @@ import {
   SET_MAP_STATE_ACTIVATED,
   setAttackTarget,
   setDeploymentPoint,
+  setMapStateActivated,
   setMoveTarget,
   STATUS_PHASE_END_ROUND_EFFECTS,
   statusPhaseEndRoundEffectsDone,
@@ -110,13 +111,14 @@ function* handleStrangePatronsEvent(): Generator<*, *, *> {
       track('flySolo', 'strangePatron', 'triggered');
       yield call(
         helperDeploy,
+        'Strange Patrons',
         REFER_CAMPAIGN_GUIDE,
         [
-          'Deploy an {ELITE}Elite Stormtrooper{END} group and an {ELITE}Elite Imperial Officer{END} to the Back Room near the door. They are deployed exhausted.',
-          'Deploy {ELITE}Han Solo{END} to the Storage Closet. He is also deployed exhausted.',
+          'Deploy {ELITE}Han Solo{END} to the Storage Closet. He is deployed exhausted.',
+          'An {ELITE}Elite Stormtrooper{END} group and an {ELITE}Elite Imperial Officer{END} will now be deployed.',
         ],
-        'Strange Patrons',
-        ['stormtrooperElite', 'imperialOfficerElite']
+        ['stormtrooperElite', 'Deploy to the Back Room near the door. Exhaust all units in this group.'],
+        ['imperialOfficerElite', 'Deploy to the Back Room near the door. Exhaust this unit.']
       );
       yield put(addToRoster('han'));
       yield put(silentSetRebelActivated('han'));
@@ -142,29 +144,30 @@ function* handleDaringEscapeEvent(): Generator<*, *, *> {
   track('flySolo', 'daringEscape', 'triggered');
   yield call(
     helperDeploy,
+    'Daring Escape',
     REFER_CAMPAIGN_GUIDE,
     [
       'The door to the Back Room opens.',
-      'Deploy an {ELITE}Elite Stormtrooper{END} group to the Back Room. Each unit suffers 2 {DAMAGE}.',
       'Deploy {ELITE}Han Solo{END} to the blue point. He suffers 4 {DAMAGE}.',
       'The threat has been increased.',
+      'An {ELITE}Elite Stormtrooper{END} group will now be deployed.',
     ],
-    'Daring Escape',
-    ['stormtrooperElite']
+    ['stormtrooperElite', 'Deploy to the Back Room. Each unit suffers 2 {DAMAGE}.']
   );
   yield put(addToRoster('han'));
   yield put(increaseThreat(4));
   yield put(createAction('FLY_SOLO_BACK_ROOM_DOOR_OPENED', true));
+  yield put(setMapStateActivated(2, 'door', true));
   yield call(handleTimeToRunEvent);
 }
 
 function* handleTimeToRunEvent(): Generator<*, *, *> {
   yield call(
     helperDeploy,
+    'Time to Run',
     REFER_CAMPAIGN_GUIDE,
     ['Deploy {ELITE}IG-88{END} to the entrance.', 'The threat has been increased.'],
-    'Time to Run',
-    ['ig88']
+    ['ig88', 'Deploy to the entrance.']
   );
   yield put(increaseThreat(4));
   yield call(helperEventModal, {
@@ -223,7 +226,7 @@ function* handleRoundEnd(): Generator<*, *, *> {
 // REQUIRED SAGA
 function* handleSpecialSetup(): Generator<*, *, *> {
   yield take(MISSION_SPECIAL_SETUP);
-  yield call(helperInitialSetup, 'Probe Droid, Stormtrooper (2), Trandoshan Hunter');
+  yield call(helperInitialSetup, ['probeDroid', 'stormtrooper', 'stormtrooper', 'trandoshanHunter']);
   yield call(helperMissionBriefing, [
     'The door to the back room is locked. A hero can interact ({STRENGTH}) to open it.',
     'Heroes cannot bring {ELITE}Han Solo{END} to this mission!',

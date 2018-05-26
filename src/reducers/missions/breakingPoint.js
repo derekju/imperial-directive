@@ -35,6 +35,7 @@ import helperIncreaseThreat from './helpers/helperIncreaseThreat';
 import helperInitialSetup from './helpers/helperInitialSetup';
 import helperMissionBriefing from './helpers/helperMissionBriefing';
 import helperShowInterruptedGroup from './helpers/helperShowInterruptedGroup';
+import lowerFirst from 'lodash/lowerFirst';
 import type {StateType} from '../types';
 import {REFER_CAMPAIGN_GUIDE} from './constants';
 import roll from '../../lib/roll';
@@ -125,13 +126,10 @@ function* handleLeaveNoSurvivors(): Generator<*, *, *> {
 
   yield call(
     helperDeploy,
-    REFER_CAMPAIGN_GUIDE,
-    [
-      `Deploy a {ELITE}Royal Guard Champion{END} (${getRandomDeploymentPoint()}).`,
-      'Instead of activating as normal, the Royal Guard Champion performs 1 action after each hero activation',
-    ],
     'Leave No Survivors',
-    ['royalGuardChampion']
+    REFER_CAMPAIGN_GUIDE,
+    ['A Royal Guard Champion will now be deployed.'],
+    ['royalGuardChampion', `Deploy to ${lowerFirst(getRandomDeploymentPoint())}. Instead of activating as normal, the Royal Guard Champion performs 1 action after each hero activation.`]
   );
 
   // Manually set him as activated so he doesn't activate as normal after this time
@@ -228,7 +226,7 @@ function* handleRoundEnd(): Generator<*, *, *> {
 // REQUIRED SAGA
 function* handleSpecialSetup(): Generator<*, *, *> {
   yield take(MISSION_SPECIAL_SETUP);
-  yield call(helperInitialSetup, 'Royal Guard');
+  yield call(helperInitialSetup, ['royalGuard']);
 
   yield call(helperEventModal, {
     text: ['The threat has been increased.', 'An optional deployment will now be done.'],

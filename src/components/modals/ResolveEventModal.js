@@ -19,6 +19,7 @@ const styles = {
 };
 
 type ResolveEventModalPropsType = {
+  buttonText: string,
   closeModals: Function,
   story: string,
   text: string[],
@@ -27,15 +28,18 @@ type ResolveEventModalPropsType = {
 };
 
 class ResolveEventModal extends React.Component<ResolveEventModalPropsType> {
+  static defaultProps = {
+    buttonText: 'Done',
+  };
+
   handleButtonClick = () => {
     this.props.closeModals(this.props.type);
   };
 
   render() {
-    const buttonText = 'Done';
     return (
       <Modal
-        buttonText={buttonText}
+        buttonText={this.props.buttonText || 'Done'}
         handleButtonClick={this.handleButtonClick}
         title={this.props.title}
       >

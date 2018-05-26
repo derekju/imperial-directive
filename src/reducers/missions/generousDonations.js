@@ -138,13 +138,13 @@ function* handleClearAreaEvent(): Generator<*, *, *> {
       track('generousDonations', 'clearTheArea', 'triggered');
       yield call(
         helperDeploy,
+        'Clear the Area',
         REFER_CAMPAIGN_GUIDE,
         [
-          'Deploy an {ELITE}Elite E-Web Engineer{END} and a Royal Guard group to the Command Room.',
-          'Deploy the units adjacent to the terminal (T3)',
+          'An {ELITE}Elite E-Web Engineer{END} and a Royal Guard group will now be deployed.',
         ],
-        'Clear the Area',
-        ['eWebEngineerElite', 'royalGuard']
+        ['eWebEngineerElite', 'Deploy adjacent to terminal T3.'],
+        ['royalGuard', 'Deploy adjacent to terminal T3.']
       );
       const {priorityTargetKillHero} = yield select(getState);
       if (!priorityTargetKillHero) {
@@ -164,13 +164,14 @@ function* handleTheVirusEvent(): Generator<*, *, *> {
       track('generousDonations', 'theVirus', 'triggered');
       yield call(
         helperDeploy,
+        'The Virus',
         REFER_CAMPAIGN_GUIDE,
         [
-          'Deploy an {ELITE}AT-ST{END} and Stormtrooper group to the yellow point.',
           'The threat has now been increased.',
+          'An {ELITE}AT-ST{END} and Stormtrooper group will now be deployed.',
         ],
-        'The Virus',
-        ['atst', 'stormtrooper']
+        ['atst', 'Deploy to the yellow point.'],
+        ['stormtrooper', 'Deploy to the yellow point.']
       );
       yield call(helperIncreaseThreat, 1);
 
@@ -319,7 +320,7 @@ function* handleRoundEnd(): Generator<*, *, *> {
 // REQUIRED SAGA
 function* handleSpecialSetup(): Generator<*, *, *> {
   yield take(MISSION_SPECIAL_SETUP);
-  yield call(helperInitialSetup, 'E-Web Engineer, Probe Droid, Trandoshan Hunter');
+  yield call(helperInitialSetup, ['eWebEngineer', 'probeDroid', 'trandoshanHunter']);
   yield call(helperEventModal, {
     text: ['The threat has been increased.', 'An optional deployment will now be done.'],
     title: 'Initial Setup',

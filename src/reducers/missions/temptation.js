@@ -132,13 +132,13 @@ function* handleHatredEvent(): Generator<*, *, *> {
 
       yield call(
         helperDeploy,
+        'Hatred',
         REFER_CAMPAIGN_GUIDE,
         [
           'Deploy Darth Vader to the red point.',
           `Darth Vader has health equal to ${missionThreat * 2}. When he is defeated you win.`,
         ],
-        'Hatred',
-        ['darthVader']
+        ['darthVader', 'Deploy to the red point.']
       );
       yield put(createAction('TEMPTATION_DOOR_OPEN', true));
       yield put(updateRebelVictory('Defeat Darth Vader'));
@@ -250,7 +250,7 @@ function* handleRoundEnd(): Generator<*, *, *> {
 // REQUIRED SAGA
 function* handleSpecialSetup(): Generator<*, *, *> {
   yield take(MISSION_SPECIAL_SETUP);
-  yield call(helperInitialSetup, '{ELITE}Nexu{END}, Royal Guard, Stormtrooper');
+  yield call(helperInitialSetup, ['nexuElite', 'royalGuard', 'stormtrooper']);
   yield call(helperEventModal, {
     text: [
       "Place 8 Rebel mission tokens in Diala's play area.",

@@ -105,13 +105,13 @@ function* handleSmallVictoryEvent(): Generator<*, *, *> {
     if (group.id === 'atst') {
       yield call(
         helperDeploy,
+        'Small Victory',
         REFER_CAMPAIGN_GUIDE,
         [
           'Roll 2 red dice. Each figure within 2 spaces of the defeated {ELITE}AT-ST{END} suffers {DAMAGE} equal to the {DAMAGE} results.',
-          'Deploy a Trandoshan Hunter to the northern green deployment point.',
+          'A Trandoshan Hunter will now be deployed.'
         ],
-        'Small Victory',
-        ['trandoshanHunter']
+        ['trandoshanHunter', 'Deploy to the northern green deployment point.']
       );
       yield put(createAction('BRUSHFIRE_ATST_DEAD', true));
       break;
@@ -250,7 +250,7 @@ function* handleSpecialSetup(): Generator<*, *, *> {
   yield take(MISSION_SPECIAL_SETUP);
   yield call(
     helperInitialSetup,
-    '{ELITE}AT-ST{END}, E-Web Engineer, Imperial Officer, Probe Droid'
+    ['atst', 'eWebEngineer', 'imperialOfficer', 'probeDroid']
   );
   yield call(helperEventModal, {
     text: ['The threat has been increased.', 'An optional deployment will now be done.'],

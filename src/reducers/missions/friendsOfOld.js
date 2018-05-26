@@ -129,14 +129,14 @@ function* handleTheSquad(): Generator<*, *, *> {
           track('friendsOfOld', 'theSquad', 'red');
           yield call(
             helperDeploy,
+            'The Squad',
             'Upon hearing your signal the Rebel Trooper springs out from his hiding place.',
             [
               'Replace the red mission token with a Rebel Trooper.',
               'A hero within 3 spaces of this Trooper recovers 5 {DAMAGE}.',
-              'Deploy a Stormtrooper group to the nearest green deployment point.',
+              'A Stormtrooper group will now be deployed.',
             ],
-            'The Squad',
-            ['stormtrooper']
+            ['stormtrooper', 'Deploy to the nearest green deployment point to the hero that triggered the Trooper.']
           );
           // Deploy a rebel trooper where the map state was
           yield put(setMapStateVisible(id, 'neutral', false));
@@ -170,14 +170,14 @@ function* handleTheSquad(): Generator<*, *, *> {
           track('friendsOfOld', 'theSquad', 'green');
           yield call(
             helperDeploy,
+            'The Squad',
             'Upon hearing your signal the Rebel Trooper springs out from his hiding place.',
             [
               'Replace the green mission token with a Rebel Trooper.',
               'The active Hero may immediately interrupt to perform a move or attack.',
-              'Deploy a Probe Droid to the nearest green deployment point.',
+              'A Probe Droid will now be deployed.',
             ],
-            'The Squad',
-            ['probeDroid']
+            ['probeDroid', 'Deploy to the nearest green deployment point to the hero that triggered the Trooper.']
           );
           // Deploy a rebel trooper where the map state was
           yield put(setMapStateVisible(id, 'neutral', false));
@@ -191,14 +191,14 @@ function* handleTheSquad(): Generator<*, *, *> {
           track('friendsOfOld', 'theSquad', 'yellow');
           yield call(
             helperDeploy,
+            'The Squad',
             "It's a trap!",
             [
               'Replace the yellow mission token with an {ELITE}Elite Imperial Officer{END}.',
               'The {ELITE}Imperial Officer{END} may interrupt to perform an attack on the nearest Rebel Trooper.',
               'If no Rebel Troopers are in attack range, the {ELITE}Imperial Officer{END} moves towards the entrance.',
             ],
-            'The Squad',
-            ['imperialOfficerElite']
+            ['imperialOfficerElite', 'Replace the yellow mission token with an E Imperial Officer.']
           );
           yield put(setMapStateVisible(id, 'neutral', false));
           // Switch targets
@@ -310,7 +310,7 @@ function* handleRoundEnd(): Generator<*, *, *> {
 function* handleSpecialSetup(): Generator<*, *, *> {
   yield take(MISSION_SPECIAL_SETUP);
   const missionThreat = yield select(getMissionThreat);
-  yield call(helperInitialSetup, 'Imperial Officer, Stormtrooper');
+  yield call(helperInitialSetup, ['imperialOfficer', 'stormtrooper']);
   yield call(helperEventModal, {
     text: ['The threat has been increased.', 'An optional deployment will now be done.'],
     title: 'Initial Setup',

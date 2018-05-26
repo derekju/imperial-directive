@@ -132,13 +132,13 @@ function* handleWellGuardedEvent(): Generator<*, *, *> {
       track('imperialHospitality', 'wellGuarded', 'triggered');
       yield call(
         helperDeploy,
+        'Well-Guarded',
         REFER_CAMPAIGN_GUIDE,
         [
-          'Deploy an Imperial Officer and Trandoshan Hunter group to the Data Center.',
-          'Deploy them on or adjacent to the terminal.',
+          'An Imperial Officer and Trandoshan Hunter group will now be deployed.',
         ],
-        'Well-Guarded',
-        ['imperialOfficer', 'trandoshanHunter']
+        ['imperialOfficer', 'Deploy to the Data Center on or adjacent to the terminal'],
+        ['trandoshanHunter', 'Deploy to the Data Center on or adjacent to the terminal']
       );
       yield put(createAction('IMPERIAL_HOSPITALITY_WELL_GUARDED_RESOLVED', true));
       break;
@@ -300,7 +300,7 @@ function* handleRoundEnd(): Generator<*, *, *> {
 // REQUIRED SAGA
 function* handleSpecialSetup(): Generator<*, *, *> {
   yield take(MISSION_SPECIAL_SETUP);
-  yield call(helperInitialSetup, 'Probe Droid (2), Royal Guard');
+  yield call(helperInitialSetup, ['probeDroid', 'probeDroid', 'royalGuard']);
   yield call(helperMissionBriefing, [
     'Doors are locked. A Rebel figure can attack a door to destroy it (Health: 6, Defense: 1 black die) or interact (2 {TECH}) to open it.',
     'The terminal will transmit sensitive data at the end of Round 4. A Rebel figure can attack it (Health: 6, Defense: 1 black die) or interact (2 {TECH}) to destroy it.',

@@ -132,13 +132,15 @@ function* handleHuntedDownEvent(): Generator<*, *, *> {
 
       yield call(
         helperDeploy,
+        'Hunted Down',
         'Opening the door, you see the droid staring back at you, ready to attack.',
         [
-          'Deploy {ELITE}IG-88{END} to the red point and a Probe Droid to the yellow point.',
+          'Deploy {ELITE}IG-88{END} to the red point.',
           'The threat has been increased.',
+          'A Probe Droid will now be deployed.',
         ],
-        'Hunted Down',
-        ['ig88', 'probeDroid']
+        ['ig88', 'Deploy to the red point.'],
+        ['probeDroid', 'Deploy to the yellow point.']
       );
 
       yield call(helperIncreaseThreat, 1);
@@ -260,7 +262,7 @@ function* handleRoundEnd(): Generator<*, *, *> {
 // REQUIRED SAGA
 function* handleSpecialSetup(): Generator<*, *, *> {
   yield take(MISSION_SPECIAL_SETUP);
-  yield call(helperInitialSetup, 'Probe Droid, Trandoshan Hunter');
+  yield call(helperInitialSetup, ['probeDroid', 'trandoshanHunter']);
   yield call(helperEventModal, {
     text: ['Place one neutral mission token underneath a Trandoshan Hunter.'],
     title: 'Initial Setup',

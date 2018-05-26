@@ -326,12 +326,14 @@ function* handleRoundEnd(): Generator<*, *, *> {
     if (needToDoPursuitEvent) {
       yield call(
         helperDeploy,
+        'Pursuit',
         'The Imperial troops are hot on your tail.',
         [
-          'Deploy an {ELITE}Elite Stormtrooper{END} group, {ELITE}Elite Imperial Officer{END}, and Imperial Officer to an interior deployment point if one exists. If not, the south western green deployment point.',
+          'An {ELITE}Elite Stormtrooper{END} group, {ELITE}Elite Imperial Officer{END}, and Imperial Officer will now be deployed.',
         ],
-        'Pursuit',
-        ['stormtrooperElite', 'imperialOfficerElite', 'imperialOfficer']
+        ['stormtrooperElite', 'Deploy to an interior deployment point if one exists. If not, the south western green deployment point.'],
+        ['imperialOfficerElite', 'Deploy to an interior deployment point if one exists. If not, the south western green deployment point.'],
+        ['imperialOfficer', 'Deploy to an interior deployment point if one exists. If not, the south western green deployment point.']
       );
       yield put(createAction('INCOMING_SET_NEED_TO_DO_PURSUIT_EVENT', {value: false}));
     }
@@ -343,7 +345,7 @@ function* handleRoundEnd(): Generator<*, *, *> {
 // REQUIRED SAGA
 function* handleSpecialSetup(): Generator<*, *, *> {
   yield take(MISSION_SPECIAL_SETUP);
-  yield call(helperInitialSetup, 'Stormtrooper, Trandoshan Hunter');
+  yield call(helperInitialSetup, ['stormtrooper', 'trandoshanHunter']);
   yield call(helperMissionBriefing, [
     'Two of the terminals represent clues to the exit. The other two are decoys.',
     'A hero can interact with a terminal (3 {TECH} or {INSIGHT}) to reveal the color. If an Imperial figure is within 2 spaces of that hero, apply -1 {SURGE} to the results.',

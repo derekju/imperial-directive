@@ -1,16 +1,15 @@
 // @flow
 
-import {call, put, select} from 'redux-saga/effects';
-import {getDifficulty, getMissionThreat} from '../../app';
-import {deployNewGroups} from '../../imperials';
+import {call, put} from 'redux-saga/effects';
 import {displayModal} from '../../modal';
+import helperDeployGroupInteractive from './helperDeployGroupInteractive';
 import waitForModal from '../../../sagas/waitForModal';
 
 export default function* helperDeploy(
-  story: string,
-  text: string[],
   title: string,
-  groups: string[]
+  story: string,
+  text: string,
+  ...groupData: Array<string[]>
 ): Generator<*, *, *> {
   // Display a modal saying we're going to deploy
   yield put(
@@ -21,8 +20,8 @@ export default function* helperDeploy(
     })
   );
   yield call(waitForModal('RESOLVE_EVENT'));
-  // Do the deployment from reserved groups
-  const missionThreat = yield select(getMissionThreat);
-  const difficulty = yield select(getDifficulty);
-  yield put(deployNewGroups(groups, missionThreat, difficulty));
+  for (let i = 0; i < groupData.length; i++) {
+    const [groupId, deploymentText] = groupData[i];
+    yield call(helperDeployGroupInteractive, title, [groupId], deploymentText);
+  }
 }

@@ -99,12 +99,13 @@ function* handleAwaitingDeparture(): Generator<*, *, *> {
       yield put(setDeploymentPoint(DEPLOYMENT_POINT_YELLOW));
       yield call(
         helperDeploy,
+        'Awaiting Departure',
         REFER_CAMPAIGN_GUIDE,
         [
-          'Deploy a Stormtrooper group and an Imperial Officer to the right side of the Incinerator.',
+          'A Stormtrooper group and an Imperial Officer will now be deployed.',
         ],
-        'Awaiting Departure',
-        ['stormtrooper', 'imperialOfficer']
+        ['stormtrooper', 'Deploy to the right side of the Incinerator.'],
+        ['imperialOfficer', 'Deploy to the right side of the Incinerator.']
       );
 
       // We're done
@@ -123,13 +124,13 @@ function* handleOnBoard(): Generator<*, *, *> {
       yield put(setDeploymentPoint(DEPLOYMENT_POINT_RED));
       yield call(
         helperDeploy,
+        'On Board',
         REFER_CAMPAIGN_GUIDE,
         [
-          'Deploy an {ELITE}Elite Stormtrooper{END} group to the center of the Security Station.',
-          'Deploy an Imperial Officer adjacent to the terminal.',
+          'An {ELITE}Elite Stormtrooper{END} group and an Imperial Officer will now be deployed.',
         ],
-        'On Board',
-        ['stormtrooperElite', 'imperialOfficer']
+        ['stormtrooperElite', 'Deploy to the center of the Security Station.'],
+        ['imperialOfficer', 'Deploy adjacent to the terminal.']
       );
       // We're done
       break;
@@ -190,7 +191,7 @@ function* handleRoundEnd(): Generator<*, *, *> {
 // REQUIRED SAGA
 function* handleSpecialSetup(): Generator<*, *, *> {
   yield take(MISSION_SPECIAL_SETUP);
-  yield call(helperInitialSetup, 'Nexu, {ELITE}Elite Nexu{END}, Royal Guard');
+  yield call(helperInitialSetup, ['nexu', 'nexuElite', 'royalGuard']);
   yield call(helperMissionBriefing, [
     'Deploy an Elite Imperial Officer as shown on the map. The officer is a captured officer and is a neutral figure.',
     'All doors are locked.',

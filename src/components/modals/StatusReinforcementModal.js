@@ -1,9 +1,8 @@
 // @flow
 
+import Circle from '../Circle';
 import Modal from '../Modal';
 import React from 'react';
-// TODO: Kind of dirty to reference units from here but it's not in the payload to this modal
-import units from '../../data/units';
 
 const styles = {
   base: {
@@ -23,8 +22,12 @@ const styles = {
 type StatusReinforcementModalPropsType = {
   closeModals: Function,
   deploymentPoint: string,
-  groupsToDeploy: string[],
-  groupsToReinforce: Array<{groupNumber: number, id: string}>,
+  groupsToReinforce: Array<{
+    alias: {color: string, number: number},
+    groupNumber: number,
+    id: string,
+    name: string,
+  }>,
   type: string,
 };
 
@@ -38,31 +41,34 @@ class StatusReinforcementModal extends React.Component<StatusReinforcementModalP
       <Modal
         buttonText="Units Deployed"
         handleButtonClick={this.handleButtonClick}
-        title="Deployment and Reinforcement"
+        title="Reinforcement"
       >
         <div style={styles.base}>
-          {this.props.groupsToDeploy.length || this.props.groupsToReinforce.length ? (
-            <div>
-              <div style={styles.header}>Location to deploy:</div>
-              <div style={styles.units}>{this.props.deploymentPoint}</div>
-            </div>
-          ) : null}
-          <div style={styles.header}>Units to deploy:</div>
-          <div style={styles.units}>
-            {this.props.groupsToDeploy.length
-              ? this.props.groupsToDeploy.map((id: string, index: number) => (
-                  <div key={`${id}-${index}`}>{units[id].name}</div>
-                ))
-              : 'None'}
+          <div>
+            <div style={styles.header}>Location to deploy:</div>
+            <div style={styles.units}>{this.props.deploymentPoint}</div>
           </div>
           <div style={styles.header}>Units to reinforce:</div>
           <div style={styles.units}>
             {this.props.groupsToReinforce.length
               ? this.props.groupsToReinforce.map(
-                  (reinforcement: {groupNumber: number, id: string}, index: number) => (
-                    <div key={`${reinforcement.id}-${index}`}>{`${
-                      units[reinforcement.id].name
-                    } - Group ${reinforcement.groupNumber}`}</div>
+                  (
+                    reinforcement: {
+                      alias: {color: string, number: number},
+                      groupNumber: number,
+                      id: string,
+                      name: string,
+                    },
+                    index: number
+                  ) => (
+                    <div key={`${reinforcement.id}-${index}`}>
+                      {reinforcement.name}
+                      <Circle
+                        color={reinforcement.alias.color}
+                        number={reinforcement.alias.number}
+                        useSmallSize={true}
+                      />
+                    </div>
                   )
                 )
               : 'None'}

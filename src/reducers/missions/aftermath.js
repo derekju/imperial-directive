@@ -158,13 +158,12 @@ function* handleFortifiedEvent(): Generator<*, *, *> {
       track('aftermath', 'fortified', 'triggered');
       yield call(
         helperDeploy,
-        REFER_CAMPAIGN_GUIDE,
-        [
-          'Deploy an E-Web Engineer to the Yellow deployment point in the Atrium. That figure becomes focused.',
-          'Deploy a Stormtrooper group and an Imperial Officer to the right side of the Storage room.',
-        ],
         'Fortified',
-        ['eWebEngineer', 'stormtrooper', 'imperialOfficer']
+        REFER_CAMPAIGN_GUIDE,
+        ['An E-Web Engineer, Stormtrooper group, and an Imperial Officer will now be deployed.'],
+        ['eWebEngineer', 'Deploy to the Yellow deployment point in the Atrium. The figure also becomes focused.'],
+        ['stormtrooper', 'Deploy to the right side of the Storage room.'],
+        ['imperialOfficer', 'Deploy to the right side of the Storage room.'],
       );
       // PRIORITY TARGET SWITCH #2
       const {priorityTargetKillHero} = yield select(getState);
@@ -238,7 +237,7 @@ function* handleRoundEnd(): Generator<*, *, *> {
 // REQUIRED SAGA
 function* handleSpecialSetup(): Generator<*, *, *> {
   yield take(MISSION_SPECIAL_SETUP);
-  yield call(helperInitialSetup, 'Imperial Officer, Probe Droid, Stormtrooper');
+  yield call(helperInitialSetup, ['imperialOfficer', 'probeDroid', 'stormtrooper']);
   yield call(helperMissionBriefing, [
     'A Rebel figure can attack a Terminal to destroy it (Health: 4, Defense: 1 {BLOCK}). Apply +1 {BLOCK} if the terminal is adjacent to any Imperial figures.',
     'Imperial figures cannot open doors.',

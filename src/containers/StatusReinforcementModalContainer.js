@@ -7,7 +7,6 @@ import StatusReinforcementModal from '../components/modals/StatusReinforcementMo
 
 const mapStateToProps = (state: StateType) => ({
   deploymentPoint: state.mission.deploymentPoint,
-  groupsToDeploy: state.modal.data.groupsToDeploy,
   groupsToReinforce: state.modal.data.groupsToReinforce,
   type: state.modal.type,
 });

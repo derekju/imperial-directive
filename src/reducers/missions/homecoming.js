@@ -107,13 +107,13 @@ function* handleGarageOpens(): Generator<*, *, *> {
   // Deploy vader and stormtrooper
   yield call(
     helperDeploy,
+    'Dark Lord',
     REFER_CAMPAIGN_GUIDE,
     [
-      'Deploy {ELITE}Darth Vader{END} to the red point.',
-      'Deploy a Stormtrooper group to the Garage, adjacent to the ship (the T-16 Skyhopper).',
+      '{ELITE}Darth Vader{END} and a Stormtrooper group will now be deployed.',
     ],
-    'Dark Lord',
-    ['darthVader', 'stormtrooper']
+    ['darthVader', 'Deploy to the red point.'],
+    ['stormtrooper', 'Deploy to the Garage, adjacent to the ship (the T-16 Skyhopper).']
   );
 
   yield call(helperEventModal, {
@@ -181,7 +181,7 @@ function* handleRoundEnd(): Generator<*, *, *> {
 // REQUIRED SAGA
 function* handleSpecialSetup(): Generator<*, *, *> {
   yield take(MISSION_SPECIAL_SETUP);
-  yield call(helperInitialSetup, 'Probe Droid, Stormtrooper, Trandoshan Hunter');
+  yield call(helperInitialSetup, ['probeDroid', 'stormtrooper', 'trandoshanHunter']);
   yield call(helperEventModal, {
     text: [
       'The heroes control {ELITE}Luke Skywalker{END} as an ally.',
