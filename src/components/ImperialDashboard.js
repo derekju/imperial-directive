@@ -24,7 +24,7 @@ const styles = {
     border: '2px solid black',
     display: 'flex',
     flexDirection: 'row',
-    height: '145px',
+    height: '160px',
     overflowX: 'scroll',
     overflowY: 'hidden',
     padding: '10px 10px 0',
