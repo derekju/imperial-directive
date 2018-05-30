@@ -424,9 +424,16 @@ function* handleRoundEnd(): Generator<*, *, *> {
 // REQUIRED SAGA
 function* handleSpecialSetup(): Generator<*, *, *> {
   yield take(MISSION_SPECIAL_SETUP);
+  yield call(helperEventModal, {
+    text: [
+      'Initial deployment of troops will now occur.',
+      'When deploying {ELITE}Weiss{END}, deploy an {ELITE}Elite Imperial Officer{END}.',
+    ],
+    title: 'Initial Setup',
+  });
   yield call(
     helperInitialSetup,
-    ['imperialOfficer', 'imperialOfficerElite', 'probeDroid', 'royalGuard', 'stormtrooper', 'stormtrooperElite']
+    ['imperialOfficer', 'weiss', 'probeDroid', 'royalGuard', 'stormtrooper', 'stormtrooperElite']
   );
   yield call(helperMissionBriefing, [
     'The {ELITE}Elite Imperial Officer{END} is {ELITE}Weiss{END}. He has +6 Health and +1 Speed. He gets +2 {DAMAGE} to attack and +1 {BLOCK} to defense.',
