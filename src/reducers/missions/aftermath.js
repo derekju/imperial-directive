@@ -162,8 +162,8 @@ function* handleFortifiedEvent(): Generator<*, *, *> {
         REFER_CAMPAIGN_GUIDE,
         ['An E-Web Engineer, Stormtrooper group, and an Imperial Officer will now be deployed.'],
         ['eWebEngineer', 'Deploy to the Yellow deployment point in the Atrium. The figure also becomes focused.'],
-        ['stormtrooper', 'Deploy to the right side of the Storage room.'],
-        ['imperialOfficer', 'Deploy to the right side of the Storage room.'],
+        ['stormtrooper', 'Deploy to the right side of the Storage room (tile 22B).'],
+        ['imperialOfficer', 'Deploy to the right side of the Storage room (tile 22B).'],
       );
       // PRIORITY TARGET SWITCH #2
       const {priorityTargetKillHero} = yield select(getState);
