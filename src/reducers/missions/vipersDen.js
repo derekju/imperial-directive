@@ -171,9 +171,7 @@ function* handleFindTheDroidEvent(): Generator<*, *, *> {
         helperDeploy,
         'Find the Droid',
         REFER_CAMPAIGN_GUIDE,
-        [
-          'An {ELITE}Elite Imperial Officer{END} and a Stormtrooper group will now be deployed.',
-        ],
+        ['An {ELITE}Elite Imperial Officer{END} and a Stormtrooper group will now be deployed.'],
         ['imperialOfficerElite', 'Deploy to the yellow point.'],
         ['stormtrooper', 'Deploy to the yellow point.']
       );

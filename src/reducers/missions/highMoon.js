@@ -267,10 +267,7 @@ function* handleRoundEnd(): Generator<*, *, *> {
 // REQUIRED SAGA
 function* handleSpecialSetup(): Generator<*, *, *> {
   yield take(MISSION_SPECIAL_SETUP);
-  yield call(
-    helperInitialSetup,
-    ['eWebEngineer', 'imperialOfficer', 'nexuElite', 'stormtrooper']
-  );
+  yield call(helperInitialSetup, ['eWebEngineer', 'imperialOfficer', 'nexuElite', 'stormtrooper']);
   yield call(helperEventModal, {
     text: ['The threat has been increased.', 'An optional deployment will now be done.'],
     title: 'Initial Setup',

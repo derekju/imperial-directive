@@ -254,10 +254,7 @@ function* handleRoundEnd(): Generator<*, *, *> {
 // REQUIRED SAGA
 function* handleSpecialSetup(): Generator<*, *, *> {
   yield take(MISSION_SPECIAL_SETUP);
-  yield call(
-    helperInitialSetup,
-    ['nexuElite', 'probeDroid', 'trandoshanHunterElite']
-  );
+  yield call(helperInitialSetup, ['nexuElite', 'probeDroid', 'trandoshanHunterElite']);
   yield call(helperEventModal, {
     text: [
       'Collect 2 red and 1 yellow neutral mission token. Shuffle them, keep them facedown, and place one randomly underneath both {ELITE}Trandoshan Hunter{END} figures and one underneath the Probe Droid.',

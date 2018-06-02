@@ -460,12 +460,7 @@ function* handleOptionalDeployment(): Generator<*, *, *> {
   newOpenGroups = newOpenGroups.concat(sortedOpenGroups.slice(i + 1));
 
   yield call(helperDeployGroupInteractive, 'Optional Deployment', groupsToDeploy);
-  yield put(
-    setImperialFiguresAfterDeployReinforce(
-      [],
-      newOpenGroups,
-    )
-  );
+  yield put(setImperialFiguresAfterDeployReinforce([], newOpenGroups));
 
   yield put(optionalDeploymentDone(currentThreat));
 }

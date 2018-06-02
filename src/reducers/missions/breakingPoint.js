@@ -129,7 +129,12 @@ function* handleLeaveNoSurvivors(): Generator<*, *, *> {
     'Leave No Survivors',
     REFER_CAMPAIGN_GUIDE,
     ['A Royal Guard Champion will now be deployed.'],
-    ['royalGuardChampion', `Deploy to ${lowerFirst(getRandomDeploymentPoint())}. Instead of activating as normal, the Royal Guard Champion performs 1 action after each hero activation.`]
+    [
+      'royalGuardChampion',
+      `Deploy to ${lowerFirst(
+        getRandomDeploymentPoint()
+      )}. Instead of activating as normal, the Royal Guard Champion performs 1 action after each hero activation.`,
+    ]
   );
 
   // Manually set him as activated so he doesn't activate as normal after this time

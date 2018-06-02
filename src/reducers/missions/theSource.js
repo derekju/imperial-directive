@@ -101,9 +101,7 @@ function* handleAwaitingDeparture(): Generator<*, *, *> {
         helperDeploy,
         'Awaiting Departure',
         REFER_CAMPAIGN_GUIDE,
-        [
-          'A Stormtrooper group and an Imperial Officer will now be deployed.',
-        ],
+        ['A Stormtrooper group and an Imperial Officer will now be deployed.'],
         ['stormtrooper', 'Deploy to the right side of the Incinerator.'],
         ['imperialOfficer', 'Deploy to the right side of the Incinerator.']
       );
@@ -126,9 +124,7 @@ function* handleOnBoard(): Generator<*, *, *> {
         helperDeploy,
         'On Board',
         REFER_CAMPAIGN_GUIDE,
-        [
-          'An {ELITE}Elite Stormtrooper{END} group and an Imperial Officer will now be deployed.',
-        ],
+        ['An {ELITE}Elite Stormtrooper{END} group and an Imperial Officer will now be deployed.'],
         ['stormtrooperElite', 'Deploy to the center of the Security Station.'],
         ['imperialOfficer', 'Deploy adjacent to the terminal.']
       );

@@ -331,9 +331,18 @@ function* handleRoundEnd(): Generator<*, *, *> {
         [
           'An {ELITE}Elite Stormtrooper{END} group, {ELITE}Elite Imperial Officer{END}, and Imperial Officer will now be deployed.',
         ],
-        ['stormtrooperElite', 'Deploy to an interior deployment point if one exists. If not, the south western green deployment point.'],
-        ['imperialOfficerElite', 'Deploy to an interior deployment point if one exists. If not, the south western green deployment point.'],
-        ['imperialOfficer', 'Deploy to an interior deployment point if one exists. If not, the south western green deployment point.']
+        [
+          'stormtrooperElite',
+          'Deploy to an interior deployment point if one exists. If not, the south western green deployment point.',
+        ],
+        [
+          'imperialOfficerElite',
+          'Deploy to an interior deployment point if one exists. If not, the south western green deployment point.',
+        ],
+        [
+          'imperialOfficer',
+          'Deploy to an interior deployment point if one exists. If not, the south western green deployment point.',
+        ]
       );
       yield put(createAction('INCOMING_SET_NEED_TO_DO_PURSUIT_EVENT', {value: false}));
     }

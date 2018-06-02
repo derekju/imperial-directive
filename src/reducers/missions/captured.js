@@ -263,10 +263,12 @@ function* handleRoundEnd(): Generator<*, *, *> {
 // REQUIRED SAGA
 function* handleSpecialSetup(): Generator<*, *, *> {
   yield take(MISSION_SPECIAL_SETUP);
-  yield call(
-    helperInitialSetup,
-    ['imperialOfficer', 'imperialOfficerElite', 'stormtrooper', 'stormtrooperElite']
-  );
+  yield call(helperInitialSetup, [
+    'imperialOfficer',
+    'imperialOfficerElite',
+    'stormtrooper',
+    'stormtrooperElite',
+  ]);
   yield call(helperMissionBriefing, [
     'Heroes cannot bring allies!',
     'All Hero Item cards are flipped facedown and are unusable.{BREAK}A hero can interact with the neutral mission token (N1) to flip his/her items faceup.',

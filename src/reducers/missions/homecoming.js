@@ -109,9 +109,7 @@ function* handleGarageOpens(): Generator<*, *, *> {
     helperDeploy,
     'Dark Lord',
     REFER_CAMPAIGN_GUIDE,
-    [
-      '{ELITE}Darth Vader{END} and a Stormtrooper group will now be deployed.',
-    ],
+    ['{ELITE}Darth Vader{END} and a Stormtrooper group will now be deployed.'],
     ['darthVader', 'Deploy to the red point.'],
     ['stormtrooper', 'Deploy to the Garage, adjacent to the ship (the T-16 Skyhopper).']
   );

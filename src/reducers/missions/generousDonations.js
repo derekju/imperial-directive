@@ -140,9 +140,7 @@ function* handleClearAreaEvent(): Generator<*, *, *> {
         helperDeploy,
         'Clear the Area',
         REFER_CAMPAIGN_GUIDE,
-        [
-          'An {ELITE}Elite E-Web Engineer{END} and a Royal Guard group will now be deployed.',
-        ],
+        ['An {ELITE}Elite E-Web Engineer{END} and a Royal Guard group will now be deployed.'],
         ['eWebEngineerElite', 'Deploy adjacent to terminal T3.'],
         ['royalGuard', 'Deploy adjacent to terminal T3.']
       );

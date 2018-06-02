@@ -109,7 +109,7 @@ function* handleSmallVictoryEvent(): Generator<*, *, *> {
         REFER_CAMPAIGN_GUIDE,
         [
           'Roll 2 red dice. Each figure within 2 spaces of the defeated {ELITE}AT-ST{END} suffers {DAMAGE} equal to the {DAMAGE} results.',
-          'A Trandoshan Hunter will now be deployed.'
+          'A Trandoshan Hunter will now be deployed.',
         ],
         ['trandoshanHunter', 'Deploy to the northern green deployment point.']
       );
@@ -248,10 +248,7 @@ function* handleRoundEnd(): Generator<*, *, *> {
 // REQUIRED SAGA
 function* handleSpecialSetup(): Generator<*, *, *> {
   yield take(MISSION_SPECIAL_SETUP);
-  yield call(
-    helperInitialSetup,
-    ['atst', 'eWebEngineer', 'imperialOfficer', 'probeDroid']
-  );
+  yield call(helperInitialSetup, ['atst', 'eWebEngineer', 'imperialOfficer', 'probeDroid']);
   yield call(helperEventModal, {
     text: ['The threat has been increased.', 'An optional deployment will now be done.'],
     title: 'Initial Setup',

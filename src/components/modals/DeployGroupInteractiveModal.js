@@ -106,7 +106,10 @@ class DeployGroupInteractiveModal extends React.Component<
             <span>{'Choose a color and number for: '}</span>
             <span style={{fontWeight: 'bold'}}>{group.name}</span>
           </div>
-          <div style={styles.title} dangerouslySetInnerHTML={{__html: handleTextSubs(this.props.location)}} />
+          <div
+            style={styles.title}
+            dangerouslySetInnerHTML={{__html: handleTextSubs(this.props.location)}}
+          />
           <div style={styles.colorRow}>
             {[1, 2, 3, 4, 5].map((n: number) => (
               <div key={`red-${n}`} style={styles.circleContainer}>

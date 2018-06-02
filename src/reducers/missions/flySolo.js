@@ -117,7 +117,10 @@ function* handleStrangePatronsEvent(): Generator<*, *, *> {
           'Deploy {ELITE}Han Solo{END} to the Storage Closet. He is deployed exhausted.',
           'An {ELITE}Elite Stormtrooper{END} group and an {ELITE}Elite Imperial Officer{END} will now be deployed.',
         ],
-        ['stormtrooperElite', 'Deploy to the Back Room near the door. Exhaust all units in this group.'],
+        [
+          'stormtrooperElite',
+          'Deploy to the Back Room near the door. Exhaust all units in this group.',
+        ],
         ['imperialOfficerElite', 'Deploy to the Back Room near the door. Exhaust this unit.']
       );
       yield put(addToRoster('han'));
@@ -226,7 +229,12 @@ function* handleRoundEnd(): Generator<*, *, *> {
 // REQUIRED SAGA
 function* handleSpecialSetup(): Generator<*, *, *> {
   yield take(MISSION_SPECIAL_SETUP);
-  yield call(helperInitialSetup, ['probeDroid', 'stormtrooper', 'stormtrooper', 'trandoshanHunter']);
+  yield call(helperInitialSetup, [
+    'probeDroid',
+    'stormtrooper',
+    'stormtrooper',
+    'trandoshanHunter',
+  ]);
   yield call(helperMissionBriefing, [
     'The door to the back room is locked. A hero can interact ({STRENGTH}) to open it.',
     'Heroes cannot bring {ELITE}Han Solo{END} to this mission!',

@@ -134,9 +134,7 @@ function* handleWellGuardedEvent(): Generator<*, *, *> {
         helperDeploy,
         'Well-Guarded',
         REFER_CAMPAIGN_GUIDE,
-        [
-          'An Imperial Officer and Trandoshan Hunter group will now be deployed.',
-        ],
+        ['An Imperial Officer and Trandoshan Hunter group will now be deployed.'],
         ['imperialOfficer', 'Deploy to the Data Center on or adjacent to the terminal'],
         ['trandoshanHunter', 'Deploy to the Data Center on or adjacent to the terminal']
       );

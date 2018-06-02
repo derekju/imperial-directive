@@ -132,9 +132,7 @@ function* handleWelcomingPartyEvent(): Generator<*, *, *> {
         helperDeploy,
         'Welcoming Party',
         REFER_CAMPAIGN_GUIDE,
-        [
-          'An {ELITE}Elite Royal Guard{END} group and Probe Droid will now be deployed.',
-        ],
+        ['An {ELITE}Elite Royal Guard{END} group and Probe Droid will now be deployed.'],
         ['royalGuardElite', 'Deploy to the right edge of the Warehouse.'],
         ['probeDroid', 'Deploy to the right edge of the Warehouse.']
       );
@@ -160,9 +158,7 @@ function* handleDefensesBreachedEvent(): Generator<*, *, *> {
         helperDeploy,
         'Defenses Breached',
         REFER_CAMPAIGN_GUIDE,
-        [
-          'An Imperial Officer, Probe Droid, and a Stormtrooper group will now be deployed.',
-        ],
+        ['An Imperial Officer, Probe Droid, and a Stormtrooper group will now be deployed.'],
         ['imperialOfficer', 'Deploy to the top edge of the Medical Center.'],
         ['probeDroid', 'Deploy to the top edge of the Medical Center.'],
         ['stormtrooper', 'Deploy to the right edge of the Reception Chamber.']

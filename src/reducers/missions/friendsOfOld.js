@@ -136,7 +136,10 @@ function* handleTheSquad(): Generator<*, *, *> {
               'A hero within 3 spaces of this Trooper recovers 5 {DAMAGE}.',
               'A Stormtrooper group will now be deployed.',
             ],
-            ['stormtrooper', 'Deploy to the nearest green deployment point to the hero that triggered the Trooper.']
+            [
+              'stormtrooper',
+              'Deploy to the nearest green deployment point to the hero that triggered the Trooper.',
+            ]
           );
           // Deploy a rebel trooper where the map state was
           yield put(setMapStateVisible(id, 'neutral', false));
@@ -177,7 +180,10 @@ function* handleTheSquad(): Generator<*, *, *> {
               'The active Hero may immediately interrupt to perform a move or attack.',
               'A Probe Droid will now be deployed.',
             ],
-            ['probeDroid', 'Deploy to the nearest green deployment point to the hero that triggered the Trooper.']
+            [
+              'probeDroid',
+              'Deploy to the nearest green deployment point to the hero that triggered the Trooper.',
+            ]
           );
           // Deploy a rebel trooper where the map state was
           yield put(setMapStateVisible(id, 'neutral', false));

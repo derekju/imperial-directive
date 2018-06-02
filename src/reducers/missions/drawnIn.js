@@ -360,10 +360,12 @@ function* handleRoundEnd(): Generator<*, *, *> {
 // REQUIRED SAGA
 function* handleSpecialSetup(): Generator<*, *, *> {
   yield take(MISSION_SPECIAL_SETUP);
-  yield call(
-    helperInitialSetup,
-    ['eWebEngineer', 'imperialOfficerElite', 'stormtrooper', 'stormtrooper']
-  );
+  yield call(helperInitialSetup, [
+    'eWebEngineer',
+    'imperialOfficerElite',
+    'stormtrooper',
+    'stormtrooper',
+  ]);
   yield call(helperMissionBriefing, [
     'Terminals represent power stations. Rebel figures can attack a power station (Health: 8, Defense: 1 {BLOCK}) to destroy it.',
     'Doors are locked to heroes. A hero can interact ({STRENGTH} or {TECH}) to open it.',

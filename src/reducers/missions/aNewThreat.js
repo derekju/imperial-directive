@@ -193,7 +193,10 @@ function* handleDefenseProtocolsEvent(): Generator<*, *, *> {
             'Defense Protocols',
             'The Imperial army has released their secret weapon - the fearsome Nexu.',
             ['A Nexu will now be deployed.'],
-            ['nexu', 'Deploy to an interior space within 3 spaces of the door that was just opened.']
+            [
+              'nexu',
+              'Deploy to an interior space within 3 spaces of the door that was just opened.',
+            ]
           );
           break;
         default:
@@ -236,7 +239,7 @@ function* handleRoundEnd(): Generator<*, *, *> {
         'Arrival',
         REFER_CAMPAIGN_GUIDE,
         ['General Weiss will now be deployed.'],
-        ['generalWeiss', 'Deploy General Weiss to the yellow point.'],
+        ['generalWeiss', 'Deploy General Weiss to the yellow point.']
       );
     } else if (currentRound === 7) {
       // End game with imperial victory
@@ -252,10 +255,7 @@ function* handleRoundEnd(): Generator<*, *, *> {
 // REQUIRED SAGA
 function* handleSpecialSetup(): Generator<*, *, *> {
   yield take(MISSION_SPECIAL_SETUP);
-  yield call(
-    helperInitialSetup,
-    ['nexuElite', 'probeDroid', 'probeDroid', 'probeDroidElite']
-  );
+  yield call(helperInitialSetup, ['nexuElite', 'probeDroid', 'probeDroid', 'probeDroidElite']);
   yield call(helperMissionBriefing, [
     'Doors are locked to Rebel figures. A Rebel figure can attack can attack a Door to open it (Health: 5, Defense: 1 {BLOCK}).',
     'A hero can activate a terminal to reveal the color. Based on the color, perform an attribute test to successfully investigate:',

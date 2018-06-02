@@ -112,10 +112,7 @@ function* handleWave1(): Generator<*, *, *> {
     helperDeploy,
     'Wave 1',
     REFER_CAMPAIGN_GUIDE,
-    [
-      'The current threat has been increased by 5.',
-      'A Royal Guard group will now be deployed.',
-    ],
+    ['The current threat has been increased by 5.', 'A Royal Guard group will now be deployed.'],
     ['royalGuard', 'Deploy to the green deployment point.']
   );
   yield put(increaseThreat(5));
@@ -203,9 +200,7 @@ function* handleSpecialists(): Generator<*, *, *> {
       helperDeploy,
       'Specialists',
       'Tree branches snap outside as a giant AT-ST roars to life.',
-      [
-        'An {ELITE}AT-ST{END} will now be deployed.',
-      ],
+      ['An {ELITE}AT-ST{END} will now be deployed.'],
       ['atst', `Deploy to the yellow deployment point closest to door ${randomDoorNumOutside}.`]
     );
   }

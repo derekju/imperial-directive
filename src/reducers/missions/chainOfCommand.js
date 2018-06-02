@@ -431,10 +431,14 @@ function* handleSpecialSetup(): Generator<*, *, *> {
     ],
     title: 'Initial Setup',
   });
-  yield call(
-    helperInitialSetup,
-    ['imperialOfficer', 'weiss', 'probeDroid', 'royalGuard', 'stormtrooper', 'stormtrooperElite']
-  );
+  yield call(helperInitialSetup, [
+    'imperialOfficer',
+    'weiss',
+    'probeDroid',
+    'royalGuard',
+    'stormtrooper',
+    'stormtrooperElite',
+  ]);
   yield call(helperMissionBriefing, [
     'The {ELITE}Elite Imperial Officer{END} is {ELITE}Weiss{END}. He has +6 Health and +1 Speed. He gets +2 {DAMAGE} to attack and +1 {BLOCK} to defense.',
     'An Imperial figure can interact with a terminal to increase threat by 2 once per round.',
