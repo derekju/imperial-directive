@@ -523,7 +523,7 @@
     "buffs": ["exploitWeakness", "noQuarter", "showOfForce", "surgicalStrike"],
     "commands": [
       {
-        "condition": "If possible to be adjacent to 2 hostile figures (one being {ATTACK_TARGET})",
+        "condition": "If possible to be adjacent to 2 hostile figures (preference one being {ATTACK_TARGET})",
         "command": "{ACTION} If necessary, move adjacent to those figures, then {ACTION} Use Brutality ability to attack those targets."
       },
       {
@@ -601,11 +601,11 @@
     "buffs": ["combatVeteran", "combatVeteran", "riotGrenades", "shockTroopers"],
     "commands": [
       {
-        "condition": "If within 6 spaces of {ATTACK_TARGET}",
+        "condition": "If within 8 spaces of {ATTACK_TARGET}",
         "command": "{ACTION} Move within 4 spaces and LOS of {ATTACK_TARGET} (next to a friendly Trooper if possible), then {ACTION} Attack {ATTACK_TARGET}, then move to {MOVE_TARGET}."
       },
       {
-        "condition": "If not within 6 spaces of {ATTACK_TARGET}",
+        "condition": "If not within 8 spaces of {ATTACK_TARGET}",
         "command": "{ACTION} Move towards {MOVE_TARGET}."
       },
       {
@@ -636,11 +636,11 @@
     "buffs": ["arcBlasters", "combatVeteran", "showOfForce"],
     "commands": [
       {
-        "condition": "If within 6 spaces of {ATTACK_TARGET}",
+        "condition": "If within 8 spaces of {ATTACK_TARGET}",
         "command": "{ACTION} Move within 4 spaces and LOS of {ATTACK_TARGET} (next to a friendly Trooper if possible), then {ACTION} Attack {ATTACK_TARGET}, then move to {MOVE_TARGET}."
       },
       {
-        "condition": "If not within 6 spaces of {ATTACK_TARGET}",
+        "condition": "If not within 8 spaces of {ATTACK_TARGET}",
         "command": "{ACTION} Move towards {MOVE_TARGET}."
       },
       {

@@ -94,7 +94,7 @@ function* handleAtstDefeated(): Generator<*, *, *> {
     text: [
       "Place Mak's figure in one of the spaces where the AT-ST was. He suffers 10 {DAMAGE}.",
       'Execute the first command in this list that is applicable:',
-      'If the {ELITE}Royal Guard Champion{END} is within 7 spaces of Mak, move adjacent to Mak and attack him.',
+      'If the {ELITE}Royal Guard Champion{END} is within 7 spaces of an unwounded hero (priority most damaged), move adjacent to that hero and attack them.',
       `If the {ELITE}Royal Guard Champion{END} has taken damage, recover up to ${missionThreat +
         1} {DAMAGE}.`,
       'All Imperial figures move up to 2 towards the nearest Rebel figure.',
@@ -151,7 +151,7 @@ function* handleRoundEnd(): Generator<*, *, *> {
       yield call(
         helperDeploy,
         'Chaos',
-        REFER_CAMPAIGN_GUIDE,
+        'Reinforcements arrive amidst the chaos.',
         ['An E-Web Engineer will now be deployed.'],
         ['eWebEngineer', 'Deploy to the southern green deployment point.']
       );
@@ -204,7 +204,7 @@ function* handleSpecialSetup(): Generator<*, *, *> {
     "Deploy an {ELITE}AT-ST{END} to the indicated spot on the map and do not deploy Mak's figure.",
     "The {ELITE}AT-ST{END} is a Rebel figure under Mak's control. When Mak activates, ready and activate the {ELITE}AT-ST{END}.",
     'The {ELITE}AT-ST{END} gains additional health equal to the threat level. It is allowed to enter and occupy spaces in the Hanger.',
-    'The wall between the Hanger and Testing Grounds does not block movement or LOS.',
+    'The wall between the Hanger (tile 19A) and Testing Grounds (tile 2B) does not block movement or LOS.',
   ]);
   yield put(missionSpecialSetupDone());
 }
