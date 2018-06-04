@@ -289,8 +289,8 @@ export const SET_EXTRA_THREAT_INCREASE = 'SET_EXTRA_THREAT_INCREASE';
 
 // Action creators
 
-export const loadMission = (config: MissionConfigType, missionThreat: number, difficulty: string) =>
-  createAction(LOAD_MISSION, {config, difficulty, missionThreat});
+export const loadMission = (config: MissionConfigType, missionThreat: number, difficulty: string, expansions: {[string]: boolean}) =>
+  createAction(LOAD_MISSION, {config, difficulty, expansions, missionThreat});
 export const changePlayerTurn = (player: number) => createAction(CHANGE_PLAYER_TURN, {player});
 export const setMapStateActivated = (id: number, type: string, value: boolean) =>
   createAction(SET_MAP_STATE_ACTIVATED, {id, type, value});

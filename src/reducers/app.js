@@ -16,11 +16,16 @@ export const IMPERIAL_REWARDS = [
   'supplyDeficit',
 ];
 
+export const EXPANSIONS = [
+  'twinShadows',
+];
+
 // Types
 
 export type AppStateType = {
   currentDifficulty: string,
   currentMission: string,
+  expansions: {[string]: boolean},
   imperialRewards: {[string]: boolean},
   missionThreat: number,
 };
@@ -30,6 +35,7 @@ export type AppStateType = {
 const initialState = {
   currentDifficulty: 'standard',
   currentMission: '',
+  expansions: {},
   imperialRewards: {},
   missionThreat: 2,
 };
@@ -56,6 +62,11 @@ export default (state: AppStateType = initialState, action: Function) => {
         ...state,
         imperialRewards: Object.assign({}, action.payload.rewards),
       };
+    case SET_EXPANSIONS:
+      return {
+        ...state,
+        expansions: Object.assign({}, action.payload.expansions),
+      };
     default:
       return state;
   }
@@ -67,6 +78,7 @@ export const SET_MISSION = 'SET_MISSION';
 export const SET_MISSION_THREAT = 'SET_MISSION_THREAT';
 export const SET_DIFFICULTY = 'SET_DIFFICULTY';
 export const SET_IMPERIAL_REWARDS = 'SET_IMPERIAL_REWARDS';
+export const SET_EXPANSIONS = 'SET_EXPANSIONS';
 export const MISSION_SAGA_LOAD_DONE = 'MISSION_SAGA_LOAD_DONE';
 
 // Action creators
@@ -77,6 +89,8 @@ export const setMissionThreat = (missionThreat: number) =>
 export const setDifficulty = (difficulty: string) => createAction(SET_DIFFICULTY, {difficulty});
 export const setImperialRewards = (rewards: Object) =>
   createAction(SET_IMPERIAL_REWARDS, {rewards});
+export const setExpansions = (expansions: Object) =>
+  createAction(SET_EXPANSIONS, {expansions});
 export const missionSagaLoadDone = () => createAction(MISSION_SAGA_LOAD_DONE);
 
 // Selectors
@@ -85,6 +99,7 @@ export const getCurrentMission = (state: StateType) => state.app.currentMission;
 export const getMissionThreat = (state: StateType) => state.app.missionThreat;
 export const getDifficulty = (state: StateType) => state.app.currentDifficulty;
 export const getImperialRewards = (state: StateType) => state.app.imperialRewards;
+export const getExpansions = (state: StateType) => state.app.expansions;
 
 // Sagas
 
@@ -104,6 +119,7 @@ function* loadMissionSaga(): Generator<*, *, *> {
     const {mission} = action.payload;
     const missionThreat = yield select(getMissionThreat);
     const difficulty = yield select(getDifficulty);
+    const expansions = yield select(getExpansions);
     // Fork a copy of the saga for the current mission so we get mission specific logic
     const missionConfiguration = missions[mission];
     // Load the events
@@ -112,7 +128,7 @@ function* loadMissionSaga(): Generator<*, *, *> {
     task = yield fork(forkMission, mission);
     yield take(MISSION_SAGA_LOAD_DONE);
     // Load our mission in which will kick things off
-    yield put(loadMission(missionConfiguration, missionThreat, difficulty));
+    yield put(loadMission(missionConfiguration, missionThreat, difficulty, expansions));
   }
 }
 

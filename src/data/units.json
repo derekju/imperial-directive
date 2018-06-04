@@ -211,6 +211,78 @@
     "threat": 5,
     "unique": true
   },
+  "heavyStormtrooper": {
+    "affiliation": "imperial",
+    "attributes": ["trooper", "heavyWeapon"],
+    "buffs": ["combatVeteran", "combatVeteran", "riotGrenades", "shockTroopers"],
+    "commands": [
+      {
+        "condition": "If within 8 spaces of {ATTACK_TARGET}",
+        "command": "{ACTION} Move within 4 spaces and LOS of {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}, then move to {MOVE_TARGET}."
+      },
+      {
+        "condition": "If not within 8 spaces of {ATTACK_TARGET}",
+        "command": "{ACTION} Move towards {MOVE_TARGET}."
+      },
+      {
+        "condition": "Reaction - If defending and attacker is 4 or more spaces away",
+        "command": "Use Composite Plating to apply +1 {BLOCK} to the defense results"
+      }
+    ],
+    "eligibleForHpBoost": true,
+    "elite": false,
+    "expansion": "twinShadows",
+    "hpBoosts": {
+      "2": [0],
+      "3": [0, 0, 1, 1, 1],
+      "4": [0, 1, 1, 1, 2],
+      "5": [1, 1, 1, 2, 2],
+      "6": [1, 1, 1, 2, 2]
+    },
+    "id": "heavyStormtrooper",
+    "maxDeployed": 1,
+    "maxInGroup": 2,
+    "name": "Heavy Stormtrooper",
+    "reinforcementCost": 3,
+    "threat": 6,
+    "unique": false
+  },
+  "heavyStormtrooperElite": {
+    "affiliation": "imperial",
+    "attributes": ["trooper", "heavyWeapon"],
+    "buffs": ["combatVeteran", "combatVeteran", "riotGrenades", "shockTroopers"],
+    "commands": [
+      {
+        "condition": "If within 8 spaces of {ATTACK_TARGET}",
+        "command": "{ACTION} Move within 4 spaces and LOS of {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}, then move to {MOVE_TARGET}."
+      },
+      {
+        "condition": "If not within 8 spaces of {ATTACK_TARGET}",
+        "command": "{ACTION} Move towards {MOVE_TARGET}."
+      },
+      {
+        "condition": "Reaction - If defending and attacker is 4 or more spaces away",
+        "command": "Use Composite Plating to apply +1 {BLOCK} to the defense results"
+      }
+    ],
+    "eligibleForHpBoost": true,
+    "elite": true,
+    "expansion": "twinShadows",
+    "hpBoosts": {
+      "2": [0],
+      "3": [0, 0, 1, 1, 1],
+      "4": [0, 1, 1, 1, 2],
+      "5": [1, 1, 1, 2, 2],
+      "6": [1, 1, 1, 2, 2]
+    },
+    "id": "heavyStormtrooperElite",
+    "maxDeployed": 1,
+    "maxInGroup": 2,
+    "name": "E Heavy Stormtrooper",
+    "reinforcementCost": 4,
+    "threat": 8,
+    "unique": false
+  },
   "ig88": {
     "affiliation": "mercenary",
     "attributes": ["droid", "hunter"],
@@ -786,6 +858,72 @@
     "name": "E Trandoshan Hunter",
     "reinforcementCost": 5,
     "threat": 10,
+    "unique": false
+  },
+  "tuskenRaider": {
+    "affiliation": "mercenary",
+    "attributes": ["brawler"],
+    "buffs": ["exploitWeakness", "fleetFooted", "heavyPressure", "recovery"],
+    "commands": [
+      {
+        "condition": "If within 4 spaces of {ATTACK_TARGET}",
+        "command": "{ACTION} Move adjacent to {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}, then move to {MOVE_TARGET}."
+      },
+      {
+        "condition": "If within 8 spaces of {ATTACK_TARGET}",
+        "command": "{ACTION} Move within 4 spaces and LOS of {ATTACK_TARGET}, then {ACTION} Use Tusken Cycler ability to attack {ATTACK_TARGET}, then move to {MOVE_TARGET}."
+      }
+    ],
+    "eligibleForHpBoost": true,
+    "elite": false,
+    "expansion": "twinShadows",
+    "habitat": "desert",
+    "hpBoosts": {
+      "2": [0],
+      "3": [0, 0, 1, 1, 1],
+      "4": [0, 1, 1, 1, 2],
+      "5": [1, 1, 1, 2, 2],
+      "6": [1, 1, 1, 2, 2]
+    },
+    "id": "tuskenRaider",
+    "maxDeployed": 1,
+    "maxInGroup": 2,
+    "name": "Tusken Raider",
+    "reinforcementCost": 2,
+    "threat": 5,
+    "unique": false
+  },
+  "tuskenRaiderElite": {
+    "affiliation": "mercenary",
+    "attributes": ["brawler"],
+    "buffs": ["exploitWeakness", "fleetFooted", "heavyPressure", "recovery"],
+    "commands": [
+      {
+        "condition": "If within 4 spaces of {ATTACK_TARGET}",
+        "command": "{ACTION} Move adjacent to {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}, then move to {MOVE_TARGET}."
+      },
+      {
+        "condition": "If within 8 spaces of {ATTACK_TARGET}",
+        "command": "{ACTION} Move within 4 spaces and LOS of {ATTACK_TARGET}, then {ACTION} Use Tusken Cycler ability to attack {ATTACK_TARGET}, then move to {MOVE_TARGET}."
+      }
+    ],
+    "eligibleForHpBoost": true,
+    "elite": true,
+    "expansion": "twinShadows",
+    "habitat": "desert",
+    "hpBoosts": {
+      "2": [0],
+      "3": [0, 0, 1, 1, 1],
+      "4": [0, 1, 1, 1, 2],
+      "5": [1, 1, 1, 2, 2],
+      "6": [1, 1, 1, 2, 2]
+    },
+    "id": "tuskenRaiderElite",
+    "maxDeployed": 1,
+    "maxInGroup": 2,
+    "name": "E Tusken Raider",
+    "reinforcementCost": 3,
+    "threat": 7,
     "unique": false
   },
   "weiss": {

@@ -1,4 +1,14 @@
 {
+  "biv": {
+    "id": "biv",
+    "firstName": "Biv",
+    "lastName": "Bodhrik",
+    "elite": false,
+    "threat": 0,
+    "reinforcementCost": -1,
+    "maxInGroup": 1,
+    "type": "hero"
+  },
   "chewbacca": {
     "id": "chewbacca",
     "firstName": "Chewbacca",
@@ -148,5 +158,15 @@
     "reinforcementCost": 2,
     "maxInGroup": 3,
     "type": "ally"
+  },
+  "saska": {
+    "id": "saska",
+    "firstName": "Saska",
+    "lastName": "Taft",
+    "elite": false,
+    "threat": 0,
+    "reinforcementCost": -1,
+    "maxInGroup": 1,
+    "type": "hero"
   }
 }

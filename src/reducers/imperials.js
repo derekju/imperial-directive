@@ -163,13 +163,13 @@ const initialState = {
 export default (state: ImperialsStateType = initialState, action: Object) => {
   switch (action.type) {
     case LOAD_MISSION:
-      const {config, missionThreat} = action.payload;
+      const {config, expansions, missionThreat} = action.payload;
       return {
         ...initialState,
         customAI: state.customAI,
         customAIExceptionList: state.customAIExceptionList,
         customUnitAI: state.customUnitAI,
-        openGroups: populateOpenGroups(config, missionThreat),
+        openGroups: populateOpenGroups(config, units, missionThreat, expansions),
       };
     case ACTIVATE_IMPERIAL_GROUP: {
       const {group} = action.payload;

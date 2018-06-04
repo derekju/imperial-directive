@@ -1,10 +1,10 @@
 // @flow
 
+import {EXPANSIONS, IMPERIAL_REWARDS} from '../reducers/app';
 import {LIGHT_WHITE, REBEL_RED} from '../styles/colors';
 import {BrowserRouter as Router} from 'react-router-dom';
 import Button from './Button';
 import HeroAvatar from './HeroAvatar';
-import {IMPERIAL_REWARDS} from '../reducers/app';
 import missions from '../data/missions.json';
 import React from 'react';
 import rebels from '../data/rebels.json';
@@ -17,12 +17,13 @@ const styles = {
     padding: '10px',
   },
   base: {
-    alignItems: 'center',
     backgroundColor: LIGHT_WHITE,
-    display: 'flex',
-    flexDirection: 'column',
-    height: '100%',
-    justifyContent: 'space-around',
+    height: '700px',
+    overflowY: 'scroll',
+  },
+  buttonSection: {
+    margin: '20px auto',
+    width: '310px',
   },
   cancelButton: {
     marginRight: '10px',
@@ -43,6 +44,7 @@ const styles = {
     marginRight: '10px',
   },
   section: {
+    margin: '20px auto',
     width: '800px',
   },
   sectionContents: {
@@ -52,6 +54,12 @@ const styles = {
     display: 'flex',
     flexDirection: 'row',
     flexWrap: 'wrap',
+    padding: '20px',
+  },
+  sectionContentsNoFlex: {
+    alignItems: 'center',
+    border: '2px solid black',
+    borderTop: 'none',
     padding: '20px',
   },
   sectionDescription: {
@@ -125,6 +133,7 @@ type CharacterSelectionPropsType = {
   history: Object,
   setAllyChosen: Function,
   setDifficulty: Function,
+  setExpansions: Function,
   setImperialRewards: Function,
   setMission: Function,
   setMissionThreat: Function,
@@ -182,6 +191,17 @@ class CharacterSelection extends React.Component<
       return accumulator;
     }, {});
     this.props.setImperialRewards(imperialRewards);
+
+    // Get which checkboxes are checked for expansions
+    // Gonna just dig into the DOM to do this
+    const selectedExpansions = EXPANSIONS.reduce((accumulator: Object, key: string) => {
+      const checkbox = document.querySelector('#' + key);
+      if (checkbox) {
+        accumulator[key] = checkbox.checked;
+      }
+      return accumulator;
+    }, {});
+    this.props.setExpansions(selectedExpansions);
 
     if (this.select) {
       const selectedMission = this.select.options[this.select.selectedIndex].value;
@@ -356,13 +376,36 @@ class CharacterSelection extends React.Component<
     );
   }
 
+  renderSelectExpansions() {
+    return (
+      <div style={styles.section}>
+        <div style={styles.sectionHeader}>
+          <span style={styles.headerText}>Expansions</span>
+        </div>
+        <div style={styles.sectionContentsNoFlex}>
+          <div style={styles.sectionDescription}>
+            Select expansions to use. Expansions will add units to be used for deployment.
+          </div>
+          <div style={styles.toggleSection}>
+            <div>
+              <input type="checkbox" id="twinShadows" />
+              <label style={styles.label} htmlFor="twinShadows">
+                Twin Shadows
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   renderSelectImperialRewards() {
     return (
       <div style={styles.section}>
         <div style={styles.sectionHeader}>
           <span style={styles.headerText}>Imperial Rewards</span>
         </div>
-        <div style={styles.sectionContents}>
+        <div style={styles.sectionContentsNoFlex}>
           <div style={styles.sectionDescription}>
             Select the rewards that the Imperial Player has earned. They will be activated when the
             mission starts.
@@ -403,10 +446,11 @@ class CharacterSelection extends React.Component<
       <Router>
         <div style={styles.base}>
           {this.renderSelectMission()}
+          {this.renderSelectExpansions()}
           {this.renderSelectHeroes()}
           {this.renderSelectAlly()}
           {this.renderSelectImperialRewards()}
-          <div>
+          <div style={styles.buttonSection}>
             <Button text="Cancel" onClick={this.cancel} style={styles.cancelButton} />
             <Button text="Start" onClick={this.submit} />
           </div>
