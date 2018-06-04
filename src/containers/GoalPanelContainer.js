@@ -42,6 +42,14 @@ const chainOfCommandWeissEntered = () => createAction('CHAIN_OF_COMMAND_WEISS_EN
 const theSourceOfficerFreed = () => createAction('THE_SOURCE_OFFICER_FREED');
 const lastStandVaderBlock = () => createAction('LAST_STAND_VADER_BLOCK');
 const desperateHourEnteredClearing = () => createAction('DESPERATE_HOUR_ENTERED_CLEARING');
+const sympathyForTheRebellionHeroClaim = () =>
+  createAction('SYMPATHY_FOR_THE_REBELLION_HERO_CLAIM');
+const sympathyForTheRebellionImperialClaim = () =>
+  createAction('SYMPATHY_FOR_THE_REBELLION_IMPERIAL_CLAIMED');
+const sympathyForTheRebellionImperialDefeatRebel = () =>
+  createAction('SYMPATHY_FOR_THE_REBELLION_IMPERIAL_DEFEAT_REBEL');
+const sympathyForTheRebellionImperialDone = () =>
+  createAction('STATUS_PHASE_END_ROUND_EFFECTS_DONE');
 
 const mapDispatchToProps = {
   chainOfCommandTerminalInteract,
@@ -53,6 +61,10 @@ const mapDispatchToProps = {
   lastStandVaderBlock,
   looseCannonDefeatAtst,
   spiceJobGetKeycard,
+  sympathyForTheRebellionHeroClaim,
+  sympathyForTheRebellionImperialClaim,
+  sympathyForTheRebellionImperialDefeatRebel,
+  sympathyForTheRebellionImperialDone,
   theSourceOfficerFreed,
   vipersDenFigureDropsCore,
   vipersDenHeroGetCore,

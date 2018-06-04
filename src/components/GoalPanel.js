@@ -45,6 +45,10 @@ type GoalPanelPropsType = {
   looseCannonDefeatAtst: Function,
   rewardOldWoundsEarned: boolean,
   spiceJobGetKeycard: Function,
+  sympathyForTheRebellionHeroClaim: Function,
+  sympathyForTheRebellionImperialClaim: Function,
+  sympathyForTheRebellionImperialDefeatRebel: Function,
+  sympathyForTheRebellionImperialDone: Function,
   theSourceOfficerFreed: Function,
   vipersDenFigureDropsCore: Function,
   vipersDenHeroGetCore: Function,
@@ -256,6 +260,58 @@ class GoalPanel extends React.Component<GoalPanelPropsType, GoalPanelStateType> 
       return (
         <div style={styles.buttonContainer}>
           <Button text="Clearing Entered" onClick={this.props.desperateHourEnteredClearing} />
+        </div>
+      );
+    } else if (currentMission === 'sympathyForTheRebellion') {
+      const imperialRecruitGoalText = [
+        '{BREAK}',
+        '{BOLD}Imperial Recruits:{END}',
+        'At the end of the Round, click the top button for each token the Imperial player has.',
+        'Click the bottom button to proceed once done.',
+        '{BREAK}',
+        'Manually defeat each figure that has a token.',
+        '{BREAK}',
+      ];
+
+      const imperialDefeatRebelGoalText = [
+        '{BREAK}',
+        '{BOLD}Rebel Defeat:{END}',
+        'Click the button to add tokens for the Imperial player if a Rebel Hero or Luke is defeated.',
+        '{BREAK}',
+      ];
+
+      return (
+        <div>
+          <div style={styles.buttonContainer}>
+            <Button
+              text="Hero Enters Exit"
+              width={180}
+              onClick={this.props.sympathyForTheRebellionHeroClaim}
+            />
+          </div>
+          <div style={styles.contents}>{this.renderGoals(imperialRecruitGoalText)}</div>
+          <div style={styles.buttonContainer}>
+            <Button
+              text="Process token"
+              width={180}
+              onClick={this.props.sympathyForTheRebellionImperialClaim}
+            />
+          </div>
+          <div style={styles.buttonContainer}>
+            <Button
+              text="Done with tokens"
+              width={180}
+              onClick={this.props.sympathyForTheRebellionImperialDone}
+            />
+          </div>
+          <div style={styles.contents}>{this.renderGoals(imperialDefeatRebelGoalText)}</div>
+          <div style={styles.buttonContainer}>
+            <Button
+              text="Add token"
+              width={180}
+              onClick={this.props.sympathyForTheRebellionImperialDefeatRebel}
+            />
+          </div>
         </div>
       );
     }

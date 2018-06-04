@@ -2936,6 +2936,278 @@
       "eWebEngineer", "imperialOfficerElite", "trandoshanHunterElite"
     ]
   },
+  "sympathyForTheRebellion": {
+    "wave": "Wave 1",
+    "initialGroups": [
+      "stormtrooper", "stormtrooper", "stormtrooperElite"
+    ],
+    "instructions": {
+      "imperialVictory": "When the Imperials have claimed 8 mission tokens or when all heroes are wounded",
+      "rebelVictory": "When the heroes have claimed 5 mission tokens"
+    },
+    "mapImage": [
+      ["00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "02b", "02b", "02b", "02b"],
+      ["10a", "10a", "10a", "10a", "10a", "10a", "00a", "00a", "00a", "00a", "25b", "25b", "25b", "25b", "00a", "02b", "02b", "02b", "02b"],
+      ["10a", "10a", "10a", "10a", "10a", "10a", "30b", "30b", "30b", "30b", "25b", "25b", "25b", "25b", "39b", "02b", "02b", "02b", "02b"],
+      ["00a", "10a", "10a", "10a", "10a", "10a", "30b", "30b", "30b", "30b", "25b", "25b", "25b", "25b", "39b", "02b", "02b", "02b", "02b"],
+      ["00a", "10a", "10a", "10a", "10a", "10a", "00a", "00a", "00a", "00a", "00a", "25b", "25b", "00a", "00a", "02b", "02b", "02b", "02b"],
+      ["00a", "00a", "00a", "28b", "28b", "00a", "22b", "22b", "22b", "22b", "10a", "10a", "10a", "00a", "00a", "02b", "02b", "02b", "02b"],
+      ["10a", "39b", "28b", "28b", "28b", "28b", "22b", "22b", "22b", "22b", "10a", "10a", "10a", "00a", "00a", "10a", "10a", "00a", "00a"],
+      ["10a", "39b", "28b", "28b", "28b", "28b", "22b", "22b", "22b", "22b", "10a", "10a", "10a", "00a", "00a", "00a", "00a", "00a", "00a"],
+      ["00a", "00a", "00a", "28b", "28b", "00a", "22b", "22b", "22b", "22b", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a"],
+      ["00a", "00a", "00a", "10a", "10a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a"]
+    ],
+    "mapStates": {
+      "entrance-1": {
+        "activated": false,
+        "activateText": "",
+        "coordinates": {
+          "x": 11,
+          "y": 6
+        },
+        "description": "The entrance.",
+        "id": 1,
+        "interactable": false,
+        "type": "entrance",
+        "unactivateText": "",
+        "visible": true
+      },
+      "rebel-1": {
+        "activated": false,
+        "activateText": "Claim Token",
+        "color": "green",
+        "coordinates": {
+          "x": 0,
+          "y": 6
+        },
+        "description": "An Exit",
+        "id": 1,
+        "interactable": false,
+        "type": "rebel",
+        "unactivateText": "Unclaim Token",
+        "visible": true
+      },
+      "rebel-2": {
+        "activated": false,
+        "activateText": "Claim Token",
+        "color": "green",
+        "coordinates": {
+          "x": 0,
+          "y": 7
+        },
+        "description": "An Exit",
+        "id": 2,
+        "interactable": false,
+        "type": "rebel",
+        "unactivateText": "Unclaim Token",
+        "visible": true
+      },
+      "rebel-3": {
+        "activated": false,
+        "activateText": "Claim Token",
+        "color": "blue",
+        "coordinates": {
+          "x": 15,
+          "y": 6
+        },
+        "description": "An Exit",
+        "id": 3,
+        "interactable": false,
+        "type": "rebel",
+        "unactivateText": "Unclaim Token",
+        "visible": true
+      },
+      "rebel-4": {
+        "activated": false,
+        "activateText": "Claim Token",
+        "color": "blue",
+        "coordinates": {
+          "x": 16,
+          "y": 6
+        },
+        "description": "An Exit",
+        "id": 4,
+        "interactable": false,
+        "type": "rebel",
+        "unactivateText": "Unclaim Token",
+        "visible": true
+      },
+      "neutral-1": {
+        "activated": false,
+        "activateText": "Retrieve",
+        "coordinates": {
+          "x": 1,
+          "y": 1
+        },
+        "description": "A recruit.",
+        "id": 1,
+        "interactable": true,
+        "type": "neutral",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "neutral-2": {
+        "activated": false,
+        "activateText": "Retrieve",
+        "coordinates": {
+          "x": 5,
+          "y": 1
+        },
+        "description": "A recruit.",
+        "id": 2,
+        "interactable": true,
+        "type": "neutral",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "neutral-3": {
+        "activated": false,
+        "activateText": "Retrieve",
+        "coordinates": {
+          "x": 11,
+          "y": 1
+        },
+        "description": "A recruit.",
+        "id": 3,
+        "interactable": true,
+        "type": "neutral",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "neutral-4": {
+        "activated": false,
+        "activateText": "Retrieve",
+        "coordinates": {
+          "x": 8,
+          "y": 2
+        },
+        "description": "A recruit.",
+        "id": 4,
+        "interactable": true,
+        "type": "neutral",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "neutral-5": {
+        "activated": false,
+        "activateText": "Retrieve",
+        "coordinates": {
+          "x": 10,
+          "y": 3
+        },
+        "description": "A recruit.",
+        "id": 5,
+        "interactable": true,
+        "type": "neutral",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "neutral-6": {
+        "activated": false,
+        "activateText": "Retrieve",
+        "coordinates": {
+          "x": 1,
+          "y": 4
+        },
+        "description": "A recruit.",
+        "id": 6,
+        "interactable": true,
+        "type": "neutral",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "neutral-7": {
+        "activated": false,
+        "activateText": "Retrieve",
+        "coordinates": {
+          "x": 3,
+          "y": 5
+        },
+        "description": "A recruit.",
+        "id": 7,
+        "interactable": true,
+        "type": "neutral",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "neutral-8": {
+        "activated": false,
+        "activateText": "Retrieve",
+        "coordinates": {
+          "x": 8,
+          "y": 5
+        },
+        "description": "A recruit.",
+        "id": 8,
+        "interactable": true,
+        "type": "neutral",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "neutral-9": {
+        "activated": false,
+        "activateText": "Retrieve",
+        "coordinates": {
+          "x": 7,
+          "y": 6
+        },
+        "description": "A recruit.",
+        "id": 9,
+        "interactable": true,
+        "type": "neutral",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "neutral-10": {
+        "activated": false,
+        "activateText": "Retrieve",
+        "coordinates": {
+          "x": 12,
+          "y": 7
+        },
+        "description": "A recruit.",
+        "id": 10,
+        "interactable": true,
+        "type": "neutral",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "neutral-11": {
+        "activated": false,
+        "activateText": "Retrieve",
+        "coordinates": {
+          "x": 6,
+          "y": 8
+        },
+        "description": "A recruit.",
+        "id": 11,
+        "interactable": true,
+        "type": "neutral",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "neutral-12": {
+        "activated": false,
+        "activateText": "Retrieve",
+        "coordinates": {
+          "x": 4,
+          "y": 9
+        },
+        "description": "A recruit.",
+        "id": 12,
+        "interactable": true,
+        "type": "neutral",
+        "unactivateText": "Restore",
+        "visible": true
+      }
+    },
+    "name": "Sympathy for the Rebellion",
+    "noMercenaryAllowed": false,
+    "openGroups": 3,
+    "reservedGroups": [
+      "darthVader"
+    ]
+  },
   "targetOfOpportunity": {
     "initialGroups": [
       "imperialOfficer", "probeDroid", "stormtrooper"

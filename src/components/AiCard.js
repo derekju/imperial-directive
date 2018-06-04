@@ -161,6 +161,9 @@ class AiCard extends React.PureComponent<AiCardPropsType> {
   }
 
   render() {
+    // If a unit has unit specific AI defined, don't render the actual commands for this unit
+    // Otherwise, a global custom AI will still render the actual commands. It will just prepend to
+    // the top.
     return (
       <div style={styles.base}>
         <div style={styles.header}>

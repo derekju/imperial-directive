@@ -267,7 +267,7 @@ class CharacterSelection extends React.Component<
           <select ref={this.saveSelect} style={styles.selectInput}>
             {this.props.availableMissions.map((missionId: string) => (
               <option key={missionId} value={missionId}>
-                {missions[missionId].name}
+                {missions[missionId] ? missions[missionId].name : missionId}
               </option>
             ))}
           </select>

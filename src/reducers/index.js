@@ -25,6 +25,7 @@ import meansOfProduction from './missions/meansOfProduction';
 import mission from './mission';
 import modal from './modal';
 import rebels from './rebels';
+import sympathyForTheRebellion from './missions/sympathyForTheRebellion';
 import targetOfOpportunity from './missions/targetOfOpportunity';
 import temptation from './missions/temptation';
 import theSpiceJob from './missions/theSpiceJob';
@@ -59,6 +60,7 @@ export default {
   mission,
   modal,
   rebels,
+  sympathyForTheRebellion,
   targetOfOpportunity,
   temptation,
   theSource,

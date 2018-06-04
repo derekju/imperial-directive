@@ -23,6 +23,10 @@ import {looseCannon, getLooseCannonGoalText} from './looseCannon';
 import {luxuryCruise, getLuxuryCruiseGoalText} from './luxuryCruise';
 import {meansOfProduction, getMeansOfProductionGoalText} from './meansOfProduction';
 import {sorryAboutTheMess, getSorryAboutTheMessGoalText} from './sorryAboutTheMess';
+import {
+  sympathyForTheRebellion,
+  getSympathyForTheRebellionGoalText,
+} from './sympathyForTheRebellion';
 import {targetOfOpportunity, getTargetOfOpportunityGoalText} from './targetOfOpportunity';
 import {temptation, getTemptationGoalText} from './temptation';
 import {theSource, getTheSourceGoalText} from './theSource';
@@ -67,6 +71,7 @@ export default {
   getLuxuryCruiseGoalText,
   getMeansOfProductionGoalText,
   getSorryAboutTheMessGoalText,
+  getSympathyForTheRebellionGoalText,
   getTargetOfOpportunityGoalText,
   getTemptationGoalText,
   getTheSourceGoalText,
@@ -85,6 +90,7 @@ export default {
   luxuryCruise,
   meansOfProduction,
   sorryAboutTheMess,
+  sympathyForTheRebellion,
   targetOfOpportunity,
   temptation,
   theSource,
