@@ -23,7 +23,12 @@ const THREAT_COST_FOR_MISSION_THREAT = {
   '6': 99,
 };
 
-export default (config: MissionConfigType, units: {[string]: UnitConfigType}, missionThreat: number, expansions: {[string]: boolean}) => {
+export default (
+  config: MissionConfigType,
+  units: {[string]: UnitConfigType},
+  missionThreat: number,
+  expansions: {[string]: boolean}
+) => {
   const {initialGroups, openGroups, mapImage, noMercenaryAllowed, reservedGroups} = config;
 
   // Check habitats

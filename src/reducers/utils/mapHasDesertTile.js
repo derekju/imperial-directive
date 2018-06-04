@@ -34,4 +34,4 @@ export default (mapImage: Array<Array<string>>): boolean => {
   }
 
   return false;
-}
+};

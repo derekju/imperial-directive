@@ -1,6 +1,12 @@
 // @flow
 
-import {setDifficulty, setExpansions, setImperialRewards, setMission, setMissionThreat} from '../reducers/app';
+import {
+  setDifficulty,
+  setExpansions,
+  setImperialRewards,
+  setMission,
+  setMissionThreat,
+} from '../reducers/app';
 import CharacterSelection from '../components/CharacterSelection';
 import {connect} from 'react-redux';
 import missions from '../data/missions';

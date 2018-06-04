@@ -16,9 +16,7 @@ export const IMPERIAL_REWARDS = [
   'supplyDeficit',
 ];
 
-export const EXPANSIONS = [
-  'twinShadows',
-];
+export const EXPANSIONS = ['twinShadows'];
 
 // Types
 
@@ -89,8 +87,7 @@ export const setMissionThreat = (missionThreat: number) =>
 export const setDifficulty = (difficulty: string) => createAction(SET_DIFFICULTY, {difficulty});
 export const setImperialRewards = (rewards: Object) =>
   createAction(SET_IMPERIAL_REWARDS, {rewards});
-export const setExpansions = (expansions: Object) =>
-  createAction(SET_EXPANSIONS, {expansions});
+export const setExpansions = (expansions: Object) => createAction(SET_EXPANSIONS, {expansions});
 export const missionSagaLoadDone = () => createAction(MISSION_SAGA_LOAD_DONE);
 
 // Selectors
