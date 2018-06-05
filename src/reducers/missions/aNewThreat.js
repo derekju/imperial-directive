@@ -14,7 +14,7 @@ import {
   STATUS_PHASE_END_ROUND_EFFECTS,
   statusPhaseEndRoundEffectsDone,
 } from '../mission';
-import {REFER_CAMPAIGN_GUIDE, TARGET_HERO_CLOSEST_UNWOUNDED, TARGET_REMAINING} from './constants';
+import {REFER_CAMPAIGN_GUIDE, TARGET_REMAINING} from './constants';
 import {displayModal} from '../modal';
 import handleStatusPhaseBegin from './sharedSagas/handleStatusPhaseBegin';
 import helperDeploy from './helpers/helperDeploy';
@@ -28,6 +28,7 @@ import waitForModal from '../../sagas/waitForModal';
 
 // Constants
 
+const TARGET_HERO_TERMINAL = 'the closest hero nearest to an active terminal';
 const TARGET_TERMINAL = 'the closest active terminal';
 const TARGET_LAST_TERMINAL = 'the last remaining active terminal';
 
@@ -77,7 +78,7 @@ function* handleTerminalInteraction(): Generator<*, *, *> {
           yield put(
             displayModal('RESOLVE_EVENT', {
               story: REFER_CAMPAIGN_GUIDE,
-              text: ['The red terminal has been accessed!'],
+              text: ['A terminal has been accessed!'],
               title: 'Revelation',
             })
           );
@@ -87,7 +88,7 @@ function* handleTerminalInteraction(): Generator<*, *, *> {
           yield put(
             displayModal('RESOLVE_EVENT', {
               story: REFER_CAMPAIGN_GUIDE,
-              text: ['The blue terminal has been accessed!'],
+              text: ['A terminal has been accessed!'],
               title: 'Revelation',
             })
           );
@@ -97,7 +98,7 @@ function* handleTerminalInteraction(): Generator<*, *, *> {
           yield put(
             displayModal('RESOLVE_EVENT', {
               story: REFER_CAMPAIGN_GUIDE,
-              text: ['The green terminal has been accessed!'],
+              text: ['A green terminal has been accessed!'],
               title: 'Revelation',
             })
           );
@@ -261,7 +262,8 @@ function* handleSpecialSetup(): Generator<*, *, *> {
   yield call(helperInitialSetup, ['nexuElite', 'probeDroid', 'probeDroid', 'probeDroidElite']);
   yield call(helperMissionBriefing, [
     'Doors are locked to Rebel figures. A Rebel figure can attack can attack a Door to open it (Health: 5, Defense: 1 {BLOCK}).',
-    'A hero can activate a terminal to reveal the color. Based on the color, perform an attribute test to successfully investigate:',
+    'Randomly shuffle a red, blue, and green terminal and flip them over. Then place them into the designated spots.',
+    'A hero can activate a terminal to flip the terminal to reveal the color and to perform an attribute test. Based on the color, to successfully investigate:',
     'Red: 2 {STRENGTH}',
     'Blue: 2 {INSIGHT}',
     'Green: 2 {TECH}',
@@ -278,7 +280,7 @@ Priority target definitions:
 */
 export function* aNewThreat(): Generator<*, *, *> {
   // SET TARGET
-  yield put(setAttackTarget(TARGET_HERO_CLOSEST_UNWOUNDED));
+  yield put(setAttackTarget(TARGET_HERO_TERMINAL));
   yield put(setMoveTarget(TARGET_TERMINAL));
   // SET INITIAL DEPLOYMENT POINT
   yield put(setDeploymentPoint(DEPLOYMENT_POINT_GREEN_MOST));
