@@ -99,6 +99,7 @@ export default (state: RebelsStateType = initialState, action: Object) => {
 
         return {
           ...state,
+          activatedRebels: without(state.activatedRebels, id),
           canActivateTwice: without(state.canActivateTwice, id),
           withdrawnHeroes: state.withdrawnHeroes.concat([id]),
           woundedHeroes: without(state.woundedHeroes, id),
