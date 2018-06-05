@@ -46,7 +46,7 @@
         "command": "{ACTION} Use Force Choke ability on {ATTACK_TARGET}, then {ACTION} Move towards {ATTACK_TARGET}."
       },
       {
-        "condition": "If not within 4 spaces of {ATTACK_TARGET} and no LOS to any hostile figures",
+        "condition": "If not within 4 spaces of {ATTACK_TARGET} and not LOS to any hostile figures",
         "command": "{ACTION} Move towards {ATTACK_TARGET}."
       },
       {

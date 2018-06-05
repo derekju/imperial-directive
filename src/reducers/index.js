@@ -6,6 +6,7 @@ import breakingPoint from './missions/breakingPoint';
 import brushfire from './missions/brushfire';
 import captured from './missions/captured';
 import chainOfCommand from './missions/chainOfCommand';
+import darkObsession from './missions/darkObsession';
 import desperateHour from './missions/desperateHour';
 import drawnIn from './missions/drawnIn';
 import events from './events';
@@ -41,6 +42,7 @@ export default {
   brushfire,
   captured,
   chainOfCommand,
+  darkObsession,
   desperateHour,
   drawnIn,
   events,

@@ -11,11 +11,7 @@ import {
   STATUS_PHASE_END_ROUND_EFFECTS,
   statusPhaseEndRoundEffectsDone,
 } from '../mission';
-import {
-  addToRoster,
-  WOUND_REBEL_HERO,
-  WOUND_REBEL_OTHER,
-} from '../rebels';
+import {addToRoster, WOUND_REBEL_HERO, WOUND_REBEL_OTHER} from '../rebels';
 import {all, call, fork, put, select, take} from 'redux-saga/effects';
 import {OPTIONAL_DEPLOYMENT_DONE, optionalDeployment} from '../imperials';
 import {displayModal} from '../modal';
@@ -171,7 +167,10 @@ function* handleRecruitCollection(): Generator<*, *, *> {
 
 function* handleImperialClaimToken(): Generator<*, *, *> {
   while (true) {
-    const action = yield take(['SYMPATHY_FOR_THE_REBELLION_IMPERIAL_CLAIMED', 'SYMPATHY_FOR_THE_REBELLION_IMPERIAL_DEFEAT_REBEL']);
+    const action = yield take([
+      'SYMPATHY_FOR_THE_REBELLION_IMPERIAL_CLAIMED',
+      'SYMPATHY_FOR_THE_REBELLION_IMPERIAL_DEFEAT_REBEL',
+    ]);
 
     if (action.type === 'SYMPATHY_FOR_THE_REBELLION_IMPERIAL_CLAIMED') {
       // Increase threat by threat level

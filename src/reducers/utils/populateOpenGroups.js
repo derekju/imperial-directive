@@ -27,7 +27,8 @@ export default (
   config: MissionConfigType,
   units: {[string]: UnitConfigType},
   missionThreat: number,
-  expansions: {[string]: boolean}
+  expansions: {[string]: boolean},
+  villains: {[string]: boolean},
 ) => {
   const {initialGroups, openGroups, mapImage, noMercenaryAllowed, reservedGroups} = config;
 
@@ -56,8 +57,7 @@ export default (
         return accumulator;
       }
       // Don't pick unique units unless the imperial player has gained them
-      // TODO: Allow for inclusion of gained unique units
-      if (unit.unique) {
+      if (unit.unique && villains[unit.id] !== true) {
         return accumulator;
       }
       // Don't pick units that are Desert that cannot deploy onto this map
@@ -65,7 +65,7 @@ export default (
         return accumulator;
       }
       // Don't pick units that have an expansion that is not utilized
-      if (Boolean(unit.expansion) && expansions[unit.expansion] === false) {
+      if (unit.expansion && expansions[unit.expansion] === false) {
         return accumulator;
       }
 

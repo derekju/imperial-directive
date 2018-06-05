@@ -45,6 +45,7 @@ export type UnitConfigType = {
   commands: ImperialUnitCommandType[],
   eligibleForHpBoost: boolean,
   elite: boolean,
+  expansion?: string,
   hpBoosts: {[threatLevel: string]: number[]},
   id: string,
   maxDeployed: number,
@@ -82,6 +83,7 @@ export type ImperialsStateType = {
   designationMap: DesignationMapType,
   interruptedGroup: ?ImperialUnitType,
   openGroups: ImperialUnitType[],
+  villains: string[],
 };
 
 // Utils
@@ -158,18 +160,20 @@ const initialState = {
   designationMap: {},
   interruptedGroup: null,
   openGroups: [],
+  villains: [],
 };
 
 export default (state: ImperialsStateType = initialState, action: Object) => {
   switch (action.type) {
     case LOAD_MISSION:
-      const {config, expansions, missionThreat} = action.payload;
+      const {config, expansions, missionThreat, villains} = action.payload;
       return {
         ...initialState,
         customAI: state.customAI,
         customAIExceptionList: state.customAIExceptionList,
         customUnitAI: state.customUnitAI,
-        openGroups: populateOpenGroups(config, units, missionThreat, expansions),
+        openGroups: populateOpenGroups(config, units, missionThreat, expansions, villains),
+        villains: state.villains,
       };
     case ACTIVATE_IMPERIAL_GROUP: {
       const {group} = action.payload;
@@ -318,6 +322,11 @@ export default (state: ImperialsStateType = initialState, action: Object) => {
           [unit]: commands.slice(),
         },
       };
+    case SET_VILLAINS:
+      return {
+        ...state,
+        villains: action.payload.villains,
+      };
     default:
       return state;
   }
@@ -341,6 +350,7 @@ export const SET_CUSTOM_AI = 'SET_CUSTOM_AI';
 export const CLEAR_CUSTOM_AI = 'CLEAR_CUSTOM_AI';
 export const SET_IMPERIAL_UNIT_HP_BUFF = 'SET_IMPERIAL_UNIT_HP_BUFF';
 export const SET_CUSTOM_UNIT_AI = 'SET_CUSTOM_UNIT_AI';
+export const SET_VILLAINS = 'SET_VILLAINS';
 
 // Action creators
 
@@ -405,6 +415,8 @@ export const setImperialUnitHpBuff = (groupId: string, hpBuff: number) =>
   createAction(SET_IMPERIAL_UNIT_HP_BUFF, {groupId, hpBuff});
 export const setCustomUnitAI = (unit: string, commands: Object[]) =>
   createAction(SET_CUSTOM_UNIT_AI, {commands, unit});
+export const setVillains = (villains: string[]) =>
+  createAction(SET_VILLAINS, {villains});
 
 // Selectors
 
@@ -427,6 +439,7 @@ export const getDeployedGroupOfIdWithMostUnits = (state: StateType, id: string) 
   );
 export const getLastDeployedGroupOfId = (state: StateType, id: string): ImperialUnitType =>
   last(state.imperials.deployedGroups.filter((group: ImperialUnitType) => group.id === id));
+export const getVillains = (state: StateType) => state.imperials.villains;
 
 // Sagas
 

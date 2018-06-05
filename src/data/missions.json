@@ -1170,6 +1170,124 @@
       "generalWeiss"
     ]
   },
+  "darkObsession": {
+    "wave": "Wave 1",
+    "initialGroups": [
+      "darthVader", "stormtrooperElite"
+    ],
+    "instructions": {
+      "imperialVictory": "When Darth Vader locates Luke",
+      "rebelVictory": "At the end of Round 6 or when Darth Vader is defeated"
+    },
+    "mapImage": [
+      ["00a", "00a", "19a", "19a", "19a", "19a", "19a", "19a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a"],
+      ["00a", "00a", "19a", "19a", "19a", "19a", "19a", "19a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a"],
+      ["36a", "35a", "19a", "19a", "19a", "19a", "19a", "19a", "24a", "24a", "24a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a"],
+      ["36a", "35a", "19a", "19a", "19a", "19a", "19a", "19a", "24a", "24a", "24a", "24a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a"],
+      ["00a", "00a", "19a", "19a", "19a", "19a", "19a", "19a", "24a", "24a", "24a", "24a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a"],
+      ["00a", "00a", "19a", "19a", "19a", "19a", "19a", "19a", "00a", "24a", "24a", "24a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "20a", "20a", "20a", "20a"],
+      ["00a", "00a", "00a", "00a", "36a", "36a", "00a", "00a", "00a", "00a", "28a", "28a", "28a", "00a", "00a", "36a", "36a", "00a", "00a", "20a", "20a", "20a", "20a"],
+      ["00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "28a", "28a", "28a", "27a", "27a", "27a", "27a", "27a", "27a", "20a", "20a", "20a", "20a"],
+      ["00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "28a", "28a", "28a", "27a", "27a", "27a", "27a", "27a", "27a", "20a", "20a", "20a", "20a"],
+      ["00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "20a", "20a", "20a", "20a"],
+      ["00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "20a", "20a", "20a", "20a"],
+      ["00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "35a", "35a", "00a", "00a"],
+      ["00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "36a", "36a", "00a", "00a"]
+    ],
+    "mapStates": {
+      "entrance-1": {
+        "activated": false,
+        "activateText": "",
+        "coordinates": {
+          "x": 9,
+          "y": 4
+        },
+        "description": "The entrance.",
+        "id": 1,
+        "interactable": false,
+        "type": "entrance",
+        "unactivateText": "",
+        "visible": true
+      },
+      "door-1": {
+        "activated": true,
+        "activateText": "Open",
+        "coordinates": {
+          "x": 12,
+          "y": 7
+        },
+        "description": "The outer door.",
+        "id": 1,
+        "interactable": false,
+        "type": "door",
+        "unactivateText": "Close",
+        "visible": true
+      },
+      "door-2": {
+        "activated": true,
+        "activateText": "Open",
+        "coordinates": {
+          "x": 18,
+          "y": 7
+        },
+        "description": "The inner door.",
+        "id": 2,
+        "interactable": false,
+        "type": "door",
+        "unactivateText": "Close",
+        "visible": true
+      },
+      "door-3": {
+        "activated": true,
+        "activateText": "Open",
+        "coordinates": {
+          "x": 19,
+          "y": 10
+        },
+        "description": "The door to the sabotage site.",
+        "id": 3,
+        "interactable": false,
+        "type": "door",
+        "unactivateText": "Close",
+        "visible": true
+      },
+      "terminal-1": {
+        "activated": false,
+        "activateText": "Use",
+        "coordinates": {
+          "x": 16,
+          "y": 6
+        },
+        "description": "The terminal that controls the doors.",
+        "id": 1,
+        "interactable": true,
+        "type": "terminal",
+        "unactivateText": "Cancel",
+        "visible": true
+      },
+      "rebel-1": {
+        "activated": false,
+        "activateText": "Locate",
+        "color": "red",
+        "coordinates": {
+          "x": 20,
+          "y": 12
+        },
+        "description": "The sabotage site.",
+        "id": 1,
+        "interactable": false,
+        "type": "rebel",
+        "unactivateText": "Cancel",
+        "visible": true
+      }
+    },
+    "name": "Dark Obsession",
+    "noMercenaryAllowed": false,
+    "openGroups": 3,
+    "reservedGroups": [
+      "stormtrooper"
+    ]
+  },
   "desperateHour": {
     "initialGroups": [
       "royalGuard", "stormtrooperElite"

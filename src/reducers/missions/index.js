@@ -7,6 +7,7 @@ import {breakingPoint, getBreakingPointGoalText} from './breakingPoint';
 import {brushfire, getBrushfireGoalText} from './brushfire';
 import {captured, getCapturedGoalText} from './captured';
 import {chainOfCommand, getChainOfCommandGoalText} from './chainOfCommand';
+import {darkObsession, getDarkObsessionGoalText} from './darkObsession';
 import {desperateHour, getDesperateHourGoalText} from './desperateHour';
 import {drawnIn, getDrawnInGoalText} from './drawnIn';
 import {flySolo, getFlySoloGoalText} from './flySolo';
@@ -43,6 +44,7 @@ export default {
   brushfire,
   captured,
   chainOfCommand,
+  darkObsession,
   desperateHour,
   drawnIn,
   flySolo,
@@ -55,6 +57,7 @@ export default {
   getBrushfireGoalText,
   getCapturedGoalText,
   getChainOfCommandGoalText,
+  getDarkObsessionGoalText,
   getDesperateHourGoalText,
   getDrawnInGoalText,
   getFlySoloGoalText,

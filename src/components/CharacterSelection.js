@@ -130,6 +130,7 @@ type CharacterSelectionPropsType = {
   availableAllies: string[],
   availableHeroes: string[],
   availableMissions: string[],
+  availableVillains: string[],
   history: Object,
   setAllyChosen: Function,
   setDifficulty: Function,
@@ -138,6 +139,7 @@ type CharacterSelectionPropsType = {
   setMission: Function,
   setMissionThreat: Function,
   setRoster: Function,
+  setVillains: Function,
 };
 
 type CharacterSelectionStateType = {
@@ -202,6 +204,17 @@ class CharacterSelection extends React.Component<
       return accumulator;
     }, {});
     this.props.setExpansions(selectedExpansions);
+
+    // Get which checkboxes are checked for villains
+    // Gonna just dig into the DOM to do this
+    const selectedVillains = this.props.availableVillains.reduce((accumulator: Object, key: string) => {
+      const checkbox = document.querySelector('#' + key);
+      if (checkbox) {
+        accumulator[key] = checkbox.checked;
+      }
+      return accumulator;
+    }, {});
+    this.props.setVillains(selectedVillains);
 
     if (this.select) {
       const selectedMission = this.select.options[this.select.selectedIndex].value;
@@ -332,6 +345,29 @@ class CharacterSelection extends React.Component<
     );
   }
 
+  renderSelectVillains() {
+    return (
+      <div style={styles.section}>
+        <div style={styles.sectionHeader}>
+          <span style={styles.headerText}>Select Villains</span>
+        </div>
+        <div style={styles.sectionContentsNoFlex}>
+          <div style={styles.sectionDescription}>
+            Select which villains the Imperials have unlocked during the campaign.
+          </div>
+          <div style={styles.toggleSection}>
+            <div>
+              <input type="checkbox" id="darthVader" />
+              <label style={styles.label} htmlFor="darthVader">
+                Darth Vader
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   renderDifficultySection() {
     return (
       <div style={styles.section}>
@@ -449,6 +485,7 @@ class CharacterSelection extends React.Component<
           {this.renderSelectExpansions()}
           {this.renderSelectHeroes()}
           {this.renderSelectAlly()}
+          {this.renderSelectVillains()}
           {this.renderSelectImperialRewards()}
           <div style={styles.buttonSection}>
             <Button text="Cancel" onClick={this.cancel} style={styles.cancelButton} />

@@ -1,5 +1,6 @@
 // @flow
 
+import {setAllyChosen, setRoster} from '../reducers/rebels';
 import {
   setDifficulty,
   setExpansions,
@@ -10,7 +11,7 @@ import {
 import CharacterSelection from '../components/CharacterSelection';
 import {connect} from 'react-redux';
 import missions from '../data/missions';
-import {setAllyChosen, setRoster} from '../reducers/rebels';
+import {setVillains} from '../reducers/imperials';
 import type {StateType} from '../reducers/types';
 
 const mapStateToProps = (state: StateType) => {
@@ -37,6 +38,7 @@ const mapStateToProps = (state: StateType) => {
       .concat(coreMissions)
       .concat(['--- WAVE 1 ---'])
       .concat(wave1Missions),
+    availableVillains: ['darthVader'],
   };
 };
 
@@ -48,6 +50,7 @@ const mapDispatchToProps = {
   setMission,
   setMissionThreat,
   setRoster,
+  setVillains,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(CharacterSelection);

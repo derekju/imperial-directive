@@ -3,6 +3,7 @@
 import {cancel, fork, put, select, take} from 'redux-saga/effects';
 import createAction from './createAction';
 import {loadMission} from './mission';
+import {getVillains} from './imperials';
 import missions from '../data/missions';
 import missionSagas from './missions';
 import type {StateType} from './types';
@@ -117,6 +118,7 @@ function* loadMissionSaga(): Generator<*, *, *> {
     const missionThreat = yield select(getMissionThreat);
     const difficulty = yield select(getDifficulty);
     const expansions = yield select(getExpansions);
+    const villains = yield select(getVillains);
     // Fork a copy of the saga for the current mission so we get mission specific logic
     const missionConfiguration = missions[mission];
     // Load the events
@@ -125,7 +127,7 @@ function* loadMissionSaga(): Generator<*, *, *> {
     task = yield fork(forkMission, mission);
     yield take(MISSION_SAGA_LOAD_DONE);
     // Load our mission in which will kick things off
-    yield put(loadMission(missionConfiguration, missionThreat, difficulty, expansions));
+    yield put(loadMission(missionConfiguration, missionThreat, difficulty, expansions, villains));
   }
 }
 

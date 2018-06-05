@@ -64,6 +64,7 @@ export type MissionConfigType = {
   noMercenaryAllowed: boolean,
   openGroups: number,
   reservedGroups: string[],
+  wave?: string,
   withdrawnHeroCanActivate: boolean,
 };
 
@@ -293,8 +294,9 @@ export const loadMission = (
   config: MissionConfigType,
   missionThreat: number,
   difficulty: string,
-  expansions: {[string]: boolean}
-) => createAction(LOAD_MISSION, {config, difficulty, expansions, missionThreat});
+  expansions: {[string]: boolean},
+  villains: {[string]: boolean}
+) => createAction(LOAD_MISSION, {config, difficulty, expansions, missionThreat, villains});
 export const changePlayerTurn = (player: number) => createAction(CHANGE_PLAYER_TURN, {player});
 export const setMapStateActivated = (id: number, type: string, value: boolean) =>
   createAction(SET_MAP_STATE_ACTIVATED, {id, type, value});
