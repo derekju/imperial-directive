@@ -281,7 +281,7 @@ function* handleWeissEntersATST(): Generator<*, *, *> {
   yield put(createAction('CHAIN_OF_COMMAND_SET_GENERAL_WEISS_ACTIVE', true));
   // Defeat the old one since it's fine now since it won't trigger end game
   const weissGroup = yield select(getLastDeployedGroupOfId, 'weiss');
-  yield put(defeatImperialFigure(weissGroup));
+  yield put(defeatImperialFigure(weissGroup, false));
 
   yield call(helperEventModal, {
     text: [

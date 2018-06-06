@@ -5,11 +5,11 @@ import reduce from 'lodash/reduce';
 
 export default (
   groupToDecrement: ImperialUnitType,
-  groups: ImperialUnitType[],
+  deployedGroups: ImperialUnitType[],
   groupsToAddToOpen: ImperialUnitType[]
 ) => {
   return reduce(
-    groups,
+    deployedGroups,
     (accumulator: ImperialUnitType[], group: ImperialUnitType) => {
       if (group.id === groupToDecrement.id && group.groupNumber === groupToDecrement.groupNumber) {
         // Don't bother pushing if it's the last one. This wipes it out.

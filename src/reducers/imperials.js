@@ -370,8 +370,8 @@ export const activateImperialGroup = (group: ImperialUnitType) => ({
   payload: {group},
   type: ACTIVATE_IMPERIAL_GROUP,
 });
-export const defeatImperialFigure = (group: ImperialUnitType) => ({
-  payload: {group},
+export const defeatImperialFigure = (group: ImperialUnitType, addToOpen: boolean = true) => ({
+  payload: {addToOpen, group},
   type: DEFEAT_IMPERIAL_FIGURE,
 });
 export const setImperialFiguresAfterDefeat = (
@@ -546,16 +546,22 @@ function* handleDeployAndReinforcement(): Generator<*, *, *> {
 }
 
 function* handleImperialFigureDefeat(action: Object): Generator<*, *, *> {
-  const {group: groupToDecrement} = action.payload;
+  const {addToOpen, group: groupToDecrement} = action.payload;
   const {deployedGroups} = yield select(getCurrentGroups);
 
-  const groupsToAddToOpen = [];
+  let groupsToAddToOpen = [];
 
   const newDeployedGroups = decrementFigureFromGroup(
     groupToDecrement,
     deployedGroups,
     groupsToAddToOpen
   );
+
+  // If after defeating we don't want to add this group to open groups, just set it an empty array
+  // so we don't concat anything
+  if (!addToOpen) {
+    groupsToAddToOpen = [];
+  }
 
   yield put(setImperialFiguresAfterDefeat(newDeployedGroups, groupsToAddToOpen, groupToDecrement));
 }
