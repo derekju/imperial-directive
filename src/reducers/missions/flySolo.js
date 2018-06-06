@@ -107,7 +107,9 @@ function* handleStrangePatronsEvent(): Generator<*, *, *> {
   while (true) {
     const action = yield take(SET_MAP_STATE_ACTIVATED);
     const {id, type, value} = action.payload;
-    if (id === 2 && type === 'door' && value === true) {
+    const {backRoomDoorOpened} = yield select(getState);
+    // Check if back room door was already opened by end of round 3 event to not trigger this one
+    if (id === 2 && type === 'door' && value === true && !backRoomDoorOpened) {
       track('flySolo', 'strangePatron', 'triggered');
       yield call(
         helperDeploy,
