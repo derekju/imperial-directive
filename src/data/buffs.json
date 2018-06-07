@@ -8,7 +8,7 @@
   "combatVeteran": {
     "name": "Combat Veteran",
     "text": [
-      "While attacking, apply +2 Accuracy and +1 {DMG} to the results."
+      "While attacking, apply +1 Accuracy and +1 {SURGE} to the results."
     ]
   },
   "criticalHit": {
