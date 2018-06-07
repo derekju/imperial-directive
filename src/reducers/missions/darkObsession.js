@@ -297,8 +297,9 @@ function* handleSpecialSetup(): Generator<*, *, *> {
   yield call(helperMissionBriefing, [
     'The red rebel mission token is the sabotage site. When all heroes are wounded, {ELITE}Darth Vader{END} can interact with it to locate Luke.',
     '{ELITE}Darth Vader{END} cannot be pushed. When he is attacked and is adjacent to an Imperial Trooper unit, the Trooper unit is attacked instead.',
+    'All doors start open.',
     'Once per activation, a hero can interact ({TECH}) with the terminal to close an open door closest to the sabotage site. Doors that have been reopened cannot be closed again.',
-    'Doors are locked. A figure can attack a door to open it (Health: 5, Defense: 1 {BLOCK})',
+    'Once doors are closed, they are locked. A figure can attack a door to open it (Health: 5, Defense: 1 {BLOCK})',
   ]);
   yield put(missionSpecialSetupDone());
 }
