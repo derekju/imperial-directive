@@ -193,7 +193,7 @@ function* handleHanDefeated(): Generator<*, *, *> {
   while (true) {
     const action = yield take(WOUND_REBEL_OTHER);
     const {id} = action.payload;
-    // If chewy killed and all heroes are already dead
+    // If han killed and all heroes are already dead
     if (id === 'han') {
       // End game with imperial victory
       yield put(displayModal('IMPERIAL_VICTORY'));
