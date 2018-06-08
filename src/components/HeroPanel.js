@@ -15,9 +15,8 @@ const styles = {
   },
   base: {
     border: '2px solid black',
-    display: 'flex',
+    flex: 1,
     flexDirection: 'column',
-    height: '622px',
     width: '110px',
   },
   header: {

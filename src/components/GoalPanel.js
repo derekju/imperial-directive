@@ -347,7 +347,9 @@ class GoalPanel extends React.Component<GoalPanelPropsType, GoalPanelStateType> 
     return (
       <div style={styles.base}>
         <div style={styles.header}>Mission Goals</div>
-        <div style={styles.contents}>{this.renderGoals(this.props.goalText)}</div>
+        <div style={styles.contents}>
+          {this.renderGoals(this.props.goalText)}
+        </div>
         <div>{this.renderMissionSpecific()}</div>
         <div>{this.renderRewards()}</div>
       </div>

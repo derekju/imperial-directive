@@ -18,8 +18,7 @@ const styles = {
   },
   base: {
     backgroundColor: LIGHT_WHITE,
-    height: '700px',
-    overflowY: 'scroll',
+    margin: '0 auto',
   },
   buttonSection: {
     margin: '20px auto',

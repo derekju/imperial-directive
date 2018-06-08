@@ -14,8 +14,8 @@ const styles = {
     alignItems: 'center',
     backgroundColor: LIGHT_WHITE,
     display: 'flex',
+    flex: 1,
     flexDirection: 'column',
-    height: '100%',
     justifyContent: 'space-around',
   },
   button: {

@@ -8,15 +8,11 @@ import TitleScreenContainer from './containers/TitleScreenContainer';
 
 const styles = {
   base: {
-    alignItems: 'center',
-    backgroundColor: '#333',
     display: 'flex',
     flex: 1,
-    justifyContent: 'center',
-  },
-  canvas: {
-    height: '700px',
-    width: '1024px',
+    minHeight: '700px',
+    minWidth: '1024px',
+    position: 'relative',
   },
 };
 
@@ -34,11 +30,9 @@ class App extends React.Component<{}> {
     return (
       <Router>
         <div style={styles.base}>
-          <div style={styles.canvas}>
-            <Route exact path="/" component={TitleScreenContainer} />
-            <Route path="/mission" component={MissionContainer} />
-            <Route path="/character_selection" component={CharacterSelectionContainer} />
-          </div>
+          <Route exact path="/" component={TitleScreenContainer} />
+          <Route path="/mission" component={MissionContainer} />
+          <Route path="/character_selection" component={CharacterSelectionContainer} />
         </div>
       </Router>
     );

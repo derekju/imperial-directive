@@ -17,29 +17,39 @@ import RoundThreatTracker from './RoundThreatTracker';
 
 const styles = {
   activatedGroupContainer: {
-    ...positionAbsolute(25, 25, 25, 25),
     backgroundColor: 'transparent',
+    bottom: '0%',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
+    left: '15%',
+    position: 'absolute',
+    right: '15%',
+    top: '0%',
     zIndex: 100,
   },
   base: {
     backgroundColor: 'white',
     display: 'flex',
+    flex: 1,
     flexDirection: 'row',
     position: 'relative',
   },
   contents: {
     display: 'flex',
+    flex: 1,
     flexDirection: 'column',
     justifyContent: 'flex-start',
-    margin: '10px 0 10px 10px',
-    position: 'relative',
-    width: '665px',
+    margin: '10px 10px 10px 0',
+  },
+  heroPanelContainer: {
+    display: 'flex',
+    flex: 1,
   },
   leftPanelContainer: {
-    margin: '10px 0 0 10px',
+    display: 'flex',
+    flexDirection: 'column',
+    margin: '10px',
     width: '114px',
   },
   menuContainer: {
@@ -57,15 +67,21 @@ const styles = {
     justifyContent: 'center',
     zIndex: 100,
   },
-  panelItem: {
-    marginBottom: '10px',
-  },
   quitButton: {
     marginRight: '10px',
   },
   rightPanelContainer: {
-    margin: '10px 0 0 10px',
-    width: '185px',
+    display: 'flex',
+    flexDirection: 'column',
+    margin: '10px 10px 50px 0',
+    width: '204px',
+  },
+  rightPanelItem: {
+    marginBottom: '10px',
+  },
+  roundThreatTracker: {
+    height: '35px',
+    marginBottom: '10px',
   },
 };
 
@@ -99,10 +115,10 @@ class Mission extends React.Component<MissionPropsType> {
     return (
       <div style={styles.base}>
         <div style={styles.leftPanelContainer}>
-          <div style={styles.panelItem}>
+          <div style={styles.roundThreatTracker}>
             <RoundThreatTracker round={this.props.currentRound} threat={this.props.currentThreat} />
           </div>
-          <div style={styles.panelItem}>
+          <div style={styles.heroPanelContainer}>
             <HeroPanelContainer />
           </div>
         </div>
@@ -139,13 +155,13 @@ class Mission extends React.Component<MissionPropsType> {
           ) : null}
         </div>
         <div style={styles.rightPanelContainer}>
-          <div style={styles.panelItem}>
+          <div style={styles.rightPanelItem}>
             <MissionPanel
               currentMission={this.props.currentMissionName}
               instructions={this.props.instructions}
             />
           </div>
-          <div style={styles.panelItem}>
+          <div style={styles.rightPanelItem}>
             <GoalPanelContainer />
           </div>
         </div>

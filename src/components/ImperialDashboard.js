@@ -46,12 +46,22 @@ class ImperialDashboard extends React.Component<
   ImperialDashboardPropsType,
   ImperialDashboardStateType
 > {
+  htmlDivSectionContents: ?HTMLDivElement;
+
   state = {
     htmlDivSectionContents: null,
   };
 
+  componentDidMount() {
+    if (this.htmlDivSectionContents) {
+      // 24px is due to internal padding on left and right plus 2px border on each side
+      this.htmlDivSectionContents.style.maxWidth = (this.htmlDivSectionContents.offsetWidth - 24) + 'px';
+    }
+  }
+
   saveSectionContents = (htmlDivSectionContents: ?HTMLDivElement) => {
     this.setState({htmlDivSectionContents: htmlDivSectionContents});
+    this.htmlDivSectionContents = htmlDivSectionContents;
   };
 
   render() {
