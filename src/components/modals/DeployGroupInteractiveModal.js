@@ -68,6 +68,8 @@ type DeployGroupInteractiveModalStateType = {
   number: number,
 };
 
+const KEYS = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
 class DeployGroupInteractiveModal extends React.Component<
   DeployGroupInteractiveModalPropsType,
   DeployGroupInteractiveModalStateType
@@ -111,7 +113,7 @@ class DeployGroupInteractiveModal extends React.Component<
             dangerouslySetInnerHTML={{__html: handleTextSubs(this.props.location)}}
           />
           <div style={styles.colorRow}>
-            {[1, 2, 3, 4, 5].map((n: number) => (
+            {KEYS.map((n: number) => (
               <div key={`red-${n}`} style={styles.circleContainer}>
                 <Circle
                   color={'red'}
@@ -123,7 +125,7 @@ class DeployGroupInteractiveModal extends React.Component<
             ))}
           </div>
           <div style={styles.colorRow}>
-            {[1, 2, 3, 4, 5].map((n: number) => (
+            {KEYS.map((n: number) => (
               <div key={`purple-${n}`} style={styles.circleContainer}>
                 <Circle
                   color={'purple'}
@@ -135,7 +137,7 @@ class DeployGroupInteractiveModal extends React.Component<
             ))}
           </div>
           <div style={styles.colorRow}>
-            {[1, 2, 3, 4, 5].map((n: number) => (
+            {KEYS.map((n: number) => (
               <div key={`black-${n}`} style={styles.circleContainer}>
                 <Circle
                   color={'black'}
@@ -147,7 +149,7 @@ class DeployGroupInteractiveModal extends React.Component<
             ))}
           </div>
           <div style={styles.colorRow}>
-            {[1, 2, 3, 4, 5].map((n: number) => (
+            {KEYS.map((n: number) => (
               <div key={`blue-${n}`} style={styles.circleContainer}>
                 <Circle
                   color={'blue'}

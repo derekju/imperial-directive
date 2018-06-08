@@ -11,7 +11,7 @@ const styles = {
     border: '2px solid black',
     paddingBottom: '80px',
     position: 'relative',
-    width: '500px',
+    width: '600px',
   },
   buttonContainer: {
     ...positionAbsolute(null, 0, 20, 0),
