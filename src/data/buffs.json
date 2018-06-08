@@ -107,7 +107,7 @@
   "showOfForce": {
     "name": "Show of Force",
     "text": [
-      "While declaring an attack, become focused (limit once per activation)."
+      "While declaring an attack, become focused (limit once per group, first unit activated gains bonus)."
     ]
   },
   "surgicalStrike": {
@@ -119,7 +119,7 @@
   "sustainedFire": {
     "name": "Sustained Fire",
     "text": [
-      "After resolving an attack, perform an additional attack if the unit has another action left. Then, become stunned and suffer 2 {DMG}."
+      "After resolving an attack, perform an additional attack if the unit has another action left. Then, suffer {DMG} equal to half of the unit's maximum HP (rounded up, this can defeat the unit)."
     ]
   },
   "szark": {

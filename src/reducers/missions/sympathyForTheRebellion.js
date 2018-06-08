@@ -286,7 +286,7 @@ function* handleSpecialSetup(): Generator<*, *, *> {
   yield put(optionalDeployment());
   yield take(OPTIONAL_DEPLOYMENT_DONE);
 
-  // Deploy Chewy
+  // Deploy Luke
   yield put(addToRoster('luke'));
 
   yield call(helperMissionBriefing, [

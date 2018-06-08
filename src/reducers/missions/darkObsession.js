@@ -115,6 +115,7 @@ export const getDarkObsessionGoalText = (state: StateType): string[] => {
     '{BREAK}',
     '{BOLD}Doors:{END}',
     'Doors that have been reopened cannot be closed again.',
+    '{BREAK}',
     'Doors are locked. A figure can attack a door to open it (Health: 5, Defense: 1 {BLOCK})',
   ]);
 
