@@ -28,6 +28,7 @@ const styles = {
 };
 
 type GoalPanelPropsType = {
+  armedAndOperationalWarshipDestroyed: Function,
   chainOfCommandTerminalInteract: Function,
   chainOfCommandWeissDefends: Function,
   chainOfCommandWeissEntered: Function,
@@ -312,6 +313,12 @@ class GoalPanel extends React.Component<GoalPanelPropsType, GoalPanelStateType> 
               onClick={this.props.sympathyForTheRebellionImperialDefeatRebel}
             />
           </div>
+        </div>
+      );
+    } else if (currentMission === 'armedAndOperational') {
+      return (
+        <div style={styles.buttonContainer}>
+          <Button text="Warship Destroyed" width={180} onClick={this.props.armedAndOperationalWarshipDestroyed} />
         </div>
       );
     }

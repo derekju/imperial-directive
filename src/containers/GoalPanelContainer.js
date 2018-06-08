@@ -50,8 +50,11 @@ const sympathyForTheRebellionImperialDefeatRebel = () =>
   createAction('SYMPATHY_FOR_THE_REBELLION_IMPERIAL_DEFEAT_REBEL');
 const sympathyForTheRebellionImperialDone = () =>
   createAction('STATUS_PHASE_END_ROUND_EFFECTS_DONE');
+const armedAndOperationalWarshipDestroyed = () =>
+  createAction('ARMED_AND_OPERATIONAL_WARSHIP_DESTROYED');
 
 const mapDispatchToProps = {
+  armedAndOperationalWarshipDestroyed,
   chainOfCommandTerminalInteract,
   chainOfCommandWeissDefends,
   chainOfCommandWeissEntered,

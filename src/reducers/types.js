@@ -2,6 +2,7 @@
 
 import type {AftermathStateType} from './missions/aftermath';
 import type {AppStateType} from './app';
+import type {ArmedAndOperationalStateType} from './missions/armedAndOperational';
 import type {BreakingPointStateType} from './missions/breakingPoint';
 import type {BrushfireStateType} from './missions/brushfire';
 import type {CapturedStateType} from './missions/captured';
@@ -38,6 +39,7 @@ import type {WantedStateType} from './missions/wanted';
 export type StateType = {
   aftermath: AftermathStateType,
   app: AppStateType,
+  armedAndOperational: ArmedAndOperationalStateType,
   breakingPoint: BreakingPointStateType,
   brushfire: BrushfireStateType,
   captured: CapturedStateType,

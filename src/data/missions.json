@@ -246,6 +246,64 @@
       "generalWeiss", "nexu"
     ]
   },
+  "armedAndOperational": {
+    "wave": "Wave 1",
+    "initialGroups": [
+      "imperialOfficer", "probeDroid", "stormtrooperElite"
+    ],
+    "instructions": {
+      "imperialVictory": "At the end of Round 6 or when all heroes are wounded",
+      "rebelVictory": "When the warship is destroyed"
+    },
+    "mapImage": [
+      ["00a", "00a", "36b", "36b", "00a", "00a", "00a", "00a", "00a", "10b", "10b", "10b", "17b", "14b", "14b", "00a", "00a", "00a", "00a", "00a", "00a"],
+      ["19b", "19b", "19b", "19b", "19b", "19b", "00a", "00a", "00a", "10b", "10b", "10b", "17b", "14b", "14b", "00a", "00a", "18b", "18b", "00a", "00a"],
+      ["19b", "19b", "19b", "19b", "19b", "19b", "00a", "00a", "00a", "10b", "10b", "10b", "00a", "15b", "15b", "01b", "01b", "01b", "01b", "01b", "01b"],
+      ["19b", "19b", "19b", "19b", "19b", "19b", "39b", "02b", "02b", "02b", "02b", "02b", "02b", "15b", "15b", "01b", "01b", "01b", "01b", "01b", "01b"],
+      ["19b", "19b", "19b", "19b", "19b", "19b", "39b", "02b", "02b", "02b", "02b", "02b", "02b", "14b", "14b", "01b", "01b", "01b", "01b", "01b", "01b"],
+      ["19b", "19b", "19b", "19b", "19b", "19b", "00a", "02b", "02b", "02b", "02b", "02b", "02b", "14b", "14b", "01b", "01b", "01b", "01b", "01b", "01b"],
+      ["19b", "19b", "19b", "19b", "19b", "19b", "00a", "02b", "02b", "02b", "02b", "02b", "02b", "00a", "00a", "01b", "01b", "01b", "01b", "01b", "01b"],
+      ["00a", "00a", "34b", "34b", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "01b", "01b", "01b", "01b", "01b", "01b"],
+      ["00a", "00a", "34b", "34b", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "18b", "18b", "00a", "00a"],
+      ["00a", "00a", "36b", "36b", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a"]
+    ],
+    "mapStates": {
+      "entrance-1": {
+        "activated": false,
+        "activateText": "",
+        "coordinates": {
+          "x": 3,
+          "y": 8
+        },
+        "description": "The entrance.",
+        "id": 1,
+        "interactable": false,
+        "type": "entrance",
+        "unactivateText": "",
+        "visible": true
+      },
+      "door-1": {
+        "activated": false,
+        "activateText": "Open",
+        "coordinates": {
+          "x": 14,
+          "y": 4
+        },
+        "description": "The door to the Testing Site (tile 01B).",
+        "id": 1,
+        "interactable": true,
+        "type": "door",
+        "unactivateText": "Close",
+        "visible": true
+      }
+    },
+    "name": "Armed and Operational",
+    "noMercenaryAllowed": false,
+    "openGroups": 3,
+    "reservedGroups": [
+      "eWebEngineer", "imperialOfficer", "trandoshanHunter"
+    ]
+  },
   "aSimpleTask": {
     "initialGroups": [
       "stormtrooper", "trandoshanHunterElite"

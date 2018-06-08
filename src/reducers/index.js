@@ -2,6 +2,7 @@
 
 import aftermath from './missions/aftermath';
 import app from './app';
+import armedAndOperational from './missions/armedAndOperational';
 import breakingPoint from './missions/breakingPoint';
 import brushfire from './missions/brushfire';
 import captured from './missions/captured';
@@ -38,6 +39,7 @@ import wanted from './missions/wanted';
 export default {
   aftermath,
   app,
+  armedAndOperational,
   breakingPoint,
   brushfire,
   captured,

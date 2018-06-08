@@ -1,6 +1,7 @@
 // @flow
 
 import {aNewThreat, getANewThreatGoalText} from './aNewThreat';
+import {armedAndOperational, getArmedAndOperationalGoalText} from './armedAndOperational';
 import {aSimpleTask, getASimpleTaskGoalText} from './aSimpleTask';
 import {aftermath, getAftermathGoalText} from './aftermath';
 import {breakingPoint, getBreakingPointGoalText} from './breakingPoint';
@@ -40,6 +41,7 @@ export default {
   aNewThreat,
   aSimpleTask,
   aftermath,
+  armedAndOperational,
   breakingPoint,
   brushfire,
   captured,
@@ -53,6 +55,7 @@ export default {
   getANewThreatGoalText,
   getASimpleTaskGoalText,
   getAftermathGoalText,
+  getArmedAndOperationalGoalText,
   getBreakingPointGoalText,
   getBrushfireGoalText,
   getCapturedGoalText,
