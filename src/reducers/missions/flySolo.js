@@ -23,7 +23,7 @@ import {
   updateImperialVictory,
   updateRebelVictory,
 } from '../mission';
-import {getLastDeployedGroupOfId, setCustomAI, setImperialGroupActivated} from '../imperials';
+import {getLastDeployedGroupOfId, setImperialGroupActivated} from '../imperials';
 import {REFER_CAMPAIGN_GUIDE, TARGET_CLOSEST_REBEL, TARGET_ENTRANCE_TOKEN} from './constants';
 import createAction from '../createAction';
 import {displayModal} from '../modal';
@@ -42,14 +42,6 @@ const TARGET_DOOR = 'the door to the Back Room';
 const TARGET_HAN = 'Han';
 
 const DEPLOYMENT_POINT_GREEN_NW = 'The north western green deployment point';
-
-const CUSTOM_AI = [
-  {
-    command:
-      '{ACTION} Move until within 3 spaces of the Back Room door, then {ACTION} Move until within 3 spaces of the Back Room door.',
-    condition: 'If not within 3 spaces of the Back Room door',
-  },
-];
 
 // Types
 
@@ -89,7 +81,7 @@ export const getFlySoloGoalText = (state: StateType): string[] => {
   if (!state.flySolo.backRoomDoorOpened) {
     const goals = [
       '{BOLD}Current Goal:{END}',
-      'Open the door to the Back Room.',
+      'Open the door to the Back Room (tile 22B).',
       '{BREAK}',
       '{BOLD}Back Room Door:{END}',
       'Locked. A hero can interact ({STRENGTH}) to open the door.',
@@ -152,12 +144,12 @@ function* handleDaringEscapeEvent(): Generator<*, *, *> {
     'Daring Escape',
     REFER_CAMPAIGN_GUIDE,
     [
-      'The door to the Back Room opens.',
+      'The door to the Back Room (tile 22B) opens.',
       'Deploy {ELITE}Han Solo{END} to the blue point. He suffers 4 {DAMAGE}.',
       'The threat has been increased.',
       'An {ELITE}Elite Stormtrooper{END} group will now be deployed.',
     ],
-    ['stormtrooperElite', 'Deploy to the Back Room. Each unit suffers 2 {DAMAGE}.']
+    ['stormtrooperElite', 'Deploy to the Back Room (tile 22B) adjacent to the open door. Each unit suffers 2 {DAMAGE}.']
   );
   yield put(addToRoster('han'));
   yield put(increaseThreat(4));
@@ -182,8 +174,6 @@ function* handleTimeToRunEvent(): Generator<*, *, *> {
   yield put(updateRebelVictory('Han Solo escapes through the entrance'));
   yield put(updateImperialVictory('Han Solo is defeated'));
   yield put(enableEscape());
-  // Remove custom AI
-  yield put(setCustomAI(null));
   // Switch targets
   yield put(setAttackTarget(TARGET_HAN));
   yield put(setMoveTarget(TARGET_ENTRANCE_TOKEN));
@@ -238,11 +228,9 @@ function* handleSpecialSetup(): Generator<*, *, *> {
     'trandoshanHunter',
   ]);
   yield call(helperMissionBriefing, [
-    'The door to the back room is locked. A hero can interact ({STRENGTH}) to open it.',
+    'The door to the back room (tile 22B) is locked. A hero can interact ({STRENGTH}) to open it.',
     'Heroes cannot bring {ELITE}Han Solo{END} to this mission!',
   ]);
-  // Set custom AI
-  yield put(setCustomAI(CUSTOM_AI));
   yield put(missionSpecialSetupDone());
 }
 

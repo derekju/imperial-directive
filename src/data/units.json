@@ -778,11 +778,11 @@
         "command": "{ACTION} Move adjacent to {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}, then move to {MOVE_TARGET}."
       },
       {
-        "condition": "If within 7 spaces of {ATTACK_TARGET}",
-        "command": "{ACTION} Move within 3 spaces and LOS of {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}, then move to {MOVE_TARGET}."
+        "condition": "If within 8 spaces of {ATTACK_TARGET}",
+        "command": "{ACTION} Move within 4 spaces and LOS of {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}, then move to {MOVE_TARGET}."
       },
       {
-        "condition": "If not within 7 spaces of {ATTACK_TARGET}",
+        "condition": "If not within 8 spaces of {ATTACK_TARGET}",
         "command": "{ACTION} Move adjacent to {ATTACK_TARGET}."
       },
       {
@@ -821,11 +821,11 @@
         "command": "{ACTION} Move adjacent to {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}, then move to {MOVE_TARGET}."
       },
       {
-        "condition": "If within 7 spaces of any target",
-        "command": "{ACTION} Move within 3 spaces and LOS of {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}, then move to {MOVE_TARGET}."
+        "condition": "If within 8 spaces of any target",
+        "command": "{ACTION} Move within 4 spaces and LOS of {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}, then move to {MOVE_TARGET}."
       },
       {
-        "condition": "If not within 7 spaces of {ATTACK_TARGET}",
+        "condition": "If not within 8 spaces of {ATTACK_TARGET}",
         "command": "{ACTION} Move adjacent to {ATTACK_TARGET}."
       },
       {
