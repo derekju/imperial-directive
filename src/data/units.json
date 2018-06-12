@@ -774,7 +774,7 @@
     "buffs": ["combatVeteran", "experimentalArms", "exploitWeakness", "recovery"],
     "commands": [
       {
-        "condition": "If within 4 spaces of {ATTACK_TARGET}",
+        "condition": "If within 5 spaces of {ATTACK_TARGET}",
         "command": "{ACTION} Move adjacent to {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}, then move to {MOVE_TARGET}."
       },
       {
@@ -817,7 +817,7 @@
     "buffs": ["arcBlasters", "exploitWeakness", "recovery", "sustainedFire"],
     "commands": [
       {
-        "condition": "If within 4 spaces of {ATTACK_TARGET}",
+        "condition": "If within 5 spaces of {ATTACK_TARGET}",
         "command": "{ACTION} Move adjacent to {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}, then move to {MOVE_TARGET}."
       },
       {

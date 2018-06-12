@@ -78,14 +78,18 @@ export const getTheSpiceJobGoalText = (state: StateType): string[] => {
     '{BOLD}Spice Barrel:{END}',
     'A healthy hero or {ELITE}Chewbacca{END} can interact ({STRENGTH}) to claim.',
     '{BREAK}',
+    '{BOLD}Doors:{END}',
+    'Locked. Can be opened by a Rebel figure carrying the keycard.',
+    '{BREAK}',
   ]);
 
   if (!state.theSpiceJob.keycardAcquired) {
     goals = goals.concat([
       '{BOLD}Keycard:{END}',
-      'Defeat an Imperial figure carrying a neutral mission token.',
+      'The keycard is a yellow neutral token. Defeat an Imperial figure carrying a neutral mission token to have them drop it.',
       '{BREAK}',
-      'Interact with the dropped token.',
+      'Interact with the dropped token to retrieve.',
+      '{BREAK}',
     ]);
   }
 

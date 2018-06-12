@@ -113,7 +113,7 @@ class GoalPanel extends React.Component<GoalPanelPropsType, GoalPanelStateType> 
       if (!this.state.buttonPressed) {
         return (
           <div style={styles.buttonContainer}>
-            <Button text="Get Keycard" onClick={this.handleSpiceJobGetKeycard} />
+            <Button text="Keycard Found" onClick={this.handleSpiceJobGetKeycard} />
           </div>
         );
       } else {
