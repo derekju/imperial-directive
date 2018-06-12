@@ -206,13 +206,16 @@ class CharacterSelection extends React.Component<
 
     // Get which checkboxes are checked for villains
     // Gonna just dig into the DOM to do this
-    const selectedVillains = this.props.availableVillains.reduce((accumulator: Object, key: string) => {
-      const checkbox = document.querySelector('#' + key);
-      if (checkbox) {
-        accumulator[key] = checkbox.checked;
-      }
-      return accumulator;
-    }, {});
+    const selectedVillains = this.props.availableVillains.reduce(
+      (accumulator: Object, key: string) => {
+        const checkbox = document.querySelector('#' + key);
+        if (checkbox) {
+          accumulator[key] = checkbox.checked;
+        }
+        return accumulator;
+      },
+      {}
+    );
     this.props.setVillains(selectedVillains);
 
     if (this.select) {

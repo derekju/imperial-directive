@@ -69,10 +69,12 @@ export const getArmedAndOperationalGoalText = (state: StateType): string[] => {
   let goals = [];
   goals = goals.concat([
     '{BOLD}Rebel Saboteurs:{END}',
-    `Gain ${missionThreat * 2} health. When attacked and adjacent to a healthy hero, the hero can suffer 2 {STRAIN} to become target instead.`,
+    `Gain ${missionThreat *
+      2} health. When attacked and adjacent to a healthy hero, the hero can suffer 2 {STRAIN} to become target instead.`,
     '{BREAK}',
     '{BOLD}Warship:{END}',
-    `Adjacent blocked spaces on the Testing Site are the warship. A figure can attack the warship (Health: ${10 + missionThreat * 2}, Defense: ${missionThreat} {BLOCK}).`,
+    `Adjacent blocked spaces on the Testing Site are the warship. A figure can attack the warship (Health: ${10 +
+      missionThreat * 2}, Defense: ${missionThreat} {BLOCK}).`,
     '{BREAK}',
     'A Rebel Saboteur can interact with the warship to deal 5 {DAMAGE} to it. Limit once per figure per round.',
     '{BREAK}',
@@ -181,8 +183,10 @@ function* handleSpecialSetup(): Generator<*, *, *> {
   const missionThreat = yield select(getMissionThreat);
 
   yield call(helperMissionBriefing, [
-    `Rebel Saboteurs gain ${missionThreat * 2} health. When they are attacked and adjacent to a healthy hero, the hero can suffer 2 {STRAIN} to become the target instead.`,
-    `The adjacent blocked spaces on the Testing Site are the warship. A figure can attack the warship (Health: ${10 + missionThreat * 2}, Defense: ${missionThreat} {BLOCK}).`,
+    `Rebel Saboteurs gain ${missionThreat *
+      2} health. When they are attacked and adjacent to a healthy hero, the hero can suffer 2 {STRAIN} to become the target instead.`,
+    `The adjacent blocked spaces on the Testing Site are the warship. A figure can attack the warship (Health: ${10 +
+      missionThreat * 2}, Defense: ${missionThreat} {BLOCK}).`,
     'A Rebel Saboteur can interact with the warship to deal 5 {DAMAGE} to it. Limit once per figure per round.',
   ]);
   yield put(missionSpecialSetupDone());
@@ -204,7 +208,9 @@ export function* armedAndOperational(): Generator<*, *, *> {
     fork(handleSpecialSetup),
     fork(handleTestingSiteDoor),
     fork(handleWarshipDestroyed),
-    fork(handleHeroesWounded('armedAndOperational', 'ARMED_AND_OPERATIONAL_PRIORITY_TARGET_KILL_HERO')),
+    fork(
+      handleHeroesWounded('armedAndOperational', 'ARMED_AND_OPERATIONAL_PRIORITY_TARGET_KILL_HERO')
+    ),
     fork(handleStatusPhaseBegin),
     fork(handleRoundEnd),
   ]);

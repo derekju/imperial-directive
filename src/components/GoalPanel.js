@@ -318,7 +318,11 @@ class GoalPanel extends React.Component<GoalPanelPropsType, GoalPanelStateType> 
     } else if (currentMission === 'armedAndOperational') {
       return (
         <div style={styles.buttonContainer}>
-          <Button text="Warship Destroyed" width={180} onClick={this.props.armedAndOperationalWarshipDestroyed} />
+          <Button
+            text="Warship Destroyed"
+            width={180}
+            onClick={this.props.armedAndOperationalWarshipDestroyed}
+          />
         </div>
       );
     }
@@ -354,9 +358,7 @@ class GoalPanel extends React.Component<GoalPanelPropsType, GoalPanelStateType> 
     return (
       <div style={styles.base}>
         <div style={styles.header}>Mission Goals</div>
-        <div style={styles.contents}>
-          {this.renderGoals(this.props.goalText)}
-        </div>
+        <div style={styles.contents}>{this.renderGoals(this.props.goalText)}</div>
         <div>{this.renderMissionSpecific()}</div>
         <div>{this.renderRewards()}</div>
       </div>

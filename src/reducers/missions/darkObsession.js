@@ -40,39 +40,42 @@ const DEPLOYMENT_POINT_BLUE = 'The blue deployment point';
 
 const VADER_AI = [
   {
-    "command": "{ACTION} Open the door.",
-    "condition": "If within 3 spaces of a closed door",
+    command: '{ACTION} Open the door.',
+    condition: 'If within 3 spaces of a closed door',
   },
   {
-    "command": "{ACTION} If necessary, move adjacent to those figures, then {ACTION} Use Brutality ability to attack those targets.",
-    "condition": "If possible to be adjacent to 2 hostile figures (one being {ATTACK_TARGET})",
+    command:
+      '{ACTION} If necessary, move adjacent to those figures, then {ACTION} Use Brutality ability to attack those targets.',
+    condition: 'If possible to be adjacent to 2 hostile figures (one being {ATTACK_TARGET})',
   },
   {
-    "command": "{ACTION} Move adjacent to {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}.",
-    "condition": "If within 4 spaces and have LOS of {ATTACK_TARGET}",
+    command: '{ACTION} Move adjacent to {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}.',
+    condition: 'If within 4 spaces and have LOS of {ATTACK_TARGET}',
   },
   {
-    "command": "{ACTION} Use Force Choke ability on {ATTACK_TARGET}, then {ACTION} Move towards {ATTACK_TARGET}.",
-    "condition": "If not within 4 spaces of {ATTACK_TARGET} but have LOS",
+    command:
+      '{ACTION} Use Force Choke ability on {ATTACK_TARGET}, then {ACTION} Move towards {ATTACK_TARGET}.',
+    condition: 'If not within 4 spaces of {ATTACK_TARGET} but have LOS',
   },
   {
-    "command": "{ACTION} Move towards {ATTACK_TARGET}.",
-    "condition": "If not within 4 spaces of {ATTACK_TARGET} and not LOS to any hostile figures",
+    command: '{ACTION} Move towards {ATTACK_TARGET}.',
+    condition: 'If not within 4 spaces of {ATTACK_TARGET} and not LOS to any hostile figures',
   },
   {
-    "command": "If {EVADE} does nothing, reroll it. Otherwise, reroll a die with 1 {BLOCK}.",
-    "condition": "Reaction - While defending",
+    command: 'If {EVADE} does nothing, reroll it. Otherwise, reroll a die with 1 {BLOCK}.',
+    condition: 'Reaction - While defending',
   },
 ];
 
 const VADER_AI_SABOTAGE = [
   {
-    "command": "{ACTION} Open the door.",
-    "condition": "If within 3 spaces of a closed door",
+    command: '{ACTION} Open the door.',
+    condition: 'If within 3 spaces of a closed door',
   },
   {
-    "command": "{ACTION} Move adjacent to the sabotage site ({ACTION} Repeat move if needed), then {ACTION} Interact with the sabotage site.",
-    "condition": "If all heroes are wounded",
+    command:
+      '{ACTION} Move adjacent to the sabotage site ({ACTION} Repeat move if needed), then {ACTION} Interact with the sabotage site.',
+    condition: 'If all heroes are wounded',
   },
 ];
 

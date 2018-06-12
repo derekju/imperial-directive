@@ -149,7 +149,10 @@ function* handleDaringEscapeEvent(): Generator<*, *, *> {
       'The threat has been increased.',
       'An {ELITE}Elite Stormtrooper{END} group will now be deployed.',
     ],
-    ['stormtrooperElite', 'Deploy to the Back Room (tile 22B) adjacent to the open door. Each unit suffers 2 {DAMAGE}.']
+    [
+      'stormtrooperElite',
+      'Deploy to the Back Room (tile 22B) adjacent to the open door. Each unit suffers 2 {DAMAGE}.',
+    ]
   );
   yield put(addToRoster('han'));
   yield put(increaseThreat(4));

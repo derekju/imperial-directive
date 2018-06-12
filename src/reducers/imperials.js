@@ -415,8 +415,7 @@ export const setImperialUnitHpBuff = (groupId: string, hpBuff: number) =>
   createAction(SET_IMPERIAL_UNIT_HP_BUFF, {groupId, hpBuff});
 export const setCustomUnitAI = (unit: string, commands: Object[]) =>
   createAction(SET_CUSTOM_UNIT_AI, {commands, unit});
-export const setVillains = (villains: string[]) =>
-  createAction(SET_VILLAINS, {villains});
+export const setVillains = (villains: string[]) => createAction(SET_VILLAINS, {villains});
 
 // Selectors
 

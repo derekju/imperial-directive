@@ -55,7 +55,8 @@ class ImperialDashboard extends React.Component<
   componentDidMount() {
     if (this.htmlDivSectionContents) {
       // 24px is due to internal padding on left and right plus 2px border on each side
-      this.htmlDivSectionContents.style.maxWidth = (this.htmlDivSectionContents.offsetWidth - 24) + 'px';
+      this.htmlDivSectionContents.style.maxWidth =
+        this.htmlDivSectionContents.offsetWidth - 24 + 'px';
     }
   }
 

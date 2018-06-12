@@ -28,7 +28,7 @@ export default (
   units: {[string]: UnitConfigType},
   missionThreat: number,
   expansions: {[string]: boolean},
-  villains: {[string]: boolean},
+  villains: {[string]: boolean}
 ) => {
   const {initialGroups, openGroups, mapImage, noMercenaryAllowed, reservedGroups} = config;
 
