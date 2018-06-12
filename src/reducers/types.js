@@ -16,6 +16,7 @@ import type {FriendsOfOldStateType} from './missions/friendsOfOld';
 import type {GenerousDonationsStateType} from './missions/generousDonations';
 import type {HighMoonStateType} from './missions/highMoon';
 import type {HomecomingStateType} from './missions/homecoming';
+import type {HuntedDownStateType} from './missions/huntedDown';
 import type {ImperialHospitalityStateType} from './missions/imperialHospitality';
 import type {ImperialsStateType} from './imperials';
 import type {ImpoundedStateType} from './missions/impounded';
@@ -53,6 +54,7 @@ export type StateType = {
   generousDonations: GenerousDonationsStateType,
   highMoon: HighMoonStateType,
   homecoming: HomecomingStateType,
+  huntedDown: HuntedDownStateType,
   imperialHospitality: ImperialHospitalityStateType,
   imperials: ImperialsStateType,
   impounded: ImpoundedStateType,

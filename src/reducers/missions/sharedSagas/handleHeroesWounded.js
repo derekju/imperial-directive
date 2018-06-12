@@ -1,6 +1,12 @@
 // @flow
 
-import {getAreAllHeroesWounded, getIsOneHeroLeft, WOUND_REBEL_HERO} from '../../rebels';
+import {
+  getAreAllHeroesWounded,
+  getIsOneHeroLeft,
+  getWoundedOther,
+  WOUND_REBEL_HERO,
+  WOUND_REBEL_OTHER,
+} from '../../rebels';
 import {put, select, take} from 'redux-saga/effects';
 import {setAttackTarget, setMoveTarget} from '../../mission';
 import createAction from '../../createAction';
@@ -8,12 +14,24 @@ import {displayModal} from '../../modal';
 import {TARGET_REMAINING} from '../constants';
 import track from '../../../lib/track';
 
-export default function handleHeroesWounded(missionName: string, actionName: string) {
+export default function handleHeroesWounded(
+  missionName: string,
+  actionName: string,
+  additionalAlly: string = ''
+) {
   return function* handleHeroesWoundedImpl(): Generator<*, *, *> {
     while (true) {
-      yield take(WOUND_REBEL_HERO);
+      yield take([WOUND_REBEL_HERO, WOUND_REBEL_OTHER]);
       const allWounded = yield select(getAreAllHeroesWounded);
-      if (allWounded) {
+      let allyCheckPass = true;
+
+      // If we need to check for an ally also
+      if (additionalAlly) {
+        const woundedOther = yield select(getWoundedOther);
+        allyCheckPass = woundedOther.includes(additionalAlly);
+      }
+
+      if (allWounded && allyCheckPass) {
         // End game with imperial victory
         yield put(displayModal('IMPERIAL_VICTORY'));
         track(missionName, 'defeat', 'wounded');

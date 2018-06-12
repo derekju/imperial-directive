@@ -17,6 +17,13 @@
       "While attacking, apply +2 {DMG} to the results."
     ]
   },
+  "cruelStrike": {
+    "name": "Cruel Strike",
+    "text": [
+      "While attacking, gain Pierce 1 and Weaken."
+    ],
+    "wave": "twinShadows"
+  },
   "deadeye": {
     "name": "Deadeye",
     "text": [
@@ -109,6 +116,13 @@
     "text": [
       "While declaring an attack, become focused (limit once per group, first unit activated gains bonus)."
     ]
+  },
+  "strikeAndSubdue": {
+    "name": "Strike and Subdue",
+    "text": [
+      "Choose a rebel hero within 3 spaces that has suffered 2 or more {STRAIN}. That hero tests {INSIGHT} and {STR}. If he fails {INSIGHT}, he suffers 2 {STRAIN}. If he fails {STR}, he is Weakened."
+    ],
+    "wave": "twinShadows"
   },
   "surgicalStrike": {
     "name": "Surgical Strike",

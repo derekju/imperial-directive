@@ -23,7 +23,16 @@ const mapStateToProps = (state: StateType) => {
   }, []);
   const wave1Missions = Object.keys(missions).reduce(
     (accumulator: string[], missionKey: string) => {
-      if (missions[missionKey].wave === 'Wave 1') {
+      if (missions[missionKey].wave === 'wave1') {
+        accumulator.push(missionKey);
+      }
+      return accumulator;
+    },
+    []
+  );
+  const twinShadowsMissions = Object.keys(missions).reduce(
+    (accumulator: string[], missionKey: string) => {
+      if (missions[missionKey].wave === 'twinShadows') {
         accumulator.push(missionKey);
       }
       return accumulator;
@@ -37,7 +46,9 @@ const mapStateToProps = (state: StateType) => {
     availableMissions: ['--- CORE ---']
       .concat(coreMissions)
       .concat(['--- WAVE 1 ---'])
-      .concat(wave1Missions),
+      .concat(wave1Missions)
+      .concat(['--- TWIN SHADOWS ---'])
+      .concat(twinShadowsMissions),
     availableVillains: ['darthVader'],
   };
 };

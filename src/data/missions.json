@@ -247,7 +247,7 @@
     ]
   },
   "armedAndOperational": {
-    "wave": "Wave 1",
+    "wave": "wave1",
     "initialGroups": [
       "imperialOfficer", "probeDroid", "stormtrooperElite"
     ],
@@ -1229,7 +1229,7 @@
     ]
   },
   "darkObsession": {
-    "wave": "Wave 1",
+    "wave": "wave1",
     "initialGroups": [
       "darthVader", "stormtrooperElite"
     ],
@@ -2087,6 +2087,109 @@
     "openGroups": 3,
     "reservedGroups": [
       "darthVader", "stormtrooper"
+    ]
+  },
+  "huntedDown": {
+    "wave": "twinShadows",
+    "initialGroups": [
+      "heavyStormtrooper", "probeDroid", "stormtrooper"
+    ],
+    "instructions": {
+      "imperialVictory": "At the end of Round 6, or when all heores are wounded and Han Solo is defeated",
+      "rebelVictory": "When the docking codes are uploaded"
+    },
+    "mapImage": [
+      ["00a", "02b", "02b", "02b", "02b", "02b", "02b", "00a", "01b", "01b", "01b", "01b", "01b", "01b", "00a"],
+      ["00a", "02b", "02b", "02b", "02b", "02b", "02b", "00a", "01b", "01b", "01b", "01b", "01b", "01b", "00a"],
+      ["00a", "02b", "02b", "02b", "02b", "02b", "02b", "39b", "01b", "01b", "01b", "01b", "01b", "01b", "36b"],
+      ["00a", "02b", "02b", "02b", "02b", "02b", "02b", "39b", "01b", "01b", "01b", "01b", "01b", "01b", "36b"],
+      ["00a", "01b", "01b", "01b", "01b", "01b", "01b", "00a", "01b", "01b", "01b", "01b", "01b", "01b", "00a"],
+      ["00a", "01b", "01b", "01b", "01b", "01b", "01b", "00a", "01b", "01b", "01b", "01b", "01b", "01b", "00a"],
+      ["18b", "01b", "01b", "01b", "01b", "01b", "01b", "18b", "01b", "01b", "01b", "01b", "01b", "01b", "00a"],
+      ["18b", "01b", "01b", "01b", "01b", "01b", "01b", "18b", "01b", "01b", "01b", "01b", "01b", "01b", "00a"],
+      ["00a", "01b", "01b", "01b", "01b", "01b", "01b", "00a", "20b", "20b", "20b", "20b", "20b", "20b", "36b"],
+      ["00a", "01b", "01b", "01b", "01b", "01b", "01b", "00a", "20b", "20b", "20b", "20b", "20b", "20b", "36b"],
+      ["00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "20b", "20b", "20b", "20b", "20b", "20b", "00a"],
+      ["00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "20b", "20b", "20b", "20b", "20b", "20b", "00a"]
+    ],
+    "mapStates": {
+      "entrance-1": {
+        "activated": false,
+        "activateText": "",
+        "coordinates": {
+          "x": 13,
+          "y": 7
+        },
+        "description": "The entrance.",
+        "id": 1,
+        "interactable": false,
+        "type": "entrance",
+        "unactivateText": "",
+        "visible": true
+      },
+      "rebel-1": {
+        "activated": false,
+        "activateText": "Retrieve",
+        "color": "green",
+        "coordinates": {
+          "x": 14,
+          "y": 3
+        },
+        "description": "The chip.",
+        "id": 1,
+        "interactable": true,
+        "type": "rebel",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "door-1": {
+        "activated": false,
+        "activateText": "Open",
+        "coordinates": {
+          "x": 13,
+          "y": 2
+        },
+        "description": "The door to the Safe.",
+        "id": 1,
+        "interactable": true,
+        "type": "door",
+        "unactivateText": "Close",
+        "visible": true
+      },
+      "door-2": {
+        "activated": false,
+        "activateText": "Open",
+        "coordinates": {
+          "x": 3,
+          "y": 3
+        },
+        "description": "The door to the Docking Bay.",
+        "id": 2,
+        "interactable": true,
+        "type": "door",
+        "unactivateText": "Close",
+        "visible": true
+      },
+      "terminal-1": {
+        "activated": false,
+        "activateText": "Upload",
+        "coordinates": {
+          "x": 6,
+          "y": 9
+        },
+        "description": "The terminal to upload the codes.",
+        "id": 1,
+        "interactable": true,
+        "type": "terminal",
+        "unactivateText": "Cancel",
+        "visible": true
+      }
+    },
+    "name": "Hunted Down",
+    "noMercenaryAllowed": false,
+    "openGroups": 3,
+    "reservedGroups": [
+      "bobaFett", "imperialOfficer", "stormtrooper"
     ]
   },
   "imperialHospitality": {
@@ -3113,7 +3216,7 @@
     ]
   },
   "sympathyForTheRebellion": {
-    "wave": "Wave 1",
+    "wave": "wave1",
     "initialGroups": [
       "stormtrooper", "stormtrooper", "stormtrooperElite"
     ],

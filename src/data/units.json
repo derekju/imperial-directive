@@ -28,6 +28,39 @@
     "threat": 14,
     "unique": true
   },
+  "bobaFett": {
+    "affiliation": "mercenary",
+    "attributes": ["hunter"],
+    "buffs": ["strikeAndSubdue", "cruelStrike", "cruelStrike"],
+    "commands": [
+      {
+        "condition": "If within 10 spaces and have LOS of {ATTACK_TARGET}",
+        "command": "{ACTION} Move within 6 spaces of {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}, then move towards {MOVE_TARGET}."
+      },
+      {
+        "condition": "If not within 10 spaces of {ATTACK_TARGET}",
+        "command": "{ACTION} Move towards {ATTACK_TARGET}."
+      },
+      {
+        "condition": "Reaction - After a Rebel figure voluntarily exits an adjacent space",
+        "command": "Use Battle Presence ability."
+      },
+      {
+        "condition": "Reaction - Battle Discipline",
+        "command": "While attacking, apply the effects in the following order: +2 Ac., recover 2 {DMG} if Health is less than 6, +2 {DMG}."
+      }
+    ],
+    "eligibleForHpBoost": false,
+    "elite": true,
+    "hpBoosts": {},
+    "id": "bobaFett",
+    "maxDeployed": 1,
+    "maxInGroup": 1,
+    "name": "Boba Fett",
+    "reinforcementCost": -1,
+    "threat": 13,
+    "unique": true
+  },
   "darthVader": {
     "affiliation": "imperial",
     "attributes": ["forceUser", "leader", "brawler"],
@@ -208,7 +241,7 @@
   "heavyStormtrooper": {
     "affiliation": "imperial",
     "attributes": ["trooper", "heavyWeapon"],
-    "buffs": ["combatVeteran", "combatVeteran", "riotGrenades", "shockTroopers"],
+    "buffs": ["cruelStrike", "cruelStrike", "riotGrenades", "shockTroopers"],
     "commands": [
       {
         "condition": "If within 10 spaces of {ATTACK_TARGET}",
@@ -244,7 +277,7 @@
   "heavyStormtrooperElite": {
     "affiliation": "imperial",
     "attributes": ["trooper", "heavyWeapon"],
-    "buffs": ["combatVeteran", "combatVeteran", "riotGrenades", "shockTroopers"],
+    "buffs": ["cruelStrike", "cruelStrike", "riotGrenades", "shockTroopers"],
     "commands": [
       {
         "condition": "If within 10 spaces of {ATTACK_TARGET}",
@@ -857,7 +890,7 @@
   "tuskenRaider": {
     "affiliation": "mercenary",
     "attributes": ["brawler"],
-    "buffs": ["exploitWeakness", "fleetFooted", "heavyPressure", "recovery"],
+    "buffs": ["exploitWeakness", "cruelStrike", "heavyPressure", "recovery"],
     "commands": [
       {
         "condition": "If within 4 spaces of {ATTACK_TARGET}",
@@ -890,7 +923,7 @@
   "tuskenRaiderElite": {
     "affiliation": "mercenary",
     "attributes": ["brawler"],
-    "buffs": ["exploitWeakness", "fleetFooted", "heavyPressure", "recovery"],
+    "buffs": ["exploitWeakness", "cruelStrike", "heavyPressure", "recovery"],
     "commands": [
       {
         "condition": "If within 4 spaces of {ATTACK_TARGET}",
