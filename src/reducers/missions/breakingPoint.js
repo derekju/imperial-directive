@@ -26,6 +26,7 @@ import {
 import {getMissionThreat, missionSagaLoadDone} from '../app';
 import createAction from '../createAction';
 import {displayModal} from '../modal';
+import getRandomItem from '../utils/getRandomItem';
 import handleHeroesWounded from './sharedSagas/handleHeroesWounded';
 import handleStatusPhaseBegin from './sharedSagas/handleStatusPhaseBegin';
 import helperCheckMapStateActivations from './helpers/helperCheckMapStateActivations';
@@ -114,11 +115,7 @@ export const getBreakingPointGoalText = (state: StateType): string[] => {
 // Sagas
 
 function getRandomDeploymentPoint() {
-  if (roll(50)) {
-    return DEPLOYMENT_POINT_GREEN_WEST;
-  }
-
-  return DEPLOYMENT_POINT_GREEN_EAST;
+  return getRandomItem(DEPLOYMENT_POINT_GREEN_WEST, DEPLOYMENT_POINT_GREEN_EAST);
 }
 
 function* handleLeaveNoSurvivors(): Generator<*, *, *> {

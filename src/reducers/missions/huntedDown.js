@@ -16,6 +16,7 @@ import {OPTIONAL_DEPLOYMENT_DONE, optionalDeployment} from '../imperials';
 import {addToRoster} from '../rebels';
 import createAction from '../createAction';
 import {displayModal} from '../modal';
+import getRandomItem from '../utils/getRandomItem';
 import handleHeroesWounded from './sharedSagas/handleHeroesWounded';
 import handleStatusPhaseBegin from './sharedSagas/handleStatusPhaseBegin';
 import helperDeploy from './helpers/helperDeploy';
@@ -25,7 +26,6 @@ import helperInitialSetup from './helpers/helperInitialSetup';
 import helperMissionBriefing from './helpers/helperMissionBriefing';
 import {missionSagaLoadDone} from '../app';
 import {REFER_CAMPAIGN_GUIDE, TARGET_CLOSEST_REBEL} from './constants';
-import roll from '../../lib/roll';
 import type {StateType} from '../types';
 import track from '../../lib/track';
 
@@ -93,11 +93,7 @@ export const getHuntedDownGoalText = (state: StateType): string[] => {
 // Sagas
 
 function getRandomDeploymentPoint() {
-  if (roll(50)) {
-    return DEPLOYMENT_POINT_GREEN_N;
-  } else {
-    return DEPLOYMENT_POINT_GREEN_S;
-  }
+  return getRandomItem(DEPLOYMENT_POINT_GREEN_N, DEPLOYMENT_POINT_GREEN_S);
 }
 
 function* handleOnTheTrail(): Generator<*, *, *> {

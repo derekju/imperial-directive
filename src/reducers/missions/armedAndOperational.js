@@ -17,6 +17,7 @@ import {
 import {getMissionThreat, missionSagaLoadDone} from '../app';
 import {REFER_CAMPAIGN_GUIDE, TARGET_CLOSEST_REBEL} from './constants';
 import {displayModal} from '../modal';
+import getRandomItem from '../utils/getRandomItem';
 import handleHeroesWounded from './sharedSagas/handleHeroesWounded';
 import handleStatusPhaseBegin from './sharedSagas/handleStatusPhaseBegin';
 import helperDeploy from './helpers/helperDeploy';
@@ -24,7 +25,6 @@ import helperEventModal from './helpers/helperEventModal';
 import helperIncreaseThreat from './helpers/helperIncreaseThreat';
 import helperInitialSetup from './helpers/helperInitialSetup';
 import helperMissionBriefing from './helpers/helperMissionBriefing';
-import roll from '../../lib/roll';
 import type {StateType} from '../types';
 import track from '../../lib/track';
 
@@ -86,11 +86,7 @@ export const getArmedAndOperationalGoalText = (state: StateType): string[] => {
 // Sagas
 
 function getRandomDeploymentPoint() {
-  if (roll(50)) {
-    return DEPLOYMENT_POINT_GREEN_N;
-  } else {
-    return DEPLOYMENT_POINT_GREEN_E;
-  }
+  return getRandomItem(DEPLOYMENT_POINT_GREEN_N, DEPLOYMENT_POINT_GREEN_E);
 }
 
 function* handleOuterDefenses(): Generator<*, *, *> {

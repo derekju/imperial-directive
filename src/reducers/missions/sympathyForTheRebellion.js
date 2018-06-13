@@ -15,6 +15,7 @@ import {addToRoster, WOUND_REBEL_HERO, WOUND_REBEL_OTHER} from '../rebels';
 import {all, call, fork, put, select, take} from 'redux-saga/effects';
 import {OPTIONAL_DEPLOYMENT_DONE, optionalDeployment} from '../imperials';
 import {displayModal} from '../modal';
+import getRandomItem from '../utils/getRandomItem';
 import handleHeroesWounded from './sharedSagas/handleHeroesWounded';
 import handleStatusPhaseBegin from './sharedSagas/handleStatusPhaseBegin';
 import helperChoiceModal from './helpers/helperChoiceModal';
@@ -121,14 +122,11 @@ export const getSympathyForTheRebellionGoalText = (state: StateType): string[] =
 // Sagas
 
 function getRandomDeploymentPoint() {
-  const roll = Math.floor(Math.random() * 100);
-  if (roll <= 33) {
-    return DEPLOYMENT_POINT_GREEN_N;
-  } else if (roll <= 66) {
-    return DEPLOYMENT_POINT_GREEN_S;
-  } else {
-    return DEPLOYMENT_POINT_GREEN_E;
-  }
+  return getRandomItem(
+    DEPLOYMENT_POINT_GREEN_N,
+    DEPLOYMENT_POINT_GREEN_S,
+    DEPLOYMENT_POINT_GREEN_E
+  );
 }
 
 function* handleRecruitCollection(): Generator<*, *, *> {

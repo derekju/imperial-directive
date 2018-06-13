@@ -32,6 +32,7 @@ import {
 import {REFER_CAMPAIGN_GUIDE, TARGET_HERO_CLOSEST_UNWOUNDED, TARGET_REMAINING} from './constants';
 import createAction from '../createAction';
 import {displayModal} from '../modal';
+import getRandomItem from '../utils/getRandomItem';
 import handleStatusPhaseBegin from './sharedSagas/handleStatusPhaseBegin';
 import helperChoiceModal from './helpers/helperChoiceModal';
 import helperDeploy from './helpers/helperDeploy';
@@ -40,7 +41,6 @@ import helperInitialSetup from './helpers/helperInitialSetup';
 import helperMissionBriefing from './helpers/helperMissionBriefing';
 import helperShowInterruptedGroup from './helpers/helperShowInterruptedGroup';
 import {missionSagaLoadDone} from '../app';
-import roll from '../../lib/roll';
 import type {StateType} from '../types';
 import track from '../../lib/track';
 
@@ -182,11 +182,7 @@ export const getChainOfCommandGoalText = (state: StateType): string[] => {
 // Sagas
 
 function getRandomDeploymentPoint() {
-  if (roll(50)) {
-    return DEPLOYMENT_POINT_GREEN_WEST;
-  }
-
-  return DEPLOYMENT_POINT_GREEN_SOUTH;
+  return getRandomItem(DEPLOYMENT_POINT_GREEN_WEST, DEPLOYMENT_POINT_GREEN_SOUTH);
 }
 
 function* handleWeissDoorOpened(): Generator<*, *, *> {

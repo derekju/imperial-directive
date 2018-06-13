@@ -20,6 +20,7 @@ import {
 import {REFER_CAMPAIGN_GUIDE, TARGET_HERO_CLOSEST_UNWOUNDED} from './constants';
 import createAction from '../createAction';
 import {displayModal} from '../modal';
+import getRandomItem from '../utils/getRandomItem';
 import handleStatusPhaseBegin from './sharedSagas/handleStatusPhaseBegin';
 import helperDeploy from './helpers/helperDeploy';
 import helperEventModal from './helpers/helperEventModal';
@@ -128,14 +129,11 @@ export const getDarkObsessionGoalText = (state: StateType): string[] => {
 // Sagas
 
 function getRandomDeploymentPoint() {
-  const roll = Math.floor(Math.random() * 100);
-  if (roll <= 33) {
-    return DEPLOYMENT_POINT_GREEN_N;
-  } else if (roll <= 66) {
-    return DEPLOYMENT_POINT_GREEN_S;
-  } else {
-    return DEPLOYMENT_POINT_GREEN_W;
-  }
+  return getRandomItem(
+    DEPLOYMENT_POINT_GREEN_N,
+    DEPLOYMENT_POINT_GREEN_S,
+    DEPLOYMENT_POINT_GREEN_W
+  );
 }
 
 function* handleSecurityBreach(): Generator<*, *, *> {
