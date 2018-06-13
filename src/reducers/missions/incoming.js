@@ -176,10 +176,11 @@ function* handleBombardment(title: string = 'Bombardment'): Generator<*, *, *> {
   yield call(helperEventModal, {
     text: [
       'Place an Imperial mission token in an interior space within LOS of an Imperial troop. Use the following rules to determine where to place it:',
-      '1) Within 3 spaces of 2 or more Rebel figures.',
-      '2) Along the outside edge of the map and within 3 spaces of any Rebel figure.',
-      '3) Along the outside edge of the map.',
+      '1) If a token has not been placed along the outside edge of the map yet, place one closest to a Rebel figure.',
+      '2) Within 3 spaces of 2 or more Rebel figures.',
+      '3) Along the outside edge of the map and within 3 spaces of any Rebel figure.',
       '4) Within 3 spaces of a Rebel figure.',
+      '5) Along the outside edge of the map.',
       'Any Rebel figure within 3 spaces of the placed token is stunned. If they are already stunned, they instead suffer 2 {DAMAGE}.',
     ],
     title: 'Bombardment',
