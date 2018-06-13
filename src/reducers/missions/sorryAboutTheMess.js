@@ -14,15 +14,11 @@ import {
   statusPhaseEndRoundEffectsDone,
   updateRebelVictory,
 } from '../mission';
-import {
-  DEFEAT_IMPERIAL_FIGURE,
-  OPTIONAL_DEPLOYMENT_DONE,
-  optionalDeployment,
-  setImperialUnitHpBuff,
-} from '../imperials';
+import {OPTIONAL_DEPLOYMENT_DONE, optionalDeployment, setImperialUnitHpBuff} from '../imperials';
 import {REFER_CAMPAIGN_GUIDE} from './constants';
 import {displayModal} from '../modal';
 import {getMissionThreat} from '../app';
+import handleImperialKilledToWin from './sharedSagas/handleImperialKilledToWin';
 import handleStatusPhaseBegin from './sharedSagas/handleStatusPhaseBegin';
 import helperDeploy from './helpers/helperDeploy';
 import helperEventModal from './helpers/helperEventModal';
@@ -98,18 +94,6 @@ function* handleGarageOpens(): Generator<*, *, *> {
 
       // Change goal
       yield put(updateRebelVictory('Defeat Gerrin'));
-    }
-  }
-}
-
-function* handleGerrinDefeated(): Generator<*, *, *> {
-  while (true) {
-    const action = yield take(DEFEAT_IMPERIAL_FIGURE);
-    const {group} = action.payload;
-    if (group.id === 'gerrin') {
-      yield put(displayModal('REBEL_VICTORY'));
-      track('sorryAboutTheMess', 'victory', 'gerrin');
-      break;
     }
   }
 }
@@ -194,7 +178,7 @@ export function* sorryAboutTheMess(): Generator<*, *, *> {
   yield all([
     fork(handleSpecialSetup),
     fork(handleGarageOpens),
-    fork(handleGerrinDefeated),
+    fork(handleImperialKilledToWin('gerrin', 'sorryAboutTheMess')),
     fork(handleHanSoloDefeated),
     fork(handleStatusPhaseBegin),
     fork(handleRoundEnd),

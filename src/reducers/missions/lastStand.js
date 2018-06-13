@@ -18,7 +18,6 @@ import {
 } from '../mission';
 import {all, call, fork, put, select, take} from 'redux-saga/effects';
 import {
-  DEFEAT_IMPERIAL_FIGURE,
   getLastDeployedGroupOfId,
   setImperialUnitHpBuff,
   silentSetImperialGroupActivated,
@@ -28,6 +27,7 @@ import {REFER_CAMPAIGN_GUIDE, TARGET_HERO_CLOSEST_UNWOUNDED} from './constants';
 import createAction from '../createAction';
 import {displayModal} from '../modal';
 import handleHeroesWounded from './sharedSagas/handleHeroesWounded';
+import handleImperialKilledToWin from './sharedSagas/handleImperialKilledToWin';
 import handleStatusPhaseBegin from './sharedSagas/handleStatusPhaseBegin';
 import helperDeploy from './helpers/helperDeploy';
 import helperEventModal from './helpers/helperEventModal';
@@ -246,18 +246,6 @@ function* handleVaderBlockForThreat(): Generator<*, *, *> {
   }
 }
 
-function* handleVaderKilled(): Generator<*, *, *> {
-  while (true) {
-    const action = yield take(DEFEAT_IMPERIAL_FIGURE);
-    const {group} = action.payload;
-    if (group.id === 'darthVader') {
-      yield put(displayModal('REBEL_VICTORY'));
-      track('lastStand', 'victory', 'darthVader');
-      break;
-    }
-  }
-}
-
 function* handleRoundStart(): Generator<*, *, *> {
   while (true) {
     yield take(ACTIVATION_PHASE_BEGIN);
@@ -318,7 +306,7 @@ export function* lastStand(): Generator<*, *, *> {
     fork(handleDefensesBreachedEvent),
     fork(handleEndOfTheLineEvent),
     fork(handleVaderBlockForThreat),
-    fork(handleVaderKilled),
+    fork(handleImperialKilledToWin('darthVader', 'lastStand')),
     fork(handleHeroesWounded('lastStand', 'LAST_STAND_PRIORITY_TARGET_KILL_HERO')),
     fork(handleStatusPhaseBegin),
     fork(handleRoundStart),

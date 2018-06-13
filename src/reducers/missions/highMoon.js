@@ -3,7 +3,6 @@
 import {all, call, fork, put, select, take} from 'redux-saga/effects';
 import {
   ACTIVATE_IMPERIAL_GROUP,
-  DEFEAT_IMPERIAL_FIGURE,
   OPTIONAL_DEPLOYMENT_DONE,
   optionalDeployment,
   setImperialUnitHpBuff,
@@ -29,6 +28,7 @@ import {getMissionThreat, missionSagaLoadDone} from '../app';
 import {REFER_CAMPAIGN_GUIDE, TARGET_HERO_CLOSEST_UNWOUNDED, TARGET_REMAINING} from './constants';
 import createAction from '../createAction';
 import {displayModal} from '../modal';
+import handleImperialKilledToWin from './sharedSagas/handleImperialKilledToWin';
 import handleStatusPhaseBegin from './sharedSagas/handleStatusPhaseBegin';
 import helperChoiceModal from './helpers/helperChoiceModal';
 import helperDeploy from './helpers/helperDeploy';
@@ -212,18 +212,6 @@ function* handleSzarkActivation(): Generator<*, *, *> {
   }
 }
 
-function* handleSzarkKilled(): Generator<*, *, *> {
-  while (true) {
-    const action = yield take(DEFEAT_IMPERIAL_FIGURE);
-    const {group} = action.payload;
-    if (group.id === 'szark') {
-      yield put(displayModal('REBEL_VICTORY'));
-      track('highMoon', 'victory', 'szark');
-      break;
-    }
-  }
-}
-
 function* handleHeroesWounded(): Generator<*, *, *> {
   while (true) {
     yield take(WOUND_REBEL_HERO);
@@ -301,7 +289,7 @@ export function* highMoon(): Generator<*, *, *> {
     fork(handleSpecialSetup),
     fork(handleGunFightEvent),
     fork(handleSzarkActivation),
-    fork(handleSzarkKilled),
+    fork(handleImperialKilledToWin('szark', 'highMoon')),
     fork(handleHeroesWounded),
     fork(handleRoundStart),
     fork(handleStatusPhaseBegin),

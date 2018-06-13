@@ -1,7 +1,6 @@
 // @flow
 
 import {all, call, fork, put, select, take} from 'redux-saga/effects';
-import {DEFEAT_IMPERIAL_FIGURE, OPTIONAL_DEPLOYMENT_DONE, optionalDeployment} from '../imperials';
 import {getCanHeroActivateTwice, getIsHeroWithdrawn, WOUND_REBEL_HERO} from '../rebels';
 import {
   getCurrentRound,
@@ -16,8 +15,10 @@ import {
   updateRebelVictory,
 } from '../mission';
 import {getMissionThreat, missionSagaLoadDone} from '../app';
+import {OPTIONAL_DEPLOYMENT_DONE, optionalDeployment} from '../imperials';
 import createAction from '../createAction';
 import {displayModal} from '../modal';
+import handleImperialKilledToWin from './sharedSagas/handleImperialKilledToWin';
 import handleStatusPhaseBegin from './sharedSagas/handleStatusPhaseBegin';
 import helperDeploy from './helpers/helperDeploy';
 import helperEventModal from './helpers/helperEventModal';
@@ -146,18 +147,6 @@ function* handleHatredEvent(): Generator<*, *, *> {
       yield put(setMoveTarget(TARGET_DIALA));
       yield put(setDeploymentPoint(DEPLOYMENT_POINT_DIALA));
       // We're done
-      break;
-    }
-  }
-}
-
-function* handleDefeatVader(): Generator<*, *, *> {
-  while (true) {
-    const action = yield take(DEFEAT_IMPERIAL_FIGURE);
-    const {group} = action.payload;
-    if (group.id === 'darthVader') {
-      yield put(displayModal('REBEL_VICTORY'));
-      track('temptation', 'victory', 'darthVader');
       break;
     }
   }
@@ -292,7 +281,7 @@ export function* temptation(): Generator<*, *, *> {
   yield all([
     fork(handleSpecialSetup),
     fork(handleHatredEvent),
-    fork(handleDefeatVader),
+    fork(handleImperialKilledToWin('darthVader', 'temptation')),
     fork(handleTokensDepleted),
     fork(handleHeroesWounded),
     fork(handleStatusPhaseBegin),

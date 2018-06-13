@@ -1,7 +1,7 @@
 // @flow
 
 import {all, call, fork, put, select, take} from 'redux-saga/effects';
-import {DEFEAT_IMPERIAL_FIGURE, OPTIONAL_DEPLOYMENT_DONE, optionalDeployment} from '../imperials';
+import {OPTIONAL_DEPLOYMENT_DONE, optionalDeployment} from '../imperials';
 import {getAreAllHeroesWounded, WOUND_REBEL_HERO} from '../rebels';
 import {
   getCurrentRound,
@@ -21,6 +21,7 @@ import {REFER_CAMPAIGN_GUIDE, TARGET_HERO_CLOSEST_UNWOUNDED} from './constants';
 import createAction from '../createAction';
 import {displayModal} from '../modal';
 import getRandomItem from '../utils/getRandomItem';
+import handleImperialKilledToWin from './sharedSagas/handleImperialKilledToWin';
 import handleStatusPhaseBegin from './sharedSagas/handleStatusPhaseBegin';
 import helperDeploy from './helpers/helperDeploy';
 import helperEventModal from './helpers/helperEventModal';
@@ -224,18 +225,6 @@ function* handleLukeLocated(): Generator<*, *, *> {
   }
 }
 
-function* handleVaderKilled(): Generator<*, *, *> {
-  while (true) {
-    const action = yield take(DEFEAT_IMPERIAL_FIGURE);
-    const {group} = action.payload;
-    if (group.id === 'darthVader') {
-      yield put(displayModal('REBEL_VICTORY'));
-      track('darkObsession', 'victory', 'darthVader');
-      break;
-    }
-  }
-}
-
 function* handleAllHeroesWounded(): Generator<*, *, *> {
   while (true) {
     yield take(WOUND_REBEL_HERO);
@@ -324,7 +313,7 @@ export function* darkObsession(): Generator<*, *, *> {
     fork(handleDoorReopened),
     fork(handleTerminal),
     fork(handleLukeLocated),
-    fork(handleVaderKilled),
+    fork(handleImperialKilledToWin('darthVader', 'darkObsession')),
     fork(handleAllHeroesWounded),
     fork(handleStatusPhaseBegin),
     fork(handleRoundEnd),
