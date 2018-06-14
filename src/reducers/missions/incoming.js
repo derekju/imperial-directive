@@ -43,7 +43,6 @@ const MAX_BOMBARDMENTS = 8;
 
 export type IncomingStateType = {
   activatedTerminalIndexes: number[],
-  bombardmentFromCorridorDone: boolean,
   corridorEntered: boolean,
   needToDoPursuitEvent: boolean,
   numberBombardments: number,
@@ -56,7 +55,6 @@ export type IncomingStateType = {
 
 const initialState = {
   activatedTerminalIndexes: [],
-  bombardmentFromCorridorDone: false,
   corridorEntered: false,
   needToDoPursuitEvent: false,
   numberBombardments: 0,
@@ -96,11 +94,6 @@ export default (state: IncomingStateType = initialState, action: Object) => {
       return {
         ...state,
         yellowTerminalsDiscovered: state.yellowTerminalsDiscovered + 1,
-      };
-    case 'INCOMING_SET_BOMBARDMENT_FROM_CORRIDOR':
-      return {
-        ...state,
-        bombardmentFromCorridorDone: true,
       };
     default:
       return state;
@@ -311,15 +304,14 @@ function* handleRoundEnd(): Generator<*, *, *> {
       break;
     }
 
-    const {bombardmentFromCorridorDone, corridorEntered} = yield select(getState);
-    if (corridorEntered && !bombardmentFromCorridorDone) {
+    const {corridorEntered} = yield select(getState);
+    if (corridorEntered) {
       // Do bombardment
       yield call(helperEventModal, {
         text: ['The structure will now be bombarded.'],
         title: 'Bombardment',
       });
       yield call(handleBombardment);
-      yield put(createAction('INCOMING_SET_BOMBARDMENT_FROM_CORRIDOR'));
     }
 
     // Do pursuit event
