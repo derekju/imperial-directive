@@ -9,6 +9,16 @@
     "maxInGroup": 1,
     "type": "hero"
   },
+  "c3p0": {
+    "id": "c3p0",
+    "firstName": "C-3PO",
+    "lastName": "",
+    "elite": true,
+    "threat": 2,
+    "reinforcementCost": -1,
+    "maxInGroup": 1,
+    "type": "ally"
+  },
   "chewbacca": {
     "id": "chewbacca",
     "firstName": "Chewbacca",
@@ -138,6 +148,16 @@
     "reinforcementCost": -1,
     "maxInGroup": 1,
     "type": "mission"
+  },
+  "r2d2": {
+    "id": "r2d2",
+    "firstName": "R2-D2",
+    "lastName": "",
+    "elite": true,
+    "threat": 3,
+    "reinforcementCost": -1,
+    "maxInGroup": 1,
+    "type": "ally"
   },
   "rebelSaboteur": {
     "id": "rebelSaboteur",

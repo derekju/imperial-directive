@@ -27,6 +27,7 @@ import type {LastStandStateType} from './missions/lastStand';
 import type {MeansOfProductionStateType} from './missions/meansOfProduction';
 import type {MissionStateType} from './mission';
 import type {ModalStateType} from './modal';
+import type {PastLifeEnemiesStateType} from './missions/pastLifeEnemies';
 import type {RebelsStateType} from './rebels';
 import type {SympathyForTheRebellionStateType} from './missions/sympathyForTheRebellion';
 import type {TargetOfOpportunityStateType} from './missions/targetOfOpportunity';
@@ -65,6 +66,7 @@ export type StateType = {
   meansOfProduction: MeansOfProductionStateType,
   mission: MissionStateType,
   modal: ModalStateType,
+  pastLifeEnemies: PastLifeEnemiesStateType,
   rebels: RebelsStateType,
   sympathyForTheRebellion: SympathyForTheRebellionStateType,
   targetOfOpportunity: TargetOfOpportunityStateType,

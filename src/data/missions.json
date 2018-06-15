@@ -1320,7 +1320,7 @@
         "id": 1,
         "interactable": true,
         "type": "terminal",
-        "unactivateText": "Cancel",
+        "unactivateText": "Restore",
         "visible": true
       },
       "rebel-1": {
@@ -1335,7 +1335,7 @@
         "id": 1,
         "interactable": false,
         "type": "rebel",
-        "unactivateText": "Cancel",
+        "unactivateText": "Restore",
         "visible": true
       }
     },
@@ -2181,7 +2181,7 @@
         "id": 1,
         "interactable": true,
         "type": "terminal",
-        "unactivateText": "Cancel",
+        "unactivateText": "Restore",
         "visible": true
       }
     },
@@ -3155,6 +3155,128 @@
     "openGroups": 3,
     "reservedGroups": [
       "eWebEngineer"
+    ]
+  },
+  "pastLifeEnemies": {
+    "wave": "twinShadows",
+    "initialGroups": [
+      "eWebEngineer", "heavyStormtrooper", "imperialOfficer", "probeDroid"
+    ],
+    "instructions": {
+      "imperialVictory": "At the end of Round 7, or when all heores are wounded",
+      "rebelVictory": "(to be revealed)"
+    },
+    "mapImage": [
+      ["00a", "00a", "06a", "06a", "06a", "06a", "06a", "00a", "00a"],
+      ["00a", "00a", "06a", "06a", "06a", "06a", "06a", "00a", "00a"],
+      ["00a", "00a", "06a", "06a", "06a", "06a", "06a", "00a", "00a"],
+      ["00a", "00a", "37b", "37b", "00a", "99a", "99a", "00a", "00a"],
+      ["00a", "00a", "37b", "37b", "00a", "99a", "99a", "99a", "00a"],
+      ["00a", "22b", "22b", "22b", "22b", "99a", "99a", "99a", "00a"],
+      ["00a", "22b", "22b", "22b", "22b", "00a", "38a", "38a", "00a"],
+      ["00a", "22b", "22b", "22b", "22b", "00a", "38a", "38a", "00a"],
+      ["00a", "22b", "22b", "22b", "22b", "00a", "17b", "17b", "00a"],
+      ["00a", "07b", "07b", "07b", "07b", "05b", "05b", "05b", "05b"],
+      ["00a", "07b", "07b", "07b", "07b", "05b", "05b", "05b", "05b"],
+      ["00a", "07b", "07b", "07b", "07b", "05b", "05b", "05b", "05b"],
+      ["99a", "99a", "99a", "99a", "00a", "05b", "05b", "05b", "05b"],
+      ["99a", "99a", "99a", "99a", "28b", "28b", "28b", "00a", "00a"],
+      ["99a", "99a", "99a", "99a", "28b", "28b", "28b", "00a", "00a"],
+      ["99a", "99a", "99a", "99a", "28b", "28b", "28b", "00a", "00a"],
+      ["00a", "00a", "00a", "00a", "99a", "32b", "32b", "0aa", "00a"],
+      ["00a", "00a", "00a", "00a", "99a", "32b", "32b", "0aa", "00a"]
+    ],
+    "mapStates": {
+      "entrance-1": {
+        "activated": false,
+        "activateText": "",
+        "coordinates": {
+          "x": 4,
+          "y": 17
+        },
+        "description": "The entrance.",
+        "id": 1,
+        "interactable": false,
+        "type": "entrance",
+        "unactivateText": "",
+        "visible": true
+      },
+      "terminal-1": {
+        "activated": false,
+        "activateText": "Interact",
+        "coordinates": {
+          "x": 3,
+          "y": 15
+        },
+        "description": "An Imperial terminal.",
+        "id": 1,
+        "interactable": true,
+        "type": "terminal",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "terminal-2": {
+        "activated": false,
+        "activateText": "Interact",
+        "coordinates": {
+          "x": 4,
+          "y": 5
+        },
+        "description": "An Imperial terminal.",
+        "id": 2,
+        "interactable": true,
+        "type": "terminal",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "terminal-3": {
+        "activated": false,
+        "activateText": "Interact",
+        "coordinates": {
+          "x": 7,
+          "y": 4
+        },
+        "description": "An Imperial terminal.",
+        "id": 3,
+        "interactable": true,
+        "type": "terminal",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "door-1": {
+        "activated": false,
+        "activateText": "Open",
+        "coordinates": {
+          "x": 6,
+          "y": 7
+        },
+        "description": "Door to the inner corridor.",
+        "id": 1,
+        "interactable": true,
+        "type": "door",
+        "unactivateText": "Close",
+        "visible": true
+      },
+      "door-2": {
+        "activated": false,
+        "activateText": "Open",
+        "coordinates": {
+          "x": 2,
+          "y": 5
+        },
+        "description": "Door to the inner corridor.",
+        "id": 2,
+        "interactable": true,
+        "type": "door",
+        "unactivateText": "Close",
+        "visible": true
+      }
+    },
+    "name": "Past Life Enemies",
+    "noMercenaryAllowed": false,
+    "openGroups": 4,
+    "reservedGroups": [
+      "kaynSomos", "stormtrooper", "tuskenRaider"
     ]
   },
   "sorryAboutTheMess": {

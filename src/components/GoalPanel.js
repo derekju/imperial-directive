@@ -44,6 +44,7 @@ type GoalPanelPropsType = {
   lastStandVaderBlock: Function,
   lastStandVaderDeployed: boolean,
   looseCannonDefeatAtst: Function,
+  pastLifeEnemiesActivateC3PO: Function,
   rewardOldWoundsEarned: boolean,
   spiceJobGetKeycard: Function,
   sympathyForTheRebellionHeroClaim: Function,
@@ -322,6 +323,16 @@ class GoalPanel extends React.Component<GoalPanelPropsType, GoalPanelStateType> 
             text="Warship Destroyed"
             width={180}
             onClick={this.props.armedAndOperationalWarshipDestroyed}
+          />
+        </div>
+      );
+    } else if (currentMission === 'pastLifeEnemies') {
+      return (
+        <div style={styles.buttonContainer}>
+          <Button
+            text="Activate C3PO"
+            width={180}
+            onClick={this.props.pastLifeEnemiesActivateC3PO}
           />
         </div>
       );

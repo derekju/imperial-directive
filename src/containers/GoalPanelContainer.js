@@ -52,6 +52,7 @@ const sympathyForTheRebellionImperialDone = () =>
   createAction('STATUS_PHASE_END_ROUND_EFFECTS_DONE');
 const armedAndOperationalWarshipDestroyed = () =>
   createAction('ARMED_AND_OPERATIONAL_WARSHIP_DESTROYED');
+const pastLifeEnemiesActivateC3PO = () => createAction('PAST_LIFE_ENEMIES_ACTIVATE_C3PO');
 
 const mapDispatchToProps = {
   armedAndOperationalWarshipDestroyed,
@@ -63,6 +64,7 @@ const mapDispatchToProps = {
   incomingEnterCorridor,
   lastStandVaderBlock,
   looseCannonDefeatAtst,
+  pastLifeEnemiesActivateC3PO,
   spiceJobGetKeycard,
   sympathyForTheRebellionHeroClaim,
   sympathyForTheRebellionImperialClaim,

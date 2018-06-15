@@ -425,6 +425,39 @@
     "threat": 5,
     "unique": false
   },
+  "kaynSomos": {
+    "affiliation": "imperial",
+    "attributes": ["trooper", "leader"],
+    "buffs": ["cruelStrike", "strikeAndSubdue", "surgicalStrike", "criticalHit"],
+    "commands": [
+      {
+        "condition": "If adjacent to 2 friendly Troopers and those troopers are within range of {ATTACK_TARGET}",
+        "command": "{ACTION} Use Firing Squad ability."
+      },
+      {
+        "condition": "If within 10 spaces of {ATTACK_TARGET}",
+        "command": "{ACTION} Move within 6 spaces and LOS of {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}, then move to {MOVE_TARGET}."
+      },
+      {
+        "condition": "If not within 10 spaces of {ATTACK_TARGET}",
+        "command": "{ACTION} Move towards {MOVE_TARGET}."
+      },
+      {
+        "condition": "Reaction - If attacking and roll a surge",
+        "command": "Apply Squad Command to an adjacent friendly Trooper."
+      }
+    ],
+    "eligibleForHpBoost": false,
+    "elite": true,
+    "hpBoosts": {},
+    "id": "kaynSomos",
+    "maxDeployed": 1,
+    "maxInGroup": 1,
+    "name": "Kayn Somos",
+    "reinforcementCost": -1,
+    "threat": 10,
+    "unique": true
+  },
   "nexu": {
     "affiliation": "mercenary",
     "attributes": ["creature", "brawler"],

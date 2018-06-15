@@ -27,6 +27,7 @@ import looseCannon from './missions/looseCannon';
 import meansOfProduction from './missions/meansOfProduction';
 import mission from './mission';
 import modal from './modal';
+import pastLifeEnemies from './missions/pastLifeEnemies';
 import rebels from './rebels';
 import sympathyForTheRebellion from './missions/sympathyForTheRebellion';
 import targetOfOpportunity from './missions/targetOfOpportunity';
@@ -65,6 +66,7 @@ export default {
   meansOfProduction,
   mission,
   modal,
+  pastLifeEnemies,
   rebels,
   sympathyForTheRebellion,
   targetOfOpportunity,
