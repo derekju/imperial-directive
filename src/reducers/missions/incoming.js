@@ -31,6 +31,8 @@ import track from '../../lib/track';
 
 // Constants
 
+const TARGET_CORRIDOR = 'the Corridor';
+const TARGET_HERO_CLOSEST_TERMINAL = 'the unwounded hero closest to an active terminal';
 const TARGET_BLAST_DOOR = 'the Blast Door';
 
 const DEPLOYMENT_POINT_GREEN = 'The south western green deployment point';
@@ -110,7 +112,7 @@ export const getIncomingGoalText = (state: StateType): string[] => {
       'Rebel figure enters the Corridor (tile 26B).',
       '{BREAK}',
       '{BOLD}Terminals:{END}',
-      'Hero can interact with 3 {TECH} or {INSIGHT}. If Imperial figure nearby apply -1 {SURGE}.',
+      'Hero can interact with 3 {TECH} or {INSIGHT}. If Imperial figure within 2 spaces apply -1 {SURGE}.',
       '{BREAK}',
       '{BOLD}Corridor:{END}',
     ];
@@ -121,7 +123,7 @@ export const getIncomingGoalText = (state: StateType): string[] => {
       'Reveal both terminals that have clues to the exit.',
       '{BREAK}',
       '{BOLD}Terminals:{END}',
-      'Hero can interact with 3 {TECH} or {INSIGHT}. If Imperial figure nearby apply -1 {SURGE}.',
+      'Hero can interact with 3 {TECH} or {INSIGHT}. If Imperial figure within 2 spaces apply -1 {SURGE}.',
       '{BREAK}',
       '{BOLD}Rubble:{END}',
       'Difficult terrain. Any rubble adjacent to outside edge of the map is a deployment point.',
@@ -163,6 +165,8 @@ function* handleCorridorEntered(): Generator<*, *, *> {
   yield call(handleBombardment);
   // Bombardment begins so switch deployment
   yield put(setDeploymentPoint(DEPLOYMENT_POINT_INTERIOR));
+  // Set move target back to closest hero
+  yield put(setMoveTarget(TARGET_HERO_CLOSEST_TERMINAL));
 }
 
 function* handleBombardment(title: string = 'Bombardment'): Generator<*, *, *> {
@@ -367,7 +371,7 @@ Priority target definitions:
 export function* incoming(): Generator<*, *, *> {
   // SET TARGETS
   yield put(setAttackTarget(TARGET_HERO_CLOSEST_UNWOUNDED));
-  yield put(setMoveTarget(TARGET_HERO_CLOSEST_UNWOUNDED));
+  yield put(setMoveTarget(TARGET_CORRIDOR));
   // SET INITIAL DEPLOYMENT POINT
   yield put(setDeploymentPoint(DEPLOYMENT_POINT_GREEN));
 

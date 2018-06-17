@@ -465,7 +465,7 @@
     "commands": [
       {
         "condition": "If within 4 spaces of {ATTACK_TARGET} or any target",
-        "command": "{ACTION} Use Pounce ability to attack {ATTACK_TARGET} or any target."
+        "command": "{ACTION} Use Pounce ability to attack {ATTACK_TARGET} or any target, then {ACTION} move towards {MOVE_TARGET}."
       },
       {
         "condition": "If within 6 spaces of any target",
