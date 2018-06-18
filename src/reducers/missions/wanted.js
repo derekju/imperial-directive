@@ -264,7 +264,9 @@ function* handleSpecialSetup(): Generator<*, *, *> {
   yield take(MISSION_SPECIAL_SETUP);
   yield call(helperInitialSetup, ['probeDroid', 'trandoshanHunter']);
   yield call(helperEventModal, {
-    text: ['Pick a Trandoshan Hunter unit at random. Place one neutral mission token underneath it.'],
+    text: [
+      'Pick a Trandoshan Hunter unit at random. Place one neutral mission token underneath it.',
+    ],
     title: 'Initial Setup',
   });
   yield call(helperEventModal, {
