@@ -40,7 +40,7 @@ import track from '../../lib/track';
 
 // Constants
 
-const TARGET_OFFICE_DOOR = 'the Office door';
+const TARGET_OFFICE_DOOR = 'the figure carrying the keycard';
 const TARGET_EXIT_DOOR = 'the door to the exit';
 
 const DEPLOYMENT_POINT_GREEN = 'The green deployment point';
@@ -92,7 +92,7 @@ export const getWantedGoalText = (state: StateType): string[] => {
       '{BOLD}Barricades (Imperial mission tokens):{END}',
       `Considered blocking terrain. Health: ${state.app.missionThreat * 3}, Defense: 1 {BLOCK}`,
       '{BREAK}',
-      '{BOLD}Store Room Door:{END}',
+      '{BOLD}Store Room (tile 22B) Door:{END}',
       'Unlocked.',
       '{BREAK}',
       '{BOLD}Withdrawn hero:{END}',
@@ -104,12 +104,12 @@ export const getWantedGoalText = (state: StateType): string[] => {
   } else {
     const goals = [
       '{BOLD}Current Goal:{END}',
-      'Open door to the office',
+      'Open door to the office (tile 24B)',
       '{BREAK}',
       '{BOLD}Keycard/Office Door:{END}',
-      'The neutral mission token is a keycard. Once dropped, a hero can interact with it to retrieve it. A hero carrying the keycard can open the door to the office.',
+      'The neutral mission token is a keycard. Once dropped, a hero can interact with it to retrieve it. A hero carrying the keycard can open the door to the office (tile 24B).',
       '{BREAK}',
-      '{BOLD}Store Room Door:{END}',
+      '{BOLD}Store Room (tile 22B) Door:{END}',
       'Locked.',
       '{BREAK}',
       '{BOLD}Withdrawn hero:{END}',
@@ -264,7 +264,7 @@ function* handleSpecialSetup(): Generator<*, *, *> {
   yield take(MISSION_SPECIAL_SETUP);
   yield call(helperInitialSetup, ['probeDroid', 'trandoshanHunter']);
   yield call(helperEventModal, {
-    text: ['Place one neutral mission token underneath a Trandoshan Hunter.'],
+    text: ['Pick a Trandoshan Hunter unit at random. Place one neutral mission token underneath it.'],
     title: 'Initial Setup',
   });
   yield call(helperEventModal, {
@@ -279,7 +279,7 @@ function* handleSpecialSetup(): Generator<*, *, *> {
 
   yield call(helperMissionBriefing, [
     'Doors are locked to all figures.',
-    'The neutral mission token is a keycard. Once dropped, a hero can interact with it to retrieve it. A hero carrying the keycard can open the door to the office.',
+    'The neutral mission token is a keycard. Once dropped, a hero can interact with it to retrieve it. A hero carrying the keycard can open the door to the office (tile 24B).',
   ]);
   yield put(missionSpecialSetupDone());
 }
