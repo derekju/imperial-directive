@@ -6,15 +6,6 @@ import type {UnitConfigType} from '../imperials';
 import reduce from 'lodash/reduce';
 import shuffle from 'lodash/shuffle';
 
-// Pull more groups than defined to increase strength of imperial player
-const EXTRA_GROUPS_TO_PULL = {
-  '2': 0,
-  '3': 0,
-  '4': 0,
-  '5': 1,
-  '6': 1,
-};
-
 const THREAT_COST_FOR_MISSION_THREAT = {
   '2': 6,
   '3': 8,
@@ -34,8 +25,7 @@ export default (
 
   // Check habitats
   const isDesertHabitat = mapHasDesertTile(mapImage);
-
-  const groupsToPull = openGroups + EXTRA_GROUPS_TO_PULL[String(missionThreat)];
+  // Set a soft cap so we don't pick super high threat units and use up all our threat
   const threatCost = THREAT_COST_FOR_MISSION_THREAT[String(missionThreat)];
 
   // Need to build a new array of units that consists of the number of times the number of
@@ -96,5 +86,5 @@ export default (
   }
 
   const shuffledGroups = shuffle(unitList);
-  return shuffledGroups.slice(0, groupsToPull);
+  return shuffledGroups.slice(0, openGroups);
 };
