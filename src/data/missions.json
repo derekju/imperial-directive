@@ -3279,6 +3279,165 @@
       "kaynSomos", "stormtrooper", "tuskenRaider"
     ]
   },
+  "shadyDealings": {
+    "wave": "twinShadows",
+    "initialGroups": [
+      "heavyStormtrooper", "imperialOfficer"
+    ],
+    "instructions": {
+      "imperialVictory": "At the end of Round 7, or when all heores are wounded and R2-D2 is defeated",
+      "rebelVictory": "When all informants and terminals have been claimed"
+    },
+    "mapImage": [
+      ["00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "36b", "36b", "00a", "00a", "00a"],
+      ["00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "02b", "02b", "00a", "00a", "00a"],
+      ["00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "06b", "06b", "06b", "06b", "00a", "02b", "02b", "02b", "00a", "00a"],
+      ["36b", "29b", "29b", "29b", "29b", "35b", "31b", "31b", "39b", "06b", "06b", "06b", "06b", "39b", "02b", "02b", "02b", "02b", "00a"],
+      ["36b", "29b", "29b", "29b", "29b", "35b", "31b", "31b", "39b", "06b", "06b", "06b", "06b", "39b", "02b", "02b", "02b", "02b", "00a"],
+      ["00a", "23b", "23b", "23b", "23b", "00a", "36b", "36b", "00a", "00a", "06b", "06b", "06b", "00a", "35b", "35b", "00a", "00a", "00a"],
+      ["00a", "23b", "23b", "23b", "23b", "21b", "21b", "21b", "21b", "21b", "07b", "07b", "07b", "00a", "32b", "32b", "29b", "29b", "29b"],
+      ["00a", "23b", "23b", "23b", "23b", "21b", "21b", "21b", "21b", "21b", "07b", "07b", "07b", "00a", "32b", "32b", "29b", "29b", "29b"],
+      ["00a", "23b", "23b", "23b", "23b", "21b", "21b", "21b", "21b", "21b", "07b", "07b", "07b", "35b", "03b", "03b", "29b", "29b", "29b"],
+      ["00a", "00a", "00a", "00a", "00a", "21b", "21b", "21b", "21b", "21b", "07b", "07b", "07b", "35b", "03b", "03b", "03b", "32b", "32b"],
+      ["00a", "00a", "00a", "00a", "00a", "00a", "00a", "36b", "36b", "00a", "00a", "00a", "00a", "00a", "03b", "03b", "03b", "32b", "32b"]
+    ],
+    "mapStates": {
+      "entrance-1": {
+        "activated": false,
+        "activateText": "",
+        "coordinates": {
+          "x": 11,
+          "y": 9
+        },
+        "description": "The entrance.",
+        "id": 1,
+        "interactable": false,
+        "type": "entrance",
+        "unactivateText": "",
+        "visible": true
+      },
+      "terminal-1": {
+        "activated": false,
+        "activateText": "Claim",
+        "coordinates": {
+          "x": 15,
+          "y": 0
+        },
+        "description": "An old console, used by smugglers to transfer information.",
+        "id": 1,
+        "interactable": true,
+        "type": "terminal",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "terminal-2": {
+        "activated": false,
+        "activateText": "Claim",
+        "coordinates": {
+          "x": 18,
+          "y": 6
+        },
+        "description": "An old console, used by smugglers to transfer information.",
+        "id": 2,
+        "interactable": true,
+        "type": "terminal",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "door-1": {
+        "activated": false,
+        "activateText": "Open",
+        "coordinates": {
+          "x": 10,
+          "y": 8
+        },
+        "description": "Door to the Cantina.",
+        "id": 1,
+        "interactable": true,
+        "type": "door",
+        "unactivateText": "Close",
+        "visible": true
+      },
+      "door-2": {
+        "activated": false,
+        "activateText": "Open",
+        "coordinates": {
+          "x": 8,
+          "y": 3
+        },
+        "description": "Door to the Cantina.",
+        "id": 2,
+        "interactable": true,
+        "type": "door",
+        "unactivateText": "Close",
+        "visible": true
+      },
+      "door-3": {
+        "activated": false,
+        "activateText": "Open",
+        "coordinates": {
+          "x": 13,
+          "y": 4
+        },
+        "description": "Door to the Junk Shop.",
+        "id": 3,
+        "interactable": true,
+        "type": "door",
+        "unactivateText": "Close",
+        "visible": true
+      },
+      "door-4": {
+        "activated": false,
+        "activateText": "Open",
+        "coordinates": {
+          "x": 12,
+          "y": 8
+        },
+        "description": "Door to the Junk Shop.",
+        "id": 4,
+        "interactable": true,
+        "type": "door",
+        "unactivateText": "Close",
+        "visible": true
+      },
+      "rebel-1": {
+        "activated": false,
+        "activateText": "Claim",
+        "color": "blue",
+        "coordinates": {
+          "x": 4,
+          "y": 3
+        },
+        "description": "An informant.",
+        "id": 1,
+        "interactable": true,
+        "type": "rebel",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "rebel-2": {
+        "activated": false,
+        "activateText": "Claim",
+        "color": "blue",
+        "coordinates": {
+          "x": 5,
+          "y": 9
+        },
+        "description": "An informant.",
+        "id": 2,
+        "interactable": true,
+        "type": "rebel",
+        "unactivateText": "Restore",
+        "visible": true
+      }
+    },
+    "name": "Shady Dealings",
+    "noMercenaryAllowed": false,
+    "openGroups": 3,
+    "reservedGroups": [
+      "tuskenRaider"
+    ]
+  },
   "sorryAboutTheMess": {
     "initialGroups": [
       "probeDroidElite", "stormtrooper"

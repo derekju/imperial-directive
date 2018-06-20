@@ -29,6 +29,7 @@ import type {MissionStateType} from './mission';
 import type {ModalStateType} from './modal';
 import type {PastLifeEnemiesStateType} from './missions/pastLifeEnemies';
 import type {RebelsStateType} from './rebels';
+import type {ShadyDealingsStateType} from './missions/shadyDealings';
 import type {SympathyForTheRebellionStateType} from './missions/sympathyForTheRebellion';
 import type {TargetOfOpportunityStateType} from './missions/targetOfOpportunity';
 import type {TemptationStateType} from './missions/temptation';
@@ -68,6 +69,7 @@ export type StateType = {
   modal: ModalStateType,
   pastLifeEnemies: PastLifeEnemiesStateType,
   rebels: RebelsStateType,
+  shadyDealings: ShadyDealingsStateType,
   sympathyForTheRebellion: SympathyForTheRebellionStateType,
   targetOfOpportunity: TargetOfOpportunityStateType,
   temptation: TemptationStateType,
