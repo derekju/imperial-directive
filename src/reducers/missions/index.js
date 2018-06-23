@@ -6,6 +6,7 @@ import {aSimpleTask, getASimpleTaskGoalText} from './aSimpleTask';
 import {aftermath, getAftermathGoalText} from './aftermath';
 import {breakingPoint, getBreakingPointGoalText} from './breakingPoint';
 import {brushfire, getBrushfireGoalText} from './brushfire';
+import {canyonRun, getCanyonRunGoalText} from './canyonRun';
 import {captured, getCapturedGoalText} from './captured';
 import {chainOfCommand, getChainOfCommandGoalText} from './chainOfCommand';
 import {darkObsession, getDarkObsessionGoalText} from './darkObsession';
@@ -47,6 +48,7 @@ export default {
   armedAndOperational,
   breakingPoint,
   brushfire,
+  canyonRun,
   captured,
   chainOfCommand,
   darkObsession,
@@ -61,6 +63,7 @@ export default {
   getArmedAndOperationalGoalText,
   getBreakingPointGoalText,
   getBrushfireGoalText,
+  getCanyonRunGoalText,
   getCapturedGoalText,
   getChainOfCommandGoalText,
   getDarkObsessionGoalText,

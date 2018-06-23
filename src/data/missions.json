@@ -843,6 +843,160 @@
       "trandoshanHunter"
     ]
   },
+  "canyonRun": {
+    "wave": "twinShadows",
+    "initialGroups": [
+      "heavyStormtrooper", "probeDroid", "tuskenRaider", "tuskenRaiderElite"
+    ],
+    "instructions": {
+      "imperialVictory": "At the end of Round 8 or when all heores are wounded and R2-D2 and C-3PO are defeated",
+      "rebelVictory": "When the plans are obtained"
+    },
+    "mapImage": [
+      ["00a", "00a", "00a", "18b", "18b", "00a", "00a", "00a", "00a", "00a", "00a", "00a"],
+      ["05b", "05b", "05b", "05b", "05b", "05b", "05b", "05b", "00a", "00a", "00a", "00a"],
+      ["05b", "05b", "05b", "05b", "05b", "05b", "05b", "05b", "00a", "00a", "00a", "00a"],
+      ["05b", "05b", "36a", "31a", "31a", "36a", "05b", "05b", "00a", "00a", "00a", "00a"],
+      ["38a", "38a", "36a", "31a", "31a", "36a", "10b", "10b", "10b", "00a", "00a", "00a"],
+      ["38a", "38a", "23a", "23a", "23a", "23a", "10b", "10b", "10b", "06b", "06b", "06b"],
+      ["32a", "32a", "23a", "23a", "23a", "23a", "10b", "10b", "10b", "06b", "06b", "06b"],
+      ["32a", "32a", "23a", "23a", "23a", "23a", "00a", "00a", "00a", "06b", "06b", "06b"],
+      ["00a", "00a", "23a", "23a", "23a", "23a", "07b", "07b", "07b", "06b", "06b", "06b"],
+      ["00a", "00a", "00a", "18b", "18b", "07b", "07b", "07b", "07b", "06b", "06b", "06b"],
+      ["00a", "04b", "04b", "14b", "14b", "07b", "07b", "07b", "07b", "00a", "00a", "00a"],
+      ["00a", "04b", "04b", "14b", "14b", "07b", "07b", "07b", "00a", "00a", "00a", "00a"],
+      ["00a", "04b", "04b", "04b", "04b", "15b", "15b", "00a", "00a", "00a", "00a", "00a"],
+      ["00a", "04b", "04b", "04b", "04b", "15b", "15b", "00a", "00a", "00a", "00a", "00a"],
+      ["00a", "04b", "04b", "04b", "04b", "04b", "04b", "00a", "00a", "00a", "00a", "00a"],
+      ["00a", "04b", "04b", "04b", "04b", "04b", "04b", "00a", "00a", "00a", "00a", "00a"],
+      ["00a", "18b", "18b", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a"]
+    ],
+    "mapStates": {
+      "entrance-1": {
+        "activated": false,
+        "activateText": "",
+        "coordinates": {
+          "x": 4,
+          "y": 9
+        },
+        "description": "The entrance.",
+        "id": 1,
+        "interactable": false,
+        "type": "entrance",
+        "unactivateText": "",
+        "visible": true
+      },
+      "terminal-1": {
+        "activated": false,
+        "activateText": "Obtain",
+        "coordinates": {
+          "x": 2,
+          "y": 3
+        },
+        "description": "The terminal that contains the plans.",
+        "id": 1,
+        "interactable": true,
+        "type": "terminal",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "door-1": {
+        "activated": false,
+        "activateText": "Open",
+        "coordinates": {
+          "x": 3,
+          "y": 5
+        },
+        "description": "Door to the plans.",
+        "id": 1,
+        "interactable": true,
+        "type": "door",
+        "unactivateText": "Close",
+        "visible": true
+      },
+      "imperial-1": {
+        "activated": false,
+        "activateText": "Discard",
+        "color": "yellow",
+        "coordinates": {
+          "x": 5,
+          "y": 13
+        },
+        "description": "Imperial barricade.",
+        "id": 1,
+        "interactable": true,
+        "type": "imperial",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "imperial-2": {
+        "activated": false,
+        "activateText": "Discard",
+        "color": "yellow",
+        "coordinates": {
+          "x": 6,
+          "y": 13
+        },
+        "description": "Imperial barricade.",
+        "id": 2,
+        "interactable": true,
+        "type": "imperial",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "imperial-3": {
+        "activated": false,
+        "activateText": "Discard",
+        "color": "green",
+        "coordinates": {
+          "x": 11,
+          "y": 7
+        },
+        "description": "Imperial barricade.",
+        "id": 3,
+        "interactable": true,
+        "type": "imperial",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "imperial-4": {
+        "activated": false,
+        "activateText": "Discard",
+        "color": "red",
+        "coordinates": {
+          "x": 6,
+          "y": 1
+        },
+        "description": "Imperial barricade.",
+        "id": 4,
+        "interactable": true,
+        "type": "imperial",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "imperial-5": {
+        "activated": false,
+        "activateText": "Discard",
+        "color": "red",
+        "coordinates": {
+          "x": 1,
+          "y": 2
+        },
+        "description": "Imperial barricade.",
+        "id": 5,
+        "interactable": true,
+        "type": "imperial",
+        "unactivateText": "Restore",
+        "visible": true
+      }
+    },
+    "name": "Canyon Run",
+    "noMercenaryAllowed": false,
+    "openGroups": 3,
+    "reservedGroups": [
+      "kaynSomos"
+    ]
+  },
   "captured": {
     "initialGroups": [
       "imperialOfficer", "imperialOfficerElite", "stormtrooper", "stormtrooperElite"
@@ -3170,21 +3324,21 @@
       ["00a", "00a", "06a", "06a", "06a", "06a", "06a", "00a", "00a"],
       ["00a", "00a", "06a", "06a", "06a", "06a", "06a", "00a", "00a"],
       ["00a", "00a", "06a", "06a", "06a", "06a", "06a", "00a", "00a"],
-      ["00a", "00a", "37b", "37b", "00a", "99a", "99a", "00a", "00a"],
-      ["00a", "00a", "37b", "37b", "00a", "99a", "99a", "99a", "00a"],
-      ["00a", "22b", "22b", "22b", "22b", "99a", "99a", "99a", "00a"],
+      ["00a", "00a", "37b", "37b", "00a", "03a", "03a", "00a", "00a"],
+      ["00a", "00a", "37b", "37b", "00a", "03a", "03a", "03a", "00a"],
+      ["00a", "22b", "22b", "22b", "22b", "03a", "03a", "03a", "00a"],
       ["00a", "22b", "22b", "22b", "22b", "00a", "38a", "38a", "00a"],
       ["00a", "22b", "22b", "22b", "22b", "00a", "38a", "38a", "00a"],
       ["00a", "22b", "22b", "22b", "22b", "00a", "17b", "17b", "00a"],
       ["00a", "07b", "07b", "07b", "07b", "05b", "05b", "05b", "05b"],
       ["00a", "07b", "07b", "07b", "07b", "05b", "05b", "05b", "05b"],
       ["00a", "07b", "07b", "07b", "07b", "05b", "05b", "05b", "05b"],
-      ["99a", "99a", "99a", "99a", "00a", "05b", "05b", "05b", "05b"],
-      ["99a", "99a", "99a", "99a", "28b", "28b", "28b", "00a", "00a"],
-      ["99a", "99a", "99a", "99a", "28b", "28b", "28b", "00a", "00a"],
-      ["99a", "99a", "99a", "99a", "28b", "28b", "28b", "00a", "00a"],
-      ["00a", "00a", "00a", "00a", "99a", "32b", "32b", "0aa", "00a"],
-      ["00a", "00a", "00a", "00a", "99a", "32b", "32b", "0aa", "00a"]
+      ["23b", "23b", "23b", "23b", "00a", "05b", "05b", "05b", "05b"],
+      ["23b", "23b", "23b", "23b", "28b", "28b", "28b", "00a", "00a"],
+      ["23b", "23b", "23b", "23b", "28b", "28b", "28b", "00a", "00a"],
+      ["23b", "23b", "23b", "23b", "28b", "28b", "28b", "00a", "00a"],
+      ["00a", "00a", "00a", "00a", "36b", "32b", "32b", "0aa", "00a"],
+      ["00a", "00a", "00a", "00a", "36b", "32b", "32b", "0aa", "00a"]
     ],
     "mapStates": {
       "entrance-1": {
@@ -3285,7 +3439,7 @@
       "heavyStormtrooper", "imperialOfficer"
     ],
     "instructions": {
-      "imperialVictory": "At the end of Round 7, or when all heores are wounded and R2-D2 is defeated",
+      "imperialVictory": "At the end of Round 7, or when all heroes are wounded and R2-D2 is defeated",
       "rebelVictory": "When all informants and terminals have been claimed"
     },
     "mapImage": [

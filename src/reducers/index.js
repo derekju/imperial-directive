@@ -5,6 +5,7 @@ import app from './app';
 import armedAndOperational from './missions/armedAndOperational';
 import breakingPoint from './missions/breakingPoint';
 import brushfire from './missions/brushfire';
+import canyonRun from './missions/canyonRun';
 import captured from './missions/captured';
 import chainOfCommand from './missions/chainOfCommand';
 import darkObsession from './missions/darkObsession';
@@ -45,6 +46,7 @@ export default {
   armedAndOperational,
   breakingPoint,
   brushfire,
+  canyonRun,
   captured,
   chainOfCommand,
   darkObsession,

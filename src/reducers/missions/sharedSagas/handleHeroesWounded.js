@@ -17,7 +17,7 @@ import track from '../../../lib/track';
 export default function handleHeroesWounded(
   missionName: string,
   actionName: string,
-  additionalAlly: string = ''
+  ...additionalAllies: string[]
 ) {
   return function* handleHeroesWoundedImpl(): Generator<*, *, *> {
     while (true) {
@@ -26,9 +26,11 @@ export default function handleHeroesWounded(
       let allyCheckPass = true;
 
       // If we need to check for an ally also
-      if (additionalAlly) {
+      if (additionalAllies.length) {
         const woundedOther = yield select(getWoundedOther);
-        allyCheckPass = woundedOther.includes(additionalAlly);
+        additionalAllies.forEach((additionalAlly: string) => {
+          allyCheckPass = allyCheckPass && woundedOther.includes(additionalAlly);
+        });
       }
 
       if (allWounded && allyCheckPass) {
@@ -38,7 +40,7 @@ export default function handleHeroesWounded(
         break;
       }
       const isOneHeroLeft = yield select(getIsOneHeroLeft);
-      if (isOneHeroLeft) {
+      if (isOneHeroLeft && additionalAllies.length === 0) {
         // Switch targets
         yield put(createAction(actionName, true));
         yield put(setAttackTarget(TARGET_REMAINING));

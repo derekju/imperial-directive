@@ -16,6 +16,7 @@ import {displayModal} from './modal';
 import helperDeployGroupInteractive from './missions/helpers/helperDeployGroupInteractive';
 import filter from 'lodash/filter';
 import last from 'lodash/last';
+import omit from 'lodash/omit';
 import populateOpenGroups from './utils/populateOpenGroups';
 import random from 'lodash/random';
 import reverse from 'lodash/reverse';
@@ -313,7 +314,7 @@ export default (state: ImperialsStateType = initialState, action: Object) => {
           return deployedGroup;
         }),
       };
-    case SET_CUSTOM_UNIT_AI:
+    case SET_CUSTOM_UNIT_AI: {
       const {commands, unit} = action.payload;
       return {
         ...state,
@@ -322,6 +323,14 @@ export default (state: ImperialsStateType = initialState, action: Object) => {
           [unit]: commands.slice(),
         },
       };
+    }
+    case CLEAR_CUSTOM_UNIT_AI: {
+      const {unit} = action.payload;
+      return {
+        ...state,
+        customUnitAI: omit(state.customUnitAI, unit),
+      };
+    }
     case SET_VILLAINS:
       return {
         ...state,
@@ -350,6 +359,7 @@ export const SET_CUSTOM_AI = 'SET_CUSTOM_AI';
 export const CLEAR_CUSTOM_AI = 'CLEAR_CUSTOM_AI';
 export const SET_IMPERIAL_UNIT_HP_BUFF = 'SET_IMPERIAL_UNIT_HP_BUFF';
 export const SET_CUSTOM_UNIT_AI = 'SET_CUSTOM_UNIT_AI';
+export const CLEAR_CUSTOM_UNIT_AI = 'CLEAR_CUSTOM_UNIT_AI';
 export const SET_VILLAINS = 'SET_VILLAINS';
 
 // Action creators
@@ -415,6 +425,7 @@ export const setImperialUnitHpBuff = (groupId: string, hpBuff: number) =>
   createAction(SET_IMPERIAL_UNIT_HP_BUFF, {groupId, hpBuff});
 export const setCustomUnitAI = (unit: string, commands: Object[]) =>
   createAction(SET_CUSTOM_UNIT_AI, {commands, unit});
+export const clearCustomUnitAI = (unit: string) => createAction(CLEAR_CUSTOM_UNIT_AI, {unit});
 export const setVillains = (villains: string[]) => createAction(SET_VILLAINS, {villains});
 
 // Selectors
