@@ -156,7 +156,7 @@ function* handleOfficerFreed(): Generator<*, *, *> {
 function* handleOpportuneMoment(): Generator<*, *, *> {
   yield call(helperEventModal, {
     text: [
-      'Choose the first option that is eligible:',
+      'For the Imperials, choose the first option that is eligible:',
       '- Resolve the Order ability of the captured officer, choosing an Imperial figure within his LOS instead of within 2 spaces.',
       '- Each Imperial figure within LOS of the captured officer gains 2 movement points. Use those points to move each figure adjacent to the captured officer.',
       '- Move the captured officer 1 space towards the nearest Imperial figure',
