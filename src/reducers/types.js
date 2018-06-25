@@ -12,6 +12,7 @@ import type {DarkObsessionStateType} from './missions/darkObsession';
 import type {DesperateHourStateType} from './missions/desperateHour';
 import type {DrawnInStateType} from './missions/drawnIn';
 import type {EventsStateType} from './events';
+import type {FireInTheSkyStateType} from './missions/fireInTheSky';
 import type {FlySoloStateType} from './missions/flySolo';
 import type {FriendsOfOldStateType} from './missions/friendsOfOld';
 import type {GenerousDonationsStateType} from './missions/generousDonations';
@@ -53,6 +54,7 @@ export type StateType = {
   desperateHour: DesperateHourStateType,
   drawnIn: DrawnInStateType,
   events: EventsStateType,
+  fireInTheSky: FireInTheSkyStateType,
   flySolo: FlySoloStateType,
   friendsOfOld: FriendsOfOldStateType,
   generousDonations: GenerousDonationsStateType,

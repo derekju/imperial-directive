@@ -19,6 +19,7 @@ const getGoalText = (state: StateType) => {
 const mapStateToProps = (state: StateType) => ({
   currentMission: state.app.currentMission,
   desperateHourClearingReachable: state.desperateHour.missionState === 2,
+  fireInTheSkyCanDepart: state.fireInTheSky.weaponsConsoleSliced,
   generalWeissActive: state.chainOfCommand.generalWeissActive,
   generalWeissDeployed: state.chainOfCommand.generalWeissDeployed,
   generousDonationsVirusUploaded: state.generousDonations.virusUploaded,
@@ -53,6 +54,7 @@ const sympathyForTheRebellionImperialDone = () =>
 const armedAndOperationalWarshipDestroyed = () =>
   createAction('ARMED_AND_OPERATIONAL_WARSHIP_DESTROYED');
 const pastLifeEnemiesActivateC3PO = () => createAction('PAST_LIFE_ENEMIES_ACTIVATE_C3PO');
+const fireInTheSkyDepart = () => createAction('FIRE_IN_THE_SKY_DEPART');
 
 const mapDispatchToProps = {
   armedAndOperationalWarshipDestroyed,
@@ -60,6 +62,7 @@ const mapDispatchToProps = {
   chainOfCommandWeissDefends,
   chainOfCommandWeissEntered,
   desperateHourEnteredClearing,
+  fireInTheSkyDepart,
   generousDonationsTerminalDestroyed,
   incomingEnterCorridor,
   lastStandVaderBlock,

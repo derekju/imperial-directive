@@ -21,7 +21,7 @@ export default (
   expansions: {[string]: boolean},
   villains: {[string]: boolean}
 ): UnitConfigType[] => {
-  const {initialGroups, mapImage, noMercenaryAllowed, reservedGroups} = config;
+  const {initialGroups, mapImage, noAllowedAttributes, noMercenaryAllowed, reservedGroups} = config;
 
   // Check habitats
   const isDesertHabitat = mapHasDesertTile(mapImage);
@@ -57,6 +57,14 @@ export default (
       // Don't pick units that have an expansion that is not utilized
       if (unit.expansion && expansions[unit.expansion] === false) {
         return accumulator;
+      }
+      // Don't pick units that have an attribute that we disallow
+      if (Array.isArray(noAllowedAttributes)) {
+        for (let i = 0; i < unit.attributes.length; i++) {
+          if (noAllowedAttributes.includes(unit.attributes[i])) {
+            return accumulator;
+          }
+        }
       }
 
       for (let i = 0; i < unit.maxDeployed; i++) {

@@ -1768,6 +1768,157 @@
     ],
     "withdrawnHeroCanActivate": true
   },
+  "fireInTheSky": {
+    "wave": "twinShadows",
+    "initialGroups": [
+      "heavyStormtrooperElite", "probeDroid", "imperialOfficer"
+    ],
+    "instructions": {
+      "imperialVictory": "At the end of Round 9 or when all heores are wounded",
+      "rebelVictory": "When the heroes depart"
+    },
+    "mapImage": [
+      ["00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "01a", "01a", "01a", "01a", "01a", "01a", "00a", "00a", "00a", "00a"],
+      ["00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "01a", "01a", "01a", "01a", "01a", "01a", "00a", "00a", "00a", "00a"],
+      ["00a", "00a", "00a", "00a", "00a", "00a", "00a", "21a", "21a", "21a", "21a", "21a", "01a", "01a", "01a", "01a", "01a", "01a", "05a", "05a", "05a", "00a"],
+      ["00a", "00a", "00a", "00a", "00a", "03a", "03a", "21a", "21a", "21a", "21a", "21a", "01a", "01a", "01a", "01a", "01a", "01a", "05a", "05a", "05a", "00a"],
+      ["00a", "07a", "07a", "07a", "03a", "03a", "03a", "21a", "21a", "21a", "21a", "21a", "01a", "01a", "01a", "01a", "01a", "01a", "00a", "05a", "05a", "00a"],
+      ["36a", "07a", "07a", "07a", "03a", "03a", "03a", "21a", "21a", "21a", "21a", "21a", "01a", "01a", "01a", "01a", "01a", "01a", "00a", "05a", "05a", "36a"],
+      ["36a", "07a", "07a", "07a", "00a", "00a", "04a", "04a", "32a", "32a", "00a", "00a", "01a", "01a", "01a", "01a", "01a", "01a", "00a", "05a", "05a", "36a"],
+      ["00a", "07a", "07a", "07a", "00a", "00a", "04a", "04a", "32a", "32a", "00a", "00a", "01a", "01a", "01a", "01a", "01a", "01a", "00a", "05a", "05a", "00a"],
+      ["19a", "19a", "19a", "19a", "19a", "19a", "04a", "04a", "04a", "04a", "32a", "32a", "02a", "02a", "02a", "02a", "34a", "34a", "05a", "05a", "05a", "00a"],
+      ["19a", "19a", "19a", "19a", "19a", "19a", "04a", "04a", "04a", "04a", "32a", "32a", "02a", "02a", "02a", "02a", "34a", "34a", "05a", "05a", "05a", "00a"],
+      ["19a", "19a", "19a", "19a", "19a", "19a", "04a", "04a", "04a", "04a", "04a", "04a", "00a", "02a", "02a", "02a", "00a", "00a", "00a", "00a", "00a", "00a"],
+      ["19a", "19a", "19a", "19a", "19a", "19a", "04a", "04a", "04a", "04a", "04a", "04a", "00a", "00a", "02a", "02a", "00a", "00a", "00a", "00a", "00a", "00a"],
+      ["19a", "19a", "19a", "19a", "19a", "19a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a"],
+      ["19a", "19a", "19a", "19a", "19a", "19a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a"],
+      ["00a", "00a", "36a", "36a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a"]
+    ],
+    "mapStates": {
+      "entrance-1": {
+        "activated": false,
+        "activateText": "",
+        "coordinates": {
+          "x": 0,
+          "y": 9
+        },
+        "description": "The entrance.",
+        "id": 1,
+        "interactable": false,
+        "type": "entrance",
+        "unactivateText": "",
+        "visible": true
+      },
+      "terminal-1": {
+        "activated": false,
+        "activateText": "Interact",
+        "coordinates": {
+          "x": 6,
+          "y": 6
+        },
+        "description": "The terminal that controls the doors.",
+        "id": 1,
+        "interactable": true,
+        "type": "terminal",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "terminal-2": {
+        "activated": false,
+        "activateText": "Destroy",
+        "coordinates": {
+          "x": 16,
+          "y": 1
+        },
+        "description": "The terminal that controls access to the weapons console.",
+        "id": 2,
+        "interactable": true,
+        "type": "terminal",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "door-1": {
+        "activated": false,
+        "activateText": "Open",
+        "coordinates": {
+          "x": 11,
+          "y": 3
+        },
+        "description": "Door to the interior.",
+        "id": 1,
+        "interactable": false,
+        "type": "door",
+        "unactivateText": "Close",
+        "visible": true
+      },
+      "door-2": {
+        "activated": false,
+        "activateText": "Open",
+        "coordinates": {
+          "x": 9,
+          "y": 10
+        },
+        "description": "Door to the interior.",
+        "id": 2,
+        "interactable": false,
+        "type": "door",
+        "unactivateText": "Close",
+        "visible": true
+      },
+      "door-3": {
+        "activated": false,
+        "activateText": "Open",
+        "coordinates": {
+          "x": 15,
+          "y": 10
+        },
+        "description": "Door to the weapons console.",
+        "id": 3,
+        "interactable": false,
+        "type": "door",
+        "unactivateText": "Close",
+        "visible": true
+      },
+      "imperial-1": {
+        "activated": false,
+        "activateText": "Slice",
+        "color": "red",
+        "coordinates": {
+          "x": 15,
+          "y": 11
+        },
+        "description": "The weapons console.",
+        "id": 1,
+        "interactable": true,
+        "type": "imperial",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "rebel-1": {
+        "activated": false,
+        "activateText": "Interact",
+        "color": "red",
+        "coordinates": {
+          "x": 15,
+          "y": 11
+        },
+        "description": "The sliced weapons console.",
+        "id": 1,
+        "interactable": false,
+        "type": "rebel",
+        "unactivateText": "Restore",
+        "visible": false
+      }
+    },
+    "name": "Fire in the Sky",
+    "noAllowedAttributes": ["creature"],
+    "noMercenaryAllowed": false,
+    "openGroups": 4,
+    "reservedGroups": [
+      "bobaFett", "imperialOfficerElite", "kaynSomos"
+    ],
+    "withdrawnHeroCanActivate": true
+  },
   "flySolo": {
     "initialGroups": [
       "probeDroid", "stormtrooper", "stormtrooper", "trandoshanHunter"

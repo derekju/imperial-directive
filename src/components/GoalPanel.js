@@ -35,6 +35,8 @@ type GoalPanelPropsType = {
   currentMission: string,
   desperateHourClearingReachable: boolean,
   desperateHourEnteredClearing: Function,
+  fireInTheSkyCanDepart: boolean,
+  fireInTheSkyDepart: Function,
   generalWeissActive: boolean,
   generalWeissDeployed: boolean,
   generousDonationsTerminalDestroyed: Function,
@@ -334,6 +336,12 @@ class GoalPanel extends React.Component<GoalPanelPropsType, GoalPanelStateType> 
             width={180}
             onClick={this.props.pastLifeEnemiesActivateC3PO}
           />
+        </div>
+      );
+    } else if (currentMission === 'fireInTheSky' && this.props.fireInTheSkyCanDepart) {
+      return (
+        <div style={styles.buttonContainer}>
+          <Button text="Depart" width={180} onClick={this.props.fireInTheSkyDepart} />
         </div>
       );
     }

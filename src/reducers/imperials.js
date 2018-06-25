@@ -8,6 +8,7 @@ import {
   PLAYER_IMPERIALS,
   statusPhaseDeployReinforceDone,
   STATUS_PHASE_DEPLOY_REINFORCE,
+  STATUS_PHASE_END_ROUND_EFFECTS,
   STATUS_PHASE_READY_GROUPS,
 } from './mission';
 import createAction from './createAction';
@@ -589,6 +590,15 @@ function* handleImperialActivation(): Generator<*, *, *> {
   }
 }
 
+// Handle special end round effects that deployed units may have
+function* handleUnitEndRoundEffects(): Generator<*, *, *> {
+  // Handle Probe Droids
+  // TODO: Need to figure out how many probe droids are deployed, then for each one,
+  // display a modal asking if they should self destruct. If so then need to use a confirm modal
+  // and defeat the one. That means we need to put in the UI which probe droid we are going to
+  // defeat.
+}
+
 export function* imperialsSaga(): Generator<*, *, *> {
   yield all([
     takeEvery(
@@ -599,5 +609,6 @@ export function* imperialsSaga(): Generator<*, *, *> {
     takeEvery(DEFEAT_IMPERIAL_FIGURE, handleImperialFigureDefeat),
     takeEvery(STATUS_PHASE_DEPLOY_REINFORCE, handleDeployAndReinforcement),
     takeEvery(OPTIONAL_DEPLOYMENT, handleOptionalDeployment),
+    takeEvery(STATUS_PHASE_END_ROUND_EFFECTS, handleUnitEndRoundEffects),
   ]);
 }

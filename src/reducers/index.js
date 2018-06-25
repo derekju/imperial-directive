@@ -12,6 +12,7 @@ import darkObsession from './missions/darkObsession';
 import desperateHour from './missions/desperateHour';
 import drawnIn from './missions/drawnIn';
 import events from './events';
+import fireInTheSky from './missions/fireInTheSky';
 import flySolo from './missions/flySolo';
 import friendsOfOld from './missions/friendsOfOld';
 import generousDonations from './missions/generousDonations';
@@ -53,6 +54,7 @@ export default {
   desperateHour,
   drawnIn,
   events,
+  fireInTheSky,
   flySolo,
   friendsOfOld,
   generousDonations,

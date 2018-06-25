@@ -12,6 +12,7 @@ import {chainOfCommand, getChainOfCommandGoalText} from './chainOfCommand';
 import {darkObsession, getDarkObsessionGoalText} from './darkObsession';
 import {desperateHour, getDesperateHourGoalText} from './desperateHour';
 import {drawnIn, getDrawnInGoalText} from './drawnIn';
+import {fireInTheSky, getFireInTheSkyGoalText} from './fireInTheSky';
 import {flySolo, getFlySoloGoalText} from './flySolo';
 import {friendsOfOld, getFriendsOfOldGoalText} from './friendsOfOld';
 import {generousDonations, getGenerousDonationsGoalText} from './generousDonations';
@@ -54,6 +55,7 @@ export default {
   darkObsession,
   desperateHour,
   drawnIn,
+  fireInTheSky,
   flySolo,
   friendsOfOld,
   generousDonations,
@@ -69,6 +71,7 @@ export default {
   getDarkObsessionGoalText,
   getDesperateHourGoalText,
   getDrawnInGoalText,
+  getFireInTheSkyGoalText,
   getFlySoloGoalText,
   getFriendsOfOldGoalText,
   getGenerousDonationsGoalText,
