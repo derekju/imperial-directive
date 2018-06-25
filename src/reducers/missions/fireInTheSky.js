@@ -40,10 +40,10 @@ const TARGET_BLUE_TERMINAL = 'the Blue terminal (T2)';
 const TARGET_WEAPON_CONSOLE = 'the weapons console';
 const TARGET_ENTRANCE = 'the entrance';
 
+const DEPLOYMENT_POINT_GREEN_N = 'The north green deployment point';
+const DEPLOYMENT_POINT_GREEN_S = 'The south green deployment point';
 const DEPLOYMENT_POINT_GREEN_W = 'The west green deployment point';
 const DEPLOYMENT_POINT_GREEN_E = 'The east green deployment point';
-const DEPLOYMENT_POINT_YELLOW = 'The yellow deployment point';
-const DEPLOYMENT_POINT_RED = 'The red deployment point';
 
 // Types
 
@@ -140,7 +140,7 @@ export const getFireInTheSkyGoalText = (state: StateType): string[] => {
 // Sagas
 
 function getRandomDeploymentPoint() {
-  return getRandomItem(DEPLOYMENT_POINT_GREEN_W, DEPLOYMENT_POINT_GREEN_E);
+  return getRandomItem(DEPLOYMENT_POINT_GREEN_W, DEPLOYMENT_POINT_GREEN_E, DEPLOYMENT_POINT_GREEN_N, DEPLOYMENT_POINT_GREEN_S);
 }
 
 function* handleHeavySecurity(): Generator<*, *, *> {
@@ -269,6 +269,7 @@ function* handleRoundEnd(): Generator<*, *, *> {
       break;
     }
 
+    yield put(setDeploymentPoint(getRandomDeploymentPoint()));
     yield put(statusPhaseEndRoundEffectsDone());
   }
 }
