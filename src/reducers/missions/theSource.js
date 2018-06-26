@@ -102,8 +102,8 @@ function* handleAwaitingDeparture(): Generator<*, *, *> {
         'Awaiting Departure',
         REFER_CAMPAIGN_GUIDE,
         ['A Stormtrooper group and an Imperial Officer will now be deployed.'],
-        ['stormtrooper', 'Deploy to the right side of the Incinerator.'],
-        ['imperialOfficer', 'Deploy to the right side of the Incinerator.']
+        ['stormtrooper', 'Deploy to the right side of the Incinerator (tile 23B).'],
+        ['imperialOfficer', 'Deploy to the right side of the Incinerator (tile 23B).']
       );
 
       // We're done
@@ -156,7 +156,7 @@ function* handleOfficerFreed(): Generator<*, *, *> {
 function* handleOpportuneMoment(): Generator<*, *, *> {
   yield call(helperEventModal, {
     text: [
-      'For the Imperials, choose the first option that is eligible:',
+      'For the Imperials, choose the first option that is eligible (or makes the most sense):',
       '- Resolve the Order ability of the captured officer, choosing an Imperial figure within his LOS instead of within 2 spaces.',
       '- Each Imperial figure within LOS of the captured officer gains 2 movement points. Use those points to move each figure adjacent to the captured officer.',
       '- Move the captured officer 1 space towards the nearest Imperial figure',
