@@ -7,9 +7,7 @@ import React from 'react';
 const styles = {
   base: {
     border: '2px solid black',
-    maxHeight: '420px',
     overflowY: 'scroll',
-    width: '200px',
   },
   buttonContainer: {
     fontSize: '13px',

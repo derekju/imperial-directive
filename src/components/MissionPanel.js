@@ -7,7 +7,6 @@ import upperFirst from 'lodash/upperFirst';
 const styles = {
   base: {
     border: '2px solid black',
-    width: '200px',
   },
   contents: {
     fontSize: '14px',

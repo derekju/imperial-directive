@@ -15,6 +15,8 @@ import {positionAbsolute} from '../styles/mixins';
 import React from 'react';
 import RoundThreatTracker from './RoundThreatTracker';
 
+const RIGHT_PANEL_WIDTH = 240 + 4;
+
 const styles = {
   activatedGroupContainer: {
     backgroundColor: 'transparent',
@@ -42,7 +44,7 @@ const styles = {
     justifyContent: 'flex-start',
     margin: '10px 10px 10px 0',
   },
-  heroPanelContainer: {
+  flexContainer: {
     display: 'flex',
     flex: 1,
   },
@@ -57,7 +59,7 @@ const styles = {
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'center',
-    width: '204px',
+    width: `${RIGHT_PANEL_WIDTH}px`,
   },
   modalContainer: {
     ...positionAbsolute(0, 0, 0, 0),
@@ -73,8 +75,8 @@ const styles = {
   rightPanelContainer: {
     display: 'flex',
     flexDirection: 'column',
-    margin: '10px 10px 50px 0',
-    width: '204px',
+    margin: '10px 10px 60px 0',
+    width: `${RIGHT_PANEL_WIDTH}px`,
   },
   rightPanelItem: {
     marginBottom: '10px',
@@ -118,7 +120,7 @@ class Mission extends React.Component<MissionPropsType> {
           <div style={styles.roundThreatTracker}>
             <RoundThreatTracker round={this.props.currentRound} threat={this.props.currentThreat} />
           </div>
-          <div style={styles.heroPanelContainer}>
+          <div style={styles.flexContainer}>
             <HeroPanelContainer />
           </div>
         </div>
@@ -161,7 +163,7 @@ class Mission extends React.Component<MissionPropsType> {
               instructions={this.props.instructions}
             />
           </div>
-          <div style={styles.rightPanelItem}>
+          <div style={styles.flexContainer}>
             <GoalPanelContainer />
           </div>
         </div>
