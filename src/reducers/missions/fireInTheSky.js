@@ -15,10 +15,7 @@ import {
   statusPhaseEndRoundEffectsDone,
 } from '../mission';
 import {getMissionThreat, missionSagaLoadDone} from '../app';
-import {
-  OPTIONAL_DEPLOYMENT_DONE,
-  optionalDeployment,
-} from '../imperials';
+import {OPTIONAL_DEPLOYMENT_DONE, optionalDeployment} from '../imperials';
 import {REFER_CAMPAIGN_GUIDE, TARGET_HERO_CLOSEST_UNWOUNDED} from './constants';
 import createAction from '../createAction';
 import {displayModal} from '../modal';
@@ -140,7 +137,12 @@ export const getFireInTheSkyGoalText = (state: StateType): string[] => {
 // Sagas
 
 function getRandomDeploymentPoint() {
-  return getRandomItem(DEPLOYMENT_POINT_GREEN_W, DEPLOYMENT_POINT_GREEN_E, DEPLOYMENT_POINT_GREEN_N, DEPLOYMENT_POINT_GREEN_S);
+  return getRandomItem(
+    DEPLOYMENT_POINT_GREEN_W,
+    DEPLOYMENT_POINT_GREEN_E,
+    DEPLOYMENT_POINT_GREEN_N,
+    DEPLOYMENT_POINT_GREEN_S
+  );
 }
 
 function* handleHeavySecurity(): Generator<*, *, *> {
