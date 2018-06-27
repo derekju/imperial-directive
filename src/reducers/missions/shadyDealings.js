@@ -294,7 +294,10 @@ function* handleReinforcements(): Generator<*, *, *> {
         ['tuskenRaider', 'Deploy to the entrance.']
       );
       yield call(helperEventModal, {
-        text: ['The threat has been increased.', 'An optional deployment will now be done.'],
+        text: [
+          'The threat has been increased by twice the threat level.',
+          'An optional deployment will now be done.',
+        ],
         title: 'Reinforcements',
       });
       // Double current threat
@@ -379,7 +382,7 @@ function* handleSpecialSetup(): Generator<*, *, *> {
   yield call(helperEventModal, {
     text: [
       'The heroes control {ELITE}R2-D2{END} as an ally at no cost.',
-      'The threat has been increased.',
+      'The threat has been increased by twice the threat level.',
       'An optional deployment will now be done.',
     ],
     title: 'Initial Setup',

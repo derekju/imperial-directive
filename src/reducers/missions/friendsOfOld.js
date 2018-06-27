@@ -156,7 +156,7 @@ function* handleTheSquad(): Generator<*, *, *> {
             text: [
               'Replace the blue mission token with a Rebel Trooper.',
               'This Trooper becomes focused and can immediately interrupt to perform an attack.',
-              'The threat has been increased.',
+              'The threat has been increased by the threat level.',
             ],
             title: 'The Squad',
           });
@@ -318,7 +318,10 @@ function* handleSpecialSetup(): Generator<*, *, *> {
   const missionThreat = yield select(getMissionThreat);
   yield call(helperInitialSetup, ['imperialOfficer', 'stormtrooper']);
   yield call(helperEventModal, {
-    text: ['The threat has been increased.', 'An optional deployment will now be done.'],
+    text: [
+      'The threat has been increased by twice the threat level.',
+      'An optional deployment will now be done.',
+    ],
     title: 'Initial Setup',
   });
   // Double current threat

@@ -219,7 +219,7 @@ function* handleSpecialSetup(): Generator<*, *, *> {
   yield call(helperEventModal, {
     text: [
       'The heroes control {ELITE}R2-D2{END} and {ELITE}C-3PO{END} as allies at no cost.',
-      'The threat has been increased.',
+      'The threat has been increased by twice the threat level.',
       'An optional deployment will now be done.',
     ],
     title: 'Initial Setup',

@@ -74,7 +74,10 @@ function* handleGarageOpens(): Generator<*, *, *> {
       // Increase threat and do optional deployment to red point
       yield put(setDeploymentPoint(DEPLOYMENT_POINT_RED));
       yield call(helperEventModal, {
-        text: ['The threat has been increased.', 'An optional deployment will now be done.'],
+        text: [
+          'The threat has been increased by the threat level.',
+          'An optional deployment will now be done.',
+        ],
         title: 'Old Friends',
       });
       // Increase threat
@@ -143,7 +146,7 @@ function* handleSpecialSetup(): Generator<*, *, *> {
   yield call(helperEventModal, {
     text: [
       'The heroes control {ELITE}Han Solo{END} as an ally.',
-      'The threat has been increased.',
+      'The threat has been increased by twice the threat level.',
       'An optional deployment will now be done.',
     ],
     title: 'Initial Setup',

@@ -146,7 +146,7 @@ function* handleDaringEscapeEvent(): Generator<*, *, *> {
     [
       'The door to the Back Room (tile 22B) opens.',
       'Deploy {ELITE}Han Solo{END} to the blue point. He suffers 4 {DAMAGE}.',
-      'The threat has been increased.',
+      'The threat has been increased by 4.',
       'An {ELITE}Elite Stormtrooper{END} group will now be deployed.',
     ],
     [
@@ -166,7 +166,7 @@ function* handleTimeToRunEvent(): Generator<*, *, *> {
     helperDeploy,
     'Time to Run',
     REFER_CAMPAIGN_GUIDE,
-    ['Deploy {ELITE}IG-88{END} to the entrance.', 'The threat has been increased.'],
+    ['Deploy {ELITE}IG-88{END} to the entrance.', 'The threat has been increased by 4.'],
     ['ig88', 'Deploy to the entrance.']
   );
   yield put(increaseThreat(4));

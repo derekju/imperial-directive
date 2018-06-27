@@ -117,7 +117,10 @@ function* handlePrepForTakeoffEvent(): Generator<*, *, *> {
       track('impounded', 'prepForTakeoff', 'triggered');
       yield call(helperEventModal, {
         story: REFER_CAMPAIGN_GUIDE,
-        text: ['The threat has been increased.', 'An optional deployment will now be done.'],
+        text: [
+          'The threat has been increased by the threat level.',
+          'An optional deployment will now be done.',
+        ],
         title: 'Prep for Takeoff',
       });
       // Double current threat
@@ -203,7 +206,10 @@ function* handleSpecialSetup(): Generator<*, *, *> {
   yield take(MISSION_SPECIAL_SETUP);
   yield call(helperInitialSetup, ['imperialOfficerElite', 'nexu', 'nexuElite', 'royalGuard']);
   yield call(helperEventModal, {
-    text: ['The threat has been increased.', 'An optional deployment will now be done.'],
+    text: [
+      'The threat has been increased by twice the threat level.',
+      'An optional deployment will now be done.',
+    ],
     title: 'Initial Setup',
   });
   // Double current threat

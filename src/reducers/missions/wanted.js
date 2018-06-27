@@ -136,7 +136,7 @@ function* handleHuntedDownEvent(): Generator<*, *, *> {
         'Opening the door, you see the droid staring back at you, ready to attack.',
         [
           'Deploy {ELITE}IG-88{END} to the red point.',
-          'The threat has been increased.',
+          'The threat has been increased by the threat level.',
           'A Probe Droid will now be deployed.',
         ],
         ['ig88', 'Deploy to the red point.'],
@@ -270,7 +270,10 @@ function* handleSpecialSetup(): Generator<*, *, *> {
     title: 'Initial Setup',
   });
   yield call(helperEventModal, {
-    text: ['The threat has been increased.', 'An optional deployment will now be done.'],
+    text: [
+      'The threat has been increased by twice the threat level.',
+      'An optional deployment will now be done.',
+    ],
     title: 'Initial Setup',
   });
   // Double current threat

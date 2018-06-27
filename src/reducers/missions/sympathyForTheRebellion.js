@@ -176,7 +176,7 @@ function* handleImperialClaimToken(): Generator<*, *, *> {
 
       yield call(helperEventModal, {
         text: [
-          'The threat has been increased.',
+          'The threat has been increased by the threat level.',
           'Make sure to manually defeat the figure that was carrying the token.',
         ],
         title: 'Imperial Collected Recruit',
@@ -273,7 +273,7 @@ function* handleSpecialSetup(): Generator<*, *, *> {
   yield call(helperEventModal, {
     text: [
       'The heroes control {ELITE}Luke Skywalker{END} (Hero of the Rebellion) as an ally.',
-      'The threat has been increased.',
+      'The threat has been increased by twice the threat level.',
       'An optional deployment will now be done.',
     ],
     title: 'Initial Setup',
