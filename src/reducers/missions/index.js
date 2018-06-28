@@ -23,6 +23,7 @@ import {imperialHospitality, getImperialHospitalityGoalText} from './imperialHos
 import {impounded, getImpoundedGoalText} from './impounded';
 import {incoming, getIncomingGoalText} from './incoming';
 import {indebted, getIndebtedGoalText} from './indebted';
+import {infiltrated, getInfiltratedGoalText} from './infiltrated';
 import {lastStand, getLastStandGoalText} from './lastStand';
 import {looseCannon, getLooseCannonGoalText} from './looseCannon';
 import {luxuryCruise, getLuxuryCruiseGoalText} from './luxuryCruise';
@@ -82,6 +83,7 @@ export default {
   getImpoundedGoalText,
   getIncomingGoalText,
   getIndebtedGoalText,
+  getInfiltratedGoalText,
   getLastStandGoalText,
   getLooseCannonGoalText,
   getLuxuryCruiseGoalText,
@@ -104,6 +106,7 @@ export default {
   impounded,
   incoming,
   indebted,
+  infiltrated,
   lastStand,
   looseCannon,
   luxuryCruise,

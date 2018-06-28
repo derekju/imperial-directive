@@ -3031,6 +3031,182 @@
       "eWebEngineer"
     ]
   },
+  "infiltrated": {
+    "wave": "twinShadows",
+    "initialGroups": [
+      "imperialOfficerElite", "stormtrooper"
+    ],
+    "instructions": {
+      "imperialVictory": "At the end of Round 8 or when all heores are wounded",
+      "rebelVictory": "(to be revealed)"
+    },
+    "mapImage": [
+      ["00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "01a", "01a", "01a", "01a", "01a", "01a", "00a", "00a", "00a", "00a"],
+      ["00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "01a", "01a", "01a", "01a", "01a", "01a", "00a", "00a", "00a", "00a"],
+      ["00a", "00a", "00a", "00a", "00a", "00a", "00a", "21a", "21a", "21a", "21a", "21a", "01a", "01a", "01a", "01a", "01a", "01a", "05a", "05a", "05a", "00a"],
+      ["00a", "00a", "00a", "00a", "00a", "03a", "03a", "21a", "21a", "21a", "21a", "21a", "01a", "01a", "01a", "01a", "01a", "01a", "05a", "05a", "05a", "00a"],
+      ["00a", "07a", "07a", "07a", "03a", "03a", "03a", "21a", "21a", "21a", "21a", "21a", "01a", "01a", "01a", "01a", "01a", "01a", "00a", "05a", "05a", "00a"],
+      ["36a", "07a", "07a", "07a", "03a", "03a", "03a", "21a", "21a", "21a", "21a", "21a", "01a", "01a", "01a", "01a", "01a", "01a", "00a", "05a", "05a", "36a"],
+      ["36a", "07a", "07a", "07a", "00a", "00a", "04a", "04a", "32a", "32a", "00a", "00a", "01a", "01a", "01a", "01a", "01a", "01a", "00a", "05a", "05a", "36a"],
+      ["00a", "07a", "07a", "07a", "00a", "00a", "04a", "04a", "32a", "32a", "00a", "00a", "01a", "01a", "01a", "01a", "01a", "01a", "00a", "05a", "05a", "00a"],
+      ["19a", "19a", "19a", "19a", "19a", "19a", "04a", "04a", "04a", "04a", "32a", "32a", "02a", "02a", "02a", "02a", "34a", "34a", "05a", "05a", "05a", "00a"],
+      ["19a", "19a", "19a", "19a", "19a", "19a", "04a", "04a", "04a", "04a", "32a", "32a", "02a", "02a", "02a", "02a", "34a", "34a", "05a", "05a", "05a", "00a"],
+      ["19a", "19a", "19a", "19a", "19a", "19a", "04a", "04a", "04a", "04a", "04a", "04a", "00a", "02a", "02a", "02a", "00a", "00a", "00a", "00a", "00a", "00a"],
+      ["19a", "19a", "19a", "19a", "19a", "19a", "04a", "04a", "04a", "04a", "04a", "04a", "00a", "00a", "02a", "02a", "00a", "00a", "00a", "00a", "00a", "00a"],
+      ["19a", "19a", "19a", "19a", "19a", "19a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a"],
+      ["19a", "19a", "19a", "19a", "19a", "19a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a"],
+      ["00a", "00a", "36a", "36a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a"]
+    ],
+    "mapStates": {
+      "entrance-1": {
+        "activated": false,
+        "activateText": "",
+        "coordinates": {
+          "x": 21,
+          "y": 5
+        },
+        "description": "The entrance.",
+        "id": 1,
+        "interactable": false,
+        "type": "entrance",
+        "unactivateText": "",
+        "visible": true
+      },
+      "terminal-1": {
+        "activated": false,
+        "activateText": "Slice",
+        "coordinates": {
+          "x": 16,
+          "y": 0
+        },
+        "description": "The terminal that controls the hyperdrive.",
+        "id": 1,
+        "interactable": true,
+        "type": "terminal",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "terminal-2": {
+        "activated": false,
+        "activateText": "Destroy",
+        "coordinates": {
+          "x": 15,
+          "y": 11
+        },
+        "description": "The weapons console.",
+        "id": 2,
+        "interactable": true,
+        "type": "terminal",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "terminal-3": {
+        "activated": false,
+        "activateText": "Destroy",
+        "coordinates": {
+          "x": 8,
+          "y": 3
+        },
+        "description": "The surveillance terminal.",
+        "id": 3,
+        "interactable": true,
+        "type": "terminal",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "terminal-4": {
+        "activated": false,
+        "activateText": "Destroy",
+        "coordinates": {
+          "x": 7,
+          "y": 10
+        },
+        "description": "The alarm.",
+        "id": 4,
+        "interactable": true,
+        "type": "terminal",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "terminal-5": {
+        "activated": false,
+        "activateText": "Activate",
+        "coordinates": {
+          "x": 3,
+          "y": 14
+        },
+        "description": "The controls for the shuttle.",
+        "id": 5,
+        "interactable": true,
+        "type": "terminal",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "door-1": {
+        "activated": false,
+        "activateText": "Open",
+        "coordinates": {
+          "x": 12,
+          "y": 2
+        },
+        "description": "Door to the surveillance center.",
+        "id": 1,
+        "interactable": false,
+        "type": "door",
+        "unactivateText": "Close",
+        "visible": true
+      },
+      "door-2": {
+        "activated": false,
+        "activateText": "Open",
+        "coordinates": {
+          "x": 10,
+          "y": 9
+        },
+        "description": "Door to the war room.",
+        "id": 2,
+        "interactable": false,
+        "type": "door",
+        "unactivateText": "Close",
+        "visible": true
+      },
+      "door-3": {
+        "activated": false,
+        "activateText": "Destroy",
+        "coordinates": {
+          "x": 2,
+          "y": 7
+        },
+        "description": "Door to the Hangar.",
+        "id": 3,
+        "interactable": true,
+        "type": "door",
+        "unactivateText": "Close",
+        "visible": true
+      },
+      "door-4": {
+        "activated": false,
+        "activateText": "Destroy",
+        "coordinates": {
+          "x": 6,
+          "y": 11
+        },
+        "description": "Door to the Hangar.",
+        "id": 4,
+        "interactable": true,
+        "type": "door",
+        "unactivateText": "Close",
+        "visible": true
+      }
+    },
+    "name": "Infiltrated",
+    "noAllowedAttributes": ["creature"],
+    "noMercenaryAllowed": false,
+    "openGroups": 4,
+    "reservedGroups": [
+      "heavyStormtrooper", "kaynSomos"
+    ]
+  },
   "lastStand": {
     "initialGroups": [
       "eWebEngineerElite", "royalGuard", "stormtrooper"
