@@ -68,7 +68,7 @@ export default (state: RebelsStateType = initialState, action: Object) => {
       const {id} = action.payload;
       return {
         ...state,
-        activatedRebels: state.activatedRebels.concat([id]),
+        activatedRebels: ((state.activatedRebels.concat([id])): string[]),
       };
     }
     case SET_HERO_ACTIVATE_TWICE: {
@@ -92,7 +92,7 @@ export default (state: RebelsStateType = initialState, action: Object) => {
         if (withdrawnHeroCanActivate) {
           return {
             ...state,
-            fakeWithdrawnHeroes: state.fakeWithdrawnHeroes.concat([id]),
+            fakeWithdrawnHeroes: ((state.fakeWithdrawnHeroes.concat([id])): string[]),
             woundedHeroes: without(state.woundedHeroes, id),
           };
         }
@@ -101,13 +101,13 @@ export default (state: RebelsStateType = initialState, action: Object) => {
           ...state,
           activatedRebels: without(state.activatedRebels, id),
           canActivateTwice: without(state.canActivateTwice, id),
-          withdrawnHeroes: state.withdrawnHeroes.concat([id]),
+          withdrawnHeroes: ((state.withdrawnHeroes.concat([id])): string[]),
           woundedHeroes: without(state.woundedHeroes, id),
         };
       } else {
         return {
           ...state,
-          woundedHeroes: state.woundedHeroes.concat([id]),
+          woundedHeroes: ((state.woundedHeroes.concat([id])): string[]),
         };
       }
     }
@@ -117,7 +117,7 @@ export default (state: RebelsStateType = initialState, action: Object) => {
         ...state,
         activatedRebels: without(state.canActivateTwice, id),
         canActivateTwice: without(state.canActivateTwice, id),
-        escapedRebels: state.escapedRebels.concat([id]),
+        escapedRebels: ((state.escapedRebels.concat([id])): string[]),
         roster: without(state.roster, id),
         woundedHeroes: without(state.woundedHeroes, id),
       };
@@ -125,7 +125,7 @@ export default (state: RebelsStateType = initialState, action: Object) => {
     case ADD_TO_ROSTER: {
       return {
         ...state,
-        roster: state.roster.concat([action.payload.id]),
+        roster: (state.roster.concat([action.payload.id]): string[]),
       };
     }
     case WOUND_REBEL_OTHER: {
@@ -133,7 +133,7 @@ export default (state: RebelsStateType = initialState, action: Object) => {
       return {
         ...state,
         roster: without(state.roster, id),
-        woundedOther: state.woundedOther.concat([id]),
+        woundedOther: ((state.woundedOther.concat([id])): string[]),
       };
     }
     case SET_REBEL_HP_BOOST: {

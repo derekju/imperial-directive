@@ -90,7 +90,7 @@ export default (state: IncomingStateType = initialState, action: Object) => {
     case 'INCOMING_SET_ACTIVATED_TERMINAL':
       return {
         ...state,
-        activatedTerminalIndexes: state.activatedTerminalIndexes.concat([action.payload.id]),
+        activatedTerminalIndexes: ((state.activatedTerminalIndexes.concat([action.payload.id])): number[]),
       };
     case 'INCOMING_INCREMENT_YELLOW_TERMINALS':
       return {

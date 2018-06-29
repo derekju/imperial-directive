@@ -17,6 +17,7 @@
   "scripts": {
     "build": "react-scripts build",
     "eject": "react-scripts eject",
+    "flow": "flow check",
     "prettier": "prettier --write \"src/**/*.js\"",
     "start": "react-scripts start",
     "test": "react-scripts test --env=jsdom"
@@ -24,7 +25,7 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-flow": "^6.23.0",
-    "flow-bin": "^0.57.3"
+    "flow-bin": "0.75.0"
   },
   "engines": {
     "node": "8.9.1",

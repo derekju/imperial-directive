@@ -364,11 +364,11 @@ class GoalPanel extends React.Component<GoalPanelPropsType, GoalPanelStateType> 
       return null;
     }
 
-    return goalText.map((gText: string, index: number) => {
+    return ((goalText.map((gText: string, index: number) => {
       return (
         <div key={`goal-${index}`} dangerouslySetInnerHTML={{__html: handleTextSubs(gText)}} />
       );
-    });
+    })): Array<*>);
   }
 
   render() {

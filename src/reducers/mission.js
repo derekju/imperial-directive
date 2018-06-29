@@ -46,6 +46,8 @@ export type MissionStateType = {
   currentRound: number,
   currentThreat: number,
   deploymentPoint: string,
+  difficulty: string,
+  disableThreatIncrease: boolean,
   extraThreatIncrease: number,
   instructions: {imperialVictory: string, rebelVictory: string},
   mapImage: Array<Array<string>>,

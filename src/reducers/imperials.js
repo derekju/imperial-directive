@@ -48,6 +48,7 @@ export type UnitConfigType = {
   eligibleForHpBoost: boolean,
   elite: boolean,
   expansion?: string,
+  habitat?: string,
   hpBoosts: {[threatLevel: string]: number[]},
   id: string,
   maxDeployed: number,
@@ -188,12 +189,12 @@ export default (state: ImperialsStateType = initialState, action: Object) => {
       const {group} = action.payload;
       return {
         ...state,
-        deployedGroups: state.deployedGroups.map((deployedGroup: ImperialUnitType) => {
+        deployedGroups: ((state.deployedGroups.map((deployedGroup: ImperialUnitType) => {
           if (deployedGroup.id === group.id && deployedGroup.groupNumber === group.groupNumber) {
             deployedGroup.exhausted = true;
           }
           return deployedGroup;
-        }),
+        })): ImperialUnitType[]),
       };
     }
     case SET_IMPERIAL_GROUP_ACTIVATED: {
@@ -201,12 +202,12 @@ export default (state: ImperialsStateType = initialState, action: Object) => {
       return {
         ...state,
         activatedGroup: null,
-        deployedGroups: state.deployedGroups.map((deployedGroup: ImperialUnitType) => {
+        deployedGroups: ((state.deployedGroups.map((deployedGroup: ImperialUnitType) => {
           if (deployedGroup.id === group.id && deployedGroup.groupNumber === group.groupNumber) {
             deployedGroup.exhausted = true;
           }
           return deployedGroup;
-        }),
+        })): ImperialUnitType[]),
       };
     }
     case SET_IMPERIAL_GROUP_UNACTIVATED: {
@@ -214,12 +215,12 @@ export default (state: ImperialsStateType = initialState, action: Object) => {
       return {
         ...state,
         activatedGroup: null,
-        deployedGroups: state.deployedGroups.map((deployedGroup: ImperialUnitType) => {
+        deployedGroups: ((state.deployedGroups.map((deployedGroup: ImperialUnitType) => {
           if (deployedGroup.id === group.id && deployedGroup.groupNumber === group.groupNumber) {
             deployedGroup.exhausted = false;
           }
           return deployedGroup;
-        }),
+        })): ImperialUnitType[]),
       };
     }
     case SET_IMPERIAL_FIGURES_AFTER_DEFEAT: {
@@ -235,7 +236,7 @@ export default (state: ImperialsStateType = initialState, action: Object) => {
               ? without(state.designationMap[groupToDecrement.id], groupToDecrement.groupNumber)
               : state.designationMap[groupToDecrement.id],
         },
-        openGroups: state.openGroups.concat(openGroups),
+        openGroups: ((state.openGroups.concat(openGroups)): ImperialUnitType[]),
       };
     }
     case SET_IMPERIAL_FIGURES_AFTER_DEPLOY_REINFORCE: {
@@ -244,7 +245,7 @@ export default (state: ImperialsStateType = initialState, action: Object) => {
       // We're mutating state.designationMap here!
       return {
         ...state,
-        deployedGroups: state.deployedGroups.map((deployedGroup: ImperialUnitType) => {
+        deployedGroups: ((state.deployedGroups.map((deployedGroup: ImperialUnitType) => {
           const matchingGroups = groupsToReinforce.filter(
             (groupToReinforce: {groupNumber: number, id: string}) =>
               groupToReinforce.groupNumber === deployedGroup.groupNumber &&
@@ -255,7 +256,7 @@ export default (state: ImperialsStateType = initialState, action: Object) => {
             deployedGroup.currentNumFigures += matchingGroups.length;
           }
           return deployedGroup;
-        }),
+        })): ImperialUnitType[]),
         openGroups: newOpenGroups,
       };
     }
@@ -263,17 +264,17 @@ export default (state: ImperialsStateType = initialState, action: Object) => {
       return {
         ...state,
         activatedGroup: null,
-        deployedGroups: state.deployedGroups.map((deployedGroup: ImperialUnitType) => {
+        deployedGroups: ((state.deployedGroups.map((deployedGroup: ImperialUnitType) => {
           deployedGroup.exhausted = false;
           return deployedGroup;
-        }),
+        })): ImperialUnitType[]),
       };
     case DEPLOY_NEW_GROUPS: {
       const {aliasColor, aliasNumber, difficulty, groupIds, missionThreat} = action.payload;
       // We're mutating state.designationMap here!
       return {
         ...state,
-        deployedGroups: state.deployedGroups.concat(
+        deployedGroups: ((state.deployedGroups.concat(
           groupIds.map((id: string) =>
             createNewGroup(
               id,
@@ -284,7 +285,7 @@ export default (state: ImperialsStateType = initialState, action: Object) => {
               aliasNumber
             )
           )
-        ),
+        )): ImperialUnitType[]),
       };
     }
     case SET_INTERRUPTED_GROUP:
@@ -308,12 +309,12 @@ export default (state: ImperialsStateType = initialState, action: Object) => {
       const {groupId, hpBuff} = action.payload;
       return {
         ...state,
-        deployedGroups: state.deployedGroups.map((deployedGroup: ImperialUnitType) => {
+        deployedGroups: ((state.deployedGroups.map((deployedGroup: ImperialUnitType) => {
           if (deployedGroup.id === groupId) {
             deployedGroup.hpBoost = hpBuff;
           }
           return deployedGroup;
-        }),
+        })): ImperialUnitType[]),
       };
     case SET_CUSTOM_UNIT_AI: {
       const {commands, unit} = action.payload;

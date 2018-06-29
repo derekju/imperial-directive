@@ -21,6 +21,7 @@ import {all, call, cancel, fork, put, select, take} from 'redux-saga/effects';
 import {OPTIONAL_DEPLOYMENT_DONE, optionalDeployment} from '../imperials';
 import createAction from '../createAction';
 import {displayModal} from '../modal';
+import getRandomItem from '../utils/getRandomItem';
 import handleHeroesWounded from './sharedSagas/handleHeroesWounded';
 import handleStatusPhaseBegin from './sharedSagas/handleStatusPhaseBegin';
 import helperCheckMapStateActivations from './helpers/helperCheckMapStateActivations';
@@ -158,9 +159,9 @@ function* setRandomDeploymentPoint(): Generator<*, *, *> {
   if (hangarDoorOpened) {
     yield put(setDeploymentPoint(DEPLOYMENT_POINT_RED));
   } else if (hyperdriveSliced) {
-    yield put(setDeploymentPoint(DEPLOYMENT_POINT_BLUE_W, DEPLOYMENT_POINT_BLUE_E));
+    yield put(setDeploymentPoint(getRandomItem(DEPLOYMENT_POINT_BLUE_W, DEPLOYMENT_POINT_BLUE_E)));
   } else {
-    yield put(setDeploymentPoint(DEPLOYMENT_POINT_GREEN_N, DEPLOYMENT_POINT_GREEN_S));
+    yield put(setDeploymentPoint(getRandomItem(DEPLOYMENT_POINT_GREEN_N, DEPLOYMENT_POINT_GREEN_S)));
   }
 }
 

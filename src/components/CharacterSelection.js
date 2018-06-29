@@ -187,6 +187,7 @@ class CharacterSelection extends React.Component<
     const imperialRewards = IMPERIAL_REWARDS.reduce((accumulator: Object, key: string) => {
       const checkbox = document.querySelector('#' + key);
       if (checkbox) {
+        // $FlowFixMe
         accumulator[key] = checkbox.checked;
       }
       return accumulator;
@@ -198,6 +199,7 @@ class CharacterSelection extends React.Component<
     const selectedExpansions = EXPANSIONS.reduce((accumulator: Object, key: string) => {
       const checkbox = document.querySelector('#' + key);
       if (checkbox) {
+        // $FlowFixMe
         accumulator[key] = checkbox.checked;
       }
       return accumulator;
@@ -210,6 +212,7 @@ class CharacterSelection extends React.Component<
       (accumulator: Object, key: string) => {
         const checkbox = document.querySelector('#' + key);
         if (checkbox) {
+          // $FlowFixMe
           accumulator[key] = checkbox.checked;
         }
         return accumulator;
