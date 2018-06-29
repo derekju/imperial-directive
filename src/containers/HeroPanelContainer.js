@@ -32,4 +32,7 @@ const mapDispatchToProps = {
   woundRebelOther,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(HeroPanel);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(HeroPanel);

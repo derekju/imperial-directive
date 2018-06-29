@@ -14,4 +14,7 @@ const mapDispatchToProps = {
   displayModal,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Map);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Map);

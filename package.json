@@ -4,7 +4,6 @@
   "private": true,
   "dependencies": {
     "lodash": "^4.17.4",
-    "prettier": "1.12.1",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-redux": "^5.0.6",
@@ -25,10 +24,11 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-flow": "^6.23.0",
-    "flow-bin": "0.75.0"
+    "flow-bin": "0.75.0",
+    "prettier": "^1.13.7"
   },
   "engines": {
-    "node": "8.9.1",
-    "yarn": "1.6.0"
+    "node": "8.9.4",
+    "yarn": "1.7.0"
   }
 }

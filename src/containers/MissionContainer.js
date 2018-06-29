@@ -30,4 +30,7 @@ const mapDispatchToProps = {
   setInterruptedGroupActivated,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Mission);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Mission);

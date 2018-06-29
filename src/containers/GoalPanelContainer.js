@@ -80,4 +80,7 @@ const mapDispatchToProps = {
   vipersDenImperialGetCore,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(GoalPanel);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(GoalPanel);

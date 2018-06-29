@@ -17,4 +17,7 @@ const mapDispatchToProps = {
   setMapStateActivated,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(InteractObject);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(InteractObject);

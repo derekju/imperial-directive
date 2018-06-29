@@ -64,4 +64,7 @@ const mapDispatchToProps = {
   setVillains,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(CharacterSelection);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(CharacterSelection);

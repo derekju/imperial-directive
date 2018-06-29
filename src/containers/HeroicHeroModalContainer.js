@@ -23,4 +23,7 @@ const mapDispatchToProps = {
   setHeroActivateTwice,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(HeroicHeroModal);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(HeroicHeroModal);

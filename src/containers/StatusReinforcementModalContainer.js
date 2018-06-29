@@ -15,4 +15,7 @@ const mapDispatchToProps = {
   closeModals,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(StatusReinforcementModal);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(StatusReinforcementModal);

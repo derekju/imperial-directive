@@ -16,4 +16,7 @@ const mapDispatchToProps = {
   defeatImperialFigure,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ImperialDashboard);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ImperialDashboard);

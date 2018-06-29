@@ -16,4 +16,7 @@ const mapDispatchToProps = {
   deployGroupInteractiveModalAnswer,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ModalManager);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ModalManager);
