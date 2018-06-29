@@ -25,11 +25,16 @@ import helperDeploy from './helpers/helperDeploy';
 import helperEventModal from './helpers/helperEventModal';
 import helperInitialSetup from './helpers/helperInitialSetup';
 import helperMissionBriefing from './helpers/helperMissionBriefing';
+import missions from '../../data/missions';
 import {missionSagaLoadDone} from '../app';
+import snakeCase from 'lodash/snakeCase';
 import type {StateType} from '../types';
 import track from '../../lib/track';
 
 // Constants
+
+const MISSION_NAME = 'aftermath';
+const MISSION_NAME_S = snakeCase(MISSION_NAME).toUpperCase();
 
 const TARGET_DOOR = 'the door';
 const TARGET_TERMINAL_2 = 'terminal 2';
@@ -74,7 +79,7 @@ export default (state: AftermathStateType = initialState, action: Object) => {
         ...state,
         terminalHealth: action.payload,
       };
-    case 'AFTERMATH_PRIORITY_TARGET_KILL_HERO':
+    case `${MISSION_NAME_S}_PRIORITY_TARGET_KILL_HERO`:
       return {
         ...state,
         priorityTargetKillHero: action.payload,
@@ -86,7 +91,7 @@ export default (state: AftermathStateType = initialState, action: Object) => {
 
 // Selectors
 
-const getState = (state: StateType) => state.aftermath;
+const getState = (state: StateType) => state[MISSION_NAME];
 export const getAftermathGoalText = (state: StateType): string[] => {
   const goals = [
     '{BOLD}Terminal:{END}',
@@ -110,7 +115,7 @@ function* handleLockDownEvent(): Generator<*, *, *> {
     const action = yield take(SET_MAP_STATE_ACTIVATED);
     const {id, type, value} = action.payload;
     if (id === 1 && type === 'door' && value === true) {
-      track('aftermath', 'lockdown', 'triggered');
+      track(MISSION_NAME, 'lockdown', 'triggered');
       yield put(createAction('AFTERMATH_END_ROUND_EFFECTS', true));
       // Ok, this is the round the rebels opened the door so wait until end of round to trigger
       yield take(STATUS_PHASE_END_ROUND_EFFECTS);
@@ -121,7 +126,7 @@ function* handleLockDownEvent(): Generator<*, *, *> {
         'Lockdown'
       );
       if (answer === 'yes') {
-        track('aftermath', 'lockdown', 'rebelWest');
+        track(MISSION_NAME, 'lockdown', 'rebelWest');
         yield call(helperEventModal, {
           story: 'Sirens blare as the outpost goes into lockdown mode.',
           text: [
@@ -133,7 +138,7 @@ function* handleLockDownEvent(): Generator<*, *, *> {
         yield put(setMapStateActivated(1, 'door', false));
         yield put(setDeploymentPoint(DEPLOYMENT_POINT_RED));
       } else {
-        track('aftermath', 'lockdown', 'terminalHealth');
+        track(MISSION_NAME, 'lockdown', 'terminalHealth');
         yield call(helperEventModal, {
           story: 'Sirens blare as the outpost goes into lockdown mode.',
           text: ['Each terminal has 7 Health now instead of 4.'],
@@ -155,7 +160,7 @@ function* handleFortifiedEvent(): Generator<*, *, *> {
     const action = yield take(SET_MAP_STATE_ACTIVATED);
     const {id, type, value} = action.payload;
     if (id === 1 && type === 'door' && value === true) {
-      track('aftermath', 'fortified', 'triggered');
+      track(MISSION_NAME, 'fortified', 'triggered');
       yield call(
         helperDeploy,
         'Fortified',
@@ -184,7 +189,7 @@ function* handleSingleTerminalDestroyed(): Generator<*, *, *> {
     const action = yield take(SET_MAP_STATE_ACTIVATED);
     const {id, type, value} = action.payload;
     if (type === 'terminal' && value === true) {
-      track('aftermath', 'interaction', 'terminal', id);
+      track(MISSION_NAME, 'interaction', 'terminal', id);
       yield put(setMapStateVisible(id, type, false));
 
       if (id === 2) {
@@ -209,7 +214,7 @@ function* handleTerminalsDestroyed(): Generator<*, *, *> {
     // Now check all 4 terminals, if they are activated, then game over for rebels
     if (allActivated) {
       yield put(displayModal('REBEL_VICTORY'));
-      track('aftermath', 'victory', 'terminals');
+      track(MISSION_NAME, 'victory', 'terminals');
       // We're done
       break;
     }
@@ -225,7 +230,7 @@ function* handleRoundEnd(): Generator<*, *, *> {
     if (currentRound === 6) {
       // End game with imperial victory
       yield put(displayModal('IMPERIAL_VICTORY'));
-      track('aftermath', 'defeat', 'round');
+      track(MISSION_NAME, 'defeat', 'round');
       // We're done, don't send statusPhaseEndRoundEffects so we stall the game out on purpose
       break;
     }
@@ -240,7 +245,7 @@ function* handleRoundEnd(): Generator<*, *, *> {
 // REQUIRED SAGA
 function* handleSpecialSetup(): Generator<*, *, *> {
   yield take(MISSION_SPECIAL_SETUP);
-  yield call(helperInitialSetup, ['imperialOfficer', 'probeDroid', 'stormtrooper']);
+  yield call(helperInitialSetup, missions[MISSION_NAME].initialGroups);
   yield call(helperMissionBriefing, [
     'A Rebel figure can attack a Terminal to destroy it (Health: 4, Defense: 1 {BLOCK}). Apply +1 {BLOCK} if the terminal is adjacent to any Imperial figures.',
     'Imperial figures cannot open doors.',
@@ -268,11 +273,11 @@ export function* aftermath(): Generator<*, *, *> {
     fork(handleFortifiedEvent),
     fork(handleSingleTerminalDestroyed),
     fork(handleTerminalsDestroyed),
-    fork(handleHeroesWounded('aftermath', 'AFTERMATH_PRIORITY_TARGET_KILL_HERO')),
+    fork(handleHeroesWounded(MISSION_NAME, `${MISSION_NAME_S}_PRIORITY_TARGET_KILL_HERO`)),
     fork(handleStatusPhaseBegin),
     fork(handleRoundEnd),
   ]);
 
-  track('missionStart', 'aftermath');
+  track('missionStart', MISSION_NAME);
   yield put(missionSagaLoadDone());
 }
