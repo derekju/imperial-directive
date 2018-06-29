@@ -12,19 +12,15 @@ import {
   setAttackTarget,
   setDeploymentPoint,
   setMapStateActivated,
-  setMapStateVisible,
   setMoveTarget,
   STATUS_PHASE_END_ROUND_EFFECTS,
   statusPhaseEndRoundEffectsDone,
   updateRebelVictory,
 } from '../mission';
 import {all, call, cancel, fork, put, select, take} from 'redux-saga/effects';
-import {getMissionThreat, missionSagaLoadDone} from '../app';
 import {OPTIONAL_DEPLOYMENT_DONE, optionalDeployment} from '../imperials';
-import {REFER_CAMPAIGN_GUIDE, TARGET_HERO_CLOSEST_UNWOUNDED} from './constants';
 import createAction from '../createAction';
 import {displayModal} from '../modal';
-import getRandomItem from '../utils/getRandomItem';
 import handleHeroesWounded from './sharedSagas/handleHeroesWounded';
 import handleStatusPhaseBegin from './sharedSagas/handleStatusPhaseBegin';
 import helperCheckMapStateActivations from './helpers/helperCheckMapStateActivations';
@@ -34,7 +30,9 @@ import helperEventModal from './helpers/helperEventModal';
 import helperIncreaseThreat from './helpers/helperIncreaseThreat';
 import helperInitialSetup from './helpers/helperInitialSetup';
 import helperMissionBriefing from './helpers/helperMissionBriefing';
+import {missionSagaLoadDone} from '../app';
 import type {StateType} from '../types';
+import {TARGET_HERO_CLOSEST_UNWOUNDED} from './constants';
 import track from '../../lib/track';
 
 // Constants
