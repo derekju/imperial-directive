@@ -161,7 +161,9 @@ function* setRandomDeploymentPoint(): Generator<*, *, *> {
   } else if (hyperdriveSliced) {
     yield put(setDeploymentPoint(getRandomItem(DEPLOYMENT_POINT_BLUE_W, DEPLOYMENT_POINT_BLUE_E)));
   } else {
-    yield put(setDeploymentPoint(getRandomItem(DEPLOYMENT_POINT_GREEN_N, DEPLOYMENT_POINT_GREEN_S)));
+    yield put(
+      setDeploymentPoint(getRandomItem(DEPLOYMENT_POINT_GREEN_N, DEPLOYMENT_POINT_GREEN_S))
+    );
   }
 }
 

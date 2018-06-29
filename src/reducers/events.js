@@ -42,7 +42,9 @@ export default (state: EventsStateType = initialState, action: Object) => {
       return {
         ...state,
         activeEvent: event,
-        discardedEvents: ((state.discardedEvents.concat(state.activeEvent ? [state.activeEvent] : [])): EventType[]),
+        discardedEvents: (state.discardedEvents.concat(
+          state.activeEvent ? [state.activeEvent] : []
+        ): EventType[]),
         eventPool: without(state.eventPool, event.name),
       };
     default:

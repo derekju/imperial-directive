@@ -74,7 +74,7 @@ export default (state: FriendsOfOldStateType = initialState, action: Object) => 
     case 'FRIENDS_OF_OLD_SET_ACTIVATED_TOKEN':
       return {
         ...state,
-        activatedTokenIndexes: ((state.activatedTokenIndexes.concat([action.payload.id])): string[]),
+        activatedTokenIndexes: (state.activatedTokenIndexes.concat([action.payload.id]): string[]),
       };
     case 'FRIENDS_OF_OLD_PRIORITY_TARGET_KILL_HERO':
       return {

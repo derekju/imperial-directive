@@ -98,7 +98,7 @@ export default (state: DarkObsessionStateType = initialState, action: Object) =>
     case 'DARK_OBSESSION_DOOR_REOPENED':
       return {
         ...state,
-        reopenedDoors: ((state.reopenedDoors.concat(action.payload.doorId)): number[]),
+        reopenedDoors: (state.reopenedDoors.concat(action.payload.doorId): number[]),
       };
     default:
       return state;
