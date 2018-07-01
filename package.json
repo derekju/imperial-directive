@@ -28,7 +28,8 @@
     "babel-cli": "^6.26.0",
     "babel-preset-flow": "^6.23.0",
     "flow-bin": "0.75.0",
-    "prettier": "^1.13.7"
+    "prettier": "^1.13.7",
+    "replace-in-file": "^3.4.0"
   },
   "engines": {
     "node": "8.9.4",
