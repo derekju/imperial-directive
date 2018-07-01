@@ -157,9 +157,9 @@ function* handleOpportuneMoment(): Generator<*, *, *> {
   yield call(helperEventModal, {
     text: [
       'For the Imperials, choose the first option that is eligible:',
+      '- Move the captured officer 1 space towards the nearest Imperial figure if that would make the officer eligible for freeing the officer (no healthy heroes nearby).',
+      '- Each Imperial figure within LOS of the captured officer gains 2 movement points if any of them would be eligible for freeing the officer (no healthy heroes nearby). Use those points to move each figure adjacent to the captured officer.',
       '- Resolve the Order ability of the captured officer, choosing an Imperial figure within his LOS instead of within 2 spaces if it is possible for a unit to attack in this way.',
-      '- Each Imperial figure within LOS of the captured officer gains 2 movement points. Use those points to move each figure adjacent to the captured officer.',
-      '- Move the captured officer 1 space towards the nearest Imperial figure',
     ],
     title: 'Opportune Moment',
   });
