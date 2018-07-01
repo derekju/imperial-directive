@@ -1,9 +1,9 @@
 // @flow
 
-import {BrowserRouter as Router} from 'react-router-dom';
 import Button from './Button';
 import {LIGHT_WHITE} from '../styles/colors';
 import React from 'react';
+import {BrowserRouter as Router} from 'react-router-dom';
 
 const styles = {
   about: {

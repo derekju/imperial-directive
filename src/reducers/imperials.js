@@ -14,8 +14,8 @@ import {
 import createAction from './createAction';
 import decrementFigureFromGroup from './utils/decrementFigureFromGroup';
 import {displayModal} from './modal';
-import helperDeployGroupInteractive from './missions/helpers/helperDeployGroupInteractive';
 import filter from 'lodash/filter';
+import helperDeployGroupInteractive from './missions/helpers/helperDeployGroupInteractive';
 import last from 'lodash/last';
 import omit from 'lodash/omit';
 import populateOpenGroups from './utils/populateOpenGroups';

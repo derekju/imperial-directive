@@ -1,8 +1,6 @@
 // @flow
 
-import {addToRoster} from '../rebels';
 import {all, call, fork, put, select, take} from 'redux-saga/effects';
-import {OPTIONAL_DEPLOYMENT_DONE, optionalDeployment} from '../imperials';
 import {
   getCurrentRound,
   MISSION_SPECIAL_SETUP,
@@ -15,7 +13,9 @@ import {
   statusPhaseEndRoundEffectsDone,
 } from '../mission';
 import {getMissionThreat, missionSagaLoadDone} from '../app';
+import {OPTIONAL_DEPLOYMENT_DONE, optionalDeployment} from '../imperials';
 import {REFER_CAMPAIGN_GUIDE, TARGET_CLOSEST_REBEL} from './constants';
+import {addToRoster} from '../rebels';
 import {displayModal} from '../modal';
 import getRandomItem from '../utils/getRandomItem';
 import handleHeroesWounded from './sharedSagas/handleHeroesWounded';

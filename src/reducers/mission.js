@@ -8,7 +8,6 @@ import {
   SET_REBEL_ACTIVATED,
   SET_REBEL_ESCAPED,
 } from './rebels';
-import {getImperialRewards} from './app';
 import {
   getReadyImperialGroups,
   OPTIONAL_DEPLOYMENT_DONE,
@@ -17,6 +16,7 @@ import {
 } from './imperials';
 import createAction from './createAction';
 import {displayModal} from './modal';
+import {getImperialRewards} from './app';
 import {handleSpecialOperationsReward} from './imperialRewards';
 import helperEventModal from './missions/helpers/helperEventModal';
 import rebels from '../data/rebels.json';

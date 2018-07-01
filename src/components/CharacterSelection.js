@@ -2,12 +2,12 @@
 
 import {EXPANSIONS, IMPERIAL_REWARDS} from '../reducers/app';
 import {LIGHT_WHITE, REBEL_RED} from '../styles/colors';
-import {BrowserRouter as Router} from 'react-router-dom';
 import Button from './Button';
 import HeroAvatar from './HeroAvatar';
 import missions from '../data/missions.json';
 import React from 'react';
 import rebels from '../data/rebels.json';
+import {BrowserRouter as Router} from 'react-router-dom';
 import track from '../lib/track';
 import without from 'lodash/without';
 

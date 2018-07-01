@@ -13,6 +13,7 @@ import {
   STATUS_PHASE_END_ROUND_EFFECTS,
   statusPhaseEndRoundEffectsDone,
 } from '../mission';
+import {getMissionThreat, missionSagaLoadDone} from '../app';
 import {OPTIONAL_DEPLOYMENT_DONE, optionalDeployment} from '../imperials';
 import {REFER_CAMPAIGN_GUIDE, TARGET_REMAINING} from './constants';
 import createAction from '../createAction';
@@ -23,7 +24,6 @@ import helperEventModal from './helpers/helperEventModal';
 import helperIncreaseThreat from './helpers/helperIncreaseThreat';
 import helperInitialSetup from './helpers/helperInitialSetup';
 import helperMissionBriefing from './helpers/helperMissionBriefing';
-import {getMissionThreat, missionSagaLoadDone} from '../app';
 import type {StateType} from '../types';
 import track from '../../lib/track';
 

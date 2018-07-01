@@ -19,6 +19,7 @@ import {
 } from '../mission';
 import {getMissionThreat, missionSagaLoadDone} from '../app';
 import {OPTIONAL_DEPLOYMENT_DONE, optionalDeployment, setImperialUnitHpBuff} from '../imperials';
+import {REFER_CAMPAIGN_GUIDE, TARGET_CLOSEST_REBEL} from './constants';
 import createAction from '../createAction';
 import {displayModal} from '../modal';
 import getRandomItem from '../utils/getRandomItem';
@@ -30,7 +31,6 @@ import helperEventModal from './helpers/helperEventModal';
 import helperIncreaseThreat from './helpers/helperIncreaseThreat';
 import helperInitialSetup from './helpers/helperInitialSetup';
 import helperMissionBriefing from './helpers/helperMissionBriefing';
-import {REFER_CAMPAIGN_GUIDE, TARGET_CLOSEST_REBEL} from './constants';
 import type {StateType} from '../types';
 import track from '../../lib/track';
 

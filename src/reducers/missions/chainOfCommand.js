@@ -1,6 +1,5 @@
 // @flow
 
-import {all, call, fork, put, select, take} from 'redux-saga/effects';
 import {
   ACTIVATE_IMPERIAL_GROUP,
   clearCustomAI,
@@ -13,6 +12,7 @@ import {
   setImperialUnitHpBuff,
   silentSetImperialGroupActivated,
 } from '../imperials';
+import {all, call, fork, put, select, take} from 'redux-saga/effects';
 import {getAreAllHeroesWounded, getIsOneHeroLeft, WOUND_REBEL_HERO} from '../rebels';
 import {
   getCurrentRound,

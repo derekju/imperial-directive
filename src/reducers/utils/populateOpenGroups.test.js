@@ -1,5 +1,5 @@
-import populateOpenGroups from './populateOpenGroups';
 import missions from '../../data/missions.json';
+import populateOpenGroups from './populateOpenGroups';
 import units from '../../data/units.json';
 
 test('populateOpenGroups will pull a Tusken Raider on a desert map', () => {

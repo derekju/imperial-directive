@@ -1,5 +1,7 @@
 // @flow
 
+import {addToRoster, WOUND_REBEL_HERO, WOUND_REBEL_OTHER} from '../rebels';
+import {all, call, fork, put, select, take} from 'redux-saga/effects';
 import {
   MISSION_SPECIAL_SETUP,
   missionSpecialSetupDone,
@@ -11,8 +13,6 @@ import {
   STATUS_PHASE_END_ROUND_EFFECTS,
   statusPhaseEndRoundEffectsDone,
 } from '../mission';
-import {addToRoster, WOUND_REBEL_HERO, WOUND_REBEL_OTHER} from '../rebels';
-import {all, call, fork, put, select, take} from 'redux-saga/effects';
 import {OPTIONAL_DEPLOYMENT_DONE, optionalDeployment} from '../imperials';
 import {displayModal} from '../modal';
 import getRandomItem from '../utils/getRandomItem';

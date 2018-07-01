@@ -1,5 +1,6 @@
 // @flow
 
+import {all, call, fork, put, select, take} from 'redux-saga/effects';
 import {
   enableEscape,
   getAreAllHeroesWounded,
@@ -7,7 +8,6 @@ import {
   SET_REBEL_ESCAPED,
   WOUND_REBEL_HERO,
 } from '../rebels';
-import {all, call, fork, put, select, take} from 'redux-saga/effects';
 import {
   getCurrentRound,
   getCurrentThreat,
@@ -27,7 +27,6 @@ import {
   statusPhaseBeginDone,
   statusPhaseEndRoundEffectsDone,
 } from '../mission';
-import createAction from '../createAction';
 import {
   getDeployedGroupOfIdWithMostUnits,
   isGroupIdInDeployedGroups,
@@ -40,6 +39,7 @@ import {
   TARGET_HERO_CLOSEST_UNWOUNDED,
   TARGET_REMAINING,
 } from './constants';
+import createAction from '../createAction';
 import {displayModal} from '../modal';
 import helperChoiceModal from './helpers/helperChoiceModal';
 import helperDeploy from './helpers/helperDeploy';

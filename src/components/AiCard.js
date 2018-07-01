@@ -1,15 +1,15 @@
 // @flow
 
-import {expandText, generateTextArray, replaceAttackMoveText} from '../lib/iconSubber';
 import {ELITE_RED, IMPERIAL_BLUE, LIGHT_WHITE} from '../styles/colors';
+import {expandText, generateTextArray, replaceAttackMoveText} from '../lib/iconSubber';
 import buffs from '../data/buffs.json';
 import Button from './Button';
 import Circle from './Circle';
 import type {ImperialUnitType} from '../reducers/imperials';
 import {positionAbsolute} from '../styles/mixins';
 import random from 'lodash/random';
-import roll from '../lib/roll';
 import React from 'react';
+import roll from '../lib/roll';
 
 const styles = {
   base: {

@@ -2,8 +2,8 @@
 
 import {ACTIVATION_PHASE_BEGIN, increaseThreat} from './mission';
 import {call, put, select, take} from 'redux-saga/effects';
-import helperEventModal from './missions/helpers/helperEventModal';
 import {getCurrentGroups} from './imperials';
+import helperEventModal from './missions/helpers/helperEventModal';
 import type {ImperialUnitType} from './imperials';
 
 export function* handleSpecialOperationsReward(): Generator<*, *, *> {

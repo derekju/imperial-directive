@@ -1,13 +1,11 @@
 // @flow
 
-import {all, call, fork, put, select, take} from 'redux-saga/effects';
 import {
   ACTIVATE_IMPERIAL_GROUP,
   OPTIONAL_DEPLOYMENT_DONE,
   optionalDeployment,
   setImperialUnitHpBuff,
 } from '../imperials';
-import {getAreAllHeroesWounded, getIsOneHeroLeft, WOUND_REBEL_HERO} from '../rebels';
 import {
   ACTIVATION_PHASE_BEGIN,
   getCurrentThreat,
@@ -24,6 +22,8 @@ import {
   statusPhaseEndRoundEffectsDone,
   updateRebelVictory,
 } from '../mission';
+import {all, call, fork, put, select, take} from 'redux-saga/effects';
+import {getAreAllHeroesWounded, getIsOneHeroLeft, WOUND_REBEL_HERO} from '../rebels';
 import {getMissionThreat, missionSagaLoadDone} from '../app';
 import {REFER_CAMPAIGN_GUIDE, TARGET_HERO_CLOSEST_UNWOUNDED, TARGET_REMAINING} from './constants';
 import createAction from '../createAction';

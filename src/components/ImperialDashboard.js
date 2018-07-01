@@ -1,8 +1,8 @@
 // @flow
 
+import ImperialAvatar from './ImperialAvatar';
 import type {ImperialUnitType} from '../reducers/imperials';
 import React from 'react';
-import ImperialAvatar from './ImperialAvatar';
 
 const styles = {
   avatarWrapper: {

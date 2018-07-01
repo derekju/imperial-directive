@@ -37,9 +37,9 @@ import helperInitialSetup from './helpers/helperInitialSetup';
 import helperMissionBriefing from './helpers/helperMissionBriefing';
 import helperShowInterruptedGroup from './helpers/helperShowInterruptedGroup';
 import lowerFirst from 'lodash/lowerFirst';
-import type {StateType} from '../types';
 import {REFER_CAMPAIGN_GUIDE} from './constants';
 import roll from '../../lib/roll';
+import type {StateType} from '../types';
 import track from '../../lib/track';
 
 // Constants

@@ -1,9 +1,9 @@
 // @flow
 
+import {getRosterOfType, getWithdrawnHeroes, setHeroActivateTwice} from '../reducers/rebels';
 import {closeModals} from '../reducers/modal';
 import {connect} from 'react-redux';
 import HeroicHeroModal from '../components/modals/HeroicHeroModal';
-import {getRosterOfType, getWithdrawnHeroes, setHeroActivateTwice} from '../reducers/rebels';
 import type {StateType} from '../reducers/types';
 
 const mapStateToProps = (state: StateType) => {

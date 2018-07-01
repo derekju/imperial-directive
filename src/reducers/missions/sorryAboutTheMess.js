@@ -15,7 +15,6 @@ import {
   updateRebelVictory,
 } from '../mission';
 import {OPTIONAL_DEPLOYMENT_DONE, optionalDeployment, setImperialUnitHpBuff} from '../imperials';
-import {REFER_CAMPAIGN_GUIDE} from './constants';
 import {displayModal} from '../modal';
 import {getMissionThreat} from '../app';
 import handleImperialKilledToWin from './sharedSagas/handleImperialKilledToWin';
@@ -26,6 +25,7 @@ import helperIncreaseThreat from './helpers/helperIncreaseThreat';
 import helperInitialSetup from './helpers/helperInitialSetup';
 import helperMissionBriefing from './helpers/helperMissionBriefing';
 import {missionSagaLoadDone} from '../app';
+import {REFER_CAMPAIGN_GUIDE} from './constants';
 import type {StateType} from '../types';
 import track from '../../lib/track';
 

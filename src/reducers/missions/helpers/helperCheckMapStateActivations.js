@@ -1,7 +1,7 @@
 // @flow
 
-import {select} from 'redux-saga/effects';
 import {getMapStates} from '../../mission';
+import {select} from 'redux-saga/effects';
 
 export default function* helperCheckMapStateActivations(
   states: string[],

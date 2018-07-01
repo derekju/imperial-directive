@@ -1,6 +1,5 @@
 // @flow
 
-import {all, call, fork, put, select, take} from 'redux-saga/effects';
 import {
   addToRoster,
   enableEscape,
@@ -8,6 +7,7 @@ import {
   silentSetRebelActivated,
   WOUND_REBEL_OTHER,
 } from '../rebels';
+import {all, call, fork, put, select, take} from 'redux-saga/effects';
 import {
   getCurrentRound,
   increaseThreat,

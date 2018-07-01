@@ -2,8 +2,8 @@
 
 import mapHasDesertTile from './mapHasDesertTile';
 import type {MissionConfigType} from '../mission';
-import type {UnitConfigType} from '../imperials';
 import reduce from 'lodash/reduce';
+import type {UnitConfigType} from '../imperials';
 
 const THREAT_COST_FOR_MISSION_THREAT = {
   '2': 6,

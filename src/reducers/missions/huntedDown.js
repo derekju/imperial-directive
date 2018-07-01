@@ -1,5 +1,6 @@
 // @flow
 
+import {all, call, fork, put, select, take} from 'redux-saga/effects';
 import {
   getCurrentRound,
   MISSION_SPECIAL_SETUP,
@@ -11,8 +12,8 @@ import {
   STATUS_PHASE_END_ROUND_EFFECTS,
   statusPhaseEndRoundEffectsDone,
 } from '../mission';
-import {all, call, fork, put, select, take} from 'redux-saga/effects';
 import {OPTIONAL_DEPLOYMENT_DONE, optionalDeployment} from '../imperials';
+import {REFER_CAMPAIGN_GUIDE, TARGET_CLOSEST_REBEL} from './constants';
 import {addToRoster} from '../rebels';
 import createAction from '../createAction';
 import {displayModal} from '../modal';
@@ -25,7 +26,6 @@ import helperIncreaseThreat from './helpers/helperIncreaseThreat';
 import helperInitialSetup from './helpers/helperInitialSetup';
 import helperMissionBriefing from './helpers/helperMissionBriefing';
 import {missionSagaLoadDone} from '../app';
-import {REFER_CAMPAIGN_GUIDE, TARGET_CLOSEST_REBEL} from './constants';
 import type {StateType} from '../types';
 import track from '../../lib/track';
 

@@ -2,8 +2,8 @@
 
 import getAvailableUnitList from './getAvailableUnitList';
 import type {MissionConfigType} from '../mission';
-import type {UnitConfigType} from '../imperials';
 import shuffle from 'lodash/shuffle';
+import type {UnitConfigType} from '../imperials';
 
 export default (
   config: MissionConfigType,

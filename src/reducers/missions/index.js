@@ -1,9 +1,9 @@
 // @flow
 
+import {aftermath, getAftermathGoalText} from './aftermath';
 import {aNewThreat, getANewThreatGoalText} from './aNewThreat';
 import {armedAndOperational, getArmedAndOperationalGoalText} from './armedAndOperational';
 import {aSimpleTask, getASimpleTaskGoalText} from './aSimpleTask';
-import {aftermath, getAftermathGoalText} from './aftermath';
 import {breakingPoint, getBreakingPointGoalText} from './breakingPoint';
 import {brushfire, getBrushfireGoalText} from './brushfire';
 import {canyonRun, getCanyonRunGoalText} from './canyonRun';

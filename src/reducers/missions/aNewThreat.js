@@ -21,8 +21,8 @@ import helperDeploy from './helpers/helperDeploy';
 import helperInitialSetup from './helpers/helperInitialSetup';
 import helperMissionBriefing from './helpers/helperMissionBriefing';
 import {missionSagaLoadDone} from '../app';
-import type {StateType} from '../types';
 import shuffle from 'lodash/shuffle';
+import type {StateType} from '../types';
 import track from '../../lib/track';
 import waitForModal from '../../sagas/waitForModal';
 

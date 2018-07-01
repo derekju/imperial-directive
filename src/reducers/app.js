@@ -2,8 +2,8 @@
 
 import {cancel, fork, put, select, take} from 'redux-saga/effects';
 import createAction from './createAction';
-import {loadMission} from './mission';
 import {getVillains} from './imperials';
+import {loadMission} from './mission';
 import missions from '../data/missions';
 import missionSagas from './missions';
 import type {StateType} from './types';
