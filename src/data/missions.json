@@ -1996,6 +1996,123 @@
       "ig88", "imperialOfficerElite", "stormtrooperElite"
     ]
   },
+  "forestAmbush": {
+    "wave": "wave1",
+    "initialGroups": [
+      "nexu", "trandoshanHunter"
+    ],
+    "instructions": {
+      "imperialVictory": "At the end of Round 5 or when all heores are wounded",
+      "rebelVictory": "(to be revealed)"
+    },
+    "mapImage": [
+      ["00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "02a", "02a", "02a", "02a", "00a", "00a", "00a"],
+      ["00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "02a", "02a", "02a", "02a", "00a", "00a", "00a"],
+      ["00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "02a", "02a", "02a", "02a", "18a", "00a", "00a"],
+      ["00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "02a", "02a", "02a", "02a", "18a", "00a", "00a"],
+      ["00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "02a", "02a", "02a", "02a", "00a", "00a", "00a"],
+      ["00a", "18a", "18a", "00a", "00a", "00a", "00a", "00a", "02a", "02a", "02a", "02a", "00a", "00a", "00a"],
+      ["06a", "06a", "06a", "00a", "00a", "00a", "00a", "00a", "01a", "01a", "01a", "01a", "01a", "01a", "00a"],
+      ["06a", "06a", "06a", "06a", "04a", "04a", "04a", "04a", "01a", "01a", "01a", "01a", "01a", "01a", "00a"],
+      ["06a", "06a", "06a", "06a", "04a", "04a", "04a", "04a", "01a", "01a", "01a", "01a", "01a", "01a", "18a"],
+      ["06a", "06a", "06a", "06a", "04a", "04a", "04a", "04a", "01a", "01a", "01a", "01a", "01a", "01a", "18a"],
+      ["00a", "18a", "18a", "00a", "04a", "04a", "04a", "04a", "01a", "01a", "01a", "01a", "01a", "01a", "00a"],
+      ["00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "01a", "01a", "01a", "01a", "01a", "01a", "00a"]
+    ],
+    "mapStates": {
+      "entrance-1": {
+        "activated": false,
+        "activateText": "",
+        "coordinates": {
+          "x": 2,
+          "y": 9
+        },
+        "description": "The entrance.",
+        "id": 1,
+        "interactable": false,
+        "type": "entrance",
+        "unactivateText": "",
+        "visible": true
+      },
+      "terminal-1": {
+        "activated": false,
+        "activateText": "Interact",
+        "coordinates": {
+          "x": 8,
+          "y": 0
+        },
+        "description": "Call for an extraction.",
+        "id": 1,
+        "interactable": false,
+        "type": "terminal",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "rebel-1": {
+        "activated": false,
+        "activateText": "Claim",
+        "color": "red",
+        "coordinates": {
+          "x": 12,
+          "y": 3
+        },
+        "description": "The hidden supplies.",
+        "id": 1,
+        "interactable": false,
+        "type": "rebel",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "neutral-1": {
+        "activated": false,
+        "activateText": "Interact",
+        "coordinates": {
+          "x": 9,
+          "y": 5
+        },
+        "description": "A fallen tree.",
+        "id": 1,
+        "interactable": true,
+        "type": "neutral",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "neutral-2": {
+        "activated": false,
+        "activateText": "Interact",
+        "coordinates": {
+          "x": 10,
+          "y": 5
+        },
+        "description": "A fallen tree.",
+        "id": 2,
+        "interactable": true,
+        "type": "neutral",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "neutral-3": {
+        "activated": false,
+        "activateText": "Interact",
+        "coordinates": {
+          "x": 11,
+          "y": 5
+        },
+        "description": "A fallen tree.",
+        "id": 3,
+        "interactable": true,
+        "type": "neutral",
+        "unactivateText": "Restore",
+        "visible": true
+      }
+    },
+    "name": "Forest Ambush",
+    "noMercenaryAllowed": false,
+    "openGroups": 3,
+    "reservedGroups": [
+      "generalWeiss", "imperialOfficerElite", "probeDroidElite"
+    ]
+  },
   "friendsOfOld": {
     "initialGroups": [
       "imperialOfficer", "stormtrooper"

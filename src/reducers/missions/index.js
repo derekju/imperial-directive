@@ -14,6 +14,7 @@ import {desperateHour, getDesperateHourGoalText} from './desperateHour';
 import {drawnIn, getDrawnInGoalText} from './drawnIn';
 import {fireInTheSky, getFireInTheSkyGoalText} from './fireInTheSky';
 import {flySolo, getFlySoloGoalText} from './flySolo';
+import {forestAmbush, getForestAmbushGoalText} from './forestAmbush';
 import {friendsOfOld, getFriendsOfOldGoalText} from './friendsOfOld';
 import {generousDonations, getGenerousDonationsGoalText} from './generousDonations';
 import {highMoon, getHighMoonGoalText} from './highMoon';
@@ -58,6 +59,7 @@ export default {
   drawnIn,
   fireInTheSky,
   flySolo,
+  forestAmbush,
   friendsOfOld,
   generousDonations,
   getANewThreatGoalText,
@@ -74,6 +76,7 @@ export default {
   getDrawnInGoalText,
   getFireInTheSkyGoalText,
   getFlySoloGoalText,
+  getForestAmbushGoalText,
   getFriendsOfOldGoalText,
   getGenerousDonationsGoalText,
   getHighMoonGoalText,

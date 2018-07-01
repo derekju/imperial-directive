@@ -20,6 +20,7 @@ const mapStateToProps = (state: StateType) => ({
   currentMission: state.app.currentMission,
   desperateHourClearingReachable: state.desperateHour.missionState === 2,
   fireInTheSkyCanDepart: state.fireInTheSky.weaponsConsoleSliced,
+  forestAmbushCampEntered: state.forestAmbush.campEntered,
   generalWeissActive: state.chainOfCommand.generalWeissActive,
   generalWeissDeployed: state.chainOfCommand.generalWeissDeployed,
   generousDonationsVirusUploaded: state.generousDonations.virusUploaded,
@@ -55,6 +56,7 @@ const armedAndOperationalWarshipDestroyed = () =>
   createAction('ARMED_AND_OPERATIONAL_WARSHIP_DESTROYED');
 const pastLifeEnemiesActivateC3PO = () => createAction('PAST_LIFE_ENEMIES_ACTIVATE_C3PO');
 const fireInTheSkyDepart = () => createAction('FIRE_IN_THE_SKY_DEPART');
+const forestAmbushSetCampEntered = () => createAction('FOREST_AMBUSH_CAMP_ENTERED');
 
 const mapDispatchToProps = {
   armedAndOperationalWarshipDestroyed,
@@ -63,6 +65,7 @@ const mapDispatchToProps = {
   chainOfCommandWeissEntered,
   desperateHourEnteredClearing,
   fireInTheSkyDepart,
+  forestAmbushSetCampEntered,
   generousDonationsTerminalDestroyed,
   incomingEnterCorridor,
   lastStandVaderBlock,

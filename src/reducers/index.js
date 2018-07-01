@@ -14,6 +14,7 @@ import drawnIn from './missions/drawnIn';
 import events from './events';
 import fireInTheSky from './missions/fireInTheSky';
 import flySolo from './missions/flySolo';
+import forestAmbush from './missions/forestAmbush';
 import friendsOfOld from './missions/friendsOfOld';
 import generousDonations from './missions/generousDonations';
 import highMoon from './missions/highMoon';
@@ -57,6 +58,7 @@ export default {
   events,
   fireInTheSky,
   flySolo,
+  forestAmbush,
   friendsOfOld,
   generousDonations,
   highMoon,

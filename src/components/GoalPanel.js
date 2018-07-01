@@ -35,6 +35,8 @@ type GoalPanelPropsType = {
   desperateHourEnteredClearing: Function,
   fireInTheSkyCanDepart: boolean,
   fireInTheSkyDepart: Function,
+  forestAmbushCampEntered: boolean,
+  forestAmbushSetCampEntered: Function,
   generalWeissActive: boolean,
   generalWeissDeployed: boolean,
   generousDonationsTerminalDestroyed: Function,
@@ -340,6 +342,25 @@ class GoalPanel extends React.Component<GoalPanelPropsType, GoalPanelStateType> 
       return (
         <div style={styles.buttonContainer}>
           <Button text="Depart" width={180} onClick={this.props.fireInTheSkyDepart} />
+        </div>
+      );
+    } else if (currentMission === 'forestAmbush' && !this.props.forestAmbushCampEntered) {
+      const forestAmbushCampText = [
+        '{BOLD}Camp Entry:{END}',
+        'Click the bottom button once a hero has entered the camp.',
+        '{BREAK}',
+      ];
+
+      return (
+        <div>
+          <div style={styles.contents}>{this.renderGoals(forestAmbushCampText)}</div>
+          <div style={styles.buttonContainer}>
+            <Button
+              text="Camp Entered"
+              width={180}
+              onClick={this.props.forestAmbushSetCampEntered}
+            />
+          </div>
         </div>
       );
     }
