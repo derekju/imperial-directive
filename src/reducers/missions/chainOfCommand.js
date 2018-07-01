@@ -3,8 +3,8 @@
 import {all, call, fork, put, select, take} from 'redux-saga/effects';
 import {
   ACTIVATE_IMPERIAL_GROUP,
-  DEFEAT_IMPERIAL_FIGURE,
   clearCustomAI,
+  DEFEAT_IMPERIAL_FIGURE,
   defeatImperialFigure,
   getLastDeployedGroupOfId,
   setCustomAI,

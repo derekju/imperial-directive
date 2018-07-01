@@ -31,8 +31,8 @@ import createAction from '../createAction';
 import {
   getDeployedGroupOfIdWithMostUnits,
   isGroupIdInDeployedGroups,
-  setInterruptedGroup,
   SET_INTERRUPTED_GROUP,
+  setInterruptedGroup,
 } from '../imperials';
 import {
   REFER_CAMPAIGN_GUIDE,

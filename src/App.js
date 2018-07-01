@@ -1,6 +1,6 @@
 // @flow
 
-import {BrowserRouter as Router, Route} from 'react-router-dom';
+import {Route, BrowserRouter as Router} from 'react-router-dom';
 import CharacterSelectionContainer from './containers/CharacterSelectionContainer';
 import MissionContainer from './containers/MissionContainer';
 import React from 'react';

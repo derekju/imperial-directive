@@ -5,8 +5,8 @@ import {
   getAllyChosen,
   getIsThereReadyRebelFigures,
   getRosterOfType,
-  SET_REBEL_ESCAPED,
   SET_REBEL_ACTIVATED,
+  SET_REBEL_ESCAPED,
 } from './rebels';
 import {getImperialRewards} from './app';
 import {

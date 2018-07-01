@@ -1,7 +1,7 @@
 // @flow
 
 import {put, select, takeEvery} from 'redux-saga/effects';
-import {eventPhaseEnd, EVENT_PHASE_BEGIN} from './mission';
+import {EVENT_PHASE_BEGIN, eventPhaseEnd} from './mission';
 import {displayModal} from './modal';
 import random from 'lodash/random';
 import type {StateType} from './types';

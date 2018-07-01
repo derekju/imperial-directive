@@ -1,6 +1,6 @@
 // @flow
 
-import {closeModals, choiceModalAnswer, deployGroupInteractiveModalAnswer} from '../reducers/modal';
+import {choiceModalAnswer, closeModals, deployGroupInteractiveModalAnswer} from '../reducers/modal';
 import {connect} from 'react-redux';
 import ModalManager from '../components/ModalManager';
 import type {StateType} from '../reducers/types';

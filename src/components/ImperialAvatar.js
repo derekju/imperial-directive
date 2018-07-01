@@ -1,6 +1,6 @@
 // @flow
 
-import {ELITE_RED, LIGHT_WHITE, IMPERIAL_BLUE, SUCCESS_GREEN} from '../styles/colors';
+import {ELITE_RED, IMPERIAL_BLUE, LIGHT_WHITE, SUCCESS_GREEN} from '../styles/colors';
 import Arrow from 'react-svg-arrow';
 import Button from './Button';
 import Circle from './Circle';

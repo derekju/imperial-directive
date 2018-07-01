@@ -17,32 +17,32 @@ import {flySolo, getFlySoloGoalText} from './flySolo';
 import {forestAmbush, getForestAmbushGoalText} from './forestAmbush';
 import {friendsOfOld, getFriendsOfOldGoalText} from './friendsOfOld';
 import {generousDonations, getGenerousDonationsGoalText} from './generousDonations';
-import {highMoon, getHighMoonGoalText} from './highMoon';
-import {homecoming, getHomecomingGoalText} from './homecoming';
-import {huntedDown, getHuntedDownGoalText} from './huntedDown';
-import {imperialHospitality, getImperialHospitalityGoalText} from './imperialHospitality';
-import {impounded, getImpoundedGoalText} from './impounded';
-import {incoming, getIncomingGoalText} from './incoming';
-import {indebted, getIndebtedGoalText} from './indebted';
-import {infiltrated, getInfiltratedGoalText} from './infiltrated';
-import {lastStand, getLastStandGoalText} from './lastStand';
-import {looseCannon, getLooseCannonGoalText} from './looseCannon';
-import {luxuryCruise, getLuxuryCruiseGoalText} from './luxuryCruise';
-import {meansOfProduction, getMeansOfProductionGoalText} from './meansOfProduction';
-import {pastLifeEnemies, getPastLifeEnemiesGoalText} from './pastLifeEnemies';
-import {shadyDealings, getShadyDealingsGoalText} from './shadyDealings';
-import {sorryAboutTheMess, getSorryAboutTheMessGoalText} from './sorryAboutTheMess';
+import {getHighMoonGoalText, highMoon} from './highMoon';
+import {getHomecomingGoalText, homecoming} from './homecoming';
+import {getHuntedDownGoalText, huntedDown} from './huntedDown';
+import {getImperialHospitalityGoalText, imperialHospitality} from './imperialHospitality';
+import {getImpoundedGoalText, impounded} from './impounded';
+import {getIncomingGoalText, incoming} from './incoming';
+import {getIndebtedGoalText, indebted} from './indebted';
+import {getInfiltratedGoalText, infiltrated} from './infiltrated';
+import {getLastStandGoalText, lastStand} from './lastStand';
+import {getLooseCannonGoalText, looseCannon} from './looseCannon';
+import {getLuxuryCruiseGoalText, luxuryCruise} from './luxuryCruise';
+import {getMeansOfProductionGoalText, meansOfProduction} from './meansOfProduction';
+import {getPastLifeEnemiesGoalText, pastLifeEnemies} from './pastLifeEnemies';
+import {getShadyDealingsGoalText, shadyDealings} from './shadyDealings';
+import {getSorryAboutTheMessGoalText, sorryAboutTheMess} from './sorryAboutTheMess';
 import {
-  sympathyForTheRebellion,
   getSympathyForTheRebellionGoalText,
+  sympathyForTheRebellion,
 } from './sympathyForTheRebellion';
-import {targetOfOpportunity, getTargetOfOpportunityGoalText} from './targetOfOpportunity';
-import {temptation, getTemptationGoalText} from './temptation';
-import {theSource, getTheSourceGoalText} from './theSource';
-import {theSpiceJob, getTheSpiceJobGoalText} from './theSpiceJob';
-import {underSiege, getUnderSiegeGoalText} from './underSiege';
-import {vipersDen, getVipersDenGoalText} from './vipersDen';
-import {wanted, getWantedGoalText} from './wanted';
+import {getTargetOfOpportunityGoalText, targetOfOpportunity} from './targetOfOpportunity';
+import {getTemptationGoalText, temptation} from './temptation';
+import {getTheSourceGoalText, theSource} from './theSource';
+import {getTheSpiceJobGoalText, theSpiceJob} from './theSpiceJob';
+import {getUnderSiegeGoalText, underSiege} from './underSiege';
+import {getVipersDenGoalText, vipersDen} from './vipersDen';
+import {getWantedGoalText, wanted} from './wanted';
 
 export default {
   aNewThreat,

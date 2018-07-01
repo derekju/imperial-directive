@@ -6,10 +6,10 @@ import {
   getCurrentThreat,
   LOAD_MISSION,
   PLAYER_IMPERIALS,
-  statusPhaseDeployReinforceDone,
   STATUS_PHASE_DEPLOY_REINFORCE,
   STATUS_PHASE_END_ROUND_EFFECTS,
   STATUS_PHASE_READY_GROUPS,
+  statusPhaseDeployReinforceDone,
 } from './mission';
 import createAction from './createAction';
 import decrementFigureFromGroup from './utils/decrementFigureFromGroup';
