@@ -125,7 +125,7 @@ function* handleOnBoard(): Generator<*, *, *> {
         'On Board',
         REFER_CAMPAIGN_GUIDE,
         ['An {ELITE}Elite Stormtrooper{END} group and an Imperial Officer will now be deployed.'],
-        ['stormtrooperElite', 'Deploy to the center of the Security Station.'],
+        ['stormtrooperElite', 'Deploy to the center of the Security Station (tile 21A).'],
         ['imperialOfficer', 'Deploy adjacent to the terminal.']
       );
       // We're done
@@ -157,9 +157,9 @@ function* handleOpportuneMoment(): Generator<*, *, *> {
   yield call(helperEventModal, {
     text: [
       'For the Imperials, choose the first option that is eligible:',
-      '- Move the captured officer 1 space towards the nearest Imperial figure if that would make the officer eligible for freeing the officer (no healthy heroes nearby).',
+      '- Move the captured officer 1 space towards the nearest Imperial figure if that would make the officer eligible for freeing the officer (no healthy heroes within 3 spaces).',
       '- Each Imperial figure within LOS of the captured officer gains 2 movement points if any of them would be eligible for freeing the officer (no healthy heroes nearby). Use those points to move each figure adjacent to the captured officer.',
-      '- Resolve the Order ability of the captured officer, choosing an Imperial figure within his LOS instead of within 2 spaces if it is possible for a unit to attack in this way.',
+      '- Resolve the Order ability of the captured officer, choosing an Imperial figure within his LOS instead of within 2 spaces if it is possible for a unit to attack in this way. The target should be the closest to wounded hero or any Rebel figure.',
     ],
     title: 'Opportune Moment',
   });
