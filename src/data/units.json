@@ -343,6 +343,39 @@
     "threat": 12,
     "unique": true
   },
+  "ig88Copy": {
+    "affiliation": "mission",
+    "attributes": ["droid", "hunter"],
+    "buffs": ["criticalHit", "recovery", "showOfForce", "combatVeteran"],
+    "commands": [
+      {
+        "condition": "If within 6 spaces and have LOS of {ATTACK_TARGET}",
+        "command": "{ACTION} Attack {ATTACK_TARGET}, then move towards {MOVE_TARGET}."
+      },
+      {
+        "condition": "If not within 6 spaces of {ATTACK_TARGET}",
+        "command": "{ACTION} Move within 2 spaces and LOS of {ATTACK_TARGET}."
+      },
+      {
+        "condition": "Reaction - If declaring an attack against a figure within 3 spaces",
+        "command": "Use Relentless ability."
+      },
+      {
+        "condition": "Reaction - Arsenel ability",
+        "command": "If within 2 spaces, use 2 red dice. Otherwise, use one blue and one green die."
+      }
+    ],
+    "eligibleForHpBoost": false,
+    "elite": true,
+    "hpBoosts": {},
+    "id": "ig88Copy",
+    "maxDeployed": 1,
+    "maxInGroup": 1,
+    "name": "IG-88 Copy",
+    "reinforcementCost": -1,
+    "threat": 99,
+    "unique": true
+  },
   "imperialOfficer": {
     "affiliation": "imperial",
     "attributes": ["leader"],

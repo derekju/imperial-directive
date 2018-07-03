@@ -3,6 +3,7 @@
 import type {AftermathStateType} from './missions/aftermath';
 import type {AppStateType} from './app';
 import type {ArmedAndOperationalStateType} from './missions/armedAndOperational';
+import type {BinaryRevolutionStateType} from './missions/binaryRevolution';
 import type {BreakingPointStateType} from './missions/breakingPoint';
 import type {BrushfireStateType} from './missions/brushfire';
 import type {CanyonRunStateType} from './missions/canyonRun';
@@ -47,6 +48,7 @@ export type StateType = {
   aftermath: AftermathStateType,
   app: AppStateType,
   armedAndOperational: ArmedAndOperationalStateType,
+  binaryRevolution: BinaryRevolutionStateType,
   breakingPoint: BreakingPointStateType,
   brushfire: BrushfireStateType,
   canyonRun: CanyonRunStateType,

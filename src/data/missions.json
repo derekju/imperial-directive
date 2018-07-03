@@ -435,6 +435,76 @@
       "imperialOfficer", "stormtrooper"
     ]
   },
+  "binaryRevolution": {
+    "wave": "wave1",
+    "initialGroups": [
+      "probeDroid"
+    ],
+    "instructions": {
+      "imperialVictory": "At the end of Round 6 or when all heores are wounded",
+      "rebelVictory": "(to be revealed)"
+    },
+    "mapImage": [
+      ["00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "23a", "23a", "23a", "23a"],
+      ["00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "32a", "32a", "23a", "23a", "23a", "23a"],
+      ["00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "32a", "32a", "23a", "23a", "23a", "23a"],
+      ["00a", "00a", "00a", "28a", "28a", "28a", "35a", "30a", "30a", "30a", "30a", "32a", "32a", "23a", "23a", "23a", "23a"],
+      ["00a", "00a", "00a", "28a", "28a", "28a", "35a", "30a", "30a", "30a", "30a", "32a", "32a", "24a", "24a", "24a", "00a"],
+      ["00a", "00a", "00a", "28a", "28a", "28a", "00a", "22a", "22a", "22a", "22a", "00a", "24a", "24a", "24a", "24a", "00a"],
+      ["36a", "27a", "27a", "27a", "27a", "27a", "27a", "22a", "22a", "22a", "22a", "35a", "24a", "24a", "24a", "24a", "00a"],
+      ["36a", "27a", "27a", "27a", "27a", "27a", "27a", "22a", "22a", "22a", "22a", "35a", "24a", "24a", "24a", "00a", "00a"],
+      ["00a", "00a", "00a", "00a", "00a", "00a", "00a", "22a", "22a", "22a", "22a", "00a", "00a", "00a", "00a", "00a", "00a"]
+    ],
+    "mapStates": {
+      "entrance-1": {
+        "activated": false,
+        "activateText": "",
+        "coordinates": {
+          "x": 0,
+          "y": 6
+        },
+        "description": "The entrance.",
+        "id": 1,
+        "interactable": false,
+        "type": "entrance",
+        "unactivateText": "",
+        "visible": true
+      },
+      "door-1": {
+        "activated": false,
+        "activateText": "Destroy",
+        "coordinates": {
+          "x": 10,
+          "y": 3
+        },
+        "description": "Door to the inner areas.",
+        "id": 1,
+        "interactable": true,
+        "type": "door",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "door-2": {
+        "activated": false,
+        "activateText": "Destroy",
+        "coordinates": {
+          "x": 11,
+          "y": 6
+        },
+        "description": "Door to the inner areas.",
+        "id": 2,
+        "interactable": true,
+        "type": "door",
+        "unactivateText": "Restore",
+        "visible": true
+      }
+    },
+    "name": "Binary Revolution",
+    "noAllowedAttributes": ["creature"],
+    "noMercenaryAllowed": false,
+    "openGroups": 3,
+    "reservedGroups": []
+  },
   "breakingPoint": {
     "initialGroups": ["royalGuard"],
     "instructions": {

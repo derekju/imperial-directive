@@ -3,6 +3,7 @@
 import aftermath from './missions/aftermath';
 import app from './app';
 import armedAndOperational from './missions/armedAndOperational';
+import binaryRevolution from './missions/binaryRevolution';
 import breakingPoint from './missions/breakingPoint';
 import brushfire from './missions/brushfire';
 import canyonRun from './missions/canyonRun';
@@ -47,6 +48,7 @@ export default {
   aftermath,
   app,
   armedAndOperational,
+  binaryRevolution,
   breakingPoint,
   brushfire,
   canyonRun,
