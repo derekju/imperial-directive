@@ -12,6 +12,7 @@ import {
   setDeploymentPoint,
   setMapStateActivated,
   setMapStateInteractable,
+  setMapStateVisible,
   setMoveTarget,
   STATUS_PHASE_END_ROUND_EFFECTS,
   statusPhaseEndRoundEffectsDone,
@@ -203,6 +204,33 @@ function* handleC3PODefeated(): Generator<*, *, *> {
   }
 }
 
+function* handleTerminal1Discarded(): Generator<*, *, *> {
+  yield take('PAST_LIFE_ENEMIES_DISCARD_TERMINAL_1');
+  yield put(setMapStateVisible(1, 'terminal', false));
+  yield call(helperEventModal, {
+    text: ['Terminal 1 has been discarded.'],
+    title: 'Past Life Enemies',
+  });
+}
+
+function* handleTerminal2Discarded(): Generator<*, *, *> {
+  yield take('PAST_LIFE_ENEMIES_DISCARD_TERMINAL_2');
+  yield put(setMapStateVisible(2, 'terminal', false));
+  yield call(helperEventModal, {
+    text: ['Terminal 2 has been discarded.'],
+    title: 'Past Life Enemies',
+  });
+}
+
+function* handleTerminal3Discarded(): Generator<*, *, *> {
+  yield take('PAST_LIFE_ENEMIES_DISCARD_TERMINAL_3');
+  yield put(setMapStateVisible(3, 'terminal', false));
+  yield call(helperEventModal, {
+    text: ['Terminal 3 has been discarded.'],
+    title: 'Past Life Enemies',
+  });
+}
+
 // REQUIRED SAGA
 function* handleRoundEnd(): Generator<*, *, *> {
   while (true) {
@@ -284,6 +312,9 @@ export function* pastLifeEnemies(): Generator<*, *, *> {
     fork(handleImperialKilledToWin('kaynSomos', 'pastLifeEnemies')),
     fork(handleC3PO),
     fork(handleC3PODefeated),
+    fork(handleTerminal1Discarded),
+    fork(handleTerminal2Discarded),
+    fork(handleTerminal3Discarded),
     fork(handleHeroesWounded('pastLifeEnemies', 'PAST_LIFE_ENEMIES_PRIORITY_TARGET_KILL_HERO')),
     fork(handleStatusPhaseBegin),
     fork(handleRoundEnd),

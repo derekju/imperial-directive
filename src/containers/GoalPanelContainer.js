@@ -55,6 +55,9 @@ const sympathyForTheRebellionImperialDone = () =>
 const armedAndOperationalWarshipDestroyed = () =>
   createAction('ARMED_AND_OPERATIONAL_WARSHIP_DESTROYED');
 const pastLifeEnemiesActivateC3PO = () => createAction('PAST_LIFE_ENEMIES_ACTIVATE_C3PO');
+const pastLifeEnemiesDiscardTerminal1 = () => createAction('PAST_LIFE_ENEMIES_DISCARD_TERMINAL_1');
+const pastLifeEnemiesDiscardTerminal2 = () => createAction('PAST_LIFE_ENEMIES_DISCARD_TERMINAL_2');
+const pastLifeEnemiesDiscardTerminal3 = () => createAction('PAST_LIFE_ENEMIES_DISCARD_TERMINAL_3');
 const fireInTheSkyDepart = () => createAction('FIRE_IN_THE_SKY_DEPART');
 const forestAmbushSetCampEntered = () => createAction('FOREST_AMBUSH_CAMP_ENTERED');
 
@@ -71,6 +74,9 @@ const mapDispatchToProps = {
   lastStandVaderBlock,
   looseCannonDefeatAtst,
   pastLifeEnemiesActivateC3PO,
+  pastLifeEnemiesDiscardTerminal1,
+  pastLifeEnemiesDiscardTerminal2,
+  pastLifeEnemiesDiscardTerminal3,
   spiceJobGetKeycard,
   sympathyForTheRebellionHeroClaim,
   sympathyForTheRebellionImperialClaim,

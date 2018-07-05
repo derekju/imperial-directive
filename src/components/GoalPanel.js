@@ -47,6 +47,9 @@ type GoalPanelPropsType = {
   lastStandVaderDeployed: boolean,
   looseCannonDefeatAtst: Function,
   pastLifeEnemiesActivateC3PO: Function,
+  pastLifeEnemiesDiscardTerminal1: Function,
+  pastLifeEnemiesDiscardTerminal2: Function,
+  pastLifeEnemiesDiscardTerminal3: Function,
   rewardOldWoundsEarned: boolean,
   spiceJobGetKeycard: Function,
   sympathyForTheRebellionHeroClaim: Function,
@@ -329,13 +332,39 @@ class GoalPanel extends React.Component<GoalPanelPropsType, GoalPanelStateType> 
         </div>
       );
     } else if (currentMission === 'pastLifeEnemies') {
+      const pastLifeEnemiesTerminalText = ['{BREAK}', '{BOLD}Destroy Terminals:{END}'];
+
       return (
-        <div style={styles.buttonContainer}>
-          <Button
-            text="Activate C3PO"
-            width={180}
-            onClick={this.props.pastLifeEnemiesActivateC3PO}
-          />
+        <div>
+          <div style={styles.buttonContainer}>
+            <Button
+              text="Activate C3PO"
+              width={180}
+              onClick={this.props.pastLifeEnemiesActivateC3PO}
+            />
+          </div>
+          <div style={styles.contents}>{this.renderGoals(pastLifeEnemiesTerminalText)}</div>
+          <div style={styles.buttonContainer}>
+            <Button
+              text="Destroy Terminal 1"
+              width={180}
+              onClick={this.props.pastLifeEnemiesDiscardTerminal1}
+            />
+          </div>
+          <div style={styles.buttonContainer}>
+            <Button
+              text="Destroy Terminal 2"
+              width={180}
+              onClick={this.props.pastLifeEnemiesDiscardTerminal2}
+            />
+          </div>
+          <div style={styles.buttonContainer}>
+            <Button
+              text="Destroy Terminal 3"
+              width={180}
+              onClick={this.props.pastLifeEnemiesDiscardTerminal3}
+            />
+          </div>
         </div>
       );
     } else if (currentMission === 'fireInTheSky' && this.props.fireInTheSkyCanDepart) {
