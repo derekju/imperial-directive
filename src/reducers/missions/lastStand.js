@@ -45,7 +45,7 @@ const TARGET_DOOR_2 = 'door 2';
 const TARGET_DOOR_3_4 = 'door 3 or 4 (whichever nearest)';
 
 const DEPLOYMENT_POINT_GREEN = 'The green deployment point next to Door 1';
-const DEPLOYMENT_POINT_BLUE = 'The blue deployment point';
+const DEPLOYMENT_POINT_BLUE = 'The blue deployment point in the Warehouse (tile 24B)';
 const DEPLOYMENT_POINT_YELLOW = 'The yellow deployment point in the Medical Center';
 
 // Types
@@ -133,8 +133,8 @@ function* handleWelcomingPartyEvent(): Generator<*, *, *> {
         'Welcoming Party',
         REFER_CAMPAIGN_GUIDE,
         ['An {ELITE}Elite Royal Guard{END} group and Probe Droid will now be deployed.'],
-        ['royalGuardElite', 'Deploy to the right edge of the Warehouse.'],
-        ['probeDroid', 'Deploy to the right edge of the Warehouse.']
+        ['royalGuardElite', 'Deploy to the right edge of the Warehouse (tile 24B).'],
+        ['probeDroid', 'Deploy to the right edge of the Warehouse (tile 24B).']
       );
 
       yield put(createAction('LAST_STAND_DOOR_OPEN', {doorNumber: 1}));
