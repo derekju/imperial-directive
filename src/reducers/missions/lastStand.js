@@ -19,6 +19,7 @@ import {
 import {all, call, fork, put, select, take} from 'redux-saga/effects';
 import {
   getLastDeployedGroupOfId,
+  setCustomUnitAI,
   setImperialUnitHpBuff,
   silentSetImperialGroupActivated,
 } from '../imperials';
@@ -47,6 +48,33 @@ const TARGET_DOOR_3_4 = 'door 3 or 4 (whichever nearest)';
 const DEPLOYMENT_POINT_GREEN = 'The green deployment point next to Door 1';
 const DEPLOYMENT_POINT_BLUE = 'The blue deployment point in the Warehouse (tile 24B)';
 const DEPLOYMENT_POINT_YELLOW = 'The yellow deployment point in the Medical Center';
+
+const CUSTOM_AI_VADER = [
+  {
+    "command": "{ACTION} Use Brutality ability to attack those targets.",
+    "condition": "If adjacent to 2 hostile figures (one being {ATTACK_TARGET})"
+  },
+  {
+    "command": "{ACTION} Attack {ATTACK_TARGET}.",
+    "condition": "If adjacent to {ATTACK_TARGET}"
+  },
+  {
+    "command": "{ACTION} Move adjacent to {ATTACK_TARGET}.",
+    "condition": "If within 4 spaces and have LOS of {ATTACK_TARGET}"
+  },
+  {
+    "command": "{ACTION} Use Force Choke ability on {ATTACK_TARGET}.",
+    "condition": "If not within 4 spaces of {ATTACK_TARGET} but have LOS"
+  },
+  {
+    "command": "{ACTION} Move towards {ATTACK_TARGET}.",
+    "condition": "If not within 4 spaces of {ATTACK_TARGET}"
+  },
+  {
+    "command": "If {EVADE} does nothing, reroll it. Otherwise, reroll a die with 1 {BLOCK}.",
+    "condition": "Reaction - While defending"
+  }
+]
 
 // Types
 
@@ -131,7 +159,7 @@ function* handleWelcomingPartyEvent(): Generator<*, *, *> {
       yield call(
         helperDeploy,
         'Welcoming Party',
-        REFER_CAMPAIGN_GUIDE,
+        '',
         ['An {ELITE}Elite Royal Guard{END} group and Probe Droid will now be deployed.'],
         ['royalGuardElite', 'Deploy to the right edge of the Warehouse (tile 24B).'],
         ['probeDroid', 'Deploy to the right edge of the Warehouse (tile 24B).']
@@ -157,11 +185,11 @@ function* handleDefensesBreachedEvent(): Generator<*, *, *> {
       yield call(
         helperDeploy,
         'Defenses Breached',
-        REFER_CAMPAIGN_GUIDE,
+        '',
         ['An Imperial Officer, Probe Droid, and a Stormtrooper group will now be deployed.'],
-        ['imperialOfficer', 'Deploy to the top edge of the Medical Center.'],
-        ['probeDroid', 'Deploy to the top edge of the Medical Center.'],
-        ['stormtrooper', 'Deploy to the right edge of the Reception Chamber.']
+        ['imperialOfficer', 'Deploy to the top edge of the Medical Center (tile 20A).'],
+        ['probeDroid', 'Deploy to the top edge of the Medical Center (tile 20A).'],
+        ['stormtrooper', 'Deploy to the right edge of the Reception Chamber (tile 28A).']
       );
 
       yield put(createAction('LAST_STAND_DOOR_OPEN', {doorNumber: 2}));
@@ -201,6 +229,8 @@ function* handleEndOfTheLineEvent(): Generator<*, *, *> {
       yield put(updateRebelVictory('When Darth Vader is defeated'));
       yield put(createAction('LAST_STAND_DOOR_OPEN', {doorNumber: 3}));
       yield put(setMoveTarget(TARGET_HERO_CLOSEST_UNWOUNDED));
+      // Since he only gets one action per activation
+      yield put(setCustomUnitAI('darthVader', CUSTOM_AI_VADER));
 
       // Manually set him as activated so he doesn't activate as normal after this time
       const group = yield select(getLastDeployedGroupOfId, 'darthVader');
