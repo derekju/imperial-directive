@@ -9,6 +9,7 @@ import React from 'react';
 import rebels from '../data/rebels.json';
 import {BrowserRouter as Router} from 'react-router-dom';
 import track from '../lib/track';
+import units from '../data/units.json';
 import without from 'lodash/without';
 
 const styles = {
@@ -361,12 +362,14 @@ class CharacterSelection extends React.Component<
             Select which villains the Imperials have unlocked during the campaign.
           </div>
           <div style={styles.toggleSection}>
-            <div>
-              <input type="checkbox" id="darthVader" />
-              <label style={styles.label} htmlFor="darthVader">
-                Darth Vader
-              </label>
-            </div>
+            {this.props.availableVillains.map((villainId: string) => (
+              <div>
+                <input type="checkbox" id={villainId} />
+                <label style={styles.label} htmlFor={villainId}>
+                  {units[villainId].name}
+                </label>
+              </div>
+            ))}
           </div>
         </div>
       </div>

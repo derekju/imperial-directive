@@ -8,7 +8,7 @@ import type {UnitConfigType} from '../imperials';
 const THREAT_COST_FOR_MISSION_THREAT = {
   '2': 6,
   '3': 8,
-  '4': 12,
+  '4': 15,
   '5': 99,
   '6': 99,
 };

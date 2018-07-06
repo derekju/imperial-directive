@@ -49,7 +49,7 @@ const mapStateToProps = (state: StateType) => {
       .concat(wave1Missions)
       .concat(['--- TWIN SHADOWS ---'])
       .concat(twinShadowsMissions),
-    availableVillains: ['darthVader'],
+    availableVillains: ['darthVader', 'generalWeiss', 'ig88', 'royalGuardChampion'],
   };
 };
 
