@@ -17,7 +17,7 @@
     "build": "react-scripts build",
     "eject": "react-scripts eject",
     "flow": "flow check",
-    "gen-new-mission": "node ./scripts/gen-new-mission.js",
+    "gen-mission": "node ./scripts/gen-mission.js",
     "lint": "node node_modules/eslint/bin/eslint.js src/",
     "lint-fix": "node node_modules/eslint/bin/eslint.js --fix src/",
     "prettier": "prettier --write \"src/**/*.js\"",

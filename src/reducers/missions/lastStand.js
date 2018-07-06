@@ -51,30 +51,30 @@ const DEPLOYMENT_POINT_YELLOW = 'The yellow deployment point in the Medical Cent
 
 const CUSTOM_AI_VADER = [
   {
-    "command": "{ACTION} Use Brutality ability to attack those targets.",
-    "condition": "If adjacent to 2 hostile figures (one being {ATTACK_TARGET})"
+    command: '{ACTION} Use Brutality ability to attack those targets.',
+    condition: 'If adjacent to 2 hostile figures (one being {ATTACK_TARGET})',
   },
   {
-    "command": "{ACTION} Attack {ATTACK_TARGET}.",
-    "condition": "If adjacent to {ATTACK_TARGET}"
+    command: '{ACTION} Attack {ATTACK_TARGET}.',
+    condition: 'If adjacent to {ATTACK_TARGET}',
   },
   {
-    "command": "{ACTION} Move adjacent to {ATTACK_TARGET}.",
-    "condition": "If within 4 spaces and have LOS of {ATTACK_TARGET}"
+    command: '{ACTION} Move adjacent to {ATTACK_TARGET}.',
+    condition: 'If within 4 spaces and have LOS of {ATTACK_TARGET}',
   },
   {
-    "command": "{ACTION} Use Force Choke ability on {ATTACK_TARGET}.",
-    "condition": "If not within 4 spaces of {ATTACK_TARGET} but have LOS"
+    command: '{ACTION} Use Force Choke ability on {ATTACK_TARGET}.',
+    condition: 'If not within 4 spaces of {ATTACK_TARGET} but have LOS',
   },
   {
-    "command": "{ACTION} Move towards {ATTACK_TARGET}.",
-    "condition": "If not within 4 spaces of {ATTACK_TARGET}"
+    command: '{ACTION} Move towards {ATTACK_TARGET}.',
+    condition: 'If not within 4 spaces of {ATTACK_TARGET}',
   },
   {
-    "command": "If {EVADE} does nothing, reroll it. Otherwise, reroll a die with 1 {BLOCK}.",
-    "condition": "Reaction - While defending"
-  }
-]
+    command: 'If {EVADE} does nothing, reroll it. Otherwise, reroll a die with 1 {BLOCK}.',
+    condition: 'Reaction - While defending',
+  },
+];
 
 // Types
 

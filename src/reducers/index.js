@@ -26,6 +26,7 @@ import imperials from './imperials';
 import impounded from './missions/impounded';
 import incoming from './missions/incoming';
 import indebted from './missions/indebted';
+import infection from './missions/infection';
 import infiltrated from './missions/infiltrated';
 import lastStand from './missions/lastStand';
 import looseCannon from './missions/looseCannon';
@@ -71,6 +72,7 @@ export default {
   impounded,
   incoming,
   indebted,
+  infection,
   infiltrated,
   lastStand,
   looseCannon,

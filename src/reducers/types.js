@@ -26,6 +26,7 @@ import type {ImperialsStateType} from './imperials';
 import type {ImpoundedStateType} from './missions/impounded';
 import type {IncomingStateType} from './missions/incoming';
 import type {IndebtedStateType} from './missions/indebted';
+import type {InfectionStateType} from './missions/infection';
 import type {InfiltratedStateType} from './missions/infiltrated';
 import type {LastStandStateType} from './missions/lastStand';
 import type {LooseCannonStateType} from './missions/looseCannon';
@@ -71,6 +72,7 @@ export type StateType = {
   impounded: ImpoundedStateType,
   incoming: IncomingStateType,
   indebted: IndebtedStateType,
+  infection: InfectionStateType,
   infiltrated: InfiltratedStateType,
   lastStand: LastStandStateType,
   looseCannon: LooseCannonStateType,

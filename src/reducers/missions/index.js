@@ -25,6 +25,7 @@ import {getImperialHospitalityGoalText, imperialHospitality} from './imperialHos
 import {getImpoundedGoalText, impounded} from './impounded';
 import {getIncomingGoalText, incoming} from './incoming';
 import {getIndebtedGoalText, indebted} from './indebted';
+import {getInfectionGoalText, infection} from './infection';
 import {getInfiltratedGoalText, infiltrated} from './infiltrated';
 import {getLastStandGoalText, lastStand} from './lastStand';
 import {getLooseCannonGoalText, looseCannon} from './looseCannon';
@@ -89,6 +90,7 @@ export default {
   getImpoundedGoalText,
   getIncomingGoalText,
   getIndebtedGoalText,
+  getInfectionGoalText,
   getInfiltratedGoalText,
   getLastStandGoalText,
   getLooseCannonGoalText,
@@ -112,6 +114,7 @@ export default {
   impounded,
   incoming,
   indebted,
+  infection,
   infiltrated,
   lastStand,
   looseCannon,

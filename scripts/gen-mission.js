@@ -31,7 +31,7 @@ console.log('Modifying template...');
 replace.sync({
   files: `./src/reducers/missions/${missionName}.js`,
   from: 'export function* forestAmbush(): Generator',
-  to: 'export function* binaryRevolution(): Generator',
+  to: `export function* ${missionName}(): Generator`,
 });
 replace.sync({
   files: `./src/reducers/missions/${missionName}.js`,
