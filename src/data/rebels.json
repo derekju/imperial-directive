@@ -39,6 +39,16 @@
     "maxInGroup": 1,
     "type": "hero"
   },
+  "echoBaseTrooper": {
+    "id": "echoBaseTrooper",
+    "firstName": "Echo Base Trooper",
+    "lastName": "",
+    "elite": false,
+    "threat": 6,
+    "reinforcementCost": 3,
+    "maxInGroup": 2,
+    "type": "ally"
+  },
   "fenn": {
     "id": "fenn",
     "firstName": "Fenn",
