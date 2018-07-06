@@ -8,6 +8,17 @@ import without from 'lodash/without';
 
 // Types
 
+export type RebelConfigType = {
+  id: string,
+  firstName: string,
+  lastName: string,
+  elite: boolean,
+  threat: number,
+  reinforcementCost: number,
+  maxInGroup: number,
+  type: 'hero' | 'ally' | 'mission',
+};
+
 export type RebelsStateType = {
   activatedRebels: string[],
   allyChosen: ?string,

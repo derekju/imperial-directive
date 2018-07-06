@@ -89,6 +89,16 @@
     "maxInGroup": 1,
     "type": "hero"
   },
+  "loku": {
+    "id": "loku",
+    "firstName": "Loku",
+    "lastName": "Kanoloa",
+    "elite": false,
+    "threat": 0,
+    "reinforcementCost": -1,
+    "maxInGroup": 1,
+    "type": "hero"
+  },
   "luke": {
     "id": "luke",
     "firstName": "Luke",
@@ -103,6 +113,16 @@
     "id": "mak",
     "firstName": "Mak",
     "lastName": "Eshka'rey",
+    "elite": false,
+    "threat": 0,
+    "reinforcementCost": -1,
+    "maxInGroup": 1,
+    "type": "hero"
+  },
+  "mhd": {
+    "id": "mhd",
+    "firstName": "MHD-19",
+    "lastName": "",
     "elite": false,
     "threat": 0,
     "reinforcementCost": -1,
@@ -183,6 +203,16 @@
     "id": "saska",
     "firstName": "Saska",
     "lastName": "Taft",
+    "elite": false,
+    "threat": 0,
+    "reinforcementCost": -1,
+    "maxInGroup": 1,
+    "type": "hero"
+  },
+  "verena": {
+    "id": "verena",
+    "firstName": "Verena",
+    "lastName": "Talos",
     "elite": false,
     "threat": 0,
     "reinforcementCost": -1,

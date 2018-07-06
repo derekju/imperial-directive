@@ -10,7 +10,10 @@ import {
 } from '../reducers/app';
 import CharacterSelection from '../components/CharacterSelection';
 import {connect} from 'react-redux';
+import filter from 'lodash/filter';
 import missions from '../data/missions';
+import type {RebelConfigType} from '../reducers/rebels';
+import rebels from '../data/rebels.json';
 import {setVillains} from '../reducers/imperials';
 import type {StateType} from '../reducers/types';
 
@@ -41,8 +44,12 @@ const mapStateToProps = (state: StateType) => {
   );
 
   return {
-    availableAllies: ['chewbacca', 'han', 'luke', 'rebelSaboteur', 'rebelTrooper'],
-    availableHeroes: ['biv', 'diala', 'fenn', 'gaarkhan', 'gideon', 'jyn', 'mak', 'saska'],
+    availableAllies: filter(rebels, (rebel: RebelConfigType) => rebel.type === 'ally').map(
+      (rebel: RebelConfigType) => rebel.id
+    ),
+    availableHeroes: filter(rebels, (rebel: RebelConfigType) => rebel.type === 'hero').map(
+      (rebel: RebelConfigType) => rebel.id
+    ),
     availableMissions: ['--- CORE ---']
       .concat(coreMissions)
       .concat(['--- WAVE 1 ---'])
