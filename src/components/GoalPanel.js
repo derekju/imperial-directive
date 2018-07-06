@@ -42,6 +42,8 @@ type GoalPanelPropsType = {
   generousDonationsTerminalDestroyed: Function,
   generousDonationsVirusUploaded: boolean,
   goalText: string[],
+  imperialEntanglementsAirlockReleased: Function,
+  imperialEntanglementsSchematicsUploaded: Function,
   incomingEnterCorridor: Function,
   lastStandVaderBlock: Function,
   lastStandVaderDeployed: boolean,
@@ -388,6 +390,25 @@ class GoalPanel extends React.Component<GoalPanelPropsType, GoalPanelStateType> 
               text="Camp Entered"
               width={180}
               onClick={this.props.forestAmbushSetCampEntered}
+            />
+          </div>
+        </div>
+      );
+    } else if (currentMission === 'imperialEntanglements') {
+      return (
+        <div>
+          <div style={styles.buttonContainer}>
+            <Button
+              text="Airlock Released"
+              width={180}
+              onClick={this.props.imperialEntanglementsAirlockReleased}
+            />
+          </div>
+          <div style={styles.buttonContainer}>
+            <Button
+              text="Schematics Uploaded"
+              width={180}
+              onClick={this.props.imperialEntanglementsSchematicsUploaded}
             />
           </div>
         </div>

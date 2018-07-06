@@ -21,6 +21,7 @@ import {generousDonations, getGenerousDonationsGoalText} from './generousDonatio
 import {getHighMoonGoalText, highMoon} from './highMoon';
 import {getHomecomingGoalText, homecoming} from './homecoming';
 import {getHuntedDownGoalText, huntedDown} from './huntedDown';
+import {getImperialEntanglementsGoalText, imperialEntanglements} from './imperialEntanglements';
 import {getImperialHospitalityGoalText, imperialHospitality} from './imperialHospitality';
 import {getImpoundedGoalText, impounded} from './impounded';
 import {getIncomingGoalText, incoming} from './incoming';
@@ -86,6 +87,7 @@ export default {
   getHighMoonGoalText,
   getHomecomingGoalText,
   getHuntedDownGoalText,
+  getImperialEntanglementsGoalText,
   getImperialHospitalityGoalText,
   getImpoundedGoalText,
   getIncomingGoalText,
@@ -110,6 +112,7 @@ export default {
   highMoon,
   homecoming,
   huntedDown,
+  imperialEntanglements,
   imperialHospitality,
   impounded,
   incoming,

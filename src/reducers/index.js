@@ -21,6 +21,7 @@ import generousDonations from './missions/generousDonations';
 import highMoon from './missions/highMoon';
 import homecoming from './missions/homecoming';
 import huntedDown from './missions/huntedDown';
+import imperialEntanglements from './missions/imperialEntanglements';
 import imperialHospitality from './missions/imperialHospitality';
 import imperials from './imperials';
 import impounded from './missions/impounded';
@@ -67,6 +68,7 @@ export default {
   highMoon,
   homecoming,
   huntedDown,
+  imperialEntanglements,
   imperialHospitality,
   imperials,
   impounded,

@@ -60,6 +60,10 @@ const pastLifeEnemiesDiscardTerminal2 = () => createAction('PAST_LIFE_ENEMIES_DI
 const pastLifeEnemiesDiscardTerminal3 = () => createAction('PAST_LIFE_ENEMIES_DISCARD_TERMINAL_3');
 const fireInTheSkyDepart = () => createAction('FIRE_IN_THE_SKY_DEPART');
 const forestAmbushSetCampEntered = () => createAction('FOREST_AMBUSH_CAMP_ENTERED');
+const imperialEntanglementsAirlockReleased = () =>
+  createAction('IMPERIAL_ENTANGLEMENTS_AIRLOCK_RELEASED');
+const imperialEntanglementsSchematicsUploaded = () =>
+  createAction('IMPERIAL_ENTANGLEMENTS_SCHEMATICS_UPLOADED');
 
 const mapDispatchToProps = {
   armedAndOperationalWarshipDestroyed,
@@ -70,6 +74,8 @@ const mapDispatchToProps = {
   fireInTheSkyDepart,
   forestAmbushSetCampEntered,
   generousDonationsTerminalDestroyed,
+  imperialEntanglementsAirlockReleased,
+  imperialEntanglementsSchematicsUploaded,
   incomingEnterCorridor,
   lastStandVaderBlock,
   looseCannonDefeatAtst,

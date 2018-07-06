@@ -2684,6 +2684,91 @@
       "bobaFett", "imperialOfficer", "stormtrooper"
     ]
   },
+  "imperialEntanglements": {
+    "wave": "wave1",
+    "initialGroups": [
+      "imperialOfficerElite", "probeDroid", "stormtrooper", "stormtrooperElite"
+    ],
+    "instructions": {
+      "imperialVictory": "When the schematic is uploaded or when all heores are wounded",
+      "rebelVictory": "When the airlock is released"
+    },
+    "mapImage": [
+      ["00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "28a", "28a", "28a", "34a", "34a", "32a", "32a"],
+      ["00a", "36a", "36a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "28a", "28a", "28a", "34a", "34a", "32a", "32a"],
+      ["23a", "23a", "23a", "23a", "22a", "22a", "22a", "22a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "28a", "28a", "28a", "00a", "24a", "24a", "24a"],
+      ["23a", "23a", "23a", "23a", "22a", "22a", "22a", "22a", "32a", "32a", "00a", "00a", "00a", "00a", "21a", "21a", "21a", "21a", "21a", "24a", "24a", "24a", "24a"],
+      ["23a", "23a", "23a", "23a", "22a", "22a", "22a", "22a", "32a", "32a", "00a", "00a", "00a", "00a", "21a", "21a", "21a", "21a", "21a", "24a", "24a", "24a", "24a"],
+      ["23a", "23a", "23a", "23a", "22a", "22a", "22a", "22a", "31a", "31a", "30a", "30a", "30a", "30a", "21a", "21a", "21a", "21a", "21a", "24a", "24a", "24a", "00a"],
+      ["00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "31a", "31a", "30a", "30a", "30a", "30a", "21a", "21a", "21a", "21a", "21a", "00a", "00a", "00a", "00a"],
+      ["00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "36a", "36a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a"]
+    ],
+    "mapStates": {
+      "door-1": {
+        "activated": false,
+        "activateText": "Open",
+        "coordinates": {
+          "x": 18,
+          "y": 4
+        },
+        "description": "Door to the blue terminal (T2).",
+        "id": 1,
+        "interactable": true,
+        "type": "door",
+        "unactivateText": "Close",
+        "visible": true
+      },
+      "door-2": {
+        "activated": false,
+        "activateText": "Open",
+        "coordinates": {
+          "x": 21,
+          "y": 1
+        },
+        "description": "Door to the blue terminal (T2).",
+        "id": 2,
+        "interactable": true,
+        "type": "door",
+        "unactivateText": "Close",
+        "visible": true
+      },
+      "terminal-1": {
+        "activated": false,
+        "activateText": "Retrieve",
+        "coordinates": {
+          "x": 0,
+          "y": 5
+        },
+        "description": "Terminal to retrieve the schematics.",
+        "id": 1,
+        "interactable": true,
+        "type": "terminal",
+        "unactivateText": "Close",
+        "visible": true
+      },
+      "terminal-2": {
+        "activated": false,
+        "activateText": "Retrieve",
+        "coordinates": {
+          "x": 21,
+          "y": 4
+        },
+        "description": "Terminal to retrieve the access disk.",
+        "id": 2,
+        "interactable": true,
+        "type": "terminal",
+        "unactivateText": "Close",
+        "visible": true
+      }
+    },
+    "name": "Imperial Entanglements",
+    "noAllowedAttributes": ["creature"],
+    "noMercenaryAllowed": false,
+    "openGroups": 3,
+    "reservedGroups": [
+      "trandoshanHunter"
+    ]
+  },
   "imperialHospitality": {
     "initialGroups": [
       "probeDroid", "probeDroid", "royalGuard"
