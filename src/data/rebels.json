@@ -99,6 +99,16 @@
     "maxInGroup": 1,
     "type": "hero"
   },
+  "leia": {
+    "id": "leia",
+    "firstName": "Leia",
+    "lastName": "Organa",
+    "elite": true,
+    "threat": 8,
+    "reinforcementCost": -1,
+    "maxInGroup": 1,
+    "type": "ally"
+  },
   "loku": {
     "id": "loku",
     "firstName": "Loku",
