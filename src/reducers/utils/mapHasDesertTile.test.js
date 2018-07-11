@@ -10,3 +10,10 @@ test('mapHasDesertTile returns false if map does not have desert tile', () => {
   expect(mapHasDesertTile(missions.theSource.mapImage)).toBeFalsy();
   expect(mapHasDesertTile(missions.fireInTheSky.mapImage)).toBeFalsy();
 });
+
+test('mapHasDesertTile returns true if expansion tile present', () => {
+  const fakeMapImage = [
+    ["t04b"],
+  ];
+  expect(mapHasDesertTile(fakeMapImage)).toBeTruthy();
+});

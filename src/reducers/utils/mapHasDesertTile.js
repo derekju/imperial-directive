@@ -22,6 +22,10 @@ const DESERT_TILES = [
   '37a',
   '38a',
   '39b',
+  't04b',
+  't05b',
+  't06b',
+  't07b',
 ];
 
 export default (mapImage: Array<Array<string>>): boolean => {
