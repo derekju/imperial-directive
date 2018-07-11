@@ -12,7 +12,7 @@ test('getAvailableUnitList exclusion list', () => {
     missions.highMoon,
     unitsForTest,
     ['stormtrooper'],
-    2,
+    6,
     {twinShadows: true},
     {}
   );
@@ -30,7 +30,7 @@ test('getAvailableUnitList exclusion list works when unit not specified', () => 
     missions.highMoon,
     unitsForTest,
     [],
-    2,
+    6,
     {twinShadows: true},
     {}
   );
@@ -48,10 +48,46 @@ test('getAvailableUnitList exclusion with attributes', () => {
     missions.fireInTheSky,
     unitsForTest,
     [],
-    5,
+    6,
     {twinShadows: true},
     {}
   );
 
   expect(openGroups.length).toEqual(1);
+});
+
+test('getAvailableUnitList processes threat correctly', () => {
+  const unitsForTest = {
+    hkAssassinDroid: units.hkAssassinDroid,
+    stormtrooper: units.stormtrooper,
+  };
+
+  const openGroups = getAvailableUnitList(
+    missions.highMoon,
+    unitsForTest,
+    [],
+    2,
+    {returnToHoth: true},
+    {}
+  );
+
+  expect(openGroups.length).toEqual(1);
+});
+
+test('getAvailableUnitList processes expansion units correctly', () => {
+  const unitsForTest = {
+    hkAssassinDroid: units.hkAssassinDroid,
+    tuskenRaider: units.tuskenRaider,
+  };
+
+  const openGroups = getAvailableUnitList(
+    missions.highMoon,
+    unitsForTest,
+    [],
+    6,
+    {returnToHoth: true, twinShadows: true},
+    {}
+  );
+
+  expect(openGroups.length).toEqual(2);
 });

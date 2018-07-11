@@ -2,7 +2,7 @@
   "atst": {
     "affiliation": "imperial",
     "attributes": ["vehicle", "heavyWeapon"],
-    "buffs": ["showOfForce", "combatVeteran", "combatVeteran", "combatVeteran"],
+    "buffs": ["showOfForce", "combatVeteran", "enhancedArmor", "combatVeteran"],
     "commands": [
       {
         "condition": "If within 7 spaces and have LOS of {ATTACK_TARGET}",
@@ -101,7 +101,7 @@
   "eWebEngineer": {
     "affiliation": "imperial",
     "attributes": ["trooper", "heavyWeapon"],
-    "buffs": ["fleetFooted", "marksman", "showOfForce", "surgicalStrike"],
+    "buffs": ["fleetFooted", "marksman", "showOfForce", "enhancedArmor"],
     "commands": [
       {
         "condition": "If within 7 spaces and have LOS of {ATTACK_TARGET}",
@@ -136,7 +136,7 @@
   "eWebEngineerElite": {
     "affiliation": "imperial",
     "attributes": ["trooper", "heavyWeapon"],
-    "buffs": ["fleetFooted", "showOfForce", "showOfForce", "surgicalStrike", "surgicalStrike"],
+    "buffs": ["fleetFooted", "showOfForce", "showOfForce", "enhancedArmor", "enhancedArmor"],
     "commands": [
       {
         "condition": "If within 7 spaces and have LOS of {ATTACK_TARGET}",
@@ -171,7 +171,7 @@
   "generalWeiss": {
     "affiliation": "imperial",
     "attributes": ["vehicle", "leader", "heavyWeapon"],
-    "buffs": ["surgicalStrike"],
+    "buffs": ["surgicalStrike", "enhancedArmor"],
     "commands": [
       {
         "condition": "If 2 other friendly figures are not within attack range or LOS of {ATTACK_TARGET}",
@@ -310,10 +310,94 @@
     "threat": 8,
     "unique": false
   },
+  "hkAssassinDroid": {
+    "affiliation": "mercenary",
+    "attributes": ["droid", "hunter"],
+    "buffs": ["advancedPrototypes", "heavyPressure", "exploitWeakness"],
+    "commands": [
+      {
+        "condition": "If within 10 spaces of {ATTACK_TARGET}",
+        "command": "{ACTION} Move within 6 spaces and LOS of {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}, then move to {MOVE_TARGET}."
+      },
+      {
+        "condition": "If not within 10 spaces of {ATTACK_TARGET}",
+        "command": "{ACTION} Move towards {MOVE_TARGET}."
+      },
+      {
+        "condition": "Reaction - While attacking and defender rolls a dodge or any {BLOCK} result",
+        "command": "Use Versatile Weaponry to force the defender to reroll a dodge or the highest {BLOCK} rolled."
+      },
+      {
+        "condition": "Reaction - If an attack die is rolled that has no effect (no damage, no surge can be used to any effect)",
+        "command": "Use Targeting Computer to reroll the die."
+      }
+    ],
+    "eligibleForHpBoost": true,
+    "elite": false,
+    "expansion": "returnToHoth",
+    "hpBoosts": {
+      "2": [0],
+      "3": [0, 0, 0, 1, 1],
+      "4": [0, 0, 1, 1, 1],
+      "5": [0, 1, 1, 1, 2],
+      "6": [0, 1, 1, 2, 2]
+    },
+    "id": "hkAssassinDroid",
+    "maxDeployed": 1,
+    "maxInGroup": 2,
+    "name": "HK Assassin Droid",
+    "reinforcementCost": 4,
+    "threat": 8,
+    "unique": false
+  },
+  "hkAssassinDroidElite": {
+    "affiliation": "mercenary",
+    "attributes": ["droid", "hunter"],
+    "buffs": ["advancedPrototypes", "heavyPressure", "exploitWeakness"],
+    "commands": [
+      {
+        "condition": "If within 10 spaces of {ATTACK_TARGET}",
+        "command": "{ACTION} Move within 6 spaces and LOS of {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}, then move to {MOVE_TARGET}."
+      },
+      {
+        "condition": "If not within 10 spaces of {ATTACK_TARGET}",
+        "command": "{ACTION} Move towards {MOVE_TARGET}."
+      },
+      {
+        "condition": "Reaction - While attacking and defender rolls a dodge or any {BLOCK} result",
+        "command": "Use Versatile Weaponry to force the defender to reroll a dodge or the highest {BLOCK} rolled."
+      },
+      {
+        "condition": "Reaction - If an attack die is rolled that has no effect (no damage, no surge can be used to any effect)",
+        "command": "Use Targeting Computer to reroll the die."
+      },
+      {
+        "condition": "Reaction - While moving into LOS",
+        "command": "Use Priority Target to ignore figures blocking LOS."
+      }
+    ],
+    "eligibleForHpBoost": true,
+    "elite": true,
+    "expansion": "returnToHoth",
+    "hpBoosts": {
+      "2": [0],
+      "3": [0, 0, 0, 1, 1],
+      "4": [0, 0, 1, 1, 1],
+      "5": [0, 1, 1, 1, 2],
+      "6": [0, 1, 1, 2, 2]
+    },
+    "id": "hkAssassinDroidElite",
+    "maxDeployed": 1,
+    "maxInGroup": 2,
+    "name": "E HK Assassin Droid",
+    "reinforcementCost": 6,
+    "threat": 11,
+    "unique": false
+  },
   "ig88": {
     "affiliation": "mercenary",
     "attributes": ["droid", "hunter"],
-    "buffs": ["criticalHit", "recovery", "showOfForce", "combatVeteran"],
+    "buffs": ["criticalHit", "recovery", "showOfForce", "combatVeteran", "enhancedArmor"],
     "commands": [
       {
         "condition": "If within 6 spaces and have LOS of {ATTACK_TARGET}",
@@ -346,7 +430,7 @@
   "ig88Copy": {
     "affiliation": "mission",
     "attributes": ["droid", "hunter"],
-    "buffs": ["criticalHit", "recovery", "showOfForce", "combatVeteran"],
+    "buffs": ["criticalHit", "recovery", "showOfForce", "combatVeteran", "enhancedArmor"],
     "commands": [
       {
         "condition": "If within 6 spaces and have LOS of {ATTACK_TARGET}",
@@ -494,7 +578,7 @@
   "nexu": {
     "affiliation": "mercenary",
     "attributes": ["creature", "brawler"],
-    "buffs": ["recovery", "surgicalStrike"],
+    "buffs": ["recovery", "heavyPressure"],
     "commands": [
       {
         "condition": "If within 4 spaces of {ATTACK_TARGET} or any target",
@@ -646,7 +730,7 @@
   "royalGuard": {
     "affiliation": "imperial",
     "attributes": ["guardian", "brawler"],
-    "buffs": ["exploitWeakness", "exploitWeakness", "noQuarter", "surgicalStrike"],
+    "buffs": ["exploitWeakness", "exploitWeakness", "noQuarter", "heavyPressure"],
     "commands": [
       {
         "condition": "If within 7 spaces of {ATTACK_TARGET}",
@@ -758,6 +842,122 @@
     "name": "E Royal Guard",
     "reinforcementCost": 6,
     "threat": 12,
+    "unique": false
+  },
+  "sc2mRepulsorTank": {
+    "affiliation": "imperial",
+    "attributes": ["vehicle"],
+    "buffs": ["enhancedArmor", "surgicalStrike", "heavyPressure"],
+    "commands": [
+      {
+        "condition": "If within 6 spaces and have LOS of {ATTACK_TARGET}",
+        "command": "{ACTION} {ACTION} Use Focus Fire ability to attack {ATTACK_TARGET} twice."
+      },
+      {
+        "condition": "If within 8 spaces of {ATTACK_TARGET}",
+        "command": "{ACTION} Move within 6 spaces and LOS of {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}."
+      },
+      {
+        "condition": "If not within 8 spaces of {ATTACK_TARGET}",
+        "command": "{ACTION} Move towards {ATTACK_TARGET}."
+      },
+      {
+        "condition": "Reaction - When defending",
+        "command": "Use Defensible ability to add either icon that blocks the most damage."
+      }
+    ],
+    "eligibleForHpBoost": true,
+    "elite": true,
+    "expansion": "returnToHoth",
+    "hpBoosts": {
+      "2": [0],
+      "3": [0, 0, 0, 1, 1],
+      "4": [0, 0, 1, 1, 1],
+      "5": [0, 1, 1, 1, 2],
+      "6": [0, 1, 1, 2, 2]
+    },
+    "id": "sc2mRepulsorTank",
+    "maxDeployed": 1,
+    "maxInGroup": 1,
+    "name": "SC2-M Repulsor Tank",
+    "reinforcementCost": -1,
+    "threat": 10,
+    "unique": false
+  },
+  "snowtrooper": {
+    "affiliation": "imperial",
+    "attributes": ["trooper"],
+    "buffs": ["cruelStrike", "cruelStrike", "riotGrenades", "shockTroopers"],
+    "commands": [
+      {
+        "condition": "Reaction - If self or adjacent to another friendly Trooper that has a harmful condition or suffered damage",
+        "command": "Use Environmental Recovery Gear to 1) heal the harmful condition 2) recover 1 {DAMAGE}."
+      },
+      {
+        "condition": "If within 8 spaces of {ATTACK_TARGET}",
+        "command": "{ACTION} Move within 4 spaces and LOS of {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}, then move to {MOVE_TARGET}."
+      },
+      {
+        "condition": "If not within 8 spaces of {ATTACK_TARGET}",
+        "command": "{ACTION} Move towards {MOVE_TARGET}."
+      }
+    ],
+    "eligibleForHpBoost": true,
+    "elite": false,
+    "expansion": "returnToHoth",
+    "hpBoosts": {
+      "2": [0],
+      "3": [0, 0, 0, 1, 1],
+      "4": [0, 0, 1, 1, 1],
+      "5": [0, 1, 1, 1, 2],
+      "6": [0, 1, 1, 2, 2]
+    },
+    "id": "snowtrooper",
+    "maxDeployed": 1,
+    "maxInGroup": 3,
+    "name": "Snowtrooper",
+    "reinforcementCost": 2,
+    "threat": 7,
+    "unique": false
+  },
+  "snowtrooperElite": {
+    "affiliation": "imperial",
+    "attributes": ["trooper"],
+    "buffs": ["cruelStrike", "cruelStrike", "riotGrenades", "shockTroopers"],
+    "commands": [
+      {
+        "condition": "Reaction - If self or adjacent to another friendly Trooper that has a harmful condition or suffered damage",
+        "command": "Use Environmental Recovery Gear to 1) heal the harmful condition 2) recover 1 {DAMAGE}."
+      },
+      {
+        "condition": "If within 8 spaces of {ATTACK_TARGET}",
+        "command": "{ACTION} Move within 4 spaces and LOS of {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}, then move to {MOVE_TARGET}."
+      },
+      {
+        "condition": "If not within 8 spaces of {ATTACK_TARGET}",
+        "command": "{ACTION} Move towards {MOVE_TARGET}."
+      },
+      {
+        "condition": "Reaction - When moving",
+        "command": "Use Efficient Travel."
+      }
+    ],
+    "eligibleForHpBoost": true,
+    "elite": true,
+    "expansion": "returnToHoth",
+    "hpBoosts": {
+      "2": [0],
+      "3": [0, 0, 0, 1, 1],
+      "4": [0, 0, 1, 1, 1],
+      "5": [0, 1, 1, 1, 2],
+      "6": [0, 1, 1, 2, 2]
+    },
+    "id": "snowtrooperElite",
+    "maxDeployed": 1,
+    "maxInGroup": 3,
+    "name": "E Snowtrooper",
+    "reinforcementCost": 3,
+    "threat": 10,
     "unique": false
   },
   "stormtrooper": {
@@ -913,7 +1113,7 @@
   "trandoshanHunterElite": {
     "affiliation": "mercenary",
     "attributes": ["hunter", "brawler"],
-    "buffs": ["arcBlasters", "exploitWeakness", "recovery", "sustainedFire"],
+    "buffs": ["arcBlasters", "exploitWeakness", "recovery", "advancedPrototypes"],
     "commands": [
       {
         "condition": "If within 5 spaces of {ATTACK_TARGET}",
@@ -1017,6 +1217,96 @@
     "name": "E Tusken Raider",
     "reinforcementCost": 3,
     "threat": 7,
+    "unique": false
+  },
+  "wampa": {
+    "affiliation": "mercenary",
+    "attributes": ["creature", "brawler"],
+    "buffs": ["recovery", "cruelStrike", "enhancedArmor"],
+    "commands": [
+      {
+        "condition": "Reaction - When activating and there are no hostile figures within 3 spaces",
+        "command": "Use Hunger ability to move towards {ATTACK_TARGET}."
+      },
+      {
+        "condition": "If adjacent to {ATTACK_TARGET}",
+        "command": "{ACTION} Attack {ATTACK_TARGET}, then {ACTION} move towards {MOVE_TARGET}."
+      },
+      {
+        "condition": "If within 4 spaces of {ATTACK_TARGET}",
+        "command": "{ACTION} Move adjacent to {ATTACK_TARGET}, then {ACTION} Attack that target."
+      },
+      {
+        "condition": "If no target within 4 spaces",
+        "command": "{ACTION} Move adjacent to {ATTACK_TARGET}."
+      },
+      {
+        "condition": "Reaction - When moving",
+        "command": "Use Efficient Travel."
+      }
+    ],
+    "eligibleForHpBoost": true,
+    "elite": false,
+    "expansion": "returnToHoth",
+    "habitat": "snow",
+    "hpBoosts": {
+      "2": [0],
+      "3": [0, 0, 0, 1, 1],
+      "4": [0, 0, 1, 1, 1],
+      "5": [0, 1, 1, 1, 2],
+      "6": [0, 1, 1, 2, 2]
+    },
+    "id": "wampa",
+    "maxDeployed": 1,
+    "maxInGroup": 1,
+    "name": "Wampa",
+    "reinforcementCost": -1,
+    "threat": 5,
+    "unique": false
+  },
+  "wampaElite": {
+    "affiliation": "mercenary",
+    "attributes": ["creature", "brawler"],
+    "buffs": ["recovery", "cruelStrike", "surgicalStrike", "enhancedArmor"],
+    "commands": [
+      {
+        "condition": "Reaction - When activating and there are no hostile figures within 3 spaces",
+        "command": "Use Hunger ability to move towards {ATTACK_TARGET}."
+      },
+      {
+        "condition": "If adjacent to {ATTACK_TARGET}",
+        "command": "{ACTION} Attack {ATTACK_TARGET}, then {ACTION} move towards {MOVE_TARGET}."
+      },
+      {
+        "condition": "If within 4 spaces of {ATTACK_TARGET}",
+        "command": "{ACTION} Move adjacent to {ATTACK_TARGET}, then {ACTION} Attack that target."
+      },
+      {
+        "condition": "If no target within 4 spaces",
+        "command": "{ACTION} Move adjacent to {ATTACK_TARGET}."
+      },
+      {
+        "condition": "Reaction - When moving",
+        "command": "Use Efficient Travel."
+      }
+    ],
+    "eligibleForHpBoost": true,
+    "elite": true,
+    "expansion": "returnToHoth",
+    "habitat": "snow",
+    "hpBoosts": {
+      "2": [0],
+      "3": [0, 0, 0, 1, 1],
+      "4": [0, 0, 1, 1, 1],
+      "5": [0, 1, 1, 1, 2],
+      "6": [0, 1, 1, 2, 2]
+    },
+    "id": "wampaElite",
+    "maxDeployed": 1,
+    "maxInGroup": 1,
+    "name": "E Wampa",
+    "reinforcementCost": -1,
+    "threat": 8,
     "unique": false
   },
   "weiss": {

@@ -1,6 +1,7 @@
 // @flow
 
 import mapHasDesertTile from './mapHasDesertTile';
+import mapHasSnowTile from './mapHasSnowTile';
 import type {MissionConfigType} from '../mission';
 import reduce from 'lodash/reduce';
 import type {UnitConfigType} from '../imperials';
@@ -25,6 +26,7 @@ export default (
 
   // Check habitats
   const isDesertHabitat = mapHasDesertTile(mapImage);
+  const isSnowHabitat = mapHasSnowTile(mapImage);
   // Set a soft cap so we don't pick super high threat units and use up all our threat
   const threatCost = THREAT_COST_FOR_MISSION_THREAT[String(missionThreat)];
 
@@ -52,6 +54,10 @@ export default (
       }
       // Don't pick units that are Desert that cannot deploy onto this map
       if (unit.habitat === 'desert' && !isDesertHabitat) {
+        return accumulator;
+      }
+      // Don't pick units that are Snow that cannot deploy onto this map
+      if (unit.habitat === 'snow' && !isSnowHabitat) {
         return accumulator;
       }
       // Don't pick units that have an expansion that is not utilized

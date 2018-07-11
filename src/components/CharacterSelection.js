@@ -437,6 +437,12 @@ class CharacterSelection extends React.Component<
                 Twin Shadows
               </label>
             </div>
+            <div>
+              <input type="checkbox" id="returnToHoth" />
+              <label style={styles.label} htmlFor="returnToHoth">
+                Return to Hoth
+              </label>
+            </div>
           </div>
         </div>
       </div>

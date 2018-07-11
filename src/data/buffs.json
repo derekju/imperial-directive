@@ -1,4 +1,10 @@
 {
+  "advancedPrototypes": {
+    "name": "Advanced Prototypes",
+    "text": [
+      "When a unit is attacking, choose a die at random to be replaced with a red die."
+    ]
+  },
   "arcBlasters": {
     "name": "Arc Blasters",
     "text": [
@@ -28,6 +34,13 @@
     "name": "Deadeye",
     "text": [
       "While attacking, apply +2 Accuracy to the results."
+    ]
+  },
+  "enhancedArmor": {
+    "name": "Enhanced Armor",
+    "text": [
+      "All units in this group receive a shield counter.",
+      "When this unit would receive damage, the shield counter is discarded to gain +1 {BLOCK}."
     ]
   },
   "experimentalArms": {
