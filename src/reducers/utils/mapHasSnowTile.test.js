@@ -8,8 +8,6 @@ test('mapHasSnowTile returns false if map does not have snow tile', () => {
 });
 
 test('mapHasSnowTile returns true if expansion tile present', () => {
-  const fakeMapImage = [
-    ["h01a"],
-  ];
+  const fakeMapImage = [['h01a']];
   expect(mapHasSnowTile(fakeMapImage)).toBeTruthy();
 });

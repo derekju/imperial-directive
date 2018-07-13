@@ -144,8 +144,5 @@ function* loadMissionSaga(): Generator<*, *, *> {
 }
 
 export function* appSaga(): Generator<*, *, *> {
-  yield all([
-    fork(loadMissionSaga),
-    fork(handleUrlHydrationSaga),
-  ]);
+  yield all([fork(loadMissionSaga), fork(handleUrlHydrationSaga)]);
 }

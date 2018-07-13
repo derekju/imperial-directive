@@ -100,7 +100,8 @@ class Map extends React.Component<MapPropsType> {
           <div key={`row-${rowIndex}`} style={styles.row}>
             {row.map((cell: string, cellIndex: number) => {
               // Need to chop off the expansion letter code if it's present
-              const cellNumber = cell[0].charCodeAt(0) < 97 ? parseInt(cell, 10) : parseInt(cell.slice(1), 10);
+              const cellNumber =
+                cell[0].charCodeAt(0) < 97 ? parseInt(cell, 10) : parseInt(cell.slice(1), 10);
               if (cellNumber > 0) {
                 const bgColor = Math.floor(255 - cellNumber * 5);
                 const combinedStyles = {

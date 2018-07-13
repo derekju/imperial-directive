@@ -2,7 +2,7 @@
 /* globals Raven */
 
 import {applyMiddleware, combineReducers, compose, createStore} from 'redux';
-import {connectRouter, routerMiddleware} from 'connected-react-router'
+import {connectRouter, routerMiddleware} from 'connected-react-router';
 
 import createSagaMiddleware from 'redux-saga';
 // import {CURRENT_MISSION_KEY} from './constants';
