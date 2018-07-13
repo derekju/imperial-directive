@@ -1,6 +1,6 @@
 // @flow
 
-import {cancel, fork, put, select, take} from 'redux-saga/effects';
+import {all, cancel, fork, put, select, take} from 'redux-saga/effects';
 import createAction from './createAction';
 import {getVillains} from './imperials';
 import {loadMission} from './mission';
@@ -93,6 +93,7 @@ export const missionSagaLoadDone = () => createAction(MISSION_SAGA_LOAD_DONE);
 
 // Selectors
 
+export const getRouterState = (state: StateType) => state.router;
 export const getCurrentMission = (state: StateType) => state.app.currentMission;
 export const getMissionThreat = (state: StateType) => state.app.missionThreat;
 export const getDifficulty = (state: StateType) => state.app.currentDifficulty;
@@ -104,6 +105,17 @@ export const getExpansions = (state: StateType) => state.app.expansions;
 function* forkMission(currentMission: string): Generator<*, *, *> {
   if (currentMission in missionSagas) {
     yield fork(missionSagas[currentMission]);
+  }
+}
+
+function* handleUrlHydrationSaga(): Generator<*, *, *> {
+  const {location} = yield select(getRouterState);
+  const match = location.pathname.match(/^\/mission\/(.*)$/);
+  if (match && match.length === 2) {
+    // Rehydrate defaults until we have actual persistence
+    // TBD
+    // Rehydrate mission name
+    yield put(setMission(match[1]));
   }
 }
 
@@ -132,5 +144,8 @@ function* loadMissionSaga(): Generator<*, *, *> {
 }
 
 export function* appSaga(): Generator<*, *, *> {
-  yield fork(loadMissionSaga);
+  yield all([
+    fork(loadMissionSaga),
+    fork(handleUrlHydrationSaga),
+  ]);
 }

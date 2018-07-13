@@ -1,9 +1,10 @@
 // @flow
 
-import {Route, BrowserRouter as Router} from 'react-router-dom';
 import CharacterSelectionContainer from './containers/CharacterSelectionContainer';
+import {ConnectedRouter} from 'connected-react-router';
 import MissionContainer from './containers/MissionContainer';
 import React from 'react';
+import {Route} from 'react-router-dom';
 import TitleScreenContainer from './containers/TitleScreenContainer';
 
 const styles = {
@@ -16,7 +17,11 @@ const styles = {
   },
 };
 
-class App extends React.Component<{}> {
+type AppPropsType = {
+  history: Object,
+};
+
+class App extends React.Component<AppPropsType> {
   componentDidMount() {
     window.onpopstate = event => {
       // Hack to fix going back in the browser once you're on a mission
@@ -28,13 +33,13 @@ class App extends React.Component<{}> {
 
   render() {
     return (
-      <Router>
+      <ConnectedRouter history={this.props.history}>
         <div style={styles.base}>
           <Route exact path="/" component={TitleScreenContainer} />
-          <Route path="/mission" component={MissionContainer} />
+          <Route path="/mission/:missionId" component={MissionContainer} />
           <Route path="/character_selection" component={CharacterSelectionContainer} />
         </div>
-      </Router>
+      </ConnectedRouter>
     );
   }
 }

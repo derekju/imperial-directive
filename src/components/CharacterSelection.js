@@ -225,9 +225,8 @@ class CharacterSelection extends React.Component<
     if (this.select) {
       const selectedMission = this.select.options[this.select.selectedIndex].value;
       this.props.setMission(selectedMission);
+      this.props.history.push(`/mission/${selectedMission}`);
     }
-
-    this.props.history.push('/mission');
   };
 
   handleAvatarClick = (heroId: string) => {
