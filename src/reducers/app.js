@@ -6,6 +6,7 @@ import {getVillains} from './imperials';
 import {loadMission} from './mission';
 import missions from '../data/missions';
 import missionSagas from './missions';
+import {setRoster} from './rebels';
 import type {StateType} from './types';
 
 // Constants
@@ -113,7 +114,7 @@ function* handleUrlHydrationSaga(): Generator<*, *, *> {
   const match = location.pathname.match(/^\/mission\/(.*)$/);
   if (match && match.length === 2) {
     // Rehydrate defaults until we have actual persistence
-    // TBD
+    yield put(setRoster(['fenn']));
     // Rehydrate mission name
     yield put(setMission(match[1]));
   }

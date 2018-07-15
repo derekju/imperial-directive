@@ -3,7 +3,7 @@
 import HeroPanelAvatar from './HeroPanelAvatar';
 import noop from 'lodash/noop';
 import React from 'react';
-import rebels from '../data/rebels.json';
+import type {RebelUnitType} from '../reducers/rebels';
 
 const styles = {
   avatarContainer: {
@@ -36,9 +36,8 @@ type HeroPanelPropsType = {
   canIncapacitate: string[],
   enableEscape: boolean,
   fakeWithdrawnHeroes: string[],
-  hpBoosts: {[id: string]: number},
   isRebelPlayerTurn: boolean,
-  roster: string[],
+  roster: RebelUnitType[],
   setRebelEscaped: Function,
   setRebelActivated: Function,
   withdrawnHeroCanActivate: boolean,
@@ -66,15 +65,19 @@ class HeroPanel extends React.Component<HeroPanelPropsType, HeroPanelStateType> 
       <div style={styles.base}>
         <div style={styles.header}>Heroes</div>
         <div style={styles.avatarContainer} ref={this.saveSectionContents}>
-          {this.props.roster.map((id: string, index: number) => {
+          {this.props.roster.map((unit: RebelUnitType, index: number) => {
+            const {currentNumFigures, elite, firstName, hpBoost, id, maxInGroup, type} = unit;
             const canHeroActivateTwice = this.props.canActivateTwice.includes(id);
             const numTimesHeroHasActivated = this.props.activatedRebels.filter(
               (rebelId: string) => rebelId === id
             ).length;
-            let nameToDisplay = rebels[id].firstName;
+            let nameToDisplay = firstName;
             if (canHeroActivateTwice) {
               const timesLeft = 2 - numTimesHeroHasActivated;
               nameToDisplay = `${nameToDisplay} x${timesLeft}`;
+            }
+            if (maxInGroup > 1) {
+              nameToDisplay = `${nameToDisplay} (${currentNumFigures})`;
             }
 
             return (
@@ -86,13 +89,13 @@ class HeroPanel extends React.Component<HeroPanelPropsType, HeroPanelStateType> 
                       : this.props.activatedRebels.includes(id)
                   }
                   canBeIncapacitated={this.props.canIncapacitate.includes(id)}
-                  elite={rebels[id].elite}
+                  elite={elite}
                   enableEscape={this.props.enableEscape}
                   firstName={nameToDisplay}
-                  hpBoost={this.props.hpBoosts[id] || 0}
+                  hpBoost={hpBoost || 0}
                   id={id}
                   index={index}
-                  isHero={rebels[id].type === 'hero'}
+                  isHero={type === 'hero'}
                   isRebelPlayerTurn={this.props.isRebelPlayerTurn}
                   parentDiv={this.state.htmlDivAvatarContainer}
                   setRebelEscaped={this.props.isRebelPlayerTurn ? this.props.setRebelEscaped : noop}
@@ -106,7 +109,7 @@ class HeroPanel extends React.Component<HeroPanelPropsType, HeroPanelStateType> 
                   withdrawnHeroCanActivate={this.props.withdrawnHeroCanActivate}
                   wounded={this.props.woundedHeroes.includes(id)}
                   woundRebelHero={
-                    rebels[id].type === 'hero'
+                    type === 'hero'
                       ? this.props.woundRebelHero
                       : this.props.woundRebelOther
                   }

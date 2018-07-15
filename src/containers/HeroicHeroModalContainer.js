@@ -4,6 +4,7 @@ import {getRosterOfType, getWithdrawnHeroes, setHeroActivateTwice} from '../redu
 import {closeModals} from '../reducers/modal';
 import {connect} from 'react-redux';
 import HeroicHeroModal from '../components/modals/HeroicHeroModal';
+import type {RebelUnitType} from '../reducers/rebels';
 import type {StateType} from '../reducers/types';
 
 const mapStateToProps = (state: StateType) => {
@@ -13,7 +14,7 @@ const mapStateToProps = (state: StateType) => {
     canActivateTwice: state.rebels.canActivateTwice,
     // Get roster but filter all withdrawn heroes out since they can't activate
     // Exception are the fake withdrawn heroes. They still can.
-    roster: getRosterOfType(state, 'hero').filter((id: string) => !withdrawnHeroes.includes(id)),
+    roster: getRosterOfType(state, 'hero').filter((unit: RebelUnitType) => !withdrawnHeroes.includes(unit.id)),
     type: state.modal.type,
   };
 };

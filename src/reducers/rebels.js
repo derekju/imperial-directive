@@ -19,6 +19,16 @@ export type RebelConfigType = {
   type: 'hero' | 'ally' | 'mission',
 };
 
+export type RebelUnitType = {
+  currentNumFigures: number,
+  elite: boolean,
+  firstName: string,
+  hpBoost: number,
+  id: string,
+  maxInGroup: number,
+  type: 'hero' | 'ally' | 'mission',
+};
+
 export type RebelsStateType = {
   activatedRebels: string[],
   allyChosen: ?string,
@@ -27,11 +37,27 @@ export type RebelsStateType = {
   enableEscape: boolean,
   escapedRebels: string[],
   fakeWithdrawnHeroes: string[],
-  hpBoosts: {[id: string]: number},
-  roster: string[],
+  roster: RebelUnitType[],
   withdrawnHeroes: string[],
   woundedHeroes: string[],
   woundedOther: string[],
+};
+
+// Utils
+
+const createRebelUnit = (id: string, numHeroes: number) => {
+  const unit = rebels[id];
+  const isHero = unit.type === 'hero';
+
+  return {
+    currentNumFigures: unit.maxInGroup,
+    elite: unit.elite,
+    firstName: unit.firstName,
+    hpBoost: isHero ? (numHeroes === 2 ? 10 : numHeroes === 3 ? 3 : 0) : 0,
+    id,
+    maxInGroup: unit.maxInGroup,
+    type: unit.type,
+  };
 };
 
 // State
@@ -44,7 +70,6 @@ const initialState = {
   enableEscape: false,
   escapedRebels: [],
   fakeWithdrawnHeroes: [],
-  hpBoosts: {},
   roster: [],
   withdrawnHeroes: [],
   woundedHeroes: [],
@@ -55,24 +80,12 @@ export default (state: RebelsStateType = initialState, action: Object) => {
   switch (action.type) {
     case SET_ROSTER:
       const {roster} = action.payload;
-      const hpBoosts = {};
       const heroes = roster.filter((id: string) => rebels[id].type === 'hero');
-
-      if (heroes.length === 2) {
-        heroes.forEach((id: string) => {
-          hpBoosts[id] = 10;
-        });
-      } else if (heroes.length === 3) {
-        heroes.forEach((id: string) => {
-          hpBoosts[id] = 3;
-        });
-      }
 
       return {
         ...initialState,
         canActivateTwice: heroes.length === 2 ? heroes.slice() : state.canActivateTwice,
-        hpBoosts,
-        roster: roster.sort(),
+        roster: roster.map((id: string) => createRebelUnit(id, heroes.length)),
       };
     case SILENT_SET_REBEL_ACTIVATED:
     case SET_REBEL_ACTIVATED: {
@@ -136,14 +149,57 @@ export default (state: RebelsStateType = initialState, action: Object) => {
     case ADD_TO_ROSTER: {
       return {
         ...state,
-        roster: (state.roster.concat([action.payload.id]): string[]),
+        roster: (state.roster.concat([createRebelUnit(action.payload.id, 0)]): RebelUnitType[]),
+      };
+    }
+    case ADD_SINGLE_UNIT_TO_ROSTER: {
+      const {id} = action.payload;
+
+      // If the unit is already present, add 1 to it's currentNumFigures as long as it does not exceed
+      // the max. Otherwise, add it and set it's numFigures to 1
+      let unitFound = false;
+      const newRoster = ((state.roster.map((unit: RebelUnitType) => {
+        if (unit.id === id) {
+          unitFound = true;
+          if (unit.currentNumFigures < unit.maxInGroup) {
+            return {...unit, currentNumFigures: unit.currentNumFigures + 1};
+          }
+        }
+        return unit;
+      })): RebelUnitType[]);
+
+      if (!unitFound) {
+        const newUnit = createRebelUnit(id, 0);
+        newUnit.currentNumFigures = 1;
+        newRoster.push(newUnit);
+      }
+
+      return {
+        ...state,
+        roster: newRoster,
       };
     }
     case WOUND_REBEL_OTHER: {
       const {id} = action.payload;
       return {
         ...state,
-        roster: without(state.roster, id),
+        roster: (state.roster
+          .map((unit: RebelUnitType) => {
+            if (unit.type === 'hero') {
+              return unit;
+            } else {
+              if (unit.currentNumFigures - 1 > 0) {
+                return {
+                  ...unit,
+                  currentNumFigures: unit.currentNumFigures - 1,
+                };
+              } else {
+                // $FlowFixMe - We're going to manually filter this out
+                return false;
+              }
+            }
+          })
+          .filter(Boolean): RebelUnitType[]),
         woundedOther: (state.woundedOther.concat([id]): string[]),
       };
     }
@@ -151,10 +207,17 @@ export default (state: RebelsStateType = initialState, action: Object) => {
       const {id, boost} = action.payload;
       return {
         ...state,
-        hpBoosts: {
-          ...state.hpBoosts,
-          [id]: boost,
-        },
+        roster: (state.roster
+          .map((unit: RebelUnitType) => {
+            if (unit.id !== id) {
+              return unit
+            } else {
+              return {
+                ...unit,
+                hpBoost: boost,
+              };
+            }
+          }): RebelUnitType[]),
       };
     }
     case SET_ALLY_CHOSEN: {
@@ -190,6 +253,7 @@ export const SET_HERO_ACTIVATE_TWICE = 'SET_HERO_ACTIVATE_TWICE';
 export const WOUND_REBEL_HERO = 'WOUND_REBEL_HERO';
 export const SET_REBEL_ESCAPED = 'SET_REBEL_ESCAPED';
 export const ADD_TO_ROSTER = 'ADD_TO_ROSTER';
+export const ADD_SINGLE_UNIT_TO_ROSTER = 'ADD_SINGLE_UNIT_TO_ROSTER';
 export const WOUND_REBEL_OTHER = 'WOUND_REBEL_OTHER';
 export const SET_REBEL_HP_BOOST = 'SET_REBEL_HP_BOOST';
 export const SET_ALLY_CHOSEN = 'SET_ALLY_CHOSEN';
@@ -207,6 +271,7 @@ export const woundRebelHero = (id: string, withdrawnHeroCanActivate: boolean) =>
   createAction(WOUND_REBEL_HERO, {id, withdrawnHeroCanActivate});
 export const setRebelEscaped = (id: string) => createAction(SET_REBEL_ESCAPED, {id});
 export const addToRoster = (id: string) => createAction(ADD_TO_ROSTER, {id});
+export const addSingleUnitToRoster = (id: string) => createAction(ADD_SINGLE_UNIT_TO_ROSTER, {id});
 export const woundRebelOther = (id: string) => createAction(WOUND_REBEL_OTHER, {id});
 export const setRebelHpBoost = (id: string, boost: number) =>
   createAction(SET_REBEL_HP_BOOST, {boost, id});
@@ -218,8 +283,8 @@ export const setCanIncapacitate = (groupIds: string[]) =>
 // Selectors
 
 export const getRoster = (state: StateType) => state.rebels.roster;
-export const getRosterOfType = (state: StateType, type: string): string[] =>
-  state.rebels.roster.filter((id: string) => rebels[id].type === type);
+export const getRosterOfType = (state: StateType, type: string): RebelUnitType[] =>
+  state.rebels.roster.filter((unit: RebelUnitType) => unit.type === type);
 export const getWithdrawnHeroes = (state: StateType): string[] => state.rebels.withdrawnHeroes;
 export const getIsThereReadyRebelFigures = (state: StateType) =>
   state.rebels.activatedRebels.length !==

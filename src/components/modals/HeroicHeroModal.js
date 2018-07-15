@@ -1,10 +1,10 @@
 // @flow
 
-import difference from 'lodash/difference';
 import HeroAvatar from '../HeroAvatar';
 import Modal from '../Modal';
 import React from 'react';
 import rebels from '../../data/rebels.json';
+import type {RebelUnitType} from '../../reducers/rebels';
 
 const styles = {
   avatarStyle: {
@@ -30,7 +30,7 @@ const styles = {
 type HeroicHeroModalPropsType = {
   closeModals: Function,
   canActivateTwice: string[],
-  roster: string[],
+  roster: RebelUnitType[],
   setHeroActivateTwice: Function,
   type: string,
 };
@@ -42,12 +42,19 @@ class HeroicHeroModal extends React.Component<HeroicHeroModalPropsType> {
   };
 
   render() {
+    let calculatedRoster = [];
+    this.props.roster.forEach((unit: RebelUnitType) => {
+      if (!this.props.canActivateTwice.includes(unit.id)) {
+        calculatedRoster.push(unit.id);
+      }
+    });
+
     return (
       <Modal title="Heroic Heroes">
         <div style={styles.base}>
           <div style={styles.header}>Choose hero to receive an extra activation:</div>
           <div style={styles.units}>
-            {difference(this.props.roster, this.props.canActivateTwice).map((heroId: string) => (
+            {calculatedRoster.map((heroId: string) => (
               <div
                 key={heroId}
                 onClick={() => this.handleAvatarClick(heroId)}
