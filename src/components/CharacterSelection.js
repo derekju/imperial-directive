@@ -139,6 +139,7 @@ type CharacterSelectionPropsType = {
   setMission: Function,
   setMissionThreat: Function,
   setRoster: Function,
+  setThreatReduction: Function,
   setVillains: Function,
 };
 
@@ -146,6 +147,7 @@ type CharacterSelectionStateType = {
   missionThreat: number,
   selectedDifficulty: string,
   selectedRoster: string[],
+  threatReduction: number,
 };
 
 class CharacterSelection extends React.Component<
@@ -159,6 +161,7 @@ class CharacterSelection extends React.Component<
     missionThreat: 2,
     selectedDifficulty: 'standard',
     selectedRoster: [],
+    threatReduction: 0,
   };
 
   cancel = () => {
@@ -179,6 +182,7 @@ class CharacterSelection extends React.Component<
     }
 
     this.props.setMissionThreat(this.state.missionThreat);
+    this.props.setThreatReduction(this.state.threatReduction);
 
     this.props.setDifficulty(this.state.selectedDifficulty);
     track('setDifficulty', this.state.selectedDifficulty);
@@ -275,6 +279,19 @@ class CharacterSelection extends React.Component<
     }));
   };
 
+  decrementThreatReduction = () => {
+    this.setState((prevState: CharacterSelectionStateType) => ({
+      threatReduction: Math.max(0, prevState.threatReduction - 1),
+    }));
+  };
+
+  incrementThreatReduction = () => {
+    this.setState((prevState: CharacterSelectionStateType) => ({
+      // No maximum here
+      threatReduction: prevState.threatReduction + 1,
+    }));
+  };
+
   renderSelectMission() {
     return (
       <div style={styles.section}>
@@ -335,16 +352,31 @@ class CharacterSelection extends React.Component<
           <span style={styles.headerText}>Select Ally</span>
         </div>
         <div style={styles.sectionContents}>
-          <select ref={this.saveAllySelect} style={styles.selectInput}>
-            <option key="none" value="">
-              None
-            </option>
-            {this.props.availableAllies.map((allyId: string) => (
-              <option key={allyId} value={allyId}>
-                {`${rebels[allyId].firstName} ${rebels[allyId].lastName}`}
+          <div style={styles.sectionDescription}>
+            Some rewards allow for one-time threat reduction for allies. Adjust the starting threat here to compensate for these rewards.
+          </div>
+          <div>
+            <select ref={this.saveAllySelect} style={styles.selectInput}>
+              <option key="none" value="">
+                None
               </option>
-            ))}
-          </select>
+              {this.props.availableAllies.map((allyId: string) => (
+                <option key={allyId} value={allyId}>
+                  {`${rebels[allyId].firstName} ${rebels[allyId].lastName}`}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div style={styles.threatInputSection}>
+            <div style={styles.threatTitle}>Threat Reduction:</div>
+            <div style={styles.threatButton} onClick={this.decrementThreatReduction}>
+              -
+            </div>
+            <div style={styles.threatNumber}>{this.state.threatReduction}</div>
+            <div style={styles.threatButton} onClick={this.incrementThreatReduction}>
+              +
+            </div>
+          </div>
         </div>
       </div>
     );

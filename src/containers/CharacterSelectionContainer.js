@@ -7,6 +7,7 @@ import {
   setImperialRewards,
   setMission,
   setMissionThreat,
+  setThreatReduction,
 } from '../reducers/app';
 import CharacterSelection from '../components/CharacterSelection';
 import {connect} from 'react-redux';
@@ -68,6 +69,7 @@ const mapDispatchToProps = {
   setMission,
   setMissionThreat,
   setRoster,
+  setThreatReduction,
   setVillains,
 };
 

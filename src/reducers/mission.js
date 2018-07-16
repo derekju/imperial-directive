@@ -8,6 +8,7 @@ import {
   SET_REBEL_ACTIVATED,
   SET_REBEL_ESCAPED,
 } from './rebels';
+import {getImperialRewards, getThreatReduction} from './app';
 import {
   getReadyImperialGroups,
   OPTIONAL_DEPLOYMENT_DONE,
@@ -16,7 +17,6 @@ import {
 } from './imperials';
 import createAction from './createAction';
 import {displayModal} from './modal';
-import {getImperialRewards} from './app';
 import {handleSpecialOperationsReward} from './imperialRewards';
 import helperEventModal from './missions/helpers/helperEventModal';
 import rebels from '../data/rebels.json';
@@ -365,7 +365,20 @@ function* handleCheckForAllies(): Generator<*, *, *> {
   if (allyChosen) {
     // Increase threat by the cost of the ally chosen
     const ally = rebels[allyChosen];
-    const threatCost = ally.threat;
+    // Decrease by threat reduction
+    const threatReduction = yield select(getThreatReduction);
+    const threatCost = ally.threat - threatReduction;
+
+    // Show a modal if there was an actual reduction
+    if (threatReduction > 0) {
+      yield call(helperEventModal, {
+        text: [
+          `The cost to deploy an ally was reduced by ${threatReduction}.`,
+        ],
+        title: 'Threat Reduction',
+      });
+    }
+
     yield call(helperEventModal, {
       text: [
         'Because an ally was chosen, the Imperial receives extra threat.',

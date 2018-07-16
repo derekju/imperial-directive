@@ -28,6 +28,7 @@ export type AppStateType = {
   expansions: {[string]: boolean},
   imperialRewards: {[string]: boolean},
   missionThreat: number,
+  threatReduction: number,
 };
 
 // State
@@ -38,6 +39,7 @@ const initialState = {
   expansions: {},
   imperialRewards: {},
   missionThreat: 2,
+  threatReduction: 0,
 };
 
 export default (state: AppStateType = initialState, action: Function) => {
@@ -67,6 +69,11 @@ export default (state: AppStateType = initialState, action: Function) => {
         ...state,
         expansions: Object.assign({}, action.payload.expansions),
       };
+    case SET_THREAT_REDUCTION:
+      return {
+        ...state,
+        threatReduction: action.payload.threatReduction,
+      };
     default:
       return state;
   }
@@ -80,6 +87,7 @@ export const SET_DIFFICULTY = 'SET_DIFFICULTY';
 export const SET_IMPERIAL_REWARDS = 'SET_IMPERIAL_REWARDS';
 export const SET_EXPANSIONS = 'SET_EXPANSIONS';
 export const MISSION_SAGA_LOAD_DONE = 'MISSION_SAGA_LOAD_DONE';
+export const SET_THREAT_REDUCTION = 'SET_THREAT_REDUCTION';
 
 // Action creators
 
@@ -91,6 +99,7 @@ export const setImperialRewards = (rewards: Object) =>
   createAction(SET_IMPERIAL_REWARDS, {rewards});
 export const setExpansions = (expansions: Object) => createAction(SET_EXPANSIONS, {expansions});
 export const missionSagaLoadDone = () => createAction(MISSION_SAGA_LOAD_DONE);
+export const setThreatReduction = (threatReduction: number) => createAction(SET_THREAT_REDUCTION, {threatReduction});
 
 // Selectors
 
@@ -100,6 +109,7 @@ export const getMissionThreat = (state: StateType) => state.app.missionThreat;
 export const getDifficulty = (state: StateType) => state.app.currentDifficulty;
 export const getImperialRewards = (state: StateType) => state.app.imperialRewards;
 export const getExpansions = (state: StateType) => state.app.expansions;
+export const getThreatReduction = (state: StateType) => state.app.threatReduction;
 
 // Sagas
 
