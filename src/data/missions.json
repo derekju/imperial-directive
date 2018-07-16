@@ -505,6 +505,113 @@
     "openGroups": 3,
     "reservedGroups": []
   },
+  "braceForImpact": {
+    "wave": "wave1",
+    "initialGroups": [
+      "nexu", "stormtrooper", "stormtrooperElite"
+    ],
+    "instructions": {
+      "imperialVictory": "At the end of Round 6 or when there are no Rebel Troopers nor reinforcements left",
+      "rebelVictory": "When the heroes depart"
+    },
+    "mapImage": [
+      ["00a", "00a", "00a", "00a", "00a", "00a", "02a", "02a", "02a", "02a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a"],
+      ["00a", "00a", "00a", "00a", "00a", "00a", "02a", "02a", "02a", "02a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a"],
+      ["00a", "00a", "00a", "00a", "00a", "00a", "02a", "02a", "02a", "02a", "18a", "00a", "00a", "00a", "00a", "00a", "00a", "00a"],
+      ["00a", "00a", "00a", "00a", "00a", "00a", "02a", "02a", "02a", "02a", "18a", "00a", "00a", "00a", "00a", "00a", "00a", "00a"],
+      ["00a", "00a", "00a", "00a", "00a", "00a", "02a", "02a", "02a", "02a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a"],
+      ["00a", "18a", "18a", "00a", "00a", "00a", "02a", "02a", "02a", "02a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a"],
+      ["06a", "06a", "06a", "00a", "00a", "00a", "00a", "00a", "03a", "03a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a"],
+      ["06a", "06a", "06a", "06a", "00a", "00a", "00a", "03a", "03a", "03a", "03a", "00a", "21a", "21a", "21a", "21a", "21a", "36a"],
+      ["06a", "06a", "06a", "06a", "15a", "15a", "03a", "03a", "03a", "03a", "03a", "36a", "21a", "21a", "21a", "21a", "21a", "36a"],
+      ["06a", "06a", "06a", "06a", "15a", "15a", "03a", "03a", "03a", "03a", "03a", "36a", "21a", "21a", "21a", "21a", "21a", "00a"],
+      ["00a", "18a", "18a", "00a", "00a", "00a", "00a", "03a", "03a", "03a", "03a", "00a", "21a", "21a", "21a", "21a", "21a", "00a"],
+      ["00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "03a", "03a", "00a", "00a", "00a", "35a", "35a", "00a", "00a", "00a"],
+      ["00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "14a", "14a", "39a", "34a", "34a", "32a", "32a", "00a", "00a", "00a"],
+      ["00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "14a", "14a", "39a", "34a", "34a", "32a", "32a", "00a", "00a", "00a"]
+    ],
+    "mapStates": {
+      "entrance-1": {
+        "activated": false,
+        "activateText": "",
+        "coordinates": {
+          "x": 9,
+          "y": 3
+        },
+        "description": "The entrance.",
+        "id": 1,
+        "interactable": false,
+        "type": "entrance",
+        "unactivateText": "",
+        "visible": true
+      },
+      "door-1": {
+        "activated": false,
+        "activateText": "Open",
+        "coordinates": {
+          "x": 13,
+          "y": 11
+        },
+        "description": "The door to the Command Center (tile 21A).",
+        "id": 1,
+        "interactable": true,
+        "type": "door",
+        "unactivateText": "Close",
+        "visible": true
+      },
+      "terminal-1": {
+        "activated": false,
+        "activateText": "Download",
+        "coordinates": {
+          "x": 14,
+          "y": 7
+        },
+        "description": "The terminal that holds the data.",
+        "id": 1,
+        "interactable": true,
+        "type": "terminal",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "rebel-1": {
+        "activated": false,
+        "activateText": "Destroy",
+        "color": "red",
+        "coordinates": {
+          "x": 4,
+          "y": 8
+        },
+        "description": "A barricade.",
+        "id": 1,
+        "interactable": true,
+        "type": "rebel",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "rebel-2": {
+        "activated": false,
+        "activateText": "Destroy",
+        "color": "red",
+        "coordinates": {
+          "x": 4,
+          "y": 9
+        },
+        "description": "A barricade.",
+        "id": 2,
+        "interactable": true,
+        "type": "rebel",
+        "unactivateText": "Restore",
+        "visible": true
+      }
+    },
+    "name": "Brace for Impact",
+    "noMercenaryAllowed": false,
+    "openGroups": 3,
+    "reservedGroups": [
+      "probeDroid", "royalGuard"
+    ],
+    "withdrawnHeroCanActivate": true
+  },
   "breakingPoint": {
     "initialGroups": ["royalGuard"],
     "instructions": {

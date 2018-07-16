@@ -5,6 +5,7 @@ import {aNewThreat, getANewThreatGoalText} from './aNewThreat';
 import {armedAndOperational, getArmedAndOperationalGoalText} from './armedAndOperational';
 import {aSimpleTask, getASimpleTaskGoalText} from './aSimpleTask';
 import {binaryRevolution, getBinaryRevolutionGoalText} from './binaryRevolution';
+import {braceForImpact, getBraceForImpactGoalText} from './braceForImpact';
 import {breakingPoint, getBreakingPointGoalText} from './breakingPoint';
 import {brushfire, getBrushfireGoalText} from './brushfire';
 import {canyonRun, getCanyonRunGoalText} from './canyonRun';
@@ -53,6 +54,7 @@ export default {
   aftermath,
   armedAndOperational,
   binaryRevolution,
+  braceForImpact,
   breakingPoint,
   brushfire,
   canyonRun,
@@ -71,6 +73,7 @@ export default {
   getAftermathGoalText,
   getArmedAndOperationalGoalText,
   getBinaryRevolutionGoalText,
+  getBraceForImpactGoalText,
   getBreakingPointGoalText,
   getBrushfireGoalText,
   getCanyonRunGoalText,

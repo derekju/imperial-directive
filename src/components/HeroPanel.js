@@ -109,9 +109,7 @@ class HeroPanel extends React.Component<HeroPanelPropsType, HeroPanelStateType> 
                   withdrawnHeroCanActivate={this.props.withdrawnHeroCanActivate}
                   wounded={this.props.woundedHeroes.includes(id)}
                   woundRebelHero={
-                    type === 'hero'
-                      ? this.props.woundRebelHero
-                      : this.props.woundRebelOther
+                    type === 'hero' ? this.props.woundRebelHero : this.props.woundRebelOther
                   }
                 />
               </div>

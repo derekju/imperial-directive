@@ -14,7 +14,9 @@ const mapStateToProps = (state: StateType) => {
     canActivateTwice: state.rebels.canActivateTwice,
     // Get roster but filter all withdrawn heroes out since they can't activate
     // Exception are the fake withdrawn heroes. They still can.
-    roster: getRosterOfType(state, 'hero').filter((unit: RebelUnitType) => !withdrawnHeroes.includes(unit.id)),
+    roster: getRosterOfType(state, 'hero').filter(
+      (unit: RebelUnitType) => !withdrawnHeroes.includes(unit.id)
+    ),
     type: state.modal.type,
   };
 };

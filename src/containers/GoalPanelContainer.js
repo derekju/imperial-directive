@@ -64,9 +64,11 @@ const imperialEntanglementsAirlockReleased = () =>
   createAction('IMPERIAL_ENTANGLEMENTS_AIRLOCK_RELEASED');
 const imperialEntanglementsSchematicsUploaded = () =>
   createAction('IMPERIAL_ENTANGLEMENTS_SCHEMATICS_UPLOADED');
+const braceForImpactHeroesDepart = () => createAction('BRACE_FOR_IMPACT_HEROES_DEPART');
 
 const mapDispatchToProps = {
   armedAndOperationalWarshipDestroyed,
+  braceForImpactHeroesDepart,
   chainOfCommandTerminalInteract,
   chainOfCommandWeissDefends,
   chainOfCommandWeissEntered,

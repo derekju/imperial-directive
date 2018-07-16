@@ -158,7 +158,7 @@ export default (state: RebelsStateType = initialState, action: Object) => {
       // If the unit is already present, add 1 to it's currentNumFigures as long as it does not exceed
       // the max. Otherwise, add it and set it's numFigures to 1
       let unitFound = false;
-      const newRoster = ((state.roster.map((unit: RebelUnitType) => {
+      const newRoster = (state.roster.map((unit: RebelUnitType) => {
         if (unit.id === id) {
           unitFound = true;
           if (unit.currentNumFigures < unit.maxInGroup) {
@@ -166,7 +166,7 @@ export default (state: RebelsStateType = initialState, action: Object) => {
           }
         }
         return unit;
-      })): RebelUnitType[]);
+      }): RebelUnitType[]);
 
       if (!unitFound) {
         const newUnit = createRebelUnit(id, 0);
@@ -207,17 +207,16 @@ export default (state: RebelsStateType = initialState, action: Object) => {
       const {id, boost} = action.payload;
       return {
         ...state,
-        roster: (state.roster
-          .map((unit: RebelUnitType) => {
-            if (unit.id !== id) {
-              return unit
-            } else {
-              return {
-                ...unit,
-                hpBoost: boost,
-              };
-            }
-          }): RebelUnitType[]),
+        roster: (state.roster.map((unit: RebelUnitType) => {
+          if (unit.id !== id) {
+            return unit;
+          } else {
+            return {
+              ...unit,
+              hpBoost: boost,
+            };
+          }
+        }): RebelUnitType[]),
       };
     }
     case SET_ALLY_CHOSEN: {

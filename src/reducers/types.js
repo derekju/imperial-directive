@@ -4,6 +4,7 @@ import type {AftermathStateType} from './missions/aftermath';
 import type {AppStateType} from './app';
 import type {ArmedAndOperationalStateType} from './missions/armedAndOperational';
 import type {BinaryRevolutionStateType} from './missions/binaryRevolution';
+import type {BraceForImpactStateType} from './missions/braceForImpact';
 import type {BreakingPointStateType} from './missions/breakingPoint';
 import type {BrushfireStateType} from './missions/brushfire';
 import type {CanyonRunStateType} from './missions/canyonRun';
@@ -51,6 +52,7 @@ export type StateType = {
   app: AppStateType,
   armedAndOperational: ArmedAndOperationalStateType,
   binaryRevolution: BinaryRevolutionStateType,
+  braceForImpact: BraceForImpactStateType,
   breakingPoint: BreakingPointStateType,
   brushfire: BrushfireStateType,
   canyonRun: CanyonRunStateType,
@@ -83,6 +85,13 @@ export type StateType = {
   modal: ModalStateType,
   pastLifeEnemies: PastLifeEnemiesStateType,
   rebels: RebelsStateType,
+  router: {
+    location: {
+      hash: string,
+      pathname: string,
+      search: string,
+    },
+  },
   shadyDealings: ShadyDealingsStateType,
   sympathyForTheRebellion: SympathyForTheRebellionStateType,
   targetOfOpportunity: TargetOfOpportunityStateType,

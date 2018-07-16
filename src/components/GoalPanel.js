@@ -27,6 +27,7 @@ const styles = {
 
 type GoalPanelPropsType = {
   armedAndOperationalWarshipDestroyed: Function,
+  braceForImpactHeroesDepart: Function,
   chainOfCommandTerminalInteract: Function,
   chainOfCommandWeissDefends: Function,
   chainOfCommandWeissEntered: Function,
@@ -418,6 +419,20 @@ class GoalPanel extends React.Component<GoalPanelPropsType, GoalPanelStateType> 
     return null;
   }
 
+  renderPlaceholder(gText: string) {
+    if (this.props.currentMission === 'braceForImpact' && gText === '---PLACEHOLDER_BUTTON_1---') {
+      return (
+        <div style={styles.buttonContainer}>
+          <Button
+            text="Heroes Depart"
+            width={180}
+            onClick={this.props.braceForImpactHeroesDepart}
+          />
+        </div>
+      );
+    }
+  }
+
   renderRewards() {
     if (this.props.rewardOldWoundsEarned) {
       const oldWoundsRewardText = [
@@ -436,9 +451,13 @@ class GoalPanel extends React.Component<GoalPanelPropsType, GoalPanelStateType> 
     }
 
     return (goalText.map((gText: string, index: number) => {
-      return (
-        <div key={`goal-${index}`} dangerouslySetInnerHTML={{__html: handleTextSubs(gText)}} />
-      );
+      if (gText.indexOf('---PLACEHOLDER') > -1) {
+        return this.renderPlaceholder(gText);
+      } else {
+        return (
+          <div key={`goal-${index}`} dangerouslySetInnerHTML={{__html: handleTextSubs(gText)}} />
+        );
+      }
     }): Array<*>);
   }
 
