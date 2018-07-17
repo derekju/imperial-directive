@@ -221,7 +221,7 @@ function* handleSpecialSetup(): Generator<*, *, *> {
   yield call(helperEventModal, {
     text: [
       'Set aside 1 blue neutral mission token and 1 red neutral mission token.',
-      'The heroes control {ELITE}Han Solo{END} as an ally at no threat cost.',
+      'The heroes control {ELITE}Han Solo{END} as an ally at no additional cost.',
     ],
     title: 'Initial Setup',
   });

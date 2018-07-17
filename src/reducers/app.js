@@ -99,7 +99,8 @@ export const setImperialRewards = (rewards: Object) =>
   createAction(SET_IMPERIAL_REWARDS, {rewards});
 export const setExpansions = (expansions: Object) => createAction(SET_EXPANSIONS, {expansions});
 export const missionSagaLoadDone = () => createAction(MISSION_SAGA_LOAD_DONE);
-export const setThreatReduction = (threatReduction: number) => createAction(SET_THREAT_REDUCTION, {threatReduction});
+export const setThreatReduction = (threatReduction: number) =>
+  createAction(SET_THREAT_REDUCTION, {threatReduction});
 
 // Selectors
 

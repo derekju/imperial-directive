@@ -263,7 +263,7 @@ function* handleSpecialSetup(): Generator<*, *, *> {
   yield call(helperInitialSetup, ['nexu', 'stormtrooper', 'stormtrooperElite']);
   yield call(helperEventModal, {
     text: [
-      'The heroes control the Rebel Troopers as an ally.',
+      'The heroes control the Rebel Troopers as an ally at no additional cost.',
       'Claim 4 neutral mission tokens and set them aside.',
       'The threat has been increased.',
       'An optional deployment will now be done.',

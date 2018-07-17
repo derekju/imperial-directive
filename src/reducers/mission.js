@@ -372,9 +372,7 @@ function* handleCheckForAllies(): Generator<*, *, *> {
     // Show a modal if there was an actual reduction
     if (threatReduction > 0) {
       yield call(helperEventModal, {
-        text: [
-          `The cost to deploy an ally was reduced by ${threatReduction}.`,
-        ],
+        text: [`The cost to deploy an ally was reduced by ${threatReduction}.`],
         title: 'Threat Reduction',
       });
     }

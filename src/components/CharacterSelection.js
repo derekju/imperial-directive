@@ -353,7 +353,8 @@ class CharacterSelection extends React.Component<
         </div>
         <div style={styles.sectionContents}>
           <div style={styles.sectionDescription}>
-            Some rewards allow for one-time threat reduction for allies. Adjust the starting threat here to compensate for these rewards.
+            Some rewards allow for one-time threat reduction for allies. Adjust the starting threat
+            here to compensate for these rewards.
           </div>
           <div>
             <select ref={this.saveAllySelect} style={styles.selectInput}>

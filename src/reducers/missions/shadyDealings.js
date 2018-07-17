@@ -381,7 +381,7 @@ function* handleSpecialSetup(): Generator<*, *, *> {
   yield call(helperInitialSetup, ['heavyStormtrooper', 'imperialOfficer']);
   yield call(helperEventModal, {
     text: [
-      'The heroes control {ELITE}R2-D2{END} as an ally at no cost.',
+      'The heroes control {ELITE}R2-D2{END} as an ally at no additional cost.',
       'The threat has been increased by twice the threat level.',
       'An optional deployment will now be done.',
     ],

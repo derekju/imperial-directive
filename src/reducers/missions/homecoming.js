@@ -182,7 +182,7 @@ function* handleSpecialSetup(): Generator<*, *, *> {
   yield call(helperInitialSetup, ['probeDroid', 'stormtrooper', 'trandoshanHunter']);
   yield call(helperEventModal, {
     text: [
-      'The heroes control {ELITE}Luke Skywalker{END} as an ally.',
+      'The heroes control {ELITE}Luke Skywalker{END} as an ally at no additional cost.',
       'The threat has been increased by twice the threat level.',
       'An optional deployment will now be done.',
     ],

@@ -161,7 +161,7 @@ function* handleSpecialSetup(): Generator<*, *, *> {
   yield call(helperInitialSetup, ['imperialOfficer', 'probeDroid', 'stormtrooperElite']);
   yield call(helperEventModal, {
     text: [
-      'The heroes control the Rebel Saboteurs as an ally.',
+      'The heroes control the Rebel Saboteurs as an ally at no additional cost.',
       'The threat has been increased by twice the threat level.',
       'An optional deployment will now be done.',
     ],
