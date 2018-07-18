@@ -31,10 +31,14 @@ import helperInitialSetup from './helpers/helperInitialSetup';
 import helperMissionBriefing from './helpers/helperMissionBriefing';
 import {missionSagaLoadDone} from '../app';
 import random from 'lodash/random';
+import snakeCase from 'lodash/snakeCase';
 import type {StateType} from '../types';
 import track from '../../lib/track';
 
 // Constants
+
+const MISSION_NAME = 'looseCannon';
+const MISSION_NAME_S = snakeCase(MISSION_NAME).toUpperCase();
 
 const TARGET_ATST = 'the AT-ST';
 
@@ -56,7 +60,7 @@ const initialState = {
 
 export default (state: LooseCannonStateType = initialState, action: Object) => {
   switch (action.type) {
-    case 'LOOSE_CANNON_PRIORITY_TARGET_KILL_HERO':
+    case `${MISSION_NAME_S}_PRIORITY_TARGET_KILL_HERO`:
       return {
         ...state,
         priorityTargetKillHero: action.payload,
@@ -87,7 +91,7 @@ export const getLooseCannonGoalText = (state: StateType): string[] => {
 
 function* handleAtstDefeated(): Generator<*, *, *> {
   yield take('LOOSE_CANNON_DEFEAT_ATST');
-  track('looseCannon', 'pressAdvantage', 'triggered');
+  track(MISSION_NAME, 'pressAdvantage', 'triggered');
   const missionThreat = yield select(getMissionThreat);
   yield call(helperEventModal, {
     story: REFER_CAMPAIGN_GUIDE,
@@ -111,9 +115,9 @@ function* handleAllImperialsDefeated(): Generator<*, *, *> {
     const {deployedGroups} = yield select(getCurrentGroups);
 
     if (deployedGroups.length === 0) {
-      // End game with imperial victory
+      // End game with rebel victory
       yield put(displayModal('REBEL_VICTORY'));
-      track('looseCannon', 'victory', 'killedAll');
+      track(MISSION_NAME, 'victory', 'killedAll');
       break;
     }
   }
@@ -126,13 +130,13 @@ function* handleHeroesWounded(): Generator<*, *, *> {
     if (allWounded) {
       // End game with imperial victory
       yield put(displayModal('IMPERIAL_VICTORY'));
-      track('looseCannon', 'defeat', 'wounded');
+      track(MISSION_NAME, 'defeat', 'wounded');
       break;
     }
     const isOneHeroLeft = yield select(getIsOneHeroLeft);
     if (isOneHeroLeft) {
       // SWITCH TARGET
-      yield put(createAction('LOOSE_CANNON_PRIORITY_TARGET_KILL_HERO', true));
+      yield put(createAction(`${MISSION_NAME_S}_PRIORITY_TARGET_KILL_HERO`, true));
       yield put(setAttackTarget(TARGET_REMAINING));
       yield put(setMoveTarget(TARGET_REMAINING));
     }
@@ -147,7 +151,7 @@ function* handleRoundEnd(): Generator<*, *, *> {
 
     if (currentRound === 1) {
       // Chaos event
-      track('looseCannon', 'chaos', 'triggered');
+      track(MISSION_NAME, 'chaos', 'triggered');
       yield call(
         helperDeploy,
         'Chaos',
@@ -164,7 +168,7 @@ function* handleRoundEnd(): Generator<*, *, *> {
     } else if (currentRound === 7) {
       // End game with imperial victory
       yield put(displayModal('IMPERIAL_VICTORY'));
-      track('looseCannon', 'defeat', 'round');
+      track(MISSION_NAME, 'defeat', 'round');
       break;
     }
 
@@ -234,6 +238,6 @@ export function* looseCannon(): Generator<*, *, *> {
     fork(handleRoundEnd),
   ]);
 
-  track('missionStart', 'looseCannon');
+  track('missionStart', MISSION_NAME);
   yield put(missionSagaLoadDone());
 }
