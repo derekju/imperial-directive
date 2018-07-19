@@ -42,6 +42,7 @@ import {
 } from './sympathyForTheRebellion';
 import {getTargetOfOpportunityGoalText, targetOfOpportunity} from './targetOfOpportunity';
 import {getTemptationGoalText, temptation} from './temptation';
+import {getTheBattleOfHothGoalText, theBattleOfHoth} from './theBattleOfHoth';
 import {getTheSourceGoalText, theSource} from './theSource';
 import {getTheSpiceJobGoalText, theSpiceJob} from './theSpiceJob';
 import {getUnderSiegeGoalText, underSiege} from './underSiege';
@@ -107,6 +108,7 @@ export default {
   getSympathyForTheRebellionGoalText,
   getTargetOfOpportunityGoalText,
   getTemptationGoalText,
+  getTheBattleOfHothGoalText,
   getTheSourceGoalText,
   getTheSpiceJobGoalText,
   getUnderSiegeGoalText,
@@ -132,6 +134,7 @@ export default {
   sympathyForTheRebellion,
   targetOfOpportunity,
   temptation,
+  theBattleOfHoth,
   theSource,
   theSpiceJob,
   underSiege,

@@ -98,6 +98,39 @@
     "threat": 18,
     "unique": true
   },
+  "dengar": {
+    "affiliation": "mercenary",
+    "attributes": ["hunter"],
+    "buffs": ["arcBlasters", "combatVeteran", "surgicalStrike", "showOfForce"],
+    "commands": [
+      {
+        "condition": "Surge Priority",
+        "command": "Use the following order: +2 {DMG}, stun, bleed, weaken (via Punishment)."
+      },
+      {
+        "condition": "If within 6 spaces and have LOS of {ATTACK_TARGET}",
+        "command": "{ACTION} Move within 4 spaces of {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}, then move towards {MOVE_TARGET}."
+      },
+      {
+        "condition": "If not within 6 spaces of {ATTACK_TARGET}",
+        "command": "{ACTION} Move towards {ATTACK_TARGET}."
+      },
+      {
+        "condition": "Reaction - If attacking a target that does not have a harmful condition",
+        "command": "Use Contempt ability to apply +1 {SURGE} and then apply Punishment with the {SURGE}."
+      }
+    ],
+    "eligibleForHpBoost": false,
+    "elite": true,
+    "hpBoosts": {},
+    "id": "dengar",
+    "maxDeployed": 1,
+    "maxInGroup": 1,
+    "name": "Dengar",
+    "reinforcementCost": -1,
+    "threat": 7,
+    "unique": true
+  },
   "eWebEngineer": {
     "affiliation": "imperial",
     "attributes": ["trooper", "heavyWeapon"],
@@ -891,7 +924,7 @@
     "commands": [
       {
         "condition": "Reaction - If self or adjacent to another friendly Trooper that has a harmful condition or suffered damage",
-        "command": "Use Environmental Recovery Gear to 1) heal the harmful condition 2) recover 1 {DAMAGE}."
+        "command": "Use Environmental Recovery Gear to 1) heal the harmful condition 2) recover 1 {DMG}."
       },
       {
         "condition": "If within 8 spaces of {ATTACK_TARGET}",
@@ -927,7 +960,7 @@
     "commands": [
       {
         "condition": "Reaction - If self or adjacent to another friendly Trooper that has a harmful condition or suffered damage",
-        "command": "Use Environmental Recovery Gear to 1) heal the harmful condition 2) recover 1 {DAMAGE}."
+        "command": "Use Environmental Recovery Gear to 1) heal the harmful condition 2) recover 1 {DMG}."
       },
       {
         "condition": "If within 8 spaces of {ATTACK_TARGET}",

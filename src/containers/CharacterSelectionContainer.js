@@ -43,6 +43,15 @@ const mapStateToProps = (state: StateType) => {
     },
     []
   );
+  const returnToHothMissions = Object.keys(missions).reduce(
+    (accumulator: string[], missionKey: string) => {
+      if (missions[missionKey].wave === 'returnToHoth') {
+        accumulator.push(missionKey);
+      }
+      return accumulator;
+    },
+    []
+  );
 
   return {
     availableAllies: filter(rebels, (rebel: RebelConfigType) => rebel.type === 'ally').map(
@@ -56,7 +65,9 @@ const mapStateToProps = (state: StateType) => {
       .concat(['--- WAVE 1 ---'])
       .concat(wave1Missions)
       .concat(['--- TWIN SHADOWS ---'])
-      .concat(twinShadowsMissions),
+      .concat(twinShadowsMissions)
+      .concat(['--- RETURN TO HOTH ---'])
+      .concat(returnToHothMissions),
     availableVillains: ['darthVader', 'generalWeiss', 'ig88', 'royalGuardChampion'],
   };
 };

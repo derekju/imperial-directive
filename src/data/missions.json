@@ -4890,6 +4890,170 @@
       "darthVader"
     ]
   },
+  "theBattleOfHoth": {
+    "wave": "returnToHoth",
+    "initialGroups": [
+      "imperialOfficer", "imperialOfficer", "probeDroid", "probeDroid", "snowtrooper"
+    ],
+    "instructions": {
+      "imperialVictory": "When all heroes are wounded",
+      "rebelVictory": "(to be revealed)"
+    },
+    "mapImage": [
+      ["c00a", "h12a", "h12a", "h12a", "h11a", "h11a", "h11a", "h11a", "h14a", "h14a", "h14a", "h14a", "h07a", "h07a", "h07a", "c00a", "c00a"],
+      ["c00a", "h12a", "h12a", "h12a", "h11a", "h11a", "h11a", "h11a", "h14a", "h14a", "h14a", "h14a", "h07a", "h07a", "h07a", "h07a", "c00a"],
+      ["c00a", "h12a", "h12a", "h12a", "h11a", "h11a", "h11a", "h11a", "c00a", "c00a", "c00a", "c00a", "h07a", "h07a", "h07a", "h07a", "c00a"],
+      ["c00a", "h18a", "h18a", "c00a", "h06a", "h06a", "h06a", "h06a", "h06a", "h06a", "h06a", "h17a", "h17a", "h07a", "h07a", "h07a", "c00a"],
+      ["c00a", "h18a", "h18a", "c00a", "h06a", "h06a", "h06a", "h06a", "h06a", "h06a", "h06a", "h17a", "h17a", "h14a", "h14a", "h14a", "h14a"],
+      ["h09a", "h09a", "h09a", "c00a", "h06a", "h06a", "h06a", "h06a", "h06a", "h06a", "h06a", "h19a", "h19a", "h14a", "h14a", "h14a", "h14a"],
+      ["h09a", "h09a", "h09a", "h09a", "h06a", "h06a", "h06a", "h06a", "h06a", "h06a", "h06a", "h15a", "h15a", "h14a", "h14a", "h14a", "h14a"],
+      ["h09a", "h09a", "h09a", "h09a", "h06a", "h06a", "h06a", "h06a", "h06a", "h06a", "h06a", "h15a", "h15a", "h14a", "h14a", "h14a", "h14a"],
+      ["h09a", "h09a", "h09a", "h09a", "c00a", "c00a", "c00a", "c00a", "h19a", "h19a", "h03a", "h03a", "h03a", "h03a", "h13a", "h13a", "c00a"],
+      ["c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "h17a", "h17a", "h03a", "h03a", "h03a", "h03a", "h13a", "h13a", "c00a"],
+      ["c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "h17a", "h17a", "h03a", "h03a", "h03a", "h03a", "h13a", "h13a", "c00a"],
+      ["c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "h03a", "h03a", "h03a", "h03a", "h13a", "h13a", "c00a"],
+      ["c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "h03a", "h03a", "h03a", "h03a", "h20a", "h20a", "c00a"]
+    ],
+    "mapStates": {
+      "entrance-1": {
+        "activated": false,
+        "activateText": "",
+        "coordinates": {
+          "x": 12,
+          "y": 6
+        },
+        "description": "The entrance.",
+        "id": 1,
+        "interactable": false,
+        "type": "entrance",
+        "unactivateText": "",
+        "visible": true
+      },
+      "terminal-1": {
+        "activated": false,
+        "activateText": "Interact",
+        "coordinates": {
+          "x": 7,
+          "y": 5
+        },
+        "description": "A terminal that controls the guns. Limit once per activation!",
+        "id": 1,
+        "interactable": true,
+        "type": "terminal",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "terminal-2": {
+        "activated": false,
+        "activateText": "Interact",
+        "coordinates": {
+          "x": 8,
+          "y": 5
+        },
+        "description": "A terminal that controls the guns. Limit once per activation!",
+        "id": 2,
+        "interactable": true,
+        "type": "terminal",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "terminal-3": {
+        "activated": false,
+        "activateText": "Interact",
+        "coordinates": {
+          "x": 7,
+          "y": 6
+        },
+        "description": "A terminal that controls the guns. Limit once per activation!",
+        "id": 3,
+        "interactable": true,
+        "type": "terminal",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "terminal-4": {
+        "activated": false,
+        "activateText": "Interact",
+        "coordinates": {
+          "x": 8,
+          "y": 6
+        },
+        "description": "A terminal that controls the guns. Limit once per activation!",
+        "id": 4,
+        "interactable": true,
+        "type": "terminal",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "imperial-1": {
+        "activated": false,
+        "activateText": "Activate",
+        "color": "blue",
+        "coordinates": {
+          "x": 2,
+          "y": 1
+        },
+        "description": "An inactive power station.",
+        "id": 1,
+        "interactable": true,
+        "type": "imperial",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "imperial-2": {
+        "activated": false,
+        "activateText": "Activate",
+        "color": "green",
+        "coordinates": {
+          "x": 1,
+          "y": 7
+        },
+        "description": "An inactive power station.",
+        "id": 2,
+        "interactable": true,
+        "type": "imperial",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "imperial-3": {
+        "activated": false,
+        "activateText": "Activate",
+        "color": "red",
+        "coordinates": {
+          "x": 13,
+          "y": 3
+        },
+        "description": "An inactive power station.",
+        "id": 3,
+        "interactable": true,
+        "type": "imperial",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "imperial-4": {
+        "activated": false,
+        "activateText": "Activate",
+        "color": "yellow",
+        "coordinates": {
+          "x": 15,
+          "y": 10
+        },
+        "description": "An inactive power station.",
+        "id": 4,
+        "interactable": true,
+        "type": "imperial",
+        "unactivateText": "Restore",
+        "visible": true
+      }
+    },
+    "name": "The Battle of Hoth",
+    "noMercenaryAllowed": false,
+    "openGroups": 0,
+    "reservedGroups": [
+      "dengar", "sc2mRepulsorTank"
+    ],
+    "withdrawnHeroCanActivate": true
+  },
   "theSpiceJob": {
     "initialGroups": [
       "nexuElite", "probeDroid", "trandoshanHunterElite"
