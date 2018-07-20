@@ -5051,8 +5051,7 @@
     "openGroups": 0,
     "reservedGroups": [
       "dengar", "sc2mRepulsorTank"
-    ],
-    "withdrawnHeroCanActivate": true
+    ]
   },
   "theSpiceJob": {
     "initialGroups": [
