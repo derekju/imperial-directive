@@ -33,7 +33,7 @@ export default (
   // Need to build a new array of units that consists of the number of times the number of
   // deployment cards that unit has. Remove from it the reserved units and the initial deployed
   // units. Those are our available groups.
-  let unitList = reduce(
+  let unitList: UnitConfigType[] = reduce(
     units,
     (accumulator: UnitConfigType[], unit: UnitConfigType) => {
       // Don't pick special units

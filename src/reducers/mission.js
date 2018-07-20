@@ -66,6 +66,7 @@ export type MissionConfigType = {
   noAllowedAttributes?: string[],
   noMercenaryAllowed: boolean,
   openGroups: number,
+  openGroupsCustom?: string[],
   reservedGroups: string[],
   wave?: string,
   withdrawnHeroCanActivate: boolean,

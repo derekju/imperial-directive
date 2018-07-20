@@ -83,3 +83,23 @@ test('populateOpenGroups will not pull gained villain when threat level is not h
   const openGroups = populateOpenGroups(missions.highMoon, unitsForTest, 2, {}, {darthVader: true});
   expect(openGroups.length).toEqual(0);
 });
+
+test('populateOpenGroups works with openGroupsCustom field when mission uses it', () => {
+  const unitsForTest = {
+    dengar: units.dengar,
+    stormtrooper: units.stormtrooper,
+  };
+
+  const openGroups = populateOpenGroups(missions.escapeFromCloudCity, unitsForTest, 5, {returnToHoth: true}, {});
+  expect(openGroups.length).toEqual(2);
+});
+
+test('populateOpenGroups works with openGroupsCustom field when mission does not use it', () => {
+  const unitsForTest = {
+    dengar: units.dengar,
+    stormtrooper: units.stormtrooper,
+  };
+
+  const openGroups = populateOpenGroups(missions.highMoon, unitsForTest, 5, {returnToHoth: true}, {});
+  expect(openGroups.length).toEqual(1);
+});
