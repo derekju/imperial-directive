@@ -34,6 +34,8 @@ type GoalPanelPropsType = {
   currentMission: string,
   desperateHourClearingReachable: boolean,
   desperateHourEnteredClearing: Function,
+  escapeFromCloudCityPrisonerClaimed: Function,
+  escapeFromCloudCityShuttleLaunched: Function,
   fireInTheSkyCanDepart: boolean,
   fireInTheSkyDepart: Function,
   forestAmbushCampEntered: boolean,
@@ -430,6 +432,28 @@ class GoalPanel extends React.Component<GoalPanelPropsType, GoalPanelStateType> 
           />
         </div>
       );
+    } else if (this.props.currentMission === 'escapeFromCloudCity') {
+      if (gText === '---PLACEHOLDER_CLAIM_PRISONER---') {
+        return (
+          <div style={styles.buttonContainer}>
+            <Button
+              text="Claim Prisoner"
+              width={180}
+              onClick={this.props.escapeFromCloudCityPrisonerClaimed}
+            />
+          </div>
+        );
+      } else if (gText === '---PLACEHOLDER_SHUTTLE_LAUNCHED---') {
+        return (
+          <div style={styles.buttonContainer}>
+            <Button
+              text="Launch Shuttle"
+              width={180}
+              onClick={this.props.escapeFromCloudCityShuttleLaunched}
+            />
+          </div>
+        );
+      }
     }
   }
 

@@ -13,6 +13,7 @@ import chainOfCommand from './missions/chainOfCommand';
 import darkObsession from './missions/darkObsession';
 import desperateHour from './missions/desperateHour';
 import drawnIn from './missions/drawnIn';
+import escapeFromCloudCity from './missions/escapeFromCloudCity';
 import events from './events';
 import fireInTheSky from './missions/fireInTheSky';
 import flySolo from './missions/flySolo';
@@ -62,6 +63,7 @@ export default {
   darkObsession,
   desperateHour,
   drawnIn,
+  escapeFromCloudCity,
   events,
   fireInTheSky,
   flySolo,

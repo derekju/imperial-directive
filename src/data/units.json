@@ -357,7 +357,7 @@
         "command": "{ACTION} Move towards {MOVE_TARGET}."
       },
       {
-        "condition": "Reaction - While attacking and defender rolls a dodge or any {BLOCK} result",
+        "condition": "Reaction - While attacking and defender rolls a dodge or any block result",
         "command": "Use Versatile Weaponry to force the defender to reroll a dodge or the highest {BLOCK} rolled."
       },
       {

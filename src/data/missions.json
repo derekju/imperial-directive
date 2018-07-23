@@ -1945,6 +1945,140 @@
     ],
     "withdrawnHeroCanActivate": true
   },
+  "escapeFromCloudCity": {
+    "wave": "returnToHoth",
+    "initialGroups": [
+      "imperialOfficerElite", "stormtrooper"
+    ],
+    "instructions": {
+      "imperialVictory": "At the end of Round 6 or when all heroes are wounded",
+      "rebelVictory": "(to be revealed)"
+    },
+    "mapImage": [
+      ["c00a", "c00a", "c00a", "c00a", "t02b", "t02b", "t02b", "t02b", "c27b", "c27b", "c27b", "c27b", "c27b", "c36b", "c36b"],
+      ["c00a", "c00a", "c00a", "t02b", "t02b", "t02b", "t02b", "t02b", "c27b", "c27b", "c27b", "c27b", "c27b", "c36b", "c36b"],
+      ["c00a", "c00a", "c00a", "t02b", "t02b", "t02b", "t02b", "t02b", "t02b", "t01b", "t01b", "t01b", "t01b", "c00a", "c00a"],
+      ["c00a", "c00a", "c00a", "t02b", "t02b", "t02b", "t02b", "t02b", "t02b", "t01b", "t01b", "t01b", "t01b", "c36b", "c36b"],
+      ["c32a", "c32a", "c37b", "c37b", "t02b", "t02b", "t02b", "t02b", "t02b", "t01b", "t01b", "t01b", "t01b", "c31b", "c31b"],
+      ["c32a", "c32a", "c37b", "c37b", "t02b", "t02b", "t02b", "t02b", "c00a", "t01b", "t01b", "t01b", "t01b", "c31b", "c31b"],
+      ["c24a", "c24a", "c24b", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "t01b", "t01b", "t01b", "t01b", "c33b", "c33b"],
+      ["c24a", "c24a", "c24b", "c24b", "c36a", "c36a", "c00a", "c00a", "c00a", "t01b", "t01b", "t01b", "t01b", "c33b", "c33b"],
+      ["c24a", "c24a", "c24b", "c24b", "c32a", "c32a", "c00a", "c00a", "c00a", "c00a", "c36b", "c36b", "c00a", "c00a", "c00a"],
+      ["c00a", "c24a", "c24b", "c24b", "c32a", "c32a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a"]
+    ],
+    "mapStates": {
+      "entrance-1": {
+        "activated": false,
+        "activateText": "",
+        "coordinates": {
+          "x": 4,
+          "y": 7
+        },
+        "description": "The entrance.",
+        "id": 1,
+        "interactable": false,
+        "type": "entrance",
+        "unactivateText": "",
+        "visible": true
+      },
+      "door-1": {
+        "activated": false,
+        "activateText": "Open",
+        "coordinates": {
+          "x": 7,
+          "y": 0
+        },
+        "description": "The door to the Hall (tile 27B).",
+        "id": 1,
+        "interactable": true,
+        "type": "door",
+        "unactivateText": "Close",
+        "visible": true
+      },
+      "door-2": {
+        "activated": false,
+        "activateText": "Open",
+        "coordinates": {
+          "x": 12,
+          "y": 0
+        },
+        "description": "The door to the Cell (tile 36B).",
+        "id": 2,
+        "interactable": true,
+        "type": "door",
+        "unactivateText": "Close",
+        "visible": true
+      },
+      "door-3": {
+        "activated": false,
+        "activateText": "Open",
+        "coordinates": {
+          "x": 12,
+          "y": 4
+        },
+        "description": "The door to the Shuttle (tiles 36B, 31B, 33B).",
+        "id": 3,
+        "interactable": true,
+        "type": "door",
+        "unactivateText": "Close",
+        "visible": true
+      },
+      "rebel-1": {
+        "activated": false,
+        "activateText": "Retrieve",
+        "color": "red",
+        "coordinates": {
+          "x": 13,
+          "y": 0
+        },
+        "description": "A prisoner.",
+        "id": 1,
+        "interactable": true,
+        "type": "rebel",
+        "unactivateText": "Restore",
+        "visible": false
+      },
+      "rebel-2": {
+        "activated": false,
+        "activateText": "Retrieve",
+        "color": "blue",
+        "coordinates": {
+          "x": 14,
+          "y": 0
+        },
+        "description": "A prisoner.",
+        "id": 2,
+        "interactable": true,
+        "type": "rebel",
+        "unactivateText": "Restore",
+        "visible": false
+      },
+      "rebel-3": {
+        "activated": false,
+        "activateText": "Retrieve",
+        "color": "green",
+        "coordinates": {
+          "x": 13,
+          "y": 1
+        },
+        "description": "A prisoner.",
+        "id": 3,
+        "interactable": true,
+        "type": "rebel",
+        "unactivateText": "Restore",
+        "visible": false
+      }
+    },
+    "name": "Escape from Cloud City",
+    "noAllowedAttributes": ["creature"],
+    "noMercenaryAllowed": false,
+    "openGroups": 2,
+    "openGroupsCustom": ["dengar"],
+    "reservedGroups": [
+      "hkAssassinDroid"
+    ],
+    "withdrawnHeroCanActivate": true
+  },
   "fireInTheSky": {
     "wave": "twinShadows",
     "initialGroups": [

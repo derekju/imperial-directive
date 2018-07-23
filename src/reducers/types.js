@@ -13,6 +13,7 @@ import type {ChainOfCommandStateType} from './missions/chainOfCommand';
 import type {DarkObsessionStateType} from './missions/darkObsession';
 import type {DesperateHourStateType} from './missions/desperateHour';
 import type {DrawnInStateType} from './missions/drawnIn';
+import type {EscapeFromCloudCityStateType} from './missions/escapeFromCloudCity';
 import type {EventsStateType} from './events';
 import type {FireInTheSkyStateType} from './missions/fireInTheSky';
 import type {FlySoloStateType} from './missions/flySolo';
@@ -62,6 +63,7 @@ export type StateType = {
   darkObsession: DarkObsessionStateType,
   desperateHour: DesperateHourStateType,
   drawnIn: DrawnInStateType,
+  escapeFromCloudCity: EscapeFromCloudCityStateType,
   events: EventsStateType,
   fireInTheSky: FireInTheSkyStateType,
   flySolo: FlySoloStateType,

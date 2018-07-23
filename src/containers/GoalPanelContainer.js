@@ -65,6 +65,10 @@ const imperialEntanglementsAirlockReleased = () =>
 const imperialEntanglementsSchematicsUploaded = () =>
   createAction('IMPERIAL_ENTANGLEMENTS_SCHEMATICS_UPLOADED');
 const braceForImpactHeroesDepart = () => createAction('BRACE_FOR_IMPACT_HEROES_DEPART');
+const escapeFromCloudCityPrisonerClaimed = () =>
+  createAction('ESCAPE_FROM_CLOUD_CITY_PRISONER_CLAIMED');
+const escapeFromCloudCityShuttleLaunched = () =>
+  createAction('ESCAPE_FROM_CLOUD_CITY_SHUTTLE_LAUNCHED');
 
 const mapDispatchToProps = {
   armedAndOperationalWarshipDestroyed,
@@ -73,6 +77,8 @@ const mapDispatchToProps = {
   chainOfCommandWeissDefends,
   chainOfCommandWeissEntered,
   desperateHourEnteredClearing,
+  escapeFromCloudCityPrisonerClaimed,
+  escapeFromCloudCityShuttleLaunched,
   fireInTheSkyDepart,
   forestAmbushSetCampEntered,
   generousDonationsTerminalDestroyed,
