@@ -14,7 +14,11 @@ import {
   STATUS_PHASE_END_ROUND_EFFECTS,
   statusPhaseEndRoundEffectsDone,
 } from '../mission';
-import {REFER_CAMPAIGN_GUIDE, TARGET_HERO_CLOSEST_UNWOUNDED} from './constants';
+import {
+  REFER_CAMPAIGN_GUIDE,
+  STRING_WITHDRAW_INCAPACITATED,
+  TARGET_HERO_CLOSEST_UNWOUNDED,
+} from './constants';
 import createAction from '../createAction';
 import {displayModal} from '../modal';
 import handleHeroesWounded from './sharedSagas/handleHeroesWounded';
@@ -272,7 +276,7 @@ function* handleSpecialSetup(): Generator<*, *, *> {
   yield call(helperMissionBriefing, [
     'Heroes cannot bring allies!',
     'All Hero Item cards are flipped facedown and are unusable.{BREAK}A hero can interact with the neutral mission token (N1) to flip his/her items faceup.',
-    'When a hero withdraws, he is incapacitated instead. The hero receives only 1 activation and can only move.',
+    STRING_WITHDRAW_INCAPACITATED,
     'A hero without a weapon can attack an adjacent target with 1 green and 1 yellow die.{BREAK}Before attacking, test {STRENGTH}. If you pass, the attack gains {SURGE}: +2 {DAMAGE}.',
     'The doors in the Storage Room and Hallway are locked. Imperial figures may move and fire past them.',
   ]);

@@ -14,7 +14,11 @@ import {
   statusPhaseEndRoundEffectsDone,
 } from '../mission';
 import {OPTIONAL_DEPLOYMENT_DONE, optionalDeployment} from '../imperials';
-import {REFER_CAMPAIGN_GUIDE, TARGET_HERO_CLOSEST_UNWOUNDED} from './constants';
+import {
+  REFER_CAMPAIGN_GUIDE,
+  STRING_WITHDRAW_INCAPACITATED,
+  TARGET_HERO_CLOSEST_UNWOUNDED,
+} from './constants';
 import createAction from '../createAction';
 import {displayModal} from '../modal';
 import handleStatusPhaseBegin from './sharedSagas/handleStatusPhaseBegin';
@@ -284,7 +288,7 @@ function* handleSpecialSetup(): Generator<*, *, *> {
     'While defending, Rebel Troopers can choose a barricade through which LOS was traced to add 1 black die to defending. The barricade suffers {DAMAGE} equal to the roll results of that die.',
     'Neutral mission tokens are reinforcements. When a Rebel Trooper is defeated, discard a token. At the end of each round, deploy one Rebel Trooper to the Rebel Barricade (tile 06A) for each token discarded that round.',
     'The door is locked to Imperial figures.',
-    'When a hero withdraws, he is incapacitated instead and receives only 1 action to move during activations.',
+    STRING_WITHDRAW_INCAPACITATED,
     'A hero can interact with the terminal (2 {TECH}) to download the data. When the data has been downloaded and all heores are on or adjacent to the Entrance, the heroes can depart.',
   ]);
   yield put(missionSpecialSetupDone());

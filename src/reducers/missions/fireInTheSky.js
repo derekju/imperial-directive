@@ -16,7 +16,11 @@ import {
 } from '../mission';
 import {getMissionThreat, missionSagaLoadDone} from '../app';
 import {OPTIONAL_DEPLOYMENT_DONE, optionalDeployment} from '../imperials';
-import {REFER_CAMPAIGN_GUIDE, TARGET_HERO_CLOSEST_UNWOUNDED} from './constants';
+import {
+  REFER_CAMPAIGN_GUIDE,
+  STRING_WITHDRAW_INCAPACITATED,
+  TARGET_HERO_CLOSEST_UNWOUNDED,
+} from './constants';
 import createAction from '../createAction';
 import {displayModal} from '../modal';
 import getRandomItem from '../utils/getRandomItem';
@@ -295,7 +299,7 @@ function* handleSpecialSetup(): Generator<*, *, *> {
   yield take(OPTIONAL_DEPLOYMENT_DONE);
 
   yield call(helperMissionBriefing, [
-    'When a hero withdraws, he is incapacitated instead. The hero receives only 1 activation and can only move.',
+    STRING_WITHDRAW_INCAPACITATED,
     'The red imperial mission token is the weapons console. A hero can interact (2 {TECH} or {INSIGHT}) to slice it. Flip the token to the Rebel side.',
     'After the weapons console has been sliced, if all heroes are on or adjacent to the entrance, they depart.',
     'Doors are locked. A hero can interact with the green terminal (T1) (2 {TECH}) to open all doors except for the weapons console.',

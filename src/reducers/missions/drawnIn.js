@@ -35,6 +35,7 @@ import {
 } from '../imperials';
 import {
   REFER_CAMPAIGN_GUIDE,
+  STRING_WITHDRAW_INCAPACITATED,
   TARGET_ENTRANCE_TOKEN,
   TARGET_HERO_CLOSEST_UNWOUNDED,
   TARGET_REMAINING,
@@ -369,7 +370,7 @@ function* handleSpecialSetup(): Generator<*, *, *> {
   yield call(helperMissionBriefing, [
     'Terminals represent power stations. Rebel figures can attack a power station (Health: 8, Defense: 1 {BLOCK}) to destroy it.',
     'Doors are locked to heroes. A hero can interact ({STRENGTH} or {TECH}) to open it.',
-    'When a hero withdraws, he is incapacitated instead. He only receives 1 action and can only move with that action.',
+    STRING_WITHDRAW_INCAPACITATED,
   ]);
   yield put(missionSpecialSetupDone());
 }
