@@ -185,7 +185,7 @@ export default (state: RebelsStateType = initialState, action: Object) => {
         ...state,
         roster: (state.roster
           .map((unit: RebelUnitType) => {
-            if (unit.type === 'hero') {
+            if (unit.type === 'hero' || unit.id !== id) {
               return unit;
             } else {
               if (unit.currentNumFigures - 1 > 0) {
