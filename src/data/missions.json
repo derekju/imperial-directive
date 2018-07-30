@@ -1456,6 +1456,168 @@
     "reservedGroups": [],
     "withdrawnHeroCanActivate": true
   },
+  "celebration": {
+    "wave": "wave1",
+    "initialGroups": [
+      "imperialOfficerElite", "nexu", "stormtrooper", "stormtrooper"
+    ],
+    "instructions": {
+      "imperialVictory": "When there are 6 bound Wookiees, or when all heroes are wounded and Chewbacca is defeated",
+      "rebelVictory": "At the end of Round 5"
+    },
+    "mapImage": [
+      ["00a", "00a", "00a", "00a", "00a", "00a", "00a", "00a", "03a", "03a", "03a", "03a", "00a", "00a", "00a", "00a"],
+      ["00a", "00a", "00a", "07a", "07a", "07a", "17a", "03a", "03a", "03a", "03a", "03a", "03a", "14a", "14a", "00a"],
+      ["00a", "00a", "07a", "07a", "07a", "07a", "17a", "03a", "03a", "03a", "03a", "03a", "03a", "14a", "14a", "00a"],
+      ["00a", "00a", "07a", "07a", "07a", "07a", "00a", "00a", "03a", "03a", "03a", "03a", "04a", "04a", "04a", "04a"],
+      ["00a", "00a", "07a", "07a", "07a", "00a", "00a", "00a", "00a", "03a", "03a", "00a", "04a", "04a", "04a", "04a"],
+      ["00a", "00a", "18a", "18a", "00a", "00a", "00a", "00a", "00a", "17a", "17a", "00a", "04a", "04a", "04a", "04a"],
+      ["00a", "22b", "22b", "22b", "22b", "00a", "00a", "00a", "06a", "06a", "06a", "00a", "04a", "04a", "04a", "04a"],
+      ["36b", "22b", "22b", "22b", "22b", "38b", "38b", "06a", "06a", "06a", "06a", "99a", "00a", "18a", "18a", "00a"],
+      ["36b", "22b", "22b", "22b", "22b", "38b", "38b", "06a", "06a", "06a", "06a", "99a", "00a", "00a", "00a", "00a"],
+      ["00a", "22b", "22b", "22b", "22b", "00a", "00a", "06a", "06a", "06a", "06a", "00a", "00a", "00a", "00a", "00a"]
+    ],
+    "mapStates": {
+      "entrance-1": {
+        "activated": false,
+        "activateText": "",
+        "coordinates": {
+          "x": 5,
+          "y": 2
+        },
+        "description": "The entrance.",
+        "id": 1,
+        "interactable": false,
+        "type": "entrance",
+        "unactivateText": "",
+        "visible": true
+      },
+      "rebel-1": {
+        "activated": false,
+        "activateText": "Bind",
+        "color": "blue",
+        "coordinates": {
+          "x": 3,
+          "y": 3
+        },
+        "description": "A wookiee.",
+        "id": 1,
+        "interactable": true,
+        "type": "rebel",
+        "unactivateText": "Free",
+        "visible": true
+      },
+      "rebel-2": {
+        "activated": false,
+        "activateText": "Bind",
+        "color": "blue",
+        "coordinates": {
+          "x": 7,
+          "y": 1
+        },
+        "description": "A wookiee.",
+        "id": 2,
+        "interactable": true,
+        "type": "rebel",
+        "unactivateText": "Free",
+        "visible": true
+      },
+      "rebel-3": {
+        "activated": false,
+        "activateText": "Bind",
+        "color": "yellow",
+        "coordinates": {
+          "x": 14,
+          "y": 1
+        },
+        "description": "A wookiee.",
+        "id": 3,
+        "interactable": true,
+        "type": "rebel",
+        "unactivateText": "Free",
+        "visible": true
+      },
+      "rebel-4": {
+        "activated": false,
+        "activateText": "Bind",
+        "color": "yellow",
+        "coordinates": {
+          "x": 9,
+          "y": 4
+        },
+        "description": "A wookiee.",
+        "id": 4,
+        "interactable": true,
+        "type": "rebel",
+        "unactivateText": "Free",
+        "visible": true
+      },
+      "rebel-5": {
+        "activated": false,
+        "activateText": "Bind",
+        "color": "green",
+        "coordinates": {
+          "x": 15,
+          "y": 4
+        },
+        "description": "A wookiee.",
+        "id": 5,
+        "interactable": true,
+        "type": "rebel",
+        "unactivateText": "Free",
+        "visible": true
+      },
+      "rebel-6": {
+        "activated": false,
+        "activateText": "Bind",
+        "color": "green",
+        "coordinates": {
+          "x": 12,
+          "y": 6
+        },
+        "description": "A wookiee.",
+        "id": 6,
+        "interactable": true,
+        "type": "rebel",
+        "unactivateText": "Free",
+        "visible": true
+      },
+      "rebel-7": {
+        "activated": false,
+        "activateText": "Bind",
+        "color": "red",
+        "coordinates": {
+          "x": 5,
+          "y": 8
+        },
+        "description": "A wookiee.",
+        "id": 7,
+        "interactable": true,
+        "type": "rebel",
+        "unactivateText": "Free",
+        "visible": true
+      },
+      "rebel-8": {
+        "activated": false,
+        "activateText": "Bind",
+        "color": "red",
+        "coordinates": {
+          "x": 0,
+          "y": 7
+        },
+        "description": "A wookiee.",
+        "id": 8,
+        "interactable": true,
+        "type": "rebel",
+        "unactivateText": "Free",
+        "visible": true
+      }
+    },
+    "name": "Celebration",
+    "noMercenaryAllowed": false,
+    "openGroups": 3,
+    "reservedGroups": []
+  },
   "chainOfCommand": {
     "initialGroups": [
       "imperialOfficer", "weiss", "probeDroid", "royalGuard", "stormtrooper", "stormtrooperElite"

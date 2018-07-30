@@ -18,7 +18,7 @@ const styles = {
     width: '30px',
   },
   blue: {
-    backgroundColor: 'rgb(84, 85, 111)',
+    backgroundColor: 'rgb(34, 65, 123)',
     border: '2px solid white',
     color: 'white',
   },

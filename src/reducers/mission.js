@@ -69,7 +69,7 @@ export type MissionConfigType = {
   openGroupsCustom?: string[],
   reservedGroups: string[],
   wave?: string,
-  withdrawnHeroCanActivate: boolean,
+  withdrawnHeroCanActivate?: boolean,
 };
 
 // Constants

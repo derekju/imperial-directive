@@ -9,6 +9,7 @@ import type {BreakingPointStateType} from './missions/breakingPoint';
 import type {BrushfireStateType} from './missions/brushfire';
 import type {CanyonRunStateType} from './missions/canyonRun';
 import type {CapturedStateType} from './missions/captured';
+import type {CelebrationStateType} from './missions/celebration';
 import type {ChainOfCommandStateType} from './missions/chainOfCommand';
 import type {DarkObsessionStateType} from './missions/darkObsession';
 import type {DesperateHourStateType} from './missions/desperateHour';
@@ -59,6 +60,7 @@ export type StateType = {
   brushfire: BrushfireStateType,
   canyonRun: CanyonRunStateType,
   captured: CapturedStateType,
+  celebration: CelebrationStateType,
   chainOfCommand: ChainOfCommandStateType,
   darkObsession: DarkObsessionStateType,
   desperateHour: DesperateHourStateType,

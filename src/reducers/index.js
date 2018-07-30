@@ -9,6 +9,7 @@ import breakingPoint from './missions/breakingPoint';
 import brushfire from './missions/brushfire';
 import canyonRun from './missions/canyonRun';
 import captured from './missions/captured';
+import celebration from './missions/celebration';
 import chainOfCommand from './missions/chainOfCommand';
 import darkObsession from './missions/darkObsession';
 import desperateHour from './missions/desperateHour';
@@ -59,6 +60,7 @@ export default {
   brushfire,
   canyonRun,
   captured,
+  celebration,
   chainOfCommand,
   darkObsession,
   desperateHour,

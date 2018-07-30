@@ -10,6 +10,7 @@ import {breakingPoint, getBreakingPointGoalText} from './breakingPoint';
 import {brushfire, getBrushfireGoalText} from './brushfire';
 import {canyonRun, getCanyonRunGoalText} from './canyonRun';
 import {captured, getCapturedGoalText} from './captured';
+import {celebration, getCelebrationGoalText} from './celebration';
 import {chainOfCommand, getChainOfCommandGoalText} from './chainOfCommand';
 import {darkObsession, getDarkObsessionGoalText} from './darkObsession';
 import {desperateHour, getDesperateHourGoalText} from './desperateHour';
@@ -61,6 +62,7 @@ export default {
   brushfire,
   canyonRun,
   captured,
+  celebration,
   chainOfCommand,
   darkObsession,
   desperateHour,
@@ -81,6 +83,7 @@ export default {
   getBrushfireGoalText,
   getCanyonRunGoalText,
   getCapturedGoalText,
+  getCelebrationGoalText,
   getChainOfCommandGoalText,
   getDarkObsessionGoalText,
   getDesperateHourGoalText,
