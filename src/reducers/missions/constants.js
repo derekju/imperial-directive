@@ -6,6 +6,7 @@ export const TARGET_HERO_CLOSEST_UNWOUNDED = 'the closest unwounded hero';
 export const TARGET_ENTRANCE_TOKEN = 'the entrance token';
 export const TARGET_CLOSEST_REBEL = 'the closest (unwounded) Rebel figure';
 
-export const STRING_WITHDRAW_INCAPACITATED = 'When a hero withdraws, he is incapacitated instead. He only receives 1 action and can only move with that action.';
+export const STRING_WITHDRAW_INCAPACITATED =
+  'When a hero withdraws, he is incapacitated instead. He only receives 1 action and can only move with that action.';
 
 export const NO_INTERACTION_EXCLUSION_LIST = ['nexu', 'nexuElite', 'wampa', 'wampaElite'];

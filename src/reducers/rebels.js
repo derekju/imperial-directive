@@ -177,30 +177,39 @@ export default (state: RebelsStateType = initialState, action: Object) => {
       return {
         ...state,
         roster: newRoster,
+        // If unit was not found, we are creating a new one of it so make sure it doesn't exist in
+        // woundedOther anymore in case it was there
+        woundedOther: !unitFound ? without(state.woundedOther, id) : state.woundedOther,
       };
     }
     case WOUND_REBEL_OTHER: {
       const {id} = action.payload;
+      let needToAddToWoundedOther = false;
+      const newRoster = (state.roster
+        .map((unit: RebelUnitType) => {
+          if (unit.id !== id) {
+            return unit;
+          } else {
+            if (unit.currentNumFigures - 1 > 0) {
+              return {
+                ...unit,
+                currentNumFigures: unit.currentNumFigures - 1,
+              };
+            } else {
+              needToAddToWoundedOther = true;
+              // $FlowFixMe - We're going to manually filter this out
+              return false;
+            }
+          }
+        })
+        .filter(Boolean): RebelUnitType[]);
+
       return {
         ...state,
-        roster: (state.roster
-          .map((unit: RebelUnitType) => {
-            if (unit.type === 'hero' || unit.id !== id) {
-              return unit;
-            } else {
-              if (unit.currentNumFigures - 1 > 0) {
-                return {
-                  ...unit,
-                  currentNumFigures: unit.currentNumFigures - 1,
-                };
-              } else {
-                // $FlowFixMe - We're going to manually filter this out
-                return false;
-              }
-            }
-          })
-          .filter(Boolean): RebelUnitType[]),
-        woundedOther: (state.woundedOther.concat([id]): string[]),
+        roster: newRoster,
+        woundedOther: needToAddToWoundedOther
+          ? (state.woundedOther.concat([id]): string[])
+          : state.woundedOther,
       };
     }
     case SET_REBEL_HP_BOOST: {

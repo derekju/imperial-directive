@@ -90,7 +90,13 @@ test('populateOpenGroups works with openGroupsCustom field when mission uses it'
     stormtrooper: units.stormtrooper,
   };
 
-  const openGroups = populateOpenGroups(missions.escapeFromCloudCity, unitsForTest, 5, {returnToHoth: true}, {});
+  const openGroups = populateOpenGroups(
+    missions.escapeFromCloudCity,
+    unitsForTest,
+    5,
+    {returnToHoth: true},
+    {}
+  );
   expect(openGroups.length).toEqual(2);
 });
 
@@ -100,6 +106,12 @@ test('populateOpenGroups works with openGroupsCustom field when mission does not
     stormtrooper: units.stormtrooper,
   };
 
-  const openGroups = populateOpenGroups(missions.highMoon, unitsForTest, 5, {returnToHoth: true}, {});
+  const openGroups = populateOpenGroups(
+    missions.highMoon,
+    unitsForTest,
+    5,
+    {returnToHoth: true},
+    {}
+  );
   expect(openGroups.length).toEqual(1);
 });

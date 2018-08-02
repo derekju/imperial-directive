@@ -45,8 +45,7 @@ const CUSTOM_AI_WOOKIEE = [
   {
     command:
       '{ACTION} Move to be adjacent to the unbound Wookiee and {ACTION} Interact with the unbound Wookiee to bind it.',
-    condition:
-      'If within distance to unbound Wookiee',
+    condition: 'If within distance to unbound Wookiee',
   },
 ];
 

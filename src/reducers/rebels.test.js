@@ -81,20 +81,36 @@ test('test ADD_SINGLE_UNIT_TO_ROSTER with rebel troopers', () => {
   let state = reducer(undefined, {});
   state = reducer(state, setRoster(['diala', 'fenn', 'gideon', 'jyn', 'rebelTrooper']));
   expect(state.roster.length).toEqual(5);
+  expect(state.woundedOther.length).toEqual(0);
   state = reducer(state, addSingleUnitToRoster('rebelTrooper'));
   expect(state.roster.length).toEqual(5);
   expect(state.roster[4].currentNumFigures).toEqual(3);
+  expect(state.woundedOther.length).toEqual(0);
   state = reducer(state, woundRebelOther('rebelTrooper'));
   expect(state.roster[4].currentNumFigures).toEqual(2);
+  expect(state.woundedOther.length).toEqual(0);
   state = reducer(state, addSingleUnitToRoster('rebelTrooper'));
   expect(state.roster[4].currentNumFigures).toEqual(3);
+  expect(state.woundedOther.length).toEqual(0);
   state = reducer(state, woundRebelOther('rebelTrooper'));
   state = reducer(state, woundRebelOther('rebelTrooper'));
   state = reducer(state, woundRebelOther('rebelTrooper'));
   expect(state.roster.length).toEqual(4);
+  expect(state.woundedOther.length).toEqual(1);
   state = reducer(state, addSingleUnitToRoster('rebelTrooper'));
   expect(state.roster.length).toEqual(5);
   expect(state.roster[4].currentNumFigures).toEqual(1);
+  expect(state.woundedOther.length).toEqual(0);
+});
+
+test('test WOUND_REBEL_OTHER with non existing unit', () => {
+  let state = reducer(undefined, {});
+  state = reducer(state, setRoster(['diala', 'fenn', 'gideon', 'jyn', 'han']));
+  expect(state.roster.length).toEqual(5);
+  expect(state.woundedOther.length).toEqual(0);
+  state = reducer(state, woundRebelOther('chewbacca'));
+  expect(state.roster.length).toEqual(5);
+  expect(state.woundedOther.length).toEqual(0);
 });
 
 test('test WOUND_REBEL_OTHER with only 1 unit', () => {
@@ -103,6 +119,7 @@ test('test WOUND_REBEL_OTHER with only 1 unit', () => {
   expect(state.roster.length).toEqual(5);
   state = reducer(state, woundRebelOther('han'));
   expect(state.roster.length).toEqual(4);
+  expect(state.woundedOther.length).toEqual(1);
 });
 
 test('test WOUND_REBEL_OTHER with multiple allies', () => {
@@ -111,6 +128,10 @@ test('test WOUND_REBEL_OTHER with multiple allies', () => {
   expect(state.roster.length).toEqual(7);
   state = reducer(state, woundRebelOther('han'));
   expect(state.roster.length).toEqual(6);
+  expect(state.woundedOther.length).toEqual(1);
+  state = reducer(state, woundRebelOther('c3p0'));
+  expect(state.roster.length).toEqual(5);
+  expect(state.woundedOther.length).toEqual(2);
 });
 
 test('test WOUND_REBEL_OTHER with only multi unit', () => {
@@ -118,14 +139,18 @@ test('test WOUND_REBEL_OTHER with only multi unit', () => {
   state = reducer(state, setRoster(['diala', 'fenn', 'gideon', 'jyn', 'rebelTrooper']));
   expect(state.roster.length).toEqual(5);
   expect(state.roster[4].currentNumFigures).toEqual(3);
+  expect(state.woundedOther.length).toEqual(0);
   state = reducer(state, woundRebelOther('rebelTrooper'));
   expect(state.roster.length).toEqual(5);
   expect(state.roster[4].currentNumFigures).toEqual(2);
+  expect(state.woundedOther.length).toEqual(0);
   state = reducer(state, woundRebelOther('rebelTrooper'));
   expect(state.roster.length).toEqual(5);
   expect(state.roster[4].currentNumFigures).toEqual(1);
+  expect(state.woundedOther.length).toEqual(0);
   state = reducer(state, woundRebelOther('rebelTrooper'));
   expect(state.roster.length).toEqual(4);
+  expect(state.woundedOther.length).toEqual(1);
 });
 
 test('test setRebelHpBoost', () => {
