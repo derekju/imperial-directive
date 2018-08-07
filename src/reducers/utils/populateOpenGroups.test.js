@@ -52,14 +52,15 @@ test('populateOpenGroups will pull expansion units when needed', () => {
 
 test('populateOpenGroups will not pull expansion units when not specified', () => {
   const unitsForTest = {
+    snowtrooper: units.snowtrooper,
     tuskenRaider: units.tuskenRaider,
   };
 
   const openGroups = populateOpenGroups(
     missions.highMoon,
     unitsForTest,
-    2,
-    {twinShadows: false},
+    6,
+    {returnToHoth: false, twinShadows: false},
     {}
   );
   expect(openGroups.length).toEqual(0);
