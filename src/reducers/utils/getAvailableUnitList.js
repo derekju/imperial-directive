@@ -61,7 +61,7 @@ export default (
         return accumulator;
       }
       // Don't pick units that have an expansion that is not utilized
-      if (unit.expansion && expansions[unit.expansion] === false) {
+      if (unit.expansion && !expansions[unit.expansion]) {
         return accumulator;
       }
       // Don't pick units that have an attribute that we disallow

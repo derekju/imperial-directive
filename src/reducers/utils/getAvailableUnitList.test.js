@@ -91,3 +91,14 @@ test('getAvailableUnitList processes expansion units correctly', () => {
 
   expect(openGroups.length).toEqual(2);
 });
+
+test('getAvailableUnitList processes expansion units when not specified', () => {
+  const unitsForTest = {
+    hkAssassinDroid: units.hkAssassinDroid,
+    tuskenRaider: units.tuskenRaider,
+  };
+
+  const openGroups = getAvailableUnitList(missions.highMoon, unitsForTest, [], 6, {}, {});
+
+  expect(openGroups.length).toEqual(0);
+});
