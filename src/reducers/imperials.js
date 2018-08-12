@@ -101,7 +101,7 @@ const determineHpBoost = (
   return boostArray[randomNumber] + (difficulty === 'experienced' ? random(0, 2) : 0);
 };
 
-const createNewGroup = (
+export const createNewGroup = (
   id: string,
   designationMap: DesignationMapType,
   missionThreat: number,
@@ -154,7 +154,7 @@ const createNewGroup = (
 
 // State
 
-const initialState = {
+export const initialState = {
   activatedGroup: null,
   customAI: null,
   customAIExceptionList: [],
@@ -338,6 +338,14 @@ export default (state: ImperialsStateType = initialState, action: Object) => {
         ...state,
         villains: action.payload.villains,
       };
+    case REMOVE_FROM_OPEN_GROUPS:
+      return {
+        ...state,
+        // $FlowFixMe
+        openGroups: state.openGroups.filter(
+          (group: ImperialUnitType) => group.id !== action.payload.groupId
+        ),
+      };
     default:
       return state;
   }
@@ -363,6 +371,7 @@ export const SET_IMPERIAL_UNIT_HP_BUFF = 'SET_IMPERIAL_UNIT_HP_BUFF';
 export const SET_CUSTOM_UNIT_AI = 'SET_CUSTOM_UNIT_AI';
 export const CLEAR_CUSTOM_UNIT_AI = 'CLEAR_CUSTOM_UNIT_AI';
 export const SET_VILLAINS = 'SET_VILLAINS';
+export const REMOVE_FROM_OPEN_GROUPS = 'REMOVE_FROM_OPEN_GROUPS';
 
 // Action creators
 
@@ -429,6 +438,8 @@ export const setCustomUnitAI = (unit: string, commands: Object[]) =>
   createAction(SET_CUSTOM_UNIT_AI, {commands, unit});
 export const clearCustomUnitAI = (unit: string) => createAction(CLEAR_CUSTOM_UNIT_AI, {unit});
 export const setVillains = (villains: string[]) => createAction(SET_VILLAINS, {villains});
+export const removeFromOpenGroups = (groupId: string) =>
+  createAction(REMOVE_FROM_OPEN_GROUPS, {groupId});
 
 // Selectors
 

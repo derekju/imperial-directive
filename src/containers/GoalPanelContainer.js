@@ -69,6 +69,18 @@ const escapeFromCloudCityPrisonerClaimed = () =>
   createAction('ESCAPE_FROM_CLOUD_CITY_PRISONER_CLAIMED');
 const escapeFromCloudCityShuttleLaunched = () =>
   createAction('ESCAPE_FROM_CLOUD_CITY_SHUTTLE_LAUNCHED');
+const survivalOfTheFittestRevealSouthOfTile17A = () =>
+  createAction('SURVIVAL_OF_THE_FITTEST_REVEAL_SOUTH_OF_TILE_17A');
+const survivalOfTheFittestRevealSouthOfTile04A = () =>
+  createAction('SURVIVAL_OF_THE_FITTEST_REVEAL_SOUTH_OF_TILE_04A');
+const survivalOfTheFittestCaveRevealed = () =>
+  createAction('SURVIVAL_OF_THE_FITTEST_CAVE_REVEALED');
+const survivalOfTheFittestCavernRevealed = () =>
+  createAction('SURVIVAL_OF_THE_FITTEST_CAVERN_REVEALED');
+const survivalOfTheFittestPassRevealed = () =>
+  createAction('SURVIVAL_OF_THE_FITTEST_PASS_REVEALED');
+const survivalOfTheFittestRevealEastOfTile12A = () =>
+  createAction('SURVIVAL_OF_THE_FITTEST_TILE_07A_REVEALED');
 
 const mapDispatchToProps = {
   armedAndOperationalWarshipDestroyed,
@@ -92,6 +104,12 @@ const mapDispatchToProps = {
   pastLifeEnemiesDiscardTerminal2,
   pastLifeEnemiesDiscardTerminal3,
   spiceJobGetKeycard,
+  survivalOfTheFittestCaveRevealed,
+  survivalOfTheFittestCavernRevealed,
+  survivalOfTheFittestPassRevealed,
+  survivalOfTheFittestRevealEastOfTile12A,
+  survivalOfTheFittestRevealSouthOfTile04A,
+  survivalOfTheFittestRevealSouthOfTile17A,
   sympathyForTheRebellionHeroClaim,
   sympathyForTheRebellionImperialClaim,
   sympathyForTheRebellionImperialDefeatRebel,

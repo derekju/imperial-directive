@@ -38,6 +38,7 @@ import {getMeansOfProductionGoalText, meansOfProduction} from './meansOfProducti
 import {getPastLifeEnemiesGoalText, pastLifeEnemies} from './pastLifeEnemies';
 import {getShadyDealingsGoalText, shadyDealings} from './shadyDealings';
 import {getSorryAboutTheMessGoalText, sorryAboutTheMess} from './sorryAboutTheMess';
+import {getSurvivalOfTheFittestGoalText, survivalOfTheFittest} from './survivalOfTheFittest';
 import {
   getSympathyForTheRebellionGoalText,
   sympathyForTheRebellion,
@@ -111,6 +112,7 @@ export default {
   getPastLifeEnemiesGoalText,
   getShadyDealingsGoalText,
   getSorryAboutTheMessGoalText,
+  getSurvivalOfTheFittestGoalText,
   getSympathyForTheRebellionGoalText,
   getTargetOfOpportunityGoalText,
   getTemptationGoalText,
@@ -137,6 +139,7 @@ export default {
   pastLifeEnemies,
   shadyDealings,
   sorryAboutTheMess,
+  survivalOfTheFittest,
   sympathyForTheRebellion,
   targetOfOpportunity,
   temptation,

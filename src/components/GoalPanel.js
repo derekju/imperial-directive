@@ -57,6 +57,12 @@ type GoalPanelPropsType = {
   pastLifeEnemiesDiscardTerminal3: Function,
   rewardOldWoundsEarned: boolean,
   spiceJobGetKeycard: Function,
+  survivalOfTheFittestCaveRevealed: Function,
+  survivalOfTheFittestCavernRevealed: Function,
+  survivalOfTheFittestPassRevealed: Function,
+  survivalOfTheFittestRevealEastOfTile12A: Function,
+  survivalOfTheFittestRevealSouthOfTile04A: Function,
+  survivalOfTheFittestRevealSouthOfTile17A: Function,
   sympathyForTheRebellionHeroClaim: Function,
   sympathyForTheRebellionImperialClaim: Function,
   sympathyForTheRebellionImperialDefeatRebel: Function,
@@ -422,38 +428,62 @@ class GoalPanel extends React.Component<GoalPanelPropsType, GoalPanelStateType> 
   }
 
   renderPlaceholder(gText: string) {
-    if (this.props.currentMission === 'braceForImpact' && gText === '---PLACEHOLDER_BUTTON_1---') {
+    const data = {
+      braceForImpact: {
+        '---PLACEHOLDER_BUTTON_1---': {
+          handler: this.props.braceForImpactHeroesDepart,
+          text: 'Heroes Depart',
+        },
+      },
+      escapeFromCloudCity: {
+        '---PLACEHOLDER_CLAIM_PRISONER---': {
+          handler: this.props.escapeFromCloudCityPrisonerClaimed,
+          text: 'Claim Prisoner',
+        },
+        '---PLACEHOLDER_SHUTTLE_LAUNCHED---': {
+          handler: this.props.escapeFromCloudCityShuttleLaunched,
+          text: 'Launch Shuttle',
+        },
+      },
+      survivalOfTheFittest: {
+        '---PLACEHOLDER_EAST_OF_TILE12A---': {
+          handler: this.props.survivalOfTheFittestRevealEastOfTile12A,
+          text: 'Reveal East of 12A',
+        },
+        '---PLACEHOLDER_NORTH_OF_TILE07A---': {
+          handler: this.props.survivalOfTheFittestCavernRevealed,
+          text: 'Reveal North of 07A',
+        },
+        '---PLACEHOLDER_SOUTH_OF_TILE03A---': {
+          handler: this.props.survivalOfTheFittestPassRevealed,
+          text: 'Reveal South of 03A',
+        },
+        '---PLACEHOLDER_SOUTH_OF_TILE04A---': {
+          handler: this.props.survivalOfTheFittestRevealSouthOfTile04A,
+          text: 'Reveal South of 04A',
+        },
+        '---PLACEHOLDER_SOUTH_OF_TILE09A---': {
+          handler: this.props.survivalOfTheFittestCaveRevealed,
+          text: 'Reveal South of 09A',
+        },
+        '---PLACEHOLDER_SOUTH_OF_TILE17A---': {
+          handler: this.props.survivalOfTheFittestRevealSouthOfTile17A,
+          text: 'Reveal South of 17A',
+        },
+        '---PLACEHOLDER_WEST_OF_TILE01A---': {
+          handler: this.props.survivalOfTheFittestCavernRevealed,
+          text: 'Reveal West of 01A',
+        },
+      },
+    };
+
+    if (data[this.props.currentMission] && data[this.props.currentMission][gText]) {
+      const blob = data[this.props.currentMission][gText];
       return (
         <div style={styles.buttonContainer}>
-          <Button
-            text="Heroes Depart"
-            width={180}
-            onClick={this.props.braceForImpactHeroesDepart}
-          />
+          <Button text={blob.text} width={180} onClick={blob.handler} />
         </div>
       );
-    } else if (this.props.currentMission === 'escapeFromCloudCity') {
-      if (gText === '---PLACEHOLDER_CLAIM_PRISONER---') {
-        return (
-          <div style={styles.buttonContainer}>
-            <Button
-              text="Claim Prisoner"
-              width={180}
-              onClick={this.props.escapeFromCloudCityPrisonerClaimed}
-            />
-          </div>
-        );
-      } else if (gText === '---PLACEHOLDER_SHUTTLE_LAUNCHED---') {
-        return (
-          <div style={styles.buttonContainer}>
-            <Button
-              text="Launch Shuttle"
-              width={180}
-              onClick={this.props.escapeFromCloudCityShuttleLaunched}
-            />
-          </div>
-        );
-      }
     }
   }
 

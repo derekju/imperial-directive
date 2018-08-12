@@ -92,7 +92,7 @@ export const DIFFICULTY_THREAT_INCREASE = {
 
 // State
 
-const initialState = {
+export const initialState = {
   attackTarget: 'the closest unwounded hero',
   currentActivePlayer: PLAYER_NONE,
   currentPhase: PHASE_EVENT,
@@ -257,6 +257,30 @@ export default (state: MissionStateType = initialState, action: Object) => {
         ...state,
         extraThreatIncrease: action.payload.increase,
       };
+    case UPDATE_MAP_IMAGE:
+      // updateData is an array of data of rows and columns do update e.g.
+      // [[row, column start, [...data]], [row, column start, [...data]]]
+      const {updateData} = action.payload;
+
+      // Need to make a copy of the map image
+      let newMapImage = [];
+      for (let i = 0; i < state.mapImage.length; i++) {
+        // $FlowFixMe
+        newMapImage.push(state.mapImage[i].slice());
+      }
+
+      for (let x = 0; x < updateData.length; x++) {
+        const dataPacket = updateData[x];
+        const [row, column, data] = dataPacket;
+        // Now actually replace the map
+        for (let i = 0; i < data.length; i++) {
+          newMapImage[row][column + i] = data[i];
+        }
+      }
+      return {
+        ...state,
+        mapImage: newMapImage,
+      };
     default:
       return state;
   }
@@ -291,6 +315,7 @@ export const UPDATE_REBEL_VICTORY = 'UPDATE_REBEL_VICTORY';
 export const UPDATE_IMPERIAL_VICTORY = 'UPDATE_IMPERIAL_VICTORY';
 export const DISABLE_THREAT_INCREASE = 'DISABLE_THREAT_INCREASE';
 export const SET_EXTRA_THREAT_INCREASE = 'SET_EXTRA_THREAT_INCREASE';
+export const UPDATE_MAP_IMAGE = 'UPDATE_MAP_IMAGE';
 
 // Action creators
 
@@ -337,6 +362,8 @@ export const updateImperialVictory = (newText: string) =>
 export const disableThreatIncrease = () => createAction(DISABLE_THREAT_INCREASE);
 export const setExtraThreatIncrease = (increase: number) =>
   createAction(SET_EXTRA_THREAT_INCREASE, {increase});
+export const updateMapImage = (updateData: Array<Array<*>>) =>
+  createAction(UPDATE_MAP_IMAGE, {updateData});
 
 // Selectors
 

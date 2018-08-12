@@ -40,6 +40,7 @@ import modal from './modal';
 import pastLifeEnemies from './missions/pastLifeEnemies';
 import rebels from './rebels';
 import shadyDealings from './missions/shadyDealings';
+import survivalOfTheFittest from './missions/survivalOfTheFittest';
 import sympathyForTheRebellion from './missions/sympathyForTheRebellion';
 import targetOfOpportunity from './missions/targetOfOpportunity';
 import temptation from './missions/temptation';
@@ -91,6 +92,7 @@ export default {
   pastLifeEnemies,
   rebels,
   shadyDealings,
+  survivalOfTheFittest,
   sympathyForTheRebellion,
   targetOfOpportunity,
   temptation,

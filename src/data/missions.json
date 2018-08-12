@@ -4754,6 +4754,56 @@
       "eWebEngineer", "imperialOfficerElite", "trandoshanHunterElite"
     ]
   },
+  "survivalOfTheFittest": {
+    "wave": "returnToHoth",
+    "initialGroups": [
+      "probeDroid", "wampa"
+    ],
+    "instructions": {
+      "imperialVictory": "At the end of Round 4 or when all heroes are wounded and the Echo Base Troopers are defeated",
+      "rebelVictory": "(to be revealed)"
+    },
+    "mapImage": [
+      ["c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "h09a", "h09a", "h09a", "h09a"],
+      ["c00a", "h17a", "h17a", "h14a", "h14a", "h14a", "h14a", "h20a", "h15a", "h15a", "h18a", "h18a", "h09a", "h09a", "h09a", "h09a"],
+      ["c00a", "h17a", "h17a", "h14a", "h14a", "h14a", "h14a", "h20a", "h15a", "h15a", "h18a", "h18a", "h09a", "h09a", "h09a", "h09a"],
+      ["c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "h09a", "h09a", "h09a"],
+      ["c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a"],
+      ["c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a"],
+      ["c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a"],
+      ["c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a"],
+      ["c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a"],
+      ["c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a"],
+      ["c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a"],
+      ["c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a"],
+      ["c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a"],
+      ["c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a"]
+    ],
+    "mapStates": {
+      "rebel-1": {
+        "activated": false,
+        "activateText": "Revive",
+        "color": "green",
+        "coordinates": {
+          "x": 8,
+          "y": 5
+        },
+        "description": "The survivor.",
+        "id": 1,
+        "interactable": false,
+        "type": "rebel",
+        "unactivateText": "Restore",
+        "visible": false
+      }
+    },
+    "name": "Survival of the Fittest",
+    "noMercenaryAllowed": false,
+    "openGroups": 3,
+    "openGroupsCustom": ["dengar"],
+    "reservedGroups": [
+      "probeDroid", "probeDroidElite", "snowtrooper", "wampaElite"
+    ]
+  },
   "sympathyForTheRebellion": {
     "wave": "wave1",
     "initialGroups": [
