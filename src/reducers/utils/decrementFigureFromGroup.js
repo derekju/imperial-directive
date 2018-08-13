@@ -3,6 +3,8 @@
 import type {ImperialUnitType} from '../imperials';
 import reduce from 'lodash/reduce';
 
+// Returns the new deployed groups list
+// Mutates groupsToAddToOpen!
 export default (
   groupToDecrement: ImperialUnitType,
   deployedGroups: ImperialUnitType[],
@@ -18,7 +20,9 @@ export default (
             ...group,
             currentNumFigures: group.currentNumFigures - 1,
           });
-        } else {
+          // Push the group to open groups only if they are not unique
+          // Unique units do not go back in
+        } else if (!group.unique) {
           groupsToAddToOpen.push(group);
         }
       } else {

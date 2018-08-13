@@ -75,6 +75,7 @@ export type ImperialUnitType = {
   name: string,
   reinforcementCost: number,
   threat: number,
+  unique: boolean,
 };
 
 export type ImperialsStateType = {
