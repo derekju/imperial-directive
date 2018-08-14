@@ -124,12 +124,12 @@ test('test WOUND_REBEL_OTHER with only 1 unit', () => {
 
 test('test WOUND_REBEL_OTHER with multiple allies', () => {
   let state = reducer(undefined, {});
-  state = reducer(state, setRoster(['diala', 'fenn', 'gideon', 'jyn', 'han', 'c3p0', 'r2d2']));
+  state = reducer(state, setRoster(['diala', 'fenn', 'gideon', 'jyn', 'han', 'c3po', 'r2d2']));
   expect(state.roster.length).toEqual(7);
   state = reducer(state, woundRebelOther('han'));
   expect(state.roster.length).toEqual(6);
   expect(state.woundedOther.length).toEqual(1);
-  state = reducer(state, woundRebelOther('c3p0'));
+  state = reducer(state, woundRebelOther('c3po'));
   expect(state.roster.length).toEqual(5);
   expect(state.woundedOther.length).toEqual(2);
 });

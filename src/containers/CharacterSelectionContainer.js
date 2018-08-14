@@ -7,6 +7,7 @@ import {
   setImperialRewards,
   setMission,
   setMissionThreat,
+  setRebelRewards,
   setThreatReduction,
 } from '../reducers/app';
 import CharacterSelection from '../components/CharacterSelection';
@@ -79,6 +80,7 @@ const mapDispatchToProps = {
   setImperialRewards,
   setMission,
   setMissionThreat,
+  setRebelRewards,
   setRoster,
   setThreatReduction,
   setVillains,

@@ -232,7 +232,7 @@ function* handleSpecialSetup(): Generator<*, *, *> {
   yield take(OPTIONAL_DEPLOYMENT_DONE);
   // Add R2-D2 & C-3PO
   yield put(addToRoster('r2d2'));
-  yield put(addToRoster('c3p0'));
+  yield put(addToRoster('c3po'));
 
   const missionThreat = yield select(getMissionThreat);
 
@@ -265,7 +265,7 @@ export function* canyonRun(): Generator<*, *, *> {
     fork(handleGreenBarricade),
     fork(handleTheyreComingThrough),
     fork(handleMissionEnd),
-    fork(handleHeroesWounded('canyonRun', 'CANYON_RUN_PRIORITY_TARGET_KILL_HERO', 'r2d2', 'c3p0')),
+    fork(handleHeroesWounded('canyonRun', 'CANYON_RUN_PRIORITY_TARGET_KILL_HERO', 'r2d2', 'c3po')),
     fork(handleStatusPhaseBegin),
     fork(handleRoundEnd),
   ]);

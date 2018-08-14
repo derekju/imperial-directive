@@ -1,6 +1,6 @@
 // @flow
 
-import {EXPANSIONS, IMPERIAL_REWARDS} from '../reducers/app';
+import {EXPANSIONS, IMPERIAL_REWARDS, REBEL_REWARDS} from '../reducers/app';
 import {LIGHT_WHITE, REBEL_RED} from '../styles/colors';
 import Button from './Button';
 import HeroAvatar from './HeroAvatar';
@@ -138,6 +138,7 @@ type CharacterSelectionPropsType = {
   setImperialRewards: Function,
   setMission: Function,
   setMissionThreat: Function,
+  setRebelRewards: Function,
   setRoster: Function,
   setThreatReduction: Function,
   setVillains: Function,
@@ -198,6 +199,18 @@ class CharacterSelection extends React.Component<
       return accumulator;
     }, {});
     this.props.setImperialRewards(imperialRewards);
+
+    // Get which checkboxes are checked for rewards
+    // Gonna just dig into the DOM to do this
+    const rebelRewards = REBEL_REWARDS.reduce((accumulator: Object, key: string) => {
+      const checkbox = document.querySelector('#' + key);
+      if (checkbox) {
+        // $FlowFixMe
+        accumulator[key] = checkbox.checked;
+      }
+      return accumulator;
+    }, {});
+    this.props.setRebelRewards(rebelRewards);
 
     // Get which checkboxes are checked for expansions
     // Gonna just dig into the DOM to do this
@@ -481,6 +494,30 @@ class CharacterSelection extends React.Component<
     );
   }
 
+  renderSelectRebelRewards() {
+    return (
+      <div style={styles.section}>
+        <div style={styles.sectionHeader}>
+          <span style={styles.headerText}>Rebel Rewards</span>
+        </div>
+        <div style={styles.sectionContentsNoFlex}>
+          <div style={styles.sectionDescription}>
+            Select the rewards that the Rebels have earned. They will be activated when the mission
+            starts.
+          </div>
+          <div style={styles.toggleSection}>
+            <div>
+              <input type="checkbox" id="counterparts" />
+              <label style={styles.label} htmlFor="counterparts">
+                Counterparts
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   renderSelectImperialRewards() {
     return (
       <div style={styles.section}>
@@ -489,7 +526,7 @@ class CharacterSelection extends React.Component<
         </div>
         <div style={styles.sectionContentsNoFlex}>
           <div style={styles.sectionDescription}>
-            Select the rewards that the Imperial Player has earned. They will be activated when the
+            Select the rewards that the Imperials have earned. They will be activated when the
             mission starts.
           </div>
           <div style={styles.toggleSection}>
@@ -532,6 +569,7 @@ class CharacterSelection extends React.Component<
           {this.renderSelectHeroes()}
           {this.renderSelectAlly()}
           {this.renderSelectVillains()}
+          {this.renderSelectRebelRewards()}
           {this.renderSelectImperialRewards()}
           <div style={styles.buttonSection}>
             <Button text="Cancel" onClick={this.cancel} style={styles.cancelButton} />

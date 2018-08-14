@@ -18,6 +18,8 @@ export const IMPERIAL_REWARDS = [
   'supplyDeficit',
 ];
 
+export const REBEL_REWARDS = ['counterparts'];
+
 export const EXPANSIONS = ['twinShadows'];
 
 // Types
@@ -28,6 +30,7 @@ export type AppStateType = {
   expansions: {[string]: boolean},
   imperialRewards: {[string]: boolean},
   missionThreat: number,
+  rebelRewards: {[string]: boolean},
   threatReduction: number,
 };
 
@@ -39,6 +42,7 @@ const initialState = {
   expansions: {},
   imperialRewards: {},
   missionThreat: 2,
+  rebelRewards: {},
   threatReduction: 0,
 };
 
@@ -58,6 +62,11 @@ export default (state: AppStateType = initialState, action: Function) => {
       return {
         ...state,
         currentDifficulty: action.payload.difficulty,
+      };
+    case SET_REBEL_REWARDS:
+      return {
+        ...state,
+        rebelRewards: Object.assign({}, action.payload.rewards),
       };
     case SET_IMPERIAL_REWARDS:
       return {
@@ -84,6 +93,7 @@ export default (state: AppStateType = initialState, action: Function) => {
 export const SET_MISSION = 'SET_MISSION';
 export const SET_MISSION_THREAT = 'SET_MISSION_THREAT';
 export const SET_DIFFICULTY = 'SET_DIFFICULTY';
+export const SET_REBEL_REWARDS = 'SET_REBEL_REWARDS';
 export const SET_IMPERIAL_REWARDS = 'SET_IMPERIAL_REWARDS';
 export const SET_EXPANSIONS = 'SET_EXPANSIONS';
 export const MISSION_SAGA_LOAD_DONE = 'MISSION_SAGA_LOAD_DONE';
@@ -95,6 +105,7 @@ export const setMission = (mission: string) => createAction(SET_MISSION, {missio
 export const setMissionThreat = (missionThreat: number) =>
   createAction(SET_MISSION_THREAT, {missionThreat});
 export const setDifficulty = (difficulty: string) => createAction(SET_DIFFICULTY, {difficulty});
+export const setRebelRewards = (rewards: Object) => createAction(SET_REBEL_REWARDS, {rewards});
 export const setImperialRewards = (rewards: Object) =>
   createAction(SET_IMPERIAL_REWARDS, {rewards});
 export const setExpansions = (expansions: Object) => createAction(SET_EXPANSIONS, {expansions});
@@ -108,6 +119,7 @@ export const getRouterState = (state: StateType) => state.router;
 export const getCurrentMission = (state: StateType) => state.app.currentMission;
 export const getMissionThreat = (state: StateType) => state.app.missionThreat;
 export const getDifficulty = (state: StateType) => state.app.currentDifficulty;
+export const getRebelRewards = (state: StateType) => state.app.rebelRewards;
 export const getImperialRewards = (state: StateType) => state.app.imperialRewards;
 export const getExpansions = (state: StateType) => state.app.expansions;
 export const getThreatReduction = (state: StateType) => state.app.threatReduction;

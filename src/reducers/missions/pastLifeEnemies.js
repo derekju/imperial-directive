@@ -177,13 +177,13 @@ function* handleC3PO(): Generator<*, *, *> {
     // Stop the user from spamming the button
     const roster = yield select(getRoster);
 
-    if (!roster.includes('c3p0')) {
+    if (!roster.includes('c3po')) {
       yield call(helperEventModal, {
         story: REFER_CAMPAIGN_GUIDE,
         text: ['C-3PO has been added as an ally.'],
         title: 'Primary Function',
       });
-      yield put(addToRoster('c3p0'));
+      yield put(addToRoster('c3po'));
     }
   }
 }
@@ -193,7 +193,7 @@ function* handleC3PODefeated(): Generator<*, *, *> {
     const action = yield take(WOUND_REBEL_OTHER);
     const {id} = action.payload;
 
-    if (id === 'c3p0') {
+    if (id === 'c3po') {
       yield call(helperEventModal, {
         text: [
           '{ELITE}C-3PO{END} remains on the map as a neutral figure. He discards all conditions and damage tokens and becomes deactivated.',

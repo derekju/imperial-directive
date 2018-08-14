@@ -1,14 +1,15 @@
 // @flow
 
-import {all, call, fork, put, select, spawn, take, takeEvery} from 'redux-saga/effects';
 import {
+  addToRoster,
   getAllyChosen,
   getIsThereReadyRebelFigures,
   getRosterOfType,
   SET_REBEL_ACTIVATED,
   SET_REBEL_ESCAPED,
 } from './rebels';
-import {getImperialRewards, getThreatReduction} from './app';
+import {all, call, fork, put, select, spawn, take, takeEvery} from 'redux-saga/effects';
+import {getImperialRewards, getRebelRewards, getThreatReduction} from './app';
 import {
   getReadyImperialGroups,
   OPTIONAL_DEPLOYMENT_DONE,
@@ -18,6 +19,7 @@ import {
 import createAction from './createAction';
 import {displayModal} from './modal';
 import {handleSpecialOperationsReward} from './imperialRewards';
+import helperChoiceModal from './missions/helpers/helperChoiceModal';
 import helperEventModal from './missions/helpers/helperEventModal';
 import rebels from '../data/rebels.json';
 import type {StateType} from './types';
@@ -420,6 +422,26 @@ function* handleCheckForAllies(): Generator<*, *, *> {
   }
 }
 
+function* handleCheckForRebelRewards(): Generator<*, *, *> {
+  // If any of the rewards are toggled, we need to handle them one by one
+  // There's not really an elegant way to do this so just check them one by one
+  const rebelRewards = yield select(getRebelRewards);
+  if (rebelRewards.counterparts) {
+    const answer = yield call(
+      helperChoiceModal,
+      'Choose which ally to deploy for free.',
+      'Counterparts',
+      'C-3PO',
+      'R2-D2'
+    );
+    if (answer === 'yes') {
+      yield put(addToRoster('c3po'));
+    } else {
+      yield put(addToRoster('r2d2'));
+    }
+  }
+}
+
 function* handleCheckForImperialRewards(): Generator<*, *, *> {
   // If any of the rewards are toggled, we need to handle them one by one
   // There's not really an elegant way to do this so just check them one by one
@@ -472,6 +494,7 @@ function* handleLoadMission(): Generator<*, *, *> {
   yield take(MISSION_SPECIAL_SETUP_DONE);
   yield call(handleCheckForAllies);
   yield call(handleCheckForThreeHeroes);
+  yield call(handleCheckForRebelRewards);
   yield call(handleCheckForImperialRewards);
   yield put(activationPhaseBegin());
 }
