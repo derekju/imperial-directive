@@ -46,6 +46,7 @@ import {
 import {getTargetOfOpportunityGoalText, targetOfOpportunity} from './targetOfOpportunity';
 import {getTemptationGoalText, temptation} from './temptation';
 import {getTheBattleOfHothGoalText, theBattleOfHoth} from './theBattleOfHoth';
+import {getTheHardWayGoalText, theHardWay} from './theHardWay';
 import {getTheSourceGoalText, theSource} from './theSource';
 import {getTheSpiceJobGoalText, theSpiceJob} from './theSpiceJob';
 import {getUnderSiegeGoalText, underSiege} from './underSiege';
@@ -117,6 +118,7 @@ export default {
   getTargetOfOpportunityGoalText,
   getTemptationGoalText,
   getTheBattleOfHothGoalText,
+  getTheHardWayGoalText,
   getTheSourceGoalText,
   getTheSpiceJobGoalText,
   getUnderSiegeGoalText,
@@ -144,6 +146,7 @@ export default {
   targetOfOpportunity,
   temptation,
   theBattleOfHoth,
+  theHardWay,
   theSource,
   theSpiceJob,
   underSiege,

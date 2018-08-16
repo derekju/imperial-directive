@@ -45,6 +45,7 @@ import type {SympathyForTheRebellionStateType} from './missions/sympathyForTheRe
 import type {TargetOfOpportunityStateType} from './missions/targetOfOpportunity';
 import type {TemptationStateType} from './missions/temptation';
 import type {TheBattleOfHothStateType} from './missions/theBattleOfHoth';
+import type {TheHardWayStateType} from './missions/theHardWay';
 import type {TheSourceStateType} from './missions/theSource';
 import type {TheSpiceJobStateType} from './missions/theSpiceJob';
 import type {UnderSiegeStateType} from './missions/underSiege';
@@ -104,6 +105,7 @@ export type StateType = {
   targetOfOpportunity: TargetOfOpportunityStateType,
   temptation: TemptationStateType,
   theBattleOfHoth: TheBattleOfHothStateType,
+  theHardWay: TheHardWayStateType,
   theSpiceJob: TheSpiceJobStateType,
   theSource: TheSourceStateType,
   underSiege: UnderSiegeStateType,

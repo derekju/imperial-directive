@@ -5399,6 +5399,96 @@
       "dengar", "sc2mRepulsorTank"
     ]
   },
+  "theHardWay": {
+    "wave": "returnToHoth",
+    "initialGroups": [
+      "hkAssassinDroidElite", "imperialOfficer", "nexu"
+    ],
+    "instructions": {
+      "imperialVictory": "At the end of Round 7 or when all heroes are wounded",
+      "rebelVictory": "(to be revealed)"
+    },
+    "mapImage": [
+      ["c00a", "c00a", "c03b", "c03b", "c03b", "c03b", "c00a", "c00a", "c39b", "c39b", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a"],
+      ["c18b", "c03b", "c03b", "c03b", "c03b", "c03b", "c03b", "c39b", "c31b", "c31b", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a"],
+      ["c18b", "c03b", "c03b", "c03b", "c03b", "c03b", "c03b", "c39b", "c31b", "c31b", "h02b", "h02b", "h02b", "c00a", "c00a", "c00a"],
+      ["c00a", "c00a", "c03b", "c03b", "c03b", "c03b", "c18b", "c18b", "h02b", "h02b", "h02b", "h02b", "h02b", "h02b", "c00a", "c00a"],
+      ["c00a", "c00a", "c00a", "c03b", "c03b", "c10b", "c10b", "c10b", "h02b", "h02b", "h02b", "h02b", "h02b", "h02b", "c00a", "c00a"],
+      ["c00a", "c00a", "c00a", "c14b", "c14b", "c10b", "c10b", "c10b", "h02b", "h02b", "h02b", "h02b", "h02b", "h02b", "c00a", "c00a"],
+      ["c00a", "c00a", "c00a", "c14b", "c14b", "c10b", "c10b", "c10b", "h02b", "h02b", "h02b", "h02b", "h02b", "h02b", "c00a", "c00a"],
+      ["c00a", "c00a", "c00a", "c00a", "c00a", "c36b", "c36b", "c00a", "c00a", "h02b", "h02b", "h02b", "c20b", "c20b", "c20b", "c20b"],
+      ["c00a", "c00a", "c00a", "c00a", "c23b", "c23b", "c23b", "c23b", "h04b", "h04b", "h04b", "h04b", "c20b", "c20b", "c20b", "c20b"],
+      ["c00a", "c00a", "c00a", "c00a", "c23b", "c23b", "c23b", "c23b", "h04b", "h04b", "h04b", "h04b", "c20b", "c20b", "c20b", "c20b"],
+      ["c00a", "c00a", "c00a", "c00a", "c23b", "c23b", "c23b", "c23b", "h04b", "h04b", "h04b", "h04b", "c20b", "c20b", "c20b", "c20b"],
+      ["c00a", "c00a", "c00a", "c00a", "c23b", "c23b", "c23b", "c23b", "h04b", "h04b", "h04b", "h04b", "c20b", "c20b", "c20b", "c20b"],
+      ["c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c20b", "c20b", "c20b", "c20b"]
+    ],
+    "mapStates": {
+      "entrance-1": {
+        "activated": false,
+        "activateText": "",
+        "coordinates": {
+          "x": 0,
+          "y": 1
+        },
+        "description": "The entrance.",
+        "id": 1,
+        "interactable": false,
+        "type": "entrance",
+        "unactivateText": "",
+        "visible": true
+      },
+      "door-1": {
+        "activated": false,
+        "activateText": "Open",
+        "coordinates": {
+          "x": 7,
+          "y": 2
+        },
+        "description": "Door to the interior.",
+        "id": 1,
+        "interactable": true,
+        "type": "door",
+        "unactivateText": "Close",
+        "visible": true
+      },
+      "door-2": {
+        "activated": false,
+        "activateText": "Open",
+        "coordinates": {
+          "x": 12,
+          "y": 6
+        },
+        "description": "Door to the Forge (tile 20B).",
+        "id": 2,
+        "interactable": true,
+        "type": "door",
+        "unactivateText": "Close",
+        "visible": true
+      },
+      "door-3": {
+        "activated": false,
+        "activateText": "Open",
+        "coordinates": {
+          "x": 12,
+          "y": 10
+        },
+        "description": "Door towards the Bunker (tile 23B).",
+        "id": 3,
+        "interactable": true,
+        "type": "door",
+        "unactivateText": "Close",
+        "visible": true
+      }
+    },
+    "name": "The Hard Way",
+    "noMercenaryAllowed": false,
+    "openGroups": 3,
+    "openGroupsCustom": ["dengar"],
+    "reservedGroups": [
+      "imperialOfficer", "imperialOfficerElite", "trandoshanHunterElite"
+    ]
+  },
   "theSpiceJob": {
     "initialGroups": [
       "nexuElite", "probeDroid", "trandoshanHunterElite"

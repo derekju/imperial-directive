@@ -45,6 +45,7 @@ import sympathyForTheRebellion from './missions/sympathyForTheRebellion';
 import targetOfOpportunity from './missions/targetOfOpportunity';
 import temptation from './missions/temptation';
 import theBattleOfHoth from './missions/theBattleOfHoth';
+import theHardWay from './missions/theHardWay';
 import theSource from './missions/theSource';
 import theSpiceJob from './missions/theSpiceJob';
 import underSiege from './missions/underSiege';
@@ -97,6 +98,7 @@ export default {
   targetOfOpportunity,
   temptation,
   theBattleOfHoth,
+  theHardWay,
   theSource,
   theSpiceJob,
   underSiege,

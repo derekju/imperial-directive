@@ -67,6 +67,7 @@ type GoalPanelPropsType = {
   sympathyForTheRebellionImperialClaim: Function,
   sympathyForTheRebellionImperialDefeatRebel: Function,
   sympathyForTheRebellionImperialDone: Function,
+  theHardWayAllTokensPlaced: Function,
   theSourceOfficerFreed: Function,
   vipersDenFigureDropsCore: Function,
   vipersDenHeroGetCore: Function,
@@ -473,6 +474,12 @@ class GoalPanel extends React.Component<GoalPanelPropsType, GoalPanelStateType> 
         '---PLACEHOLDER_WEST_OF_TILE01A---': {
           handler: this.props.survivalOfTheFittestCavernRevealed,
           text: 'Reveal West of 01A',
+        },
+      },
+      theHardWay: {
+        '---PLACEHOLDER_ALL_STRAIN_TOKENS---': {
+          handler: this.props.theHardWayAllTokensPlaced,
+          text: 'All Strain Placed',
         },
       },
     };

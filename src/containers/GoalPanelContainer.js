@@ -81,6 +81,7 @@ const survivalOfTheFittestPassRevealed = () =>
   createAction('SURVIVAL_OF_THE_FITTEST_PASS_REVEALED');
 const survivalOfTheFittestRevealEastOfTile12A = () =>
   createAction('SURVIVAL_OF_THE_FITTEST_TILE_07A_REVEALED');
+const theHardWayAllTokensPlaced = () => createAction('THE_HARD_WAY_ALL_TOKENS_PLACED');
 
 const mapDispatchToProps = {
   armedAndOperationalWarshipDestroyed,
@@ -114,6 +115,7 @@ const mapDispatchToProps = {
   sympathyForTheRebellionImperialClaim,
   sympathyForTheRebellionImperialDefeatRebel,
   sympathyForTheRebellionImperialDone,
+  theHardWayAllTokensPlaced,
   theSourceOfficerFreed,
   vipersDenFigureDropsCore,
   vipersDenHeroGetCore,
