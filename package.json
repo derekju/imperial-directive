@@ -1,6 +1,6 @@
 {
   "name": "imperial-directive",
-  "version": "1.6.2",
+  "version": "1.7.0",
   "private": true,
   "dependencies": {
     "connected-react-router": "^4.3.0",
