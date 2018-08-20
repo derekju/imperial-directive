@@ -26,6 +26,7 @@ const mapStateToProps = (state: StateType) => ({
   generousDonationsVirusUploaded: state.generousDonations.virusUploaded,
   goalText: getGoalText(state),
   lastStandVaderDeployed: state.lastStand.doorState === 3,
+  rewardBountyEarned: Boolean(getImperialRewards(state).bounty),
   rewardOldWoundsEarned: Boolean(getImperialRewards(state).oldWounds),
 });
 

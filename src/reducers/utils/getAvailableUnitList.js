@@ -20,7 +20,8 @@ export default (
   exclusionList: string[],
   missionThreat: number,
   expansions: {[string]: boolean},
-  villains: {[string]: boolean}
+  villains: {[string]: boolean},
+  imperialRewards: {[string]: boolean}
 ): UnitConfigType[] => {
   const {initialGroups, mapImage, noAllowedAttributes, noMercenaryAllowed, reservedGroups} = config;
 
@@ -106,6 +107,15 @@ export default (
       // Splice and create a new array with that one index removed
       unitList.splice(index, 1);
     }
+  }
+
+  // Depending on rewards need to adjust the threat level of that unit
+  if (imperialRewards.bounty) {
+    unitList.forEach((unit: UnitConfigType) => {
+      if (unit.attributes.includes('hunter')) {
+        unit.threat -= 1;
+      }
+    });
   }
 
   return unitList;

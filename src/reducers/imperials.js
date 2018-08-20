@@ -108,7 +108,8 @@ export const createNewGroup = (
   missionThreat: number,
   difficulty: string,
   aliasColor: string,
-  aliasNumber: number
+  aliasNumber: number,
+  imperialRewards: {[string]: boolean}
 ): ImperialUnitType => {
   // Default to 1
   let groupNumber = 1;
@@ -150,6 +151,10 @@ export const createNewGroup = (
     hpBoost: units[id].eligibleForHpBoost
       ? determineHpBoost(units[id].hpBoosts, missionThreat, difficulty)
       : 0,
+    threat:
+      units[id].attributes.includes('hunter') && imperialRewards.bounty
+        ? units[id].threat - 1
+        : units[id].threat,
   };
 };
 
@@ -170,13 +175,20 @@ export const initialState = {
 export default (state: ImperialsStateType = initialState, action: Object) => {
   switch (action.type) {
     case LOAD_MISSION:
-      const {config, expansions, missionThreat, villains} = action.payload;
+      const {config, expansions, imperialRewards, missionThreat, villains} = action.payload;
       return {
         ...initialState,
         customAI: state.customAI,
         customAIExceptionList: state.customAIExceptionList,
         customUnitAI: state.customUnitAI,
-        openGroups: populateOpenGroups(config, units, missionThreat, expansions, villains),
+        openGroups: populateOpenGroups(
+          config,
+          units,
+          missionThreat,
+          expansions,
+          villains,
+          imperialRewards
+        ),
         villains: state.villains,
       };
     case ACTIVATE_IMPERIAL_GROUP: {
@@ -271,8 +283,16 @@ export default (state: ImperialsStateType = initialState, action: Object) => {
         }): ImperialUnitType[]),
       };
     case DEPLOY_NEW_GROUPS: {
-      const {aliasColor, aliasNumber, difficulty, groupIds, missionThreat} = action.payload;
+      const {
+        aliasColor,
+        aliasNumber,
+        difficulty,
+        groupIds,
+        imperialRewards,
+        missionThreat,
+      } = action.payload;
       // We're mutating state.designationMap here!
+
       return {
         ...state,
         deployedGroups: (state.deployedGroups.concat(
@@ -283,7 +303,8 @@ export default (state: ImperialsStateType = initialState, action: Object) => {
               missionThreat,
               difficulty,
               aliasColor,
-              aliasNumber
+              aliasNumber,
+              imperialRewards
             )
           )
         ): ImperialUnitType[]),
@@ -416,9 +437,10 @@ export const deployNewGroups = (
   missionThreat: number,
   difficulty: string,
   aliasColor: string,
-  aliasNumber: number
+  aliasNumber: number,
+  imperialRewards: {[string]: boolean}
 ) => ({
-  payload: {aliasColor, aliasNumber, difficulty, groupIds, missionThreat},
+  payload: {aliasColor, aliasNumber, difficulty, groupIds, imperialRewards, missionThreat},
   type: DEPLOY_NEW_GROUPS,
 });
 export const setInterruptedGroup = (group: ImperialUnitType) => ({

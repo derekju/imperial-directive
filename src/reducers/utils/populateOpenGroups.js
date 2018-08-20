@@ -10,7 +10,8 @@ export default (
   units: {[string]: UnitConfigType},
   missionThreat: number,
   expansions: {[string]: boolean},
-  villains: {[string]: boolean}
+  villains: {[string]: boolean},
+  imperialRewards: {[string]: boolean}
 ): UnitConfigType[] => {
   const unitList: UnitConfigType[] = getAvailableUnitList(
     config,
@@ -18,7 +19,8 @@ export default (
     [],
     missionThreat,
     expansions,
-    villains
+    villains,
+    imperialRewards
   );
   const shuffledGroups = shuffle(unitList);
   let slicedGroups = shuffledGroups.slice(0, config.openGroups);

@@ -55,6 +55,7 @@ type GoalPanelPropsType = {
   pastLifeEnemiesDiscardTerminal1: Function,
   pastLifeEnemiesDiscardTerminal2: Function,
   pastLifeEnemiesDiscardTerminal3: Function,
+  rewardBountyEarned: boolean,
   rewardOldWoundsEarned: boolean,
   spiceJobGetKeycard: Function,
   survivalOfTheFittestCaveRevealed: Function,
@@ -503,6 +504,16 @@ class GoalPanel extends React.Component<GoalPanelPropsType, GoalPanelStateType> 
       ];
 
       return <div style={styles.contents}>{this.renderGoals(oldWoundsRewardText)}</div>;
+    }
+
+    if (this.props.rewardBountyEarned) {
+      const bountyRewardText = [
+        '{BREAK}',
+        '{BOLD}Bounty:{END}',
+        'Hunters cost one less threat to deploy.',
+      ];
+
+      return <div style={styles.contents}>{this.renderGoals(bountyRewardText)}</div>;
     }
   }
 

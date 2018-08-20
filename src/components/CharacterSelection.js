@@ -190,14 +190,17 @@ class CharacterSelection extends React.Component<
 
     // Get which checkboxes are checked for rewards
     // Gonna just dig into the DOM to do this
-    const imperialRewards = IMPERIAL_REWARDS.reduce((accumulator: Object, key: string) => {
-      const checkbox = document.querySelector('#' + key);
-      if (checkbox) {
-        // $FlowFixMe
-        accumulator[key] = checkbox.checked;
-      }
-      return accumulator;
-    }, {});
+    const imperialRewards = IMPERIAL_REWARDS.map((data: Object) => data.id).reduce(
+      (accumulator: Object, key: string) => {
+        const checkbox = document.querySelector('#' + key);
+        if (checkbox) {
+          // $FlowFixMe
+          accumulator[key] = checkbox.checked;
+        }
+        return accumulator;
+      },
+      {}
+    );
     this.props.setImperialRewards(imperialRewards);
 
     // Get which checkboxes are checked for rewards
@@ -530,30 +533,14 @@ class CharacterSelection extends React.Component<
             mission starts.
           </div>
           <div style={styles.toggleSection}>
-            <div>
-              <input type="checkbox" id="imperialIndustry" />
-              <label style={styles.label} htmlFor="imperialIndustry">
-                Imperial Industry
-              </label>
-            </div>
-            <div>
-              <input type="checkbox" id="oldWounds" />
-              <label style={styles.label} htmlFor="oldWounds">
-                Old Wounds
-              </label>
-            </div>
-            <div>
-              <input type="checkbox" id="specialOperations" />
-              <label style={styles.label} htmlFor="specialOperations">
-                Special Operations
-              </label>
-            </div>
-            <div>
-              <input type="checkbox" id="supplyDeficit" />
-              <label style={styles.label} htmlFor="supplyDeficit">
-                Supply Deficit
-              </label>
-            </div>
+            {IMPERIAL_REWARDS.map(({id, name}: {id: string, name: string}) => (
+              <div>
+                <input type="checkbox" id={id} />
+                <label style={styles.label} htmlFor={id}>
+                  {name}
+                </label>
+              </div>
+            ))}
           </div>
         </div>
       </div>

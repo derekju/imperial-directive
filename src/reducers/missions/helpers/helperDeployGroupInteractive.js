@@ -1,7 +1,7 @@
 // @flow
 
 import {call, put, select, take} from 'redux-saga/effects';
-import {getDifficulty, getMissionThreat} from '../../app';
+import {getDifficulty, getImperialRewards, getMissionThreat} from '../../app';
 import {deployNewGroups} from '../../imperials';
 import {displayModal} from '../../modal';
 import {getDeploymentPoint} from '../../mission';
@@ -29,6 +29,9 @@ export default function* helperDeployGroupInteractive(
     // Deploy this grouop
     const missionThreat = yield select(getMissionThreat);
     const difficulty = yield select(getDifficulty);
-    yield put(deployNewGroups([unitsToDeploy[i]], missionThreat, difficulty, color, number));
+    const imperialRewards = yield select(getImperialRewards);
+    yield put(
+      deployNewGroups([unitsToDeploy[i]], missionThreat, difficulty, color, number, imperialRewards)
+    );
   }
 }

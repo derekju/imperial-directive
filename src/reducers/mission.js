@@ -326,8 +326,17 @@ export const loadMission = (
   missionThreat: number,
   difficulty: string,
   expansions: {[string]: boolean},
-  villains: {[string]: boolean}
-) => createAction(LOAD_MISSION, {config, difficulty, expansions, missionThreat, villains});
+  villains: {[string]: boolean},
+  imperialRewards: {[string]: boolean}
+) =>
+  createAction(LOAD_MISSION, {
+    config,
+    difficulty,
+    expansions,
+    imperialRewards,
+    missionThreat,
+    villains,
+  });
 export const changePlayerTurn = (player: number) => createAction(CHANGE_PLAYER_TURN, {player});
 export const setMapStateActivated = (id: number, type: string, value: boolean) =>
   createAction(SET_MAP_STATE_ACTIVATED, {id, type, value});
@@ -482,6 +491,16 @@ function* handleCheckForImperialRewards(): Generator<*, *, *> {
       text: [
         'The Imperial player has earned the Imperial Industry reward.',
         'The bonus will be randomly applied to a unit each turn.',
+      ],
+      title: 'Imperial Industry',
+    });
+  }
+
+  if (imperialRewards.bounty) {
+    yield call(helperEventModal, {
+      text: [
+        'The Imperial player has earned the Bounty reward.',
+        'Hunters cost 1 less threat to deploy.',
       ],
       title: 'Imperial Industry',
     });

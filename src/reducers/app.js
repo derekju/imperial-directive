@@ -12,10 +12,11 @@ import type {StateType} from './types';
 // Constants
 
 export const IMPERIAL_REWARDS = [
-  'imperialIndustry',
-  'oldWounds',
-  'specialOperations',
-  'supplyDeficit',
+  {id: 'bounty', name: 'Bounty'},
+  {id: 'imperialIndustry', name: 'Imperial Industry'},
+  {id: 'oldWounds', name: 'Old Wounds'},
+  {id: 'specialOperations', name: 'Special Operations'},
+  {id: 'supplyDeficit', name: 'Supply Deficit'},
 ];
 
 export const REBEL_REWARDS = ['counterparts'];
@@ -156,6 +157,7 @@ function* loadMissionSaga(): Generator<*, *, *> {
     const difficulty = yield select(getDifficulty);
     const expansions = yield select(getExpansions);
     const villains = yield select(getVillains);
+    const imperialRewards = yield select(getImperialRewards);
     // Fork a copy of the saga for the current mission so we get mission specific logic
     const missionConfiguration = missions[mission];
     // Load the events
@@ -164,7 +166,16 @@ function* loadMissionSaga(): Generator<*, *, *> {
     task = yield fork(forkMission, mission);
     yield take(MISSION_SAGA_LOAD_DONE);
     // Load our mission in which will kick things off
-    yield put(loadMission(missionConfiguration, missionThreat, difficulty, expansions, villains));
+    yield put(
+      loadMission(
+        missionConfiguration,
+        missionThreat,
+        difficulty,
+        expansions,
+        villains,
+        imperialRewards
+      )
+    );
   }
 }
 
