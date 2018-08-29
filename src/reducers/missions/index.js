@@ -52,6 +52,7 @@ import {getTheSpiceJobGoalText, theSpiceJob} from './theSpiceJob';
 import {getUnderSiegeGoalText, underSiege} from './underSiege';
 import {getVipersDenGoalText, vipersDen} from './vipersDen';
 import {getWantedGoalText, wanted} from './wanted';
+import {getWhiteNoiseGoalText, whiteNoise} from './whiteNoise';
 
 export default {
   aNewThreat,
@@ -124,6 +125,7 @@ export default {
   getUnderSiegeGoalText,
   getVipersDenGoalText,
   getWantedGoalText,
+  getWhiteNoiseGoalText,
   highMoon,
   homecoming,
   huntedDown,
@@ -152,4 +154,5 @@ export default {
   underSiege,
   vipersDen,
   wanted,
+  whiteNoise,
 };

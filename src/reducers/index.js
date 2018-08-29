@@ -51,6 +51,7 @@ import theSpiceJob from './missions/theSpiceJob';
 import underSiege from './missions/underSiege';
 import vipersDen from './missions/vipersDen';
 import wanted from './missions/wanted';
+import whiteNoise from './missions/whiteNoise';
 
 export default {
   aftermath,
@@ -104,4 +105,5 @@ export default {
   underSiege,
   vipersDen,
   wanted,
+  whiteNoise,
 };

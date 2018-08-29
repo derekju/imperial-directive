@@ -51,6 +51,7 @@ import type {TheSpiceJobStateType} from './missions/theSpiceJob';
 import type {UnderSiegeStateType} from './missions/underSiege';
 import type {VipersDenStateType} from './missions/vipersDen';
 import type {WantedStateType} from './missions/wanted';
+import type {WhiteNoiseStateType} from './missions/whiteNoise';
 
 export type StateType = {
   aftermath: AftermathStateType,
@@ -111,4 +112,5 @@ export type StateType = {
   underSiege: UnderSiegeStateType,
   vipersDen: VipersDenStateType,
   wanted: WantedStateType,
+  whiteNoise: WhiteNoiseStateType,
 };

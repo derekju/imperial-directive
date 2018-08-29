@@ -6153,5 +6153,151 @@
       "ig88", "probeDroid"
     ],
     "withdrawnHeroCanActivate": true
+  },
+  "whiteNoise": {
+    "wave": "returnToHoth",
+    "initialGroups": [
+      "imperialOfficer", "imperialOfficer", "imperialOfficerElite", "probeDroid", "snowtrooperElite"
+    ],
+    "instructions": {
+      "imperialVictory": "When all terminals are discarded",
+      "rebelVictory": "At the end of Round 8"
+    },
+    "mapImage": [
+      ["c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "h20b", "h20b", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a"],
+      ["c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "h10b", "h10b", "h10b", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a"],
+      ["h17b", "h17b", "h13b", "h13b", "h13b", "h13b", "h10b", "h10b", "h10b", "h10b", "h12b", "h12b", "h12b", "c00a", "c00a", "c00a", "c00a"],
+      ["h17b", "h17b", "h13b", "h13b", "h13b", "h13b", "h10b", "h10b", "h10b", "h10b", "h12b", "h12b", "h12b", "c00a", "c00a", "c00a", "c00a"],
+      ["h11b", "h11b", "h11b", "h20b", "h20b", "c00a", "h10b", "h10b", "h10b", "c00a", "h12b", "h12b", "h12b", "c00a", "c00a", "c00a", "c00a"],
+      ["h11b", "h11b", "h11b", "h06b", "h06b", "h06b", "h06b", "h06b", "h06b", "h06b", "c00a", "h08b", "h08b", "h08b", "c00a", "c00a", "c00a"],
+      ["h11b", "h11b", "h11b", "h06b", "h06b", "h06b", "h06b", "h06b", "h06b", "h06b", "c00a", "h08b", "h08b", "h08b", "h08b", "h08b", "h20a"],
+      ["h11b", "h11b", "h11b", "h06b", "h06b", "h06b", "h06b", "h06b", "h06b", "h06b", "c00a", "h08b", "h08b", "h08b", "h08b", "h08b", "h20a"],
+      ["h19b", "h19b", "c00a", "h06b", "h06b", "h06b", "h06b", "h06b", "h06b", "h06b", "h20b", "h08b", "h08b", "h08b", "h08b", "c00a", "c00a"],
+      ["h07b", "h07b", "h07b", "h06b", "h06b", "h06b", "h06b", "h06b", "h06b", "h06b", "h20b", "h19b", "h19b", "c00a", "c00a", "c00a", "c00a"],
+      ["h07b", "h07b", "h07b", "h07b", "h19b", "h19b", "c00a", "c00a", "c00a", "c00a", "c00a", "h09b", "h09b", "h09b", "c00a", "c00a", "c00a"],
+      ["h07b", "h07b", "h07b", "h07b", "h16b", "h16b", "h14b", "h14b", "h14b", "h14b", "h09b", "h09b", "h09b", "h09b", "c00a", "c00a", "c00a"],
+      ["c00a", "h07b", "h07b", "h07b", "h16b", "h16b", "h14b", "h14b", "h14b", "h14b", "h09b", "h09b", "h09b", "h09b", "c00a", "c00a", "c00a"],
+      ["c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "h09b", "h09b", "h09b", "h09b", "c00a", "c00a", "c00a"]
+    ],
+    "mapStates": {
+      "entrance-1": {
+        "activated": false,
+        "activateText": "",
+        "coordinates": {
+          "x": 6,
+          "y": 7
+        },
+        "description": "The entrance.",
+        "id": 1,
+        "interactable": false,
+        "type": "entrance",
+        "unactivateText": "",
+        "visible": true
+      },
+      "door-1": {
+        "activated": false,
+        "activateText": "Open",
+        "coordinates": {
+          "x": 7,
+          "y": 5
+        },
+        "description": "Facility door.",
+        "id": 1,
+        "interactable": true,
+        "type": "door",
+        "unactivateText": "Close",
+        "visible": true
+      },
+      "door-2": {
+        "activated": false,
+        "activateText": "Open",
+        "coordinates": {
+          "x": 4,
+          "y": 9
+        },
+        "description": "Facility door.",
+        "id": 2,
+        "interactable": true,
+        "type": "door",
+        "unactivateText": "Close",
+        "visible": true
+      },
+      "door-3": {
+        "activated": false,
+        "activateText": "Open",
+        "coordinates": {
+          "x": 9,
+          "y": 2
+        },
+        "description": "Facility door.",
+        "id": 3,
+        "interactable": true,
+        "type": "door",
+        "unactivateText": "Close",
+        "visible": true
+      },
+      "door-4": {
+        "activated": false,
+        "activateText": "Open",
+        "coordinates": {
+          "x": 9,
+          "y": 11
+        },
+        "description": "Facility door.",
+        "id": 4,
+        "interactable": true,
+        "type": "door",
+        "unactivateText": "Close",
+        "visible": true
+      },
+      "terminal-1": {
+        "activated": false,
+        "activateText": "Discard",
+        "coordinates": {
+          "x": 6,
+          "y": 2
+        },
+        "description": "Facility terminal.",
+        "id": 1,
+        "interactable": true,
+        "type": "terminal",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "terminal-2": {
+        "activated": false,
+        "activateText": "Discard",
+        "coordinates": {
+          "x": 4,
+          "y": 6
+        },
+        "description": "Facility terminal.",
+        "id": 2,
+        "interactable": true,
+        "type": "terminal",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "terminal-3": {
+        "activated": false,
+        "activateText": "Discard",
+        "coordinates": {
+          "x": 7,
+          "y": 12
+        },
+        "description": "Facility terminal.",
+        "id": 3,
+        "interactable": true,
+        "type": "terminal",
+        "unactivateText": "Restore",
+        "visible": true
+      }
+    },
+    "name": "White Noise",
+    "noMercenaryAllowed": false,
+    "openGroups": 3,
+    "reservedGroups": [
+      "eWebEngineerElite", "wampa"
+    ]
   }
 }
