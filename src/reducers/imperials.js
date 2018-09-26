@@ -339,12 +339,18 @@ export default (state: ImperialsStateType = initialState, action: Object) => {
         }): ImperialUnitType[]),
       };
     case SET_CUSTOM_UNIT_AI: {
-      const {commands, unit} = action.payload;
+      const {commands} = action.payload;
+      const units = Array.isArray(action.payload.units)
+        ? action.payload.units
+        : [action.payload.units];
       return {
         ...state,
         customUnitAI: {
           ...state.customUnitAI,
-          [unit]: commands.slice(),
+          ...units.reduce((accumulator: Object, current: string) => {
+            accumulator[current] = commands.slice();
+            return accumulator;
+          }, {}),
         },
       };
     }
@@ -457,8 +463,8 @@ export const setCustomAI = (customAI: ?(Object[]), exceptionList: string[] = [])
 export const clearCustomAI = () => createAction(CLEAR_CUSTOM_AI);
 export const setImperialUnitHpBuff = (groupId: string, hpBuff: number) =>
   createAction(SET_IMPERIAL_UNIT_HP_BUFF, {groupId, hpBuff});
-export const setCustomUnitAI = (unit: string, commands: Object[]) =>
-  createAction(SET_CUSTOM_UNIT_AI, {commands, unit});
+export const setCustomUnitAI = (units: string | string[], commands: Object[]) =>
+  createAction(SET_CUSTOM_UNIT_AI, {commands, units});
 export const clearCustomUnitAI = (unit: string) => createAction(CLEAR_CUSTOM_UNIT_AI, {unit});
 export const setVillains = (villains: string[]) => createAction(SET_VILLAINS, {villains});
 export const removeFromOpenGroups = (groupId: string) =>

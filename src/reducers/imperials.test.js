@@ -1,4 +1,9 @@
-import reducer, {createNewGroup, initialState, removeFromOpenGroups} from './imperials';
+import reducer, {
+  createNewGroup,
+  initialState,
+  removeFromOpenGroups,
+  setCustomUnitAI,
+} from './imperials';
 
 test('test removeFromOpenGroups', () => {
   const testState = {
@@ -16,4 +21,25 @@ test('test createNewGroup with Bounty reward', () => {
   expect(noBounty.threat).toEqual(7);
   const nonHunter = createNewGroup('probeDroid', {}, 5, 'normal', 'red', 1, {bounty: true});
   expect(nonHunter.threat).toEqual(3);
+});
+
+test('test setCustomUnitAI with one single unit', () => {
+  const testState = {
+    ...initialState,
+  };
+  const state = reducer(testState, setCustomUnitAI('probeDroid', ['hello']));
+  expect(state.customUnitAI.probeDroid).toEqual(['hello']);
+});
+
+test('test setCustomUnitAI with multiple units', () => {
+  const testState = {
+    ...initialState,
+  };
+  const state = reducer(
+    testState,
+    setCustomUnitAI(['probeDroid', 'stormtrooper', 'eWebEngineer'], ['hello'])
+  );
+  expect(state.customUnitAI.probeDroid).toEqual(['hello']);
+  expect(state.customUnitAI.stormtrooper).toEqual(['hello']);
+  expect(state.customUnitAI.eWebEngineer).toEqual(['hello']);
 });

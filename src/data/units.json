@@ -575,6 +575,39 @@
     "threat": 5,
     "unique": false
   },
+  "jann": {
+    "affiliation": "mission",
+    "attributes": ["leader"],
+    "buffs": ["fleetFooted", "heavyPressure"],
+    "commands": [
+      {
+        "condition": "If within 6 spaces of {ATTACK_TARGET}",
+        "command": "{ACTION} Move to be within 4 spaces and LOS of {ATTACK_TARGET}, then {ACTION} Attack {ATTACK_TARGET}, then {ACTION} Move adjacent to the nearest Trooper or Guardian."
+      },
+      {
+        "condition": "If not within 6 spaces of {ATTACK_TARGET}",
+        "command": "{ACTION} Move towards {ATTACK_TARGET}."
+      },
+      {
+        "condition": "If no Troopers or Guardians adjacent to self",
+        "command": "{ACTION} Use Order ability on a nearby Trooper or Guardian figure to have it move to be adjacent to self."
+      },
+      {
+        "condition": "Reaction - If defending while adjacent to a friendly figure",
+        "command": "Use Cower ability if a rolled dice does not cancel anything."
+      }
+    ],
+    "eligibleForHpBoost": false,
+    "elite": true,
+    "hpBoosts": {},
+    "id": "jann",
+    "maxDeployed": 1,
+    "maxInGroup": 1,
+    "name": "Jann",
+    "reinforcementCost": -1,
+    "threat": 2,
+    "unique": true
+  },
   "kaynSomos": {
     "affiliation": "imperial",
     "attributes": ["trooper", "leader"],

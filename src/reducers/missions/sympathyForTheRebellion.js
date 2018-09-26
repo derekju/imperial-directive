@@ -312,8 +312,7 @@ export function* sympathyForTheRebellion(): Generator<*, *, *> {
   // TODO: Improvement!
   // For deployment/reinforcement need to prioritize stormtroopers since they are needed to get tokens
   // 6.04.18 - Not going to do this for now to not worry about it but see if this will really be a problem
-  yield put(setCustomUnitAI('stormtrooper', STORMTROOPER_AI_TOKENS));
-  yield put(setCustomUnitAI('stormtrooperElite', STORMTROOPER_AI_TOKENS));
+  yield put(setCustomUnitAI(['stormtrooper', 'stormtrooperElite'], STORMTROOPER_AI_TOKENS));
 
   yield all([
     fork(handleSpecialSetup),

@@ -18,8 +18,8 @@ import {REFER_CAMPAIGN_GUIDE, TARGET_HERO_CLOSEST_UNWOUNDED} from './constants';
 import createAction from '../createAction';
 import {displayModal} from '../modal';
 import handleHeroesWounded from './sharedSagas/handleHeroesWounded';
+import handleObjectsAllActivated from './sharedSagas/handleObjectsAllActivated';
 import handleStatusPhaseBegin from './sharedSagas/handleStatusPhaseBegin';
-import helperCheckMapStateActivations from './helpers/helperCheckMapStateActivations';
 import helperChoiceModal from './helpers/helperChoiceModal';
 import helperDeploy from './helpers/helperDeploy';
 import helperEventModal from './helpers/helperEventModal';
@@ -203,24 +203,6 @@ function* handleSingleTerminalDestroyed(): Generator<*, *, *> {
   }
 }
 
-function* handleTerminalsDestroyed(): Generator<*, *, *> {
-  while (true) {
-    yield take(SET_MAP_STATE_ACTIVATED);
-    const allActivated = yield call(
-      helperCheckMapStateActivations,
-      ['terminal-1', 'terminal-2', 'terminal-3', 'terminal-4'],
-      4
-    );
-    // Now check all 4 terminals, if they are activated, then game over for rebels
-    if (allActivated) {
-      yield put(displayModal('REBEL_VICTORY'));
-      track(MISSION_NAME, 'victory', 'terminals');
-      // We're done
-      break;
-    }
-  }
-}
-
 // REQUIRED SAGA
 function* handleRoundEnd(): Generator<*, *, *> {
   while (true) {
@@ -272,7 +254,15 @@ export function* aftermath(): Generator<*, *, *> {
     fork(handleLockDownEvent),
     fork(handleFortifiedEvent),
     fork(handleSingleTerminalDestroyed),
-    fork(handleTerminalsDestroyed),
+    fork(
+      handleObjectsAllActivated(
+        ['terminal-1', 'terminal-2', 'terminal-3', 'terminal-4'],
+        MISSION_NAME,
+        'REBEL_VICTORY',
+        'victory',
+        'terminals'
+      )
+    ),
     fork(handleHeroesWounded(MISSION_NAME, `${MISSION_NAME_S}_PRIORITY_TARGET_KILL_HERO`)),
     fork(handleStatusPhaseBegin),
     fork(handleRoundEnd),

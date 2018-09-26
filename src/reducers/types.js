@@ -23,6 +23,7 @@ import type {FriendsOfOldStateType} from './missions/friendsOfOld';
 import type {GenerousDonationsStateType} from './missions/generousDonations';
 import type {HighMoonStateType} from './missions/highMoon';
 import type {HomecomingStateType} from './missions/homecoming';
+import type {HomeFrontStateType} from './missions/homeFront';
 import type {HuntedDownStateType} from './missions/huntedDown';
 import type {ImperialEntanglementsStateType} from './missions/imperialEntanglements';
 import type {ImperialHospitalityStateType} from './missions/imperialHospitality';
@@ -77,6 +78,7 @@ export type StateType = {
   generousDonations: GenerousDonationsStateType,
   highMoon: HighMoonStateType,
   homecoming: HomecomingStateType,
+  homeFront: HomeFrontStateType,
   huntedDown: HuntedDownStateType,
   imperialEntanglements: ImperialEntanglementsStateType,
   imperialHospitality: ImperialHospitalityStateType,

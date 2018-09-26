@@ -138,7 +138,7 @@ function* handleUrlHydrationSaga(): Generator<*, *, *> {
   const match = location.pathname.match(/^\/mission\/(.*)$/);
   if (match && match.length === 2) {
     // Rehydrate defaults until we have actual persistence
-    yield put(setRoster(['diala', 'fenn']));
+    yield put(setRoster(['diala']));
     yield put(setMissionThreat(5));
     // Rehydrate mission name
     yield put(setMission(match[1]));

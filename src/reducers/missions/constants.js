@@ -10,3 +10,16 @@ export const STRING_WITHDRAW_INCAPACITATED =
   'When a hero withdraws, he is incapacitated instead. He only receives 1 action and can only move with that action.';
 
 export const NO_INTERACTION_EXCLUSION_LIST = ['nexu', 'nexuElite', 'wampa', 'wampaElite'];
+
+export const TROOPERS_LIST = [
+  'eWebEngineer',
+  'eWebEngineerElite',
+  'heavyStormtrooper',
+  'heavyStormtrooperElite',
+  'snowtrooper',
+  'snowtrooperElite',
+  'stormtrooper',
+  'stormtrooperElite',
+];
+
+export const GUARDIANS_LIST = ['royalGuard', 'royalGuardElite'];

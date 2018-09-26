@@ -2984,6 +2984,288 @@
       "darthVader", "stormtrooper"
     ]
   },
+  "homeFront": {
+    "wave": "returnToHoth",
+    "initialGroups": [
+      "imperialOfficerElite", "snowtrooper", "wampa"
+    ],
+    "instructions": {
+      "imperialVictory": "When all refugees are discarded",
+      "rebelVictory": "(to be revealed)"
+    },
+    "mapImage": [
+      ["c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "h02a", "h02a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a"],
+      ["c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "h01a", "h01a", "h01a", "h01a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a"],
+      ["c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "h01a", "h01a", "h01a", "h01a", "h03a", "h03a", "h03a", "h03a", "c00a", "c00a", "c00a"],
+      ["c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "h01a", "h01a", "h01a", "h01a", "h03a", "h03a", "h03a", "h03a", "h15a", "h15a", "c00a"],
+      ["c00a", "c00a", "h09a", "h09a", "h09a", "h09a", "c00a", "h01a", "h01a", "h01a", "h01a", "h03a", "h03a", "h03a", "h03a", "h15a", "h15a", "c00a"],
+      ["c00a", "c00a", "h09a", "h09a", "h09a", "h09a", "h20b", "h01a", "h01a", "h01a", "h01a", "h03a", "h03a", "h03a", "h03a", "c33b", "c33b", "c00a"],
+      ["c00a", "c00a", "h09a", "h09a", "h09a", "h09a", "h20b", "h01a", "h01a", "h01a", "h01a", "h03a", "h03a", "h03a", "h03a", "c33b", "c33b", "c00a"],
+      ["c00a", "c00a", "h09a", "h09a", "h09a", "c00a", "c00a", "h10a", "h10a", "h10a", "c00a", "c00a", "c00a", "c00a", "c23b", "c23b", "c23b", "c23b"],
+      ["c00a", "c00a", "c00a", "h12b", "h12b", "h21b", "h21b", "h10a", "h10a", "h10a", "h10a", "h22a", "h22a", "c35b", "c23b", "c23b", "c23b", "c23b"],
+      ["c00a", "c00a", "c00a", "h12b", "h12b", "h21b", "h21b", "h10a", "h10a", "h10a", "h10a", "h22a", "h22a", "c35b", "c23b", "c23b", "c23b", "c23b"],
+      ["c00a", "c00a", "c00a", "c36a", "c36a", "c00a", "c00a", "c00a", "h10a", "h10a", "h10a", "c00a", "c00a", "c00a", "c23b", "c23b", "c23b", "c23b"],
+      ["c00a", "c12a", "c12a", "c12a", "c12a", "c12a", "c00a", "h11a", "h11a", "h11a", "h11a", "c00a", "c00a", "c00a", "c36a", "c36a", "c00a", "c00a"],
+      ["c00a", "c12a", "c12a", "c12a", "c12a", "c12a", "h23a", "h11a", "h11a", "h11a", "h11a", "h23a", "c20a", "c20a", "c20a", "c20a", "c20a", "c20a"],
+      ["c36a", "c12a", "c12a", "c12a", "c12a", "c12a", "h23a", "h11a", "h11a", "h11a", "h11a", "h23a", "c20a", "c20a", "c20a", "c20a", "c20a", "c20a"],
+      ["c36a", "c12a", "c12a", "c12a", "c12a", "c12a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c20a", "c20a", "c20a", "c20a", "c20a", "c20a"],
+      ["c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c00a", "c20a", "c20a", "c20a", "c20a", "c20a", "c20a"]
+    ],
+    "mapStates": {
+      "entrance-1": {
+        "activated": false,
+        "activateText": "",
+        "coordinates": {
+          "x": 16,
+          "y": 4
+        },
+        "description": "The entrance.",
+        "id": 1,
+        "interactable": false,
+        "type": "entrance",
+        "unactivateText": "",
+        "visible": true
+      },
+      "neutral-1": {
+        "activated": false,
+        "activateText": "Destroy",
+        "coordinates": {
+          "x": 8,
+          "y": 6
+        },
+        "description": "The barricade.",
+        "id": 1,
+        "interactable": true,
+        "type": "neutral",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "neutral-2": {
+        "activated": false,
+        "activateText": "Destroy",
+        "coordinates": {
+          "x": 9,
+          "y": 6
+        },
+        "description": "The barricade.",
+        "id": 2,
+        "interactable": true,
+        "type": "neutral",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "neutral-3": {
+        "activated": false,
+        "activateText": "Destroy",
+        "coordinates": {
+          "x": 8,
+          "y": 7
+        },
+        "description": "The barricade.",
+        "id": 3,
+        "interactable": true,
+        "type": "neutral",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "neutral-4": {
+        "activated": false,
+        "activateText": "Destroy",
+        "coordinates": {
+          "x": 9,
+          "y": 7
+        },
+        "description": "The barricade.",
+        "id": 4,
+        "interactable": true,
+        "type": "neutral",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "door-1": {
+        "activated": false,
+        "activateText": "Destroy",
+        "coordinates": {
+          "x": 6,
+          "y": 8
+        },
+        "description": "Settlement door.",
+        "id": 1,
+        "interactable": true,
+        "type": "door",
+        "unactivateText": "Close",
+        "visible": true
+      },
+      "door-2": {
+        "activated": false,
+        "activateText": "Destroy",
+        "coordinates": {
+          "x": 11,
+          "y": 8
+        },
+        "description": "Settlement door.",
+        "id": 2,
+        "interactable": true,
+        "type": "door",
+        "unactivateText": "Close",
+        "visible": true
+      },
+      "door-3": {
+        "activated": false,
+        "activateText": "Destroy",
+        "coordinates": {
+          "x": 6,
+          "y": 12
+        },
+        "description": "Settlement door.",
+        "id": 3,
+        "interactable": true,
+        "type": "door",
+        "unactivateText": "Close",
+        "visible": true
+      },
+      "door-4": {
+        "activated": false,
+        "activateText": "Destroy",
+        "coordinates": {
+          "x": 11,
+          "y": 12
+        },
+        "description": "Settlement door.",
+        "id": 4,
+        "interactable": true,
+        "type": "door",
+        "unactivateText": "Close",
+        "visible": true
+      },
+      "rebel-1": {
+        "activated": false,
+        "activateText": "Discard",
+        "color": "blue",
+        "coordinates": {
+          "x": 6,
+          "y": 6
+        },
+        "description": "A refugee.",
+        "id": 1,
+        "interactable": true,
+        "type": "rebel",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "rebel-2": {
+        "activated": false,
+        "activateText": "Discard",
+        "color": "red",
+        "coordinates": {
+          "x": 16,
+          "y": 5
+        },
+        "description": "A refugee.",
+        "id": 2,
+        "interactable": true,
+        "type": "rebel",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "rebel-3": {
+        "activated": false,
+        "activateText": "Discard",
+        "color": "blue",
+        "coordinates": {
+          "x": 2,
+          "y": 7
+        },
+        "description": "A refugee.",
+        "id": 3,
+        "interactable": true,
+        "type": "rebel",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "rebel-4": {
+        "activated": false,
+        "activateText": "Discard",
+        "color": "red",
+        "coordinates": {
+          "x": 17,
+          "y": 10
+        },
+        "description": "A refugee.",
+        "id": 4,
+        "interactable": true,
+        "type": "rebel",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "rebel-5": {
+        "activated": false,
+        "activateText": "Discard",
+        "color": "green",
+        "coordinates": {
+          "x": 3,
+          "y": 11
+        },
+        "description": "A refugee.",
+        "id": 5,
+        "interactable": true,
+        "type": "rebel",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "rebel-6": {
+        "activated": false,
+        "activateText": "Discard",
+        "color": "yellow",
+        "coordinates": {
+          "x": 14,
+          "y": 11
+        },
+        "description": "A refugee.",
+        "id": 6,
+        "interactable": true,
+        "type": "rebel",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "rebel-7": {
+        "activated": false,
+        "activateText": "Discard",
+        "color": "green",
+        "coordinates": {
+          "x": 0,
+          "y": 14
+        },
+        "description": "A refugee.",
+        "id": 7,
+        "interactable": true,
+        "type": "rebel",
+        "unactivateText": "Restore",
+        "visible": true
+      },
+      "rebel-8": {
+        "activated": false,
+        "activateText": "Discard",
+        "color": "yellow",
+        "coordinates": {
+          "x": 14,
+          "y": 15
+        },
+        "description": "A refugee.",
+        "id": 8,
+        "interactable": true,
+        "type": "rebel",
+        "unactivateText": "Restore",
+        "visible": true
+      }
+    },
+    "name": "Home Front",
+    "noMercenaryAllowed": false,
+    "openGroups": 3,
+    "reservedGroups": [
+      "eWebEngineerElite", "imperialOfficer", "probeDroidElite"
+    ]
+  },
   "huntedDown": {
     "wave": "twinShadows",
     "initialGroups": [

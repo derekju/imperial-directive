@@ -256,8 +256,7 @@ export function* canyonRun(): Generator<*, *, *> {
   // SET INITIAL DEPLOYMENT POINT
   yield put(setDeploymentPoint(getRandomDeploymentPoint()));
 
-  yield put(setCustomUnitAI('tuskenRaider', CUSTOM_AI_TUSKEN));
-  yield put(setCustomUnitAI('tuskenRaiderElite', CUSTOM_AI_TUSKEN));
+  yield put(setCustomUnitAI(['tuskenRaider', 'tuskenRaiderElite'], CUSTOM_AI_TUSKEN));
 
   yield all([
     fork(handleSpecialSetup),
