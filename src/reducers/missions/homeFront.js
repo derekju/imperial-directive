@@ -11,7 +11,6 @@ import {
   setAttackTarget,
   setDeploymentPoint,
   setMapStateActivated,
-  setMapStateInteractable,
   setMapStateVisible,
   setMoveTarget,
   STATUS_PHASE_END_ROUND_EFFECTS,
